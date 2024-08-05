@@ -35,7 +35,7 @@
         <MenuBlockuserlist v-model="settingData.blockList" />
       </div>
       <!-- <div class="item">
-        <div class="tit">屏蔽用户列表（使用英文,分隔）</div>
+        <div class="tit">屏蔽用户列表（使用英文，分隔）</div>
         <textarea id="blockuserlist" placeholder="user1,user2,user3"></textarea>
       </div> -->
       <!-- <div class="item">
@@ -156,36 +156,34 @@ export default {
       this.opacity = false;
       this.open = false;
     },
-    isDomainEnding(str) {
-      // 去掉字符串末尾的 `/`
-      str = str.replace(/\/+$/, "");
-      var domainPattern = /\.(com|org|net|edu|gov|co|cn|io|info|biz|me|us|uk|au|de|fr|jp|ru|ch|it|nl|se|no|es|mil|int|arpa|asia|museum|name|pro|coop|aero|cat|jobs|mobi|travel|xxx|idv|tv|cc|ws|bz|nu|tk|fm|ag|am|at|be|bg|cd|cf|cg|ch|cl|cm|cz|dk|dm|ec|ee|es|eu|fi|ga|gd|gf|gg|gl|gp|gr|hm|hr|ht|hu|im|io|is|je|ke|kg|ki|kr|kz|la|lc|li|lt|lu|lv|ma|mc|md|ms|mt|mu|mx|my|nf|ng|nl|no|nz|pa|pe|pf|pg|pl|pm|pn|pr|pt|pw|re|ro|rs|sa|sb|sc|sg|sh|si|sk|sm|sn|so|st|su|sx|tc|tf|tk|tl|tm|to|tr|tt|tw|ua|ug|uy|uz|vc|ve|vg|vn|vu|wf|xyz|yt|za|zm|zw)$/i;
-      return domainPattern.test(str);
-    },
     runscripts() {
       $(".signature-img").each(function () {
-        if ($(this).siblings(".signature-p").length < 1) {
-          var url = $(this).attr("src");
+        var self = $(this);
+        if (self.siblings(".signature-p").length < 1) {
+          var url = self.attr("src");
 
           // 先判断是否带 http
           if (url.indexOf("http") < 0) {
-            $(this).after(
+            self.after(
               `<p class="signature-p">${url}（该用户签名非图片格式，已自动转文字）</p>`
             );
-            $(this).hide();
+            self.hide();
           } else {
             // 在带 http 的链接中判断是否是域名，大几率是博客域名
-            if (this.isDomainEnding(url)) {
-              $(this).after(
+            var str = url.replace(/\/+$/, "");
+            var domainPattern = /\.(com|org|net|edu|gov|co|cn|io|info|biz|me|us|uk|au|de|fr|jp|ru|ch|it|nl|se|no|es|mil|int|arpa|asia|museum|name|pro|coop|aero|cat|jobs|mobi|travel|xxx|idv|tv|cc|ws|bz|nu|tk|fm|ag|am|at|be|bg|cd|cf|cg|ch|cl|cm|cz|dk|dm|ec|ee|es|eu|fi|ga|gd|gf|gg|gl|gp|gr|hm|hr|ht|hu|im|io|is|je|ke|kg|ki|kr|kz|la|lc|li|lt|lu|lv|ma|mc|md|ms|mt|mu|mx|my|nf|ng|nl|no|nz|pa|pe|pf|pg|pl|pm|pn|pr|pt|pw|re|ro|rs|sa|sb|sc|sg|sh|si|sk|sm|sn|so|st|su|sx|tc|tf|tk|tl|tm|to|tr|tt|tw|ua|ug|uy|uz|vc|ve|vg|vn|vu|wf|xyz|yt|za|zm|zw)$/i;
+
+            if (domainPattern.test(url)) {
+              self.after(
                 `<p class="signature-p">${url}（该用户签名非图片格式，已自动转文字）</p>`
               );
-              $(this).hide();
+              self.hide();
             } else if (url.indexOf("photos.google.com") !== -1) {
               // 判断是否是 google photo
-              $(this).after(
+              self.after(
                 `<p class="signature-p">${url}（该用户签名非图片格式，已自动转文字）</p>`
               );
-              $(this).hide();
+              self.hide();
             }
           }
         }

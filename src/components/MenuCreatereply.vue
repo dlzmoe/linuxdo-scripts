@@ -3,7 +3,8 @@
   <div class="item">
     <div class="tit">8. 自定义快捷回复（换行分隔）</div>
     <template>
-      <textarea v-model="localChecked" @input="handleChange"></textarea>
+      <textarea v-model="textarea" @input="handleChange" placeholder="前排围观~
+yes~"></textarea>
     </template>
   </div>
 </template>
@@ -18,18 +19,91 @@ export default {
   },
   data() {
     return {
-      localChecked: this.value,
+      textarea: this.value,
     };
   },
   watch: {
     value(newValue) {
-      this.localChecked = newValue;
+      this.textarea = newValue;
     },
   },
   methods: {
     handleChange() {
-      this.$emit("input", this.localChecked);
+      this.$emit("input", this.textarea);
     },
+    init() {
+      this.list = this.textarea.split(/\r?\n/) || [];
+
+      // setInterval(() => {
+      if ($(".createreply").length < 1) {
+        $(".timeline-container .topic-timeline").append(
+          `<div class="createreply" style="margin-top:4rem;"></div>`
+        );
+
+        this.list.forEach(function (item) {
+          var $li = $(
+            '<button class="btn btn-default create reply-to-post no-text btn-icon" type="button"></button>'
+          ).text(item);
+          $(".createreply").append($li);
+        });
+
+        $(".createreply button").click(function () {
+          if ($(".timeline-footer-controls button.create").length != 0) {
+            $(".timeline-footer-controls button.create")[0].click();
+          }
+          if (
+            $("#topic-footer-buttons .topic-footer-main-buttons button.create").length !=
+            0
+          ) {
+            $(
+              "#topic-footer-buttons .topic-footer-main-buttons button.create"
+            )[0].click();
+          }
+
+          setTimeout(() => {
+            let $textarea = $(".d-editor-textarea-wrapper textarea");
+            let text = $(this).html();
+
+            // this.simulateInput($textarea, text);
+
+            $textarea.focus(); // 聚焦到 textarea
+
+            for (let i = 0; i < text.length; i++) {
+              let char = text[i];
+
+              // 更新textarea的值
+              $textarea.val($textarea.val() + char);
+
+              // 创建并派发input事件
+              let inputEvent = new Event("input", {
+                bubbles: true,
+                cancelable: true,
+              });
+              $textarea[0].dispatchEvent(inputEvent);
+
+              // 创建并派发keydown事件
+              let keyEvent = new KeyboardEvent("keydown", {
+                key: char,
+                char: char,
+                keyCode: char.charCodeAt(0),
+                which: char.charCodeAt(0),
+                bubbles: true,
+              });
+              $textarea[0].dispatchEvent(keyEvent);
+            }
+          }, 1000);
+        });
+      }
+
+      // }, 1000);
+    },
+  },
+  created() {
+    if (this.textarea) {
+      setInterval(() => {
+        this.init();
+      }, 1000);
+    }
   },
 };
 </script>

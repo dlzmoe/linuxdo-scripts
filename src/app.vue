@@ -46,10 +46,10 @@
       </div> -->
       <div class="menu-footer">
         <button class="btn save" @click="save">保存</button>
-        <button class="btn floorlottery">楼层抽奖</button>
+        <!-- <button class="btn floorlottery">楼层抽奖</button>
         <button class="btn import">导入</button>
         <input type="file" id="fileInput" style="display: none" accept=".json" />
-        <button class="btn export">导出</button>
+        <button class="btn export">导出</button> -->
       </div>
     </dialog>
 

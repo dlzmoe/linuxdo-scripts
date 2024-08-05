@@ -1,0 +1,30 @@
+{
+  "name": "linuxdo-scripts",
+  "version": "0.0.1",
+  "author": "dlzmoe",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack-dev-server",
+    "build": "webpack"
+  },
+  "dependencies": {
+    "element-ui": "^2.15.14",
+    "vue": "2.6.12",
+    "vue-template-compiler": "2.6.12"
+  },
+  "devDependencies": {
+    "cross-env": "7.0.3",
+    "css-loader": "5.0.1",
+    "file-loader": "6.2.0",
+    "html-webpack-plugin": "4.5.1",
+    "less": "4.1.0",
+    "less-loader": "7.2.1",
+    "style-loader": "2.0.0",
+    "url-loader": "4.1.1",
+    "vue-loader": "15.9.6",
+    "webpack": "5.15.0",
+    "webpack-cli": "3.3.12",
+    "webpack-dev-server": "3.11.2",
+    "webpack-merge": "5.7.3"
+  }
+}

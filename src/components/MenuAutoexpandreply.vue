@@ -1,0 +1,63 @@
+<template>
+  <!-- 自动展开回复 -->
+  <div class="item">
+    <div class="tit">3. 是否自动展开回复</div>
+    <template>
+      <el-checkbox v-model="localChecked" @change="handleChange"></el-checkbox>
+    </template>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    value: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  data() {
+    return {
+      localChecked: this.value,
+    };
+  },
+  watch: {
+    value(newValue) {
+      this.localChecked = newValue;
+    },
+  },
+  methods: {
+    handleChange() {
+      this.$emit("input", this.localChecked);
+    },
+    init() {
+      $("nav.post-controls .show-replies").each(function () {
+        if (
+          $(this).html().includes("个回复") &&
+          $(this).attr("aria-expanded") === "false"
+        ) {
+          $(this).click();
+        }
+      });
+    },
+  },
+  created() {
+    if (this.localChecked) {
+      let pollinglength2 = 0;
+      setInterval(() => {
+        if (pollinglength2 != $(".post-stream .topic-post").length) {
+          pollinglength2 = $(".post-stream .topic-post").length;
+          this.init();
+        }
+      }, 1000);
+    }
+  },
+};
+</script>
+<style scoped>
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+</style>

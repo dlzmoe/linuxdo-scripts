@@ -7,6 +7,7 @@
 // @match        *://linux.do/*
 // @icon         https://cdn.linux.do/uploads/default/optimized/3X/9/d/9dd49731091ce8656e94433a26a3ef36062b3994_2_32x32.png
 // @license      Apache-2.0 license
+// @require      https://update.greasyfork.org/scripts/502757/1422896/Jquery331.js
 // ==/UserScript==
 
 (function () {

@@ -44,6 +44,7 @@
         <MenuLookOP v-model="settingData.checked9" />
         <!-- 检测更新 -->
         <Updates />
+    
       </div>
 
       <div class="menu-footer">
@@ -98,6 +99,7 @@ import AutoRead from "./components/AutoRead.vue";
 import Updates from "./components/Updates.vue";
 import MenuLookOP from "./components/MenuLookOP.vue";
 import LookOP from "./components/LookOP.vue";
+
 export default {
   components: {
     MenuOpenpostblank,
@@ -141,6 +143,7 @@ export default {
         checked9: false,
         QuickReply: "",
         blockList: "",
+        checked10: false,
       },
 
       showautoread: false,

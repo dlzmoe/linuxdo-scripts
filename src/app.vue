@@ -1,20 +1,20 @@
 <template>
   <div id="linuxdoscripts">
-    <div class="linuxdoscripts-opacity" v-if="opacity"></div>
+    <div class="linuxdoscripts-opacity"></div>
     <div class="setting-btn">
       <AutoRead v-show="showautoread" /><!-- 自动阅读按钮 -->
       <LookOP v-show="showlookop" /><!-- 只看楼主 -->
-      <el-button @click="setting" type="primary" title="设置">
+      <!-- <el-button @click="setting" type="primary" title="设置">
         <svg
           class="fa d-icon d-icon-cog svg-icon svg-string"
           xmlns="http://www.w3.org/2000/svg"
         >
           <use href="#cog"></use>
         </svg>
-      </el-button>
+      </el-button> -->
     </div>
 
-    <dialog open v-show="open" id="menu_suspendedball">
+    <dialog open id="menu_suspendedball">
       <div class="title">linxudo 增强插件设置</div>
       <div class="close" @click="closedialog">+</div>
       <div class="menu-body">
@@ -44,7 +44,6 @@
         <MenuLookOP v-model="settingData.checked9" />
         <!-- 检测更新 -->
         <Updates />
-    
       </div>
 
       <div class="menu-footer">
@@ -80,6 +79,8 @@
         </el-alert>
       </div>
     </dialog>
+
+    <LevelDiglog />
   </div>
 </template>
 
@@ -99,6 +100,7 @@ import AutoRead from "./components/AutoRead.vue";
 import Updates from "./components/Updates.vue";
 import MenuLookOP from "./components/MenuLookOP.vue";
 import LookOP from "./components/LookOP.vue";
+import LevelDiglog from "./components/LevelDiglog.vue";
 
 export default {
   components: {
@@ -117,6 +119,7 @@ export default {
     Updates,
     MenuLookOP,
     LookOP,
+    LevelDiglog,
   },
   data() {
     return {
@@ -151,15 +154,10 @@ export default {
     };
   },
   methods: {
-    // 打开设置弹窗
-    setting() {
-      this.opacity = true;
-      this.open = true;
-    },
     // 关闭弹窗
     closedialog() {
-      this.opacity = false;
-      this.open = false;
+      $(".linuxdoscripts-opacity").hide();
+      $("#menu_suspendedball").hide();
     },
     // 保存设置
     save() {
@@ -167,8 +165,8 @@ export default {
       localStorage.setItem("linxudoscriptssetting", JSON.stringify(this.settingData));
 
       this.$message.success("保存成功！");
-      this.opacity = false;
-      this.open = false;
+      $(".linuxdoscripts-opacity").hide();
+      $("#menu_suspendedball").hide();
     },
     saveload() {
       this.save();
@@ -224,7 +222,7 @@ export default {
     },
     // 打开抽奖弹窗
     openFloorlottery() {
-      this.open = false;
+      $("#menu_suspendedball").hide();
       this.floorlotteryDialog = true;
     },
     // 开始抽奖
@@ -265,10 +263,24 @@ export default {
     },
     closelotter() {
       this.floorlotteryDialog = false;
-      this.opacity = false;
+      $(".linuxdoscripts-opacity").hide();
     },
     // 默认运行脚本
     runscripts() {
+      $(".linuxdoscripts-setting").click(function () {
+        $(".linuxdoscripts-opacity").show();
+        $("#menu_suspendedball").show();
+      });
+
+      const discourse_color_scheme_override = localStorage.getItem(
+        "discourse_color_scheme_override"
+      );
+      if (discourse_color_scheme_override) {
+        $("body").addClass("dark-theme");
+      } else {
+        $("body").removeClass("dark-theme");
+      }
+
       $(".signature-img").each(function () {
         var self = $(this);
         if (self.siblings(".signature-p").length < 1) {
@@ -303,6 +315,15 @@ export default {
     },
   },
   created() {
+    $(".sidebar-footer-actions")
+      .prepend(`<button class="btn no-text btn-icon color-scheme-toggler btn-flat linuxdoscripts-setting" title="设置" type="button">
+        <svg
+          class="fa d-icon d-icon-cog svg-icon svg-string"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use href="#cog"></use>
+        </svg>
+    </button>`);
     const linxudoscriptssetting = localStorage.getItem("linxudoscriptssetting");
     if (linxudoscriptssetting) {
       this.settingData = JSON.parse(linxudoscriptssetting);

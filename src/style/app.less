@@ -10,6 +10,10 @@
 #linuxdoscripts {
   font-size: 15px;
 
+  #menu_suspendedball {
+    display: none;
+  }
+
   img {
     vertical-align: bottom;
     max-width: 100%;
@@ -41,12 +45,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--category-1-color);
+      background: #919191;
       color: #fff;
-      box-shadow: 1px 2px 5px rgba(0, 0, 0, .05);
-      font-size: 22px;
+      font-size: 16px;
       cursor: pointer;
       transition: all 0.1s linear;
+      border: none;
 
       svg {
         margin: 0
@@ -204,6 +208,7 @@
 }
 
 .linuxdoscripts-opacity {
+  display: none;
   position: fixed;
   left: 0;
   top: 0;
@@ -328,4 +333,14 @@ body.body-preview #main-outlet-wrapper {
   display: inline-block;
   width: 100%;
   text-align: left;
+}
+
+// 黑夜模式
+.dark-theme {
+  #linuxdoscripts dialog {
+    background: #333;
+    color: #eee;
+    box-shadow: 1px 2px 5px rgb(0 0 0);
+    border-color: #737373;
+  }
 }

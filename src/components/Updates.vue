@@ -29,7 +29,7 @@ export default {
       show1: false,
       btn: true,
       version: "",
-      devversion: "v0.1.2",
+      devversion: "v0.1.3",
     };
   },
   methods: {

@@ -1,7 +1,7 @@
 <template>
   <!-- 屏蔽指定用户 -->
   <div class="item">
-    <div class="tit">9. 屏蔽指定用户（使用英文，分隔）</div>
+    <div class="tit">10. 屏蔽指定用户（使用英文，分隔）</div>
     <template>
       <textarea
         v-model="textarea"

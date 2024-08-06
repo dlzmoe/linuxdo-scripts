@@ -1,3 +1,12 @@
+[class*=" el-icon-"],
+[class^=el-icon-] {
+  display: none;
+}
+
+.el-message {
+  z-index: 99999999999 !important;
+}
+
 #linuxdoscripts {
   font-size: 15px;
 
@@ -22,25 +31,30 @@
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--category-1-color);
-    color: #fff;
-    box-shadow: 1px 2px 5px rgba(0, 0, 0, .05);
-    font-size: 22px;
-    cursor: pointer;
-    transition: all 0.1s linear;
 
-    svg {
-      margin: 0
-    }
+    .el-button {
+      margin: 0;
+      margin-top: 15px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--category-1-color);
+      color: #fff;
+      box-shadow: 1px 2px 5px rgba(0, 0, 0, .05);
+      font-size: 22px;
+      cursor: pointer;
+      transition: all 0.1s linear;
 
-    &:hover {
-      opacity: 0.9;
+      svg {
+        margin: 0
+      }
+
+      &:hover {
+        opacity: 0.9;
+      }
     }
   }
 
@@ -50,7 +64,7 @@
     font-size: 14px
   }
 
-  #menu_suspendedball {
+  dialog {
     position: fixed;
     left: 50%;
     top: 50%;
@@ -63,9 +77,12 @@
     padding: 15px;
     z-index: 99999;
     overflow-x: hidden;
+    box-sizing: border-box;
+    margin: 0;
   }
 
-  #menu_suspendedball .title {
+
+  .title {
     font-size: 18px;
     text-align: center;
     font-weight: 600;
@@ -73,7 +90,7 @@
     padding-bottom: 6px;
   }
 
-  #menu_suspendedball .btn {
+  .btn {
     border: none;
     outline: 0;
     min-width: 80px;
@@ -86,15 +103,23 @@
     font-size: 14px;
     border-radius: 5px;
     cursor: pointer;
-    transition: all .1s linear
-  }
+    transition: all .1s linear;
 
-  #menu_suspendedball .btn:hover {
-    opacity: 0.9;
+    &+.btn {
+      margin-left: 10px;
+    }
+
+    &.saveload {
+      background: #4040b7;
+    }
+
+    &:hover {
+      opacity: 0.9;
+    }
   }
 
   .menu-body {
-    height: 430px;
+    height: 480px;
     overflow-y: auto;
     padding-right: 10px;
   }
@@ -107,29 +132,27 @@
     border-top: 1px solid #eee;
   }
 
-  #menu_suspendedball .import {
-    margin-left: auto;
-    margin-right: 10px;
+  .import {
+    margin-left: auto !important;
   }
 
-  #menu_suspendedball .import,
-  #menu_suspendedball .export {
+  .import,
+  .export {
     background: #D1F0FF;
     color: #559095;
   }
 
-  #menu_suspendedball .floorlottery {
-    margin-left: 10px;
+  .floorlottery {
     background: #FFB003
   }
 
-  #menu_suspendedball .item {
+  .item {
     margin-top: 12px;
     border-bottom: 1px solid #eee;
     padding-bottom: 10px;
   }
 
-  #menu_suspendedball .item textarea {
+  .item textarea {
     font-family: inherit;
     width: 100%;
     min-height: 100px;
@@ -141,11 +164,12 @@
     transition: all .1s linear;
     margin: 0;
     margin-top: 5px;
-    resize: none
-  }
+    resize: none;
 
-  #menu_suspendedball .item textarea:focus {
-    border-color: #333
+    &:focus {
+      border-color: #333
+    }
+
   }
 
   #floorlotterloading img {

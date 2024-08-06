@@ -1,17 +1,21 @@
 <template>
   <div id="linuxdoscripts">
     <div class="linuxdoscripts-opacity" v-if="opacity"></div>
-    <el-button class="setting-btn" @click="setting" type="primary">
-      <svg
-        class="fa d-icon d-icon-cog svg-icon svg-string"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <use href="#cog"></use>
-      </svg>
-    </el-button>
+    <div class="setting-btn">
+      <AutoRead v-show="showautoread" /><!-- 自动阅读按钮 -->
+
+      <el-button @click="setting" type="primary" title="设置">
+        <svg
+          class="fa d-icon d-icon-cog svg-icon svg-string"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use href="#cog"></use>
+        </svg>
+      </el-button>
+    </div>
 
     <dialog open v-show="open" id="menu_suspendedball">
-      <div class="title">设置</div>
+      <div class="title">linxudo 增强插件设置</div>
       <div class="close" @click="closedialog">+</div>
       <div class="menu-body">
         <p class="hint">请注意，该设置面板数据全部保存在本地浏览器缓存中，注意备份。</p>
@@ -29,66 +33,46 @@
         <MenuHidetopicdetailtitle v-model="settingData.checked6" />
         <!-- 话题预览功能 -->
         <MenuTopicpreview v-model="settingData.checked7" />
+        <!-- 显示自动阅读按钮 -->
+        <MenuAutoRead v-model="settingData.checked8" />
         <!-- 自定义快捷回复 -->
         <MenuCreatereply v-model="settingData.QuickReply" />
         <!-- 屏蔽指定用户 -->
         <MenuBlockuserlist v-model="settingData.blockList" />
       </div>
-      <!-- <div class="item">
-        <div class="tit">屏蔽用户列表（使用英文，分隔）</div>
-        <textarea id="blockuserlist" placeholder="user1,user2,user3"></textarea>
-      </div> -->
-      <!-- <div class="item">
-        <div class="tit">自定义快捷回复（换行分隔）</div>
-        <textarea id="customquickreply" placeholder="前排~">
-前排围观~
-你好啊</textarea>
-      </div> -->
+
       <div class="menu-footer">
+        <input
+          type="file"
+          id="fileInput"
+          ref="fileInput"
+          style="display: none"
+          accept=".json"
+          @change="handleFileUpload"
+        />
+
         <button class="btn save" @click="save">保存</button>
-        <!-- <button class="btn floorlottery">楼层抽奖</button>
-        <button class="btn import">导入</button>
-        <input type="file" id="fileInput" style="display: none" accept=".json" />
-        <button class="btn export">导出</button> -->
+        <button class="btn saveload" @click="saveload">保存并刷新</button>
+        <button class="btn floorlottery" @click="openFloorlottery">楼层抽奖</button>
+        <button class="btn import" @click="triggerFileInput">导入</button>
+        <button class="btn export" @click="exportData">导出</button>
       </div>
     </dialog>
 
-    <dialog open class="floorlotterywrap">
-      <div>
-        <label for="totalFloors">总楼层：</label>
-        <input type="number" id="totalFloors" min="1" />
+    <!-- 楼层抽奖 -->
+    <dialog open v-show="floorlotteryDialog">
+      <div class="title">楼层抽奖</div>
+      <div class="menu-body">
+        <el-input v-model="floorlotteryval1" placeholder="请输入总数"></el-input>
+        <el-input v-model="floorlotteryval2" placeholder="请输入抽取的数量"></el-input>
+        <el-button type="primary" @click="drawRandomNumbers">开始抽奖</el-button>
+        <el-button type="primary" plain @click="closelotter">关闭弹窗</el-button>
+        <div style="height: 20px"></div>
+        <div v-if="floorlotterloading">正在抽奖...</div>
+        <el-alert v-if="floorlotterresult" title="抽奖结果" type="success">
+          {{ floorlotterresult }}
+        </el-alert>
       </div>
-      <div>
-        <label for="numToDraw">需要抽取的个数：</label>
-        <input type="number" id="numToDraw" min="1" />
-      </div>
-      <button id="floorlotterdrawButton" class="btn">确定</button>
-      <button id="floorlotterclose" class="btn">关闭</button>
-      <div id="floorlotterloading" style="display: none">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="icon icon-tabler icons-tabler-outline icon-tabler-loader"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M12 6l0 -3" />
-          <path d="M16.25 7.75l2.15 -2.15" />
-          <path d="M18 12l3 0" />
-          <path d="M16.25 16.25l2.15 2.15" />
-          <path d="M12 18l0 3" />
-          <path d="M7.75 16.25l-2.15 2.15" />
-          <path d="M6 12l-3 0" />
-          <path d="M7.75 7.75l-2.15 -2.15" />
-        </svg>
-      </div>
-      <div id="result"></div>
     </dialog>
   </div>
 </template>
@@ -103,6 +87,8 @@ import MenuHidetopicdetailtitle from "./components/MenuHidetopicdetailtitle.vue"
 import MenuTopicpreview from "./components/MenuTopicpreview.vue";
 import MenuCreatereply from "./components/MenuCreatereply.vue";
 import MenuBlockuserlist from "./components/MenuBlockuserlist.vue";
+import MenuAutoRead from "./components/MenuAutoRead.vue";
+import AutoRead from "./components/AutoRead.vue";
 export default {
   components: {
     MenuOpenpostblank,
@@ -114,11 +100,19 @@ export default {
     MenuTopicpreview,
     MenuCreatereply,
     MenuBlockuserlist,
+    MenuAutoRead,
+    AutoRead,
   },
   data() {
     return {
-      opacity: false, // 透明度
+      opacity: false,
       open: false,
+
+      floorlotteryDialog: false,
+      floorlotteryval1: "",
+      floorlotteryval2: "",
+      floorlotterloading: false,
+      floorlotterresult: "",
 
       // 设置数据
       settingData: {
@@ -134,6 +128,8 @@ export default {
         QuickReply: "",
         blockList: "",
       },
+
+      showautoread: false,
     };
   },
   methods: {
@@ -156,6 +152,104 @@ export default {
       this.opacity = false;
       this.open = false;
     },
+    saveload() {
+      this.save();
+      location.reload();
+    },
+    // 导入数据
+    triggerFileInput() {
+      this.$refs.fileInput.click();
+    },
+    handleFileUpload(event) {
+      const file = event.target.files[0];
+      if (file && file.type === "application/json") {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          try {
+            const jsonData = JSON.parse(e.target.result);
+            this.importData(jsonData);
+          } catch (error) {
+            console.error("Error parsing JSON:", error);
+          }
+        };
+        reader.readAsText(file);
+      } else {
+        console.error("Please select a valid JSON file.");
+      }
+    },
+    importData(data) {
+      // 处理导入的数据
+      this.$message.success("导入成功！");
+      console.log(data);
+      this.settingData = data;
+    },
+    // 导出数据
+    exportData() {
+      const today = new Date();
+      const year = today.getFullYear();
+      const month = String(today.getMonth() + 1).padStart(2, "0");
+      const day = String(today.getDate()).padStart(2, "0");
+      const formattedDate = year + month + day;
+
+      const dataStr = JSON.stringify(this.settingData, null, 2);
+      const blob = new Blob([dataStr], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `linuxdo-script-data-${formattedDate}.json`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+
+      this.$message.success("导出成功！");
+    },
+    // 打开抽奖弹窗
+    openFloorlottery() {
+      this.open = false;
+      this.floorlotteryDialog = true;
+    },
+    // 开始抽奖
+    drawRandomNumbers() {
+      if (this.floorlotteryval1 === "" || this.floorlotteryval2 === "") {
+        this.$message.warning("请输入有效的数字");
+        return false;
+      }
+
+      const total = parseInt(this.floorlotteryval1);
+      const count = parseInt(this.floorlotteryval2);
+
+      if (isNaN(total) || isNaN(count) || total <= 0 || count <= 0 || count > total) {
+        this.$message.warning("请输入有效的数字");
+        return false;
+      }
+
+      this.floorlotterloading = true;
+      this.floorlotterresult = "";
+
+      setTimeout(() => {
+        const result = this.getRandomNumbers(total, count);
+        this.floorlotterresult = result.join(", ");
+        this.floorlotterloading = false;
+      }, 1000); // 模拟异步操作
+    },
+    getRandomNumbers(total, count) {
+      const numbers = Array.from({ length: total }, (_, i) => i + 1);
+      const result = [];
+
+      for (let i = 0; i < count; i++) {
+        const randomIndex = Math.floor(Math.random() * numbers.length);
+        result.push(numbers[randomIndex]);
+        numbers.splice(randomIndex, 1);
+      }
+
+      return result;
+    },
+    closelotter() {
+      this.floorlotteryDialog = false;
+      this.opacity = false;
+    },
+    // 默认运行脚本
     runscripts() {
       $(".signature-img").each(function () {
         var self = $(this);
@@ -194,6 +288,7 @@ export default {
     const linxudoscriptssetting = localStorage.getItem("linxudoscriptssetting");
     if (linxudoscriptssetting) {
       this.settingData = JSON.parse(linxudoscriptssetting);
+      this.showautoread = this.settingData.checked8;
     }
     setInterval(() => {
       this.runscripts();

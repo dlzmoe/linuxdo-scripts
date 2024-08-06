@@ -1,7 +1,7 @@
 <template>
   <!-- 自定义快捷回复 -->
   <div class="item">
-    <div class="tit">8. 自定义快捷回复（换行分隔）</div>
+    <div class="tit">9. 自定义快捷回复（换行分隔）</div>
     <template>
       <textarea v-model="textarea" @input="handleChange" placeholder="前排围观~
 yes~"></textarea>

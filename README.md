@@ -2,7 +2,7 @@
 <p align="center">脚本持续更新，欢迎提出 issues，提交 pr ~</p>
 
 <p align="center">
-<img src="https://img.shields.io/greasyfork/v/501827-linuxdo-%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6?label=GreasyFork">
+<img src="https://img.shields.io/github/v/release/dlzmoe/linuxdo-scripts">
 <img src="https://img.shields.io/github/last-commit/dlzmoe/linuxdo-scripts">
 <img src="https://img.shields.io/github/commit-activity/t/dlzmoe/linuxdo-scripts">
 <img src="https://img.shields.io/github/forks/dlzmoe/linuxdo-scripts?style=flat">
@@ -12,9 +12,16 @@
 
 linux.do 增强插件，话题列表显示创建时间，显示楼层数，新标签页打开话题，强制 block（拉黑屏蔽）某人的话题，话题快捷回复（支持自定义），优化签名图显示防止图裂，功能设置面板导入导出，楼层抽奖等，功能持续更新，欢迎提出。
 
-[油猴安装地址](https://greasyfork.org/zh-CN/scripts/501827-linuxdo-%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6) | [开发计划](https://github.com/users/dlzmoe/projects/2)
+[Github 仓库](https://github.com/dlzmoe/linuxdo-scripts) | ~~[油猴安装地址](https://greasyfork.org/zh-CN/scripts/501827-linuxdo-%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6)~~ | [开发计划](https://github.com/users/dlzmoe/projects/2)
+
+**greasyfork 市场停更说明：** 由于 greasyfork 官方限制，使用 vue 开发打包后的代码无法上传。所以该脚本在 [greasyfork](https://greasyfork.org/zh-CN/scripts/501827-linuxdo-%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6/) 版本停留在 0.0.27（旧版本）。
 
 ---
+
+## 0. 使用方法
+
+1. 前往 [Releases](https://github.com/dlzmoe/linuxdo-scripts/releases) 下载最新稳定版本 js，拖拽到油猴管理器中。
+2. 拉取代码自行打包。
 
 ## 1. 功能特性
 
@@ -26,7 +33,9 @@ linux.do 增强插件，话题列表显示创建时间，显示楼层数，新�
 - [x] 优化签名图显示防止图裂
 - [x] 功能设置面板导入导出
 - [x] 楼层抽奖
+- [x] 只看楼主切换功能
 - [x] 自动滚动阅读
+- [x] 脚本版本更新检测
 
 ## 3. 开发说明
 
@@ -43,15 +52,21 @@ npm run build # 打包构建
 
 2. 将 `tampermonkey.js` 代码复制到油猴管理器中。
 3. 启用脚本后前往 `linux.do`，刷新页面。
+4. 打包后将 `dist/app.bundle.js` 文件内容替换到 `tampermonkey.js` 对应位置。
 
 ## 2. 版本日志
+
+## 0.1.2
+
+1. 修复浏览量显示时间的 bug
+2. 新增只看楼主功能（可设置）
+
+<details>
+<summary>历史版本日志</summary>
 
 ## 0.1.1
 
 使用 vue 重构插件，优化了代码，方便开发。
-
-<details>
-<summary>历史版本日志</summary>
   
 ## 0.0.27
 

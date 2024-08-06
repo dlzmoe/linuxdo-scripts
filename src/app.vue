@@ -3,7 +3,7 @@
     <div class="linuxdoscripts-opacity" v-if="opacity"></div>
     <div class="setting-btn">
       <AutoRead v-show="showautoread" /><!-- 自动阅读按钮 -->
-
+      <LookOP v-show="showlookop" /><!-- 只看楼主 -->
       <el-button @click="setting" type="primary" title="设置">
         <svg
           class="fa d-icon d-icon-cog svg-icon svg-string"
@@ -27,6 +27,7 @@
         <MenuAutoexpandreply v-model="settingData.checked3" />
         <!-- 话题列表显示创建时间 -->
         <MenuShowcreatetime v-model="settingData.checked4" />
+        <MenuShowcreatetime1 v-model="settingData.checked41" />
         <!-- 显示楼层数 -->
         <MenuShowfloors v-model="settingData.checked5" />
         <!-- 隐藏话题详情顶部大标题 -->
@@ -39,6 +40,10 @@
         <MenuCreatereply v-model="settingData.QuickReply" />
         <!-- 屏蔽指定用户 -->
         <MenuBlockuserlist v-model="settingData.blockList" />
+        <!-- 只看楼主按钮 -->
+        <MenuLookOP v-model="settingData.checked9" />
+        <!-- 检测更新 -->
+        <Updates />
       </div>
 
       <div class="menu-footer">
@@ -82,6 +87,7 @@ import MenuOpenpostblank from "./components/MenuOpenpostblank.vue";
 import MenuNewtopicreminder from "./components/MenuNewtopicreminder.vue";
 import MenuAutoexpandreply from "./components/MenuAutoexpandreply.vue";
 import MenuShowcreatetime from "./components/MenuShowcreatetime.vue";
+import MenuShowcreatetime1 from "./components/MenuShowcreatetime1.vue";
 import MenuShowfloors from "./components/MenuShowfloors.vue";
 import MenuHidetopicdetailtitle from "./components/MenuHidetopicdetailtitle.vue";
 import MenuTopicpreview from "./components/MenuTopicpreview.vue";
@@ -89,12 +95,16 @@ import MenuCreatereply from "./components/MenuCreatereply.vue";
 import MenuBlockuserlist from "./components/MenuBlockuserlist.vue";
 import MenuAutoRead from "./components/MenuAutoRead.vue";
 import AutoRead from "./components/AutoRead.vue";
+import Updates from "./components/Updates.vue";
+import MenuLookOP from "./components/MenuLookOP.vue";
+import LookOP from "./components/LookOP.vue";
 export default {
   components: {
     MenuOpenpostblank,
     MenuNewtopicreminder,
     MenuAutoexpandreply,
     MenuShowcreatetime,
+    MenuShowcreatetime1,
     MenuShowfloors,
     MenuHidetopicdetailtitle,
     MenuTopicpreview,
@@ -102,6 +112,9 @@ export default {
     MenuBlockuserlist,
     MenuAutoRead,
     AutoRead,
+    Updates,
+    MenuLookOP,
+    LookOP,
   },
   data() {
     return {
@@ -120,6 +133,7 @@ export default {
         checked2: false,
         checked3: false,
         checked4: false,
+        checked41: false,
         checked5: false,
         checked6: false,
         checked7: false,
@@ -130,6 +144,7 @@ export default {
       },
 
       showautoread: false,
+      showlookop: false,
     };
   },
   methods: {
@@ -289,6 +304,7 @@ export default {
     if (linxudoscriptssetting) {
       this.settingData = JSON.parse(linxudoscriptssetting);
       this.showautoread = this.settingData.checked8;
+      this.showlookop = this.settingData.checked9;
     }
     setInterval(() => {
       this.runscripts();

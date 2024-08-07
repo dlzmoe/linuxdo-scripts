@@ -50,6 +50,12 @@ linux.do 增强插件，话题列表显示创建时间，显示楼层数，新�
 })();
 ```
 
+```shell
+# 可使用链接，欢迎提供访问速度快的外链
+https://linuxo-scripts.netlify.app/app.bundle.js
+https://fastly.jsdelivr.net/gh/dlzmoe/linuxdo-scripts@main/dist/app.bundle.js
+```
+
 ## 1. 功能特性
 
 - [x] 话题列表显示创建时间

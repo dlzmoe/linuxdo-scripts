@@ -32,12 +32,7 @@ export default {
     },
     init() {
       $("nav.post-controls .show-replies").each(function () {
-        if (
-          $(this).html().includes("个回复") &&
-          $(this).attr("aria-expanded") === "false"
-        ) {
-          $(this).click();
-        }
+        $(this).click();
       });
     },
   },

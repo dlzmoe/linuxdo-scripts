@@ -31,10 +31,12 @@ export default {
       this.$emit("input", this.localChecked);
     },
     init() {
-      $(".topic-list a.title").click(function (event) {
-        event.preventDefault();
-        var url = $(this).attr("href");
-        window.open(url, "_blank");
+      $(".topic-list a.title").each(function () {
+        $(this).click(function (event) {
+          event.preventDefault();
+          var url = $(this).attr("href");
+          window.open(url, "_blank");
+        });
       });
     },
   },

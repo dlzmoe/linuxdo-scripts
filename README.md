@@ -14,10 +14,13 @@ linux.do 增强插件，话题列表显示创建时间，显示楼层数，新�
 
 [Github 仓库](https://github.com/dlzmoe/linuxdo-scripts) | ~~[油猴安装地址](https://greasyfork.org/zh-CN/scripts/501827-linuxdo-%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6)~~ | [开发计划](https://github.com/users/dlzmoe/projects/2) | [bug 反馈](https://github.com/dlzmoe/linuxdo-scripts/issues) | [问题讨论区](https://github.com/dlzmoe/linuxdo-scripts/discussions)
 
-**greasyfork 市场停更说明：** 由于 greasyfork 官方限制，使用 vue 开发打包后的代码无法上传。所以该脚本在 [greasyfork](https://greasyfork.org/zh-CN/scripts/501827-linuxdo-%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6/) 版本停留在 0.0.27（旧版本）。
+**greasyfork 市场停更说明：** 由于 greasyfork 官方限制无法上架。所以该脚本在 [greasyfork 市场](https://greasyfork.org/zh-CN/scripts/501827-linuxdo-%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6/) 版本停留在 0.0.27（旧版本）。
 
 ---
 
+开发环境为 windows / chrome / 暴力猴，使用其他油猴管理器如果报错或者不生效，可以尝试使用暴力猴（我目前正在使用的，兼容性比较好）。
+
+目前已知不兼容的有：篡改猴测试版、脚本猫，暂时没计划兼容这两个管理器，如果有想法开发，欢迎提交代码 ~
 
 ## 1. 功能特性
 
@@ -95,13 +98,19 @@ npm run build # 打包构建
 
 ## 4. 版本日志
 
-## 0.1.3
+## 0.1.4
 
-1. 新增黑夜模式适配
-2. 优化 UI 显示，设置按钮融合进网站。
+1. 新增安装成功后提示
+2. 打开新标签页功能优化
+3. 新增自动阅读滚动速度调节
 
 <details>
 <summary>历史版本日志</summary>
+
+## 0.1.3
+
+1. 新增黑夜模式适配
+2. 优化 UI 显示，设置按钮融合进网站
 
 ## 0.1.2
 

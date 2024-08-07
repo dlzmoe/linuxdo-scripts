@@ -1,31 +1,30 @@
 {
-  "name": "linuxdo-scripts",
+  "name": "my-app",
   "version": "0.0.1",
-  "author": "dlzmoe",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server",
-    "build": "rimraf dist && webpack",
-    "rf": "rimraf node_modules"
+    "dev": "cross-env NODE_ENV=development webpack serve",
+    "build": "webpack"
   },
   "dependencies": {
     "element-ui": "^2.15.14",
-    "vue": "2.6.12",
-    "vue-template-compiler": "2.6.12"
+    "vue": "^2.6.12",
+    "vue-loader": "^15.9.6",
+    "vue-template-compiler": "^2.6.12"
   },
   "devDependencies": {
-    "cross-env": "7.0.3",
-    "css-loader": "5.0.1",
-    "file-loader": "6.2.0",
-    "html-webpack-plugin": "4.5.1",
-    "less": "4.1.0",
-    "less-loader": "7.2.1",
-    "style-loader": "2.0.0",
-    "url-loader": "4.1.1",
-    "vue-loader": "15.9.6",
-    "webpack": "5.15.0",
-    "webpack-cli": "5.0.0",
-    "webpack-dev-server": "3.11.2",
-    "webpack-merge": "5.7.3"
+    "cross-env": "^7.0.3",
+    "css-loader": "^5.0.1",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.0.0",
+    "less": "^4.1.0",
+    "less-loader": "^8.0.0",
+    "style-loader": "^2.0.0",
+    "url-loader": "^4.1.1",
+    "vue-loader": "^15.9.6",
+    "webpack": "^5.20.2",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.7.3"
   }
 }

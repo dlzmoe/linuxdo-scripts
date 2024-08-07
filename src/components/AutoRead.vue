@@ -19,12 +19,13 @@
 export default {
   data() {
     return {
+      num: 10, // 滚动速度
       isScrolling: false,
       scrollInterval: null,
     };
   },
   methods: {
-    scrollToBottomSlowly(distancePerStep = 10, delayPerStep = 50) {
+    scrollToBottomSlowly(distancePerStep = this.num, delayPerStep = 50) {
       if (this.scrollInterval !== null) {
         clearInterval(this.scrollInterval);
       }
@@ -53,6 +54,14 @@ export default {
         this.isScrolling = true; // 开始滚动，更新状态
       }
     },
+  },
+  created() {
+    let linxudoscriptssetting = localStorage.getItem("linxudoscriptssetting");
+    if (linxudoscriptssetting) {
+      linxudoscriptssetting = JSON.parse(linxudoscriptssetting);
+      this.num = Number(linxudoscriptssetting.checked8.value2);
+      console.log(this.num);
+    }
   },
 };
 </script>

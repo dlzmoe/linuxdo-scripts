@@ -73,6 +73,8 @@
     </dialog>
 
     <LevelDiglog />
+    <!-- 使用提示 -->
+    <UsageTip />
   </div>
 </template>
 
@@ -93,6 +95,7 @@ import Updates from "./components/Updates.vue";
 import MenuLookOP from "./components/MenuLookOP.vue";
 import LookOP from "./components/LookOP.vue";
 import LevelDiglog from "./components/LevelDiglog.vue";
+import UsageTip from "./components/UsageTip.vue";
 
 export default {
   components: {
@@ -112,6 +115,7 @@ export default {
     MenuLookOP,
     LookOP,
     LevelDiglog,
+    UsageTip,
   },
   data() {
     return {
@@ -134,7 +138,10 @@ export default {
         checked5: false,
         checked6: false,
         checked7: false,
-        checked8: false,
+        checked8: {
+          value1: false,
+          value2: "10",
+        },
         checked9: false,
         QuickReply: "",
         blockList: "",

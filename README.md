@@ -12,13 +12,30 @@
 
 linux.do 增强插件，话题列表显示创建时间，显示楼层数，新标签页打开话题，强制 block（拉黑屏蔽）某人的话题，话题快捷回复（支持自定义），优化签名图显示防止图裂，功能设置面板导入导出，楼层抽奖等，功能持续更新，欢迎提出。
 
-[Github 仓库](https://github.com/dlzmoe/linuxdo-scripts) | ~~[油猴安装地址](https://greasyfork.org/zh-CN/scripts/501827-linuxdo-%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6)~~ | [开发计划](https://github.com/users/dlzmoe/projects/2)
+[Github 仓库](https://github.com/dlzmoe/linuxdo-scripts) | ~~[油猴安装地址](https://greasyfork.org/zh-CN/scripts/501827-linuxdo-%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6)~~ | [开发计划](https://github.com/users/dlzmoe/projects/2) | [bug 反馈](https://github.com/dlzmoe/linuxdo-scripts/issues) | [问题讨论区](https://github.com/dlzmoe/linuxdo-scripts/discussions)
 
 **greasyfork 市场停更说明：** 由于 greasyfork 官方限制，使用 vue 开发打包后的代码无法上传。所以该脚本在 [greasyfork](https://greasyfork.org/zh-CN/scripts/501827-linuxdo-%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6/) 版本停留在 0.0.27（旧版本）。
 
 ---
 
-## 0. 使用方法
+
+## 1. 功能特性
+
+- [x] 话题列表显示创建时间
+- [x] 显示楼层数
+- [x] 新标签页打开话题
+- [x] 强制 block（拉黑屏蔽）某人的话题
+- [x] 话题快捷回复（支持自定义）
+- [x] 优化签名图显示防止图裂
+- [x] 功能设置面板导入导出
+- [x] 楼层抽奖
+- [x] 只看楼主切换功能
+- [x] 自动滚动阅读
+- [x] 脚本版本更新检测
+- [x] 黑夜模式
+
+
+## 2. 使用方法
 
 1. 前往 [Releases](https://github.com/dlzmoe/linuxdo-scripts/releases) 下载最新稳定版本 js，拖拽到油猴管理器中。
 2. 拉取代码自行打包。
@@ -56,21 +73,6 @@ https://linuxo-scripts.netlify.app/app.bundle.js
 https://fastly.jsdelivr.net/gh/dlzmoe/linuxdo-scripts@main/dist/app.bundle.js
 ```
 
-## 1. 功能特性
-
-- [x] 话题列表显示创建时间
-- [x] 显示楼层数
-- [x] 新标签页打开话题
-- [x] 强制 block（拉黑屏蔽）某人的话题
-- [x] 话题快捷回复（支持自定义）
-- [x] 优化签名图显示防止图裂
-- [x] 功能设置面板导入导出
-- [x] 楼层抽奖
-- [x] 只看楼主切换功能
-- [x] 自动滚动阅读
-- [x] 脚本版本更新检测
-- [x] 黑夜模式
-
 ## 3. 开发说明
 
 ```
@@ -91,7 +93,7 @@ npm run build # 打包构建
 2. 将 `tampermonkey.js` 代码复制到油猴管理器中。
 3. 启用脚本后前往 `linux.do`，刷新页面。
 
-## 2. 版本日志
+## 4. 版本日志
 
 ## 0.1.3
 
@@ -224,6 +226,6 @@ npm run build # 打包构建
 
 </details>
 
-## 3. 开源协议
+## 5. 开源协议
 
 [Apache-2.0 license](./LICENSE)

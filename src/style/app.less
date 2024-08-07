@@ -73,7 +73,7 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 500px;
+    width: 600px;
     background: #fff;
     color: #333;
     box-shadow: 1px 2px 5px rgba(0, 0, 0, .2);
@@ -83,8 +83,29 @@
     overflow-x: hidden;
     box-sizing: border-box;
     margin: 0;
-  }
 
+
+    .menu-about {
+      padding: 15px 0;
+      line-height: 2;
+
+      .initialization {
+        color: #999;
+        border-bottom: 1px dashed #999;
+        cursor: pointer;
+
+        &:hover {
+          color: #333;
+          border-color: #333;
+        }
+      }
+    }
+
+    p {
+      margin: 0;
+      font-size: 14px;
+    }
+  }
 
   .title {
     font-size: 18px;
@@ -342,5 +363,16 @@ body.body-preview #main-outlet-wrapper {
     color: #eee;
     box-shadow: 1px 2px 5px rgb(0 0 0);
     border-color: #737373;
+  }
+
+  #linuxdoscripts dialog .menu-about .initialization:hover {
+    color: #eee;
+    border-color: #eee;
+  }
+
+  #linuxdoscripts .title,
+  #linuxdoscripts .item,
+  #linuxdoscripts .menu-footer {
+    border-color: #4b4b4b;
   }
 }

@@ -3,7 +3,7 @@
   <div class="item">
     <div class="tit">
       8. 是否显示自动阅读按钮，可调节速度默认 10
-      <el-input v-model="localChecked.value2"></el-input>
+      <input v-model="localChecked.value2" placeholder="默认速度 10" />
     </div>
     <template>
       <el-checkbox v-model="localChecked.value1" @change="handleChange"></el-checkbox>
@@ -46,13 +46,11 @@ export default {
     align-items: center;
     white-space: nowrap;
 
-    .el-input {
-      margin-left: 10px;
-      width: 70px;
-
-      input {
-        height: 30px !important;
-      }
+    input {
+      margin-left: 20px;
+      width: 90px;
+      height: 20px !important;
+      outline: none;
     }
   }
 }

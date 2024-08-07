@@ -10,7 +10,13 @@
       <div class="title">linxudo 增强插件设置</div>
       <div class="close" @click="closedialog">+</div>
       <div class="menu-body">
-        <p class="hint">请注意，该设置面板数据全部保存在本地浏览器缓存中，注意备份。</p>
+        <div class="menu-about">
+          <p class="hint">请注意，该设置面板数据全部保存在本地浏览器缓存中，注意备份。</p>
+          <p>
+            如果感觉哪里不太对劲，点我
+            <span class="initialization" @click="initialization">初始化设置</span>。
+          </p>
+        </div>
         <!-- 新标签页打开 -->
         <MenuOpenpostblank v-model="settingData.checked1" />
         <!-- 新话题提醒 -->
@@ -51,6 +57,7 @@
         <button class="btn save" @click="save">保存</button>
         <button class="btn saveload" @click="saveload">保存并刷新</button>
         <button class="btn floorlottery" @click="openFloorlottery">楼层抽奖</button>
+
         <button class="btn import" @click="triggerFileInput">导入</button>
         <button class="btn export" @click="exportData">导出</button>
       </div>
@@ -143,7 +150,7 @@ export default {
           value2: "10",
         },
         checked9: false,
-        QuickReply: "",
+        QuickReply: "前排围观\n感谢分享\n有点厉害",
         blockList: "",
         checked10: false,
       },
@@ -311,6 +318,14 @@ export default {
           }
         }
       });
+    },
+    // 初始化设置
+    initialization() {
+      localStorage.removeItem("linxudoscriptssetting");
+      this.$message.success("初始化设置成功，即将自动刷新！");
+      setTimeout(() => {
+        location.reload();
+      }, 1000);
     },
   },
   created() {

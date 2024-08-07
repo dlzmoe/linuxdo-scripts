@@ -3,8 +3,7 @@
   <div class="item">
     <div class="tit">9. 自定义快捷回复（换行分隔）</div>
     <template>
-      <textarea v-model="textarea" @input="handleChange" placeholder="前排围观~
-yes~"></textarea>
+      <textarea v-model="textarea" @input="handleChange" placeholder="前排围观\n感谢分享\n有点厉害"></textarea>
     </template>
   </div>
 </template>
@@ -14,7 +13,7 @@ export default {
   props: {
     value: {
       type: String,
-      default: "",
+      default: "前排围观\n感谢分享\n有点厉害",
     },
   },
   data() {

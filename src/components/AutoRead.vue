@@ -60,7 +60,6 @@ export default {
     if (linxudoscriptssetting) {
       linxudoscriptssetting = JSON.parse(linxudoscriptssetting);
       this.num = Number(linxudoscriptssetting.checked8.value2);
-      console.log(this.num);
     }
   },
 };

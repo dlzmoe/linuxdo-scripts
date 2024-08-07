@@ -40,6 +40,8 @@
         <MenuBlockuserlist v-model="settingData.blockList" />
         <!-- 只看楼主按钮 -->
         <MenuLookOP v-model="settingData.checked9" />
+        <!-- 智能限制楼层高度 -->
+        <MenuFloorHeight v-model="settingData.checked10" />
         <!-- 检测更新 -->
         <Updates />
       </div>
@@ -79,6 +81,9 @@
       </div>
     </dialog>
 
+    <!-- 用户打标签功能 -->
+    <UserTags />
+    <!-- 查询等级功能 -->
     <LevelDiglog />
     <!-- 使用提示 -->
     <UsageTip />
@@ -103,6 +108,8 @@ import MenuLookOP from "./components/MenuLookOP.vue";
 import LookOP from "./components/LookOP.vue";
 import LevelDiglog from "./components/LevelDiglog.vue";
 import UsageTip from "./components/UsageTip.vue";
+import MenuFloorHeight from "./components/MenuFloorHeight.vue";
+import UserTags from "./components/UserTags.vue";
 
 export default {
   components: {
@@ -123,6 +130,8 @@ export default {
     LookOP,
     LevelDiglog,
     UsageTip,
+    MenuFloorHeight,
+    UserTags,
   },
   data() {
     return {

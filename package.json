@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server",
-    "build": "webpack"
+    "build": "rimraf dist && webpack",
+    "rf": "rimraf node_modules"
   },
   "dependencies": {
     "element-ui": "^2.15.14",
@@ -23,7 +24,7 @@
     "url-loader": "4.1.1",
     "vue-loader": "15.9.6",
     "webpack": "5.15.0",
-    "webpack-cli": "3.3.12",
+    "webpack-cli": "4.3.12",
     "webpack-dev-server": "3.11.2",
     "webpack-merge": "5.7.3"
   }

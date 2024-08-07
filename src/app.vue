@@ -4,14 +4,6 @@
     <div class="setting-btn">
       <AutoRead v-show="showautoread" /><!-- 自动阅读按钮 -->
       <LookOP v-show="showlookop" /><!-- 只看楼主 -->
-      <!-- <el-button @click="setting" type="primary" title="设置">
-        <svg
-          class="fa d-icon d-icon-cog svg-icon svg-string"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <use href="#cog"></use>
-        </svg>
-      </el-button> -->
     </div>
 
     <dialog open id="menu_suspendedball">

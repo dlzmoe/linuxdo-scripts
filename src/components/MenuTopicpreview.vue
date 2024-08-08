@@ -114,17 +114,8 @@ export default {
   },
   created() {
     if (this.localChecked) {
-      let pollinglength1 = 0;
-      let pollinglength2 = 0;
       setInterval(() => {
-        if (pollinglength1 != $(".topic-list-body tr").length) {
-          pollinglength1 = $(".topic-list-body tr").length;
-          this.init();
-        }
-        if (pollinglength2 != $(".post-stream .topic-post").length) {
-          pollinglength2 = $(".post-stream .topic-post").length;
-          this.init();
-        }
+        this.init();
       }, 1000);
     }
   },

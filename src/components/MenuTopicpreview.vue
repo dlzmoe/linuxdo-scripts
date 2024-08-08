@@ -30,15 +30,8 @@ export default {
     handleChange() {
       this.$emit("input", this.localChecked);
     },
-    paramsUrl() {
-      var currentUrl = window.location.search;
-      if (currentUrl == "?type=preview") {
-        $("body").addClass("body-preview");
-      }
-    },
-    init() {
-      this.paramsUrl();
 
+    init() {
       if ($(".topicpreview").length < 1) {
         $("body").append(`<div class="topicpreview">
           <div class="topicpreview-opacity"></div>
@@ -69,23 +62,17 @@ export default {
           .then((data) => {
             previewData = data;
 
+            // 定义一个转化的时间的方法
             function formatDate(isoString) {
               const date = new Date(isoString);
-
               const year = date.getFullYear();
               const month = String(date.getMonth() + 1).padStart(2, "0"); // 月份从 0 开始，所以要加 1
               const day = String(date.getDate()).padStart(2, "0");
               const hours = String(date.getHours()).padStart(2, "0");
               const minutes = String(date.getMinutes()).padStart(2, "0");
               const seconds = String(date.getSeconds()).padStart(2, "0");
-
               return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
             }
-
-            const isoString = "2024-08-08T08:59:46.264Z";
-            const formattedDate = formatDate(isoString);
-
-            console.log(formattedDate); // 输出：2024-08-08 08:59:46
 
             $(".topicpreview-container").html(`
                 <div class="topicpreview-container">
@@ -119,7 +106,9 @@ export default {
       // 关闭弹窗
       $(".topicpreview-opacity").click(function () {
         $(".topicpreview").hide();
-        $(".topicpreview-container").html("");
+        $(".topicpreview-container").html(
+          `<p style="text-align: center">正在加载中...</p> `
+        );
       });
     },
   },

@@ -85,14 +85,16 @@ export default {
           if (tags == null) {
             return false;
           }
-          // 检查 settingData.usertags 数组中是否已经存在具有相同 name 的对象
-          var existingPerson = settingData.usertags.find((item) => item.name === person);
+
+          // 转换为小写进行比较
+          var lowerCasePerson = person.toLowerCase();
+          var existingPerson = settingData.usertags.find(
+            (item) => item.name.toLowerCase() === lowerCasePerson
+          );
 
           if (existingPerson) {
-            // 如果存在，直接修改该对象的 tags 属性
             existingPerson.tags = tags;
           } else {
-            // 如果不存在，新增对象
             settingData.usertags.push({ name: person, tags: tags });
           }
 
@@ -101,7 +103,7 @@ export default {
       }
 
       $(".topic-post").each(function () {
-        const username = $(this).find(".first a").attr("data-user-card");
+        const username = $(this).find(".first a").attr("data-user-card").toLowerCase();
         // 在 usertags 数组中查找对应的对象
         const userTag = settingData.usertags.find((user) => user.name === username);
         if (userTag) {

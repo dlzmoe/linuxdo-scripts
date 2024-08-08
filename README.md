@@ -2,12 +2,10 @@
 <p align="center">脚本持续更新，欢迎提出 issues，提交 pr ~</p>
 
 <p align="center">
-<img src="https://img.shields.io/github/v/release/dlzmoe/linuxdo-scripts">
-<img src="https://img.shields.io/github/last-commit/dlzmoe/linuxdo-scripts">
-<img src="https://img.shields.io/github/commit-activity/t/dlzmoe/linuxdo-scripts">
-<img src="https://img.shields.io/github/forks/dlzmoe/linuxdo-scripts?style=flat">
-<img src="https://img.shields.io/github/stars/dlzmoe/linuxdo-scripts?style=flat">
-<img src="https://img.shields.io/github/license/dlzmoe/linuxdo-scripts">
+<img src="https://img.shields.io/github/v/release/dlzmoe/linuxdo-scripts?style=for-the-badge&label=linuxdo%20%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6&labelColor=%235D5D5D&color=%23E97435">
+<img src="https://img.shields.io/github/last-commit/dlzmoe/linuxdo-scripts?style=for-the-badge">
+<img src="https://img.shields.io/github/stars/dlzmoe/linuxdo-scripts?style=for-the-badge">
+<img src="https://img.shields.io/github/license/dlzmoe/linuxdo-scripts?style=for-the-badge">
 </p>
 
 linux.do 增强插件，话题列表显示创建时间，显示楼层数，新标签页打开话题，强制 block（拉黑屏蔽）某人的话题，话题快捷回复（支持自定义），优化签名图显示防止图裂，在话题列表可直接预览详情及评论，功能设置面板导入导出，楼层抽奖，用户自定义标签，只看楼主，自动滚动阅读等，功能持续更新，欢迎提出新想法！
@@ -58,7 +56,7 @@ linux.do 增强插件，话题列表显示创建时间，显示楼层数，新�
 // @name         linuxdo 增强插件
 // @namespace    https://github.com/dlzmoe/linuxdo-scripts
 // @version      0.0.0
-// @description  linux.do 增强插件，话题列表显示创建时间，显示楼层数，新标签页打开话题，强制 block（拉黑屏蔽）某人的话题，话题快捷回复（支持自定义），优化签名图显示防止图裂，功能设置面板导入导出，楼层抽奖等，功能持续更新，欢迎提出。
+// @description  linux.do 增强插件，话题列表显示创建时间，显示楼层数，新标签页打开话题，强制 block（拉黑屏蔽）某人的话题，话题快捷回复（支持自定义），优化签名图显示防止图裂，在话题列表可直接预览详情及评论，功能设置面板导入导出，楼层抽奖，用户自定义标签，只看楼主，自动滚动阅读等，功能持续更新，欢迎提出新想法！
 // @author       dlzmoe
 // @match        *://linux.do/*
 // @icon         https://cdn.linux.do/uploads/default/optimized/3X/9/d/9dd49731091ce8656e94433a26a3ef36062b3994_2_32x32.png

@@ -51,42 +51,43 @@ export default {
             );
         }
       });
+    },
+    setClick() {
+      $(".topicpreview-btn").each(function () {
+        $(this).click(function () {
+          $(".topicpreview").show();
+          let previewData = {};
+          let previewurl = $(this).attr("data-id");
+          console.log(previewurl);
 
-      // 打开预览
-      $(".topicpreview-btn").click(function () {
-        $(".topicpreview").show();
-        let previewData = {};
-        let previewurl = $(this).attr("data-id");
-        fetch(`https://linux.do/t/${previewurl}.json`)
-          .then((response) => response.json())
-          .then((data) => {
-            previewData = data;
+          fetch(`https://linux.do/t/${previewurl}.json`)
+            .then((response) => response.json())
+            .then((data) => {
+              previewData = data;
 
-            // 定义一个转化的时间的方法
-            function formatDate(isoString) {
-              const date = new Date(isoString);
-              const year = date.getFullYear();
-              const month = String(date.getMonth() + 1).padStart(2, "0"); // 月份从 0 开始，所以要加 1
-              const day = String(date.getDate()).padStart(2, "0");
-              const hours = String(date.getHours()).padStart(2, "0");
-              const minutes = String(date.getMinutes()).padStart(2, "0");
-              const seconds = String(date.getSeconds()).padStart(2, "0");
-              return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-            }
+              // 定义一个转化的时间的方法
+              function formatDate(isoString) {
+                const date = new Date(isoString);
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, "0"); // 月份从 0 开始，所以要加 1
+                const day = String(date.getDate()).padStart(2, "0");
+                const hours = String(date.getHours()).padStart(2, "0");
+                const minutes = String(date.getMinutes()).padStart(2, "0");
+                const seconds = String(date.getSeconds()).padStart(2, "0");
+                return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+              }
 
-            $(".topicpreview-container").html(`
-                <div class="topicpreview-container">
-                  <div class="topicpreview-title">${previewData.title}</div>
-                  <p class="topicpreview-date">发帖时间：${formatDate(
-                    previewData.created_at
-                  )}</p>
-                  <div class="topicpreview-content"></div>
-                  <p style="text-align: center;">仅显示前 20 条，<a href="/t/topic/${previewurl}/">查看更多</a></p>
-                </div>
+              $(".topicpreview-container").html(`
+                <div class="topicpreview-title">${previewData.title}</div>
+                <p class="topicpreview-date">发帖时间：${formatDate(
+                  previewData.created_at
+                )}</p>
+                <div class="topicpreview-content"></div>
+                <p style="text-align: center;">仅显示前 20 条，<a href="/t/topic/${previewurl}/">查看更多</a></p>
               `);
 
-            $.each(previewData.post_stream.posts, function (index, post) {
-              $(".topicpreview .topicpreview-content").append(`
+              $.each(previewData.post_stream.posts, function (index, post) {
+                $(".topicpreview .topicpreview-content").append(`
             <div class="item">
               <span class="itemfloor">${index + 1}楼</span>
               <div class="itempost">
@@ -99,8 +100,9 @@ export default {
                 </div>
             </div>
           `);
+              });
             });
-          });
+        });
       });
 
       // 关闭弹窗
@@ -116,6 +118,19 @@ export default {
     if (this.localChecked) {
       setInterval(() => {
         this.init();
+      }, 1000);
+
+      let pollinglength1 = 0;
+      let pollinglength2 = 0;
+      setInterval(() => {
+        if (pollinglength1 != $(".topic-list-body tr").length) {
+          pollinglength1 = $(".topic-list-body tr").length;
+          this.setClick();
+        }
+        if (pollinglength2 != $(".post-stream .topic-post").length) {
+          pollinglength2 = $(".post-stream .topic-post").length;
+          this.setClick();
+        }
       }, 1000);
     }
   },

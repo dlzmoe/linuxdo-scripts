@@ -86,7 +86,7 @@
 
 
     .menu-about {
-      padding: 15px 0;
+      padding: 5px 0;
       line-height: 2;
 
       .initialization {
@@ -143,10 +143,43 @@
     }
   }
 
+  .menu-nav {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding-top: 5px;
+
+    li {
+      margin-right: 10px;
+      border-radius: 4px;
+      height: 24px;
+      min-width: 60px;
+      padding: 0 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      cursor: pointer;
+
+      &.act {
+        background: #000;
+        color: #fff;
+      }
+    }
+  }
+
   .menu-body {
     height: 480px;
     overflow-y: auto;
     padding-right: 10px;
+
+    .menu-body-item {
+      display: none;
+
+      &.act {
+        display: block;
+      }
+    }
   }
 
   .menu-footer {

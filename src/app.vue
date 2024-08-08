@@ -9,41 +9,54 @@
     <dialog open id="menu_suspendedball">
       <div class="title">linxudo 增强插件设置</div>
       <div class="close" @click="closedialog">+</div>
+      <ul class="menu-nav">
+        <li class="act">基础设置</li>
+        <li>用户标签</li>
+      </ul>
       <div class="menu-body">
-        <div class="menu-about">
-          <p class="hint">请注意，该设置面板数据全部保存在本地浏览器缓存中，注意备份。</p>
-          <p>
-            如果感觉哪里不太对劲，点我
-            <span class="initialization" @click="initialization">初始化设置</span>。
-          </p>
+        <div class="menu-body-item act">
+          <div class="menu-about">
+            <p class="hint">
+              请注意，该设置面板数据全部保存在本地浏览器缓存中，注意备份。
+            </p>
+            <p class="hint">
+              如果感觉哪里不太对劲，点我
+              <span class="initialization" @click="initialization">初始化设置</span>，会清除全部所有的设置数据，慎重使用！
+            </p>
+          </div>
+          <!-- 新标签页打开 -->
+          <MenuOpenpostblank v-model="settingData.checked1" />
+          <!-- 新话题提醒 -->
+          <MenuNewtopicreminder v-model="settingData.checked2" />
+          <!-- 自动展开回复 -->
+          <MenuAutoexpandreply v-model="settingData.checked3" />
+          <!-- 话题列表显示创建时间 -->
+          <MenuShowcreatetime v-model="settingData.checked4" />
+          <MenuShowcreatetime1 v-model="settingData.checked41" />
+          <!-- 显示楼层数 -->
+          <MenuShowfloors v-model="settingData.checked5" />
+          <!-- 隐藏话题详情顶部大标题 -->
+          <MenuHidetopicdetailtitle v-model="settingData.checked6" />
+          <!-- 话题预览功能 -->
+          <MenuTopicpreview v-model="settingData.checked7" />
+          <!-- 显示自动阅读按钮 -->
+          <MenuAutoRead v-model="settingData.checked8" />
+          <!-- 自定义快捷回复 -->
+          <MenuCreatereply v-model="settingData.QuickReply" />
+          <!-- 屏蔽指定用户 -->
+          <MenuBlockuserlist v-model="settingData.blockList" />
+          <!-- 只看楼主按钮 -->
+          <MenuLookOP v-model="settingData.checked9" />
+          <!-- 智能限制楼层高度 -->
+          <MenuFloorHeight v-model="settingData.checked10" />
+          <!-- 检测更新 -->
+          <Updates />
         </div>
-        <!-- 新标签页打开 -->
-        <MenuOpenpostblank v-model="settingData.checked1" />
-        <!-- 新话题提醒 -->
-        <MenuNewtopicreminder v-model="settingData.checked2" />
-        <!-- 自动展开回复 -->
-        <MenuAutoexpandreply v-model="settingData.checked3" />
-        <!-- 话题列表显示创建时间 -->
-        <MenuShowcreatetime v-model="settingData.checked4" />
-        <MenuShowcreatetime1 v-model="settingData.checked41" />
-        <!-- 显示楼层数 -->
-        <MenuShowfloors v-model="settingData.checked5" />
-        <!-- 隐藏话题详情顶部大标题 -->
-        <MenuHidetopicdetailtitle v-model="settingData.checked6" />
-        <!-- 话题预览功能 -->
-        <MenuTopicpreview v-model="settingData.checked7" />
-        <!-- 显示自动阅读按钮 -->
-        <MenuAutoRead v-model="settingData.checked8" />
-        <!-- 自定义快捷回复 -->
-        <MenuCreatereply v-model="settingData.QuickReply" />
-        <!-- 屏蔽指定用户 -->
-        <MenuBlockuserlist v-model="settingData.blockList" />
-        <!-- 只看楼主按钮 -->
-        <MenuLookOP v-model="settingData.checked9" />
-        <!-- 智能限制楼层高度 -->
-        <MenuFloorHeight v-model="settingData.checked10" />
-        <!-- 检测更新 -->
-        <Updates />
+
+        <div class="menu-body-item">
+          <!-- 用户打标签功能 -->
+          <UserTags />
+        </div>
       </div>
 
       <div class="menu-footer">
@@ -81,8 +94,6 @@
       </div>
     </dialog>
 
-    <!-- 用户打标签功能 -->
-    <UserTags />
     <!-- 查询等级功能 -->
     <LevelDiglog />
     <!-- 使用提示 -->
@@ -166,6 +177,7 @@ export default {
 
       showautoread: false,
       showlookop: false,
+      usertags: [],
     };
   },
   methods: {
@@ -327,6 +339,18 @@ export default {
           }
         }
       });
+
+      if ($(".menu-nav").length > 0) {
+        $(".menu-nav li").each(function () {
+          $(this).click(function () {
+            const num = $(this).index();
+            $(".menu-nav li").removeClass("act");
+            $(this).addClass("act");
+            $(".menu-body-item").removeClass("act");
+            $(".menu-body-item").eq(num).addClass("act");
+          });
+        });
+      }
     },
     // 初始化设置
     initialization() {
@@ -347,6 +371,7 @@ export default {
           <use href="#cog"></use>
         </svg>
     </button>`);
+
     const linxudoscriptssetting = localStorage.getItem("linxudoscriptssetting");
     if (linxudoscriptssetting) {
       this.settingData = JSON.parse(linxudoscriptssetting);

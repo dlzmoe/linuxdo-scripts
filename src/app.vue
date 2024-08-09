@@ -54,6 +54,8 @@
           <MenuOtherCss v-model="settingData.othercss" />
           <!-- 自定义论坛 logo -->
           <MenuLogoUrl v-model="settingData.logourl" />
+          <!-- 中英文混排优化显示 -->
+          <MenuPangu v-model="settingData.checked11" />
           <!-- 检测更新 -->
           <Updates />
         </div>
@@ -131,6 +133,7 @@ import UserTags from "./components/UserTags.vue";
 import MenuOtherCss from "./components/MenuOtherCss.vue";
 import MenuLogoUrl from "./components/MenuLogoUrl.vue";
 import ReplyTBEnjoy from "./components/ReplyTBEnjoy.vue";
+import MenuPangu from "./components/MenuPangu.vue";
 
 export default {
   components: {
@@ -156,6 +159,7 @@ export default {
     MenuOtherCss,
     MenuLogoUrl,
     ReplyTBEnjoy,
+    MenuPangu,
   },
   data() {
     return {
@@ -188,6 +192,7 @@ export default {
         checked10: false,
         othercss: "",
         logourl: "",
+        checked11: false,
       },
 
       showautoread: false,

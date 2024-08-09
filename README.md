@@ -104,6 +104,10 @@ npm run build # 打包构建
 
 ## 4. 版本日志
 
+## 0.1.10
+
+修复了新标签功能会多次打开的 bug.
+
 ## 0.1.9
 
 1. 新增回复时直接查看贴吧大表情。（来自：https://greasyfork.org/zh-CN/scripts/497296-linux-do%E8%B4%B4%E5%90%A7%E8%A1%A8%E6%83%85）

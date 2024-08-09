@@ -19,6 +19,7 @@ export default {
   data() {
     return {
       localChecked: this.value,
+      eventListeners: [],
     };
   },
   watch: {
@@ -31,13 +32,25 @@ export default {
       this.$emit("input", this.localChecked);
     },
     init() {
-      $(".topic-list a.title").each(function () {
-        $(this).click(function (event) {
+      // 移除之前的事件监听器
+      this.removeEventListeners();
+
+      // 添加新的事件监听器
+      $(".topic-list a.title").each((index, element) => {
+        const listener = (event) => {
           event.preventDefault();
-          var url = $(this).attr("href");
+          var url = $(element).attr("href");
           window.open(url, "_blank");
-        });
+        };
+        $(element).on("click", listener);
+        this.eventListeners.push({ element, listener });
       });
+    },
+    removeEventListeners() {
+      this.eventListeners.forEach(({ element, listener }) => {
+        $(element).off("click", listener);
+      });
+      this.eventListeners = [];
     },
   },
   created() {
@@ -55,6 +68,10 @@ export default {
         }
       }, 1000);
     }
+  },
+  beforeDestroy() {
+    // 组件销毁前移除所有事件监听器
+    this.removeEventListeners();
   },
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <!-- 自定义快捷回复 -->
   <div class="item">
-    <div class="tit">13. 自定义论坛 logo</div>
+    <div class="tit">14. 自定义论坛 logo</div>
     <template>
       <el-input
         v-model="textarea"

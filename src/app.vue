@@ -7,7 +7,7 @@
     </div>
 
     <dialog open id="menu_suspendedball">
-      <div class="title">linxudo 增强插件设置</div>
+      <div class="title">linuxdo 增强插件设置</div>
       <div class="close" @click="closedialog">+</div>
       <ul class="menu-nav">
         <li class="act">基础设置</li>
@@ -52,6 +52,8 @@
           <MenuFloorHeight v-model="settingData.checked10" />
           <!-- 自定义 CSS -->
           <MenuOtherCss v-model="settingData.othercss" />
+          <!-- 自定义论坛 logo -->
+          <MenuLogoUrl v-model="settingData.logourl" />
           <!-- 检测更新 -->
           <Updates />
         </div>
@@ -101,6 +103,8 @@
     <LevelDiglog />
     <!-- 使用提示 -->
     <UsageTip />
+    <!-- 回复弹窗显示贴吧表情 -->
+    <ReplyTBEnjoy />
   </div>
 </template>
 
@@ -125,6 +129,8 @@ import UsageTip from "./components/UsageTip.vue";
 import MenuFloorHeight from "./components/MenuFloorHeight.vue";
 import UserTags from "./components/UserTags.vue";
 import MenuOtherCss from "./components/MenuOtherCss.vue";
+import MenuLogoUrl from "./components/MenuLogoUrl.vue";
+import ReplyTBEnjoy from "./components/ReplyTBEnjoy.vue";
 
 export default {
   components: {
@@ -148,6 +154,8 @@ export default {
     MenuFloorHeight,
     UserTags,
     MenuOtherCss,
+    MenuLogoUrl,
+    ReplyTBEnjoy,
   },
   data() {
     return {
@@ -179,6 +187,7 @@ export default {
         blockList: "",
         checked10: false,
         othercss: "",
+        logourl: "",
       },
 
       showautoread: false,
@@ -374,8 +383,10 @@ export default {
     },
   },
   created() {
-    $(".sidebar-footer-actions")
-      .prepend(`<button class="btn no-text btn-icon color-scheme-toggler btn-flat linuxdoscripts-setting" title="设置" type="button">
+    setInterval(() => {
+      if ($(".linuxdoscripts-setting").length < 1) {
+        $(".sidebar-footer-actions")
+          .prepend(`<button class="btn no-text btn-icon color-scheme-toggler btn-flat linuxdoscripts-setting" title="设置" type="button">
         <svg
           class="fa d-icon d-icon-cog svg-icon svg-string"
           xmlns="http://www.w3.org/2000/svg"
@@ -383,6 +394,8 @@ export default {
           <use href="#cog"></use>
         </svg>
     </button>`);
+      }
+    }, 1000);
 
     const linxudoscriptssetting = localStorage.getItem("linxudoscriptssetting");
     if (linxudoscriptssetting) {

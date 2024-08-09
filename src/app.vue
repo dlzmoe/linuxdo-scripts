@@ -50,6 +50,8 @@
           <MenuLookOP v-model="settingData.checked9" />
           <!-- 智能限制楼层高度 -->
           <MenuFloorHeight v-model="settingData.checked10" />
+          <!-- 自定义 CSS -->
+          <MenuOtherCss v-model="settingData.othercss" />
           <!-- 检测更新 -->
           <Updates />
         </div>
@@ -122,6 +124,7 @@ import LevelDiglog from "./components/LevelDiglog.vue";
 import UsageTip from "./components/UsageTip.vue";
 import MenuFloorHeight from "./components/MenuFloorHeight.vue";
 import UserTags from "./components/UserTags.vue";
+import MenuOtherCss from "./components/MenuOtherCss.vue";
 
 export default {
   components: {
@@ -144,6 +147,7 @@ export default {
     UsageTip,
     MenuFloorHeight,
     UserTags,
+    MenuOtherCss,
   },
   data() {
     return {
@@ -174,6 +178,7 @@ export default {
         QuickReply: "前排围观\n感谢分享\n有点厉害",
         blockList: "",
         checked10: false,
+        othercss: "",
       },
 
       showautoread: false,

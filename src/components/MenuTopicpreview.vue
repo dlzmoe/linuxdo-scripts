@@ -88,19 +88,23 @@ export default {
 
               $.each(previewData.post_stream.posts, function (index, post) {
                 $(".topicpreview .topicpreview-content").append(`
-            <div class="item">
-              <span class="itemfloor">${index + 1}楼</span>
-              <div class="itempost">
-                <div class="itemname">
-                  ${post.display_username} 
-                  <span>${post.username}</span>
-                  <div class="itemdate">${formatDate(post.created_at)}</div>
-                </div>
-                ${post.cooked}
-                </div>
-            </div>
-          `);
+                  <div class="item">
+                    <span class="itemfloor">${index + 1}楼</span>
+                    <div class="itempost">
+                      <div class="itemname">
+                        ${post.display_username} 
+                        <span>${post.username}</span>
+                        <div class="itemdate">${formatDate(post.created_at)}</div>
+                      </div>
+                      ${post.cooked}
+                      </div>
+                  </div>
+                `);
               });
+
+              setInterval(() => {
+                $(".lightbox").attr("href", "javascript:void(0)");
+              }, 1000);
             });
         });
       });

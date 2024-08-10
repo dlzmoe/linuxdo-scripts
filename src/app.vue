@@ -2,6 +2,8 @@
   <div id="linuxdoscripts">
     <div class="linuxdoscripts-opacity"></div>
     <div class="setting-btn">
+      <LevelDiglog v-show="showlevelsearch" />
+      <!-- 查询等级功能 -->
       <AutoRead v-show="showautoread" /><!-- 自动阅读按钮 -->
       <LookOP v-show="showlookop" /><!-- 只看楼主 -->
     </div>
@@ -56,6 +58,8 @@
           <MenuLogoUrl v-model="settingData.logourl" />
           <!-- 中英文混排优化显示 -->
           <MenuPangu v-model="settingData.checked11" />
+          <!-- 是否显示等级查询按钮 -->
+          <MenuLevelSearch v-model="settingData.checked12" />
           <!-- 检测更新 -->
           <Updates />
         </div>
@@ -101,8 +105,6 @@
       </div>
     </dialog>
 
-    <!-- 查询等级功能 -->
-    <LevelDiglog />
     <!-- 使用提示 -->
     <UsageTip />
     <!-- 回复弹窗显示贴吧表情 -->
@@ -134,6 +136,7 @@ import MenuOtherCss from "./components/MenuOtherCss.vue";
 import MenuLogoUrl from "./components/MenuLogoUrl.vue";
 import ReplyTBEnjoy from "./components/ReplyTBEnjoy.vue";
 import MenuPangu from "./components/MenuPangu.vue";
+import MenuLevelSearch from "./components/MenuLevelSearch.vue";
 
 export default {
   components: {
@@ -160,6 +163,7 @@ export default {
     MenuLogoUrl,
     ReplyTBEnjoy,
     MenuPangu,
+    MenuLevelSearch,
   },
   data() {
     return {
@@ -193,11 +197,12 @@ export default {
         othercss: "",
         logourl: "",
         checked11: false,
+        checked12: false,
       },
 
       showautoread: false,
       showlookop: false,
-      usertags: [],
+      showlevelsearch: false,
     };
   },
   methods: {
@@ -407,6 +412,7 @@ export default {
       this.settingData = JSON.parse(linxudoscriptssetting);
       this.showautoread = this.settingData.checked8;
       this.showlookop = this.settingData.checked9;
+      this.showlevelsearch = this.settingData.checked12;
     }
     setInterval(() => {
       this.runscripts();

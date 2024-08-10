@@ -167,6 +167,14 @@ export default {
       return translations[stat] || stat;
     },
   },
+  created() {
+    const src = $(".d-header-icons .icon img.avatar").attr("src");
+    const match = src.match(/\/user_avatar\/linux\.do\/([^\/]+)/);
+
+    if (match && match[1]) {
+      this.username = match[1];
+    }
+  },
 };
 </script>
 

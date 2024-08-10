@@ -7,7 +7,10 @@
     "build": "webpack"
   },
   "dependencies": {
+    "axios": "^1.7.3",
     "element-ui": "^2.15.14",
+    "express": "^4.19.2",
+    "http-proxy-middleware": "^3.0.0",
     "vue": "^2.6.12",
     "vue-loader": "^15.9.6",
     "vue-template-compiler": "^2.6.12"

@@ -16,7 +16,8 @@
         <li>用户标签</li>
       </ul>
       <div class="menu-body">
-        <div class="menu-body-item act">
+
+        <div class="menu-body-item">
           <div class="menu-about">
             <p class="hint">
               请注意，该设置面板数据全部保存在本地浏览器缓存中，注意备份。
@@ -65,7 +66,6 @@
         </div>
 
         <div class="menu-body-item">
-          <!-- 用户打标签功能 -->
           <UserTags />
         </div>
       </div>

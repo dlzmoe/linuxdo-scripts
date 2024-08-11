@@ -61,6 +61,8 @@
           <MenuPangu v-model="settingData.checked11" />
           <!-- 是否显示等级查询按钮 -->
           <MenuLevelSearch v-model="settingData.checked12" />
+          <!-- 消息通知仅显示未读 -->
+          <MenuShowUnread v-model="settingData.checked13" />
           <!-- 检测更新 -->
           <Updates />
         </div>
@@ -137,6 +139,7 @@ import MenuLogoUrl from "./components/MenuLogoUrl.vue";
 import ReplyTBEnjoy from "./components/ReplyTBEnjoy.vue";
 import MenuPangu from "./components/MenuPangu.vue";
 import MenuLevelSearch from "./components/MenuLevelSearch.vue";
+import MenuShowUnread from "./components/MenuShowUnread.vue";
 
 export default {
   components: {
@@ -164,6 +167,7 @@ export default {
     ReplyTBEnjoy,
     MenuPangu,
     MenuLevelSearch,
+    MenuShowUnread,
   },
   data() {
     return {
@@ -198,6 +202,7 @@ export default {
         logourl: "",
         checked11: false,
         checked12: false,
+        checked13: false,
       },
 
       showautoread: false,

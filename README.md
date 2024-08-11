@@ -107,6 +107,12 @@ npm run build # 打包构建
 
 ## 4. 版本日志
 
+## 0.1.13
+
+1. 修复黑夜模式下的 UI 问题。
+2. 解决了一些 bug。
+3. 新增右上角消息通知仅显示未读。
+
 ## 0.1.12
 
 1. 新增等级信息查询（来自：https://greasyfork.org/zh-CN/scripts/489393-linux-do-level-enhanced）

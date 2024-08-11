@@ -178,7 +178,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="less">
 @keyframes breathAnimation {
   0%,
   100% {
@@ -245,5 +245,11 @@ export default {
   line-height: 40px;
   width: 40px;
   height: 40px;
+}
+
+.dark-theme {
+  #linuxDoLevelPopupContent {
+    background: #535353;
+  }
 }
 </style>

@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <div class="item">
-      <div class="tit">4.1. 将浏览量替换为创建时间（与 4 互斥，只可选择一个）</div>
-      <el-checkbox v-model="localChecked" @change="handleChange"></el-checkbox>
-    </div>
+  <div class="item">
+    <div class="tit">{{ sort }}. 将浏览量替换为创建时间（与 4 互斥，只可选择一个）</div>
+    <el-checkbox v-model="localChecked" @change="handleChange"></el-checkbox>
   </div>
 </template>
 
@@ -13,6 +11,10 @@ export default {
     value: {
       type: Boolean,
       default: false,
+    },
+    sort: {
+      type: String,
+      required: true,
     },
   },
   data() {

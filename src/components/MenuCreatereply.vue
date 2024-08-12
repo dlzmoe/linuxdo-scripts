@@ -1,9 +1,13 @@
 <template>
   <!-- 自定义快捷回复 -->
   <div class="item">
-    <div class="tit">9. 自定义快捷回复（换行分隔）</div>
+    <div class="tit">{{ sort }}. 自定义快捷回复（换行分隔）</div>
     <template>
-      <textarea v-model="textarea" @input="handleChange" placeholder="前排围观\n感谢分享\n有点厉害"></textarea>
+      <textarea
+        v-model="textarea"
+        @input="handleChange"
+        placeholder="前排围观\n感谢分享\n有点厉害"
+      ></textarea>
     </template>
   </div>
 </template>
@@ -13,7 +17,11 @@ export default {
   props: {
     value: {
       type: String,
-      default: "前排围观\n感谢分享\n有点厉害",
+      default: "前排围观，支持一下\n感谢分享，支持一下\n有点厉害，支持一下",
+    },
+    sort: {
+      type: String,
+      required: true,
     },
   },
   data() {

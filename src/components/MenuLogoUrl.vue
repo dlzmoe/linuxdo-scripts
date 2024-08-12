@@ -1,13 +1,9 @@
 <template>
   <!-- 自定义快捷回复 -->
   <div class="item">
-    <div class="tit">14. 自定义论坛 logo</div>
+    <div class="tit">{{ sort }}. 自定义论坛 logo</div>
     <template>
-      <el-input
-        v-model="textarea"
-        @input="handleChange"
-        placeholder="输入图片链接"
-      ></el-input>
+      <el-input v-model="textarea" @input="handleChange" placeholder="输入图片链接"></el-input>
     </template>
   </div>
 </template>
@@ -18,6 +14,10 @@ export default {
     value: {
       type: String,
       default: "",
+    },
+    sort: {
+      type: String,
+      required: true,
     },
   },
   data() {

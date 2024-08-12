@@ -1,7 +1,7 @@
 <template>
   <!-- 隐藏话题详情顶部大标题 -->
   <div class="item">
-    <div class="tit">6. 隐藏话题详情顶部大标题</div>
+    <div class="tit">{{ sort }}. 隐藏话题详情顶部大标题</div>
     <template>
       <el-checkbox v-model="localChecked" @change="handleChange"></el-checkbox>
     </template>
@@ -14,6 +14,10 @@ export default {
     value: {
       type: Boolean,
       default: false,
+    },
+    sort: {
+      type: String,
+      required: true,
     },
   },
   data() {

@@ -1,7 +1,7 @@
 <template>
   <!-- 自动展开回复 -->
   <div class="item">
-    <div class="tit">3. 是否自动展开回复</div>
+    <div class="tit">{{ sort }}. 是否自动展开回复</div>
     <template>
       <el-checkbox v-model="localChecked" @change="handleChange"></el-checkbox>
     </template>
@@ -14,6 +14,10 @@ export default {
     value: {
       type: Boolean,
       default: false,
+    },
+    sort: {
+      type: String,
+      required: true,
     },
   },
   data() {

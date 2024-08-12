@@ -1,7 +1,7 @@
 <template>
   <!-- 是否开启只看楼主 -->
   <div class="item">
-    <div class="tit">11. 是否开启只看楼主</div>
+    <div class="tit">{{ sort }}. 是否开启只看楼主</div>
     <template>
       <el-checkbox v-model="localChecked" @change="handleChange"></el-checkbox>
     </template>
@@ -14,6 +14,10 @@ export default {
     value: {
       type: Boolean,
       default: false,
+    },
+    sort: {
+      type: String,
+      required: true,
     },
   },
   data() {
@@ -31,7 +35,6 @@ export default {
       this.$emit("input", this.localChecked);
     },
   },
-  
 };
 </script>
 <style scoped>

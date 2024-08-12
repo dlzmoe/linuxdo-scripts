@@ -13,7 +13,7 @@
 export default {
   data() {
     return {
-      devversion: "v0.1.15",
+      devversion: "v0.1.16",
     };
   },
 };

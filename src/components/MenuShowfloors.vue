@@ -1,7 +1,7 @@
 <template>
   <!-- 显示楼层数 -->
   <div class="item">
-    <div class="tit">5. 是否显示楼层数</div>
+    <div class="tit">{{ sort }}. 是否显示楼层数</div>
     <template>
       <el-checkbox v-model="localChecked" @change="handleChange"></el-checkbox>
     </template>
@@ -14,6 +14,10 @@ export default {
     value: {
       type: Boolean,
       default: false,
+    },
+    sort: {
+      type: String,
+      required: true,
     },
   },
   data() {

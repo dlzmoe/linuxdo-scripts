@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="item">
-      <div class="tit">4. 话题列表显示创建时间</div>
+      <div class="tit">{{ sort }}. 话题列表显示创建时间</div>
       <el-checkbox v-model="localChecked" @change="handleChange"></el-checkbox>
     </div>
   </div>
@@ -13,6 +13,10 @@ export default {
     value: {
       type: Boolean,
       default: false,
+    },
+    sort: {
+      type: String,
+      required: true,
     },
   },
   data() {

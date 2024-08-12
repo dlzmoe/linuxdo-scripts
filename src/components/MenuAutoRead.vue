@@ -2,7 +2,7 @@
   <!-- 是否显示自动阅读按钮 -->
   <div class="item">
     <div class="tit">
-      8. 是否显示自动阅读按钮，可调节速度默认 10
+      {{ sort }}. 是否显示自动阅读按钮，可调节速度默认 10
       <input v-model="localChecked.value2" placeholder="默认速度 10" />
     </div>
     <template>
@@ -16,6 +16,10 @@ export default {
   props: {
     value: {
       type: Object,
+    },
+    sort: {
+      type: String,
+      required: true,
     },
   },
   data() {
@@ -51,6 +55,8 @@ export default {
       width: 90px;
       height: 20px !important;
       outline: none;
+      border: 1px solid #7f7f7f;
+      border-radius: 3px;
     }
   }
 }

@@ -16,7 +16,6 @@
         <li>用户标签</li>
       </ul>
       <div class="menu-body">
-
         <div class="menu-body-item act">
           <div class="menu-about">
             <p class="hint">
@@ -29,40 +28,42 @@
             </p>
           </div>
           <!-- 新标签页打开 -->
-          <MenuOpenpostblank v-model="settingData.checked1" />
+          <MenuOpenpostblank :sort="1" v-model="settingData.checked1" />
           <!-- 新话题提醒 -->
-          <MenuNewtopicreminder v-model="settingData.checked2" />
+          <MenuNewtopicreminder :sort="2" v-model="settingData.checked2" />
           <!-- 自动展开回复 -->
-          <MenuAutoexpandreply v-model="settingData.checked3" />
+          <MenuAutoexpandreply :sort="3" v-model="settingData.checked3" />
           <!-- 话题列表显示创建时间 -->
-          <MenuShowcreatetime v-model="settingData.checked4" />
-          <MenuShowcreatetime1 v-model="settingData.checked41" />
+          <MenuShowcreatetime :sort="4" v-model="settingData.checked4" />
+          <MenuShowcreatetime1 :sort="4.1" v-model="settingData.checked41" />
           <!-- 显示楼层数 -->
-          <MenuShowfloors v-model="settingData.checked5" />
+          <MenuShowfloors :sort="5" v-model="settingData.checked5" />
           <!-- 隐藏话题详情顶部大标题 -->
-          <MenuHidetopicdetailtitle v-model="settingData.checked6" />
+          <MenuHidetopicdetailtitle :sort="6" v-model="settingData.checked6" />
           <!-- 话题预览功能 -->
-          <MenuTopicpreview v-model="settingData.checked7" />
+          <MenuTopicpreview :sort="7" v-model="settingData.checked7" />
           <!-- 显示自动阅读按钮 -->
-          <MenuAutoRead v-model="settingData.checked8" />
-          <!-- 自定义快捷回复 -->
-          <MenuCreatereply v-model="settingData.QuickReply" />
-          <!-- 屏蔽指定用户 -->
-          <MenuBlockuserlist v-model="settingData.blockList" />
+          <MenuAutoRead :sort="8" v-model="settingData.checked8" />
           <!-- 只看楼主按钮 -->
-          <MenuLookOP v-model="settingData.checked9" />
+          <MenuLookOP :sort="9" v-model="settingData.checked9" />
           <!-- 智能限制楼层高度 -->
-          <MenuFloorHeight v-model="settingData.checked10" />
-          <!-- 自定义 CSS -->
-          <MenuOtherCss v-model="settingData.othercss" />
-          <!-- 自定义论坛 logo -->
-          <MenuLogoUrl v-model="settingData.logourl" />
+          <MenuFloorHeight :sort="10" v-model="settingData.checked10" />
           <!-- 中英文混排优化显示 -->
-          <MenuPangu v-model="settingData.checked11" />
+          <MenuPangu :sort="11" v-model="settingData.checked11" />
           <!-- 是否显示等级查询按钮 -->
-          <MenuLevelSearch v-model="settingData.checked12" />
+          <MenuLevelSearch :sort="12" v-model="settingData.checked12" />
           <!-- 消息通知仅显示未读 -->
-          <MenuShowUnread v-model="settingData.checked13" />
+          <MenuShowUnread :sort="13" v-model="settingData.checked13" />
+          <!-- 是否屏蔽模糊文字 -->
+          <MenuFilterText :sort="14" v-model="settingData.checked14" />
+          <!-- 自定义论坛 logo -->
+          <MenuLogoUrl :sort="15" v-model="settingData.logourl" />
+          <!-- 自定义快捷回复 -->
+          <MenuCreatereply :sort="16" v-model="settingData.QuickReply" />
+          <!-- 屏蔽指定用户 -->
+          <MenuBlockuserlist :sort="17" v-model="settingData.blockList" />
+          <!-- 自定义 CSS -->
+          <MenuOtherCss :sort="18" v-model="settingData.othercss" />
           <!-- 检测更新 -->
           <Updates />
         </div>
@@ -140,6 +141,7 @@ import ReplyTBEnjoy from "./components/ReplyTBEnjoy.vue";
 import MenuPangu from "./components/MenuPangu.vue";
 import MenuLevelSearch from "./components/MenuLevelSearch.vue";
 import MenuShowUnread from "./components/MenuShowUnread.vue";
+import MenuFilterText from "./components/MenuFilterText.vue";
 
 export default {
   components: {
@@ -168,6 +170,7 @@ export default {
     MenuPangu,
     MenuLevelSearch,
     MenuShowUnread,
+    MenuFilterText,
   },
   data() {
     return {
@@ -203,6 +206,7 @@ export default {
         checked11: false,
         checked12: false,
         checked13: false,
+        checked14: false,
       },
 
       showautoread: false,

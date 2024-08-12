@@ -105,7 +105,7 @@ npm run build # 打包构建
 2. 将 `tampermonkey.js` 代码复制到油猴管理器中。
 3. 启用脚本后前往 `linux.do`，刷新页面。
 
-## 版本日志
+## 更新日志
 
 [version-log.md](./version-log.md)
 

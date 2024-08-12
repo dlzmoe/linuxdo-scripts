@@ -1,7 +1,7 @@
 <template>
   <!-- 消息通知仅显示未读 -->
   <div class="item">
-    <div class="tit">17. 消息通知仅显示未读</div>
+    <div class="tit">{{ sort }}. 消息通知仅显示未读</div>
     <template>
       <el-checkbox v-model="localChecked" @change="handleChange"></el-checkbox>
     </template>
@@ -14,6 +14,10 @@ export default {
     value: {
       type: Boolean,
       default: false,
+    },
+    sort: {
+      type: String,
+      required: true,
     },
   },
   data() {

@@ -1,7 +1,7 @@
 <template>
   <!-- 新标签页打开话题 -->
   <div class="item">
-    <div class="tit">1. 是否新标签页打开话题</div>
+    <div class="tit">{{ sort }}. 是否新标签页打开话题</div>
     <template>
       <el-checkbox v-model="localChecked" @change="handleChange"></el-checkbox>
     </template>
@@ -14,6 +14,10 @@ export default {
     value: {
       type: Boolean,
       default: false,
+    },
+    sort: {
+      type: String,
+      required: true,
     },
   },
   data() {

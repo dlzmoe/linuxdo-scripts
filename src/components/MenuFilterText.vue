@@ -1,7 +1,7 @@
 <template>
-  <!-- 新话题提醒 -->
+  <!-- 是否屏蔽模糊文字 -->
   <div class="item">
-    <div class="tit">{{ sort }}. 是否开启新话题提醒</div>
+    <div class="tit">{{ sort }}. 是否屏蔽模糊文字</div>
     <template>
       <el-checkbox v-model="localChecked" @change="handleChange"></el-checkbox>
     </template>
@@ -34,17 +34,10 @@ export default {
     handleChange() {
       this.$emit("input", this.localChecked);
     },
-    init() {
-      if ($("#list-area .show-more").length > 0) {
-        $("head title").html("【有新话题赶紧来水！！】");
-      }
-    },
   },
   created() {
     if (this.localChecked) {
-      setInterval(() => {
-        this.init();
-      }, 1000);
+      $("head").append(`<style>.spoiled{filter:none!important;}</style>`);
     }
   },
 };

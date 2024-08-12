@@ -1,7 +1,7 @@
 <template>
   <!-- 中英文混排优化显示 -->
   <div class="item">
-    <div class="tit">15. 是否开启中英文混排优化显示</div>
+    <div class="tit">{{ sort }}. 是否开启中英文混排优化显示</div>
     <template>
       <el-checkbox v-model="localChecked" @change="handleChange"></el-checkbox>
     </template>
@@ -14,6 +14,10 @@ export default {
     value: {
       type: Boolean,
       default: false,
+    },
+    sort: {
+      type: String,
+      required: true,
     },
   },
   data() {

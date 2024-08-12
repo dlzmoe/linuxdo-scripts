@@ -58,6 +58,12 @@ const emojiSet = [
   },
   {
     size: "40x40",
+    name: "tieba_125",
+    url:
+      "/uploads/default/original/3X/1/3/133688dda7ae38a3ddbc9eda0ca99fa8ddbb2704.png?v=12",
+  },
+  {
+    size: "40x40",
     name: "tieba_010",
     url:
       "/uploads/default/original/3X/2/b/2b58793c54c273c2d3d40722c4def435543084b4.png?v=12",

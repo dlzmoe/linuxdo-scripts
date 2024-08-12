@@ -415,7 +415,7 @@ export default {
     const linxudoscriptssetting = localStorage.getItem("linxudoscriptssetting");
     if (linxudoscriptssetting) {
       this.settingData = JSON.parse(linxudoscriptssetting);
-      this.showautoread = this.settingData.checked8;
+      this.showautoread = this.settingData.checked8.value1;
       this.showlookop = this.settingData.checked9;
       this.showlevelsearch = this.settingData.checked12;
     }

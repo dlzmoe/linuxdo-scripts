@@ -40,7 +40,7 @@ export default {
       this.removeEventListeners();
 
       // 添加新的事件监听器
-      $(".topic-list a.title").each((index, element) => {
+      $(".topic-list a.title,.topic .search-link").each((index, element) => {
         const listener = (event) => {
           event.preventDefault();
           var url = $(element).attr("href");

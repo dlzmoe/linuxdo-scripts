@@ -56,14 +56,16 @@
           <MenuShowUnread :sort="13" v-model="settingData.checked13" />
           <!-- 是否屏蔽模糊文字 -->
           <MenuFilterText :sort="14" v-model="settingData.checked14" />
+          <!-- 只看自己签名 -->
+          <MenuLookmeSign :sort="15" v-model="settingData.checked15" />
           <!-- 自定义论坛 logo -->
-          <MenuLogoUrl :sort="15" v-model="settingData.logourl" />
+          <MenuLogoUrl :sort="16" v-model="settingData.logourl" />
           <!-- 自定义快捷回复 -->
-          <MenuCreatereply :sort="16" v-model="settingData.QuickReply" />
+          <MenuCreatereply :sort="17" v-model="settingData.QuickReply" />
           <!-- 屏蔽指定用户 -->
-          <MenuBlockuserlist :sort="17" v-model="settingData.blockList" />
+          <MenuBlockuserlist :sort="18" v-model="settingData.blockList" />
           <!-- 自定义 CSS -->
-          <MenuOtherCss :sort="18" v-model="settingData.othercss" />
+          <MenuOtherCss :sort="19" v-model="settingData.othercss" />
           <!-- 检测更新 -->
           <Updates />
         </div>
@@ -142,6 +144,7 @@ import MenuPangu from "./components/MenuPangu.vue";
 import MenuLevelSearch from "./components/MenuLevelSearch.vue";
 import MenuShowUnread from "./components/MenuShowUnread.vue";
 import MenuFilterText from "./components/MenuFilterText.vue";
+import MenuLookmeSign from "./components/MenuLookmeSign.vue";
 
 export default {
   components: {
@@ -171,6 +174,7 @@ export default {
     MenuLevelSearch,
     MenuShowUnread,
     MenuFilterText,
+    MenuLookmeSign,
   },
   data() {
     return {
@@ -207,6 +211,7 @@ export default {
         checked12: false,
         checked13: false,
         checked14: false,
+        checked15: false,
       },
 
       showautoread: false,

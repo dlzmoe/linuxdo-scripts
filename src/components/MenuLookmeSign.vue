@@ -1,7 +1,7 @@
 <template>
-  <!-- 隐藏话题详情顶部大标题 -->
+  <!-- 只看自己签名尾巴 -->
   <div class="item">
-    <div class="tit">{{ sort }}. 隐藏话题详情顶部大标题</div>
+    <div class="tit">{{ sort }}. 只看自己签名尾巴</div>
     <template>
       <el-checkbox v-model="localChecked" @change="handleChange"></el-checkbox>
     </template>
@@ -37,7 +37,15 @@ export default {
   },
   created() {
     if (this.localChecked) {
-      $("head").append(`<style>.header-title{display:none!important}</style>`);
+      $("head").append(`<style>
+        .topic-post .cooked+hr,
+        .topic-post .signature-img,
+        .topic-post .signature-p{display:none}
+
+        .topic-post.current-user-post .cooked+hr,
+        .topic-post.current-user-post .signature-img,
+        .topic-post.current-user-post .signature-p{display:block}
+      </style>`);
     }
   },
 };

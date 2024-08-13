@@ -37,7 +37,7 @@ export default {
   },
   created() {
     if (this.localChecked) {
-      $("head").append(`<style>.spoiled{filter:none!important;}</style>`);
+      $("head").append(`<style>.spoiled,.spoiled *{filter:none!important;}</style>`);
     }
   },
 };

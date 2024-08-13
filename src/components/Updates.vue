@@ -1,7 +1,7 @@
 <template>
   <div class="item">
     <div class="tit">
-      当前版本：{{ devversion }}
+      当前版本：{{ version }}
       <el-link href="https://github.com/dlzmoe/linuxdo-scripts" target="_blank">
         Github 源码
       </el-link>
@@ -13,8 +13,11 @@
 export default {
   data() {
     return {
-      devversion: "v0.1.17",
+      version: "0.2.1",
     };
+  },
+  created() {
+    
   },
 };
 </script>

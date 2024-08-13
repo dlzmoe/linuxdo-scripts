@@ -15,7 +15,7 @@ export default {
       default: false,
     },
     sort: {
-      type: String,
+      type: Number,
       required: true,
     },
   },

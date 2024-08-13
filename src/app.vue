@@ -212,6 +212,7 @@ export default {
         checked13: false,
         checked14: false,
         checked15: false,
+        checked16: false,
       },
 
       showautoread: false,

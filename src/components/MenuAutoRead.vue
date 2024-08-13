@@ -18,7 +18,7 @@ export default {
       type: Object,
     },
     sort: {
-      type: String,
+      type: Number,
       required: true,
     },
   },

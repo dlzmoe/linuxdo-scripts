@@ -10,10 +10,11 @@
 </template>
 
 <script>
+import packageJson from '../../package.json';  // 根据路径调整
 export default {
   data() {
     return {
-      version: "0.2.1",
+      version: packageJson.version,
     };
   },
   created() {

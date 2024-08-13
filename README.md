@@ -2,10 +2,10 @@
 <p align="center">脚本持续更新，欢迎提出 issues，提交 pr ~</p>
 
 <p align="center">
-<img src="https://img.shields.io/github/v/release/dlzmoe/linuxdo-scripts?style=for-the-badge&label=linuxdo%20%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6&labelColor=%235D5D5D&color=%23E97435">
-<img src="https://img.shields.io/github/last-commit/dlzmoe/linuxdo-scripts?style=for-the-badge">
-<img src="https://img.shields.io/github/stars/dlzmoe/linuxdo-scripts?style=for-the-badge">
-<img src="https://img.shields.io/github/license/dlzmoe/linuxdo-scripts?style=for-the-badge">
+<img src="https://img.shields.io/github/v/release/dlzmoe/linuxdo-scripts?label=linuxdo%20%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6&labelColor=%235D5D5D&color=%23E97435">
+<img src="https://img.shields.io/github/last-commit/dlzmoe/linuxdo-scripts">
+<img src="https://img.shields.io/github/stars/dlzmoe%2Flinuxdo-scripts?style=flat">
+<img src="https://img.shields.io/github/license/dlzmoe/linuxdo-scripts">
 </p>
 
 linux.do 增强插件，话题列表显示创建时间，显示楼层数，新标签页打开话题，强制 block（拉黑屏蔽）某人的话题，话题快捷回复（支持自定义），优化签名图显示防止图裂，在话题列表可直接预览详情及评论，功能设置面板导入导出，楼层抽奖，用户自定义标签，只看楼主，自动滚动阅读，支持自定义 css 样式等，中英文混排优化，等级信息查询，功能持续更新，欢迎提出新想法！
@@ -104,6 +104,8 @@ npm run build # 打包构建
 
 2. 将 `tampermonkey.js` 代码复制到油猴管理器中。
 3. 启用脚本后前往 `linux.do`，刷新页面。
+
+> 关于自动构建 Release 包，需要修改 `package.json` 中的 `version` 版本号，并且在 `version-log.md` 中写入更新日志。
 
 ## 更新日志
 

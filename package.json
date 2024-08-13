@@ -1,7 +1,10 @@
 {
   "name": "linuxdo-scripts",
   "version": "0.2.1",
+  "author": "dlzmoe <anghunk@gmail.com>",
+  "description": "An enhanced script for the linux.do forum",
   "private": true,
+  "license": "Apache-2.0",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack serve",
     "build": "webpack"

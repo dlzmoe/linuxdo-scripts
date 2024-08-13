@@ -16,7 +16,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '14'
+        node-version: '14'  # Use the Node.js version you need
 
     - name: Install dependencies
       run: npm install
@@ -44,7 +44,7 @@ jobs:
     - name: Create new release
       if: env.create_release == 'true'
       run: |
-        gh auth login --with-token ${{ secrets.ACCESS_TOKEN }}
+        gh auth login --with-token < ${{ secrets.ACCESS_TOKEN }}
         gh release create "$PACKAGE_VERSION" linuxdo-scripts.js -t "$PACKAGE_VERSION" -n "New release created with version $PACKAGE_VERSION"
       env:
         GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}

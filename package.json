@@ -1,6 +1,6 @@
 {
   "name": "linuxdo-scripts",
-  "version": "0.0.1",
+  "version": "0.1.17",
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack serve",

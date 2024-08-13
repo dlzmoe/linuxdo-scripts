@@ -44,6 +44,8 @@ jobs:
     - name: Create new release
       if: env.create_release == 'true'
       run: |
-        gh release create "$PACKAGE_VERSION" linuxdo-scripts.js -t "$PACKAGE_VERSION" -n "New release created with version $PACKAGE_VERSION\n\n[查看更新日志](https://github.com/dlzmoe/linuxdo-scripts/blob/main/version-log.md)，使用版本 $PACKAGE_VERSION 创建的新版本，此版本包含更新的 \`linuxdo-scripts.js\` 文件。"
+        gh release create "$PACKAGE_VERSION" linuxdo-scripts.js -t "$PACKAGE_VERSION" -n "New release created with version $PACKAGE_VERSION
+        
+[查看更新日志](https://github.com/dlzmoe/linuxdo-scripts/blob/main/version-log.md)，使用版本 $PACKAGE_VERSION 创建的新版本，此版本包含更新的 \`linuxdo-scripts.js\` 文件。"
       env:
         GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}

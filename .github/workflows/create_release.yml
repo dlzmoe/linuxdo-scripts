@@ -46,5 +46,4 @@ jobs:
       run: |
         gh release create "$PACKAGE_VERSION" linuxdo-scripts.js -t "$PACKAGE_VERSION" -n "New release created with version $PACKAGE_VERSION"
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        
+        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}

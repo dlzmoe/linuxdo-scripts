@@ -115,7 +115,7 @@
     <!-- 回复弹窗显示贴吧表情 -->
     <ReplyTBEnjoy />
     <!-- 帖子生成分享图 -->
-    <ShareImages />
+    <!-- <ShareImages /> -->
   </div>
 </template>
 

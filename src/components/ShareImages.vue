@@ -1,11 +1,13 @@
 <template>
   <div class="linuxdoscripts-sharebox-wrap">
-    <button id="download">Download as Image</button>
-    <div id="capture" class="linuxdoscripts-sharebox"></div>
+    <div class="shareimages-meta">
+      <button id="shareimagesdownload">下载图片</button>
+      <button id="shareimagescopy">复制图片</button>
+    </div>
+    <div id="shareimagescapture" class="linuxdoscripts-sharebox"></div>
   </div>
 </template>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
 export default {
   data() {
@@ -13,13 +15,20 @@ export default {
   },
   methods: {
     init() {
+      // 先解绑旧的事件处理程序
+      $(".linuxdoscripts-share").off("click");
+      $("#shareimagesdownload").off("click");
+      $("#shareimagescopy").off("click");
+      $(".linuxdoscripts-opacity").off("click");
+
       if ($("#post_1").length > 0) {
-        $(".topic-category").after(`
-          <button class="widget-button btn-flat linuxdoscripts-share"><span class="d-button-label">分享</span></button>
-        `);
+        $("#post_1 .actions").append(`
+        <button class="btn btn-default linuxdoscripts-share"><span class="d-button-label">分享</span></button>
+      `);
 
         $(".linuxdoscripts-share").click(function () {
           const id = $("#post_1").attr("data-topic-id");
+          $("html").css("overflow", "hidden");
           $(".linuxdoscripts-opacity").show();
           $(".linuxdoscripts-sharebox-wrap").show();
           let previewData = {};
@@ -42,52 +51,70 @@ export default {
               }
 
               $(".linuxdoscripts-sharebox").html(`
-                <div class="title">${previewData.title}</div>
-                <div class="flex">
-                  <div class="name">${previewData.post_stream.posts[0].username}</div>
-                  <div class="date">
-                    发帖时间：${formatDate(previewData.created_at)}
-                  </div>
-                </div>
-                <div class="content">
-                  ${previewData.post_stream.posts[0].cooked} 
-                </div>
-              
-              `);
+              <div class="title">${previewData.title}</div>
+              <div class="flex">
+                <div class="name">${previewData.post_stream.posts[0].username}</div>
+                <div class="date">${formatDate(previewData.created_at)}</div>
+              </div>
+              <div class="content">${previewData.post_stream.posts[0].cooked} </div>
+            `);
             });
         });
 
         $(".linuxdoscripts-opacity").click(function () {
+          $("html").css("overflow", "inherit");
           $(".linuxdoscripts-opacity").hide();
           $(".linuxdoscripts-sharebox-wrap").hide();
         });
 
-        $("#download").click(function () {
-          console.log(this);
-          
-          var div = document.getElementById("capture");
+        // 下载图片
+        document
+          .getElementById("shareimagesdownload")
+          .addEventListener("click", function () {
+            var element = document.getElementById("shareimagescapture");
+            html2canvas(element).then(function (canvas) {
+              var link = document.createElement("a");
+              link.download = "linuxdo.png";
+              link.href = canvas.toDataURL();
+              link.click();
+              alert("图片下载成功！");
+            });
+          });
 
-          // 使用 html2canvas 进行捕获
-          html2canvas(div).then(function (canvas) {
-            // 将 canvas 转换为图片
-            var imgData = canvas.toDataURL("image/png");
+        // 复制到剪切板
+        document.getElementById("shareimagescopy").addEventListener("click", function () {
+          var element = document.getElementById("shareimagescapture");
 
-            // 创建一个下载链接
-            var link = document.createElement("a");
-            link.href = imgData;
-            link.download = "div_image.png";
+          html2canvas(element).then(function (canvas) {
+            canvas.toBlob(function (blob) {
+              if (navigator.clipboard) {
+                const item = new ClipboardItem({ "image/png": blob });
 
-            // 触发下载
-            link.click();
+                navigator.clipboard
+                  .write([item])
+                  .then(function () {
+                    alert("复制到剪切板成功！");
+                  })
+                  .catch(function (error) {
+                    alert("复制图像失败。确保文档已聚焦并重试！");
+                  });
+              } else {
+                alert("此浏览器不支持剪贴板");
+              }
+            }, "image/png");
           });
         });
       }
     },
   },
   created() {
+    let script = document.createElement("script");
+    script.src = "https://html2canvas.hertzen.com/dist/html2canvas.min.js";
+    document.body.appendChild(script);
+
     setInterval(() => {
       if ($(".linuxdoscripts-share").length < 1) {
-        this.init();
+        this.init(); // 在每次调用 init 之前解绑旧的事件处理程序
       }
     }, 1000);
   },
@@ -95,25 +122,45 @@ export default {
 </script>
 
 <style lang="less">
+.shareimages-meta {
+  position: fixed;
+  top: 20px;
+  left: 40%;
+  z-index: 99999;
+
+  button {
+    background: #fff;
+    padding: 6px 12px;
+    color: #000;
+    border-radius: 5px;
+    transition: all 0.1s linear;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    font-size: 15px;
+
+    &:hover {
+      background: #eee;
+    }
+  }
+}
+
 .linuxdoscripts-sharebox-wrap {
   display: none;
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  z-index: 9999999999;
 }
 
 .linuxdoscripts-sharebox {
-  position: absolute;
-  left: 50%;
+  z-index: 9999999999;
+  position: fixed;
   top: 100px;
-  transform: translateX(-50%);
+  left: 40%;
   width: 360px;
+  min-height: 300px;
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
-  padding: 20px;
+  padding: 50px 20px;
+  box-sizing: border-box;
 
   .flex {
     display: flex;
@@ -141,11 +188,14 @@ export default {
   .content {
     border-top: 1px solid #ccc;
     margin-top: 10px;
-
+    line-height: 1.8;
+    word-break: break-all;
+    
     code {
       white-space: pre-wrap;
       word-break: break-all;
       max-height: 100%;
+      background: #d4d4d4;
     }
 
     img {

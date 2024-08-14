@@ -101,7 +101,7 @@ export default {
                         <div class="itemdate">${formatDate(post.created_at)}</div>
                       </div>
                       ${post.cooked}
-                      </div>
+                    </div>
                   </div>
                 `);
               });

@@ -74,7 +74,7 @@ linux.do 增强插件，话题列表显示创建时间，显示楼层数，新�
   window.addEventListener('load', function () {
 
     var script = document.createElement('script');
-    script.src = 'https://linuxo-scripts.netlify.app/app.bundle.js';
+    script.src = 'https://linuxdo-scripts.netlify.app/app.bundle.js';
     document.body.appendChild(script);
 
   });
@@ -83,7 +83,8 @@ linux.do 增强插件，话题列表显示创建时间，显示楼层数，新�
 
 ```shell
 # 可使用链接，欢迎提供访问速度快的外链
-https://linuxo-scripts.netlify.app/app.bundle.js
+https://linuxdo-scripts.zishu.me/app.bundle.js
+https://linuxdo-scripts.netlify.app/app.bundle.js
 https://fastly.jsdelivr.net/gh/dlzmoe/linuxdo-scripts@main/dist/app.bundle.js
 ```
 

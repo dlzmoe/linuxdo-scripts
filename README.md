@@ -10,7 +10,7 @@
 
 linux.do 增强插件，话题列表显示创建时间，显示楼层数，新标签页打开话题，强制 block（拉黑屏蔽）某人的话题，话题快捷回复（支持自定义），优化签名图显示防止图裂，在话题列表可直接预览详情及评论，功能设置面板导入导出，楼层抽奖，用户自定义标签，只看楼主，自动滚动阅读，支持自定义 css 样式等，中英文混排优化，等级信息查询，功能持续更新，欢迎提出新想法！
 
-[Github 仓库](https://github.com/dlzmoe/linuxdo-scripts) | ~~[greasyfork 安装地址](https://greasyfork.org/zh-CN/scripts/501827-linuxdo-%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6)~~ | [开发计划](https://github.com/users/dlzmoe/projects/2) | [bug 反馈](https://github.com/dlzmoe/linuxdo-scripts/issues) | [问题讨论区](https://github.com/dlzmoe/linuxdo-scripts/discussions)
+[Github 仓库](https://github.com/dlzmoe/linuxdo-scripts) | [开发计划](https://github.com/users/dlzmoe/projects/2) | [bug 反馈](https://github.com/dlzmoe/linuxdo-scripts/issues) | [问题讨论区](https://github.com/dlzmoe/linuxdo-scripts/discussions)
 
 **greasyfork 市场停更说明：** 由于 greasyfork 官方限制无法上架。所以该脚本在 [greasyfork 市场](https://greasyfork.org/zh-CN/scripts/501827-linuxdo-%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6/) 版本停留在 0.0.27（旧版本）。
 
@@ -19,6 +19,7 @@ linux.do 增强插件，话题列表显示创建时间，显示楼层数，新�
 开发环境为 windows / chrome / 暴力猴，使用其他油猴管理器如果报错或者不生效，可以尝试使用暴力猴（我目前正在使用的，兼容性比较好）。
 
 目前已知不兼容的有：篡改猴测试版、脚本猫，暂时没计划兼容这两个管理器，如果有想法开发，欢迎提交代码 ~
+
 
 ## 功能特性
 
@@ -46,6 +47,7 @@ linux.do 增强插件，话题列表显示创建时间，显示楼层数，新�
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | ![image](https://github.com/user-attachments/assets/05b6510e-0e61-4977-a958-cd8459aaff84) | ![image](https://github.com/user-attachments/assets/4e22e692-85a1-424a-96cc-f39c24b94516) |
 | ![image](https://github.com/user-attachments/assets/b9c8626d-03af-4a55-8a92-1f1ebd9a02bf) |                                                                                           |
+
 
 ## 使用方法
 
@@ -85,6 +87,7 @@ https://linuxo-scripts.netlify.app/app.bundle.js
 https://fastly.jsdelivr.net/gh/dlzmoe/linuxdo-scripts@main/dist/app.bundle.js
 ```
 
+
 ## 开发说明
 
 ```
@@ -107,9 +110,11 @@ npm run build # 打包构建
 
 > 关于自动构建 Release 包，需要修改 `package.json` 中的 `version` 版本号，并且在 `version-log.md` 中写入更新日志。
 
+
 ## 更新日志
 
 [version-log.md](./version-log.md)
+
 
 ## Star History
 
@@ -119,6 +124,7 @@ npm run build # 打包构建
 ## 免责声明
 
 本脚本中提供的所有功能均仅在浏览器中运行，所使用的源代码公开透明可见，且本脚本仅学习研究使用，不使用任何盈利方案或参与任何盈利组织，因使用本脚本引起的或与本脚本有关的任何争议，各方应友好协商解决，本脚本对使用本脚本所提供的软件时可能对用户自己或他人造成的任何形式的损失和伤害不承担任何责任。如用户下载、安装和使用本产品中所提供的软件，即表明用户信任本作者及其相关协议和免责声明。
+
 
 ## License
 

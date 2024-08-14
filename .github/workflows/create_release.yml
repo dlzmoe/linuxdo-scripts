@@ -45,13 +45,13 @@ jobs:
       if: env.create_release == 'true'
       run: |
         CURRENT_DATE=$(TZ='Asia/Shanghai' date +'%Y-%m-%d  %H:%M')
-        sed -i "s/\$PACKAGE_VERSION/$PACKAGE_VERSION/g" changelog.md
-        sed -i "s/\$CURRENT_DATE/$CURRENT_DATE/g" changelog.md
+        sed -i "s/\$PACKAGE_VERSION/$PACKAGE_VERSION/g" CHANGELOG.md
+        sed -i "s/\$CURRENT_DATE/$CURRENT_DATE/g" CHANGELOG.md
         gh release create "$PACKAGE_VERSION" linuxdo-scripts.js \
         -t "$PACKAGE_VERSION" \
         -n "New release created with version $PACKAGE_VERSION.
         
-        $(cat changelog.md)
+        $(cat CHANGELOG.md)
         
         [查看更新日志](https://github.com/dlzmoe/linuxdo-scripts/blob/main/version-log.md)，使用版本 $PACKAGE_VERSION 创建的新版本，此版本包含更新的 `linuxdo-scripts.js` 文件。
         

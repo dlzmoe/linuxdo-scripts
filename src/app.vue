@@ -58,14 +58,16 @@
           <MenuFilterText :sort="14" v-model="settingData.checked14" />
           <!-- 只看自己签名 -->
           <MenuLookmeSign :sort="15" v-model="settingData.checked15" />
+          <!-- 开启左侧快速访问 -->
+          <MenuQuickAccess :sort="16" v-model="settingData.checked16" />
           <!-- 自定义论坛 logo -->
-          <MenuLogoUrl :sort="16" v-model="settingData.logourl" />
+          <MenuLogoUrl :sort="17" v-model="settingData.logourl" />
           <!-- 自定义快捷回复 -->
-          <MenuCreatereply :sort="17" v-model="settingData.QuickReply" />
+          <MenuCreatereply :sort="18" v-model="settingData.QuickReply" />
           <!-- 屏蔽指定用户 -->
-          <MenuBlockuserlist :sort="18" v-model="settingData.blockList" />
+          <MenuBlockuserlist :sort="19" v-model="settingData.blockList" />
           <!-- 自定义 CSS -->
-          <MenuOtherCss :sort="19" v-model="settingData.othercss" />
+          <MenuOtherCss :sort="20" v-model="settingData.othercss" />
           <!-- 检测更新 -->
           <Updates />
         </div>
@@ -148,6 +150,7 @@ import MenuShowUnread from "./components/MenuShowUnread.vue";
 import MenuFilterText from "./components/MenuFilterText.vue";
 import MenuLookmeSign from "./components/MenuLookmeSign.vue";
 import ShareImages from "./components/ShareImages.vue";
+import MenuQuickAccess from "./components/MenuQuickAccess.vue";
 
 export default {
   components: {
@@ -179,6 +182,7 @@ export default {
     MenuFilterText,
     MenuLookmeSign,
     ShareImages,
+    MenuQuickAccess,
   },
   data() {
     return {

@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         linuxdo 增强插件
+// @name         linuxdo 增强插件本地开发
 // @namespace    https://github.com/dlzmoe/linuxdo-scripts
 // @version      0.0.0
 // @description  linux.do 增强插件，功能持续更新，欢迎提出新想法！

@@ -13,6 +13,7 @@
       <div class="close" @click="closedialog">+</div>
       <ul class="menu-nav">
         <li class="act">基础设置</li>
+        <li>自定义文字</li>
         <li>用户标签</li>
       </ul>
       <div class="menu-body">
@@ -27,6 +28,7 @@
               >，会清除全部所有的设置数据，慎重使用！
             </p>
           </div>
+
           <!-- 新标签页打开 -->
           <MenuOpenpostblank :sort="1" v-model="settingData.checked1" />
           <!-- 新话题提醒 -->
@@ -60,18 +62,21 @@
           <MenuLookmeSign :sort="15" v-model="settingData.checked15" />
           <!-- 开启左侧快速访问 -->
           <MenuQuickAccess :sort="16" v-model="settingData.checked16" />
-          <!-- 自定义论坛 logo -->
-          <MenuLogoUrl :sort="17" v-model="settingData.logourl" />
-          <!-- 自定义快捷回复 -->
-          <MenuCreatereply :sort="18" v-model="settingData.QuickReply" />
-          <!-- 屏蔽指定用户 -->
-          <MenuBlockuserlist :sort="19" v-model="settingData.blockList" />
-          <!-- 自定义 CSS -->
-          <MenuOtherCss :sort="20" v-model="settingData.othercss" />
+          <!-- 切换论坛表情风格 -->
+          <MenureplaceEmojiStyle :sort="17" v-model="settingData.checked17" />
           <!-- 检测更新 -->
           <Updates />
         </div>
-
+        <div class="menu-body-item">
+          <!-- 自定义论坛 logo -->
+          <MenuLogoUrl :sort="1" v-model="settingData.logourl" />
+          <!-- 自定义快捷回复 -->
+          <MenuCreatereply :sort="2" v-model="settingData.QuickReply" />
+          <!-- 屏蔽指定用户 -->
+          <MenuBlockuserlist :sort="3" v-model="settingData.blockList" />
+          <!-- 自定义 CSS -->
+          <MenuOtherCss :sort="4" v-model="settingData.othercss" />
+        </div>
         <div class="menu-body-item">
           <UserTags />
         </div>
@@ -151,6 +156,7 @@ import MenuFilterText from "./components/MenuFilterText.vue";
 import MenuLookmeSign from "./components/MenuLookmeSign.vue";
 import ShareImages from "./components/ShareImages.vue";
 import MenuQuickAccess from "./components/MenuQuickAccess.vue";
+import MenureplaceEmojiStyle from "./components/MenureplaceEmojiStyle.vue";
 
 export default {
   components: {
@@ -183,6 +189,7 @@ export default {
     MenuLookmeSign,
     ShareImages,
     MenuQuickAccess,
+    MenureplaceEmojiStyle,
   },
   data() {
     return {
@@ -210,7 +217,7 @@ export default {
           value2: "10",
         },
         checked9: false,
-        QuickReply: "前排围观\n感谢分享\n有点厉害",
+        QuickReply: "前排围观支持一下\n感谢分享大佬厉害啊\n有点厉害支持~~",
         blockList: "",
         checked10: false,
         othercss: "",
@@ -221,6 +228,12 @@ export default {
         checked14: false,
         checked15: false,
         checked16: false,
+        checked17: {
+          value1: false,
+          value2: "twitter",
+        },
+        checked18: false,
+        checked19: false,
       },
 
       showautoread: false,
@@ -397,10 +410,10 @@ export default {
             $(".menu-body-item").removeClass("act");
             $(".menu-body-item").eq(num).addClass("act");
 
-            if (num == 1) {
-              $(".menu-footer").hide();
+            if (num == 2) {
+              $(".menu-footer").addClass("hides");
             } else {
-              $(".menu-footer").show();
+              $(".menu-footer").removeClass("hides");
             }
           });
         });

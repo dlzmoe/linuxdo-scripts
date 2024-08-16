@@ -6,7 +6,7 @@
       <textarea
         v-model="textarea"
         @input="handleChange"
-        placeholder="前排围观\n感谢分享\n有点厉害"
+        placeholder="前排围观支持一下\n感谢分享大佬厉害啊\n有点厉害支持~~"
       ></textarea>
     </template>
   </div>

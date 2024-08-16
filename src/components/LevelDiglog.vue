@@ -168,12 +168,15 @@ export default {
     },
   },
   created() {
-    const src = $(".d-header-icons .icon img.avatar").attr("src");
-    const match = src.match(/\/user_avatar\/linux\.do\/([^\/]+)/);
-
-    if (match && match[1]) {
-      this.username = match[1];
-    }
+    setInterval(() => {
+      if (!this.username) {
+        const src = $("#toggle-current-user img.avatar").attr("src");
+        const match = src.match(/\/user_avatar\/linux\.do\/([^\/]+)/);
+        if (match && match[1]) {
+          this.username = match[1];
+        }
+      }
+    }, 1000);
   },
 };
 </script>

@@ -360,13 +360,22 @@ export default {
         $("#menu_suspendedball").show();
       });
 
+      const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (isDarkMode) {
+        $("body").addClass("dark-theme");
+      } else {
+        $("body").removeClass("dark-theme");
+      }
+
       const discourse_color_scheme_override = localStorage.getItem(
         "discourse_color_scheme_override"
       );
       if (discourse_color_scheme_override) {
-        $("body").addClass("dark-theme");
-      } else {
-        $("body").removeClass("dark-theme");
+        if (discourse_color_scheme_override == "dark") {
+          $("body").addClass("dark-theme");
+        } else {
+          $("body").removeClass("dark-theme");
+        }
       }
 
       $(".signature-img").each(function () {

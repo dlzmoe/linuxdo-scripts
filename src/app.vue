@@ -2,10 +2,10 @@
   <div id="linuxdoscripts">
     <div class="linuxdoscripts-opacity"></div>
     <div class="setting-btn">
-      <LevelDiglog v-show="showlevelsearch" />
-      <!-- 查询等级功能 -->
-      <AutoRead v-show="showautoread" /><!-- 自动阅读按钮 -->
-      <LookOP v-show="showlookop" /><!-- 只看楼主 -->
+      <AIDialog v-show="showaidialog" /> <!-- 显示 AI 对话网站 -->
+      <LevelDiglog v-show="showlevelsearch" /> <!-- 查询等级功能 -->
+      <AutoRead v-show="showautoread" /> <!-- 自动阅读按钮 -->
+      <LookOP v-show="showlookop" /> <!-- 只看楼主 -->
     </div>
 
     <dialog open id="menu_suspendedball">
@@ -64,6 +64,8 @@
           <MenuQuickAccess :sort="16" v-model="settingData.checked16" />
           <!-- 切换论坛表情风格 -->
           <MenureplaceEmojiStyle :sort="17" v-model="settingData.checked17" />
+          <!-- 显示 AI 对话网站 -->
+          <MenuShowAI :sort="18" v-model="settingData.checked18" />
           <!-- 检测更新 -->
           <Updates />
         </div>
@@ -160,6 +162,8 @@ import ShareImages from "./components/ShareImages.vue";
 import MenuQuickAccess from "./components/MenuQuickAccess.vue";
 import MenureplaceEmojiStyle from "./components/MenureplaceEmojiStyle.vue";
 import MenuTextTail from "./components/MenuTextTail.vue";
+import MenuShowAI from "./components/MenuShowAI.vue";
+import AIDialog from "./components/AIDialog.vue";
 
 export default {
   components: {
@@ -194,6 +198,8 @@ export default {
     MenuQuickAccess,
     MenureplaceEmojiStyle,
     MenuTextTail,
+    MenuShowAI,
+    AIDialog,
   },
   data() {
     return {
@@ -244,6 +250,7 @@ export default {
       showautoread: false,
       showlookop: false,
       showlevelsearch: false,
+      showaidialog: false,
     };
   },
   methods: {
@@ -463,6 +470,7 @@ export default {
       this.showautoread = this.settingData.checked8.value1;
       this.showlookop = this.settingData.checked9;
       this.showlevelsearch = this.settingData.checked12;
+      this.showaidialog = this.settingData.checked18;
     } else {
       localStorage.setItem("linxudoscriptssetting", JSON.stringify(this.settingData));
     }

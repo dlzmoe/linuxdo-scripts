@@ -19,13 +19,11 @@
       <div class="menu-body">
         <div class="menu-body-item act">
           <div class="menu-about">
-            <p class="hint">
+            <p>
               请注意，该设置面板数据全部保存在本地浏览器缓存中，注意备份。
             </p>
             <p class="hint">
-              如果感觉哪里不太对劲，点我
-              <span class="initialization" @click="initialization">初始化设置</span
-              >，会清除全部所有的设置数据，慎重使用！
+              如果感觉哪里不太对劲，点我<span class="initialization" @click="initialization">初始化设置</span>，会清除全部所有的设置数据并初始化，慎重使用！
             </p>
           </div>
 

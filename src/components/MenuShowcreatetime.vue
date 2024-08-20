@@ -91,23 +91,28 @@ export default {
 
             if (timeDiff < oneDay) {
               color = "#45B5AA";
+              $(element).find(".post-activity").append(`<span class="linuxtime" style="color:${color}">（${this.formattedDate(timestamp)}）</span>`);
             } else if (timeDiff < oneWeek) {
               color = "#66A586";
+              $(element).find(".post-activity").append(`<span class="linuxtime" style="color:${color}">（${this.formattedDate(timestamp)}）</span>`);
             } else if (timeDiff < oneMonth) {
               color = "#CFA94A";
+              $(element).find(".post-activity").append(`<span class="linuxtime" style="color:${color}">（${this.formattedDate(timestamp)}）</span>`);
             } else if (timeDiff < threeMonths) {
               color = "#3e8ed2";
+              $(element).find(".post-activity").append(`<span class="linuxtime" style="color:${color}">（${this.formattedDate(timestamp)}）</span>`);
             } else {
               color = "#cccccc";
-            }
-
-            $(element)
+              $(element)
               .find(".post-activity")
               .append(
                 `<span class="linuxtime" style="color:${color}">
-                  （${this.formattedDate(timestamp)}）
+                  （<img style="width:20px;vertical-align:sub;" src="https://linux.do/uploads/default/original/3X/b/d/bdf4a2ff2b3639c4f74462f2da8383f9c5cdb25e.png">${this.formattedDate(timestamp)}）
                 </span>`
               );
+            }
+
+            // $(element).find(".post-activity").append(`<span class="linuxtime" style="color:${color}">（${this.formattedDate(timestamp)}）</span>`);
           }
         }
       });

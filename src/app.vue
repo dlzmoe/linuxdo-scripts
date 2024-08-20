@@ -77,7 +77,7 @@
           <!-- 自定义 CSS -->
           <MenuOtherCss :sort="4" v-model="settingData.othercss" />
           <!-- 添加回复文字小尾巴 -->
-          <MenuTextTail :sort="4" v-model="settingData.TextTail" />
+          <MenuTextTail :sort="5" v-model="settingData.TextTail" />
         </div>
         <div class="menu-body-item">
           <UserTags />

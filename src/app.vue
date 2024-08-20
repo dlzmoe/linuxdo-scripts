@@ -76,6 +76,8 @@
           <MenuBlockuserlist :sort="3" v-model="settingData.blockList" />
           <!-- 自定义 CSS -->
           <MenuOtherCss :sort="4" v-model="settingData.othercss" />
+          <!-- 添加回复文字小尾巴 -->
+          <MenuTextTail :sort="4" v-model="settingData.TextTail" />
         </div>
         <div class="menu-body-item">
           <UserTags />
@@ -157,6 +159,7 @@ import MenuLookmeSign from "./components/MenuLookmeSign.vue";
 import ShareImages from "./components/ShareImages.vue";
 import MenuQuickAccess from "./components/MenuQuickAccess.vue";
 import MenureplaceEmojiStyle from "./components/MenureplaceEmojiStyle.vue";
+import MenuTextTail from "./components/MenuTextTail.vue";
 
 export default {
   components: {
@@ -190,6 +193,7 @@ export default {
     ShareImages,
     MenuQuickAccess,
     MenureplaceEmojiStyle,
+    MenuTextTail,
   },
   data() {
     return {
@@ -232,6 +236,7 @@ export default {
           value1: false,
           value2: "twitter",
         },
+        TextTail: "",
         checked18: false,
         checked19: false,
       },

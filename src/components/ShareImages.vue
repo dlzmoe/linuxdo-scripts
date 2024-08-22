@@ -36,7 +36,6 @@ export default {
             .then((response) => response.json())
             .then((data) => {
               previewData = data;
-              console.log(previewData);
 
               // 定义一个转化的时间的方法
               function formatDate(isoString) {

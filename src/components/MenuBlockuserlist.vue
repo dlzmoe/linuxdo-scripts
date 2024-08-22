@@ -40,7 +40,6 @@ export default {
     },
     init() {
       this.list = this.textarea.split(",") || [];
-      console.log(this.list);
       var self = this; // 保存外部上下文
       $(".topic-list .topic-list-data.posters>a:nth-child(1)")
         .filter((index, element) => {

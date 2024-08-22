@@ -66,6 +66,8 @@
           <MenureplaceEmojiStyle :sort="17" v-model="settingData.checked17" />
           <!-- 显示 AI 对话网站 -->
           <MenuShowAI :sort="18" v-model="settingData.checked18" />
+          <!-- 编辑器切换 ja 字体 -->
+          <MenuEditorJa :sort="19" v-model="settingData.checked19" />
           <!-- 检测更新 -->
           <Updates />
         </div>
@@ -161,6 +163,7 @@ import MenuQuickAccess from "./components/MenuQuickAccess.vue";
 import MenureplaceEmojiStyle from "./components/MenureplaceEmojiStyle.vue";
 import MenuShowAI from "./components/MenuShowAI.vue";
 import AIDialog from "./components/AIDialog.vue";
+import MenuEditorJa from "./components/MenuEditorJa.vue";
 
 export default {
   components: {
@@ -196,6 +199,7 @@ export default {
     MenureplaceEmojiStyle,
     MenuShowAI,
     AIDialog,
+    MenuEditorJa,
   },
   data() {
     return {
@@ -256,7 +260,6 @@ export default {
     },
     // 保存设置
     save() {
-      console.log(this.settingData);
       localStorage.setItem("linxudoscriptssetting", JSON.stringify(this.settingData));
 
       this.$message.success("保存成功！");
@@ -291,7 +294,6 @@ export default {
     importData(data) {
       // 处理导入的数据
       this.$message.success("导入成功！");
-      console.log(data);
       this.settingData = data;
     },
     // 导出数据

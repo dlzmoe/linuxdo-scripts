@@ -62,7 +62,6 @@ export default {
           $(".topicpreview").show();
           let previewData = {};
           let previewurl = $(this).attr("data-id");
-          console.log(previewurl);
 
           fetch(`https://linux.do/t/${previewurl}.json`)
             .then((response) => response.json())

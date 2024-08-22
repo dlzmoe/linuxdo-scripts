@@ -45,7 +45,9 @@ export default {
           $(".replyja").click(function () {
             let $textarea = $(".d-editor-textarea-wrapper textarea");
             let text = `<span lang="ja">
+
 ${$(".d-editor-input").val()}
+
 </span>`;
 
             $(".d-editor-textarea-wrapper textarea").val("");

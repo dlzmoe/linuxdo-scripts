@@ -1,2 +1,2 @@
-将安装文件改为 `user.js` 将会自动触发油猴脚本安装程序。   
-https://github.com/dlzmoe/linuxdo-scripts/issues/9
+- 测试脚本自动更新流程是否完整。
+- 更新使用文档。

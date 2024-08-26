@@ -10,7 +10,7 @@
 
 linux.do 增强插件，话题列表显示创建时间，显示楼层数，新标签页打开话题，强制 block（拉黑屏蔽）某人的话题，话题快捷回复（支持自定义），优化签名图显示防止图裂，在话题列表可直接预览详情及评论，功能设置面板导入导出，楼层抽奖，用户自定义标签，只看楼主，自动滚动阅读，支持自定义 css 样式等，中英文混排优化，等级信息查询，功能持续更新，欢迎提出新想法！
 
-[Github 仓库](https://github.com/dlzmoe/linuxdo-scripts) | [开发计划](https://github.com/users/dlzmoe/projects/2) | [bug 反馈](https://github.com/dlzmoe/linuxdo-scripts/issues) | [问题讨论区](https://github.com/dlzmoe/linuxdo-scripts/discussions)
+[Github 仓库](https://github.com/dlzmoe/linuxdo-scripts) | [开发计划](https://github.com/users/dlzmoe/projects/2) | [bug 反馈](https://github.com/dlzmoe/linuxdo-scripts/issues) | [问题讨论区](https://github.com/dlzmoe/linuxdo-scripts/discussions) | [使用方法](https://github.com/dlzmoe/linuxdo-scripts?tab=readme-ov-file#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95)
 
 **greasyfork 市场停更说明：** 由于 greasyfork 官方限制无法上架。所以该脚本在 [greasyfork 市场](https://greasyfork.org/zh-CN/scripts/501827-linuxdo-%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6/) 版本停留在 0.0.27（旧版本）。
 
@@ -51,11 +51,12 @@ linux.do 增强插件，话题列表显示创建时间，显示楼层数，新�
 
 ## 使用方法
 
-1. 前往 [Releases](https://github.com/dlzmoe/linuxdo-scripts/releases) 下载最新稳定版本 js，拖拽到油猴管理器中。
-2. 拉取代码自行打包。
+以下两种方式推荐第一种。
 
+1. 点击此链接将会自动触发油猴脚本安装程序，后续也可以触发更新。  
+   https://raw.githubusercontent.com/dlzmoe/linuxdo-scripts/main/linuxdo-scripts.user.js
 
-**推荐使用：** 还有个最简单的方式，直接用下面这个脚本，会自动引入我的最新版本 js。
+2. 使用第三方 js 代码，会自动引入我的最新版本 js，不会触发更新，因为文件代码始终是最新的。
 
 ```js
 // ==UserScript==

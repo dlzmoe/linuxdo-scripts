@@ -47,7 +47,7 @@ jobs:
         CURRENT_DATE=$(TZ='Asia/Shanghai' date +'%Y-%m-%d  %H:%M')
         sed -i "s/\$PACKAGE_VERSION/$PACKAGE_VERSION/g" CHANGELOG.md
         sed -i "s/\$CURRENT_DATE/$CURRENT_DATE/g" CHANGELOG.md
-        gh release create "$PACKAGE_VERSION" linuxdo-scripts.js \
+        gh release create "$PACKAGE_VERSION" linuxdo-scripts.user.js \
         -t "$PACKAGE_VERSION" \
         -n "New release created with version $PACKAGE_VERSION.
         
@@ -55,6 +55,8 @@ jobs:
         
         [查看更新日志](https://github.com/dlzmoe/linuxdo-scripts/blob/main/version-log.md)，使用版本 $PACKAGE_VERSION 创建的新版本，此版本包含更新的 `linuxdo-scripts.js` 文件。
         
+        [点击此链接将会自动请求安装更新](https://raw.githubusercontent.com/dlzmoe/linuxdo-scripts/main/linuxdo-scripts.user.js)
+
         发布于：$CURRENT_DATE"
       env:
         GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}

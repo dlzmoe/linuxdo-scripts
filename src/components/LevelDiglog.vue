@@ -63,7 +63,7 @@ export default {
   methods: {
     async fetchAboutData() {
       try {
-        const response = await fetch("https://linux.do/about.json", {
+        const response = await fetch("/about.json", {
           headers: {
             Accept: "application/json",
             "User-Agent": "Mozilla/5.0",
@@ -80,7 +80,7 @@ export default {
     },
     async fetchUserData(username) {
       try {
-        const response = await fetch(`https://linux.do/u/${username}/summary.json`, {
+        const response = await fetch(`/u/${username}/summary.json`, {
           headers: {
             Accept: "application/json",
             "User-Agent": "Mozilla/5.0",

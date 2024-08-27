@@ -50,7 +50,7 @@ export default {
           <ul class="sidebar-section-content">
 
             <li class="sidebar-section-link-wrapper">
-              <a href="https://linux.do/bookmarks" class="sidebar-section-link sidebar-row">
+              <a href="/bookmarks" class="sidebar-section-link sidebar-row">
                 <span class="sidebar-section-link-prefix icon">
                   <svg class="fa d-icon d-icon-bookmark svg-icon svg-string" xmlns="http://www.w3.org/2000/svg"><use href="#bookmark"></use></svg>
                 </span>

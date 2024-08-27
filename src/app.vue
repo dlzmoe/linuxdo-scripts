@@ -125,8 +125,6 @@
     <UsageTip />
     <!-- 回复弹窗显示贴吧表情 -->
     <ReplyTBEnjoy />
-    <!-- 帖子生成分享图 -->
-    <!-- <ShareImages /> -->
   </div>
 </template>
 
@@ -158,7 +156,6 @@ import MenuLevelSearch from "./components/MenuLevelSearch.vue";
 import MenuShowUnread from "./components/MenuShowUnread.vue";
 import MenuFilterText from "./components/MenuFilterText.vue";
 import MenuLookmeSign from "./components/MenuLookmeSign.vue";
-import ShareImages from "./components/ShareImages.vue";
 import MenuQuickAccess from "./components/MenuQuickAccess.vue";
 import MenureplaceEmojiStyle from "./components/MenureplaceEmojiStyle.vue";
 import MenuShowAI from "./components/MenuShowAI.vue";
@@ -194,7 +191,6 @@ export default {
     MenuShowUnread,
     MenuFilterText,
     MenuLookmeSign,
-    ShareImages,
     MenuQuickAccess,
     MenureplaceEmojiStyle,
     MenuShowAI,

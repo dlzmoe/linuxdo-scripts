@@ -63,7 +63,7 @@ export default {
           let previewData = {};
           let previewurl = $(this).attr("data-id");
 
-          fetch(`https://linux.do/t/${previewurl}.json`)
+          fetch(`/t/${previewurl}.json`)
             .then((response) => response.json())
             .then((data) => {
               previewData = data;

@@ -2,9 +2,8 @@
   <div class="item">
     <div class="tit">
       当前版本：{{ version }}
-      <el-link href="https://github.com/dlzmoe/linuxdo-scripts" target="_blank">
-        Github 源码
-      </el-link>
+      <a href="https://github.com/dlzmoe/linuxdo-scripts" target="_blank">Github源码</a>
+      <a href="https://linuxdo-scripts-docs.netlify.app/" target="_blank">使用文档</a>
     </div>
   </div>
 </template>

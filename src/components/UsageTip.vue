@@ -2,7 +2,7 @@
   <dialog open class="UsageTip">
     <div class="title">友情提示</div>
     <br />
-    <div>佬友你好，你已经成功安装 linuxdo 增强插件啦！</div>
+    <div>佬友你好，你已经成功安装 linuxdo 增强插件啦！<a href="https://linuxdo-scripts-docs.netlify.app/" target="_blank">使用文档</a></div>
     <div style="text-decoration: underline">
       设置按钮在左下角切换主题的旁边哦~ 有个小齿轮，点击它开始配置功能！！
     </div>

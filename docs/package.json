@@ -1,0 +1,23 @@
+{
+  "main": "index.js",
+  "scripts": {
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "serve": "vitepress serve docs"
+  },
+  "devDependencies": {
+    "sass": "^1.69.0",
+    "vitepress": "^1.0.0-alpha.65",
+    "vitepress-plugin-search": "^1.0.4-alpha.20",
+    "vitepress-sidebar": "^1.25.0"
+  },
+  "dependencies": {
+    "markdown-it-task-checkbox": "^1.0.6",
+    "medium-zoom": "^1.0.8",
+    "vite-plugin-vitepress-auto-sidebar": "^1.7.0",
+    "vitepress-plugin-codeblocks-fold": "^1.2.27",
+    "vitepress-plugin-comment-with-giscus": "^1.1.8",
+    "vitepress-plugin-rss": "^0.2.4",
+    "yarn": "^1.22.21"
+  }
+}

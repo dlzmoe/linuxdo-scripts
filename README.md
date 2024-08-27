@@ -12,7 +12,7 @@ linux.do 增强插件，话题列表显示创建时间，显示楼层数，新�
 
 [Github 仓库](https://github.com/dlzmoe/linuxdo-scripts) | [开发计划](https://github.com/users/dlzmoe/projects/2) | [bug 反馈](https://github.com/dlzmoe/linuxdo-scripts/issues) | [问题讨论区](https://github.com/dlzmoe/linuxdo-scripts/discussions) | [使用方法](https://github.com/dlzmoe/linuxdo-scripts?tab=readme-ov-file#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95)
 
-**greasyfork 市场停更说明：** 由于 greasyfork 官方限制无法上架。所以该脚本在 [greasyfork 市场](https://greasyfork.org/zh-CN/scripts/501827-linuxdo-%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6/) 版本停留在 0.0.27（旧版本）。
+> [快速安装脚本](https://raw.githubusercontent.com/dlzmoe/linuxdo-scripts/main/linuxdo-scripts.user.js)
 
 ---
 

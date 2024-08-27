@@ -48,6 +48,14 @@ export default {
         })
         .parents("tr.topic-list-item")
         .remove();
+
+      $(".topic-post .full-name a")
+        .filter((index, element) => {
+          var user = $(element).attr("data-user-card");
+          return self.list.indexOf(user) !== -1;
+        })
+        .parents(".topic-post")
+        .remove();
     },
   },
   created() {

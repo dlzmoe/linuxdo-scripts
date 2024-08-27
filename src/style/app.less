@@ -175,6 +175,20 @@
     overflow-y: auto;
     padding-right: 10px;
 
+    &::-webkit-scrollbar {
+      height: 8px;
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-corner {
+      background: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #DEE0E1;
+      border-radius: 8px;
+    }
+
     .menu-body-item {
       display: none;
 

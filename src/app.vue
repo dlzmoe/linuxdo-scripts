@@ -68,6 +68,8 @@
           <MenuShowAI :sort="18" v-model="settingData.checked18" />
           <!-- 编辑器切换 ja 字体 -->
           <MenuEditorJa :sort="19" v-model="settingData.checked19" />
+          <!-- 首页新增按创建时间排序 -->
+          <!-- <MenuCreatedOrder :sort="20" v-model="settingData.checked20" /> -->
           <!-- 检测更新 -->
           <Updates />
         </div>
@@ -161,6 +163,7 @@ import MenureplaceEmojiStyle from "./components/MenureplaceEmojiStyle.vue";
 import MenuShowAI from "./components/MenuShowAI.vue";
 import AIDialog from "./components/AIDialog.vue";
 import MenuEditorJa from "./components/MenuEditorJa.vue";
+import MenuCreatedOrder from "./components/MenuCreatedOrder.vue";
 
 export default {
   components: {
@@ -196,6 +199,7 @@ export default {
     MenuShowAI,
     AIDialog,
     MenuEditorJa,
+    MenuCreatedOrder,
   },
   data() {
     return {
@@ -240,6 +244,7 @@ export default {
         },
         checked18: false,
         checked19: false,
+        checked20: false,
       },
 
       showautoread: false,

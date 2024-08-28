@@ -100,7 +100,9 @@ export default {
         $(".gpt-summary-wrap").remove();
         this.getPostContent();
       });
+
       let topicUrl = this.getTopicUrl(window.location.href);
+
       return new Promise((resolve, reject) => {
         GM_xmlhttpRequest({
           method: "GET",
@@ -117,11 +119,9 @@ export default {
               try {
                 const data = JSON.parse(response.responseText);
                 const str = data.post_stream.posts[0].cooked;
-
                 const prompt = `${config.prompt}
 帖子内容如下：
 ${str}`;
-
                 const gptResponse = await fetch(`${config.baseurl}/v1/chat/completions`, {
                   method: "POST",
                   headers: {
@@ -143,6 +143,25 @@ ${str}`;
                 const gptData = await gptResponse.json();
                 $(".gpt-summary").html(`AI 总结：${gptData.choices[0].message.content}`);
                 $(".airegenerate").show();
+
+                let summaryCache =
+                  JSON.parse(localStorage.getItem("summaryCacheData")) || [];
+                const regex = /^(https:\/\/linux\.do\/t\/topic\/\d+)(\/\d+)?$/;
+                const match = window.location.href.match(regex)[0];
+                let existingObject = summaryCache.find((item) => item.name == match);
+                
+                let newObject = {
+                  name: topicUrl,
+                  value: gptData.choices[0].message.content,
+                };
+                if (existingObject) {
+                  // 旧数据覆盖
+                  existingObject.value = newObject.value;
+                } else {
+                  summaryCache.push(newObject);
+                }
+                // 将帖子总结的数据缓存
+                localStorage.setItem("summaryCacheData", JSON.stringify(summaryCache));
               } catch (error) {
                 $(".gpt-summary").html(`生成失败，请检查配置是否正确并刷新重试！`);
                 $(".airegenerate").show();
@@ -165,6 +184,29 @@ ${str}`;
       this.setCreatedBtn();
       setInterval(() => {
         if ($(".post-stream").length > 0) {
+          // 从 localStorage 获取缓存数据
+          if ($(".gpt-summary-wrap").length < 1) {
+            let summaryCache = JSON.parse(localStorage.getItem("summaryCacheData")) || [];
+            const regex = /^(https:\/\/linux\.do\/t\/topic\/\d+)(\/\d+)?$/;
+            const match = window.location.href.match(regex)[0];
+
+            let existingObject = summaryCache.find((item) => item.name === match);
+
+            if (existingObject) {
+              $(".post-stream").before(
+                `<div class="gpt-summary-wrap">
+<div class="gpt-summary">AI 总结：${existingObject.value}</div>
+<button type="button" class="airegenerate" style="display:none">重新生成</button>
+</div>`
+              );
+
+              $(".airegenerate").click(() => {
+                $(".gpt-summary-wrap").remove();
+                this.getPostContent();
+              });
+            }
+          }
+
           if (!this.localChecked.btn) {
             if ($(".gpt-summary-wrap").length < 1) {
               this.getPostContent();

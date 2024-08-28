@@ -177,7 +177,7 @@ ${str}`;
       }, 1000);
     }
     if (this.localChecked.value2) {
-      $("body").append(".airegenerate{display:none!important;}");
+      $("body").append("<style>.airegenerate{display:none!important;}</style>");
     }
   },
 };

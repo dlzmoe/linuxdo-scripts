@@ -113,25 +113,6 @@ ${str}`;
   },
   created() {
     if (this.localChecked.value1) {
-      let previousTitle = document.title;
-      // 创建一个 MutationObserver 实例
-      const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-          if (mutation.type === "childList") {
-            const newTitle = document.title;
-
-            // 判断标题是否发生变化
-            if (newTitle !== previousTitle) {
-              $(".gpt-summary").remove();
-            }
-          }
-        });
-      });
-      // 配置观察选项
-      const config = { childList: true };
-      const titleElement = document.querySelector("title");
-      // 启动观察
-      observer.observe(titleElement, config);
       setInterval(() => {
         if ($(".post-stream").length > 0) {
           if ($(".gpt-summary").length < 1) {

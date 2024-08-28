@@ -50,7 +50,7 @@ export default {
     },
     // 获取帖子内容
     async getPostContent() {
-      $(".post-stream").before('<div class="gpt-summary"></div>');
+      $(".post-stream").before('<div class="gpt-summary">AI 总结：正在使用 AI 总结内容中，请稍后...</div>');
       let topicUrl = this.getTopicUrl(window.location.href);
       return new Promise((resolve, reject) => {
         GM_xmlhttpRequest({

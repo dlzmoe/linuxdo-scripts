@@ -13,6 +13,7 @@
       placeholder="https://api.openai.com"
     ></el-input>
     <el-input v-model="localChecked.model" placeholder="模型，如：gpt-4o-mini"></el-input>
+    <p>注意：baseurl 不带后缀和 '/'</p>
   </div>
 </template>
 

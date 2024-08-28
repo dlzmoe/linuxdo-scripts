@@ -50,7 +50,7 @@ export default {
     },
     // 获取帖子内容
     async getPostContent() {
-      $(".post-stream").before('<div class="gpt-summary">AI 总结：正在使用 AI 总结内容中，请稍后...</div>');
+      $(".post-stream").before('<p class="gpt-summary">AI 总结：正在使用 AI 总结内容中，请稍后...</p>');
       let topicUrl = this.getTopicUrl(window.location.href);
       return new Promise((resolve, reject) => {
         GM_xmlhttpRequest({
@@ -95,7 +95,6 @@ export default {
                 });
 
                 const gptData = await gptResponse.json();
-                console.log(gptData.choices[0].message.content);
                 $(".gpt-summary").html(`AI 总结：${gptData.choices[0].message.content}`);
               } catch (error) {
                 $(".gpt-summary").html(`生成失败，请检查配置是否正确并刷新重试！`);
@@ -110,11 +109,6 @@ export default {
           },
         });
       });
-    },
-
-    // 使用 GPT 总结帖子
-    classifyPost(postContent) {
-      console.log(postContent);
     },
   },
   created() {

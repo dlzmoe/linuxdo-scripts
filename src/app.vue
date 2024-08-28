@@ -15,6 +15,7 @@
         <li class="act">基础设置</li>
         <li>自定义文字</li>
         <li>用户标签</li>
+        <li>gpt 配置</li>
       </ul>
       <div class="menu-body">
         <div class="menu-body-item act">
@@ -69,7 +70,8 @@
           <!-- 编辑器切换 ja 字体 -->
           <MenuEditorJa :sort="19" v-model="settingData.checked19" />
           <!-- 首页新增按创建时间排序 -->
-          <!-- <MenuCreatedOrder :sort="20" v-model="settingData.checked20" /> -->
+          <!-- <MenuCreatedOrder :sort="21" v-model="settingData.checked21" /> -->
+
           <!-- 检测更新 -->
           <Updates />
         </div>
@@ -85,6 +87,9 @@
         </div>
         <div class="menu-body-item">
           <UserTags />
+        </div>
+        <div class="menu-body-item">
+          <GPTconfig v-model="settingData.gptdata" />
         </div>
       </div>
 
@@ -164,6 +169,7 @@ import MenuShowAI from "./components/MenuShowAI.vue";
 import AIDialog from "./components/AIDialog.vue";
 import MenuEditorJa from "./components/MenuEditorJa.vue";
 import MenuCreatedOrder from "./components/MenuCreatedOrder.vue";
+import GPTconfig from "./components/GPTconfig.vue";
 
 export default {
   components: {
@@ -200,6 +206,7 @@ export default {
     AIDialog,
     MenuEditorJa,
     MenuCreatedOrder,
+    GPTconfig,
   },
   data() {
     return {
@@ -245,6 +252,13 @@ export default {
         checked18: false,
         checked19: false,
         checked20: false,
+
+        gptdata: {
+          value1: false,
+          apikey: "",
+          baseurl: "https://api.openai.com",
+          model: "gpt-4o-mini",
+        }
       },
 
       showautoread: false,

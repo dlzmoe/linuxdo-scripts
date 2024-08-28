@@ -767,6 +767,7 @@ export default {};
   background-color: rgba(0, 0, 0, 0.8);
   padding: 10px;
   border-radius: 5px;
+  z-index: 9;
 
   img {
     cursor: pointer;

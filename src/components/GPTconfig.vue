@@ -51,7 +51,9 @@ export default {
     },
     // 获取帖子内容
     async getPostContent() {
-      $(".post-stream").before('<p class="gpt-summary">AI 总结：正在使用 AI 总结内容中，请稍后...</p>');
+      $(".post-stream").before(
+        '<p class="gpt-summary">AI 总结：正在使用 AI 总结内容中，请稍后...</p>'
+      );
       let topicUrl = this.getTopicUrl(window.location.href);
       return new Promise((resolve, reject) => {
         GM_xmlhttpRequest({
@@ -70,12 +72,9 @@ export default {
                 const data = JSON.parse(response.responseText);
                 const str = data.post_stream.posts[0].cooked;
 
-                const prompt = `
-  根据以下帖子内容进行总结，请使用 text 文本返回回答，字数限制 200 字以内，越精炼越好，语言要求返回简体中文，不管原文是什么语言。
-
-  帖子内容如下：
-  ${str}
-            `;
+                const prompt = `根据以下帖子内容进行总结，请使用 text 文本返回回答，字数限制 200 字以内，越精炼越好，语言要求返回简体中文，不管原文是什么语言，不要以 markdown 语法返回，请使用纯文本格式。
+帖子内容如下：
+${str}`;
 
                 const gptResponse = await fetch(`${config.baseurl}/v1/chat/completions`, {
                   method: "POST",
@@ -114,6 +113,25 @@ export default {
   },
   created() {
     if (this.localChecked.value1) {
+      let previousTitle = document.title;
+      // 创建一个 MutationObserver 实例
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.type === "childList") {
+            const newTitle = document.title;
+
+            // 判断标题是否发生变化
+            if (newTitle !== previousTitle) {
+              $(".gpt-summary").remove();
+            }
+          }
+        });
+      });
+      // 配置观察选项
+      const config = { childList: true };
+      const titleElement = document.querySelector("title");
+      // 启动观察
+      observer.observe(titleElement, config);
       setInterval(() => {
         if ($(".post-stream").length > 0) {
           if ($(".gpt-summary").length < 1) {

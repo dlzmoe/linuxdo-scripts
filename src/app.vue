@@ -2,10 +2,14 @@
   <div id="linuxdoscripts">
     <div class="linuxdoscripts-opacity"></div>
     <div class="setting-btn">
-      <AIDialog v-show="showaidialog" /> <!-- 显示 AI 对话网站 -->
-      <LevelDiglog v-show="showlevelsearch" /> <!-- 查询等级功能 -->
-      <AutoRead v-show="showautoread" /> <!-- 自动阅读按钮 -->
-      <LookOP v-show="showlookop" /> <!-- 只看楼主 -->
+      <AIDialog v-show="showaidialog" />
+      <!-- 显示 AI 对话网站 -->
+      <LevelDiglog v-show="showlevelsearch" />
+      <!-- 查询等级功能 -->
+      <AutoRead v-show="showautoread" />
+      <!-- 自动阅读按钮 -->
+      <LookOP v-show="showlookop" />
+      <!-- 只看楼主 -->
     </div>
 
     <dialog open id="menu_suspendedball">
@@ -107,7 +111,12 @@
         <button class="btn saveload" @click="saveload">保存并刷新</button>
         <button class="btn floorlottery" @click="openFloorlottery">楼层抽奖</button>
 
-        <a class="btn" style="background:#979797" href="https://raw.githubusercontent.com/dlzmoe/linuxdo-scripts/main/linuxdo-scripts.user.js">检测新版本</a>
+        <a
+          class="btn"
+          style="background: #979797"
+          href="https://raw.githubusercontent.com/dlzmoe/linuxdo-scripts/main/linuxdo-scripts.user.js"
+          >检测新版本</a
+        >
         <button class="btn import" @click="triggerFileInput">导入</button>
         <button class="btn export" @click="exportData">导出</button>
       </div>
@@ -256,11 +265,14 @@ export default {
 
         gptdata: {
           value1: false,
+          value2: false,
           btn: false,
           apikey: "",
           baseurl: "https://api.openai.com",
           model: "gpt-4o-mini",
-        }
+          prompt:
+            "根据以下帖子内容进行总结，请使用 text 文本返回回答，字数限制 200 字以内，越精炼越好，语言要求返回简体中文，并且进行中英文混排优化。",
+        },
       },
 
       showautoread: false,

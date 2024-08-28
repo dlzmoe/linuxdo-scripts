@@ -13,13 +13,24 @@
         <el-checkbox v-model="localChecked.btn" @change="handleChange"></el-checkbox>
       </template>
     </div>
+    <div class="item">
+      <div class="tit">是否关闭重新生成按钮</div>
+      <template>
+        <el-checkbox v-model="localChecked.value2" @change="handleChange"></el-checkbox>
+      </template>
+    </div>
     <el-input v-model="localChecked.apikey" placeholder="sk-xxxxxxxx"></el-input>
     <el-input
       v-model="localChecked.baseurl"
       placeholder="https://api.openai.com"
     ></el-input>
     <el-input v-model="localChecked.model" placeholder="模型，如：gpt-4o-mini"></el-input>
-    <p>注意：baseurl 不带后缀和 '/'</p>
+    <el-input
+      type="textarea"
+      v-model="localChecked.prompt"
+      placeholder="提示词 prompt"
+    ></el-input>
+    <div style="margin-top: 10px">注意：baseurl 不带后缀和 '/'</div>
   </div>
 </template>
 
@@ -30,10 +41,13 @@ export default {
       type: Object,
       default: {
         value1: false,
+        value2: false,
         btn: false,
         apikey: "",
         baseurl: "https://api.openai.com",
         model: "gpt-4o-mini",
+        prompt:
+          "根据以下帖子内容进行总结，请使用 text 文本返回回答，字数限制 200 字以内，越精炼越好，语言要求返回简体中文，并且进行中英文混排优化。",
       },
     },
   },
@@ -61,13 +75,13 @@ export default {
       if (this.localChecked.btn) {
         // 开启
         setInterval(() => {
-          if ($(".gpt-summary").length < 1 && $(".aicreated-btn").length < 1) {
+          if ($(".gpt-summary-wrap").length < 1 && $(".aicreated-btn").length < 1) {
             $("#topic-title").after(
               `<button class="aicreated-btn" type="button">AI 总结</button>`
             );
             $(".aicreated-btn").click(() => {
               $(".aicreated-btn").remove();
-              $(".gpt-summary").remove();
+              $(".gpt-summary-wrap").remove();
               this.getPostContent();
             });
           }
@@ -77,8 +91,15 @@ export default {
     // 获取帖子内容
     async getPostContent() {
       $(".post-stream").before(
-        '<div class="gpt-summary">AI 总结：正在使用 AI 总结内容中，请稍后...</div>'
+        `<div class="gpt-summary-wrap">
+         <div class="gpt-summary">AI 总结：正在使用 AI 总结内容中，请稍后...</div>
+         <button type="button" class="airegenerate" style="display:none">重新生成</button>
+          </div>`
       );
+      $(".airegenerate").click(() => {
+        $(".gpt-summary-wrap").remove();
+        this.getPostContent();
+      });
       let topicUrl = this.getTopicUrl(window.location.href);
       return new Promise((resolve, reject) => {
         GM_xmlhttpRequest({
@@ -97,7 +118,7 @@ export default {
                 const data = JSON.parse(response.responseText);
                 const str = data.post_stream.posts[0].cooked;
 
-                const prompt = `根据以下帖子内容进行总结，请使用 text 文本返回回答，字数限制 200 字以内，越精炼越好，语言要求返回简体中文，不管原文是什么语言，不要以 markdown 语法返回，请使用纯文本格式，并且进行中英文混排优化。
+                const prompt = `${config.prompt}
 帖子内容如下：
 ${str}`;
 
@@ -121,12 +142,15 @@ ${str}`;
 
                 const gptData = await gptResponse.json();
                 $(".gpt-summary").html(`AI 总结：${gptData.choices[0].message.content}`);
+                $(".airegenerate").show();
               } catch (error) {
                 $(".gpt-summary").html(`生成失败，请检查配置是否正确并刷新重试！`);
+                $(".airegenerate").show();
                 reject(error);
               }
             } else {
               $(".gpt-summary").html(`生成失败，请检查配置是否正确并刷新重试！`);
+              $(".airegenerate").show();
             }
           },
           onerror: function (error) {
@@ -142,15 +166,18 @@ ${str}`;
       setInterval(() => {
         if ($(".post-stream").length > 0) {
           if (!this.localChecked.btn) {
-            if ($(".gpt-summary").length < 1) {
+            if ($(".gpt-summary-wrap").length < 1) {
               this.getPostContent();
             }
           }
           $(".topic-list .main-link a.title").click(() => {
-            $(".gpt-summary").remove();
+            $(".gpt-summary-wrap").remove();
           });
         }
       }, 1000);
+    }
+    if (this.localChecked.value2) {
+      $("body").append(".airegenerate{display:none!important;}");
     }
   },
 };

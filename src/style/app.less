@@ -232,24 +232,26 @@
     padding-bottom: 10px;
   }
 
-  .item textarea {
+  textarea {
     font-family: inherit;
     width: 100%;
-    min-height: 100px;
-    border-radius: 5px;
+    min-height: 100px !important;
     border: 1px solid #999;
     outline: 0;
     padding: 5px;
     font-size: 14px;
-    transition: all .1s linear;
     margin: 0;
     margin-top: 5px;
     resize: none;
+    border-radius: 0;
+    color: var(--d-input-text-color);
+    background: var(--d-input-bg-color);
 
     &:focus {
-      border-color: #333
+      border-color: var(--tertiary);
+      outline: 2px solid var(--tertiary);
+      outline-offset: -2px;
     }
-
   }
 
   #floorlotterloading img {
@@ -498,7 +500,7 @@ body.body-preview #main-outlet-wrapper {
   margin-bottom: 10px;
 }
 
-.gpt-summary {
+.gpt-summary-wrap {
   background: #fffbd9;
   border-radius: 5px;
   padding: 10px;
@@ -506,6 +508,18 @@ body.body-preview #main-outlet-wrapper {
   color: #666;
   margin: 0 0 10px 0;
   line-height: 1.6;
+
+  .airegenerate {
+    display: none;
+    margin-top: 6px;
+    outline: none;
+    border: 1px solid #eee;
+    background: #ffe27d;
+    color: #626262;
+    padding: 4px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+  }
 }
 
 // dark theme

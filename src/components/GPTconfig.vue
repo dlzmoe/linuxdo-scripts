@@ -118,7 +118,7 @@ export default {
     },
   },
   created() {
-    if (this.localChecked) {
+    if (this.localChecked.value1) {
       setInterval(() => {
         if ($(".post-stream").length > 0) {
           if ($(".gpt-summary").length < 1) {

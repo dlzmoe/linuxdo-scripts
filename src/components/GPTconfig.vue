@@ -7,6 +7,12 @@
         <el-checkbox v-model="localChecked.value1" @change="handleChange"></el-checkbox>
       </template>
     </div>
+    <div class="item">
+      <div class="tit">是否开启手动总结按钮，默认自动总结</div>
+      <template>
+        <el-checkbox v-model="localChecked.btn" @change="handleChange"></el-checkbox>
+      </template>
+    </div>
     <el-input v-model="localChecked.apikey" placeholder="sk-xxxxxxxx"></el-input>
     <el-input
       v-model="localChecked.baseurl"
@@ -24,6 +30,7 @@ export default {
       type: Object,
       default: {
         value1: false,
+        btn: false,
         apikey: "",
         baseurl: "https://api.openai.com",
         model: "gpt-4o-mini",
@@ -49,10 +56,28 @@ export default {
       const match = url.match(regex);
       return match ? match[1] : url;
     },
+    // 是否开启手动生成
+    setCreatedBtn() {
+      if (this.localChecked.btn) {
+        // 开启
+        setInterval(() => {
+          if ($(".gpt-summary").length < 1 && $(".aicreated-btn").length < 1) {
+            $("#topic-title").after(
+              `<button class="aicreated-btn" type="button">AI 总结</button>`
+            );
+            $(".aicreated-btn").click(() => {
+              $(".aicreated-btn").remove();
+              $(".gpt-summary").remove();
+              this.getPostContent();
+            });
+          }
+        }, 1000);
+      }
+    },
     // 获取帖子内容
     async getPostContent() {
       $(".post-stream").before(
-        '<p class="gpt-summary">AI 总结：正在使用 AI 总结内容中，请稍后...</p>'
+        '<div class="gpt-summary">AI 总结：正在使用 AI 总结内容中，请稍后...</div>'
       );
       let topicUrl = this.getTopicUrl(window.location.href);
       return new Promise((resolve, reject) => {
@@ -72,7 +97,7 @@ export default {
                 const data = JSON.parse(response.responseText);
                 const str = data.post_stream.posts[0].cooked;
 
-                const prompt = `根据以下帖子内容进行总结，请使用 text 文本返回回答，字数限制 200 字以内，越精炼越好，语言要求返回简体中文，不管原文是什么语言，不要以 markdown 语法返回，请使用纯文本格式。
+                const prompt = `根据以下帖子内容进行总结，请使用 text 文本返回回答，字数限制 200 字以内，越精炼越好，语言要求返回简体中文，不管原文是什么语言，不要以 markdown 语法返回，请使用纯文本格式，并且进行中英文混排优化。
 帖子内容如下：
 ${str}`;
 
@@ -113,11 +138,17 @@ ${str}`;
   },
   created() {
     if (this.localChecked.value1) {
+      this.setCreatedBtn();
       setInterval(() => {
         if ($(".post-stream").length > 0) {
-          if ($(".gpt-summary").length < 1) {
-            this.getPostContent();
+          if (!this.localChecked.btn) {
+            if ($(".gpt-summary").length < 1) {
+              this.getPostContent();
+            }
           }
+          $(".topic-list .main-link a.title").click(() => {
+            $(".gpt-summary").remove();
+          });
         }
       }, 1000);
     }

@@ -9,15 +9,18 @@
 </template>
 
 <script>
-import packageJson from '../../package.json';  // 根据路径调整
+import packageJson from "../../package.json"; // 根据路径调整
 export default {
   data() {
     return {
       version: packageJson.version,
     };
   },
-  created() {
-    
-  },
+  created() {},
 };
 </script>
+<style lang="less" scoped>
+a:hover {
+  text-decoration: underline;
+}
+</style>

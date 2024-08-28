@@ -1,6 +1,6 @@
 {
   "name": "linuxdo-scripts",
-  "version": "0.2.20",
+  "version": "0.2.21",
   "author": "dlzmoe <anghunk@gmail.com>",
   "description": "An enhanced script for the linux.do forum",
   "private": true,

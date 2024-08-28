@@ -107,6 +107,7 @@
         <button class="btn saveload" @click="saveload">保存并刷新</button>
         <button class="btn floorlottery" @click="openFloorlottery">楼层抽奖</button>
 
+        <a class="btn" style="background:#979797" href="https://raw.githubusercontent.com/dlzmoe/linuxdo-scripts/main/linuxdo-scripts.user.js">检测新版本</a>
         <button class="btn import" @click="triggerFileInput">导入</button>
         <button class="btn export" @click="exportData">导出</button>
       </div>
@@ -255,6 +256,7 @@ export default {
 
         gptdata: {
           value1: false,
+          btn: false,
           apikey: "",
           baseurl: "https://api.openai.com",
           model: "gpt-4o-mini",

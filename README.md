@@ -48,52 +48,14 @@ linux.do 增强插件，话题列表显示创建时间，显示楼层数，新�
 | ![image](https://github.com/user-attachments/assets/c70edbe9-ead1-4a6b-b268-7fc956d3f72f) | ![image](https://github.com/user-attachments/assets/bde3b652-4948-4f00-a825-5f235ebf4d78) |
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | ![image](https://github.com/user-attachments/assets/05b6510e-0e61-4977-a958-cd8459aaff84) | ![image](https://github.com/user-attachments/assets/4e22e692-85a1-424a-96cc-f39c24b94516) |
-| ![image](https://github.com/user-attachments/assets/b9c8626d-03af-4a55-8a92-1f1ebd9a02bf) |     ![image](https://github.com/user-attachments/assets/399c1645-36e1-4fe2-a671-ae40685e87ca) |
+| ![image](https://github.com/user-attachments/assets/b9c8626d-03af-4a55-8a92-1f1ebd9a02bf) | ![image](https://github.com/user-attachments/assets/399c1645-36e1-4fe2-a671-ae40685e87ca) |
 
 
 ## 使用方法
 
-以下两种方式推荐第一种。
+点击此链接将会自动触发油猴脚本安装程序，后续也可以触发更新
 
-1. 点击此链接将会自动触发油猴脚本安装程序，后续也可以触发更新。  
-   https://raw.githubusercontent.com/dlzmoe/linuxdo-scripts/main/linuxdo-scripts.user.js
-
-2. 使用第三方 js 代码，会自动引入我的最新版本 js，不会触发更新，因为文件代码始终是最新的。
-
-```js
-// ==UserScript==
-// @name         linuxdo 增强插件
-// @namespace    https://github.com/dlzmoe/linuxdo-scripts
-// @version      0.0.0
-// @description  linux.do 增强插件，功能持续更新，欢迎提出新想法！查看更新日志：https://github.com/dlzmoe/linuxdo-scripts/blob/main/version-log.md
-// @author       dlzmoe
-// @match        *://linux.do/*
-// @grant        GM_xmlhttpRequest
-// @grant        GM_addStyle
-// @grant        GM_getValue
-// @grant        GM_setValue
-// @icon         https://cdn.linux.do/uploads/default/optimized/3X/9/d/9dd49731091ce8656e94433a26a3ef36062b3994_2_32x32.png
-// @license      Apache-2.0 license
-// ==/UserScript==
-
-(function () {
-  'use strict';
-  window.addEventListener('load', function () {
-
-    var script = document.createElement('script');
-    script.src = 'https://linuxdo-scripts.zishu.me/app.bundle.js';
-    document.body.appendChild(script);
-
-  });
-})();
-```
-
-```shell
-# 可使用链接，欢迎提供访问速度快的外链
-https://linuxdo-scripts.zishu.me/app.bundle.js
-https://linuxo-scripts.netlify.app/app.bundle.js
-https://fastly.jsdelivr.net/gh/dlzmoe/linuxdo-scripts@main/dist/app.bundle.js
-```
+https://raw.githubusercontent.com/dlzmoe/linuxdo-scripts/main/linuxdo-scripts.user.js
 
 
 ## 开发说明

@@ -44,10 +44,10 @@ jobs:
     - name: Create new release
       if: env.create_release == 'true'
       run: |
-        CURRENT_DATE=$(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M')
+        CURRENT_DATE=$(TZ='Asia/Shanghai' date +'%Y-%m-%d  %H:%M')
         sed -i "s/\$PACKAGE_VERSION/$PACKAGE_VERSION/g" CHANGELOG.md
         sed -i "s/\$CURRENT_DATE/$CURRENT_DATE/g" CHANGELOG.md
-        gh release create "$PACKAGE_VERSION" dist/linuxdo-scripts.user.js \
+        gh release create "$PACKAGE_VERSION" linuxdo-scripts.user.js \
         -t "$PACKAGE_VERSION" \
         -n "New release created with version $PACKAGE_VERSION.
         

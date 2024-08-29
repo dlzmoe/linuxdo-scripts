@@ -1,10 +1,21 @@
 import os
 import json
+import shutil
 
 version_log_file = 'version-log.md'
 changelog_file = 'CHANGELOG.md'
 package_file = 'package.json'
+source_script_file = 'dist/linuxdo-scripts.user.js'
+destination_script_file = 'linuxdo-scripts.user.js'
 
+# 复制文件到根目录
+if os.path.exists(source_script_file):
+    shutil.copy(source_script_file, destination_script_file)
+    print(f"已将 {source_script_file} 复制到根目录下。")
+else:
+    print(f"文件 {source_script_file} 不存在，请检查路径。")
+
+# 检查 package.json 文件
 if not os.path.exists(package_file):
     print(f"文件 {package_file} 不存在，请检查路径。")
 else:
@@ -12,6 +23,7 @@ else:
         package_data = json.load(f)
         version = package_data.get('version', '0.0.0')
 
+    # 检查 version-log.md 文件
     if not os.path.exists(version_log_file):
         print(f"文件 {version_log_file} 不存在，请检查路径。")
     else:

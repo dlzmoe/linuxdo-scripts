@@ -3,7 +3,7 @@
 // @namespace    https://github.com/dlzmoe/linuxdo-scripts
 // @version      0.3.1
 // @author       dlzmoe
-// @description  An enhanced script for the linux.do forum
+// @description  linux.do 增强插件，功能持续更新，欢迎提出新想法！
 // @license      Apache-2.0
 // @icon         https://cdn.linux.do/uploads/default/optimized/3X/9/d/9dd49731091ce8656e94433a26a3ef36062b3994_2_32x32.png
 // @match        *://*.linux.do/*

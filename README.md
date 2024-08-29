@@ -10,9 +10,12 @@
 
 linux.do 增强插件，话题列表显示创建时间，显示楼层数，新标签页打开话题，强制 block（拉黑屏蔽）某人的话题，话题快捷回复（支持自定义），优化签名图显示防止图裂，在话题列表可直接预览详情及评论，功能设置面板导入导出，楼层抽奖，用户自定义标签，只看楼主，自动滚动阅读，支持自定义 css 样式，中英文混排优化，等级信息查询，AI 总结话题功能等，功能持续更新，欢迎提出新想法！
 
-[Github 仓库](https://github.com/dlzmoe/linuxdo-scripts) | [开发计划](https://github.com/users/dlzmoe/projects/2) | [bug 反馈](https://github.com/dlzmoe/linuxdo-scripts/issues) | [问题讨论区](https://github.com/dlzmoe/linuxdo-scripts/discussions) | [使用方法](https://github.com/dlzmoe/linuxdo-scripts?tab=readme-ov-file#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95) | [使用和开发文档](https://linuxdo-scripts-docs.netlify.app/)
-
-> [快速安装脚本](https://greasyfork.org/zh-CN/scripts/501827-linuxdo-%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6)
+[Github 仓库](https://github.com/dlzmoe/linuxdo-scripts) |
+[Greasyfork 商店](https://greasyfork.org/zh-CN/scripts/501827-linuxdo-%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6) |
+[开发计划](https://github.com/users/dlzmoe/projects/2) |
+[bug 反馈](https://github.com/dlzmoe/linuxdo-scripts/issues) |
+[问题讨论区](https://github.com/dlzmoe/linuxdo-scripts/discussions)  |
+[使用和开发文档](https://linuxdo-scripts-docs.netlify.app/) 
 
 ---
 

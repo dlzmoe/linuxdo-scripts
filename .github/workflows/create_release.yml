@@ -10,50 +10,51 @@ jobs:
   check-release:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '14'  # Use the Node.js version you need
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'  # Use the Node.js version you need
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    - name: Get package.json version
-      id: get_version
-      run: echo "PACKAGE_VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
+      - name: Get package.json version
+        id: get_version
+        run: echo "PACKAGE_VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
 
-    - name: Get latest release version
-      id: get_release
-      run: |
-        curl -s https://api.github.com/repos/${{ github.repository }}/releases/latest | jq -r '.tag_name' > latest_release.txt
+      - name: Get latest release version
+        id: get_release
+        run: |
+          curl -s https://api.github.com/repos/${{ github.repository }}/releases/latest | jq -r '.tag_name' > latest_release.txt
 
-    - name: Compare versions
-      id: compare_versions
-      run: |
-        if [ "$(cat latest_release.txt)" != "$PACKAGE_VERSION" ]; then
-          echo "Version mismatch"
-          echo "create_release=true" >> $GITHUB_ENV
-        else
-          echo "Version matches"
-          echo "create_release=false" >> $GITHUB_ENV
-        fi
+      - name: Compare versions
+        id: compare_versions
+        run: |
+          if [ "$(cat latest_release.txt)" != "$PACKAGE_VERSION" ]; then
+            echo "Version mismatch"
+            echo "create_release=true" >> $GITHUB_ENV
+          else
+            echo "Version matches"
+            echo "create_release=false" >> $GITHUB_ENV
+          fi
 
-    - name: Create new release
-      if: env.create_release == 'true'
-      run: |
-        CURRENT_DATE=$(TZ='Asia/Shanghai' date +'%Y-%m-%d  %H:%M')
-        sed -i "s/\$PACKAGE_VERSION/$PACKAGE_VERSION/g" CHANGELOG.md
-        sed -i "s/\$CURRENT_DATE/$CURRENT_DATE/g" CHANGELOG.md \
-        -t "$PACKAGE_VERSION" \
-        -n "New release created with version $PACKAGE_VERSION.
-        
-        $(cat CHANGELOG.md)
-        
-        [查看 $PACKAGE_VERSION 更新日志](https://github.com/dlzmoe/linuxdo-scripts/blob/main/version-log.md)  [点击前往 greasyfork.org 进行安装](https://greasyfork.org/zh-CN/scripts/501827-linuxdo-%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6)
+      - name: Create new release
+        if: env.create_release == 'true'
+        run: |
+          CURRENT_DATE=$(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M')
+          sed -i "s/\$PACKAGE_VERSION/$PACKAGE_VERSION/g" CHANGELOG.md
+          sed -i "s/\$CURRENT_DATE/$CURRENT_DATE/g" CHANGELOG.md
+          
+          # 使用 echo 输出新版本创建的信息
+          echo "New release created with version $PACKAGE_VERSION.
+          
+          $(cat CHANGELOG.md)
+          
+          [查看 $PACKAGE_VERSION 更新日志](https://github.com/dlzmoe/linuxdo-scripts/blob/main/version-log.md)  [点击前往 greasyfork.org 进行安装](https://greasyfork.org/zh-CN/scripts/501827-linuxdo-%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6)
 
-        发布于：$CURRENT_DATE"
-      env:
-        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          发布于：$CURRENT_DATE"
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}

@@ -2,9 +2,7 @@
   <!-- 新标签页打开话题 -->
   <div class="item">
     <div class="tit">{{ sort }}. 是否新标签页打开话题</div>
-    <template>
-      <el-checkbox v-model="localChecked" @change="handleChange"></el-checkbox>
-    </template>
+    <input type="checkbox" v-model="localChecked" @change="handleChange">
   </div>
 </template>
 
@@ -33,7 +31,9 @@ export default {
   },
   methods: {
     handleChange() {
-      this.$emit("input", this.localChecked);
+      this.$emit("update:value", this.localChecked);
+      console.log(this.localChecked);
+      
     },
     init() {
       // 移除之前的事件监听器

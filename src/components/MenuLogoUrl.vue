@@ -2,9 +2,12 @@
   <!-- 自定义快捷回复 -->
   <div class="item">
     <div class="tit">{{ sort }}. 自定义论坛 logo</div>
-    <template>
-      <el-input v-model="textarea" @input="handleChange" placeholder="输入图片链接"></el-input>
-    </template>
+    <input
+      type="text"
+      v-model="textarea"
+      @input="handleChange"
+      placeholder="输入图片链接"
+    />
   </div>
 </template>
 
@@ -32,7 +35,7 @@ export default {
   },
   methods: {
     handleChange() {
-      this.$emit("input", this.textarea);
+      this.$emit("update:value", this.textarea);
     },
     init() {
       $(".d-header .title a").html(`<img src="${this.textarea}">`);
@@ -45,8 +48,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-.el-input {
-  margin-top: 10px;
-}
-</style>

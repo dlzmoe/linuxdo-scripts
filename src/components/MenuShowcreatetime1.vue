@@ -1,7 +1,7 @@
 <template>
   <div class="item">
     <div class="tit">{{ sort }}. 将浏览量替换为创建时间（与 4 互斥，只可选择一个）</div>
-    <el-checkbox v-model="localChecked" @change="handleChange"></el-checkbox>
+    <input type="checkbox" v-model="localChecked" @change="handleChange">
   </div>
 </template>
 
@@ -9,8 +9,10 @@
 export default {
   props: {
     value: {
-      type: Boolean,
-      default: false,
+     type: Object,
+      default: {
+        value: false,
+      },
     },
     sort: {
       type: Number,
@@ -29,7 +31,7 @@ export default {
   },
   methods: {
     handleChange() {
-      this.$emit("input", this.localChecked);
+      this.$emit("update:value", this.localChecked);
       if (this.localChecked) {
         this.setInitDate(); // 如果勾选，初始化日期
       }

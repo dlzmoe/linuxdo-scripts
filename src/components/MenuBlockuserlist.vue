@@ -2,13 +2,11 @@
   <!-- 屏蔽指定用户 -->
   <div class="item">
     <div class="tit">{{ sort }}. 屏蔽指定用户（使用英文，分隔）</div>
-    <template>
-      <textarea
-        v-model="textarea"
-        @input="handleChange"
-        placeholder="user1,user2,user3"
-      ></textarea>
-    </template>
+    <textarea
+      v-model="textarea"
+      @input="handleChange"
+      placeholder="user1,user2,user3"
+    ></textarea>
   </div>
 </template>
 
@@ -36,7 +34,7 @@ export default {
   },
   methods: {
     handleChange() {
-      this.$emit("input", this.textarea);
+      this.$emit("update:value", this.textarea);
     },
     init() {
       this.list = this.textarea.split(",") || [];

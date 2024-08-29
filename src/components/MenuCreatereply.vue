@@ -2,13 +2,11 @@
   <!-- 自定义快捷回复 -->
   <div class="item">
     <div class="tit">{{ sort }}. 自定义快捷回复（换行分隔）</div>
-    <template>
-      <textarea
-        v-model="textarea"
-        @input="handleChange"
-        placeholder="前排围观支持一下\n感谢分享大佬厉害啊\n有点厉害支持~~"
-      ></textarea>
-    </template>
+    <textarea
+      v-model="textarea"
+      @input="handleChange"
+      placeholder="前排围观支持一下\n感谢分享大佬厉害啊\n有点厉害支持~~"
+    ></textarea>
   </div>
 </template>
 
@@ -36,7 +34,7 @@ export default {
   },
   methods: {
     handleChange() {
-      this.$emit("input", this.textarea);
+      this.$emit("update:value", this.textarea);
     },
     init() {
       this.list = this.textarea.split(/\r?\n/) || [];

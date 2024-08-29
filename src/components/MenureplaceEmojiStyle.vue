@@ -3,14 +3,13 @@
   <div class="item">
     <div class="tit">
       {{ sort }}. 切换论坛表情风格
-
       <select v-model="localChecked.value2">
         <option v-for="item in options" :value="item.value" :key="item.value">
           {{ item.label }}
         </option>
       </select>
     </div>
-    <el-checkbox v-model="localChecked.value1" @change="handleChange"></el-checkbox>
+    <input type="checkbox" v-model="localChecked.value1" @change="handleChange">
   </div>
 </template>
 
@@ -19,6 +18,10 @@ export default {
   props: {
     value: {
       type: Object,
+      default: {
+        value1: false,
+        value2: "twitter",
+      },
     },
     sort: {
       type: Number,
@@ -60,7 +63,7 @@ export default {
   },
   methods: {
     handleChange() {
-      this.$emit("input", this.localChecked);
+      this.$emit("update:value", this.localChecked);
       this.toggleEmojiStyle(); // 在切换时调用
     },
     toggleEmojiStyle() {

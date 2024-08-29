@@ -3,33 +3,24 @@
   <div>
     <div class="item">
       <div class="tit">是否开启 gpt 生成话题总结</div>
-      <template>
-        <el-checkbox v-model="localChecked.value1" @change="handleChange"></el-checkbox>
-      </template>
+      <input type="checkbox" v-model="localChecked.value1" @change="handleChange">
     </div>
     <div class="item">
       <div class="tit">是否开启手动总结按钮，默认自动总结</div>
-      <template>
-        <el-checkbox v-model="localChecked.btn" @change="handleChange"></el-checkbox>
-      </template>
+      <input type="checkbox" v-model="localChecked.btn" @change="handleChange">
     </div>
     <div class="item">
       <div class="tit">是否关闭重新生成按钮</div>
-      <template>
-        <el-checkbox v-model="localChecked.value2" @change="handleChange"></el-checkbox>
-      </template>
+      <input type="checkbox" v-model="localChecked.value2" @change="handleChange">
     </div>
-    <el-input v-model="localChecked.apikey" placeholder="sk-xxxxxxxx"></el-input>
-    <el-input
+    <input type="text" v-model="localChecked.apikey" placeholder="sk-xxxxxxxx" />
+    <input
+      type="text"
       v-model="localChecked.baseurl"
       placeholder="https://api.openai.com"
-    ></el-input>
-    <el-input v-model="localChecked.model" placeholder="模型，如：gpt-4o-mini"></el-input>
-    <el-input
-      type="textarea"
-      v-model="localChecked.prompt"
-      placeholder="提示词 prompt"
-    ></el-input>
+    />
+    <input type="text" v-model="localChecked.model" placeholder="模型，如：gpt-4o-mini" />
+    <textarea v-model="localChecked.prompt" placeholder="提示词 prompt"></textarea>
     <div style="margin-top: 10px">注意：baseurl 不带后缀和 '/'</div>
   </div>
 </template>
@@ -63,7 +54,7 @@ export default {
   },
   methods: {
     handleChange() {
-      this.$emit("input", this.localChecked);
+      this.$emit("update:value", this.localChecked);
     },
     getTopicUrl(url) {
       const regex = /^(https:\/\/linux\.do\/t\/topic\/\d+)(\/\d+)?$/;
@@ -149,7 +140,7 @@ ${str}`;
                 const regex = /^(https:\/\/linux\.do\/t\/topic\/\d+)(\/\d+)?$/;
                 const match = window.location.href.match(regex)[0];
                 let existingObject = summaryCache.find((item) => item.name == match);
-                
+
                 let newObject = {
                   name: topicUrl,
                   value: gptData.choices[0].message.content,

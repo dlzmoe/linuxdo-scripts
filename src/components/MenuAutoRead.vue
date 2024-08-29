@@ -5,9 +5,7 @@
       {{ sort }}. 是否显示自动阅读按钮，可调节速度默认 10
       <input v-model="localChecked.value2" placeholder="默认速度 10" />
     </div>
-    <template>
-      <el-checkbox v-model="localChecked.value1" @change="handleChange"></el-checkbox>
-    </template>
+    <input type="checkbox" v-model="localChecked.value1" @change="handleChange">
   </div>
 </template>
 
@@ -16,6 +14,10 @@ export default {
   props: {
     value: {
       type: Object,
+      default: {
+        value1: false,
+        value2: 10,
+      }
     },
     sort: {
       type: Number,
@@ -34,7 +36,7 @@ export default {
   },
   methods: {
     handleChange() {
-      this.$emit("input", this.localChecked);
+      this.$emit("update:value", this.localChecked);
     },
   },
 };

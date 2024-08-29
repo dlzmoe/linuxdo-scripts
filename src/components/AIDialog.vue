@@ -1,11 +1,8 @@
 <template>
   <div>
-    <el-button style="font-size: 18px" @click="openai" type="primary" title="AI对话">
+    <div class="el-button" style="font-size: 18px" @click="openai" type="primary" title="AI对话">
       AI
-    </el-button>
-    <!-- <div class="linuxdoscripts-aidialog">
-      <iframe src="https://shared.oaifree.com/?temporary-chat=true"></iframe>
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -18,7 +15,6 @@ export default {
   methods: {
     openai() {
       window.open("https://shared.oaifree.com/?temporary-chat=true", "_blank");
-      // $(".linuxdoscripts-aidialog").toggleClass("act");
     },
   },
 };

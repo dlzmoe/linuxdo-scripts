@@ -1,13 +1,13 @@
 <template>
   <div>
-    <el-button
-      type="primary"
+    <div
+      class="el-button"
       @click="togglePopupSize"
       :class="['linuxDoLevelPopup', isMinimized ? 'minimized' : '']"
       title="等级查询"
     >
       <span>等级</span>
-    </el-button>
+    </div>
     <div v-if="!isMinimized" id="linuxDoLevelPopupContent">
       <div v-html="content"></div>
       <input

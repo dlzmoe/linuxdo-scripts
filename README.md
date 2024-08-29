@@ -12,13 +12,11 @@ linux.do 增强插件，话题列表显示创建时间，显示楼层数，新�
 
 [Github 仓库](https://github.com/dlzmoe/linuxdo-scripts) | [开发计划](https://github.com/users/dlzmoe/projects/2) | [bug 反馈](https://github.com/dlzmoe/linuxdo-scripts/issues) | [问题讨论区](https://github.com/dlzmoe/linuxdo-scripts/discussions) | [使用方法](https://github.com/dlzmoe/linuxdo-scripts?tab=readme-ov-file#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95) | [使用和开发文档](https://linuxdo-scripts-docs.netlify.app/)
 
-> [快速安装脚本](https://raw.githubusercontent.com/dlzmoe/linuxdo-scripts/main/linuxdo-scripts.user.js)
+> [快速安装脚本](https://greasyfork.org/zh-CN/scripts/501827-linuxdo-%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6)
 
 ---
 
 开发环境为 windows / chrome / 暴力猴，使用其他油猴管理器如果报错或者不生效，可以尝试使用暴力猴（我目前正在使用的，兼容性比较好）。
-
-目前已知不兼容的有：篡改猴测试版、脚本猫，暂时没计划兼容这两个管理器，如果有想法开发，欢迎提交代码 ~
 
 
 ## 功能特性
@@ -55,7 +53,7 @@ linux.do 增强插件，话题列表显示创建时间，显示楼层数，新�
 
 点击此链接将会自动触发油猴脚本安装程序，后续也可以触发更新
 
-https://raw.githubusercontent.com/dlzmoe/linuxdo-scripts/main/linuxdo-scripts.user.js
+https://greasyfork.org/zh-CN/scripts/501827-linuxdo-%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6
 
 
 ## 开发说明
@@ -66,33 +64,34 @@ node: v16.15.1
 
 功能以组件形式展开，每次新增一个功能，注册一个新的组件避免冲突。
 
-1. 安装本仓库并下载依赖，执行运行代码
+安装本仓库并下载依赖，执行运行代码
 
 ```shell
 git clone https://github.com/dlzmoe/linuxdo-scripts
-npm i # 安装依赖
-npm run dev # 本地运行
-npm run build # 打包构建
+yarn # 安装依赖
+yarn dev # 本地运行
+yarn build # 打包构建
 ```
 
-2. 将 `tampermonkey.js` 代码复制到油猴管理器中。
-3. 启用脚本后前往 `linux.do`，刷新页面。
+程序会自动触发本地测试。
 
 > 关于自动构建 Release 包，需要修改 `package.json` 中的 `version` 版本号，并且在 `version-log.md` 中写入更新日志。
 
 
 ## 更新日志
 
-[version-log.md](./version-log.md)
+[version-log.md](https://github.com/dlzmoe/linuxdo-scripts/blob/main/version-log.md)
 
 
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=dlzmoe/linuxdo-scripts&type=Date)](https://star-history.com/#dlzmoe/linuxdo-scripts&Date)
 
+
 ## Contributor
 
 ![Contributor](https://contrib.rocks/image?repo=dlzmoe/linuxdo-scripts)
+
 
 ## 免责声明
 

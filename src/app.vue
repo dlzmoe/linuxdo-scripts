@@ -35,65 +35,65 @@
           </div>
 
           <!-- 新标签页打开 -->
-          <MenuOpenpostblank :sort="1" v-model="settingData.checked1" />
+          <MenuOpenpostblank :sort="1" v-model:value="settingData.checked1" />
           <!-- 新话题提醒 -->
-          <MenuNewtopicreminder :sort="2" v-model="settingData.checked2" />
+          <MenuNewtopicreminder :sort="2" v-model:value="settingData.checked2" />
           <!-- 自动展开回复 -->
-          <MenuAutoexpandreply :sort="3" v-model="settingData.checked3" />
+          <MenuAutoexpandreply :sort="3" v-model:value="settingData.checked3" />
           <!-- 话题列表显示创建时间 -->
-          <MenuShowcreatetime :sort="4" v-model="settingData.checked4" />
-          <MenuShowcreatetime1 :sort="4.1" v-model="settingData.checked41" />
+          <MenuShowcreatetime :sort="4" v-model:value="settingData.checked4" />
+          <MenuShowcreatetime1 :sort="4.1" v-model:value="settingData.checked41" />
           <!-- 显示楼层数 -->
-          <MenuShowfloors :sort="5" v-model="settingData.checked5" />
+          <MenuShowfloors :sort="5" v-model:value="settingData.checked5" />
           <!-- 隐藏话题详情顶部大标题 -->
-          <MenuHidetopicdetailtitle :sort="6" v-model="settingData.checked6" />
+          <MenuHidetopicdetailtitle :sort="6" v-model:value="settingData.checked6" />
           <!-- 话题预览功能 -->
-          <MenuTopicpreview :sort="7" v-model="settingData.checked7" />
+          <MenuTopicpreview :sort="7" v-model:value="settingData.checked7" />
           <!-- 显示自动阅读按钮 -->
-          <MenuAutoRead :sort="8" v-model="settingData.checked8" />
+          <MenuAutoRead :sort="8" v-model:value="settingData.checked8" />
           <!-- 只看楼主按钮 -->
-          <MenuLookOP :sort="9" v-model="settingData.checked9" />
+          <MenuLookOP :sort="9" v-model:value="settingData.checked9" />
           <!-- 智能限制楼层高度 -->
-          <MenuFloorHeight :sort="10" v-model="settingData.checked10" />
+          <MenuFloorHeight :sort="10" v-model:value="settingData.checked10" />
           <!-- 中英文混排优化显示 -->
-          <MenuPangu :sort="11" v-model="settingData.checked11" />
+          <MenuPangu :sort="11" v-model:value="settingData.checked11" />
           <!-- 是否显示等级查询按钮 -->
-          <MenuLevelSearch :sort="12" v-model="settingData.checked12" />
+          <MenuLevelSearch :sort="12" v-model:value="settingData.checked12" />
           <!-- 消息通知仅显示未读 -->
-          <MenuShowUnread :sort="13" v-model="settingData.checked13" />
+          <MenuShowUnread :sort="13" v-model:value="settingData.checked13" />
           <!-- 是否屏蔽模糊文字 -->
-          <MenuFilterText :sort="14" v-model="settingData.checked14" />
+          <MenuFilterText :sort="14" v-model:value="settingData.checked14" />
           <!-- 只看自己签名 -->
-          <MenuLookmeSign :sort="15" v-model="settingData.checked15" />
+          <MenuLookmeSign :sort="15" v-model:value="settingData.checked15" />
           <!-- 开启左侧快速访问 -->
-          <MenuQuickAccess :sort="16" v-model="settingData.checked16" />
+          <MenuQuickAccess :sort="16" v-model:value="settingData.checked16" />
           <!-- 切换论坛表情风格 -->
-          <MenureplaceEmojiStyle :sort="17" v-model="settingData.checked17" />
+          <MenureplaceEmojiStyle :sort="17" v-model:value="settingData.checked17" />
           <!-- 显示 AI 对话网站 -->
-          <MenuShowAI :sort="18" v-model="settingData.checked18" />
+          <MenuShowAI :sort="18" v-model:value="settingData.checked18" />
           <!-- 编辑器切换 ja 字体 -->
-          <MenuEditorJa :sort="19" v-model="settingData.checked19" />
+          <MenuEditorJa :sort="19" v-model:value="settingData.checked19" />
           <!-- 首页新增按创建时间排序 -->
-          <!-- <MenuCreatedOrder :sort="21" v-model="settingData.checked21" /> -->
+          <!-- <MenuCreatedOrder :sort="21" v-model:value="settingData.checked21" /> -->
 
           <!-- 检测更新 -->
           <Updates />
         </div>
         <div class="menu-body-item">
           <!-- 自定义论坛 logo -->
-          <MenuLogoUrl :sort="1" v-model="settingData.logourl" />
+          <MenuLogoUrl :sort="1" v-model:value="settingData.logourl" />
           <!-- 自定义快捷回复 -->
-          <MenuCreatereply :sort="2" v-model="settingData.QuickReply" />
+          <MenuCreatereply :sort="2" v-model:value="settingData.QuickReply" />
           <!-- 屏蔽指定用户 -->
-          <MenuBlockuserlist :sort="3" v-model="settingData.blockList" />
+          <MenuBlockuserlist :sort="3" v-model:value="settingData.blockList" />
           <!-- 自定义 CSS -->
-          <MenuOtherCss :sort="4" v-model="settingData.othercss" />
+          <MenuOtherCss :sort="4" v-model:value="settingData.othercss" />
         </div>
         <div class="menu-body-item">
           <UserTags />
         </div>
         <div class="menu-body-item">
-          <GPTconfig v-model="settingData.gptdata" />
+          <GPTconfig v-model:value="settingData.gptdata" />
         </div>
       </div>
 
@@ -126,15 +126,15 @@
     <dialog open v-show="floorlotteryDialog">
       <div class="title">楼层抽奖</div>
       <div class="menu-body">
-        <el-input v-model="floorlotteryval1" placeholder="请输入总数"></el-input>
-        <el-input v-model="floorlotteryval2" placeholder="请输入抽取的数量"></el-input>
-        <el-button type="primary" @click="drawRandomNumbers">开始抽奖</el-button>
-        <el-button type="primary" plain @click="closelotter">关闭弹窗</el-button>
+        <input type="text" v-model="floorlotteryval1" placeholder="请输入总数">
+        <input type="text" v-model="floorlotteryval2" placeholder="请输入抽取的数量">
+        <button type="primary" @click="drawRandomNumbers">开始抽奖</button>
+        <button type="primary" plain @click="closelotter">关闭弹窗</button>
         <div style="height: 20px"></div>
         <div v-if="floorlotterloading">正在抽奖...</div>
-        <el-alert v-if="floorlotterresult" title="抽奖结果" type="success">
-          {{ floorlotterresult }}
-        </el-alert>
+        <div v-if="floorlotterresult" title="抽奖结果" type="success">
+          抽奖结果：{{ floorlotterresult }}
+        </div>
       </div>
     </dialog>
 
@@ -241,7 +241,7 @@ export default {
         checked7: false,
         checked8: {
           value1: false,
-          value2: "10",
+          value2: 10,
         },
         checked9: false,
         QuickReply: "前排围观支持一下\n感谢分享大佬厉害啊\n有点厉害支持~~",
@@ -291,7 +291,7 @@ export default {
     save() {
       localStorage.setItem("linxudoscriptssetting", JSON.stringify(this.settingData));
 
-      this.$message.success("保存成功！");
+      // this.$message.success("保存成功！");
       $(".linuxdoscripts-opacity").hide();
       $("#menu_suspendedball").hide();
     },
@@ -322,7 +322,7 @@ export default {
     },
     importData(data) {
       // 处理导入的数据
-      this.$message.success("导入成功！");
+      // this.$message.success("导入成功！");
       this.settingData = data;
     },
     // 导出数据
@@ -344,7 +344,7 @@ export default {
       document.body.removeChild(link);
       URL.revokeObjectURL(url);
 
-      this.$message.success("导出成功！");
+      // this.$message.success("导出成功！");
     },
     // 打开抽奖弹窗
     openFloorlottery() {
@@ -354,7 +354,7 @@ export default {
     // 开始抽奖
     drawRandomNumbers() {
       if (this.floorlotteryval1 === "" || this.floorlotteryval2 === "") {
-        this.$message.warning("请输入有效的数字");
+        // this.$message.warning("请输入有效的数字");
         return false;
       }
 
@@ -362,7 +362,7 @@ export default {
       const count = parseInt(this.floorlotteryval2);
 
       if (isNaN(total) || isNaN(count) || total <= 0 || count <= 0 || count > total) {
-        this.$message.warning("请输入有效的数字");
+        // this.$message.warning("请输入有效的数字");
         return false;
       }
 
@@ -469,7 +469,7 @@ export default {
     // 初始化设置
     initialization() {
       localStorage.removeItem("linxudoscriptssetting");
-      this.$message.success("初始化设置成功，即将自动刷新！");
+      // this.$message.success("初始化设置成功，即将自动刷新！");
       setTimeout(() => {
         location.reload();
       }, 1000);

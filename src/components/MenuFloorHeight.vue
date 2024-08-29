@@ -2,9 +2,7 @@
   <!-- 自动展开回复 -->
   <div class="item">
     <div class="tit">{{ sort }}. 智能限制楼层高度</div>
-    <template>
-      <el-checkbox v-model="localChecked" @change="handleChange"></el-checkbox>
-    </template>
+    <input type="checkbox" v-model="localChecked" @change="handleChange">
   </div>
 </template>
 
@@ -12,8 +10,10 @@
 export default {
   props: {
     value: {
-      type: Boolean,
-      default: false,
+     type: Object,
+      default: {
+        value: false,
+      },
     },
     sort: {
       type: Number,
@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     handleChange() {
-      this.$emit("input", this.localChecked);
+      this.$emit("update:value", this.localChecked);
     },
   },
   created() {

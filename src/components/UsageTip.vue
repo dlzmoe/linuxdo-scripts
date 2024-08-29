@@ -13,10 +13,10 @@
       </a>
     </div>
     <br />
-    <el-button type="info" class="clicktohide">
+    <button class="el-button clicktohide">
       点击我，该提示永远不会出现啦
       <span v-if="countdownVisible">（{{ countdown }}秒）</span>
-    </el-button>
+    </button>
   </dialog>
 </template>
 

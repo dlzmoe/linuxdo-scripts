@@ -46,16 +46,13 @@ jobs:
       run: |
         CURRENT_DATE=$(TZ='Asia/Shanghai' date +'%Y-%m-%d  %H:%M')
         sed -i "s/\$PACKAGE_VERSION/$PACKAGE_VERSION/g" CHANGELOG.md
-        sed -i "s/\$CURRENT_DATE/$CURRENT_DATE/g" CHANGELOG.md
-        gh release create "$PACKAGE_VERSION" linuxdo-scripts.user.js \
+        sed -i "s/\$CURRENT_DATE/$CURRENT_DATE/g" CHANGELOG.md \
         -t "$PACKAGE_VERSION" \
         -n "New release created with version $PACKAGE_VERSION.
         
         $(cat CHANGELOG.md)
         
-        [查看更新日志](https://github.com/dlzmoe/linuxdo-scripts/blob/main/version-log.md)，使用版本 $PACKAGE_VERSION 创建的新版本，此版本包含更新的 `linuxdo-scripts.js` 文件。
-        
-        [点击此链接将会自动触发油猴脚本安装程序](https://raw.githubusercontent.com/dlzmoe/linuxdo-scripts/main/linuxdo-scripts.user.js)
+        [查看 $PACKAGE_VERSION 更新日志](https://github.com/dlzmoe/linuxdo-scripts/blob/main/version-log.md)  [点击前往 greasyfork.org 进行安装](https://greasyfork.org/zh-CN/scripts/501827-linuxdo-%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6)
 
         发布于：$CURRENT_DATE"
       env:

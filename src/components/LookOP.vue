@@ -1,5 +1,5 @@
 <template>
-  <el-button @click="lookop" type="primary" title="只看楼主">楼主</el-button>
+  <div class="el-button" @click="lookop" title="只看楼主">楼主</div>
 </template>
 
 <script>
@@ -7,7 +7,6 @@ export default {
   data() {
     return {};
   },
-
   methods: {
     lookop() {
       $(".post-stream").toggleClass("lookopwrapactive");

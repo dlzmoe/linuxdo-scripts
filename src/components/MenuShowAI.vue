@@ -2,9 +2,7 @@
   <!-- 显示 AI 对话网站 -->
   <div class="item">
     <div class="tit">{{ sort }}. 快速打开 Shared（需提前解锁 Shared）</div>
-    <template>
-      <el-checkbox v-model="localChecked" @change="handleChange"></el-checkbox>
-    </template>
+    <input type="checkbox" v-model="localChecked" @change="handleChange">
   </div>
 </template>
 
@@ -12,8 +10,10 @@
 export default {
   props: {
     value: {
-      type: Boolean,
-      default: false,
+     type: Object,
+      default: {
+        value: false,
+      },
     },
     sort: {
       type: Number,
@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     handleChange() {
-      this.$emit("input", this.localChecked);
+      this.$emit("update:value", this.localChecked);
     },
   },
 };

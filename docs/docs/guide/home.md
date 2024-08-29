@@ -2,7 +2,11 @@
 
 （欢迎提交使用文档，让使用更方便。）
 
-https://github.com/dlzmoe/linuxdo-scripts/
+[https://github.com/dlzmoe/linuxdo-scripts/](https://github.com/dlzmoe/linuxdo-scripts/)
+
+> [点击安装脚本](https://raw.githubusercontent.com/dlzmoe/linuxdo-scripts/main/linuxdo-scripts.user.js)
+
+---
 
 linux.do 增强插件。
 
@@ -11,3 +15,5 @@ linux.do 增强插件。
 功能持续更新，欢迎提出新想法！
 
 代码已完全开源，如果有误或其他问题，欢迎指出！
+
+![Contributor](https://contrib.rocks/image?repo=dlzmoe/linuxdo-scripts)

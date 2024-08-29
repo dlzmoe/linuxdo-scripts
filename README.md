@@ -90,6 +90,9 @@ npm run build # 打包构建
 
 [![Star History Chart](https://api.star-history.com/svg?repos=dlzmoe/linuxdo-scripts&type=Date)](https://star-history.com/#dlzmoe/linuxdo-scripts&Date)
 
+## Contributor
+
+![Contributor](https://contrib.rocks/image?repo=dlzmoe/linuxdo-scripts)
 
 ## 免责声明
 

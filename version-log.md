@@ -1,3 +1,8 @@
+## 0.3.2
+
+- 添加：Webhooks 功能，greasyfork.org 可以自动同步 GitHub 仓库，将流程自动化
+- 修改：其他代码
+
 ## 0.3.1
 
 - 使用 vite-plugin-monkey 重构插件，大大减少其内存，极大了提高了脚本性能

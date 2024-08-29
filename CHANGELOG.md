@@ -1,3 +1,2 @@
-- 使用 vite-plugin-monkey 重构插件，大大减少其内存，极大了提高了脚本性能
-- 重新上架 greasyfork，使用更方便
-- 0.2 版本代码已经迁移至 `package/0.2`，感兴趣可以查阅
+- 添加：Webhooks 功能，greasyfork.org 可以自动同步 GitHub 仓库，将流程自动化
+- 修改：其他代码

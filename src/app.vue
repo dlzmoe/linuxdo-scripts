@@ -114,7 +114,7 @@
         <a
           class="btn"
           style="background: #979797"
-          href="https://raw.githubusercontent.com/dlzmoe/linuxdo-scripts/main/linuxdo-scripts.user.js"
+          href="https://update.greasyfork.org/scripts/501827/linuxdo%20%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6.user.js"
           >检测新版本</a
         >
         <button class="btn import" @click="triggerFileInput">导入</button>
@@ -126,8 +126,8 @@
     <dialog open v-show="floorlotteryDialog">
       <div class="title">楼层抽奖</div>
       <div class="menu-body">
-        <input type="text" v-model="floorlotteryval1" placeholder="请输入总数">
-        <input type="text" v-model="floorlotteryval2" placeholder="请输入抽取的数量">
+        <input type="text" v-model="floorlotteryval1" placeholder="请输入总数" />
+        <input type="text" v-model="floorlotteryval2" placeholder="请输入抽取的数量" />
         <button type="primary" @click="drawRandomNumbers">开始抽奖</button>
         <button type="primary" plain @click="closelotter">关闭弹窗</button>
         <div style="height: 20px"></div>

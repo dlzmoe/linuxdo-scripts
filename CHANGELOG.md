@@ -1,2 +1,1 @@
-- 添加：Webhooks 功能，greasyfork.org 可以自动同步 GitHub 仓库，将流程自动化
-- 修改：其他代码
+重新发版，无更新。

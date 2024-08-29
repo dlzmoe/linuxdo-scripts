@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         linuxdo 增强插件
 // @namespace    https://github.com/dlzmoe/linuxdo-scripts
-// @version      0.3.2
+// @version      0.3.3
 // @author       dlzmoe
 // @description  linux.do 增强插件，话题列表显示创建时间，显示楼层数，新标签页打开话题，强制 block（拉黑屏蔽）某人的话题，话题快捷回复（支持自定义），优化签名图显示防止图裂，在话题列表可直接预览详情及评论，功能设置面板导入导出，楼层抽奖，用户自定义标签，只看楼主，自动滚动阅读，支持自定义 css 样式，中英文混排优化，等级信息查询，AI 总结话题功能等，功能持续更新，欢迎提出新想法！
 // @license      Apache-2.0
@@ -1017,7 +1017,7 @@
   }
   const AutoRead = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["render", _sfc_render$n]]);
   const name = "linuxdo-scripts";
-  const version = "0.3.2";
+  const version = "0.3.3";
   const author = "dlzmoe";
   const description = "An enhanced script for the linux.do forum";
   const type = "module";

@@ -42,3 +42,11 @@ export default {
   }
 };
 </script>
+<style lang="less" scoped>
+input {
+  margin-left: 10px;
+  width: 60px;
+  border: 1px solid #838383;
+  outline: none;
+}
+</style>

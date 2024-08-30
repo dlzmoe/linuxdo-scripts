@@ -2,12 +2,9 @@
   <!-- 自定义 CSS -->
   <div class="item">
     <div class="tit">{{ sort }}. 自定义 CSS（支持 import 引入第三方样式文件）</div>
-    <textarea
-      v-model="textarea"
-      @input="handleChange"
-      placeholder="body{font-size:16px;}"
-    ></textarea>
   </div>
+  <textarea v-model="textarea" @input="handleChange" placeholder="body{font-size:16px;}">
+  </textarea>
 </template>
 
 <script>
@@ -44,3 +41,8 @@ export default {
   },
 };
 </script>
+<style lang="less" scoped>
+.item {
+  border: none !important;
+}
+</style>

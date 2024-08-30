@@ -1,12 +1,13 @@
 <template>
   <div class="item">
     <div class="tit">{{ sort }}. 自定义快捷回复（换行分隔）</div>
-    <textarea
-      v-model="textarea"
-      @input="handleChange"
-      placeholder="前排围观支持一下\n感谢分享大佬厉害啊\n有点厉害支持~~"
-    ></textarea>
   </div>
+  <textarea
+    v-model="textarea"
+    @input="handleChange"
+    placeholder="前排围观支持一下\n感谢分享大佬厉害啊\n有点厉害支持~~"
+  >
+  </textarea>
 </template>
 
 <script>
@@ -111,3 +112,8 @@ export default {
   },
 };
 </script>
+<style lang="less" scoped>
+.item {
+  border: none !important;
+}
+</style>

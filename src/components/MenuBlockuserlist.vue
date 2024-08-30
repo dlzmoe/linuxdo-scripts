@@ -2,12 +2,9 @@
   <!-- 屏蔽指定用户 -->
   <div class="item">
     <div class="tit">{{ sort }}. 屏蔽指定用户（使用英文，分隔）</div>
-    <textarea
-      v-model="textarea"
-      @input="handleChange"
-      placeholder="user1,user2,user3"
-    ></textarea>
   </div>
+  <textarea v-model="textarea" @input="handleChange" placeholder="user1,user2,user3">
+  </textarea>
 </template>
 
 <script>
@@ -74,3 +71,8 @@ export default {
   },
 };
 </script>
+<style lang="less" scoped>
+.item {
+  border: none !important;
+}
+</style>

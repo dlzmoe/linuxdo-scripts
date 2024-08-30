@@ -1,14 +1,13 @@
 <template>
-  <!-- 自定义快捷回复 -->
   <div class="item">
     <div class="tit">{{ sort }}. 自定义论坛 logo</div>
-    <input
-      type="text"
-      v-model="textarea"
-      @input="handleChange"
-      placeholder="输入图片链接"
-    />
   </div>
+  <input
+    type="text"
+    v-model="textarea"
+    @input="handleChange"
+    placeholder="输入图片链接"
+  />
 </template>
 
 <script>
@@ -48,3 +47,8 @@ export default {
   },
 };
 </script>
+<style lang="less" scoped>
+.item {
+  border: none !important;
+}
+</style>

@@ -3,15 +3,15 @@
   <div>
     <div class="item">
       <div class="tit">是否开启 gpt 生成话题总结</div>
-      <input type="checkbox" v-model="localChecked.value1" @change="handleChange">
+      <input type="checkbox" v-model="localChecked.value1" @change="handleChange" />
     </div>
     <div class="item">
       <div class="tit">是否开启手动总结按钮，默认自动总结</div>
-      <input type="checkbox" v-model="localChecked.btn" @change="handleChange">
+      <input type="checkbox" v-model="localChecked.btn" @change="handleChange" />
     </div>
     <div class="item">
       <div class="tit">是否关闭重新生成按钮</div>
-      <input type="checkbox" v-model="localChecked.value2" @change="handleChange">
+      <input type="checkbox" v-model="localChecked.value2" @change="handleChange" />
     </div>
     <input type="text" v-model="localChecked.apikey" placeholder="sk-xxxxxxxx" />
     <input
@@ -132,7 +132,7 @@ ${str}`;
                 });
 
                 const gptData = await gptResponse.json();
-                $(".gpt-summary").html(`AI 总结：${gptData.choices[0].message.content}`);
+                $(".gpt-summary").html(`AI 总结：${marked.parse(gptData.choices[0].message.content)}`);
                 $(".airegenerate").show();
 
                 let summaryCache =
@@ -172,6 +172,10 @@ ${str}`;
   },
   created() {
     if (this.localChecked.value1) {
+      let script = document.createElement("script");
+      script.src = "https://cdn.jsdelivr.net/npm/marked/marked.min.js";
+      document.body.appendChild(script);
+
       this.setCreatedBtn();
       setInterval(() => {
         if ($(".post-stream").length > 0) {
@@ -186,7 +190,7 @@ ${str}`;
             if (existingObject) {
               $(".post-stream").before(
                 `<div class="gpt-summary-wrap">
-<div class="gpt-summary">AI 总结：${existingObject.value}</div>
+<div class="gpt-summary">AI 总结：${marked.parse(existingObject.value)}</div>
 <button type="button" class="airegenerate" style="display:none">重新生成</button>
 </div>`
               );

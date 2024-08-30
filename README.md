@@ -102,4 +102,4 @@ yarn build # 打包构建
 
 ## License
 
-[Apache-2.0 license](./LICENSE)
+[Apache-2.0 license](https://github.com/dlzmoe/linuxdo-scripts/blob/main/LICENSE)

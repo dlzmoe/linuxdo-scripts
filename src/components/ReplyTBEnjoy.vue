@@ -759,7 +759,7 @@ setInterval(() => {
   left: 100%;
   position: absolute;
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(12, 1fr);
   gap: 10px;
   height: 100%;
   overflow: auto;

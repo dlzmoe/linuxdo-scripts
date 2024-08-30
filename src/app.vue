@@ -114,7 +114,7 @@
         <a
           class="btn"
           style="background: #979797"
-          href="https://update.greasyfork.org/scripts/501827/linuxdo%20%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6.user.js"
+          href="https://greasyfork.org/zh-CN/scripts/501827-linuxdo-%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6"
           >检测新版本</a
         >
         <button class="btn import" @click="triggerFileInput">导入</button>

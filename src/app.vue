@@ -73,9 +73,9 @@
           <MenuShowAI :sort="18" v-model:value="settingData.checked18" />
           <!-- 编辑器切换 ja 字体 -->
           <MenuEditorJa :sort="19" v-model:value="settingData.checked19" />
-          <!-- 首页新增按创建时间排序 -->
-          <!-- <MenuCreatedOrder :sort="21" v-model:value="settingData.checked21" /> -->
-
+          <!-- 开启列表页导航栏浮动 -->
+          <MenuStickyNav :sort="20" v-model:value="settingData.checked20" />
+          
           <!-- 检测更新 -->
           <Updates />
         </div>
@@ -182,6 +182,7 @@ import AIDialog from "./components/AIDialog.vue";
 import MenuEditorJa from "./components/MenuEditorJa.vue";
 import MenuCreatedOrder from "./components/MenuCreatedOrder.vue";
 import GPTconfig from "./components/GPTconfig.vue";
+import MenuStickyNav from "./components/MenuStickyNav.vue";
 
 export default {
   components: {
@@ -219,6 +220,7 @@ export default {
     MenuEditorJa,
     MenuCreatedOrder,
     GPTconfig,
+    MenuStickyNav,
   },
   data() {
     return {

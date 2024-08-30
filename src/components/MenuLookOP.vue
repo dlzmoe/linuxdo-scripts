@@ -2,7 +2,7 @@
   <!-- 是否开启只看楼主 -->
   <div class="item">
     <div class="tit">{{ sort }}. 是否开启只看楼主</div>
-    <input type="checkbox" v-model="localChecked" @change="handleChange">
+    <input type="checkbox" v-model="localChecked" @change="handleChange" />
   </div>
 </template>
 
@@ -10,10 +10,8 @@
 export default {
   props: {
     value: {
-     type: Object,
-      default: {
-        value: false,
-      },
+      type: Boolean,
+      default: false,
     },
     sort: {
       type: Number,

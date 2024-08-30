@@ -11,10 +11,8 @@
 export default {
   props: {
     value: {
-     type: Object,
-      default: {
-        value: false,
-      },
+ type: Boolean,
+      default: false,
     },
     sort: {
       type: Number,

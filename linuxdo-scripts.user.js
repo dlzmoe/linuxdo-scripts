@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         linuxdo 增强插件
 // @namespace    https://github.com/dlzmoe/linuxdo-scripts
-// @version      0.3.4
+// @version      0.3.5
 // @author       dlzmoe
 // @description  linux.do 增强插件，功能持续更新，欢迎提出新想法！
 // @license      Apache-2.0
@@ -1015,7 +1015,7 @@
   }
   const AutoRead = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["render", _sfc_render$n]]);
   const name = "linuxdo-scripts";
-  const version = "0.3.4";
+  const version = "0.3.5";
   const author = "dlzmoe";
   const description = "An enhanced script for the linux.do forum";
   const type = "module";
@@ -3532,8 +3532,9 @@ ${str}`;
   const _hoisted_16 = /* @__PURE__ */ vue.createElementVNode("a", {
     class: "btn",
     style: { "background": "#979797" },
+    target: "_blank",
     href: "https://greasyfork.org/zh-CN/scripts/501827-linuxdo-%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6"
-  }, "检测新版本", -1);
+  }, " 检测新版本 ", -1);
   const _hoisted_17 = { open: "" };
   const _hoisted_18 = /* @__PURE__ */ vue.createElementVNode("div", { class: "title" }, "楼层抽奖", -1);
   const _hoisted_19 = { class: "menu-body" };

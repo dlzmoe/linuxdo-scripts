@@ -114,9 +114,11 @@
         <a
           class="btn"
           style="background: #979797"
+          target="_blank"
           href="https://greasyfork.org/zh-CN/scripts/501827-linuxdo-%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6"
-          >检测新版本</a
         >
+          检测新版本
+        </a>
         <button class="btn import" @click="triggerFileInput">导入</button>
         <button class="btn export" @click="exportData">导出</button>
       </div>

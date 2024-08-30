@@ -1,5 +1,4 @@
 <template>
-  <!-- 显示楼层数 -->
   <div class="item">
     <div class="tit">{{ sort }}. 是否显示楼层数</div>
     <input

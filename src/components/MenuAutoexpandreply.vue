@@ -1,5 +1,4 @@
 <template>
-  <!-- 自动展开回复 -->
   <div class="item">
     <div class="tit">{{ sort }}. 是否自动展开回复</div>
     <input

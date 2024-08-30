@@ -1,8 +1,7 @@
 <template>
-  <!-- 首页新增按创建时间排序 -->
   <div class="item">
     <div class="tit">{{ sort }}. 首页新增按创建时间排序</div>
-    <input type="checkbox" v-model="localChecked" @change="handleChange">
+    <input type="checkbox" v-model="localChecked" @change="handleChange" />
   </div>
 </template>
 
@@ -10,7 +9,7 @@
 export default {
   props: {
     value: {
- type: Boolean,
+      type: Boolean,
       default: false,
     },
     sort: {

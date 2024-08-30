@@ -1,16 +1,15 @@
 <template>
-  <!-- 生成话题总结 -->
   <div>
     <div class="item">
-      <div class="tit">是否开启 gpt 生成话题总结</div>
+      <div class="tit">是否开启 AI 生成话题总结</div>
       <input type="checkbox" v-model="localChecked.value1" @change="handleChange" />
     </div>
     <div class="item">
-      <div class="tit">是否开启手动总结按钮，默认自动总结</div>
+      <div class="tit">是否手动总结（默认自动总结）</div>
       <input type="checkbox" v-model="localChecked.btn" @change="handleChange" />
     </div>
     <div class="item">
-      <div class="tit">是否关闭重新生成按钮</div>
+      <div class="tit">是否关闭重新生成按钮（默认显示重新生成）</div>
       <input type="checkbox" v-model="localChecked.value2" @change="handleChange" />
     </div>
     <input type="text" v-model="localChecked.apikey" placeholder="sk-xxxxxxxx" />

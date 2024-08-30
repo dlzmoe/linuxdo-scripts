@@ -19,7 +19,7 @@
         <li class="act">基础设置</li>
         <li>自定义文字</li>
         <li>用户标签</li>
-        <li>gpt 配置</li>
+        <li>AI 配置</li>
       </ul>
       <div class="menu-body">
         <div class="menu-body-item act">
@@ -30,7 +30,7 @@
                 class="initialization"
                 @click="initialization"
                 >初始化设置</span
-              >，会清除全部所有的设置数据并初始化，慎重使用！
+              >，会清除所有的设置数据并初始化！！
             </p>
           </div>
 
@@ -240,22 +240,22 @@ export default {
         checked2: false,
         checked3: false,
         checked4: false,
-        checked41: false,
-        checked5: false,
+        checked41: true,
+        checked5: true,
         checked6: false,
         checked7: false,
         checked8: {
-          value1: false,
+          value1: true,
           value2: 10,
         },
-        checked9: false,
+        checked9: true,
         QuickReply: "前排围观支持一下\n感谢分享大佬厉害啊\n有点厉害支持~~",
         blockList: "",
         checked10: false,
         othercss: "",
         logourl: "",
-        checked11: false,
-        checked12: false,
+        checked11: true,
+        checked12: true,
         checked13: false,
         checked14: false,
         checked15: false,
@@ -266,7 +266,7 @@ export default {
         },
         checked18: false,
         checked19: false,
-        checked20: false,
+        checked20: true,
 
         gptdata: {
           value1: false,

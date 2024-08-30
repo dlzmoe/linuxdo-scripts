@@ -1,40 +1,20 @@
 <template>
-  <!-- 中英文混排优化显示 -->
   <div class="item">
     <div class="tit">{{ sort }}. 是否开启中英文混排优化显示</div>
-    <input type="checkbox" v-model="localChecked" @change="handleChange">
+    <input
+      type="checkbox"
+      :checked="modelValue"
+      @change="$emit('update:modelValue', $event.target.checked)"
+    />
   </div>
 </template>
 
 <script>
 export default {
-  props: {
-    value: {
- type: Boolean,
-      default: false,
-    },
-    sort: {
-      type: Number,
-      required: true,
-    },
-  },
-  data() {
-    return {
-      localChecked: this.value,
-    };
-  },
-  watch: {
-    value(newValue) {
-      this.localChecked = newValue;
-    },
-  },
-  methods: {
-    handleChange() {
-      this.$emit("update:value", this.localChecked);
-    },
-  },
+  props: ["modelValue", "sort"],
+  emits: ["update:modelValue"],
   created() {
-    if (this.localChecked) {
+    if (this.modelValue) {
       let script = document.createElement("script");
       script.src = "https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js";
       document.body.appendChild(script);
@@ -48,10 +28,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-.item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-</style>

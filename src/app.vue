@@ -35,47 +35,46 @@
           </div>
 
           <!-- 新标签页打开 -->
-          <MenuOpenpostblank :sort="1" v-model:value="settingData.checked1" />
+          <MenuOpenpostblank :sort="1" v-model="settingData.checked1" />
           <!-- 新话题提醒 -->
-          <MenuNewtopicreminder :sort="2" v-model:value="settingData.checked2" />
+          <MenuNewtopicreminder :sort="2" v-model="settingData.checked2" />
           <!-- 自动展开回复 -->
-          <MenuAutoexpandreply :sort="3" v-model:value="settingData.checked3" />
+          <MenuAutoexpandreply :sort="3" v-model="settingData.checked3" />
           <!-- 话题列表显示创建时间 -->
-          <MenuShowcreatetime :sort="4" v-model:value="settingData.checked4" />
-          <MenuShowcreatetime1 :sort="4.1" v-model:value="settingData.checked41" />
+          <MenuShowcreatetime :sort="4" v-model="settingData.checked4" />
+          <MenuShowcreatetime1 :sort="4.1" v-model="settingData.checked41" />
           <!-- 显示楼层数 -->
-          <MenuShowfloors :sort="5" v-model:value="settingData.checked5" />
+          <MenuShowfloors :sort="5" v-model="settingData.checked5" />
           <!-- 隐藏话题详情顶部大标题 -->
-          <MenuHidetopicdetailtitle :sort="6" v-model:value="settingData.checked6" />
+          <MenuHidetopicdetailtitle :sort="6" v-model="settingData.checked6" />
           <!-- 话题预览功能 -->
-          <MenuTopicpreview :sort="7" v-model:value="settingData.checked7" />
+          <MenuTopicpreview :sort="7" v-model="settingData.checked7" />
           <!-- 显示自动阅读按钮 -->
-          <MenuAutoRead :sort="8" v-model:value="settingData.checked8" />
+          <MenuAutoRead :sort="8" v-model="settingData.checked8" />
           <!-- 只看楼主按钮 -->
-          <MenuLookOP :sort="9" v-model:value="settingData.checked9" />
+          <MenuLookOP :sort="9" v-model="settingData.checked9" />
           <!-- 智能限制楼层高度 -->
-          <MenuFloorHeight :sort="10" v-model:value="settingData.checked10" />
+          <MenuFloorHeight :sort="10" v-model="settingData.checked10" />
           <!-- 中英文混排优化显示 -->
-          <MenuPangu :sort="11" v-model:value="settingData.checked11" />
+          <MenuPangu :sort="11" v-model="settingData.checked11" />
           <!-- 是否显示等级查询按钮 -->
-          <MenuLevelSearch :sort="12" v-model:value="settingData.checked12" />
+          <MenuLevelSearch :sort="12" v-model="settingData.checked12" />
           <!-- 消息通知仅显示未读 -->
-          <MenuShowUnread :sort="13" v-model:value="settingData.checked13" />
+          <MenuShowUnread :sort="13" v-model="settingData.checked13" />
           <!-- 是否屏蔽模糊文字 -->
-          <MenuFilterText :sort="14" v-model:value="settingData.checked14" />
+          <MenuFilterText :sort="14" v-model="settingData.checked14" />
           <!-- 只看自己签名 -->
-          <MenuLookmeSign :sort="15" v-model:value="settingData.checked15" />
+          <MenuLookmeSign :sort="15" v-model="settingData.checked15" />
           <!-- 开启左侧快速访问 -->
-          <MenuQuickAccess :sort="16" v-model:value="settingData.checked16" />
+          <MenuQuickAccess :sort="16" v-model="settingData.checked16" />
           <!-- 切换论坛表情风格 -->
-          <MenureplaceEmojiStyle :sort="17" v-model:value="settingData.checked17" />
+          <MenureplaceEmojiStyle :sort="17" v-model="settingData.checked17" />
           <!-- 显示 AI 对话网站 -->
-          <MenuShowAI :sort="18" v-model:value="settingData.checked18" />
+          <MenuShowAI :sort="18" v-model="settingData.checked18" />
           <!-- 编辑器切换 ja 字体 -->
-          <MenuEditorJa :sort="19" v-model:value="settingData.checked19" />
+          <MenuEditorJa :sort="19" v-model="settingData.checked19" />
           <!-- 开启列表页导航栏浮动 -->
-          <MenuStickyNav :sort="20" v-model:value="settingData.checked20" />
-          
+          <MenuStickyNav :sort="20" v-model="settingData.checked20" />
           <!-- 检测更新 -->
           <Updates />
         </div>

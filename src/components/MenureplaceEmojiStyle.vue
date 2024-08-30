@@ -1,73 +1,56 @@
 <template>
-  <!-- 切换论坛表情风格 -->
   <div class="item">
     <div class="tit">
       {{ sort }}. 切换论坛表情风格
-      <select v-model="localChecked.value2">
+      <select v-model="value2">
         <option v-for="item in options" :value="item.value" :key="item.value">
           {{ item.label }}
         </option>
       </select>
     </div>
-    <input type="checkbox" v-model="localChecked.value1" @change="handleChange">
+    <input type="checkbox" v-model="value1" @change="handleChange" />
   </div>
 </template>
 
 <script>
 export default {
-  props: {
-    value: {
-      type: Object,
-      default: {
-        value1: false,
-        value2: "twitter",
-      },
-    },
-    sort: {
-      type: Number,
-      required: true,
-    },
-  },
+  props: ["modelValue", "sort"],
+  emits: ["update:modelValue"],
   data() {
     return {
-      localChecked: this.value,
       options: [
-        {
-          value: "twitter",
-          label: "twitter",
-        },
-        {
-          value: "facebook_messenger",
-          label: "facebook_messenger",
-        },
-        {
-          value: "google",
-          label: "google",
-        },
-        {
-          value: "google_classic",
-          label: "google_classic",
-        },
-        {
-          value: "win10",
-          label: "win10",
-        },
+        { value: "twitter", label: "twitter" },
+        { value: "facebook_messenger", label: "facebook_messenger" },
+        { value: "google", label: "google" },
+        { value: "google_classic", label: "google_classic" },
+        { value: "win10", label: "win10" },
       ],
     };
   },
-  watch: {
-    value(newValue) {
-      this.localChecked = newValue;
-      this.toggleEmojiStyle(); // 动态控制
+  computed: {
+    value1: {
+      get() {
+        return this.modelValue.value1;
+      },
+      set(newValue) {
+        this.$emit("update:modelValue", { ...this.modelValue, value1: newValue });
+      },
+    },
+    value2: {
+      get() {
+        return this.modelValue.value2;
+      },
+      set(newValue) {
+        this.$emit("update:modelValue", { ...this.modelValue, value2: newValue });
+      },
     },
   },
   methods: {
     handleChange() {
-      this.$emit("update:value", this.localChecked);
       this.toggleEmojiStyle(); // 在切换时调用
     },
     toggleEmojiStyle() {
-      if (this.localChecked) {
+      if (this.value1) {
         // 开启替换表情风格
         this.replaceEmojiStyle();
         this.initObserver();
@@ -84,7 +67,7 @@ export default {
       const applePath = "images/emoji/apple";
       if (img.src.includes(applePath)) {
         // 可以替换成其他表情风格
-        img.src = img.src.replace(applePath, `images/emoji/${this.localChecked.value2}`);
+        img.src = img.src.replace(applePath, `images/emoji/${this.value2}`);
       }
     },
     processMutations(mutations) {
@@ -116,8 +99,8 @@ export default {
     },
   },
   mounted() {
-    // 页面加载时根据 localChecked 判断是否开启功能
-    if (this.localChecked.value1) {
+    // 页面加载时根据 value1 判断是否开启功能
+    if (this.value1) {
       this.toggleEmojiStyle();
     }
   },
@@ -130,10 +113,6 @@ export default {
 
 <style scoped lang="less">
 .item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
   select {
     height: 28px;
     border: 1px solid #b6b6b6;

@@ -2,40 +2,20 @@
   <div>
     <div class="item">
       <div class="tit">{{ sort }}. 话题列表显示创建时间</div>
-      <input type="checkbox" v-model="localChecked" @change="handleChange">
+      <input
+        type="checkbox"
+        :checked="modelValue"
+        @change="$emit('update:modelValue', $event.target.checked)"
+      />
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: {
-    value: {
- type: Boolean,
-      default: false,
-    },
-    sort: {
-      type: Number,
-      required: true,
-    },
-  },
-  data() {
-    return {
-      localChecked: this.value,
-    };
-  },
-  watch: {
-    value(newValue) {
-      this.localChecked = newValue;
-    },
-  },
+  props: ["modelValue", "sort"],
+  emits: ["update:modelValue"],
   methods: {
-    handleChange() {
-      this.$emit("update:value", this.localChecked);
-      if (this.localChecked) {
-        this.setInitDate(); // 如果勾选，初始化日期
-      }
-    },
     formattedDate(time) {
       const timestamp = Number(time);
       const date = new Date(timestamp);
@@ -91,25 +71,51 @@ export default {
 
             if (timeDiff < oneDay) {
               color = "#45B5AA";
-              $(element).find(".post-activity").append(`<span class="linuxtime" style="color:${color}">（${this.formattedDate(timestamp)}）</span>`);
+              $(element)
+                .find(".post-activity")
+                .append(
+                  `<span class="linuxtime" style="color:${color}">（${this.formattedDate(
+                    timestamp
+                  )}）</span>`
+                );
             } else if (timeDiff < oneWeek) {
               color = "#66A586";
-              $(element).find(".post-activity").append(`<span class="linuxtime" style="color:${color}">（${this.formattedDate(timestamp)}）</span>`);
+              $(element)
+                .find(".post-activity")
+                .append(
+                  `<span class="linuxtime" style="color:${color}">（${this.formattedDate(
+                    timestamp
+                  )}）</span>`
+                );
             } else if (timeDiff < oneMonth) {
               color = "#CFA94A";
-              $(element).find(".post-activity").append(`<span class="linuxtime" style="color:${color}">（${this.formattedDate(timestamp)}）</span>`);
+              $(element)
+                .find(".post-activity")
+                .append(
+                  `<span class="linuxtime" style="color:${color}">（${this.formattedDate(
+                    timestamp
+                  )}）</span>`
+                );
             } else if (timeDiff < threeMonths) {
               color = "#3e8ed2";
-              $(element).find(".post-activity").append(`<span class="linuxtime" style="color:${color}">（${this.formattedDate(timestamp)}）</span>`);
+              $(element)
+                .find(".post-activity")
+                .append(
+                  `<span class="linuxtime" style="color:${color}">（${this.formattedDate(
+                    timestamp
+                  )}）</span>`
+                );
             } else {
               color = "#cccccc";
               $(element)
-              .find(".post-activity")
-              .append(
-                `<span class="linuxtime" style="color:${color}">
-                  （<img style="width:20px;vertical-align:sub;" src="https://telegra.ph/file/94cb6dfe0410e401abbe8.png">${this.formattedDate(timestamp)}）
+                .find(".post-activity")
+                .append(
+                  `<span class="linuxtime" style="color:${color}">
+                  （<img style="width:20px;vertical-align:sub;" src="https://linux.do/uploads/default/original/3X/b/d/bdf4a2ff2b3639c4f74462f2da8383f9c5cdb25e.png">${this.formattedDate(
+                    timestamp
+                  )}）
                 </span>`
-              );
+                );
             }
 
             // $(element).find(".post-activity").append(`<span class="linuxtime" style="color:${color}">（${this.formattedDate(timestamp)}）</span>`);
@@ -130,18 +136,10 @@ export default {
     },
   },
   mounted() {
-    if (this.localChecked) {
+    if (this.modelValue) {
       this.startPolling();
       this.initDateAndStartPolling();
     }
   },
 };
 </script>
-
-<style scoped>
-.item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-</style>

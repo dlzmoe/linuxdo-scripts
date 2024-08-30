@@ -2,36 +2,19 @@
   <!-- 自动展开回复 -->
   <div class="item">
     <div class="tit">{{ sort }}. 是否自动展开回复</div>
-    <input type="checkbox" v-model="localChecked" @change="handleChange">
+    <input
+      type="checkbox"
+      :checked="modelValue"
+      @change="$emit('update:modelValue', $event.target.checked)"
+    />
   </div>
 </template>
 
 <script>
 export default {
-  props: {
-    value: {
- type: Boolean,
-      default: false,
-    },
-    sort: {
-      type: Number,
-      required: true,
-    },
-  },
-  data() {
-    return {
-      localChecked: this.value,
-    };
-  },
-  watch: {
-    value(newValue) {
-      this.localChecked = newValue;
-    },
-  },
+  props: ["modelValue", "sort"],
+  emits: ["update:modelValue"],
   methods: {
-    handleChange() {
-      this.$emit("update:value", this.localChecked);
-    },
     init() {
       $("nav.post-controls .show-replies").each(function () {
         $(this).click();
@@ -39,7 +22,7 @@ export default {
     },
   },
   created() {
-    if (this.localChecked) {
+    if (this.modelValue) {
       let pollinglength2 = 0;
       setInterval(() => {
         if (pollinglength2 != $(".post-stream .topic-post").length) {
@@ -51,10 +34,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-.item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-</style>

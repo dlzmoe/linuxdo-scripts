@@ -1,39 +1,20 @@
 <template>
   <div class="item">
     <div class="tit">{{ sort }}. 开启列表页导航栏浮动</div>
-    <input type="checkbox" v-model="localChecked" @change="handleChange" />
+    <input
+      type="checkbox"
+      :checked="modelValue"
+      @change="$emit('update:modelValue', $event.target.checked)"
+    />
   </div>
 </template>
 
 <script>
 export default {
-  props: {
-    value: {
-      type: Boolean,
-      default: false,
-    },
-    sort: {
-      type: Number,
-      required: true,
-    },
-  },
-  data() {
-    return {
-      localChecked: this.value,
-    };
-  },
-  watch: {
-    value(newValue) {
-      this.localChecked = newValue;
-    },
-  },
-  methods: {
-    handleChange() {
-      this.$emit("update:value", this.localChecked);
-    },
-  },
+  props: ["modelValue", "sort"],
+  emits: ["update:modelValue"],
   created() {
-    if (this.localChecked) {
+    if (this.modelValue) {
       $(window).on("scroll", function () {
         if ($(window).scrollTop() >= 250) {
           $(".navigation-container").addClass("is-active");
@@ -49,10 +30,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-.item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-</style>

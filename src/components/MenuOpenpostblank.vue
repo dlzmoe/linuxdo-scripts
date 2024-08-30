@@ -2,43 +2,27 @@
   <!-- 新标签页打开话题 -->
   <div class="item">
     <div class="tit">{{ sort }}. 是否新标签页打开话题</div>
-    <input type="checkbox" v-model="localChecked" @change="handleChange">
+    <input
+      type="checkbox"
+      :checked="modelValue"
+      @change="$emit('update:modelValue', $event.target.checked)"
+    />
   </div>
 </template>
 
 <script>
 export default {
-  props: {
-    value: {
-      type: Boolean,
-      default: false,
-    },
-    sort: {
-      type: Number,
-      required: true,
-    },
-  },
+  props: ["modelValue", "sort"],
+  emits: ["update:modelValue"],
   data() {
     return {
-      localChecked: this.value,
       eventListeners: [],
     };
   },
-  watch: {
-    value(newValue) {
-      this.localChecked = newValue;
-    },
-  },
   methods: {
-    handleChange() {
-      this.$emit("update:value", this.localChecked);
-      console.log(this.localChecked);
-      
-    },
     init() {
       // 移除之前的事件监听器
       this.removeEventListeners();
-
       // 添加新的事件监听器
       $(".topic-list a.title,.topic .search-link").each((index, element) => {
         const listener = (event) => {
@@ -58,7 +42,7 @@ export default {
     },
   },
   created() {
-    if (this.localChecked) {
+    if (this.modelValue) {
       let pollinglength1 = 0;
       let pollinglength2 = 0;
       setInterval(() => {
@@ -79,10 +63,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-.item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-</style>

@@ -1,5 +1,4 @@
 <template>
-  <!-- 自定义快捷回复 -->
   <div class="item">
     <div class="tit">{{ sort }}. 自定义快捷回复（换行分隔）</div>
     <textarea

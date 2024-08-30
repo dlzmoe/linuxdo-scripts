@@ -1,37 +1,19 @@
 <template>
-  <!-- 开启左侧快速访问 -->
   <div class="item">
     <div class="tit">{{ sort }}. 开启左侧快速访问</div>
-    <input type="checkbox" v-model="localChecked" @change="handleChange">
+    <input
+      type="checkbox"
+      :checked="modelValue"
+      @change="$emit('update:modelValue', $event.target.checked)"
+    />
   </div>
 </template>
 
 <script>
 export default {
-  props: {
-    value: {
- type: Boolean,
-      default: false,
-    },
-    sort: {
-      type: Number,
-      required: true,
-    },
-  },
-  data() {
-    return {
-      localChecked: this.value,
-    };
-  },
-  watch: {
-    value(newValue) {
-      this.localChecked = newValue;
-    },
-  },
+  props: ["modelValue", "sort"],
+  emits: ["update:modelValue"],
   methods: {
-    handleChange() {
-      this.$emit("update:value", this.localChecked);
-    },
     init() {
       $(".sidebar-custom-sections>div:nth-child(1)").after(`
         <div data-section-name="快速访问" class=" sidebar-section-wrapper sidebar-section--expanded">
@@ -67,7 +49,7 @@ export default {
     },
   },
   created() {
-    if (this.localChecked) {
+    if (this.modelValue) {
       setInterval(() => {
         if ($("#MenuQuickAccess").length < 1) {
           this.init();
@@ -77,13 +59,6 @@ export default {
   },
 };
 </script>
-<style scoped>
-.item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-</style>
 <style>
 .sidebar-section-header-caret.right {
   transform: rotate(-90deg);

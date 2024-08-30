@@ -35,7 +35,7 @@ export default {
   },
   created() {
     if (this.textarea) {
-      $("body").prepend(`<style>${this.textarea}</style>`);
+      $("body").after(`<style>${this.textarea}</style>`);
     }
   },
 };

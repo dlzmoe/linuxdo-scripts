@@ -13,7 +13,7 @@
     </div>
 
     <dialog open id="menu_suspendedball">
-      <div class="title">linuxdo 增强插件设置</div>
+      <div class="title">linuxdo 增强插件设置 {{ version }}</div>
       <div class="close" @click="closedialog">+</div>
       <ul class="menu-nav">
         <li class="act">基础设置</li>
@@ -147,6 +147,7 @@
 </template>
 
 <script>
+import packageJson from "../package.json";
 import MenuOpenpostblank from "./components/MenuOpenpostblank.vue";
 import MenuNewtopicreminder from "./components/MenuNewtopicreminder.vue";
 import MenuAutoexpandreply from "./components/MenuAutoexpandreply.vue";
@@ -223,6 +224,7 @@ export default {
   },
   data() {
     return {
+      version: packageJson.version,
       opacity: false,
       open: false,
 

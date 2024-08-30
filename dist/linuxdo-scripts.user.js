@@ -17,6 +17,40 @@
 (function (vue) {
   'use strict';
 
+  const name = "linuxdo-scripts";
+  const version = "0.3.8";
+  const author = "dlzmoe";
+  const description = "An enhanced script for the linux.do forum";
+  const type = "module";
+  const license = "Apache-2.0";
+  const scripts = {
+    dev: "vite",
+    build: "vite build && py build.py",
+    preview: "vite preview"
+  };
+  const dependencies = {
+    vue: "^3.4.27"
+  };
+  const devDependencies = {
+    "@vitejs/plugin-vue": "^5.0.4",
+    less: "^4.1.0",
+    "less-loader": "^8.0.0",
+    "style-loader": "^2.0.0",
+    vite: "^5.2.12",
+    "vite-plugin-monkey": "^4.0.0"
+  };
+  const packageJson = {
+    name,
+    version,
+    author,
+    description,
+    type,
+    "private": true,
+    license,
+    scripts,
+    dependencies,
+    devDependencies
+  };
   const _export_sfc = (sfc, props) => {
     const target = sfc.__vccOpts || sfc;
     for (const [key, val] of props) {
@@ -855,40 +889,6 @@
     }, _hoisted_2$l);
   }
   const AutoRead = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["render", _sfc_render$o]]);
-  const name = "linuxdo-scripts";
-  const version = "0.3.8";
-  const author = "dlzmoe";
-  const description = "An enhanced script for the linux.do forum";
-  const type = "module";
-  const license = "Apache-2.0";
-  const scripts = {
-    dev: "vite",
-    build: "vite build && py build.py",
-    preview: "vite preview"
-  };
-  const dependencies = {
-    vue: "^3.4.27"
-  };
-  const devDependencies = {
-    "@vitejs/plugin-vue": "^5.0.4",
-    less: "^4.1.0",
-    "less-loader": "^8.0.0",
-    "style-loader": "^2.0.0",
-    vite: "^5.2.12",
-    "vite-plugin-monkey": "^4.0.0"
-  };
-  const packageJson = {
-    name,
-    version,
-    author,
-    description,
-    type,
-    "private": true,
-    license,
-    scripts,
-    dependencies,
-    devDependencies
-  };
   const _sfc_main$n = {
     data() {
       return {
@@ -2860,6 +2860,7 @@ ${str}`;
     },
     data() {
       return {
+        version: packageJson.version,
         opacity: false,
         open: false,
         floorlotteryDialog: false,
@@ -3119,7 +3120,7 @@ ${str}`;
     open: "",
     id: "menu_suspendedball"
   };
-  const _hoisted_5 = /* @__PURE__ */ vue.createElementVNode("div", { class: "title" }, "linuxdo 增强插件设置", -1);
+  const _hoisted_5 = { class: "title" };
   const _hoisted_6 = /* @__PURE__ */ vue.createElementVNode("ul", { class: "menu-nav" }, [
     /* @__PURE__ */ vue.createElementVNode("li", { class: "act" }, "基础设置"),
     /* @__PURE__ */ vue.createElementVNode("li", null, "自定义文字"),
@@ -3203,7 +3204,7 @@ ${str}`;
         ])
       ]),
       vue.createElementVNode("dialog", _hoisted_4, [
-        _hoisted_5,
+        vue.createElementVNode("div", _hoisted_5, "linuxdo 增强插件设置 " + vue.toDisplayString($data.version), 1),
         vue.createElementVNode("div", {
           class: "close",
           onClick: _cache[0] || (_cache[0] = (...args) => $options.closedialog && $options.closedialog(...args))

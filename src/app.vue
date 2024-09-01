@@ -271,6 +271,7 @@ export default {
         gptdata: {
           value1: false,
           value2: false,
+          title: false,
           btn: false,
           apikey: "",
           baseurl: "https://api.openai.com",

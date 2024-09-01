@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         linuxdo 增强插件
 // @namespace    https://github.com/dlzmoe/linuxdo-scripts
-// @version      0.3.9
+// @version      0.3.10
 // @author       dlzmoe
 // @description  linux.do 增强插件，功能持续更新，欢迎提出新想法！
 // @license      Apache-2.0
@@ -12,13 +12,13 @@
 // @grant        GM_xmlhttpRequest
 // ==/UserScript==
 
-(t=>{if(typeof GM_addStyle=="function"){GM_addStyle(t);return}const i=document.createElement("style");i.textContent=t,document.head.append(i)})(' .item[data-v-c186448b],.item[data-v-8c0be0de]{border:none!important}input[data-v-f01e8b58]{width:70px;outline:none;height:24px;border:1px solid #b6b6b6;border-radius:4px;margin-left:10px;padding:0 10px;box-sizing:border-box}a[data-v-f089c8af]{margin-left:10px}a[data-v-f089c8af]:hover{text-decoration:underline}.post-stream.lookopwrapactive .topic-post{display:none!important}.post-stream.lookopwrapactive .topic-post.topic-owner{display:block!important}@keyframes breathAnimation-03f16a8d{0%,to{transform:scale(1);box-shadow:0 0 5px #00000080}50%{transform:scale(1.1);box-shadow:0 0 10px #000000b3}}.breath-animation[data-v-03f16a8d]{animation:breathAnimation-03f16a8d 4s ease-in-out infinite}.minimized[data-v-03f16a8d]{width:50px!important;height:50px!important;border-radius:50%!important;padding:0!important;overflow:hidden;cursor:pointer}.button[data-v-03f16a8d]:hover{background-color:#f0f0f0}#linuxDoLevelPopupContent[data-v-03f16a8d]{line-height:1.6;position:fixed;bottom:20px;right:90px;width:250px;height:auto;background-color:#fff;box-shadow:0 0 10px #00000080;padding:15px;z-index:10000;font-size:14px;border-radius:5px}#linuxDoUserSearch[data-v-03f16a8d]{width:100%;margin-top:10px}.button[data-v-03f16a8d]{margin-top:10px}.minimize-button[data-v-03f16a8d]{position:absolute;top:5px;right:5px;z-index:10001;background:transparent;border:none;cursor:pointer;border-radius:50%;text-align:center;line-height:40px;width:40px;height:40px}.dark-theme #linuxDoLevelPopupContent[data-v-03f16a8d]{background:#535353}.UsageTip[data-v-9fddfa16]{z-index:9999;position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);line-height:2;display:none}.linxudoscripts-tag{background:#29a6a9;color:#fff;font-size:14px!important;padding:0 10px;height:26px;text-align:center;display:inline-flex!important;align-items:center;justify-content:center;border-radius:5px}.menu-table{width:100%}.menu-table td,.menu-table th{padding:10px;font-size:14px}.menu-table .span{cursor:pointer}.menu-table .span+.span{margin-left:10px}.item[data-v-7ec3bcfc],.item[data-v-9593d75e]{border:none!important}.emojiPicker{top:0;left:100%;position:absolute;display:grid;grid-template-columns:repeat(12,1fr);gap:10px;height:100%;overflow:auto;background-color:#000c;padding:10px;border-radius:5px;z-index:9}.emojiPicker img{cursor:pointer;width:30px;height:30px}.sidebar-section-header-caret.right{transform:rotate(-90deg)}.item select[data-v-3d04f623]{height:28px;border:1px solid #b6b6b6;border-radius:4px;width:180px;margin-left:10px;cursor:pointer}.linuxdoscripts-aidialog{position:fixed;top:0;left:-100%;width:500px;height:100vh;background:#fff;box-shadow:1px 2px 5px #0000003d;z-index:999;padding-top:60px;transition:all .1s linear;opacity:0;visibility:hidden;overflow:hidden}.linuxdoscripts-aidialog.act{left:0;opacity:1;visibility:inherit;overflow:inherit}.item[data-v-b2e21318]{display:flex;align-items:center;justify-content:space-between;border:none}[class*=" el-icon-"],[class^=el-icon-]{display:none}.el-message{z-index:99999999999!important}#linuxdoscripts{font-size:15px}#linuxdoscripts input[type=text]{width:100%}#linuxdoscripts input[type=checkbox]{transform:scale(1.2)}#linuxdoscripts #menu_suspendedball{display:none}#linuxdoscripts img{vertical-align:bottom;max-width:100%;height:auto}#linuxdoscripts .close{position:absolute;right:10px;top:3px;cursor:pointer;font-size:34px;color:#999;transform:rotate(45deg)}#linuxdoscripts .setting-btn{z-index:999;position:fixed;bottom:20px;right:20px}#linuxdoscripts .setting-btn .el-button{margin:15px 0 0;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#919191;color:#fff;font-size:14px;cursor:pointer;transition:all .1s linear;border:none}#linuxdoscripts .setting-btn .el-button svg{margin:0}#linuxdoscripts .setting-btn .el-button:hover{opacity:.9}#linuxdoscripts .hint{margin-top:5px;color:#d94f4f;font-size:14px}#linuxdoscripts dialog{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:700px;background:#fff;color:#333;box-shadow:1px 2px 5px #0003;border-radius:10px;padding:15px;z-index:99999;overflow-x:hidden;box-sizing:border-box;margin:0}#linuxdoscripts dialog .menu-about{padding:5px 0;line-height:2}#linuxdoscripts dialog .menu-about .initialization{color:#999;border-bottom:1px dashed #999;cursor:pointer}#linuxdoscripts dialog .menu-about .initialization:hover{color:#333;border-color:#333}#linuxdoscripts dialog p{margin:0;font-size:14px}#linuxdoscripts .title{font-size:18px;text-align:center;font-weight:600;border-bottom:1px solid #eee;padding-bottom:6px}#linuxdoscripts .btn{border:none;outline:0;min-width:80px;height:32px;display:inline-flex;align-items:center;justify-content:center;background:#1c1c1e;color:#fff;font-size:14px;border-radius:5px;cursor:pointer;transition:all .1s linear}#linuxdoscripts .btn+.btn{margin-left:10px}#linuxdoscripts .btn.saveload{background:#4040b7}#linuxdoscripts .btn:hover{opacity:.9}#linuxdoscripts .menu-nav{display:flex;align-items:center;margin:0;padding:5px 0;border-bottom:1px solid #eee}#linuxdoscripts .menu-nav li{margin-right:10px;border-radius:4px;height:26px;min-width:60px;padding:0 10px;display:inline-flex;align-items:center;justify-content:center;font-size:14px;cursor:pointer}#linuxdoscripts .menu-nav li.act{background:#000;color:#fff}#linuxdoscripts .menu-body{height:480px;overflow-y:auto;padding-right:10px}#linuxdoscripts .menu-body::-webkit-scrollbar{height:8px;width:8px}#linuxdoscripts .menu-body::-webkit-scrollbar-corner{background:none}#linuxdoscripts .menu-body::-webkit-scrollbar-thumb{background:#dee0e1;border-radius:8px}#linuxdoscripts .menu-body .menu-body-item{display:none}#linuxdoscripts .menu-body .menu-body-item.act{display:block}#linuxdoscripts .menu-footer{display:flex;justify-content:space-between;margin-top:10px;padding-top:6px;border-top:1px solid #eee}#linuxdoscripts .menu-footer.hides{opacity:0;visibility:hidden;overflow:hidden}#linuxdoscripts .import{margin-left:auto!important}#linuxdoscripts .import,#linuxdoscripts .export{background:#d1f0ff;color:#559095}#linuxdoscripts .floorlottery{background:#ffb003}#linuxdoscripts .menu-body-item .item{margin-top:12px;border-bottom:1px solid #eee;padding-bottom:10px;display:flex;align-items:center;justify-content:space-between}#linuxdoscripts textarea{font-family:inherit;width:100%;min-height:100px!important;border:1px solid #999;outline:0;padding:5px;font-size:14px;margin:5px 0 0;resize:none;border-radius:0;color:var(--d-input-text-color);background:var(--d-input-bg-color)}#linuxdoscripts textarea:focus{border-color:var(--tertiary);outline:2px solid var(--tertiary);outline-offset:-2px}#linuxdoscripts #floorlotterloading img{width:50px;height:50px}#linuxdoscripts .floorlotterywrap{display:none;width:400px;height:300px;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);margin:0;z-index:999}#linuxdoscripts .floorlotterywrap{width:400px;height:300px}#linuxdoscripts .el-checkbox__inner{border:1px solid #979797}#linuxdoscripts label{margin:0}.linuxdoscripts-opacity{display:none;position:fixed;left:0;top:0;width:100vw;height:100vh;background:#00000080;z-index:9999}.linuxlevel.four{background:linear-gradient(to right,red,#00f);-webkit-background-clip:text;color:transparent}.topic-post{position:relative}.linuxfloor{display:flex;color:#ff8383;width:30px;height:30px;align-items:center;justify-content:center;border-radius:6px;font-size:16px;margin-left:10px}.signature-p{color:#279a36;font-size:14px;word-break:break-word}.topic-list .views{font-weight:400!important;white-space:nowrap!important}.createreply{display:flex;flex-direction:column;max-width:300px}.createreply button{margin-bottom:10px;justify-content:flex-start;text-align:left}.topicpreview-btn{padding:4px 12px!important;font-size:14px!important;opacity:0!important}.topic-list-item:hover .topicpreview-btn{opacity:1!important}.topicpreview{position:fixed;top:0;left:0;z-index:99999;width:100vw;height:100vh;display:flex;justify-content:center;align-items:center;display:none}.topicpreview .topicpreview-container{padding:30px 0;border-radius:5px;width:100%;max-width:800px;overflow-y:auto;height:80vh;z-index:10;background:#fafafa;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}.topicpreview .topicpreview-container .topicpreview-title{font-size:22px;font-weight:600;padding:0 30px}.topicpreview .topicpreview-container .topicpreview-date{padding:0 30px;color:#666}.topicpreview .topicpreview-container .topicpreview-content>.item{display:flex;align-items:flex-start;padding:20px 30px}.topicpreview .topicpreview-container .topicpreview-content>.item .itemfloor{width:50px;text-align:left;font-size:16px;padding-top:15px;color:#25b4cf}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost{flex:1;background:#fff;padding:15px;border-radius:10px;font-size:15px;color:#666}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost pre code{max-width:620px}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost img{max-width:100%;max-height:100%;height:auto}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemname{font-size:16px;color:#8f3a3a;display:flex;justify-content:space-between;align-items:center}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemname span{color:#9e9e9e;margin-left:20px}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemdate{color:#b9b9b9;font-size:16px;margin-left:auto}.topicpreview-opacity{position:absolute;top:0;left:0;width:100%;height:100%;opacity:1;background:#0009;z-index:9}.body-preview .sidebar-wrapper{display:none!important}body.body-preview #main-outlet-wrapper{display:block!important;padding-left:50px!important}.body-preview .d-header-wrap,.body-preview .menu_suspendedball{display:none!important}.post-activity{white-space:nowrap;display:inline-block;width:100%;text-align:left}.d-header img{height:var(--d-logo-height);width:auto;max-width:100%;object-fit:contain}.aicreated-btn{outline:none;border:1px solid #c5c5c5;background:#eee;display:flex;align-items:center;justify-content:center;line-height:1;font-size:14px;padding:4px 10px;border-radius:3px;margin-bottom:10px}.gpt-summary-wrap{background:#fffbd9;border-radius:5px;padding:10px;font-size:14px;color:#666;margin:0 0 10px;line-height:1.6}.gpt-summary-wrap .airegenerate{display:none;margin-top:6px;outline:none;border:1px solid #eee;background:#ffe27d;color:#626262;padding:4px 10px;cursor:pointer;border-radius:3px}.dark-theme input{background:#999;color:#fff}.dark-theme #linuxdoscripts dialog{background:#333;color:#eee;box-shadow:1px 2px 5px #000;border-color:#737373}.dark-theme #linuxdoscripts dialog .menu-about .initialization:hover{color:#eee;border-color:#eee}.dark-theme #linuxdoscripts .title,.dark-theme #linuxdoscripts .item,.dark-theme #linuxdoscripts .menu-footer{border-color:#4b4b4b}.dark-theme .topicpreview .topicpreview-container{background:#292929}.dark-theme .topicpreview .topicpreview-container .topicpreview-content>.item .itempost{background:#363636;color:#a9a9a9}.dark-theme .topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemdate,.dark-theme .topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemname span{color:#6b6b6b}.dark-theme .aicreated-btn{background:#999;color:#fff} ');
+(t=>{if(typeof GM_addStyle=="function"){GM_addStyle(t);return}const i=document.createElement("style");i.textContent=t,document.head.append(i)})(' .item[data-v-c186448b],.item[data-v-8c0be0de]{border:none!important}input[data-v-f01e8b58]{width:70px;outline:none;height:24px;border:1px solid #b6b6b6;border-radius:4px;margin-left:10px;padding:0 10px;box-sizing:border-box}a[data-v-f089c8af]{margin-left:10px}a[data-v-f089c8af]:hover{text-decoration:underline}.post-stream.lookopwrapactive .topic-post{display:none!important}.post-stream.lookopwrapactive .topic-post.topic-owner{display:block!important}@keyframes breathAnimation-03f16a8d{0%,to{transform:scale(1);box-shadow:0 0 5px #00000080}50%{transform:scale(1.1);box-shadow:0 0 10px #000000b3}}.breath-animation[data-v-03f16a8d]{animation:breathAnimation-03f16a8d 4s ease-in-out infinite}.minimized[data-v-03f16a8d]{width:50px!important;height:50px!important;border-radius:50%!important;padding:0!important;overflow:hidden;cursor:pointer}.button[data-v-03f16a8d]:hover{background-color:#f0f0f0}#linuxDoLevelPopupContent[data-v-03f16a8d]{line-height:1.6;position:fixed;bottom:20px;right:90px;width:250px;height:auto;background-color:#fff;box-shadow:0 0 10px #00000080;padding:15px;z-index:10000;font-size:14px;border-radius:5px}#linuxDoUserSearch[data-v-03f16a8d]{width:100%;margin-top:10px}.button[data-v-03f16a8d]{margin-top:10px}.minimize-button[data-v-03f16a8d]{position:absolute;top:5px;right:5px;z-index:10001;background:transparent;border:none;cursor:pointer;border-radius:50%;text-align:center;line-height:40px;width:40px;height:40px}.dark-theme #linuxDoLevelPopupContent[data-v-03f16a8d]{background:#535353}.UsageTip[data-v-9fddfa16]{z-index:9999;position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);line-height:2;display:none}.linxudoscripts-tag{background:#29a6a9;color:#fff;font-size:14px!important;padding:0 10px;height:26px;text-align:center;display:inline-flex!important;align-items:center;justify-content:center;border-radius:5px}.menu-table{width:100%}.menu-table td,.menu-table th{padding:10px;font-size:14px}.menu-table .span{cursor:pointer}.menu-table .span+.span{margin-left:10px}.item[data-v-7ec3bcfc],.item[data-v-9593d75e]{border:none!important}.emojiPicker{top:0;left:100%;position:absolute;display:grid;grid-template-columns:repeat(12,1fr);gap:10px;height:100%;overflow:auto;background-color:#000c;padding:10px;border-radius:5px;z-index:9}.emojiPicker img{cursor:pointer;width:30px;height:30px}.sidebar-section-header-caret.right{transform:rotate(-90deg)}.item select[data-v-3d04f623]{height:28px;border:1px solid #b6b6b6;border-radius:4px;width:180px;margin-left:10px;cursor:pointer}.linuxdoscripts-aidialog{position:fixed;top:0;left:-100%;width:500px;height:100vh;background:#fff;box-shadow:1px 2px 5px #0000003d;z-index:999;padding-top:60px;transition:all .1s linear;opacity:0;visibility:hidden;overflow:hidden}.linuxdoscripts-aidialog.act{left:0;opacity:1;visibility:inherit;overflow:inherit}.item[data-v-a455c235]{border:none}[class*=" el-icon-"],[class^=el-icon-]{display:none}.el-message{z-index:99999999999!important}#linuxdoscripts{font-size:15px}#linuxdoscripts input[type=text]{width:100%}#linuxdoscripts input[type=checkbox]{transform:scale(1.2)}#linuxdoscripts #menu_suspendedball{display:none}#linuxdoscripts img{vertical-align:bottom;max-width:100%;height:auto}#linuxdoscripts .close{position:absolute;right:10px;top:3px;cursor:pointer;font-size:34px;color:#999;transform:rotate(45deg)}#linuxdoscripts .setting-btn{z-index:999;position:fixed;bottom:20px;right:20px}#linuxdoscripts .setting-btn .el-button{margin:15px 0 0;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#919191;color:#fff;font-size:14px;cursor:pointer;transition:all .1s linear;border:none}#linuxdoscripts .setting-btn .el-button svg{margin:0}#linuxdoscripts .setting-btn .el-button:hover{opacity:.9}#linuxdoscripts .hint{margin-top:5px;color:#d94f4f;font-size:14px}#linuxdoscripts dialog{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:700px;background:#fff;color:#333;box-shadow:1px 2px 5px #0003;border-radius:10px;padding:15px;z-index:99999;overflow-x:hidden;box-sizing:border-box;margin:0}#linuxdoscripts dialog .menu-about{padding:5px 0;line-height:2}#linuxdoscripts dialog .menu-about .initialization{color:#999;border-bottom:1px dashed #999;cursor:pointer}#linuxdoscripts dialog .menu-about .initialization:hover{color:#333;border-color:#333}#linuxdoscripts dialog p{margin:0;font-size:14px}#linuxdoscripts .title{font-size:18px;text-align:center;font-weight:600;border-bottom:1px solid #eee;padding-bottom:6px}#linuxdoscripts .btn{border:none;outline:0;min-width:80px;height:32px;display:inline-flex;align-items:center;justify-content:center;background:#1c1c1e;color:#fff;font-size:14px;border-radius:5px;cursor:pointer;transition:all .1s linear}#linuxdoscripts .btn+.btn{margin-left:10px}#linuxdoscripts .btn.saveload{background:#4040b7}#linuxdoscripts .btn:hover{opacity:.9}#linuxdoscripts .menu-nav{display:flex;align-items:center;margin:0;padding:5px 0;border-bottom:1px solid #eee}#linuxdoscripts .menu-nav li{margin-right:10px;border-radius:4px;height:26px;min-width:60px;padding:0 10px;display:inline-flex;align-items:center;justify-content:center;font-size:14px;cursor:pointer}#linuxdoscripts .menu-nav li.act{background:#000;color:#fff}#linuxdoscripts .menu-body{height:480px;overflow-y:auto;padding-right:10px}#linuxdoscripts .menu-body::-webkit-scrollbar{height:8px;width:8px}#linuxdoscripts .menu-body::-webkit-scrollbar-corner{background:none}#linuxdoscripts .menu-body::-webkit-scrollbar-thumb{background:#dee0e1;border-radius:8px}#linuxdoscripts .menu-body .menu-body-item{display:none}#linuxdoscripts .menu-body .menu-body-item.act{display:block}#linuxdoscripts .menu-footer{display:flex;justify-content:space-between;margin-top:10px;padding-top:6px;border-top:1px solid #eee}#linuxdoscripts .menu-footer.hides{opacity:0;visibility:hidden;overflow:hidden}#linuxdoscripts .import{margin-left:auto!important}#linuxdoscripts .import,#linuxdoscripts .export{background:#d1f0ff;color:#559095}#linuxdoscripts .floorlottery{background:#ffb003}#linuxdoscripts .menu-body-item .item{margin-top:12px;border-bottom:1px solid #eee;padding-bottom:10px;display:flex;align-items:center;justify-content:space-between}#linuxdoscripts textarea{font-family:inherit;width:100%;min-height:100px!important;border:1px solid #999;outline:0;padding:5px;font-size:14px;margin:5px 0 0;resize:none;border-radius:0;color:var(--d-input-text-color);background:var(--d-input-bg-color)}#linuxdoscripts textarea:focus{border-color:var(--tertiary);outline:2px solid var(--tertiary);outline-offset:-2px}#linuxdoscripts #floorlotterloading img{width:50px;height:50px}#linuxdoscripts .floorlotterywrap{display:none;width:400px;height:300px;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);margin:0;z-index:999}#linuxdoscripts .floorlotterywrap{width:400px;height:300px}#linuxdoscripts .el-checkbox__inner{border:1px solid #979797}#linuxdoscripts label{margin:0}.linuxdoscripts-opacity{display:none;position:fixed;left:0;top:0;width:100vw;height:100vh;background:#00000080;z-index:9999}.linuxlevel.four{background:linear-gradient(to right,red,#00f);-webkit-background-clip:text;color:transparent}.topic-post{position:relative}.linuxfloor{display:flex;color:#ff8383;width:30px;height:30px;align-items:center;justify-content:center;border-radius:6px;font-size:16px;margin-left:10px}.signature-p{color:#279a36;font-size:14px;word-break:break-word}.topic-list .views{font-weight:400!important;white-space:nowrap!important}.createreply{display:flex;flex-direction:column;max-width:300px}.createreply button{margin-bottom:10px;justify-content:flex-start;text-align:left}.topicpreview-btn{padding:4px 12px!important;font-size:14px!important;opacity:0!important}.topic-list-item:hover .topicpreview-btn{opacity:1!important}.topicpreview{position:fixed;top:0;left:0;z-index:99999;width:100vw;height:100vh;display:flex;justify-content:center;align-items:center;display:none}.topicpreview .topicpreview-container{padding:30px 0;border-radius:5px;width:100%;max-width:800px;overflow-y:auto;height:80vh;z-index:10;background:#fafafa;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}.topicpreview .topicpreview-container .topicpreview-title{font-size:22px;font-weight:600;padding:0 30px}.topicpreview .topicpreview-container .topicpreview-date{padding:0 30px;color:#666}.topicpreview .topicpreview-container .topicpreview-content>.item{display:flex;align-items:flex-start;padding:20px 30px}.topicpreview .topicpreview-container .topicpreview-content>.item .itemfloor{width:50px;text-align:left;font-size:16px;padding-top:15px;color:#25b4cf}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost{flex:1;background:#fff;padding:15px;border-radius:10px;font-size:15px;color:#666}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost pre code{max-width:620px}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost img{max-width:100%;max-height:100%;height:auto}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemname{font-size:16px;color:#8f3a3a;display:flex;justify-content:space-between;align-items:center}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemname span{color:#9e9e9e;margin-left:20px}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemdate{color:#b9b9b9;font-size:16px;margin-left:auto}.topicpreview-opacity{position:absolute;top:0;left:0;width:100%;height:100%;opacity:1;background:#0009;z-index:9}.body-preview .sidebar-wrapper{display:none!important}body.body-preview #main-outlet-wrapper{display:block!important;padding-left:50px!important}.body-preview .d-header-wrap,.body-preview .menu_suspendedball{display:none!important}.post-activity{white-space:nowrap;display:inline-block;width:100%;text-align:left}.d-header img{height:var(--d-logo-height);width:auto;max-width:100%;object-fit:contain}.aicreated-btn{outline:none;border:1px solid #c5c5c5;background:#eee;display:flex;align-items:center;justify-content:center;line-height:1;font-size:14px;padding:4px 10px;border-radius:3px;margin-bottom:10px}.gpt-summary-wrap{background:#fffbd9;border-radius:5px;padding:10px;font-size:14px;color:#666;margin:0 0 10px;line-height:1.6}.gpt-summary-wrap .airegenerate{display:none;margin-top:6px;outline:none;border:1px solid #eee;background:#ffe27d;color:#626262;padding:4px 10px;cursor:pointer;border-radius:3px}.aicreatenewtopictitle{margin-left:20px}.aicreatenewtopictitle:hover{text-decoration:underline;cursor:pointer}.dark-theme input{background:#999;color:#fff}.dark-theme #linuxdoscripts dialog{background:#333;color:#eee;box-shadow:1px 2px 5px #000;border-color:#737373}.dark-theme #linuxdoscripts dialog .menu-about .initialization:hover{color:#eee;border-color:#eee}.dark-theme #linuxdoscripts .title,.dark-theme #linuxdoscripts .item,.dark-theme #linuxdoscripts .menu-footer{border-color:#4b4b4b}.dark-theme .topicpreview .topicpreview-container{background:#292929}.dark-theme .topicpreview .topicpreview-container .topicpreview-content>.item .itempost{background:#363636;color:#a9a9a9}.dark-theme .topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemdate,.dark-theme .topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemname span{color:#6b6b6b}.dark-theme .aicreated-btn{background:#999;color:#fff} ');
 
 (function (vue) {
   'use strict';
 
   const name = "linuxdo-scripts";
-  const version = "0.3.9";
+  const version = "0.3.10";
   const author = "dlzmoe";
   const description = "An enhanced script for the linux.do forum";
   const type = "module";
@@ -1194,14 +1194,14 @@
     class: "UsageTip"
   };
   const _hoisted_2$h = /* @__PURE__ */ vue.createStaticVNode('<div class="title" data-v-9fddfa16>友情提示</div><br data-v-9fddfa16><div data-v-9fddfa16>佬友你好，你已经成功安装 linuxdo 增强插件啦！<a href="https://linuxdo-scripts-docs.netlify.app/" target="_blank" data-v-9fddfa16>使用文档</a></div><div style="text-decoration:underline;" data-v-9fddfa16> 设置按钮在左下角切换主题的旁边哦~ 有个小齿轮，点击它开始配置功能！！ </div><div data-v-9fddfa16>如果可以的话欢迎点个 star 支持一下~ </div><div data-v-9fddfa16><a href="https://github.com/dlzmoe/linuxdo-scripts/" target="_blank" data-v-9fddfa16><img src="https://img.shields.io/github/stars/dlzmoe%2Flinuxdo-scripts?style=for-the-badge&amp;labelColor=%235D5D5D&amp;color=%23E97435" alt="icon" data-v-9fddfa16></a></div><br data-v-9fddfa16>', 7);
-  const _hoisted_9$1 = { class: "el-button clicktohide" };
-  const _hoisted_10$1 = { key: 0 };
+  const _hoisted_9$2 = { class: "el-button clicktohide" };
+  const _hoisted_10$2 = { key: 0 };
   function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("dialog", _hoisted_1$h, [
       _hoisted_2$h,
-      vue.createElementVNode("button", _hoisted_9$1, [
+      vue.createElementVNode("button", _hoisted_9$2, [
         vue.createTextVNode(" 点击我，该提示永远不会出现啦 "),
-        $data.countdownVisible ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_10$1, "（" + vue.toDisplayString($data.countdown) + "秒）", 1)) : vue.createCommentVNode("", true)
+        $data.countdownVisible ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_10$2, "（" + vue.toDisplayString($data.countdown) + "秒）", 1)) : vue.createCommentVNode("", true)
       ])
     ]);
   }
@@ -2548,11 +2548,13 @@ ${$(".d-editor-input").val()}
         default: {
           value1: false,
           value2: false,
+          title: false,
           btn: false,
           apikey: "",
           baseurl: "https://api.openai.com",
           model: "gpt-4o-mini",
-          prompt: "根据以下帖子内容进行总结，请使用 text 文本返回回答，字数限制 200 字以内，越精炼越好，语言要求返回简体中文，并且进行中英文混排优化。"
+          prompt: `根据以下帖子内容进行总结，请使用 markdown 格式返回回答，没有字数限制，但要求文字精炼，简介准确，语言要求返回简体中文，并且进行中英文混排优化。可以通过编号列表（1，2，3）列出核心要点。
+注意不要输出标题，例如：核心要点总结，帖子总结等，直接输出文本段落。`
         }
       }
     },
@@ -2592,7 +2594,7 @@ ${$(".d-editor-input").val()}
           }, 1e3);
         }
       },
-      // 获取帖子内容
+      // 获取帖子内容并生成
       async getPostContent() {
         $(".post-stream").before(
           `<div class="gpt-summary-wrap">
@@ -2641,7 +2643,9 @@ ${str}`;
                     })
                   });
                   const gptData = await gptResponse.json();
-                  $(".gpt-summary").html(`AI 总结：${marked.parse(gptData.choices[0].message.content)}`);
+                  $(".gpt-summary").html(
+                    `AI 总结：${marked.parse(gptData.choices[0].message.content)}`
+                  );
                   $(".airegenerate").show();
                   let summaryCache = JSON.parse(localStorage.getItem("summaryCacheData")) || [];
                   const regex = /^(https:\/\/linux\.do\/t\/topic\/\d+)(\/\d+)?$/;
@@ -2670,6 +2674,45 @@ ${str}`;
             onerror: function(error) {
               reject(error);
             }
+          });
+        });
+      },
+      // AI 根据新建话题内容生成标题
+      async getCreateNewTopicTitle() {
+        return new Promise((resolve, reject) => {
+          const topic_contentdata = $(".d-editor-preview").html();
+          const config = JSON.parse(localStorage.getItem("linxudoscriptssetting")).gptdata;
+          const prompt2 = `根据以下帖子内容，生成一个合适的标题用于社交论坛发布使用，格式要求：不要书名号或其他符号，只需要一句纯文本。尽量精简到15字以内，如果字数不够表达主题，可以适当多生成几个字。
+帖子内容如下：
+${topic_contentdata}`;
+          fetch(`${config.baseurl}/v1/chat/completions`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${config.apikey}`
+            },
+            body: JSON.stringify({
+              model: config.model,
+              messages: [
+                {
+                  role: "user",
+                  content: prompt2
+                }
+              ],
+              temperature: 0.7
+            })
+          }).then((response) => {
+            if (!response.ok) {
+              reject(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+          }).then((gptData) => {
+            console.log(gptData.choices[0].message.content);
+            $("#reply-title").val(gptData.choices[0].message.content);
+            resolve();
+          }).catch((error) => {
+            console.log(error);
+            $("#reply-title").val(`抱歉生成失败，请检查配置或者反馈给开发者！`);
           });
         });
       }
@@ -2714,16 +2757,36 @@ ${str}`;
       if (this.localChecked.value2) {
         $("body").append("<style>.airegenerate{display:none!important;}</style>");
       }
+      if (this.localChecked.title) {
+        setInterval(() => {
+          if ($(".action-title").length > 0) {
+            if ($(".action-title").html().includes("创建新话题")) {
+              if ($(".aicreatenewtopictitle").length < 1) {
+                $(".action-title").append(
+                  '<span class="aicreatenewtopictitle">AI 生成标题</span>'
+                );
+                $(".aicreatenewtopictitle").click(() => {
+                  $("#reply-title").val("正在生成中，请稍后...");
+                  this.getCreateNewTopicTitle();
+                });
+              }
+            }
+          }
+        }, 1e3);
+      }
     }
   };
-  const _withScopeId = (n) => (vue.pushScopeId("data-v-b2e21318"), n = n(), vue.popScopeId(), n);
+  const _withScopeId = (n) => (vue.pushScopeId("data-v-a455c235"), n = n(), vue.popScopeId(), n);
   const _hoisted_1$2 = { class: "item" };
-  const _hoisted_2$2 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ vue.createElementVNode("div", { class: "tit" }, "是否开启 AI 生成话题总结", -1));
+  const _hoisted_2$2 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ vue.createElementVNode("div", { class: "tit" }, "1. 是否开启 AI 生成话题总结", -1));
   const _hoisted_3$2 = { class: "item" };
-  const _hoisted_4$1 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ vue.createElementVNode("div", { class: "tit" }, "是否手动总结（默认自动总结）", -1));
+  const _hoisted_4$1 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ vue.createElementVNode("div", { class: "tit" }, "2. 是否手动总结（默认自动总结）", -1));
   const _hoisted_5$1 = { class: "item" };
-  const _hoisted_6$1 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ vue.createElementVNode("div", { class: "tit" }, "是否关闭重新生成按钮（默认显示重新生成）", -1));
-  const _hoisted_7$1 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ vue.createElementVNode("div", { style: { "margin-top": "10px" } }, "注意：baseurl 不带后缀和 '/'", -1));
+  const _hoisted_6$1 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ vue.createElementVNode("div", { class: "tit" }, "3. 是否关闭重新生成按钮（默认显示重新生成）", -1));
+  const _hoisted_7$1 = { class: "item" };
+  const _hoisted_8$1 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ vue.createElementVNode("div", { class: "tit" }, "4. 新建话题使用 AI 生成标题", -1));
+  const _hoisted_9$1 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ vue.createElementVNode("hr", null, null, -1));
+  const _hoisted_10$1 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ vue.createElementVNode("div", { style: { "margin-top": "10px" } }, "注意：baseurl 不带后缀和 '/'", -1));
   function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("div", null, [
       vue.createElementVNode("div", _hoisted_1$2, [
@@ -2756,37 +2819,48 @@ ${str}`;
           [vue.vModelCheckbox, $data.localChecked.value2]
         ])
       ]),
+      vue.createElementVNode("div", _hoisted_7$1, [
+        _hoisted_8$1,
+        vue.withDirectives(vue.createElementVNode("input", {
+          type: "checkbox",
+          "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => $data.localChecked.title = $event),
+          onChange: _cache[7] || (_cache[7] = (...args) => $options.handleChange && $options.handleChange(...args))
+        }, null, 544), [
+          [vue.vModelCheckbox, $data.localChecked.title]
+        ])
+      ]),
+      _hoisted_9$1,
       vue.withDirectives(vue.createElementVNode("input", {
         type: "text",
-        "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => $data.localChecked.apikey = $event),
+        "onUpdate:modelValue": _cache[8] || (_cache[8] = ($event) => $data.localChecked.apikey = $event),
         placeholder: "sk-xxxxxxxx"
       }, null, 512), [
         [vue.vModelText, $data.localChecked.apikey]
       ]),
       vue.withDirectives(vue.createElementVNode("input", {
         type: "text",
-        "onUpdate:modelValue": _cache[7] || (_cache[7] = ($event) => $data.localChecked.baseurl = $event),
+        "onUpdate:modelValue": _cache[9] || (_cache[9] = ($event) => $data.localChecked.baseurl = $event),
         placeholder: "https://api.openai.com"
       }, null, 512), [
         [vue.vModelText, $data.localChecked.baseurl]
       ]),
       vue.withDirectives(vue.createElementVNode("input", {
         type: "text",
-        "onUpdate:modelValue": _cache[8] || (_cache[8] = ($event) => $data.localChecked.model = $event),
+        "onUpdate:modelValue": _cache[10] || (_cache[10] = ($event) => $data.localChecked.model = $event),
         placeholder: "模型，如：gpt-4o-mini"
       }, null, 512), [
         [vue.vModelText, $data.localChecked.model]
       ]),
       vue.withDirectives(vue.createElementVNode("textarea", {
-        "onUpdate:modelValue": _cache[9] || (_cache[9] = ($event) => $data.localChecked.prompt = $event),
+        "onUpdate:modelValue": _cache[11] || (_cache[11] = ($event) => $data.localChecked.prompt = $event),
         placeholder: "提示词 prompt"
       }, null, 512), [
         [vue.vModelText, $data.localChecked.prompt]
       ]),
-      _hoisted_7$1
+      _hoisted_10$1
     ]);
   }
-  const GPTconfig = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$2], ["__scopeId", "data-v-b2e21318"]]);
+  const GPTconfig = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$2], ["__scopeId", "data-v-a455c235"]]);
   const _sfc_main$1 = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
@@ -2904,6 +2978,7 @@ ${str}`;
           gptdata: {
             value1: false,
             value2: false,
+            title: false,
             btn: false,
             apikey: "",
             baseurl: "https://api.openai.com",

@@ -1,17 +1,22 @@
 <template>
   <div>
     <div class="item">
-      <div class="tit">是否开启 AI 生成话题总结</div>
+      <div class="tit">1. 是否开启 AI 生成话题总结</div>
       <input type="checkbox" v-model="localChecked.value1" @change="handleChange" />
     </div>
     <div class="item">
-      <div class="tit">是否手动总结（默认自动总结）</div>
+      <div class="tit">2. 是否手动总结（默认自动总结）</div>
       <input type="checkbox" v-model="localChecked.btn" @change="handleChange" />
     </div>
     <div class="item">
-      <div class="tit">是否关闭重新生成按钮（默认显示重新生成）</div>
+      <div class="tit">3. 是否关闭重新生成按钮（默认显示重新生成）</div>
       <input type="checkbox" v-model="localChecked.value2" @change="handleChange" />
     </div>
+    <div class="item">
+      <div class="tit">4. 新建话题使用 AI 生成标题</div>
+      <input type="checkbox" v-model="localChecked.title" @change="handleChange" />
+    </div>
+    <hr />
     <input type="text" v-model="localChecked.apikey" placeholder="sk-xxxxxxxx" />
     <input
       type="text"
@@ -32,12 +37,13 @@ export default {
       default: {
         value1: false,
         value2: false,
+        title: false,
         btn: false,
         apikey: "",
         baseurl: "https://api.openai.com",
         model: "gpt-4o-mini",
-        prompt:
-          "根据以下帖子内容进行总结，请使用 text 文本返回回答，字数限制 200 字以内，越精炼越好，语言要求返回简体中文，并且进行中英文混排优化。",
+        prompt: `根据以下帖子内容进行总结，请使用 markdown 格式返回回答，没有字数限制，但要求文字精炼，简介准确，语言要求返回简体中文，并且进行中英文混排优化。可以通过编号列表（1，2，3）列出核心要点。
+注意不要输出标题，例如：核心要点总结，帖子总结等，直接输出文本段落。`,
       },
     },
   },
@@ -78,7 +84,7 @@ export default {
         }, 1000);
       }
     },
-    // 获取帖子内容
+    // 获取帖子内容并生成
     async getPostContent() {
       $(".post-stream").before(
         `<div class="gpt-summary-wrap">
@@ -103,8 +109,7 @@ export default {
             "x-requested-with": "XMLHttpRequest",
           },
           onload: async function (response) {
-            const config = JSON.parse(localStorage.getItem("linxudoscriptssetting"))
-              .gptdata;
+            const config = JSON.parse(localStorage.getItem("linxudoscriptssetting")).gptdata;
             if (response.status === 200) {
               try {
                 const data = JSON.parse(response.responseText);
@@ -131,7 +136,9 @@ ${str}`;
                 });
 
                 const gptData = await gptResponse.json();
-                $(".gpt-summary").html(`AI 总结：${marked.parse(gptData.choices[0].message.content)}`);
+                $(".gpt-summary").html(
+                  `AI 总结：${marked.parse(gptData.choices[0].message.content)}`
+                );
                 $(".airegenerate").show();
 
                 let summaryCache =
@@ -166,6 +173,50 @@ ${str}`;
             reject(error);
           },
         });
+      });
+    },
+    // AI 根据新建话题内容生成标题
+    async getCreateNewTopicTitle() {
+      return new Promise((resolve, reject) => {
+        const topic_contentdata = $(".d-editor-preview").html();
+        const config = JSON.parse(localStorage.getItem("linxudoscriptssetting")).gptdata;
+        const prompt = `根据以下帖子内容，生成一个合适的标题用于社交论坛发布使用，格式要求：不要书名号或其他符号，只需要一句纯文本。尽量精简到15字以内，如果字数不够表达主题，可以适当多生成几个字。
+帖子内容如下：
+${topic_contentdata}`;
+
+        fetch(`${config.baseurl}/v1/chat/completions`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${config.apikey}`,
+          },
+          body: JSON.stringify({
+            model: config.model,
+            messages: [
+              {
+                role: "user",
+                content: prompt,
+              },
+            ],
+            temperature: 0.7,
+          }),
+        })
+          .then((response) => {
+            if (!response.ok) {
+              reject(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then((gptData) => {
+            console.log(gptData.choices[0].message.content);
+            $("#reply-title").val(gptData.choices[0].message.content);
+            resolve();
+          })
+          .catch((error) => {
+            console.log(error);
+
+            $("#reply-title").val(`抱歉生成失败，请检查配置或者反馈给开发者！`);
+          });
       });
     },
   },
@@ -215,14 +266,29 @@ ${str}`;
     if (this.localChecked.value2) {
       $("body").append("<style>.airegenerate{display:none!important;}</style>");
     }
+    if (this.localChecked.title) {
+      setInterval(() => {
+        if ($(".action-title").length > 0) {
+          if ($(".action-title").html().includes("创建新话题")) {
+            if ($(".aicreatenewtopictitle").length < 1) {
+              $(".action-title").append(
+                '<span class="aicreatenewtopictitle">AI 生成标题</span>'
+              );
+
+              $(".aicreatenewtopictitle").click(() => {
+                $("#reply-title").val("正在生成中，请稍后...");
+                this.getCreateNewTopicTitle();
+              });
+            }
+          }
+        }
+      }, 1000);
+    }
   },
 };
 </script>
 <style scoped>
 .item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   border: none;
 }
 </style>

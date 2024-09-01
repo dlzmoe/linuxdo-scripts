@@ -137,7 +137,7 @@ ${str}`;
 
                 const gptData = await gptResponse.json();
                 $(".gpt-summary").html(
-                  `AI 总结：${marked.parse(gptData.choices[0].message.content)}`
+                  `${marked.parse(gptData.choices[0].message.content)}`
                 );
                 $(".airegenerate").show();
 
@@ -240,7 +240,7 @@ ${topic_contentdata}`;
             if (existingObject) {
               $(".post-stream").before(
                 `<div class="gpt-summary-wrap">
-<div class="gpt-summary">AI 总结：${marked.parse(existingObject.value)}</div>
+<div class="gpt-summary">${marked.parse(existingObject.value)}</div>
 <button type="button" class="airegenerate" style="display:none">重新生成</button>
 </div>`
               );

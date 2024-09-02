@@ -13,10 +13,8 @@
       <input type="checkbox" v-model="localChecked.value2" @change="handleChange" />
     </div>
     <div class="item">
-      <div class="tit">4. 新建话题使用 AI 生成标题</div>
-      <input type="checkbox" v-model="localChecked.title" @change="handleChange" />
+      <div class="tit">4. 配置信息</div>
     </div>
-    <hr />
     <input type="text" v-model="localChecked.apikey" placeholder="sk-xxxxxxxx" />
     <input
       type="text"
@@ -24,8 +22,15 @@
       placeholder="https://api.openai.com"
     />
     <input type="text" v-model="localChecked.model" placeholder="模型，如：gpt-4o-mini" />
-    <textarea v-model="localChecked.prompt" placeholder="提示词 prompt"></textarea>
-    <div style="margin-top: 10px">注意：baseurl 不带后缀和 '/'</div>
+    <div>5. AI 总结帖子 prompt:</div>
+    <textarea v-model="localChecked.prompt"></textarea>
+    <div style="margin-top: 10px">
+      注意：baseurl 不带后缀和 '/'，不支持 http，请使用 https
+    </div>
+    <div class="item">
+      <div class="tit">6. 新建话题使用 AI 生成标题</div>
+      <input type="checkbox" v-model="localChecked.title" @change="handleChange" />
+    </div>
   </div>
 </template>
 
@@ -109,7 +114,8 @@ export default {
             "x-requested-with": "XMLHttpRequest",
           },
           onload: async function (response) {
-            const config = JSON.parse(localStorage.getItem("linxudoscriptssetting")).gptdata;
+            const config = JSON.parse(localStorage.getItem("linxudoscriptssetting"))
+              .gptdata;
             if (response.status === 200) {
               try {
                 const data = JSON.parse(response.responseText);

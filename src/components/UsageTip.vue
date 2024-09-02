@@ -1,84 +1,80 @@
-<template>
-  <dialog open class="UsageTip">
-    <div class="title">友情提示</div>
-    <br />
-    <div>佬友你好，你已经成功安装 linuxdo 增强插件啦！<a href="https://linuxdo-scripts-docs.netlify.app/" target="_blank">使用文档</a></div>
-    <div style="text-decoration: underline">
-      设置按钮在左下角切换主题的旁边哦~ 有个小齿轮，点击它开始配置功能！！
-    </div>
-    <div>如果可以的话欢迎点个 star 支持一下~ </div>
-    <div>
-      <a href="https://github.com/dlzmoe/linuxdo-scripts/" target="_blank">
-        <img src="https://img.shields.io/github/stars/dlzmoe%2Flinuxdo-scripts?style=for-the-badge&labelColor=%235D5D5D&color=%23E97435" alt="icon">
-      </a>
-    </div>
-    <br />
-    <button class="el-button clicktohide">
-      点击我，该提示永远不会出现啦
-      <span v-if="countdownVisible">（{{ countdown }}秒）</span>
-    </button>
-  </dialog>
-</template>
+<template></template>
 
 <script>
 export default {
-  data() {
-    return {
-      countdown: 5,
-      countdownInterval: null,
-      countdownVisible: false,
-    };
-  },
-  methods: {
-    startCountdown() {
-      this.countdownVisible = true; // 显示倒计时
-      this.countdown = 5; // 重置倒计时
-      this.countdownInterval = setInterval(() => {
-        this.countdown--;
-        if (this.countdown < 0) {
-          clearInterval(this.countdownInterval);
-          this.countdownVisible = false; // 隐藏倒计时
-          this.hide(); // 倒计时结束后调用hide方法
-        }
-      }, 1000);
-    },
-    hide() {
-      $(".clicktohide").click(function () {
-        $(".UsageTip").hide();
-        localStorage.setItem("isShowplugininstallationprompts", true);
-        $(".linuxdoscripts-opacity").hide();
-      });
-    },
-  },
-  beforeDestroy() {
-    // 清理定时器
-    clearInterval(this.countdownInterval);
-  },
   created() {
     setTimeout(() => {
       const isShowplugininstallationprompts = localStorage.getItem(
         "isShowplugininstallationprompts"
       );
       if (isShowplugininstallationprompts == "true") {
-        $(".UsageTip").hide();
       } else {
-        $(".UsageTip").show();
-        $(".linuxdoscripts-opacity").show();
-        this.startCountdown(); // 开始倒计时
+        if ($(".UsageTip").length < 1) {
+          $(".sidebar-footer-container").before(`
+            <dialog open class="UsageTip">
+              <div class="title">友情提示</div>
+              <div>
+                佬友你好，你已经成功安装 linuxdo 增强插件啦！<a
+                  href="https://linuxdo-scripts-docs.netlify.app/"
+                  target="_blank">
+                  使用文档
+                  </a>
+              </div>
+              <div style="color:#e00">
+                设置按钮在下方切换主题的旁边哦~ 有个小齿轮，点击它开始配置插件！
+              </div>
+              <div>如果可以的话欢迎点个 star 支持一下~</div>
+              <div>
+                <a href="https://github.com/dlzmoe/linuxdo-scripts/" target="_blank">
+                  <img
+                    src="https://img.shields.io/github/stars/dlzmoe%2Flinuxdo-scripts?style=for-the-badge&labelColor=%235D5D5D&color=%23E97435"
+                    alt="icon"
+                  />
+                </a>
+              </div>
+              <button class="clicktohide">点击我，该提示永远不会出现啦</button>
+            </dialog>
+           `);
+
+          $(".clicktohide").click(function () {
+            localStorage.setItem("isShowplugininstallationprompts", true);
+            $(".UsageTip").remove();
+          });
+        }
       }
     }, 100);
   },
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 .UsageTip {
-  z-index: 9999;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  line-height: 2;
-  display: none;
+  position: static;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+
+  & > div {
+    margin: 10px 0;
+  }
+  button {
+    background: #333;
+    color: #fff;
+    padding: 8px 10px;
+    margin-bottom: 10px;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+  }
+}
+.dark-theme {
+  .UsageTip {
+    background: #333;
+    color: #ccc;
+    button {
+      background: #999;
+      color: #ffffff;
+    }
+  }
 }
 </style>

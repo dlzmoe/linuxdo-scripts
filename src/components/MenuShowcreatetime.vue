@@ -35,8 +35,9 @@ export default {
     },
 
     convertToTimestamp(dateStr) {
-      const datePattern = /(\d{4}) 年 (\d{1,2}) 月 (\d{1,2}) 日 (\d{2}):(\d{2})/;
-      const dateMatch = dateStr.match(datePattern);
+      const cleanedDateStr = dateStr.replace(/\s+/g, ""); // 去掉所有空格
+      const datePattern = /(\d{4})年(\d{1,2})月(\d{1,2})日(\d{2}):(\d{2})/;
+      const dateMatch = cleanedDateStr.match(datePattern);
 
       if (dateMatch) {
         const year = parseInt(dateMatch[1], 10);

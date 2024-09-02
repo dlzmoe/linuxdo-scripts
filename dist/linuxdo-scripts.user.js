@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         linuxdo 增强插件
 // @namespace    https://github.com/dlzmoe/linuxdo-scripts
-// @version      0.3.11
+// @version      0.3.12
 // @author       dlzmoe
 // @description  linux.do 增强插件，功能持续更新，欢迎提出新想法！
 // @license      Apache-2.0
@@ -18,7 +18,7 @@
   'use strict';
 
   const name = "linuxdo-scripts";
-  const version = "0.3.11";
+  const version = "0.3.12";
   const author = "dlzmoe";
   const description = "An enhanced script for the linux.do forum";
   const type = "module";
@@ -205,8 +205,9 @@
         return isToday ? `${hours}:${minutes}` : `${month}/${day} ${hours}:${minutes}`;
       },
       convertToTimestamp(dateStr) {
-        const datePattern = /(\d{4}) 年 (\d{1,2}) 月 (\d{1,2}) 日 (\d{2}):(\d{2})/;
-        const dateMatch = dateStr.match(datePattern);
+        const cleanedDateStr = dateStr.replace(/\s+/g, "");
+        const datePattern = /(\d{4})年(\d{1,2})月(\d{1,2})日(\d{2}):(\d{2})/;
+        const dateMatch = cleanedDateStr.match(datePattern);
         if (dateMatch) {
           const year = parseInt(dateMatch[1], 10);
           const month = parseInt(dateMatch[2], 10) - 1;
@@ -327,8 +328,9 @@
         return isToday ? `${hours}:${minutes}` : `${month}/${day} ${hours}:${minutes}`;
       },
       convertToTimestamp(dateStr) {
-        const datePattern = /(\d{4}) 年 (\d{1,2}) 月 (\d{1,2}) 日 (\d{2}):(\d{2})/;
-        const dateMatch = dateStr.match(datePattern);
+        const cleanedDateStr = dateStr.replace(/\s+/g, "");
+        const datePattern = /(\d{4})年(\d{1,2})月(\d{1,2})日(\d{2}):(\d{2})/;
+        const dateMatch = cleanedDateStr.match(datePattern);
         if (dateMatch) {
           const year = parseInt(dateMatch[1], 10);
           const month = parseInt(dateMatch[2], 10) - 1;
@@ -341,7 +343,7 @@
         return null;
       },
       setInitDate() {
-        $(".topic-list .age").each((index, element) => {
+        $(".topic-list-item .age").each((index, element) => {
           const str = $(element).attr("title");
           const match = str.match(/创建日期：([\s\S]*?)最新：/);
           if (match && match[1]) {

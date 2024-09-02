@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import packageJson from "../../package.json"; // 根据路径调整
+import packageJson from "../../../package.json"; // 根据路径调整
 export default {
   data() {
     return {

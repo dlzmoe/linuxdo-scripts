@@ -147,42 +147,53 @@
 </template>
 
 <script>
+// 基础设置
 import packageJson from "../package.json";
-import MenuOpenpostblank from "./components/MenuOpenpostblank.vue";
-import MenuNewtopicreminder from "./components/MenuNewtopicreminder.vue";
-import MenuAutoexpandreply from "./components/MenuAutoexpandreply.vue";
-import MenuShowcreatetime from "./components/MenuShowcreatetime.vue";
-import MenuShowcreatetime1 from "./components/MenuShowcreatetime1.vue";
-import MenuShowfloors from "./components/MenuShowfloors.vue";
-import MenuHidetopicdetailtitle from "./components/MenuHidetopicdetailtitle.vue";
-import MenuTopicpreview from "./components/MenuTopicpreview.vue";
-import MenuCreatereply from "./components/MenuCreatereply.vue";
-import MenuBlockuserlist from "./components/MenuBlockuserlist.vue";
-import MenuAutoRead from "./components/MenuAutoRead.vue";
-import AutoRead from "./components/AutoRead.vue";
-import Updates from "./components/Updates.vue";
-import MenuLookOP from "./components/MenuLookOP.vue";
-import LookOP from "./components/LookOP.vue";
-import LevelDiglog from "./components/LevelDiglog.vue";
-import UsageTip from "./components/UsageTip.vue";
-import MenuFloorHeight from "./components/MenuFloorHeight.vue";
-import UserTags from "./components/UserTags.vue";
-import MenuOtherCss from "./components/MenuOtherCss.vue";
-import MenuLogoUrl from "./components/MenuLogoUrl.vue";
-import ReplyTBEnjoy from "./components/ReplyTBEnjoy.vue";
-import MenuPangu from "./components/MenuPangu.vue";
-import MenuLevelSearch from "./components/MenuLevelSearch.vue";
-import MenuShowUnread from "./components/MenuShowUnread.vue";
-import MenuFilterText from "./components/MenuFilterText.vue";
-import MenuLookmeSign from "./components/MenuLookmeSign.vue";
-import MenuQuickAccess from "./components/MenuQuickAccess.vue";
-import MenureplaceEmojiStyle from "./components/MenureplaceEmojiStyle.vue";
-import MenuShowAI from "./components/MenuShowAI.vue";
-import AIDialog from "./components/AIDialog.vue";
-import MenuEditorJa from "./components/MenuEditorJa.vue";
-import MenuCreatedOrder from "./components/MenuCreatedOrder.vue";
-import GPTconfig from "./components/GPTconfig.vue";
-import MenuStickyNav from "./components/MenuStickyNav.vue";
+import MenuOpenpostblank from "./components/BasicSettings/MenuOpenpostblank.vue";
+import MenuNewtopicreminder from "./components/BasicSettings/MenuNewtopicreminder.vue";
+import MenuAutoexpandreply from "./components/BasicSettings/MenuAutoexpandreply.vue";
+import MenuShowcreatetime from "./components/BasicSettings/MenuShowcreatetime.vue";
+import MenuShowcreatetime1 from "./components/BasicSettings/MenuShowcreatetime1.vue";
+import MenuShowfloors from "./components/BasicSettings/MenuShowfloors.vue";
+import MenuHidetopicdetailtitle from "./components/BasicSettings/MenuHidetopicdetailtitle.vue";
+import MenuTopicpreview from "./components/BasicSettings/MenuTopicpreview.vue";
+import MenuAutoRead from "./components/BasicSettings/MenuAutoRead.vue";
+import MenuLookOP from "./components/BasicSettings/MenuLookOP.vue";
+import MenuFloorHeight from "./components/BasicSettings/MenuFloorHeight.vue";
+import ReplyTBEnjoy from "./components/BasicSettings/ReplyTBEnjoy.vue";
+import MenuPangu from "./components/BasicSettings/MenuPangu.vue";
+import MenuLevelSearch from "./components/BasicSettings/MenuLevelSearch.vue";
+import MenuShowUnread from "./components/BasicSettings/MenuShowUnread.vue";
+import MenuFilterText from "./components/BasicSettings/MenuFilterText.vue";
+import MenuLookmeSign from "./components/BasicSettings/MenuLookmeSign.vue";
+import MenuQuickAccess from "./components/BasicSettings/MenuQuickAccess.vue";
+import MenureplaceEmojiStyle from "./components/BasicSettings/MenureplaceEmojiStyle.vue";
+import MenuShowAI from "./components/BasicSettings/MenuShowAI.vue";
+import MenuEditorJa from "./components/BasicSettings/MenuEditorJa.vue";
+import MenuCreatedOrder from "./components/BasicSettings/MenuCreatedOrder.vue";
+import MenuStickyNav from "./components/BasicSettings/MenuStickyNav.vue";
+
+// 自定义文字
+import MenuOtherCss from "./components/CustomText/MenuOtherCss.vue";
+import MenuLogoUrl from "./components/CustomText/MenuLogoUrl.vue";
+import MenuCreatereply from "./components/CustomText/MenuCreatereply.vue";
+import MenuBlockuserlist from "./components/CustomText/MenuBlockuserlist.vue";
+
+// 用户标签
+import UserTags from "./components/UserTags/UserTags.vue";
+
+// AI 配置
+import GPTconfig from "./components/AIConfig/GPTconfig.vue";
+
+// 按钮
+import LookOP from "./components/Button/LookOP.vue";
+import LevelDiglog from "./components/Button/LevelDiglog.vue";
+import AutoRead from "./components/Button/AutoRead.vue";
+import AIDialog from "./components/Button/AIDialog.vue";
+
+// 其他组件
+import Updates from "./components/Other/Updates.vue";
+import UsageTip from "./components/Other/UsageTip.vue";
 
 export default {
   components: {

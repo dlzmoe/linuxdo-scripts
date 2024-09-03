@@ -86,10 +86,12 @@
             <MenuLogoUrl :sort="1" v-model:value="settingData.logourl" />
             <!-- 自定义快捷回复 -->
             <MenuCreatereply :sort="2" v-model:value="settingData.QuickReply" />
+            <!-- 关键词屏蔽功能 -->
+            <MenuBlockKeyword :sort="3" v-model:value="settingData.blockkeywrod" />
             <!-- 屏蔽指定用户 -->
-            <MenuBlockuserlist :sort="3" v-model:value="settingData.blockList" />
+            <MenuBlockuserlist :sort="4" v-model:value="settingData.blockList" />
             <!-- 自定义 CSS -->
-            <MenuOtherCss :sort="4" v-model:value="settingData.othercss" />
+            <MenuOtherCss :sort="5" v-model:value="settingData.othercss" />
           </div>
           <div class="menu-body-item">
             <UserTags />
@@ -182,6 +184,7 @@ import MenuOtherCss from "./components/CustomText/MenuOtherCss.vue";
 import MenuLogoUrl from "./components/CustomText/MenuLogoUrl.vue";
 import MenuCreatereply from "./components/CustomText/MenuCreatereply.vue";
 import MenuBlockuserlist from "./components/CustomText/MenuBlockuserlist.vue";
+import MenuBlockKeyword from "./components/CustomText/MenuBlockKeyword.vue";
 
 // 用户标签
 import UserTags from "./components/UserTags/UserTags.vue";
@@ -236,6 +239,7 @@ export default {
     MenuCreatedOrder,
     GPTconfig,
     MenuStickyNav,
+    MenuBlockKeyword,
   },
   data() {
     return {
@@ -266,6 +270,7 @@ export default {
         checked9: true,
         QuickReply: "前排围观支持一下\n感谢分享大佬厉害啊\n有点厉害支持~~",
         blockList: "",
+        blockkeywrod: "",
         checked10: false,
         othercss: "",
         logourl: "",

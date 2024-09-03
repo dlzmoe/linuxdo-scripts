@@ -47,7 +47,7 @@ export default {
         .remove();
 
       // 检测评论回复
-      $(".topic-body .cookeda")
+      $(".topic-body .cooked")
         .filter((index, element) => {
           var text = $(element).html();
           return self.list.some((item) => text.includes(item));

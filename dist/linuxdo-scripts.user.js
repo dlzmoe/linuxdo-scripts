@@ -1,24 +1,25 @@
 // ==UserScript==
 // @name         linuxdo 增强插件
 // @namespace    https://github.com/dlzmoe/linuxdo-scripts
-// @version      0.3.14
+// @version      0.3.15
 // @author       dlzmoe
 // @description  linux.do 增强插件，功能持续更新，欢迎提出新想法！
 // @license      Apache-2.0
 // @icon         https://cdn.linux.do/uploads/default/optimized/3X/9/d/9dd49731091ce8656e94433a26a3ef36062b3994_2_32x32.png
 // @match        *://*.linux.do/*
 // @require      https://unpkg.com/vue@3.4.38/dist/vue.global.prod.js
+// @require      https://unpkg.com/jquery@3.7.1/dist/jquery.min.js
 // @grant        GM_addStyle
 // @grant        GM_xmlhttpRequest
 // ==/UserScript==
 
-(t=>{if(typeof GM_addStyle=="function"){GM_addStyle(t);return}const i=document.createElement("style");i.textContent=t,document.head.append(i)})(' .item[data-v-c186448b],.item[data-v-8c0be0de]{border:none!important}input[data-v-f01e8b58]{width:70px;outline:none;height:24px;border:1px solid #b6b6b6;border-radius:4px;margin-left:10px;padding:0 10px;box-sizing:border-box}a[data-v-f089c8af]{margin-left:10px}a[data-v-f089c8af]:hover{text-decoration:underline}.post-stream.lookopwrapactive .topic-post{display:none!important}.post-stream.lookopwrapactive .topic-post.topic-owner{display:block!important}@keyframes breathAnimation-03f16a8d{0%,to{transform:scale(1);box-shadow:0 0 5px #00000080}50%{transform:scale(1.1);box-shadow:0 0 10px #000000b3}}.breath-animation[data-v-03f16a8d]{animation:breathAnimation-03f16a8d 4s ease-in-out infinite}.minimized[data-v-03f16a8d]{width:50px!important;height:50px!important;border-radius:50%!important;padding:0!important;overflow:hidden;cursor:pointer}.button[data-v-03f16a8d]:hover{background-color:#f0f0f0}#linuxDoLevelPopupContent[data-v-03f16a8d]{line-height:1.6;position:fixed;bottom:20px;right:90px;width:250px;height:auto;background-color:#fff;box-shadow:0 0 10px #00000080;padding:15px;z-index:10000;font-size:14px;border-radius:5px}#linuxDoUserSearch[data-v-03f16a8d]{width:100%;margin-top:10px}.button[data-v-03f16a8d]{margin-top:10px}.minimize-button[data-v-03f16a8d]{position:absolute;top:5px;right:5px;z-index:10001;background:transparent;border:none;cursor:pointer;border-radius:50%;text-align:center;line-height:40px;width:40px;height:40px}.dark-theme #linuxDoLevelPopupContent[data-v-03f16a8d]{background:#535353}.UsageTip{position:static;margin:0;font-size:14px;line-height:1.6}.UsageTip>div{margin:10px 0}.UsageTip button{background:#333;color:#fff;padding:8px 10px;margin-bottom:10px;border:none;outline:none;border-radius:4px}.dark-theme .UsageTip{background:#333;color:#ccc}.dark-theme .UsageTip button{background:#999;color:#fff}.linxudoscripts-tag{background:#29a6a9;color:#fff;font-size:14px!important;padding:0 10px;height:26px;text-align:center;display:inline-flex!important;align-items:center;justify-content:center;border-radius:5px}.menu-table{width:100%}.menu-table td,.menu-table th{padding:10px;font-size:14px}.menu-table .span{cursor:pointer}.menu-table .span+.span{margin-left:10px}.item[data-v-7ec3bcfc],.item[data-v-9593d75e]{border:none!important}.emojiPicker{top:0;left:100%;position:absolute;display:grid;grid-template-columns:repeat(12,1fr);gap:10px;height:100%;overflow:auto;background-color:#000c;padding:10px;border-radius:5px;z-index:9}.emojiPicker img{cursor:pointer;width:30px;height:30px}.sidebar-section-header-caret.right{transform:rotate(-90deg)}.item select[data-v-3d04f623]{height:28px;border:1px solid #b6b6b6;border-radius:4px;width:180px;margin-left:10px;cursor:pointer}.linuxdoscripts-aidialog{position:fixed;top:0;left:-100%;width:500px;height:100vh;background:#fff;box-shadow:1px 2px 5px #0000003d;z-index:999;padding-top:60px;transition:all .1s linear;opacity:0;visibility:hidden;overflow:hidden}.linuxdoscripts-aidialog.act{left:0;opacity:1;visibility:inherit;overflow:inherit}.item[data-v-34ddc833]{border:none}[class*=" el-icon-"],[class^=el-icon-]{display:none}.el-message{z-index:99999999999!important}#linuxdoscripts{font-size:15px}#linuxdoscripts input[type=text]{width:100%}#linuxdoscripts input[type=checkbox]{transform:scale(1.2)}#linuxdoscripts #menu_suspendedball{display:none}#linuxdoscripts img{vertical-align:bottom;max-width:100%;height:auto}#linuxdoscripts .close{position:absolute;right:10px;top:3px;cursor:pointer;font-size:34px;color:#999;transform:rotate(45deg)}#linuxdoscripts .setting-btn{z-index:999;position:fixed;bottom:20px;right:20px}#linuxdoscripts .setting-btn .el-button{margin:15px 0 0;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#919191;color:#fff;font-size:14px;cursor:pointer;transition:all .1s linear;border:none}#linuxdoscripts .setting-btn .el-button svg{margin:0}#linuxdoscripts .setting-btn .el-button:hover{opacity:.9}#linuxdoscripts .hint{margin-top:5px;color:#d94f4f;font-size:14px}#linuxdoscripts dialog{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:700px;background:#fff;color:#333;box-shadow:1px 2px 5px #0003;border-radius:10px;padding:15px;z-index:99999;overflow-x:hidden;box-sizing:border-box;margin:0}#linuxdoscripts dialog .menu-about{padding:5px 0;line-height:2}#linuxdoscripts dialog .menu-about .initialization{color:#999;border-bottom:1px dashed #999;cursor:pointer}#linuxdoscripts dialog .menu-about .initialization:hover{color:#333;border-color:#333}#linuxdoscripts dialog p{margin:0;font-size:14px}#linuxdoscripts .title{font-size:18px;text-align:center;font-weight:600;border-bottom:1px solid #eee;padding-bottom:6px}#linuxdoscripts .btn{border:none;outline:0;min-width:80px;height:32px;display:inline-flex;align-items:center;justify-content:center;background:#1c1c1e;color:#fff;font-size:14px;border-radius:5px;cursor:pointer;transition:all .1s linear}#linuxdoscripts .btn+.btn{margin-left:10px}#linuxdoscripts .btn.saveload{background:#4040b7}#linuxdoscripts .btn:hover{opacity:.9}#linuxdoscripts .menu-nav{display:flex;align-items:center;margin:0;padding:5px 0;border-bottom:1px solid #eee}#linuxdoscripts .menu-nav li{margin-right:10px;border-radius:4px;height:26px;min-width:60px;padding:0 10px;display:inline-flex;align-items:center;justify-content:center;font-size:14px;cursor:pointer}#linuxdoscripts .menu-nav li.act{background:#000;color:#fff}#linuxdoscripts .menu-body{height:480px;overflow-y:auto;padding-right:10px}#linuxdoscripts .menu-body::-webkit-scrollbar{height:8px;width:8px}#linuxdoscripts .menu-body::-webkit-scrollbar-corner{background:none}#linuxdoscripts .menu-body::-webkit-scrollbar-thumb{background:#dee0e1;border-radius:8px}#linuxdoscripts .menu-body .menu-body-item{display:none}#linuxdoscripts .menu-body .menu-body-item.act{display:block}#linuxdoscripts .menu-footer{display:flex;justify-content:space-between;margin-top:10px;padding-top:6px;border-top:1px solid #eee}#linuxdoscripts .menu-footer.hides{opacity:0;visibility:hidden;overflow:hidden}#linuxdoscripts .import{margin-left:auto!important}#linuxdoscripts .import,#linuxdoscripts .export{background:#d1f0ff;color:#559095}#linuxdoscripts .floorlottery{background:#ffb003}#linuxdoscripts .menu-body-item{padding-bottom:30px}#linuxdoscripts .menu-body-item .item{margin-top:12px;border-bottom:1px solid #eee;padding-bottom:10px;display:flex;align-items:center;justify-content:space-between}#linuxdoscripts textarea{font-family:inherit;width:100%;min-height:100px!important;border:1px solid #999;outline:0;padding:5px;font-size:14px;margin:5px 0 0;resize:none;border-radius:0;color:var(--d-input-text-color);background:var(--d-input-bg-color)}#linuxdoscripts textarea:focus{border-color:var(--tertiary);outline:2px solid var(--tertiary);outline-offset:-2px}#linuxdoscripts #floorlotterloading img{width:50px;height:50px}#linuxdoscripts .floorlotterywrap{display:none;width:400px;height:300px;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);margin:0;z-index:999}#linuxdoscripts .floorlotterywrap{width:400px;height:300px}#linuxdoscripts .el-checkbox__inner{border:1px solid #979797}#linuxdoscripts label{margin:0}.linuxdoscripts-opacity{display:none;position:fixed;left:0;top:0;width:100vw;height:100vh;background:#00000080;z-index:9999}.linuxlevel.four{background:linear-gradient(to right,red,#00f);-webkit-background-clip:text;color:transparent}.topic-post{position:relative}.linuxfloor{display:flex;color:#ff8383;width:30px;height:30px;align-items:center;justify-content:center;border-radius:6px;font-size:16px;margin-left:10px}.signature-p{color:#279a36;font-size:14px;word-break:break-word}.topic-list .views{font-weight:400!important;white-space:nowrap!important}.createreply{display:flex;flex-direction:column;max-width:300px}.createreply button{margin-bottom:10px;justify-content:flex-start;text-align:left}.topicpreview-btn{padding:4px 12px!important;font-size:14px!important;opacity:0!important}.topic-list-item:hover .topicpreview-btn{opacity:1!important}.topicpreview{position:fixed;top:0;left:0;z-index:99999;width:100vw;height:100vh;display:flex;justify-content:center;align-items:center;display:none}.topicpreview .topicpreview-container{padding:30px 0;border-radius:5px;width:100%;max-width:800px;overflow-y:auto;height:80vh;z-index:10;background:#fafafa;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}.topicpreview .topicpreview-container .topicpreview-title{font-size:22px;font-weight:600;padding:0 30px}.topicpreview .topicpreview-container .topicpreview-date{padding:0 30px;color:#666}.topicpreview .topicpreview-container .topicpreview-content>.item{display:flex;align-items:flex-start;padding:20px 30px}.topicpreview .topicpreview-container .topicpreview-content>.item .itemfloor{width:50px;text-align:left;font-size:16px;padding-top:15px;color:#25b4cf}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost{flex:1;background:#fff;padding:15px;border-radius:10px;font-size:15px;color:#666}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost pre code{max-width:620px}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost img{max-width:100%;max-height:100%;height:auto}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemname{font-size:16px;color:#8f3a3a;display:flex;justify-content:space-between;align-items:center}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemname span{color:#9e9e9e;margin-left:20px}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemdate{color:#b9b9b9;font-size:16px;margin-left:auto}.topicpreview-opacity{position:absolute;top:0;left:0;width:100%;height:100%;opacity:1;background:#0009;z-index:9}.body-preview .sidebar-wrapper{display:none!important}body.body-preview #main-outlet-wrapper{display:block!important;padding-left:50px!important}.body-preview .d-header-wrap,.body-preview .menu_suspendedball{display:none!important}.post-activity{white-space:nowrap;display:inline-block;width:100%;text-align:left}.d-header img{height:var(--d-logo-height);width:auto;max-width:100%;object-fit:contain}.aicreated-btn{outline:none;border:1px solid #c5c5c5;background:#eee;display:flex;align-items:center;justify-content:center;line-height:1;font-size:14px;padding:4px 10px;border-radius:3px;margin-bottom:10px}.gpt-summary-wrap{background:#fffbd9;border-radius:5px;padding:10px;font-size:14px;color:#666;margin:0 0 10px;line-height:1.6}.gpt-summary-wrap .airegenerate{display:none;margin-top:6px;outline:none;border:1px solid #eee;background:#ffe27d;color:#626262;padding:4px 10px;cursor:pointer;border-radius:3px}.aicreatenewtopictitle{margin-left:20px}.aicreatenewtopictitle:hover{text-decoration:underline;cursor:pointer}.dark-theme input{background:#999;color:#fff}.dark-theme #linuxdoscripts dialog{background:#333;color:#eee;box-shadow:1px 2px 5px #000;border-color:#737373}.dark-theme #linuxdoscripts dialog .menu-about .initialization:hover{color:#eee;border-color:#eee}.dark-theme #linuxdoscripts .title,.dark-theme #linuxdoscripts .item,.dark-theme #linuxdoscripts .menu-footer{border-color:#4b4b4b}.dark-theme .topicpreview .topicpreview-container{background:#292929}.dark-theme .topicpreview .topicpreview-container .topicpreview-content>.item .itempost{background:#363636;color:#a9a9a9}.dark-theme .topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemdate,.dark-theme .topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemname span{color:#6b6b6b}.dark-theme .aicreated-btn{background:#999;color:#fff}.dark-theme .gpt-summary-wrap{color:#d9d9d9;background:#717171} ');
+(i=>{if(typeof GM_addStyle=="function"){GM_addStyle(i);return}const t=document.createElement("style");t.textContent=i,document.head.append(t)})(' input[data-v-44945bb2]{width:70px;outline:none;height:24px;border:1px solid #b6b6b6;border-radius:4px;margin-left:10px;padding:0 10px;box-sizing:border-box}.emojiPicker{top:0;left:100%;position:absolute;display:grid;grid-template-columns:repeat(12,1fr);gap:10px;height:100%;overflow:auto;background-color:#000c;padding:10px;border-radius:5px;z-index:9}.emojiPicker img{cursor:pointer;width:30px;height:30px}.sidebar-section-header-caret.right{transform:rotate(-90deg)}.item select[data-v-d780d688]{height:28px;border:1px solid #b6b6b6;border-radius:4px;width:180px;margin-left:10px;cursor:pointer}.item[data-v-12935e12],.item[data-v-cb743585],.item[data-v-e58a62ee],.item[data-v-f84417d4]{border:none!important}.linxudoscripts-tag{background:#29a6a9;color:#fff;font-size:14px!important;padding:0 10px;height:26px;text-align:center;display:inline-flex!important;align-items:center;justify-content:center;border-radius:5px}.menu-table{width:100%}.menu-table td,.menu-table th{padding:10px;font-size:14px}.menu-table .span{cursor:pointer}.menu-table .span+.span{margin-left:10px}.item[data-v-0e067488]{border:none}.post-stream.lookopwrapactive .topic-post{display:none!important}.post-stream.lookopwrapactive .topic-post.topic-owner{display:block!important}@keyframes breathAnimation-0068d3be{0%,to{transform:scale(1);box-shadow:0 0 5px #00000080}50%{transform:scale(1.1);box-shadow:0 0 10px #000000b3}}.breath-animation[data-v-0068d3be]{animation:breathAnimation-0068d3be 4s ease-in-out infinite}.minimized[data-v-0068d3be]{width:50px!important;height:50px!important;border-radius:50%!important;padding:0!important;overflow:hidden;cursor:pointer}.button[data-v-0068d3be]:hover{background-color:#f0f0f0}#linuxDoLevelPopupContent[data-v-0068d3be]{line-height:1.6;position:fixed;bottom:20px;right:90px;width:250px;height:auto;background-color:#fff;box-shadow:0 0 10px #00000080;padding:15px;z-index:10000;font-size:14px;border-radius:5px}#linuxDoUserSearch[data-v-0068d3be]{width:100%;margin-top:10px}.button[data-v-0068d3be]{margin-top:10px}.minimize-button[data-v-0068d3be]{position:absolute;top:5px;right:5px;z-index:10001;background:transparent;border:none;cursor:pointer;border-radius:50%;text-align:center;line-height:40px;width:40px;height:40px}.dark-theme #linuxDoLevelPopupContent[data-v-0068d3be]{background:#535353}.linuxdoscripts-aidialog{position:fixed;top:0;left:-100%;width:500px;height:100vh;background:#fff;box-shadow:1px 2px 5px #0000003d;z-index:999;padding-top:60px;transition:all .1s linear;opacity:0;visibility:hidden;overflow:hidden}.linuxdoscripts-aidialog.act{left:0;opacity:1;visibility:inherit;overflow:inherit}a[data-v-677b97d9]{margin-left:10px}a[data-v-677b97d9]:hover{text-decoration:underline}.UsageTip{position:static;margin:0;font-size:14px;line-height:1.6}.UsageTip>div{margin:10px 0}.UsageTip button{background:#333;color:#fff;padding:8px 10px;margin-bottom:10px;border:none;outline:none;border-radius:4px}.dark-theme .UsageTip{background:#333;color:#ccc}.dark-theme .UsageTip button{background:#999;color:#fff}[class*=" el-icon-"],[class^=el-icon-]{display:none}.el-message{z-index:99999999999!important}#linuxdoscripts{font-size:15px}#linuxdoscripts input[type=text]{width:100%}#linuxdoscripts input[type=checkbox]{transform:scale(1.2)}#linuxdoscripts #menu_suspendedball{display:none}#linuxdoscripts img{vertical-align:bottom;max-width:100%;height:auto}#linuxdoscripts .close{position:absolute;right:10px;top:3px;cursor:pointer;font-size:34px;color:#999;transform:rotate(45deg)}#linuxdoscripts .setting-btn{z-index:999;position:fixed;bottom:20px;right:20px}#linuxdoscripts .setting-btn .el-button{margin:15px 0 0;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#919191;color:#fff;font-size:14px;cursor:pointer;transition:all .1s linear;border:none}#linuxdoscripts .setting-btn .el-button svg{margin:0}#linuxdoscripts .setting-btn .el-button:hover{opacity:.9}#linuxdoscripts .hint{margin-top:5px;color:#d94f4f;font-size:14px}#linuxdoscripts dialog{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:700px;background:#fff;color:#333;box-shadow:1px 2px 5px #0003;border-radius:10px;padding:15px;z-index:99999;overflow-x:hidden;box-sizing:border-box;margin:0}#linuxdoscripts dialog .menu-about{padding:5px 0;line-height:2}#linuxdoscripts dialog .menu-about .initialization{color:#999;border-bottom:1px dashed #999;cursor:pointer}#linuxdoscripts dialog .menu-about .initialization:hover{color:#333;border-color:#333}#linuxdoscripts dialog p{margin:0;font-size:14px}#linuxdoscripts .title{font-size:18px;text-align:center;font-weight:600;border-bottom:1px solid #eee;padding-bottom:6px}#linuxdoscripts .btn{border:none;outline:0;min-width:80px;height:32px;display:inline-flex;align-items:center;justify-content:center;background:#1c1c1e;color:#fff;font-size:14px;border-radius:5px;cursor:pointer;transition:all .1s linear}#linuxdoscripts .btn+.btn{margin-left:10px}#linuxdoscripts .btn.saveload{background:#4040b7}#linuxdoscripts .btn:hover{opacity:.9}#linuxdoscripts .menu-nav{display:flex;align-items:center;margin:0;padding:5px 0;border-bottom:1px solid #eee}#linuxdoscripts .menu-nav li{margin-right:10px;border-radius:4px;height:26px;min-width:60px;padding:0 10px;display:inline-flex;align-items:center;justify-content:center;font-size:14px;cursor:pointer}#linuxdoscripts .menu-nav li.act{background:#000;color:#fff}#linuxdoscripts .menu-body{height:480px;overflow-y:auto;padding-right:10px}#linuxdoscripts .menu-body::-webkit-scrollbar{height:8px;width:8px}#linuxdoscripts .menu-body::-webkit-scrollbar-corner{background:none}#linuxdoscripts .menu-body::-webkit-scrollbar-thumb{background:#dee0e1;border-radius:8px}#linuxdoscripts .menu-body .menu-body-item{display:none}#linuxdoscripts .menu-body .menu-body-item.act{display:block}#linuxdoscripts .menu-footer{display:flex;justify-content:space-between;margin-top:10px;padding-top:6px;border-top:1px solid #eee}#linuxdoscripts .menu-footer.hides{opacity:0;visibility:hidden;overflow:hidden}#linuxdoscripts .import{margin-left:auto!important}#linuxdoscripts .import,#linuxdoscripts .export{background:#d1f0ff;color:#559095}#linuxdoscripts .floorlottery{background:#ffb003}#linuxdoscripts .menu-body-item{padding-bottom:30px}#linuxdoscripts .menu-body-item .item{margin-top:12px;border-bottom:1px solid #eee;padding-bottom:10px;display:flex;align-items:center;justify-content:space-between}#linuxdoscripts textarea{font-family:inherit;width:100%;min-height:100px!important;border:1px solid #999;outline:0;padding:5px;font-size:14px;margin:5px 0 0;resize:none;border-radius:0;color:var(--d-input-text-color);background:var(--d-input-bg-color)}#linuxdoscripts textarea:focus{border-color:var(--tertiary);outline:2px solid var(--tertiary);outline-offset:-2px}#linuxdoscripts #floorlotterloading img{width:50px;height:50px}#linuxdoscripts .floorlotterywrap{display:none;width:400px;height:300px;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);margin:0;z-index:999}#linuxdoscripts .floorlotterywrap{width:400px;height:300px}#linuxdoscripts .el-checkbox__inner{border:1px solid #979797}#linuxdoscripts label{margin:0}.linuxdoscripts-opacity{display:none;position:fixed;left:0;top:0;width:100vw;height:100vh;background:#00000080;z-index:9999}.linuxlevel.four{background:linear-gradient(to right,red,#00f);-webkit-background-clip:text;color:transparent}.topic-post{position:relative}.linuxfloor{display:flex;color:#ff8383;width:30px;height:30px;align-items:center;justify-content:center;border-radius:6px;font-size:16px;margin-left:10px}.signature-p{color:#279a36;font-size:14px;word-break:break-word}.topic-list .views{font-weight:400!important;white-space:nowrap!important}.createreply{display:flex;flex-direction:column;max-width:300px}.createreply button{margin-bottom:10px;justify-content:flex-start;text-align:left}.topicpreview-btn{padding:4px 12px!important;font-size:14px!important;opacity:0!important}.topic-list-item:hover .topicpreview-btn{opacity:1!important}.topicpreview{position:fixed;top:0;left:0;z-index:99999;width:100vw;height:100vh;display:flex;justify-content:center;align-items:center;display:none}.topicpreview .topicpreview-container{padding:30px 0;border-radius:5px;width:100%;max-width:800px;overflow-y:auto;height:80vh;z-index:10;background:#fafafa;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}.topicpreview .topicpreview-container .topicpreview-title{font-size:22px;font-weight:600;padding:0 30px}.topicpreview .topicpreview-container .topicpreview-date{padding:0 30px;color:#666}.topicpreview .topicpreview-container .topicpreview-content>.item{display:flex;align-items:flex-start;padding:20px 30px}.topicpreview .topicpreview-container .topicpreview-content>.item .itemfloor{width:50px;text-align:left;font-size:16px;padding-top:15px;color:#25b4cf}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost{flex:1;background:#fff;padding:15px;border-radius:10px;font-size:15px;color:#666}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost pre code{max-width:620px}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost img{max-width:100%;max-height:100%;height:auto}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemname{font-size:16px;color:#8f3a3a;display:flex;justify-content:space-between;align-items:center}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemname span{color:#9e9e9e;margin-left:20px}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemdate{color:#b9b9b9;font-size:16px;margin-left:auto}.topicpreview-opacity{position:absolute;top:0;left:0;width:100%;height:100%;opacity:1;background:#0009;z-index:9}.body-preview .sidebar-wrapper{display:none!important}body.body-preview #main-outlet-wrapper{display:block!important;padding-left:50px!important}.body-preview .d-header-wrap,.body-preview .menu_suspendedball{display:none!important}.post-activity{white-space:nowrap;display:inline-block;width:100%;text-align:left}.d-header img{height:var(--d-logo-height);width:auto;max-width:100%;object-fit:contain}.aicreated-btn{outline:none;border:1px solid #c5c5c5;background:#eee;display:flex;align-items:center;justify-content:center;line-height:1;font-size:14px;padding:4px 10px;border-radius:3px;margin-bottom:10px}.gpt-summary-wrap{background:#fffbd9;border-radius:5px;padding:10px;font-size:14px;color:#666;margin:0 0 10px;line-height:1.6}.gpt-summary-wrap .airegenerate{display:none;margin-top:6px;outline:none;border:1px solid #eee;background:#ffe27d;color:#626262;padding:4px 10px;cursor:pointer;border-radius:3px}.aicreatenewtopictitle{margin-left:20px}.aicreatenewtopictitle:hover{text-decoration:underline;cursor:pointer}.dark-theme input{background:#999;color:#fff}.dark-theme #linuxdoscripts dialog{background:#333;color:#eee;box-shadow:1px 2px 5px #000;border-color:#737373}.dark-theme #linuxdoscripts dialog .menu-about .initialization:hover{color:#eee;border-color:#eee}.dark-theme #linuxdoscripts .title,.dark-theme #linuxdoscripts .item,.dark-theme #linuxdoscripts .menu-footer{border-color:#4b4b4b}.dark-theme .topicpreview .topicpreview-container{background:#292929}.dark-theme .topicpreview .topicpreview-container .topicpreview-content>.item .itempost{background:#363636;color:#a9a9a9}.dark-theme .topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemdate,.dark-theme .topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemname span{color:#6b6b6b}.dark-theme .aicreated-btn{background:#999;color:#fff}.dark-theme .gpt-summary-wrap{color:#d9d9d9;background:#717171} ');
 
 (function (vue) {
   'use strict';
 
   const name = "linuxdo-scripts";
-  const version = "0.3.14";
+  const version = "0.3.15";
   const author = "dlzmoe";
   const description = "An enhanced script for the linux.do forum";
   const type = "module";
@@ -29,6 +30,7 @@
     preview: "vite preview"
   };
   const dependencies = {
+    jquery: "^3.7.1",
     vue: "^3.4.27"
   };
   const devDependencies = {
@@ -604,175 +606,6 @@
   }
   const MenuTopicpreview = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["render", _sfc_render$s]]);
   const _sfc_main$r = {
-    props: {
-      value: {
-        type: String,
-        default: "前排围观，支持一下\n感谢分享，支持一下\n有点厉害，支持一下"
-      },
-      sort: {
-        type: Number,
-        required: true
-      }
-    },
-    data() {
-      return {
-        textarea: this.value
-      };
-    },
-    watch: {
-      value(newValue) {
-        this.textarea = newValue;
-      }
-    },
-    methods: {
-      handleChange() {
-        this.$emit("update:value", this.textarea);
-      },
-      init() {
-        this.list = this.textarea.split(/\r?\n/) || [];
-        if ($(".createreply").length < 1) {
-          $(".timeline-container .topic-timeline").append(
-            `<div class="createreply" style="margin-top:4rem;"></div>`
-          );
-          this.list.forEach(function(item) {
-            var $li = $(
-              '<button class="btn btn-default create reply-to-post no-text btn-icon" type="button"></button>'
-            ).text(item);
-            $(".createreply").append($li);
-          });
-          $(".createreply button").click(function() {
-            if ($(".timeline-footer-controls button.create").length != 0) {
-              $(".timeline-footer-controls button.create")[0].click();
-            }
-            if ($("#topic-footer-buttons .topic-footer-main-buttons button.create").length != 0) {
-              $(
-                "#topic-footer-buttons .topic-footer-main-buttons button.create"
-              )[0].click();
-            }
-            setTimeout(() => {
-              let $textarea = $(".d-editor-textarea-wrapper textarea");
-              let text = $(this).html();
-              $textarea.focus();
-              for (let i = 0; i < text.length; i++) {
-                let char = text[i];
-                $textarea.val($textarea.val() + char);
-                let inputEvent = new Event("input", {
-                  bubbles: true,
-                  cancelable: true
-                });
-                $textarea[0].dispatchEvent(inputEvent);
-                let keyEvent = new KeyboardEvent("keydown", {
-                  key: char,
-                  char,
-                  keyCode: char.charCodeAt(0),
-                  which: char.charCodeAt(0),
-                  bubbles: true
-                });
-                $textarea[0].dispatchEvent(keyEvent);
-              }
-            }, 1e3);
-          });
-        }
-      }
-    },
-    created() {
-      if (this.textarea) {
-        setInterval(() => {
-          this.init();
-        }, 1e3);
-      }
-    }
-  };
-  const _hoisted_1$n = { class: "item" };
-  const _hoisted_2$n = { class: "tit" };
-  function _sfc_render$r(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-      vue.createElementVNode("div", _hoisted_1$n, [
-        vue.createElementVNode("div", _hoisted_2$n, vue.toDisplayString($props.sort) + ". 自定义快捷回复（换行分隔）", 1)
-      ]),
-      vue.withDirectives(vue.createElementVNode("textarea", {
-        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.textarea = $event),
-        onInput: _cache[1] || (_cache[1] = (...args) => $options.handleChange && $options.handleChange(...args)),
-        placeholder: "前排围观支持一下\\n感谢分享大佬厉害啊\\n有点厉害支持~~"
-      }, "\r\n  ", 544), [
-        [vue.vModelText, $data.textarea]
-      ])
-    ], 64);
-  }
-  const MenuCreatereply = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["render", _sfc_render$r], ["__scopeId", "data-v-c186448b"]]);
-  const _sfc_main$q = {
-    props: {
-      value: {
-        type: String,
-        default: ""
-      },
-      sort: {
-        type: Number,
-        required: true
-      }
-    },
-    data() {
-      return {
-        textarea: this.value
-      };
-    },
-    watch: {
-      value(newValue) {
-        this.textarea = newValue;
-      }
-    },
-    methods: {
-      handleChange() {
-        this.$emit("update:value", this.textarea);
-      },
-      init() {
-        this.list = this.textarea.split(",") || [];
-        var self = this;
-        $(".topic-list .topic-list-data.posters>a:nth-child(1)").filter((index, element) => {
-          var user = $(element).attr("data-user-card");
-          return self.list.indexOf(user) !== -1;
-        }).parents("tr.topic-list-item").remove();
-        $(".topic-post .full-name a").filter((index, element) => {
-          var user = $(element).attr("data-user-card");
-          return self.list.indexOf(user) !== -1;
-        }).parents(".topic-post").remove();
-      }
-    },
-    created() {
-      if (this.textarea) {
-        let pollinglength1 = 0;
-        let pollinglength2 = 0;
-        setInterval(() => {
-          if (pollinglength1 != $(".topic-list-body tr").length) {
-            pollinglength1 = $(".topic-list-body tr").length;
-            this.init();
-          }
-          if (pollinglength2 != $(".post-stream .topic-post").length) {
-            pollinglength2 = $(".post-stream .topic-post").length;
-            this.init();
-          }
-        }, 1e3);
-      }
-    }
-  };
-  const _hoisted_1$m = { class: "item" };
-  const _hoisted_2$m = { class: "tit" };
-  function _sfc_render$q(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-      vue.createElementVNode("div", _hoisted_1$m, [
-        vue.createElementVNode("div", _hoisted_2$m, vue.toDisplayString($props.sort) + ". 屏蔽指定用户（使用英文，分隔）", 1)
-      ]),
-      vue.withDirectives(vue.createElementVNode("textarea", {
-        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.textarea = $event),
-        onInput: _cache[1] || (_cache[1] = (...args) => $options.handleChange && $options.handleChange(...args)),
-        placeholder: "user1,user2,user3"
-      }, "\r\n  ", 544), [
-        [vue.vModelText, $data.textarea]
-      ])
-    ], 64);
-  }
-  const MenuBlockuserlist = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["render", _sfc_render$q], ["__scopeId", "data-v-8c0be0de"]]);
-  const _sfc_main$p = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     computed: {
@@ -799,12 +632,12 @@
       }
     }
   };
-  const _hoisted_1$l = { class: "item" };
-  const _hoisted_2$l = { class: "tit" };
+  const _hoisted_1$n = { class: "item" };
+  const _hoisted_2$n = { class: "tit" };
   const _hoisted_3$h = ["checked"];
-  function _sfc_render$p(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$l, [
-      vue.createElementVNode("div", _hoisted_2$l, [
+  function _sfc_render$r(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$n, [
+      vue.createElementVNode("div", _hoisted_2$n, [
         vue.createTextVNode(vue.toDisplayString($props.sort) + ". 是否显示自动阅读按钮，可调节速度默认 10 ", 1),
         vue.withDirectives(vue.createElementVNode("input", {
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $options.value2 = $event),
@@ -820,378 +653,26 @@
       }, null, 40, _hoisted_3$h)
     ]);
   }
-  const MenuAutoRead = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["render", _sfc_render$p], ["__scopeId", "data-v-f01e8b58"]]);
-  const _sfc_main$o = {
-    data() {
-      return {
-        num: 10,
-        // 滚动速度
-        isScrolling: false,
-        scrollInterval: null
-      };
-    },
-    methods: {
-      scrollToBottomSlowly(distancePerStep = this.num, delayPerStep = 50) {
-        if (this.scrollInterval !== null) {
-          clearInterval(this.scrollInterval);
-        }
-        this.scrollInterval = setInterval(() => {
-          const documentHeight = document.body.scrollHeight;
-          const windowHeight = window.innerHeight;
-          const scrollPosition = window.scrollY;
-          if (scrollPosition + windowHeight >= documentHeight - 1) {
-            clearInterval(this.scrollInterval);
-            this.scrollInterval = null;
-          } else {
-            window.scrollBy(0, distancePerStep);
-          }
-        }, delayPerStep);
-      },
-      autoread() {
-        if (this.isScrolling) {
-          clearInterval(this.scrollInterval);
-          this.scrollInterval = null;
-          this.isScrolling = false;
-        } else {
-          this.scrollToBottomSlowly();
-          this.isScrolling = true;
-        }
-      }
-    },
-    created() {
-      let linxudoscriptssetting = localStorage.getItem("linxudoscriptssetting");
-      if (linxudoscriptssetting) {
-        linxudoscriptssetting = JSON.parse(linxudoscriptssetting);
-        this.num = Number(linxudoscriptssetting.checked8.value2);
-      }
-    }
-  };
-  const _hoisted_1$k = /* @__PURE__ */ vue.createElementVNode("svg", {
-    xmlns: "http://www.w3.org/2000/svg",
-    width: "24",
-    height: "24",
-    viewBox: "0 0 24 24",
-    fill: "currentColor"
-  }, [
-    /* @__PURE__ */ vue.createElementVNode("path", {
-      stroke: "none",
-      d: "M0 0h24v24H0z",
-      fill: "none"
-    }),
-    /* @__PURE__ */ vue.createElementVNode("path", { d: "M12.088 4.82a10 10 0 0 1 9.412 .314a1 1 0 0 1 .493 .748l.007 .118v13a1 1 0 0 1 -1.5 .866a8 8 0 0 0 -8 0a1 1 0 0 1 -1 0a8 8 0 0 0 -7.733 -.148l-.327 .18l-.103 .044l-.049 .016l-.11 .026l-.061 .01l-.117 .006h-.042l-.11 -.012l-.077 -.014l-.108 -.032l-.126 -.056l-.095 -.056l-.089 -.067l-.06 -.056l-.073 -.082l-.064 -.089l-.022 -.036l-.032 -.06l-.044 -.103l-.016 -.049l-.026 -.11l-.01 -.061l-.004 -.049l-.002 -.068v-13a1 1 0 0 1 .5 -.866a10 10 0 0 1 9.412 -.314l.088 .044l.088 -.044z" })
-  ], -1);
-  const _hoisted_2$k = [
-    _hoisted_1$k
-  ];
-  function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", {
-      class: "el-button",
-      onClick: _cache[0] || (_cache[0] = (...args) => $options.autoread && $options.autoread(...args)),
-      title: "自动阅读"
-    }, _hoisted_2$k);
-  }
-  const AutoRead = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["render", _sfc_render$o]]);
-  const _sfc_main$n = {
-    data() {
-      return {
-        version: packageJson.version
-      };
-    }
-  };
-  const _withScopeId$2 = (n) => (vue.pushScopeId("data-v-f089c8af"), n = n(), vue.popScopeId(), n);
-  const _hoisted_1$j = { class: "item" };
-  const _hoisted_2$j = { class: "tit" };
-  const _hoisted_3$g = /* @__PURE__ */ _withScopeId$2(() => /* @__PURE__ */ vue.createElementVNode("a", {
-    href: "https://github.com/dlzmoe/linuxdo-scripts",
-    target: "_blank"
-  }, "Github 源码", -1));
-  const _hoisted_4$4 = /* @__PURE__ */ _withScopeId$2(() => /* @__PURE__ */ vue.createElementVNode("a", {
-    href: "https://linuxdo-scripts-docs.netlify.app/",
-    target: "_blank"
-  }, "使用文档", -1));
-  function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$j, [
-      vue.createElementVNode("div", _hoisted_2$j, [
-        vue.createTextVNode(" 当前版本：" + vue.toDisplayString($data.version) + " ", 1),
-        _hoisted_3$g,
-        _hoisted_4$4
-      ])
-    ]);
-  }
-  const Updates = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["render", _sfc_render$n], ["__scopeId", "data-v-f089c8af"]]);
-  const _sfc_main$m = {
+  const MenuAutoRead = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["render", _sfc_render$r], ["__scopeId", "data-v-44945bb2"]]);
+  const _sfc_main$q = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"]
   };
-  const _hoisted_1$i = { class: "item" };
-  const _hoisted_2$i = { class: "tit" };
-  const _hoisted_3$f = ["checked"];
-  function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$i, [
-      vue.createElementVNode("div", _hoisted_2$i, vue.toDisplayString($props.sort) + ". 是否开启只看楼主", 1),
+  const _hoisted_1$m = { class: "item" };
+  const _hoisted_2$m = { class: "tit" };
+  const _hoisted_3$g = ["checked"];
+  function _sfc_render$q(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$m, [
+      vue.createElementVNode("div", _hoisted_2$m, vue.toDisplayString($props.sort) + ". 是否开启只看楼主", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$f)
+      }, null, 40, _hoisted_3$g)
     ]);
   }
-  const MenuLookOP = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["render", _sfc_render$m]]);
-  const _sfc_main$l = {
-    data() {
-      return {};
-    },
-    methods: {
-      lookop() {
-        $(".post-stream").toggleClass("lookopwrapactive");
-      }
-    }
-  };
-  function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", {
-      class: "el-button",
-      onClick: _cache[0] || (_cache[0] = (...args) => $options.lookop && $options.lookop(...args)),
-      title: "只看楼主"
-    }, "楼主");
-  }
-  const LookOP = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["render", _sfc_render$l]]);
-  const _sfc_main$k = {
-    data() {
-      return {
-        isMinimized: true,
-        content: "输入用户名查询等级信息",
-        username: "",
-        levelDescriptions: {
-          0: "游客",
-          1: "基本用户",
-          2: "成员",
-          3: "活跃用户",
-          4: "领导者"
-        },
-        levelRequirements: {
-          0: { topics_entered: 5, posts_read_count: 30, time_read: 600 },
-          1: {
-            days_visited: 15,
-            likes_given: 1,
-            likes_received: 1,
-            post_count: 3,
-            topics_entered: 20,
-            posts_read_count: 100,
-            time_read: 3600
-          },
-          2: {
-            days_visited: 50,
-            likes_given: 30,
-            likes_received: 20,
-            post_count: 10,
-            topics_entered: 0,
-            posts_read_count: 0
-          }
-        }
-      };
-    },
-    methods: {
-      async fetchAboutData() {
-        try {
-          const response = await fetch("/about.json", {
-            headers: {
-              Accept: "application/json",
-              "User-Agent": "Mozilla/5.0"
-            },
-            method: "GET"
-          });
-          if (!response.ok) throw new Error(`HTTP 错误！状态：${response.status}`);
-          return await response.json();
-        } catch (error) {
-          console.error("获取关于页面数据失败：", error);
-          this.displayError("获取关于页面数据失败");
-          return null;
-        }
-      },
-      async fetchUserData(username) {
-        try {
-          const response = await fetch(`/u/${username}/summary.json`, {
-            headers: {
-              Accept: "application/json",
-              "User-Agent": "Mozilla/5.0"
-            },
-            method: "GET"
-          });
-          if (!response.ok) throw new Error(`HTTP 错误！状态：${response.status}`);
-          return await response.json();
-        } catch (error) {
-          console.error("获取用户数据失败：", error);
-          this.displayError("获取用户数据失败");
-          return null;
-        }
-      },
-      async handleSearch() {
-        if (this.username == "") {
-          return false;
-        }
-        this.content = "正在查询中，请稍后...";
-        const username = this.username.trim();
-        if (username) {
-          const aboutData = await this.fetchAboutData();
-          const userData = await this.fetchUserData(username);
-          if (userData && aboutData) {
-            const userSummary = userData.user_summary;
-            const user = userData.users[0];
-            const status = aboutData.about.stats;
-            this.updatePopupContent(userSummary, user, status);
-          }
-        }
-      },
-      updatePopupContent(userSummary, user, status) {
-        if (userSummary && user) {
-          let content = `<strong>信任等级：</strong>${this.levelDescriptions[user.trust_level]}<br><strong>升级进度：</strong><br>`;
-          if (user.trust_level === 3) {
-            content += `联系管理员以升级到领导者<br>`;
-          } else if (user.trust_level === 4) {
-            content += `您已是最高信任等级<br>`;
-          } else {
-            const requirements = this.levelRequirements[user.trust_level];
-            if (user.trust_level === 2) {
-              requirements.posts_read_count = Math.min(
-                Math.floor(status.posts_30_days / 4),
-                2e4
-              );
-              requirements.topics_entered = Math.min(
-                Math.floor(status.topics_30_days / 4),
-                500
-              );
-            }
-            Object.entries(requirements).forEach(([key, val]) => {
-              const currentVal = userSummary[key] || 0;
-              const color = currentVal >= val ? "green" : "red";
-              content += `${this.translateStat(
-              key
-            )}: <span style="color: ${color};">${currentVal} / ${val}</span><br>`;
-            });
-          }
-          this.content = content;
-        }
-      },
-      togglePopupSize() {
-        this.isMinimized = !this.isMinimized;
-      },
-      displayError(message) {
-        this.content = `<strong>错误：</strong>${message}`;
-      },
-      translateStat(stat) {
-        const translations = {
-          days_visited: "访问天数",
-          likes_given: "给出的赞",
-          likes_received: "收到的赞",
-          post_count: "帖子数量",
-          posts_read_count: "阅读的帖子数",
-          topics_entered: "进入的主题数",
-          time_read: "阅读时间"
-        };
-        return translations[stat] || stat;
-      }
-    },
-    created() {
-      setInterval(() => {
-        if (!this.username) {
-          const src = $("#toggle-current-user img.avatar").attr("src");
-          const match = src.match(/\/user_avatar\/linux\.do\/([^\/]+)/);
-          if (match && match[1]) {
-            this.username = match[1];
-          }
-        }
-      }, 1e3);
-    }
-  };
-  const _withScopeId$1 = (n) => (vue.pushScopeId("data-v-03f16a8d"), n = n(), vue.popScopeId(), n);
-  const _hoisted_1$h = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ vue.createElementVNode("span", null, "等级", -1));
-  const _hoisted_2$h = [
-    _hoisted_1$h
-  ];
-  const _hoisted_3$e = {
-    key: 0,
-    id: "linuxDoLevelPopupContent"
-  };
-  const _hoisted_4$3 = ["innerHTML"];
-  const _hoisted_5$2 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ vue.createElementVNode("span", { class: "d-button-label" }, "搜索", -1));
-  const _hoisted_6$2 = [
-    _hoisted_5$2
-  ];
-  function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", null, [
-      vue.createElementVNode("div", {
-        class: vue.normalizeClass(["el-button", ["linuxDoLevelPopup", $data.isMinimized ? "minimized" : ""]]),
-        onClick: _cache[0] || (_cache[0] = (...args) => $options.togglePopupSize && $options.togglePopupSize(...args)),
-        title: "等级查询"
-      }, _hoisted_2$h, 2),
-      !$data.isMinimized ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_3$e, [
-        vue.createElementVNode("div", { innerHTML: $data.content }, null, 8, _hoisted_4$3),
-        vue.withDirectives(vue.createElementVNode("input", {
-          "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => $data.username = $event),
-          autocomplete: "off",
-          type: "text",
-          placeholder: "请输入用户名...",
-          id: "linuxDoUserSearch"
-        }, null, 512), [
-          [vue.vModelText, $data.username]
-        ]),
-        vue.createElementVNode("button", {
-          onClick: _cache[2] || (_cache[2] = (...args) => $options.handleSearch && $options.handleSearch(...args)),
-          class: "btn btn-icon-text",
-          type: "button"
-        }, _hoisted_6$2)
-      ])) : vue.createCommentVNode("", true)
-    ]);
-  }
-  const LevelDiglog = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["render", _sfc_render$k], ["__scopeId", "data-v-03f16a8d"]]);
-  const _sfc_main$j = {
-    created() {
-      setTimeout(() => {
-        const isShowplugininstallationprompts = localStorage.getItem(
-          "isShowplugininstallationprompts"
-        );
-        if (isShowplugininstallationprompts == "true") ;
-        else {
-          if ($(".UsageTip").length < 1) {
-            $(".sidebar-footer-container").before(`
-            <dialog open class="UsageTip">
-              <div class="title">友情提示</div>
-              <div>
-                佬友你好，你已经成功安装 linuxdo 增强插件啦！<a
-                  href="https://linuxdo-scripts-docs.netlify.app/"
-                  target="_blank">
-                  使用文档
-                  </a>
-              </div>
-              <div style="color:#e00">
-                设置按钮在下方切换主题的旁边哦~ 有个小齿轮，点击它开始配置插件！
-              </div>
-              <div>如果可以的话欢迎点个 star 支持一下~</div>
-              <div>
-                <a href="https://github.com/dlzmoe/linuxdo-scripts/" target="_blank">
-                  <img
-                    src="https://img.shields.io/github/stars/dlzmoe%2Flinuxdo-scripts?style=for-the-badge&labelColor=%235D5D5D&color=%23E97435"
-                    alt="icon"
-                  />
-                </a>
-              </div>
-              <button class="clicktohide">点击我，该提示永远不会出现啦</button>
-            </dialog>
-           `);
-            $(".clicktohide").click(function() {
-              localStorage.setItem("isShowplugininstallationprompts", true);
-              $(".UsageTip").remove();
-            });
-          }
-        }
-      }, 100);
-    }
-  };
-  function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
-    return null;
-  }
-  const UsageTip = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["render", _sfc_render$j]]);
-  const _sfc_main$i = {
+  const MenuLookOP = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["render", _sfc_render$q]]);
+  const _sfc_main$p = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     created() {
@@ -1202,237 +683,20 @@
       }
     }
   };
-  const _hoisted_1$g = { class: "item" };
-  const _hoisted_2$g = { class: "tit" };
-  const _hoisted_3$d = ["checked"];
-  function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$g, [
-      vue.createElementVNode("div", _hoisted_2$g, vue.toDisplayString($props.sort) + ". 智能限制楼层高度", 1),
+  const _hoisted_1$l = { class: "item" };
+  const _hoisted_2$l = { class: "tit" };
+  const _hoisted_3$f = ["checked"];
+  function _sfc_render$p(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$l, [
+      vue.createElementVNode("div", _hoisted_2$l, vue.toDisplayString($props.sort) + ". 智能限制楼层高度", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$d)
+      }, null, 40, _hoisted_3$f)
     ]);
   }
-  const MenuFloorHeight = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$i]]);
-  const _sfc_main$h = {
-    data() {
-      return {
-        tableData: []
-      };
-    },
-    methods: {
-      // 修改标签
-      editTags(item) {
-        var tags = prompt(`对 @${item.name} 修改标签`, item.tags);
-        if (tags == null) {
-          return item.tags;
-        }
-        if (tags != item.tags) {
-          var existingPerson = this.tableData.find((items) => items.name === item.name);
-          if (existingPerson) {
-            existingPerson.tags = tags;
-          } else {
-            this.tableData.push({ name: person, tags });
-          }
-          let settingData1 = localStorage.getItem("linxudoscriptssetting");
-          settingData1 = JSON.parse(settingData1);
-          settingData1.usertags = this.tableData;
-          localStorage.setItem("linxudoscriptssetting", JSON.stringify(settingData1));
-        }
-      },
-      delTags(item) {
-        var del = confirm("是否确认删除！");
-        if (del == true) {
-          this.tableData.splice(item, 1);
-          let settingData1 = localStorage.getItem("linxudoscriptssetting");
-          settingData1 = JSON.parse(settingData1);
-          settingData1.usertags = this.tableData;
-          localStorage.setItem("linxudoscriptssetting", JSON.stringify(settingData1));
-        }
-      }
-    },
-    created() {
-      let settingData = localStorage.getItem("linxudoscriptssetting");
-      settingData = JSON.parse(settingData);
-      if (!settingData.usertags) {
-        settingData.usertags = [];
-      }
-      settingData.usertags = settingData.usertags.filter((user) => user.tags);
-      this.tableData = settingData.usertags;
-      setInterval(() => {
-        if ($(".addusertag").length < 1) {
-          $(".usercard-controls").append(
-            `<li><button class="btn addusertag" type="button">添加用户标签</button></li>`
-          );
-          $(".addusertag").click(function() {
-            var person2 = $(".user-card .user-profile-link").attr("href").replace("/u/", "");
-            var tags = prompt(`对 @${person2} 设置标签（保存后刷新页面）`, "");
-            if (tags == null) {
-              return false;
-            }
-            var lowerCasePerson = person2.toLowerCase();
-            var existingPerson = settingData.usertags.find(
-              (item) => item.name.toLowerCase() === lowerCasePerson
-            );
-            if (existingPerson) {
-              existingPerson.tags = tags;
-            } else {
-              settingData.usertags.push({ name: person2, tags });
-            }
-            localStorage.setItem("linxudoscriptssetting", JSON.stringify(settingData));
-          });
-        }
-        $(".topic-post").each(function() {
-          const username = $(this).find(".first a").attr("data-user-card").toLowerCase();
-          const userTag = settingData.usertags.find((user) => user.name === username);
-          if (userTag) {
-            if ($(this).find(".linxudoscripts-tag").length < 1) {
-              $(this).find(".names").append(`<span class="linxudoscripts-tag"># ${userTag.tags}</span>`);
-            }
-          }
-        });
-      }, 1e3);
-    }
-  };
-  const _hoisted_1$f = { class: "menu-table" };
-  const _hoisted_2$f = /* @__PURE__ */ vue.createElementVNode("tr", null, [
-    /* @__PURE__ */ vue.createElementVNode("th", null, "用户名"),
-    /* @__PURE__ */ vue.createElementVNode("th", null, "标签"),
-    /* @__PURE__ */ vue.createElementVNode("th", null, "操作")
-  ], -1);
-  const _hoisted_3$c = ["onClick"];
-  const _hoisted_4$2 = ["onClick"];
-  function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", null, [
-      vue.createElementVNode("table", _hoisted_1$f, [
-        _hoisted_2$f,
-        (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList($data.tableData, (item) => {
-          return vue.openBlock(), vue.createElementBlock("tr", {
-            key: item.name
-          }, [
-            vue.createElementVNode("td", null, vue.toDisplayString(item.name), 1),
-            vue.createElementVNode("td", null, vue.toDisplayString(item.tags), 1),
-            vue.createElementVNode("td", null, [
-              vue.createElementVNode("span", {
-                class: "span",
-                onClick: ($event) => $options.editTags(item)
-              }, "修改", 8, _hoisted_3$c),
-              vue.createElementVNode("span", {
-                class: "span",
-                onClick: ($event) => $options.delTags(item),
-                style: { "color": "#e00" }
-              }, "删除！", 8, _hoisted_4$2)
-            ])
-          ]);
-        }), 128))
-      ])
-    ]);
-  }
-  const UserTags = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["render", _sfc_render$h]]);
-  const _sfc_main$g = {
-    props: {
-      value: {
-        type: String,
-        default: ""
-      },
-      sort: {
-        type: Number,
-        required: true
-      }
-    },
-    data() {
-      return {
-        textarea: this.value
-      };
-    },
-    watch: {
-      value(newValue) {
-        this.textarea = newValue;
-      }
-    },
-    methods: {
-      handleChange() {
-        this.$emit("update:value", this.textarea);
-      }
-    },
-    created() {
-      if (this.textarea) {
-        $("body").after(`<style>${this.textarea}</style>`);
-      }
-    }
-  };
-  const _hoisted_1$e = { class: "item" };
-  const _hoisted_2$e = { class: "tit" };
-  function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-      vue.createElementVNode("div", _hoisted_1$e, [
-        vue.createElementVNode("div", _hoisted_2$e, vue.toDisplayString($props.sort) + ". 自定义 CSS（支持 import 引入第三方样式文件）", 1)
-      ]),
-      vue.withDirectives(vue.createElementVNode("textarea", {
-        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.textarea = $event),
-        onInput: _cache[1] || (_cache[1] = (...args) => $options.handleChange && $options.handleChange(...args)),
-        placeholder: "body{font-size:16px;}"
-      }, "\r\n  ", 544), [
-        [vue.vModelText, $data.textarea]
-      ])
-    ], 64);
-  }
-  const MenuOtherCss = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["render", _sfc_render$g], ["__scopeId", "data-v-7ec3bcfc"]]);
-  const _sfc_main$f = {
-    props: {
-      value: {
-        type: String,
-        default: ""
-      },
-      sort: {
-        type: Number,
-        required: true
-      }
-    },
-    data() {
-      return {
-        textarea: this.value
-      };
-    },
-    watch: {
-      value(newValue) {
-        this.textarea = newValue;
-      }
-    },
-    methods: {
-      handleChange() {
-        this.$emit("update:value", this.textarea);
-      },
-      init() {
-        $(".d-header .title a").html(`<img src="${this.textarea}">`);
-      }
-    },
-    created() {
-      if (this.textarea && this.textarea != "") {
-        this.init();
-      }
-    }
-  };
-  const _hoisted_1$d = { class: "item" };
-  const _hoisted_2$d = { class: "tit" };
-  function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-      vue.createElementVNode("div", _hoisted_1$d, [
-        vue.createElementVNode("div", _hoisted_2$d, vue.toDisplayString($props.sort) + ". 自定义论坛 logo", 1)
-      ]),
-      vue.withDirectives(vue.createElementVNode("input", {
-        type: "text",
-        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.textarea = $event),
-        onInput: _cache[1] || (_cache[1] = (...args) => $options.handleChange && $options.handleChange(...args)),
-        placeholder: "输入图片链接"
-      }, null, 544), [
-        [vue.vModelText, $data.textarea]
-      ])
-    ], 64);
-  }
-  const MenuLogoUrl = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$f], ["__scopeId", "data-v-9593d75e"]]);
+  const MenuFloorHeight = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["render", _sfc_render$p]]);
   const emojiSet = [
     {
       size: "30x30",
@@ -2057,12 +1321,12 @@
       });
     }
   }, 100);
-  const _sfc_main$e = {};
-  function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
+  const _sfc_main$o = {};
+  function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
     return null;
   }
-  const ReplyTBEnjoy = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$e]]);
-  const _sfc_main$d = {
+  const ReplyTBEnjoy = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["render", _sfc_render$o]]);
+  const _sfc_main$n = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     created() {
@@ -2079,39 +1343,39 @@
       }
     }
   };
-  const _hoisted_1$c = { class: "item" };
-  const _hoisted_2$c = { class: "tit" };
-  const _hoisted_3$b = ["checked"];
-  function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$c, [
-      vue.createElementVNode("div", _hoisted_2$c, vue.toDisplayString($props.sort) + ". 是否开启中英文混排优化显示", 1),
+  const _hoisted_1$k = { class: "item" };
+  const _hoisted_2$k = { class: "tit" };
+  const _hoisted_3$e = ["checked"];
+  function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$k, [
+      vue.createElementVNode("div", _hoisted_2$k, vue.toDisplayString($props.sort) + ". 是否开启中英文混排优化显示", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$b)
+      }, null, 40, _hoisted_3$e)
     ]);
   }
-  const MenuPangu = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$d]]);
-  const _sfc_main$c = {
+  const MenuPangu = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["render", _sfc_render$n]]);
+  const _sfc_main$m = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"]
   };
-  const _hoisted_1$b = { class: "item" };
-  const _hoisted_2$b = { class: "tit" };
-  const _hoisted_3$a = ["checked"];
-  function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$b, [
-      vue.createElementVNode("div", _hoisted_2$b, vue.toDisplayString($props.sort) + ". 是否显示等级查询按钮", 1),
+  const _hoisted_1$j = { class: "item" };
+  const _hoisted_2$j = { class: "tit" };
+  const _hoisted_3$d = ["checked"];
+  function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$j, [
+      vue.createElementVNode("div", _hoisted_2$j, vue.toDisplayString($props.sort) + ". 是否显示等级查询按钮", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$a)
+      }, null, 40, _hoisted_3$d)
     ]);
   }
-  const MenuLevelSearch = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$c]]);
-  const _sfc_main$b = {
+  const MenuLevelSearch = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["render", _sfc_render$m]]);
+  const _sfc_main$l = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     created() {
@@ -2123,21 +1387,21 @@
       }
     }
   };
-  const _hoisted_1$a = { class: "item" };
-  const _hoisted_2$a = { class: "tit" };
-  const _hoisted_3$9 = ["checked"];
-  function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$a, [
-      vue.createElementVNode("div", _hoisted_2$a, vue.toDisplayString($props.sort) + ". 消息通知仅显示未读", 1),
+  const _hoisted_1$i = { class: "item" };
+  const _hoisted_2$i = { class: "tit" };
+  const _hoisted_3$c = ["checked"];
+  function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$i, [
+      vue.createElementVNode("div", _hoisted_2$i, vue.toDisplayString($props.sort) + ". 消息通知仅显示未读", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$9)
+      }, null, 40, _hoisted_3$c)
     ]);
   }
-  const MenuShowUnread = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$b]]);
-  const _sfc_main$a = {
+  const MenuShowUnread = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["render", _sfc_render$l]]);
+  const _sfc_main$k = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     created() {
@@ -2146,21 +1410,21 @@
       }
     }
   };
-  const _hoisted_1$9 = { class: "item" };
-  const _hoisted_2$9 = { class: "tit" };
-  const _hoisted_3$8 = ["checked"];
-  function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$9, [
-      vue.createElementVNode("div", _hoisted_2$9, vue.toDisplayString($props.sort) + ". 是否屏蔽模糊文字", 1),
+  const _hoisted_1$h = { class: "item" };
+  const _hoisted_2$h = { class: "tit" };
+  const _hoisted_3$b = ["checked"];
+  function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$h, [
+      vue.createElementVNode("div", _hoisted_2$h, vue.toDisplayString($props.sort) + ". 是否屏蔽模糊文字", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$8)
+      }, null, 40, _hoisted_3$b)
     ]);
   }
-  const MenuFilterText = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$a]]);
-  const _sfc_main$9 = {
+  const MenuFilterText = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["render", _sfc_render$k]]);
+  const _sfc_main$j = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     created() {
@@ -2177,21 +1441,21 @@
       }
     }
   };
-  const _hoisted_1$8 = { class: "item" };
-  const _hoisted_2$8 = { class: "tit" };
-  const _hoisted_3$7 = ["checked"];
-  function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$8, [
-      vue.createElementVNode("div", _hoisted_2$8, vue.toDisplayString($props.sort) + ". 只看自己签名尾巴", 1),
+  const _hoisted_1$g = { class: "item" };
+  const _hoisted_2$g = { class: "tit" };
+  const _hoisted_3$a = ["checked"];
+  function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$g, [
+      vue.createElementVNode("div", _hoisted_2$g, vue.toDisplayString($props.sort) + ". 只看自己签名尾巴", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$7)
+      }, null, 40, _hoisted_3$a)
     ]);
   }
-  const MenuLookmeSign = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$9]]);
-  const _sfc_main$8 = {
+  const MenuLookmeSign = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["render", _sfc_render$j]]);
+  const _sfc_main$i = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     methods: {
@@ -2238,21 +1502,21 @@
       }
     }
   };
-  const _hoisted_1$7 = { class: "item" };
-  const _hoisted_2$7 = { class: "tit" };
-  const _hoisted_3$6 = ["checked"];
-  function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$7, [
-      vue.createElementVNode("div", _hoisted_2$7, vue.toDisplayString($props.sort) + ". 开启左侧快速访问", 1),
+  const _hoisted_1$f = { class: "item" };
+  const _hoisted_2$f = { class: "tit" };
+  const _hoisted_3$9 = ["checked"];
+  function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$f, [
+      vue.createElementVNode("div", _hoisted_2$f, vue.toDisplayString($props.sort) + ". 开启左侧快速访问", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$6)
+      }, null, 40, _hoisted_3$9)
     ]);
   }
-  const MenuQuickAccess = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$8]]);
-  const _sfc_main$7 = {
+  const MenuQuickAccess = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$i]]);
+  const _sfc_main$h = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     data() {
@@ -2341,12 +1605,12 @@
       this.observer && this.observer.disconnect();
     }
   };
-  const _hoisted_1$6 = { class: "item" };
-  const _hoisted_2$6 = { class: "tit" };
-  const _hoisted_3$5 = ["value"];
-  function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$6, [
-      vue.createElementVNode("div", _hoisted_2$6, [
+  const _hoisted_1$e = { class: "item" };
+  const _hoisted_2$e = { class: "tit" };
+  const _hoisted_3$8 = ["value"];
+  function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$e, [
+      vue.createElementVNode("div", _hoisted_2$e, [
         vue.createTextVNode(vue.toDisplayString($props.sort) + ". 切换论坛表情风格 ", 1),
         vue.withDirectives(vue.createElementVNode("select", {
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $options.value2 = $event)
@@ -2355,7 +1619,7 @@
             return vue.openBlock(), vue.createElementBlock("option", {
               value: item.value,
               key: item.value
-            }, vue.toDisplayString(item.label), 9, _hoisted_3$5);
+            }, vue.toDisplayString(item.label), 9, _hoisted_3$8);
           }), 128))
         ], 512), [
           [vue.vModelSelect, $options.value2]
@@ -2370,48 +1634,26 @@
       ])
     ]);
   }
-  const MenureplaceEmojiStyle = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$7], ["__scopeId", "data-v-3d04f623"]]);
-  const _sfc_main$6 = {
+  const MenureplaceEmojiStyle = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["render", _sfc_render$h], ["__scopeId", "data-v-d780d688"]]);
+  const _sfc_main$g = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"]
   };
-  const _hoisted_1$5 = { class: "item" };
-  const _hoisted_2$5 = { class: "tit" };
-  const _hoisted_3$4 = ["checked"];
-  function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$5, [
-      vue.createElementVNode("div", _hoisted_2$5, vue.toDisplayString($props.sort) + ". 快速打开 Shared（需提前解锁 Shared）", 1),
+  const _hoisted_1$d = { class: "item" };
+  const _hoisted_2$d = { class: "tit" };
+  const _hoisted_3$7 = ["checked"];
+  function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$d, [
+      vue.createElementVNode("div", _hoisted_2$d, vue.toDisplayString($props.sort) + ". 快速打开 Shared（需提前解锁 Shared）", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$4)
+      }, null, 40, _hoisted_3$7)
     ]);
   }
-  const MenuShowAI = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$6]]);
-  const _sfc_main$5 = {
-    data() {
-      return {};
-    },
-    methods: {
-      openai() {
-        window.open("https://shared.oaifree.com/?temporary-chat=true", "_blank");
-      }
-    }
-  };
-  function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", null, [
-      vue.createElementVNode("div", {
-        class: "el-button",
-        style: { "font-size": "18px" },
-        onClick: _cache[0] || (_cache[0] = (...args) => $options.openai && $options.openai(...args)),
-        type: "primary",
-        title: "AI对话"
-      }, " AI ")
-    ]);
-  }
-  const AIDialog = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$5]]);
-  const _sfc_main$4 = {
+  const MenuShowAI = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["render", _sfc_render$g]]);
+  const _sfc_main$f = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     created() {
@@ -2453,21 +1695,21 @@ ${$(".d-editor-input").val()}
       }
     }
   };
-  const _hoisted_1$4 = { class: "item" };
-  const _hoisted_2$4 = { class: "tit" };
-  const _hoisted_3$3 = ["checked"];
-  function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$4, [
-      vue.createElementVNode("div", _hoisted_2$4, vue.toDisplayString($props.sort) + ". 编辑器切换 ja 字体", 1),
+  const _hoisted_1$c = { class: "item" };
+  const _hoisted_2$c = { class: "tit" };
+  const _hoisted_3$6 = ["checked"];
+  function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$c, [
+      vue.createElementVNode("div", _hoisted_2$c, vue.toDisplayString($props.sort) + ". 编辑器切换 ja 字体", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$3)
+      }, null, 40, _hoisted_3$6)
     ]);
   }
-  const MenuEditorJa = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$4]]);
-  const _sfc_main$3 = {
+  const MenuEditorJa = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$f]]);
+  const _sfc_main$e = {
     props: {
       value: {
         type: Boolean,
@@ -2511,11 +1753,11 @@ ${$(".d-editor-input").val()}
       }
     }
   };
-  const _hoisted_1$3 = { class: "item" };
-  const _hoisted_2$3 = { class: "tit" };
-  function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$3, [
-      vue.createElementVNode("div", _hoisted_2$3, vue.toDisplayString($props.sort) + ". 首页新增按创建时间排序", 1),
+  const _hoisted_1$b = { class: "item" };
+  const _hoisted_2$b = { class: "tit" };
+  function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$b, [
+      vue.createElementVNode("div", _hoisted_2$b, vue.toDisplayString($props.sort) + ". 首页新增按创建时间排序", 1),
       vue.withDirectives(vue.createElementVNode("input", {
         type: "checkbox",
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.localChecked = $event),
@@ -2525,8 +1767,427 @@ ${$(".d-editor-input").val()}
       ])
     ]);
   }
-  const MenuCreatedOrder = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$3]]);
-  const _sfc_main$2 = {
+  const MenuCreatedOrder = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$e]]);
+  const _sfc_main$d = {
+    props: ["modelValue", "sort"],
+    emits: ["update:modelValue"],
+    created() {
+      if (this.modelValue) {
+        $(window).on("scroll", function() {
+          if ($(window).scrollTop() >= 250) {
+            $(".navigation-container").addClass("is-active");
+          } else {
+            $(".navigation-container").removeClass("is-active");
+          }
+        });
+        $("head").append(`<style>
+.navigation-container.is-active{position:fixed;top:65px;background:#fff!important;z-index:9;box-shadow:1px 3px 7px 0 rgba(0,0,0,.2);margin-left:-30px;padding-left:30px;border-radius:5px;padding-top:10px;padding-right:20px;min-width:1000px;width:auto}
+.dark-theme .navigation-container.is-active{background:#333!important}
+        </style>`);
+      }
+    }
+  };
+  const _hoisted_1$a = { class: "item" };
+  const _hoisted_2$a = { class: "tit" };
+  const _hoisted_3$5 = ["checked"];
+  function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$a, [
+      vue.createElementVNode("div", _hoisted_2$a, vue.toDisplayString($props.sort) + ". 开启列表页导航栏浮动", 1),
+      vue.createElementVNode("input", {
+        type: "checkbox",
+        checked: $props.modelValue,
+        onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
+      }, null, 40, _hoisted_3$5)
+    ]);
+  }
+  const MenuStickyNav = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$d]]);
+  const _sfc_main$c = {
+    props: {
+      value: {
+        type: String,
+        default: ""
+      },
+      sort: {
+        type: Number,
+        required: true
+      }
+    },
+    data() {
+      return {
+        textarea: this.value
+      };
+    },
+    watch: {
+      value(newValue) {
+        this.textarea = newValue;
+      }
+    },
+    methods: {
+      handleChange() {
+        this.$emit("update:value", this.textarea);
+      }
+    },
+    created() {
+      if (this.textarea) {
+        $("body").after(`<style>${this.textarea}</style>`);
+      }
+    }
+  };
+  const _hoisted_1$9 = { class: "item" };
+  const _hoisted_2$9 = { class: "tit" };
+  function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
+      vue.createElementVNode("div", _hoisted_1$9, [
+        vue.createElementVNode("div", _hoisted_2$9, vue.toDisplayString($props.sort) + ". 自定义 CSS（支持 import 引入第三方样式文件）", 1)
+      ]),
+      vue.withDirectives(vue.createElementVNode("textarea", {
+        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.textarea = $event),
+        onInput: _cache[1] || (_cache[1] = (...args) => $options.handleChange && $options.handleChange(...args)),
+        placeholder: "body{font-size:16px;}"
+      }, "\r\n  ", 544), [
+        [vue.vModelText, $data.textarea]
+      ])
+    ], 64);
+  }
+  const MenuOtherCss = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$c], ["__scopeId", "data-v-12935e12"]]);
+  const _sfc_main$b = {
+    props: {
+      value: {
+        type: String,
+        default: ""
+      },
+      sort: {
+        type: Number,
+        required: true
+      }
+    },
+    data() {
+      return {
+        textarea: this.value
+      };
+    },
+    watch: {
+      value(newValue) {
+        this.textarea = newValue;
+      }
+    },
+    methods: {
+      handleChange() {
+        this.$emit("update:value", this.textarea);
+      },
+      init() {
+        $(".d-header .title a").html(`<img src="${this.textarea}">`);
+      }
+    },
+    created() {
+      if (this.textarea && this.textarea != "") {
+        this.init();
+      }
+    }
+  };
+  const _hoisted_1$8 = { class: "item" };
+  const _hoisted_2$8 = { class: "tit" };
+  function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
+      vue.createElementVNode("div", _hoisted_1$8, [
+        vue.createElementVNode("div", _hoisted_2$8, vue.toDisplayString($props.sort) + ". 自定义论坛 logo", 1)
+      ]),
+      vue.withDirectives(vue.createElementVNode("input", {
+        type: "text",
+        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.textarea = $event),
+        onInput: _cache[1] || (_cache[1] = (...args) => $options.handleChange && $options.handleChange(...args)),
+        placeholder: "输入图片链接"
+      }, null, 544), [
+        [vue.vModelText, $data.textarea]
+      ])
+    ], 64);
+  }
+  const MenuLogoUrl = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$b], ["__scopeId", "data-v-cb743585"]]);
+  const _sfc_main$a = {
+    props: {
+      value: {
+        type: String,
+        default: "前排围观，支持一下\n感谢分享，支持一下\n有点厉害，支持一下"
+      },
+      sort: {
+        type: Number,
+        required: true
+      }
+    },
+    data() {
+      return {
+        textarea: this.value
+      };
+    },
+    watch: {
+      value(newValue) {
+        this.textarea = newValue;
+      }
+    },
+    methods: {
+      handleChange() {
+        this.$emit("update:value", this.textarea);
+      },
+      init() {
+        this.list = this.textarea.split(/\r?\n/) || [];
+        if ($(".createreply").length < 1) {
+          $(".timeline-container .topic-timeline").append(
+            `<div class="createreply" style="margin-top:4rem;"></div>`
+          );
+          this.list.forEach(function(item) {
+            var $li = $(
+              '<button class="btn btn-default create reply-to-post no-text btn-icon" type="button"></button>'
+            ).text(item);
+            $(".createreply").append($li);
+          });
+          $(".createreply button").click(function() {
+            if ($(".timeline-footer-controls button.create").length != 0) {
+              $(".timeline-footer-controls button.create")[0].click();
+            }
+            if ($("#topic-footer-buttons .topic-footer-main-buttons button.create").length != 0) {
+              $(
+                "#topic-footer-buttons .topic-footer-main-buttons button.create"
+              )[0].click();
+            }
+            setTimeout(() => {
+              let $textarea = $(".d-editor-textarea-wrapper textarea");
+              let text = $(this).html();
+              $textarea.focus();
+              for (let i = 0; i < text.length; i++) {
+                let char = text[i];
+                $textarea.val($textarea.val() + char);
+                let inputEvent = new Event("input", {
+                  bubbles: true,
+                  cancelable: true
+                });
+                $textarea[0].dispatchEvent(inputEvent);
+                let keyEvent = new KeyboardEvent("keydown", {
+                  key: char,
+                  char,
+                  keyCode: char.charCodeAt(0),
+                  which: char.charCodeAt(0),
+                  bubbles: true
+                });
+                $textarea[0].dispatchEvent(keyEvent);
+              }
+            }, 1e3);
+          });
+        }
+      }
+    },
+    created() {
+      if (this.textarea) {
+        setInterval(() => {
+          this.init();
+        }, 1e3);
+      }
+    }
+  };
+  const _hoisted_1$7 = { class: "item" };
+  const _hoisted_2$7 = { class: "tit" };
+  function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
+      vue.createElementVNode("div", _hoisted_1$7, [
+        vue.createElementVNode("div", _hoisted_2$7, vue.toDisplayString($props.sort) + ". 自定义快捷回复（换行分隔）", 1)
+      ]),
+      vue.withDirectives(vue.createElementVNode("textarea", {
+        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.textarea = $event),
+        onInput: _cache[1] || (_cache[1] = (...args) => $options.handleChange && $options.handleChange(...args)),
+        placeholder: "前排围观支持一下\\n感谢分享大佬厉害啊\\n有点厉害支持~~"
+      }, "\r\n  ", 544), [
+        [vue.vModelText, $data.textarea]
+      ])
+    ], 64);
+  }
+  const MenuCreatereply = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$a], ["__scopeId", "data-v-e58a62ee"]]);
+  const _sfc_main$9 = {
+    props: {
+      value: {
+        type: String,
+        default: ""
+      },
+      sort: {
+        type: Number,
+        required: true
+      }
+    },
+    data() {
+      return {
+        textarea: this.value
+      };
+    },
+    watch: {
+      value(newValue) {
+        this.textarea = newValue;
+      }
+    },
+    methods: {
+      handleChange() {
+        this.$emit("update:value", this.textarea);
+      },
+      init() {
+        this.list = this.textarea.split(",") || [];
+        var self = this;
+        $(".topic-list .topic-list-data.posters>a:nth-child(1)").filter((index, element) => {
+          var user = $(element).attr("data-user-card");
+          return self.list.indexOf(user) !== -1;
+        }).parents("tr.topic-list-item").remove();
+        $(".topic-post .full-name a").filter((index, element) => {
+          var user = $(element).attr("data-user-card");
+          return self.list.indexOf(user) !== -1;
+        }).parents(".topic-post").remove();
+      }
+    },
+    created() {
+      if (this.textarea) {
+        let pollinglength1 = 0;
+        let pollinglength2 = 0;
+        setInterval(() => {
+          if (pollinglength1 != $(".topic-list-body tr").length) {
+            pollinglength1 = $(".topic-list-body tr").length;
+            this.init();
+          }
+          if (pollinglength2 != $(".post-stream .topic-post").length) {
+            pollinglength2 = $(".post-stream .topic-post").length;
+            this.init();
+          }
+        }, 1e3);
+      }
+    }
+  };
+  const _hoisted_1$6 = { class: "item" };
+  const _hoisted_2$6 = { class: "tit" };
+  function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
+      vue.createElementVNode("div", _hoisted_1$6, [
+        vue.createElementVNode("div", _hoisted_2$6, vue.toDisplayString($props.sort) + ". 屏蔽指定用户（使用英文，分隔）", 1)
+      ]),
+      vue.withDirectives(vue.createElementVNode("textarea", {
+        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.textarea = $event),
+        onInput: _cache[1] || (_cache[1] = (...args) => $options.handleChange && $options.handleChange(...args)),
+        placeholder: "user1,user2,user3"
+      }, "\r\n  ", 544), [
+        [vue.vModelText, $data.textarea]
+      ])
+    ], 64);
+  }
+  const MenuBlockuserlist = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$9], ["__scopeId", "data-v-f84417d4"]]);
+  const _sfc_main$8 = {
+    data() {
+      return {
+        tableData: []
+      };
+    },
+    methods: {
+      // 修改标签
+      editTags(item) {
+        var tags = prompt(`对 @${item.name} 修改标签`, item.tags);
+        if (tags == null) {
+          return item.tags;
+        }
+        if (tags != item.tags) {
+          var existingPerson = this.tableData.find((items) => items.name === item.name);
+          if (existingPerson) {
+            existingPerson.tags = tags;
+          } else {
+            this.tableData.push({ name: person, tags });
+          }
+          let settingData1 = localStorage.getItem("linxudoscriptssetting");
+          settingData1 = JSON.parse(settingData1);
+          settingData1.usertags = this.tableData;
+          localStorage.setItem("linxudoscriptssetting", JSON.stringify(settingData1));
+        }
+      },
+      delTags(item) {
+        var del = confirm("是否确认删除！");
+        if (del == true) {
+          this.tableData.splice(item, 1);
+          let settingData1 = localStorage.getItem("linxudoscriptssetting");
+          settingData1 = JSON.parse(settingData1);
+          settingData1.usertags = this.tableData;
+          localStorage.setItem("linxudoscriptssetting", JSON.stringify(settingData1));
+        }
+      }
+    },
+    created() {
+      let settingData = localStorage.getItem("linxudoscriptssetting");
+      settingData = JSON.parse(settingData);
+      if (!settingData.usertags) {
+        settingData.usertags = [];
+      }
+      settingData.usertags = settingData.usertags.filter((user) => user.tags);
+      this.tableData = settingData.usertags;
+      setInterval(() => {
+        if ($(".addusertag").length < 1) {
+          $(".usercard-controls").append(
+            `<li><button class="btn addusertag" type="button">添加用户标签</button></li>`
+          );
+          $(".addusertag").click(function() {
+            var person2 = $(".user-card .user-profile-link").attr("href").replace("/u/", "");
+            var tags = prompt(`对 @${person2} 设置标签（保存后刷新页面）`, "");
+            if (tags == null) {
+              return false;
+            }
+            var lowerCasePerson = person2.toLowerCase();
+            var existingPerson = settingData.usertags.find(
+              (item) => item.name.toLowerCase() === lowerCasePerson
+            );
+            if (existingPerson) {
+              existingPerson.tags = tags;
+            } else {
+              settingData.usertags.push({ name: person2, tags });
+            }
+            localStorage.setItem("linxudoscriptssetting", JSON.stringify(settingData));
+          });
+        }
+        $(".topic-post").each(function() {
+          const username = $(this).find(".first a").attr("data-user-card").toLowerCase();
+          const userTag = settingData.usertags.find((user) => user.name === username);
+          if (userTag) {
+            if ($(this).find(".linxudoscripts-tag").length < 1) {
+              $(this).find(".names").append(`<span class="linxudoscripts-tag"># ${userTag.tags}</span>`);
+            }
+          }
+        });
+      }, 1e3);
+    }
+  };
+  const _hoisted_1$5 = { class: "menu-table" };
+  const _hoisted_2$5 = /* @__PURE__ */ vue.createElementVNode("tr", null, [
+    /* @__PURE__ */ vue.createElementVNode("th", null, "用户名"),
+    /* @__PURE__ */ vue.createElementVNode("th", null, "标签"),
+    /* @__PURE__ */ vue.createElementVNode("th", null, "操作")
+  ], -1);
+  const _hoisted_3$4 = ["onClick"];
+  const _hoisted_4$4 = ["onClick"];
+  function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", null, [
+      vue.createElementVNode("table", _hoisted_1$5, [
+        _hoisted_2$5,
+        (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList($data.tableData, (item) => {
+          return vue.openBlock(), vue.createElementBlock("tr", {
+            key: item.name
+          }, [
+            vue.createElementVNode("td", null, vue.toDisplayString(item.name), 1),
+            vue.createElementVNode("td", null, vue.toDisplayString(item.tags), 1),
+            vue.createElementVNode("td", null, [
+              vue.createElementVNode("span", {
+                class: "span",
+                onClick: ($event) => $options.editTags(item)
+              }, "修改", 8, _hoisted_3$4),
+              vue.createElementVNode("span", {
+                class: "span",
+                onClick: ($event) => $options.delTags(item),
+                style: { "color": "#e00" }
+              }, "删除！", 8, _hoisted_4$4)
+            ])
+          ]);
+        }), 128))
+      ])
+    ]);
+  }
+  const UserTags = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$8]]);
+  const _sfc_main$7 = {
     props: {
       value: {
         type: Object,
@@ -2761,24 +2422,24 @@ ${topic_contentdata}`;
       }
     }
   };
-  const _withScopeId = (n) => (vue.pushScopeId("data-v-34ddc833"), n = n(), vue.popScopeId(), n);
-  const _hoisted_1$2 = { class: "item" };
-  const _hoisted_2$2 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ vue.createElementVNode("div", { class: "tit" }, "1. 是否开启 AI 生成话题总结", -1));
-  const _hoisted_3$2 = { class: "item" };
-  const _hoisted_4$1 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ vue.createElementVNode("div", { class: "tit" }, "2. 是否手动总结（默认自动总结）", -1));
-  const _hoisted_5$1 = { class: "item" };
-  const _hoisted_6$1 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ vue.createElementVNode("div", { class: "tit" }, "3. 是否关闭重新生成按钮（默认显示重新生成）", -1));
-  const _hoisted_7$1 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ vue.createElementVNode("div", { class: "item" }, [
+  const _withScopeId$2 = (n) => (vue.pushScopeId("data-v-0e067488"), n = n(), vue.popScopeId(), n);
+  const _hoisted_1$4 = { class: "item" };
+  const _hoisted_2$4 = /* @__PURE__ */ _withScopeId$2(() => /* @__PURE__ */ vue.createElementVNode("div", { class: "tit" }, "1. 是否开启 AI 生成话题总结", -1));
+  const _hoisted_3$3 = { class: "item" };
+  const _hoisted_4$3 = /* @__PURE__ */ _withScopeId$2(() => /* @__PURE__ */ vue.createElementVNode("div", { class: "tit" }, "2. 是否手动总结（默认自动总结）", -1));
+  const _hoisted_5$2 = { class: "item" };
+  const _hoisted_6$2 = /* @__PURE__ */ _withScopeId$2(() => /* @__PURE__ */ vue.createElementVNode("div", { class: "tit" }, "3. 是否关闭重新生成按钮（默认显示重新生成）", -1));
+  const _hoisted_7$1 = /* @__PURE__ */ _withScopeId$2(() => /* @__PURE__ */ vue.createElementVNode("div", { class: "item" }, [
     /* @__PURE__ */ vue.createElementVNode("div", { class: "tit" }, "4. 配置信息")
   ], -1));
-  const _hoisted_8$1 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ vue.createElementVNode("div", null, "5. AI 总结帖子 prompt:", -1));
-  const _hoisted_9$1 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ vue.createElementVNode("div", { style: { "margin-top": "10px" } }, " 注意：baseurl 不带后缀和 '/'，不支持 http，请使用 https ", -1));
+  const _hoisted_8$1 = /* @__PURE__ */ _withScopeId$2(() => /* @__PURE__ */ vue.createElementVNode("div", null, "5. AI 总结帖子 prompt:", -1));
+  const _hoisted_9$1 = /* @__PURE__ */ _withScopeId$2(() => /* @__PURE__ */ vue.createElementVNode("div", { style: { "margin-top": "10px" } }, " 注意：baseurl 不带后缀和 '/'，不支持 http，请使用 https ", -1));
   const _hoisted_10$1 = { class: "item" };
-  const _hoisted_11$1 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ vue.createElementVNode("div", { class: "tit" }, "6. 新建话题使用 AI 生成标题", -1));
-  function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
+  const _hoisted_11$1 = /* @__PURE__ */ _withScopeId$2(() => /* @__PURE__ */ vue.createElementVNode("div", { class: "tit" }, "6. 新建话题使用 AI 生成标题", -1));
+  function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("div", null, [
-      vue.createElementVNode("div", _hoisted_1$2, [
-        _hoisted_2$2,
+      vue.createElementVNode("div", _hoisted_1$4, [
+        _hoisted_2$4,
         vue.withDirectives(vue.createElementVNode("input", {
           type: "checkbox",
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.localChecked.value1 = $event),
@@ -2787,8 +2448,8 @@ ${topic_contentdata}`;
           [vue.vModelCheckbox, $data.localChecked.value1]
         ])
       ]),
-      vue.createElementVNode("div", _hoisted_3$2, [
-        _hoisted_4$1,
+      vue.createElementVNode("div", _hoisted_3$3, [
+        _hoisted_4$3,
         vue.withDirectives(vue.createElementVNode("input", {
           type: "checkbox",
           "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => $data.localChecked.btn = $event),
@@ -2797,8 +2458,8 @@ ${topic_contentdata}`;
           [vue.vModelCheckbox, $data.localChecked.btn]
         ])
       ]),
-      vue.createElementVNode("div", _hoisted_5$1, [
-        _hoisted_6$1,
+      vue.createElementVNode("div", _hoisted_5$2, [
+        _hoisted_6$2,
         vue.withDirectives(vue.createElementVNode("input", {
           type: "checkbox",
           "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => $data.localChecked.value2 = $event),
@@ -2848,40 +2509,381 @@ ${topic_contentdata}`;
       ])
     ]);
   }
-  const GPTconfig = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$2], ["__scopeId", "data-v-34ddc833"]]);
-  const _sfc_main$1 = {
-    props: ["modelValue", "sort"],
-    emits: ["update:modelValue"],
-    created() {
-      if (this.modelValue) {
-        $(window).on("scroll", function() {
-          if ($(window).scrollTop() >= 250) {
-            $(".navigation-container").addClass("is-active");
-          } else {
-            $(".navigation-container").removeClass("is-active");
-          }
-        });
-        $("head").append(`<style>
-.navigation-container.is-active{position:fixed;top:65px;background:#fff!important;z-index:9;box-shadow:1px 3px 7px 0 rgba(0,0,0,.2);margin-left:-30px;padding-left:30px;border-radius:5px;padding-top:10px;padding-right:20px;min-width:1000px;width:auto}
-.dark-theme .navigation-container.is-active{background:#333!important}
-        </style>`);
+  const GPTconfig = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$7], ["__scopeId", "data-v-0e067488"]]);
+  const _sfc_main$6 = {
+    data() {
+      return {};
+    },
+    methods: {
+      lookop() {
+        $(".post-stream").toggleClass("lookopwrapactive");
       }
     }
   };
-  const _hoisted_1$1 = { class: "item" };
-  const _hoisted_2$1 = { class: "tit" };
-  const _hoisted_3$1 = ["checked"];
-  function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$1, [
-      vue.createElementVNode("div", _hoisted_2$1, vue.toDisplayString($props.sort) + ". 开启列表页导航栏浮动", 1),
-      vue.createElementVNode("input", {
-        type: "checkbox",
-        checked: $props.modelValue,
-        onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$1)
+  function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", {
+      class: "el-button",
+      onClick: _cache[0] || (_cache[0] = (...args) => $options.lookop && $options.lookop(...args)),
+      title: "只看楼主"
+    }, "楼主");
+  }
+  const LookOP = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$6]]);
+  const _sfc_main$5 = {
+    data() {
+      return {
+        isMinimized: true,
+        content: "输入用户名查询等级信息",
+        username: "",
+        levelDescriptions: {
+          0: "游客",
+          1: "基本用户",
+          2: "成员",
+          3: "活跃用户",
+          4: "领导者"
+        },
+        levelRequirements: {
+          0: { topics_entered: 5, posts_read_count: 30, time_read: 600 },
+          1: {
+            days_visited: 15,
+            likes_given: 1,
+            likes_received: 1,
+            post_count: 3,
+            topics_entered: 20,
+            posts_read_count: 100,
+            time_read: 3600
+          },
+          2: {
+            days_visited: 50,
+            likes_given: 30,
+            likes_received: 20,
+            post_count: 10,
+            topics_entered: 0,
+            posts_read_count: 0
+          }
+        }
+      };
+    },
+    methods: {
+      async fetchAboutData() {
+        try {
+          const response = await fetch("/about.json", {
+            headers: {
+              Accept: "application/json",
+              "User-Agent": "Mozilla/5.0"
+            },
+            method: "GET"
+          });
+          if (!response.ok) throw new Error(`HTTP 错误！状态：${response.status}`);
+          return await response.json();
+        } catch (error) {
+          console.error("获取关于页面数据失败：", error);
+          this.displayError("获取关于页面数据失败");
+          return null;
+        }
+      },
+      async fetchUserData(username) {
+        try {
+          const response = await fetch(`/u/${username}/summary.json`, {
+            headers: {
+              Accept: "application/json",
+              "User-Agent": "Mozilla/5.0"
+            },
+            method: "GET"
+          });
+          if (!response.ok) throw new Error(`HTTP 错误！状态：${response.status}`);
+          return await response.json();
+        } catch (error) {
+          console.error("获取用户数据失败：", error);
+          this.displayError("获取用户数据失败");
+          return null;
+        }
+      },
+      async handleSearch() {
+        if (this.username == "") {
+          return false;
+        }
+        this.content = "正在查询中，请稍后...";
+        const username = this.username.trim();
+        if (username) {
+          const aboutData = await this.fetchAboutData();
+          const userData = await this.fetchUserData(username);
+          if (userData && aboutData) {
+            const userSummary = userData.user_summary;
+            const user = userData.users[0];
+            const status = aboutData.about.stats;
+            this.updatePopupContent(userSummary, user, status);
+          }
+        }
+      },
+      updatePopupContent(userSummary, user, status) {
+        if (userSummary && user) {
+          let content = `<strong>信任等级：</strong>${this.levelDescriptions[user.trust_level]}<br><strong>升级进度：</strong><br>`;
+          if (user.trust_level === 3) {
+            content += `联系管理员以升级到领导者<br>`;
+          } else if (user.trust_level === 4) {
+            content += `您已是最高信任等级<br>`;
+          } else {
+            const requirements = this.levelRequirements[user.trust_level];
+            if (user.trust_level === 2) {
+              requirements.posts_read_count = Math.min(
+                Math.floor(status.posts_30_days / 4),
+                2e4
+              );
+              requirements.topics_entered = Math.min(
+                Math.floor(status.topics_30_days / 4),
+                500
+              );
+            }
+            Object.entries(requirements).forEach(([key, val]) => {
+              const currentVal = userSummary[key] || 0;
+              const color = currentVal >= val ? "green" : "red";
+              content += `${this.translateStat(
+              key
+            )}: <span style="color: ${color};">${currentVal} / ${val}</span><br>`;
+            });
+          }
+          this.content = content;
+        }
+      },
+      togglePopupSize() {
+        this.isMinimized = !this.isMinimized;
+      },
+      displayError(message) {
+        this.content = `<strong>错误：</strong>${message}`;
+      },
+      translateStat(stat) {
+        const translations = {
+          days_visited: "访问天数",
+          likes_given: "给出的赞",
+          likes_received: "收到的赞",
+          post_count: "帖子数量",
+          posts_read_count: "阅读的帖子数",
+          topics_entered: "进入的主题数",
+          time_read: "阅读时间"
+        };
+        return translations[stat] || stat;
+      }
+    },
+    created() {
+      setInterval(() => {
+        if (!this.username) {
+          const src = $("#toggle-current-user img.avatar").attr("src");
+          const match = src.match(/\/user_avatar\/linux\.do\/([^\/]+)/);
+          if (match && match[1]) {
+            this.username = match[1];
+          }
+        }
+      }, 1e3);
+    }
+  };
+  const _withScopeId$1 = (n) => (vue.pushScopeId("data-v-0068d3be"), n = n(), vue.popScopeId(), n);
+  const _hoisted_1$3 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ vue.createElementVNode("span", null, "等级", -1));
+  const _hoisted_2$3 = [
+    _hoisted_1$3
+  ];
+  const _hoisted_3$2 = {
+    key: 0,
+    id: "linuxDoLevelPopupContent"
+  };
+  const _hoisted_4$2 = ["innerHTML"];
+  const _hoisted_5$1 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ vue.createElementVNode("span", { class: "d-button-label" }, "搜索", -1));
+  const _hoisted_6$1 = [
+    _hoisted_5$1
+  ];
+  function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", null, [
+      vue.createElementVNode("div", {
+        class: vue.normalizeClass(["el-button", ["linuxDoLevelPopup", $data.isMinimized ? "minimized" : ""]]),
+        onClick: _cache[0] || (_cache[0] = (...args) => $options.togglePopupSize && $options.togglePopupSize(...args)),
+        title: "等级查询"
+      }, _hoisted_2$3, 2),
+      !$data.isMinimized ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_3$2, [
+        vue.createElementVNode("div", { innerHTML: $data.content }, null, 8, _hoisted_4$2),
+        vue.withDirectives(vue.createElementVNode("input", {
+          "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => $data.username = $event),
+          autocomplete: "off",
+          type: "text",
+          placeholder: "请输入用户名...",
+          id: "linuxDoUserSearch"
+        }, null, 512), [
+          [vue.vModelText, $data.username]
+        ]),
+        vue.createElementVNode("button", {
+          onClick: _cache[2] || (_cache[2] = (...args) => $options.handleSearch && $options.handleSearch(...args)),
+          class: "btn btn-icon-text",
+          type: "button"
+        }, _hoisted_6$1)
+      ])) : vue.createCommentVNode("", true)
     ]);
   }
-  const MenuStickyNav = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
+  const LevelDiglog = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$5], ["__scopeId", "data-v-0068d3be"]]);
+  const _sfc_main$4 = {
+    data() {
+      return {
+        num: 10,
+        // 滚动速度
+        isScrolling: false,
+        scrollInterval: null
+      };
+    },
+    methods: {
+      scrollToBottomSlowly(distancePerStep = this.num, delayPerStep = 50) {
+        if (this.scrollInterval !== null) {
+          clearInterval(this.scrollInterval);
+        }
+        this.scrollInterval = setInterval(() => {
+          const documentHeight = document.body.scrollHeight;
+          const windowHeight = window.innerHeight;
+          const scrollPosition = window.scrollY;
+          if (scrollPosition + windowHeight >= documentHeight - 1) {
+            clearInterval(this.scrollInterval);
+            this.scrollInterval = null;
+          } else {
+            window.scrollBy(0, distancePerStep);
+          }
+        }, delayPerStep);
+      },
+      autoread() {
+        if (this.isScrolling) {
+          clearInterval(this.scrollInterval);
+          this.scrollInterval = null;
+          this.isScrolling = false;
+        } else {
+          this.scrollToBottomSlowly();
+          this.isScrolling = true;
+        }
+      }
+    },
+    created() {
+      let linxudoscriptssetting = localStorage.getItem("linxudoscriptssetting");
+      if (linxudoscriptssetting) {
+        linxudoscriptssetting = JSON.parse(linxudoscriptssetting);
+        this.num = Number(linxudoscriptssetting.checked8.value2);
+      }
+    }
+  };
+  const _hoisted_1$2 = /* @__PURE__ */ vue.createElementVNode("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "24",
+    height: "24",
+    viewBox: "0 0 24 24",
+    fill: "currentColor"
+  }, [
+    /* @__PURE__ */ vue.createElementVNode("path", {
+      stroke: "none",
+      d: "M0 0h24v24H0z",
+      fill: "none"
+    }),
+    /* @__PURE__ */ vue.createElementVNode("path", { d: "M12.088 4.82a10 10 0 0 1 9.412 .314a1 1 0 0 1 .493 .748l.007 .118v13a1 1 0 0 1 -1.5 .866a8 8 0 0 0 -8 0a1 1 0 0 1 -1 0a8 8 0 0 0 -7.733 -.148l-.327 .18l-.103 .044l-.049 .016l-.11 .026l-.061 .01l-.117 .006h-.042l-.11 -.012l-.077 -.014l-.108 -.032l-.126 -.056l-.095 -.056l-.089 -.067l-.06 -.056l-.073 -.082l-.064 -.089l-.022 -.036l-.032 -.06l-.044 -.103l-.016 -.049l-.026 -.11l-.01 -.061l-.004 -.049l-.002 -.068v-13a1 1 0 0 1 .5 -.866a10 10 0 0 1 9.412 -.314l.088 .044l.088 -.044z" })
+  ], -1);
+  const _hoisted_2$2 = [
+    _hoisted_1$2
+  ];
+  function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", {
+      class: "el-button",
+      onClick: _cache[0] || (_cache[0] = (...args) => $options.autoread && $options.autoread(...args)),
+      title: "自动阅读"
+    }, _hoisted_2$2);
+  }
+  const AutoRead = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$4]]);
+  const _sfc_main$3 = {
+    data() {
+      return {};
+    },
+    methods: {
+      openai() {
+        window.open("https://shared.oaifree.com/?temporary-chat=true", "_blank");
+      }
+    }
+  };
+  function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", null, [
+      vue.createElementVNode("div", {
+        class: "el-button",
+        style: { "font-size": "18px" },
+        onClick: _cache[0] || (_cache[0] = (...args) => $options.openai && $options.openai(...args)),
+        type: "primary",
+        title: "AI对话"
+      }, " AI ")
+    ]);
+  }
+  const AIDialog = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$3]]);
+  const _sfc_main$2 = {
+    data() {
+      return {
+        version: packageJson.version
+      };
+    }
+  };
+  const _withScopeId = (n) => (vue.pushScopeId("data-v-677b97d9"), n = n(), vue.popScopeId(), n);
+  const _hoisted_1$1 = { class: "item" };
+  const _hoisted_2$1 = { class: "tit" };
+  const _hoisted_3$1 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ vue.createElementVNode("a", {
+    href: "https://github.com/dlzmoe/linuxdo-scripts",
+    target: "_blank"
+  }, "Github 源码", -1));
+  const _hoisted_4$1 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ vue.createElementVNode("a", {
+    href: "https://linuxdo-scripts-docs.netlify.app/",
+    target: "_blank"
+  }, "使用文档", -1));
+  function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$1, [
+      vue.createElementVNode("div", _hoisted_2$1, [
+        vue.createTextVNode(" 当前版本：" + vue.toDisplayString($data.version) + " ", 1),
+        _hoisted_3$1,
+        _hoisted_4$1
+      ])
+    ]);
+  }
+  const Updates = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$2], ["__scopeId", "data-v-677b97d9"]]);
+  const _sfc_main$1 = {
+    created() {
+      setTimeout(() => {
+        const isShowplugininstallationprompts = localStorage.getItem(
+          "isShowplugininstallationprompts"
+        );
+        if (isShowplugininstallationprompts == "true") ;
+        else {
+          if ($(".UsageTip").length < 1) {
+            $(".sidebar-footer-container").before(`
+            <dialog open class="UsageTip">
+              <div class="title">友情提示</div>
+              <div>
+                佬友你好，你已经成功安装 linuxdo 增强插件啦！<a
+                  href="https://linuxdo-scripts-docs.netlify.app/"
+                  target="_blank">
+                  使用文档
+                  </a>
+              </div>
+              <div style="color:#e00">
+                设置按钮在下方切换主题的旁边哦~ 有个小齿轮，点击它开始配置插件！
+              </div>
+              <div>如果可以的话欢迎点个 star 支持一下~</div>
+              <div>
+                <a href="https://github.com/dlzmoe/linuxdo-scripts/" target="_blank">
+                  <img
+                    src="https://img.shields.io/github/stars/dlzmoe%2Flinuxdo-scripts?style=for-the-badge&labelColor=%235D5D5D&color=%23E97435"
+                    alt="icon"
+                  />
+                </a>
+              </div>
+              <button class="clicktohide">点击我，该提示永远不会出现啦</button>
+            </dialog>
+           `);
+            $(".clicktohide").click(function() {
+              localStorage.setItem("isShowplugininstallationprompts", true);
+              $(".UsageTip").remove();
+            });
+          }
+        }
+      }, 100);
+    }
+  };
+  function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+    return null;
+  }
+  const UsageTip = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
   const _sfc_main = {
     components: {
       MenuOpenpostblank,

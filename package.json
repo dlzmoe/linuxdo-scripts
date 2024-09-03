@@ -1,6 +1,6 @@
 {
   "name": "linuxdo-scripts",
-  "version": "0.3.14",
+  "version": "0.3.15",
   "author": "dlzmoe",
   "description": "An enhanced script for the linux.do forum",
   "type": "module",
@@ -12,6 +12,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "jquery": "^3.7.1",
     "vue": "^3.4.27"
   },
   "devDependencies": {

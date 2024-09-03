@@ -13,89 +13,92 @@
     </div>
 
     <dialog open id="menu_suspendedball">
-      <div class="title">linuxdo 增强插件设置 {{ version }}</div>
-      <div class="close" @click="closedialog">+</div>
-      <ul class="menu-nav">
-        <li class="act">基础设置</li>
-        <li>自定义文字</li>
-        <li>用户标签</li>
-        <li>AI 配置</li>
-      </ul>
-      <div class="menu-body">
-        <div class="menu-body-item act">
-          <div class="menu-about">
-            <p>请注意，该设置面板数据全部保存在本地浏览器缓存中，注意备份。</p>
-            <p class="hint">
-              如果感觉哪里不太对劲，点我<span
-                class="initialization"
-                @click="initialization"
-                >初始化设置</span
-              >，会清除所有的设置数据并初始化！！
-            </p>
-          </div>
+      <div class="menu-header">
+        <div class="title">linuxdo 增强插件设置 {{ version }}</div>
+        <div class="close" @click="closedialog">+</div>
+      </div>
+      <div class="menu-flex">
+        <ul class="menu-nav">
+          <li class="act"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon-sm"><path fill="currentColor" fill-rule="evenodd" d="M11.568 3.5a1 1 0 0 0-.863.494l-.811 1.381A3 3 0 0 1 7.33 6.856l-1.596.013a1 1 0 0 0-.858.501l-.44.761a1 1 0 0 0-.003.992l.792 1.4a3 3 0 0 1 0 2.954l-.792 1.4a1 1 0 0 0 .004.992l.439.76a1 1 0 0 0 .858.502l1.596.013a3 3 0 0 1 2.564 1.48l.811 1.382a1 1 0 0 0 .863.494h.87a1 1 0 0 0 .862-.494l.812-1.381a3 3 0 0 1 2.563-1.481l1.596-.013a1 1 0 0 0 .859-.501l.439-.761a1 1 0 0 0 .004-.992l-.793-1.4a3 3 0 0 1 0-2.953l.793-1.401a1 1 0 0 0-.004-.992l-.439-.76a1 1 0 0 0-.859-.502l-1.596-.013a3 3 0 0 1-2.563-1.48L13.3 3.993a1 1 0 0 0-.862-.494zM8.98 2.981A3 3 0 0 1 11.568 1.5h.87a3 3 0 0 1 2.588 1.481l.81 1.382a1 1 0 0 0 .855.494l1.597.013a3 3 0 0 1 2.575 1.502l.44.76a3 3 0 0 1 .011 2.975l-.792 1.4a1 1 0 0 0 0 .985l.792 1.401a3 3 0 0 1-.012 2.974l-.439.761a3 3 0 0 1-2.575 1.503l-1.597.012a1 1 0 0 0-.854.494l-.811 1.382a3 3 0 0 1-2.588 1.481h-.87a3 3 0 0 1-2.588-1.481l-.811-1.382a1 1 0 0 0-.855-.494l-1.596-.012a3 3 0 0 1-2.576-1.503l-.439-.76a3 3 0 0 1-.012-2.975l.793-1.4a1 1 0 0 0 0-.985l-.793-1.4a3 3 0 0 1 .012-2.975l.44-.761A3 3 0 0 1 5.717 4.87l1.596-.013a1 1 0 0 0 .855-.494z" clip-rule="evenodd"></path><path fill="currentColor" fill-rule="evenodd" d="M12.003 10.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M8.502 12a3.5 3.5 0 1 1 7 .001 3.5 3.5 0 0 1-7-.001" clip-rule="evenodd"></path></svg>通用设置</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon-sm"><path fill="currentColor" fill-rule="evenodd" d="M12 4a3 3 0 1 0 0 6 3 3 0 0 0 0-6M7 7a5 5 0 1 1 10 0A5 5 0 0 1 7 7m12.028 8.626c-.342-.061-.834.027-1.346.557a1 1 0 0 1-1.438 0c-.512-.53-1.003-.618-1.345-.557-.36.064-.681.312-.837.702-.257.643-.16 2.334 2.901 4.134 3.062-1.8 3.159-3.49 2.901-4.134a1.11 1.11 0 0 0-.836-.702m2.693-.041c.854 2.134-.456 4.844-4.284 6.904a1 1 0 0 1-.948 0c-3.828-2.06-5.137-4.77-4.284-6.904a3.11 3.11 0 0 1 2.343-1.929c.809-.144 1.655.035 2.415.536.76-.5 1.607-.68 2.415-.536a3.11 3.11 0 0 1 2.343 1.929m-11.795-1.38a1 1 0 0 1-.548 1.303C7.06 16.453 5.5 18.581 5.5 21a1 1 0 1 1-2 0c0-3.322 2.141-6.128 5.122-7.344a1 1 0 0 1 1.304.549" clip-rule="evenodd"></path></svg>自定义文字</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon-sm"><path fill="currentColor" fill-rule="evenodd" d="M12.4 3.767a1 1 0 0 0-.8 0l-6 2.625a1 1 0 0 0-.6.916V13c0 1.714.616 3.283 1.638 4.5A6.99 6.99 0 0 1 12 15c2.153 0 4.078.972 5.362 2.5A6.97 6.97 0 0 0 19 13V7.308a1 1 0 0 0-.6-.916zm3.47 15.067A4.99 4.99 0 0 0 12 17a4.99 4.99 0 0 0-3.87 1.834A6.97 6.97 0 0 0 12 20c1.43 0 2.762-.43 3.87-1.166m-5.072-16.9a3 3 0 0 1 2.405 0l6 2.626A3 3 0 0 1 21 7.308V13a9 9 0 1 1-18 0V7.308A3 3 0 0 1 4.798 4.56zM12 8.5a1.75 1.75 0 1 0 0 3.5 1.75 1.75 0 0 0 0-3.5m-3.75 1.75a3.75 3.75 0 1 1 7.5 0 3.75 3.75 0 0 1-7.5 0" clip-rule="evenodd"></path></svg>用户标签</li>
+          <li><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-openai"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M11.217 19.384a3.501 3.501 0 0 0 6.783 -1.217v-5.167l-6 -3.35" /><path d="M5.214 15.014a3.501 3.501 0 0 0 4.446 5.266l4.34 -2.534v-6.946" /><path d="M6 7.63c-1.391 -.236 -2.787 .395 -3.534 1.689a3.474 3.474 0 0 0 1.271 4.745l4.263 2.514l6 -3.348" /><path d="M12.783 4.616a3.501 3.501 0 0 0 -6.783 1.217v5.067l6 3.45" /><path d="M18.786 8.986a3.501 3.501 0 0 0 -4.446 -5.266l-4.34 2.534v6.946" /><path d="M18 16.302c1.391 .236 2.787 -.395 3.534 -1.689a3.474 3.474 0 0 0 -1.271 -4.745l-4.308 -2.514l-5.955 3.42" /></svg>AI 配置</li>
+        </ul>
+        <div class="menu-body">
+          <div class="menu-body-item act">
+            <div class="menu-about">
+              <p>请注意，该设置面板数据全部保存在本地浏览器缓存中，注意备份。</p>
+              <p class="hint">
+                如果感觉哪里不太对劲，点我<span
+                  class="initialization"
+                  @click="initialization"
+                  >初始化设置</span
+                >，会清除所有的设置数据并初始化！！
+              </p>
+            </div>
 
-          <!-- 新标签页打开 -->
-          <MenuOpenpostblank :sort="1" v-model="settingData.checked1" />
-          <!-- 新话题提醒 -->
-          <MenuNewtopicreminder :sort="2" v-model="settingData.checked2" />
-          <!-- 自动展开回复 -->
-          <MenuAutoexpandreply :sort="3" v-model="settingData.checked3" />
-          <!-- 话题列表显示创建时间 -->
-          <MenuShowcreatetime :sort="4" v-model="settingData.checked4" />
-          <MenuShowcreatetime1 :sort="4.1" v-model="settingData.checked41" />
-          <!-- 显示楼层数 -->
-          <MenuShowfloors :sort="5" v-model="settingData.checked5" />
-          <!-- 隐藏话题详情顶部大标题 -->
-          <MenuHidetopicdetailtitle :sort="6" v-model="settingData.checked6" />
-          <!-- 话题预览功能 -->
-          <MenuTopicpreview :sort="7" v-model="settingData.checked7" />
-          <!-- 显示自动阅读按钮 -->
-          <MenuAutoRead :sort="8" v-model="settingData.checked8" />
-          <!-- 只看楼主按钮 -->
-          <MenuLookOP :sort="9" v-model="settingData.checked9" />
-          <!-- 智能限制楼层高度 -->
-          <MenuFloorHeight :sort="10" v-model="settingData.checked10" />
-          <!-- 中英文混排优化显示 -->
-          <MenuPangu :sort="11" v-model="settingData.checked11" />
-          <!-- 是否显示等级查询按钮 -->
-          <MenuLevelSearch :sort="12" v-model="settingData.checked12" />
-          <!-- 消息通知仅显示未读 -->
-          <MenuShowUnread :sort="13" v-model="settingData.checked13" />
-          <!-- 是否屏蔽模糊文字 -->
-          <MenuFilterText :sort="14" v-model="settingData.checked14" />
-          <!-- 只看自己签名 -->
-          <MenuLookmeSign :sort="15" v-model="settingData.checked15" />
-          <!-- 开启左侧快速访问 -->
-          <MenuQuickAccess :sort="16" v-model="settingData.checked16" />
-          <!-- 切换论坛表情风格 -->
-          <MenureplaceEmojiStyle :sort="17" v-model="settingData.checked17" />
-          <!-- 显示 AI 对话网站 -->
-          <MenuShowAI :sort="18" v-model="settingData.checked18" />
-          <!-- 编辑器切换 ja 字体 -->
-          <MenuEditorJa :sort="19" v-model="settingData.checked19" />
-          <!-- 开启列表页导航栏浮动 -->
-          <MenuStickyNav :sort="20" v-model="settingData.checked20" />
-          <!-- 检测更新 -->
-          <Updates />
-        </div>
-        <div class="menu-body-item">
-          <!-- 自定义论坛 logo -->
-          <MenuLogoUrl :sort="1" v-model:value="settingData.logourl" />
-          <!-- 自定义快捷回复 -->
-          <MenuCreatereply :sort="2" v-model:value="settingData.QuickReply" />
-          <!-- 屏蔽指定用户 -->
-          <MenuBlockuserlist :sort="3" v-model:value="settingData.blockList" />
-          <!-- 自定义 CSS -->
-          <MenuOtherCss :sort="4" v-model:value="settingData.othercss" />
-        </div>
-        <div class="menu-body-item">
-          <UserTags />
-        </div>
-        <div class="menu-body-item">
-          <GPTconfig v-model:value="settingData.gptdata" />
+            <!-- 新标签页打开 -->
+            <MenuOpenpostblank :sort="1" v-model="settingData.checked1" />
+            <!-- 新话题提醒 -->
+            <MenuNewtopicreminder :sort="2" v-model="settingData.checked2" />
+            <!-- 自动展开回复 -->
+            <MenuAutoexpandreply :sort="3" v-model="settingData.checked3" />
+            <!-- 话题列表显示创建时间 -->
+            <MenuShowcreatetime :sort="4" v-model="settingData.checked4" />
+            <MenuShowcreatetime1 :sort="4.1" v-model="settingData.checked41" />
+            <!-- 显示楼层数 -->
+            <MenuShowfloors :sort="5" v-model="settingData.checked5" />
+            <!-- 隐藏话题详情顶部大标题 -->
+            <MenuHidetopicdetailtitle :sort="6" v-model="settingData.checked6" />
+            <!-- 话题预览功能 -->
+            <MenuTopicpreview :sort="7" v-model="settingData.checked7" />
+            <!-- 显示自动阅读按钮 -->
+            <MenuAutoRead :sort="8" v-model="settingData.checked8" />
+            <!-- 只看楼主按钮 -->
+            <MenuLookOP :sort="9" v-model="settingData.checked9" />
+            <!-- 智能限制楼层高度 -->
+            <MenuFloorHeight :sort="10" v-model="settingData.checked10" />
+            <!-- 中英文混排优化显示 -->
+            <MenuPangu :sort="11" v-model="settingData.checked11" />
+            <!-- 是否显示等级查询按钮 -->
+            <MenuLevelSearch :sort="12" v-model="settingData.checked12" />
+            <!-- 消息通知仅显示未读 -->
+            <MenuShowUnread :sort="13" v-model="settingData.checked13" />
+            <!-- 是否屏蔽模糊文字 -->
+            <MenuFilterText :sort="14" v-model="settingData.checked14" />
+            <!-- 只看自己签名 -->
+            <MenuLookmeSign :sort="15" v-model="settingData.checked15" />
+            <!-- 开启左侧快速访问 -->
+            <MenuQuickAccess :sort="16" v-model="settingData.checked16" />
+            <!-- 切换论坛表情风格 -->
+            <MenureplaceEmojiStyle :sort="17" v-model="settingData.checked17" />
+            <!-- 显示 AI 对话网站 -->
+            <MenuShowAI :sort="18" v-model="settingData.checked18" />
+            <!-- 编辑器切换 ja 字体 -->
+            <MenuEditorJa :sort="19" v-model="settingData.checked19" />
+            <!-- 开启列表页导航栏浮动 -->
+            <MenuStickyNav :sort="20" v-model="settingData.checked20" />
+            <!-- 检测更新 -->
+            <Updates />
+          </div>
+          <div class="menu-body-item">
+            <!-- 自定义论坛 logo -->
+            <MenuLogoUrl :sort="1" v-model:value="settingData.logourl" />
+            <!-- 自定义快捷回复 -->
+            <MenuCreatereply :sort="2" v-model:value="settingData.QuickReply" />
+            <!-- 屏蔽指定用户 -->
+            <MenuBlockuserlist :sort="3" v-model:value="settingData.blockList" />
+            <!-- 自定义 CSS -->
+            <MenuOtherCss :sort="4" v-model:value="settingData.othercss" />
+          </div>
+          <div class="menu-body-item">
+            <UserTags />
+          </div>
+          <div class="menu-body-item">
+            <GPTconfig v-model:value="settingData.gptdata" />
+          </div>
         </div>
       </div>
-
       <div class="menu-footer">
         <input
           type="file"
@@ -106,17 +109,16 @@
           @change="handleFileUpload"
         />
 
-        <button class="btn save" @click="save">保存</button>
-        <button class="btn saveload" @click="saveload">保存并刷新</button>
-        <button class="btn floorlottery" @click="openFloorlottery">楼层抽奖</button>
+        <button class="save" @click="save">保存</button>
+        <button class="saveload" @click="saveload">保存并刷新</button>
+        <button class="floorlottery" @click="openFloorlottery">楼层抽奖</button>
 
         <a
-          class="btn"
-          style="background: #979797"
+          style="margin-left:8px"
           target="_blank"
           href="https://greasyfork.org/zh-CN/scripts/501827-linuxdo-%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6"
         >
-          检测新版本
+          <button class="detection">检测新版本</button>
         </a>
         <button class="btn import" @click="triggerFileInput">导入</button>
         <button class="btn export" @click="exportData">导出</button>
@@ -125,12 +127,14 @@
 
     <!-- 楼层抽奖 -->
     <dialog open v-show="floorlotteryDialog">
-      <div class="title">楼层抽奖</div>
-      <div class="menu-body">
+      <div class="menu-header">
+        <div class="title">楼层抽奖</div>
+      </div>
+      <div class="menu-body" style="margin-top:10px">
         <input type="text" v-model="floorlotteryval1" placeholder="请输入总数" />
         <input type="text" v-model="floorlotteryval2" placeholder="请输入抽取的数量" />
-        <button type="primary" @click="drawRandomNumbers">开始抽奖</button>
-        <button type="primary" plain @click="closelotter">关闭弹窗</button>
+        <button class="btn save" @click="drawRandomNumbers">开始抽奖</button>
+        <button class="btn" style="background: #979797" plain @click="closelotter">关闭弹窗</button>
         <div style="height: 20px"></div>
         <div v-if="floorlotterloading">正在抽奖...</div>
         <div v-if="floorlotterresult" title="抽奖结果" type="success">

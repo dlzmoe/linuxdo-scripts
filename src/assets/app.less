@@ -8,7 +8,7 @@
 }
 
 #linuxdoscripts {
-  font-size: 15px;
+  font-size: 14px;
 
   input[type="text"] {
     width: 100%;
@@ -31,11 +31,11 @@
   .close {
     position: absolute;
     right: 10px;
-    top: 3px;
+    top: 45%;
     cursor: pointer;
     font-size: 34px;
     color: #999;
-    transform: rotate(45deg)
+    transform: translateY(-50%) rotate(45deg)
   }
 
   .setting-btn {
@@ -84,14 +84,15 @@
     width: 700px;
     background: #fff;
     color: #333;
-    box-shadow: 1px 2px 5px rgba(0, 0, 0, .2);
-    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.1) 0px 8px 10px -6px;
+    border-radius: 16px;
     padding: 15px;
     z-index: 99999;
     overflow-x: hidden;
     box-sizing: border-box;
     margin: 0;
-
+    border: none;
+    outline: none;
 
     .menu-about {
       padding: 5px 0;
@@ -115,35 +116,43 @@
     }
   }
 
-  .title {
-    font-size: 18px;
-    text-align: center;
-    font-weight: 600;
+  .menu-header {
+    padding: 0.5rem 0.5rem 1rem;
     border-bottom: 1px solid #eee;
-    padding-bottom: 6px;
+    position: relative;
   }
 
-  .btn {
-    border: none;
+  .title {
+    font-size: 18px;
+    // text-align: center;
+    font-weight: 600;
+  }
+
+  button {
     outline: 0;
     min-width: 80px;
     height: 32px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: #1c1c1e;
     color: #fff;
-    font-size: 14px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all .1s linear;
+    border: none;
+    background-color: #12181e;
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .12);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, .045);
+    border-radius: 4px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    transition: all 0.1s linear;
 
-    &+.btn {
-      margin-left: 10px;
+    &+button {
+      margin-left: 8px;
     }
 
     &.saveload {
-      background: #4040b7;
+      background: #3d9b93;
+    }
+
+    &.detection {
+      background: #810000;
     }
 
     &:hover {
@@ -151,33 +160,69 @@
     }
   }
 
-  .menu-nav {
+  // .btn {
+  //   border: none;
+  //   outline: 0;
+  //   min-width: 80px;
+  //   height: 32px;
+  //   display: inline-flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   background: #1c1c1e;
+  //   color: #fff;
+  //   font-size: 14px;
+  //   border-radius: 5px;
+  //   cursor: pointer;
+  //   transition: all .1s linear;
+
+  //   &+.btn {
+  //     margin-left: 10px;
+  //   }
+
+
+  // }
+
+  .menu-flex {
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .menu-nav {
+    width: 140px;
+    display: flex;
+    flex-direction: column;
     margin: 0;
-    padding: 5px 0;
-    border-bottom: 1px solid #eee;
+    padding-top: 15px;
+    margin-right: 20px;
 
     li {
-      margin-right: 10px;
       border-radius: 4px;
-      height: 26px;
-      min-width: 60px;
+      height: 32px;
+      width: 100%;
+      margin-bottom: 5px;
+      box-sizing: border-box;
       padding: 0 10px;
       display: inline-flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       font-size: 14px;
       cursor: pointer;
 
+      svg {
+        width: 16px;
+        margin-right: 5px;
+        color: #555;
+      }
+
       &.act {
-        background: #000;
-        color: #fff;
+        background: #ECECEC;
       }
     }
   }
 
   .menu-body {
+    flex: 1;
     height: 480px;
     overflow-y: auto;
     padding-right: 10px;
@@ -210,7 +255,6 @@
     justify-content: space-between;
     margin-top: 10px;
     padding-top: 6px;
-    border-top: 1px solid #eee;
 
     &.hides {
       opacity: 0;
@@ -237,15 +281,13 @@
     padding-bottom: 30px;
 
     .item {
-      margin-top: 12px;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(0, 0, 0, .1);
+      padding: 15px 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
   }
-
 
   textarea {
     font-family: inherit;

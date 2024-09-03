@@ -3,7 +3,6 @@ import App from './App.vue';
 const app = createApp(App);
 
 import "./assets/app.less";
-
 import $ from "jquery";
 
 app.mount(

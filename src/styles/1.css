@@ -86,6 +86,8 @@ body:not(.archetype-private_message) .topic-map {
 
 .user-stream .item,
 .user-stream .user-stream-item,
-.user-main .about.collapsed-info .details {
+.user-main .about.collapsed-info .details,
+.c-navbar-container,
+.chat-message-container {
   background: none !important;
 }

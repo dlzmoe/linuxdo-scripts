@@ -286,6 +286,48 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+
+      input[type="checkbox"] {
+        width: 30px;
+        height: 16px;
+        position: relative;
+        border: 1px solid #dfdfdf;
+        background-color: #DCDFE6;
+        box-shadow: #dfdfdf 0 0 0 0 inset;
+        border-radius: 20px;
+        background-clip: content-box;
+        display: inline-block;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        user-select: none;
+        outline: none;
+      }
+
+      input[type="checkbox"]::before {
+        content: '';
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        background-color: #FFFFFF;
+        border-radius: 50%;
+        left: 2px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        transition: .3s;
+      }
+
+      input[type="checkbox"]:checked {
+        background-color: #409EFF;
+        transition: .6s;
+      }
+
+      input[type="checkbox"]:checked::before {
+        left: 14px;
+        transition: .3s;
+      }
+
     }
   }
 

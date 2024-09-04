@@ -89,7 +89,7 @@ export default {
         }, 1000);
       }
     },
-    // 获取帖子内容并生成
+    // 获取帖子内容并生成总结
     async getPostContent() {
       $(".post-stream").before(
         `<div class="gpt-summary-wrap">
@@ -174,6 +174,64 @@ ${str}`;
               $(".gpt-summary").html(`生成失败，请检查配置是否正确并刷新重试！`);
               $(".airegenerate").show();
             }
+          },
+          onerror: function (error) {
+            reject(error);
+          },
+        });
+      });
+    },
+    // 生成 AI 回复
+    async setAIRelpy() {
+
+      let topicUrl = this.getTopicUrl(window.location.href);
+
+      return new Promise((resolve, reject) => {
+        GM_xmlhttpRequest({
+          method: "GET",
+          url: topicUrl + "/1.json",
+          headers: {
+            accept: "application/json, text/javascript, */*; q=0.01",
+            "accept-language": "zh-CN,zh;q=0.9",
+            "x-requested-with": "XMLHttpRequest",
+          },
+          onload: async function (response) {
+            const config = JSON.parse(localStorage.getItem("linxudoscriptssetting"))
+              .gptdata;
+            if (response.status === 200) {
+              try {
+                const data = JSON.parse(response.responseText);
+                const str = data.post_stream.posts[0].cooked;
+                const prompt = `此页面是linux.do论坛帖子，帮我根据这篇帖子给作者写一条回复，简短，表明我的观点，用口语回复，不需要很正式。您可以通过讨论的方式进行回复，这将有助于引导其他用户或作者进行互动。
+帖子内容如下：
+${str}`;
+                const gptResponse = await fetch(`${config.baseurl}/v1/chat/completions`, {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${config.apikey}`,
+                  },
+                  body: JSON.stringify({
+                    model: config.model,
+                    messages: [
+                      {
+                        role: "user",
+                        content: prompt,
+                      },
+                    ],
+                    temperature: 0.7,
+                  }),
+                });
+
+                const gptData = await gptResponse.json();
+                $(".gpt-summary").html(
+                  `${marked.parse(gptData.choices[0].message.content)}`
+                );
+
+              } catch (error) {
+                reject(error);
+              }
+            } 
           },
           onerror: function (error) {
             reject(error);

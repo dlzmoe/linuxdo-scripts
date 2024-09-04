@@ -2,7 +2,7 @@
 
 [https://github.com/dlzmoe/linuxdo-scripts](https://github.com/dlzmoe/linuxdo-scripts)
 
-[https://greasyfork.org/zh-CN/scripts/501827-linuxdo 增强插件](https://greasyfork.org/zh-CN/scripts/501827-linuxdo-%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6)
+[https://greasyfork.org/zh-CN/scripts/501827-linuxdo 增强插件](https://greasyfork.org/scripts/501827)
 
 ---
 

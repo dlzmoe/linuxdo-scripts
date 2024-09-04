@@ -53,7 +53,7 @@ jobs:
         
         $(cat CHANGELOG.md)
         
-        [查看 $PACKAGE_VERSION 更新日志](https://github.com/dlzmoe/linuxdo-scripts/blob/main/version-log.md)  [点击前往 greasyfork.org 进行安装](https://greasyfork.org/zh-CN/scripts/501827-linuxdo-%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6)
+        [查看 $PACKAGE_VERSION 更新日志](https://github.com/dlzmoe/linuxdo-scripts/blob/main/version-log.md)  [点击前往 greasyfork.org 进行安装](https://greasyfork.org/scripts/501827)
 
         发布于：$CURRENT_DATE"
       env:

@@ -8,10 +8,10 @@
 <img src="https://img.shields.io/github/license/dlzmoe/linuxdo-scripts">
 </p>
 
-linux.do 增强插件，话题列表显示创建时间，显示楼层数，新标签页打开话题，强制 block（拉黑屏蔽）某人的话题，话题快捷回复（支持自定义），优化签名图显示防止图裂，在话题列表可直接预览详情及评论，功能设置面板导入导出，楼层抽奖，用户自定义标签，只看楼主，自动滚动阅读，支持自定义 css 样式，中英文混排优化，等级信息查询，AI 总结话题功能等，功能持续更新，欢迎提出新想法！
+linux.do 增强插件，话题列表显示创建时间，显示楼层数，新标签页打开话题，强制 block（拉黑屏蔽）某人的话题，话题快捷回复（支持自定义），优化签名图显示防止图裂，在话题列表可直接预览详情及评论，功能设置面板导入导出，楼层抽奖，用户自定义标签，只看楼主，自动滚动阅读，支持自定义 css 样式，中英文混排优化，等级信息查询，AI 总结话题功能、智能生成回复，支持 webdav 同步等，功能持续更新，欢迎提出新想法！
 
 [Github 仓库](https://github.com/dlzmoe/linuxdo-scripts) |
-[Greasyfork 商店](https://greasyfork.org/zh-CN/scripts/501827-linuxdo-%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6) |
+[Greasyfork 商店](https://greasyfork.org/scripts/501827) |
 [开发计划](https://github.com/users/dlzmoe/projects/2) |
 [Bug 反馈及功能请求](https://github.com/dlzmoe/linuxdo-scripts/issues/new/choose) |
 [使用和开发文档](https://linuxdo-scripts-docs.netlify.app/) 
@@ -21,8 +21,8 @@ linux.do 增强插件，话题列表显示创建时间，显示楼层数，新�
 开发环境为 windows / chrome / 暴力猴，使用其他油猴管理器如果报错或者不生效，可以尝试使用暴力猴（我目前正在使用的，兼容性比较好）。
 
 > [!WARNING]  
->  Arc 浏览器下篡改猴扩展无法使用，存在兼容性问题，与插件无关，是浏览器和油猴管理器之间的问题。  
 >  Arc 浏览器用户请使用暴力猴扩展。
+>  Arc 浏览器下篡改猴扩展无法使用，存在兼容性问题，与插件无关，是浏览器和油猴管理器之间的问题。  
 
 ## 功能特性
 
@@ -44,7 +44,8 @@ linux.do 增强插件，话题列表显示创建时间，显示楼层数，新�
 - [x] 中英文混排优化显示
 - [x] 新增等级信息查询
 - [x] 切换论坛表情风格
-- [x] AI 总结话题功能
+- [x] AI 总结话题功能、智能生成回复
+- [x] 支持 webdav 同步
 
 **部分截图演示：**
 
@@ -58,7 +59,7 @@ linux.do 增强插件，话题列表显示创建时间，显示楼层数，新�
 
 点击此链接将会自动触发油猴脚本安装程序，后续也可以触发更新。
 
-https://greasyfork.org/zh-CN/scripts/501827-linuxdo-%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6
+https://greasyfork.org/scripts/501827
 
 
 ## 开发说明

@@ -3644,7 +3644,7 @@ ${topic_contentdata}`;
   const _hoisted_19 = /* @__PURE__ */ vue.createElementVNode("a", {
     style: { "margin-left": "8px" },
     target: "_blank",
-    href: "https://greasyfork.org/zh-CN/scripts/501827-linuxdo-%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6"
+    href: "https://greasyfork.org/scripts/501827"
   }, [
     /* @__PURE__ */ vue.createElementVNode("button", { class: "detection" }, "检测新版本")
   ], -1);

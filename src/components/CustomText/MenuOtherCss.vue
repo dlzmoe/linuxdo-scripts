@@ -43,7 +43,7 @@ export default {
   },
   created() {
     if (this.textarea) {
-      $("head").after(`<style>${this.textarea}</style>`);
+      $("body").after(`<style>${this.textarea}</style>`);
     }
   },
 };

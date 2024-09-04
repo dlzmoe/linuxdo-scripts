@@ -29,7 +29,7 @@ body.has-sidebar-page #main-outlet-wrapper {
 }
 
 .embedded-posts.bottom>div .row .topic-body .topic-meta-data .post-link-arrow {
-  bottom: 0
+  bottom: 0 !important;
 }
 
 .topic-post {

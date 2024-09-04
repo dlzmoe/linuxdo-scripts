@@ -1,6 +1,6 @@
 {
   "name": "linuxdo-scripts",
-  "version": "0.3.20",
+  "version": "0.3.21",
   "author": "dlzmoe",
   "description": "An enhanced script for the linux.do forum",
   "type": "module",
@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "jquery": "^3.7.1",
-    "vue": "^3.4.27"
+    "vue": "^3.4.27",
+    "webdav": "^5.7.1"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",

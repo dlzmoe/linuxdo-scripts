@@ -23,6 +23,7 @@
           <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon-sm"><path fill="currentColor" fill-rule="evenodd" d="M12 4a3 3 0 1 0 0 6 3 3 0 0 0 0-6M7 7a5 5 0 1 1 10 0A5 5 0 0 1 7 7m12.028 8.626c-.342-.061-.834.027-1.346.557a1 1 0 0 1-1.438 0c-.512-.53-1.003-.618-1.345-.557-.36.064-.681.312-.837.702-.257.643-.16 2.334 2.901 4.134 3.062-1.8 3.159-3.49 2.901-4.134a1.11 1.11 0 0 0-.836-.702m2.693-.041c.854 2.134-.456 4.844-4.284 6.904a1 1 0 0 1-.948 0c-3.828-2.06-5.137-4.77-4.284-6.904a3.11 3.11 0 0 1 2.343-1.929c.809-.144 1.655.035 2.415.536.76-.5 1.607-.68 2.415-.536a3.11 3.11 0 0 1 2.343 1.929m-11.795-1.38a1 1 0 0 1-.548 1.303C7.06 16.453 5.5 18.581 5.5 21a1 1 0 1 1-2 0c0-3.322 2.141-6.128 5.122-7.344a1 1 0 0 1 1.304.549" clip-rule="evenodd"></path></svg>自定义文字</li>
           <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon-sm"><path fill="currentColor" fill-rule="evenodd" d="M12.4 3.767a1 1 0 0 0-.8 0l-6 2.625a1 1 0 0 0-.6.916V13c0 1.714.616 3.283 1.638 4.5A6.99 6.99 0 0 1 12 15c2.153 0 4.078.972 5.362 2.5A6.97 6.97 0 0 0 19 13V7.308a1 1 0 0 0-.6-.916zm3.47 15.067A4.99 4.99 0 0 0 12 17a4.99 4.99 0 0 0-3.87 1.834A6.97 6.97 0 0 0 12 20c1.43 0 2.762-.43 3.87-1.166m-5.072-16.9a3 3 0 0 1 2.405 0l6 2.626A3 3 0 0 1 21 7.308V13a9 9 0 1 1-18 0V7.308A3 3 0 0 1 4.798 4.56zM12 8.5a1.75 1.75 0 1 0 0 3.5 1.75 1.75 0 0 0 0-3.5m-3.75 1.75a3.75 3.75 0 1 1 7.5 0 3.75 3.75 0 0 1-7.5 0" clip-rule="evenodd"></path></svg>用户标签</li>
           <li><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-openai"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M11.217 19.384a3.501 3.501 0 0 0 6.783 -1.217v-5.167l-6 -3.35" /><path d="M5.214 15.014a3.501 3.501 0 0 0 4.446 5.266l4.34 -2.534v-6.946" /><path d="M6 7.63c-1.391 -.236 -2.787 .395 -3.534 1.689a3.474 3.474 0 0 0 1.271 4.745l4.263 2.514l6 -3.348" /><path d="M12.783 4.616a3.501 3.501 0 0 0 -6.783 1.217v5.067l6 3.45" /><path d="M18.786 8.986a3.501 3.501 0 0 0 -4.446 -5.266l-4.34 2.534v6.946" /><path d="M18 16.302c1.391 .236 2.787 -.395 3.534 -1.689a3.474 3.474 0 0 0 -1.271 -4.745l-4.308 -2.514l-5.955 3.42" /></svg>AI 配置</li>
+          <li><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-refresh"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" /><path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" /></svg>数据备份同步</li>
         </ul>
         <div class="menu-body">
           <div class="menu-body-item act">
@@ -99,18 +100,12 @@
           <div class="menu-body-item">
             <GPTconfig v-model:value="settingData.gptdata" />
           </div>
+          <div class="menu-body-item">
+            <SyncBackup />
+          </div>
         </div>
       </div>
       <div class="menu-footer">
-        <input
-          type="file"
-          id="fileInput"
-          ref="fileInput"
-          style="display: none"
-          accept=".json"
-          @change="handleFileUpload"
-        />
-
         <button class="save" @click="save">保存</button>
         <button class="saveload" @click="saveload">保存并刷新</button>
         <button class="floorlottery" @click="openFloorlottery">楼层抽奖</button>
@@ -122,8 +117,7 @@
         >
           <button class="detection">检测新版本</button>
         </a>
-        <button class="btn import" @click="triggerFileInput">导入</button>
-        <button class="btn export" @click="exportData">导出</button>
+       
       </div>
     </dialog>
 
@@ -192,6 +186,9 @@ import UserTags from "./components/UserTags/UserTags.vue";
 // AI 配置
 import GPTconfig from "./components/AIConfig/GPTconfig.vue";
 
+// 数据同步备份
+import SyncBackup from "./components/Sync/SyncBackup.vue";
+
 // 按钮
 import LookOP from "./components/Button/LookOP.vue";
 import LevelDiglog from "./components/Button/LevelDiglog.vue";
@@ -240,6 +237,7 @@ export default {
     GPTconfig,
     MenuStickyNav,
     MenuBlockKeyword,
+    SyncBackup,
   },
   data() {
     return {
@@ -299,6 +297,11 @@ export default {
           prompt: `根据以下帖子内容进行总结，请使用 markdown 格式返回回答，没有字数限制，但要求文字精炼，简介准确，语言要求返回简体中文，并且进行中英文混排优化。可以通过编号列表（1，2，3）列出核心要点。
 注意不要输出标题，例如：核心要点总结，帖子总结等，直接输出文本段落。`,
         },
+        syncbackup: {
+          webdavUrl: "",
+          webdavUsername: "",
+          webdavPassword: "",
+        }
       },
 
       showautoread: false,
@@ -308,6 +311,13 @@ export default {
     };
   },
   methods: {
+    messageToast(message) {
+      const messageElement = $(`<div class="messageToast-text">${message}</div>`);
+      $('#messageToast').append(messageElement);
+      setTimeout(() => {
+        messageElement.remove();
+      }, 3000);
+    },
     // 关闭弹窗
     closedialog() {
       $(".linuxdoscripts-opacity").hide();
@@ -317,61 +327,16 @@ export default {
     save() {
       localStorage.setItem("linxudoscriptssetting", JSON.stringify(this.settingData));
 
-      // this.$message.success("保存成功！");
+      this.messageToast("保存成功！");
       $(".linuxdoscripts-opacity").hide();
       $("#menu_suspendedball").hide();
     },
+    // 保存并刷新
     saveload() {
       this.save();
       location.reload();
     },
-    // 导入数据
-    triggerFileInput() {
-      this.$refs.fileInput.click();
-    },
-    handleFileUpload(event) {
-      const file = event.target.files[0];
-      if (file && file.type === "application/json") {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          try {
-            const jsonData = JSON.parse(e.target.result);
-            this.importData(jsonData);
-          } catch (error) {
-            console.error("Error parsing JSON:", error);
-          }
-        };
-        reader.readAsText(file);
-      } else {
-        console.error("Please select a valid JSON file.");
-      }
-    },
-    importData(data) {
-      // 处理导入的数据
-      // this.$message.success("导入成功！");
-      this.settingData = data;
-    },
-    // 导出数据
-    exportData() {
-      const today = new Date();
-      const year = today.getFullYear();
-      const month = String(today.getMonth() + 1).padStart(2, "0");
-      const day = String(today.getDate()).padStart(2, "0");
-      const formattedDate = year + month + day;
 
-      const dataStr = JSON.stringify(this.settingData, null, 2);
-      const blob = new Blob([dataStr], { type: "application/json" });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = `linuxdo-script-data-${formattedDate}.json`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      URL.revokeObjectURL(url);
-
-      // this.$message.success("导出成功！");
-    },
     // 打开抽奖弹窗
     openFloorlottery() {
       $("#menu_suspendedball").hide();
@@ -380,7 +345,7 @@ export default {
     // 开始抽奖
     drawRandomNumbers() {
       if (this.floorlotteryval1 === "" || this.floorlotteryval2 === "") {
-        // this.$message.warning("请输入有效的数字");
+        this.messageToast("请输入有效的数字")
         return false;
       }
 
@@ -388,7 +353,7 @@ export default {
       const count = parseInt(this.floorlotteryval2);
 
       if (isNaN(total) || isNaN(count) || total <= 0 || count <= 0 || count > total) {
-        // this.$message.warning("请输入有效的数字");
+        this.messageToast("请输入有效的数字")
         return false;
       }
 
@@ -495,7 +460,7 @@ export default {
     // 初始化设置
     initialization() {
       localStorage.removeItem("linxudoscriptssetting");
-      // this.$message.success("初始化设置成功，即将自动刷新！");
+      this.messageToast("初始化设置成功，即将自动刷新！")
       setTimeout(() => {
         location.reload();
       }, 1000);

@@ -609,6 +609,7 @@ body.body-preview #main-outlet-wrapper {
 }
 
 .aireply-popup {
+  z-index: 999;
   position: fixed;
   top: 10%;
   left: 50%;
@@ -738,9 +739,14 @@ body.body-preview #main-outlet-wrapper {
     color: #6b6b6b;
   }
 
-  .aicreated-btn {
+  .aicreated-btn,
+  .aireplay-btn {
     background: #999;
     color: #fff;
+  }
+
+  .aireply-popup {
+    background: #717171;
   }
 
   .gpt-summary-wrap {

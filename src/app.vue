@@ -95,7 +95,7 @@
             <MenuOtherCss :sort="5" v-model:value="settingData.othercss" />
           </div>
           <div class="menu-body-item">
-            <UserTags />
+            <UserTags v-model:value="settingData.usertags" />
           </div>
           <div class="menu-body-item">
             <GPTconfig v-model:value="settingData.gptdata" />
@@ -285,7 +285,7 @@ export default {
         checked18: false,
         checked19: false,
         checked20: true,
-
+        usertags: [],
         gptdata: {
           value1: false,
           value2: false,

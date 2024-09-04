@@ -22,13 +22,30 @@
 
 <script>
 export default {
+  props: {
+    value: {
+      type: String,
+      default: "",
+    },
+    sort: {
+      type: Number,
+      required: true,
+    },
+  },
   data() {
     return {
-      tableData: [],
+      tableData: this.value,
     };
   },
-
+  watch: {
+    value(newValue) {
+      this.tableData = newValue;
+    },
+  },
   methods: {
+    handleChange() {
+      this.$emit("update:value", this.tableData);
+    },
     // 修改标签
     editTags(item) {
       var tags = prompt(`对 @${item.name} 修改标签`, item.tags);
@@ -49,6 +66,8 @@ export default {
         settingData1 = JSON.parse(settingData1);
         settingData1.usertags = this.tableData;
         localStorage.setItem("linxudoscriptssetting", JSON.stringify(settingData1));
+
+        this.$emit("update:value", this.tableData);
       }
     },
     delTags(item) {
@@ -60,6 +79,8 @@ export default {
         settingData1 = JSON.parse(settingData1);
         settingData1.usertags = this.tableData;
         localStorage.setItem("linxudoscriptssetting", JSON.stringify(settingData1));
+
+        this.$emit("update:value", this.tableData);
       }
     },
   },

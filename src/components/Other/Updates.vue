@@ -29,7 +29,7 @@ a:hover {
   align-items: flex-start;
   position: absolute;
   bottom: 70px;
-  left: 10px;
+  left: 22px;
   line-height: 2;
 
   img {

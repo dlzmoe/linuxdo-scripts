@@ -23,6 +23,15 @@ export default {
         document.addEventListener("DOMContentLoaded", () => {
           pangu.autoSpacingPage();
         });
+
+        if ($(".pangutext").length < 1) {
+          $(".save-or-cancel .cancel").before(`<span class="pangutext">混排优化</span>`);
+          $(".pangutext").click(function () {
+            const editorstr = $(".d-editor-input").val();
+            const text = pangu.spacing(editorstr);
+            $(".d-editor-input").val(text);
+          });
+        }
       }, 1000);
     }
   },

@@ -101,7 +101,7 @@
             <GPTconfig v-model:value="settingData.gptdata" />
           </div>
           <div class="menu-body-item">
-            <SyncBackup />
+            <SyncBackup v-model:value="settingData.syncbackup" />
           </div>
         </div>
       </div>
@@ -481,6 +481,7 @@ export default {
 
       // 从 localStorage 获取现有的设置数据
       let existingData = JSON.parse(localStorage.getItem("linxudoscriptssetting"));
+
       this.settingData = { ...this.settingData, ...existingData };
       localStorage.setItem("linxudoscriptssetting", JSON.stringify(this.settingData));
       

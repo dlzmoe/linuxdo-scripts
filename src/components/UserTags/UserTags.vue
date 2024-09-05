@@ -27,10 +27,6 @@ export default {
       type: String,
       default: "",
     },
-    sort: {
-      type: Number,
-      required: true,
-    },
   },
   data() {
     return {

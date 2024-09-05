@@ -4,18 +4,18 @@
     <div class="tit">WebDav 地址：</div>
     <input
       type="text"
-      v-model="webdavUrl"
-      @input="handleChange"
+      v-model="tableData.webdavUrl"
+      @blur="handleChange"
       placeholder="https://dav.xxxx.com/dav/"
     />
   </div>
   <div class="item">
     <div class="tit">WebDav 用户名：</div>
-    <input type="text" v-model="webdavUsername" @input="handleChange" />
+    <input type="text" v-model="tableData.webdavUsername" @blur="handleChange" />
   </div>
   <div class="item">
     <div class="tit">WebDav 密码：</div>
-    <input type="text" v-model="webdavPassword" @input="handleChange" />
+    <input type="text" v-model="tableData.webdavPassword" @blur="handleChange" />
   </div>
 
   <div class="btnwrapper">
@@ -24,21 +24,37 @@
   </div>
   <hr />
   <!-- 手动导入导出 -->
-  <div style="margin:10px 0">手动导入导出数据：</div>
+  <div style="margin: 10px 0">手动导入导出数据：</div>
   <ManualBackup />
 </template>
 
 <script>
 import ManualBackup from "./ManualBackup.vue";
 export default {
+  props: {
+    value: {
+      type: Object,
+      default: {
+        webdavUrl: "",
+        webdavUsername: "",
+        webdavPassword: "",
+      },
+    },
+  },
   components: {
     ManualBackup,
   },
+  watch: {
+    value(newValue) {
+      this.tableData = newValue;
+    },
+  },
   data() {
     return {
-      webdavUrl: "",
-      webdavUsername: "",
-      webdavPassword: "",
+      tableData: this.value,
+      // webdavUrl: "",
+      // webdavUsername: "",
+      // webdavPassword: "",
     };
   },
   methods: {
@@ -50,13 +66,15 @@ export default {
       }, 3000);
     },
     handleChange() {
-      let linxudoscriptssetting =
-        JSON.parse(localStorage.getItem("linxudoscriptssetting")) || [];
+      this.$emit("update:value", this.tableData);
+      
+      let linxudoscriptssetting = JSON.parse(localStorage.getItem("linxudoscriptssetting"));
       let data = {
-        webdavUrl: this.webdavUrl,
-        webdavUsername: this.webdavUsername,
-        webdavPassword: this.webdavPassword,
+        webdavUrl: this.tableData.webdavUrl,
+        webdavUsername: this.tableData.webdavUsername,
+        webdavPassword: this.tableData.webdavPassword,
       };
+      
       linxudoscriptssetting.syncbackup = data;
       localStorage.setItem(
         "linxudoscriptssetting",
@@ -71,7 +89,8 @@ export default {
           url: folderUrl,
           headers: {
             Authorization:
-              "Basic " + btoa(`${this.webdavUsername}:${this.webdavPassword}`),
+              "Basic " +
+              btoa(`${this.tableData.webdavUsername}:${this.tableData.webdavPassword}`),
             Depth: "1", // 只检查一层
           },
           onload: function (response) {
@@ -99,7 +118,8 @@ export default {
           url: folderUrl,
           headers: {
             Authorization:
-              "Basic " + btoa(`${this.webdavUsername}:${this.webdavPassword}`),
+              "Basic " +
+              btoa(`${this.tableData.webdavUsername}:${this.tableData.webdavPassword}`),
           },
           onload: function (response) {
             if (response.status === 201) {
@@ -118,7 +138,7 @@ export default {
 
     // 检查并创建文件夹
     async checkAndCreateFolder() {
-      const folderUrl = `${this.webdavUrl}linuxdo-scripts-backup/`;
+      const folderUrl = `${this.tableData.webdavUrl}linuxdo-scripts-backup/`;
 
       try {
         const exists = await this.checkFolderExists(folderUrl);
@@ -138,7 +158,7 @@ export default {
           return;
         }
 
-        const uploadUrl = `${this.webdavUrl}linuxdo-scripts-backup/data.json`;
+        const uploadUrl = `${this.tableData.webdavUrl}linuxdo-scripts-backup/data.json`;
 
         try {
           const uploadResponse = await this.uploadFile(uploadUrl, fileData);
@@ -161,7 +181,8 @@ export default {
           headers: {
             "Content-Type": "text/plain",
             Authorization:
-              "Basic " + btoa(`${this.webdavUsername}:${this.webdavPassword}`),
+              "Basic " +
+              btoa(`${this.tableData.webdavUsername}:${this.tableData.webdavPassword}`),
           },
           onload: function (response) {
             if (response.status >= 200 && response.status < 300) {
@@ -184,7 +205,8 @@ export default {
           url: url,
           headers: {
             Authorization:
-              "Basic " + btoa(`${this.webdavUsername}:${this.webdavPassword}`),
+              "Basic " +
+              btoa(`${this.tableData.webdavUsername}:${this.tableData.webdavPassword}`),
           },
           onload: function (response) {
             if (response.status >= 200 && response.status < 300) {
@@ -205,11 +227,10 @@ export default {
     },
     // 下载
     async downloadSampleFile() {
-      const downloadUrl = `${this.webdavUrl}linuxdo-scripts-backup/data.json`;
+      const downloadUrl = `${this.tableData.webdavUrl}linuxdo-scripts-backup/data.json`;
 
       try {
         const downloadResponse = await this.downloadFile(downloadUrl);
-        console.log(JSON.parse(downloadResponse));
         localStorage.setItem("linxudoscriptssetting", downloadResponse);
 
         this.messageToast("下载成功，即将刷新页面！");
@@ -226,9 +247,9 @@ export default {
     const linxudoscriptssetting =
       JSON.parse(localStorage.getItem("linxudoscriptssetting")) || [];
     if (linxudoscriptssetting) {
-      this.webdavUrl = linxudoscriptssetting.syncbackup.webdavUrl;
-      this.webdavUsername = linxudoscriptssetting.syncbackup.webdavUsername;
-      this.webdavPassword = linxudoscriptssetting.syncbackup.webdavPassword;
+      this.tableData.webdavUrl = linxudoscriptssetting.syncbackup.webdavUrl;
+      this.tableData.webdavUsername = linxudoscriptssetting.syncbackup.webdavUsername;
+      this.tableData.webdavPassword = linxudoscriptssetting.syncbackup.webdavPassword;
     }
   },
 };

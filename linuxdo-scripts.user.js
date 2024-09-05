@@ -1336,7 +1336,8 @@
         script.src = "https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js";
         document.body.appendChild(script);
         setInterval(() => {
-          pangu.spacingElementByTagName("p");
+          pangu.spacingElementByClassName("cooked");
+          pangu.spacingElementByTagName("h1");
           document.addEventListener("DOMContentLoaded", () => {
             pangu.autoSpacingPage();
           });

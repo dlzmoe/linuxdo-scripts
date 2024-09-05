@@ -478,14 +478,11 @@ export default {
 
     const linxudoscriptssetting = localStorage.getItem("linxudoscriptssetting");
     if (linxudoscriptssetting) {
-      console.log(this.settingData);
 
       // 从 localStorage 获取现有的设置数据
       let existingData = JSON.parse(localStorage.getItem("linxudoscriptssetting"));
       this.settingData = { ...this.settingData, ...existingData };
       localStorage.setItem("linxudoscriptssetting", JSON.stringify(this.settingData));
-      console.log(this.settingData);
-      
       
       this.showautoread = this.settingData.checked8.value1;
       this.showlookop = this.settingData.checked9;

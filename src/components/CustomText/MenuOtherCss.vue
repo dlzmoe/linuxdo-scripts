@@ -2,12 +2,6 @@
   <div class="item">
     <div class="tit">
       {{ sort }}. 自定义 CSS（支持 import 引入第三方样式文件）
-      <a
-        href="https://github.com/dlzmoe/linuxdo-scripts/tree/main/src/styles"
-        target="_blank"
-      >
-        查看主题列表
-      </a>
     </div>
   </div>
   <textarea v-model="textarea" @input="handleChange" placeholder="body{font-size:16px;}">

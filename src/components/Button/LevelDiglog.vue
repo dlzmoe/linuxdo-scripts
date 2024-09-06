@@ -207,10 +207,6 @@ export default {
   cursor: pointer;
 }
 
-.button:hover {
-  background-color: #f0f0f0;
-}
-
 #linuxDoLevelPopupContent {
   line-height: 1.6;
   position: fixed;
@@ -218,8 +214,7 @@ export default {
   right: 90px;
   width: 250px;
   height: auto;
-  background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background-color: var(--tertiary-low);
   padding: 15px;
   z-index: 10000;
   font-size: 14px;
@@ -248,11 +243,5 @@ export default {
   line-height: 40px;
   width: 40px;
   height: 40px;
-}
-
-.dark-theme {
-  #linuxDoLevelPopupContent {
-    background: #535353;
-  }
 }
 </style>

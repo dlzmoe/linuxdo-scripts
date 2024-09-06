@@ -131,16 +131,15 @@
     outline: 0;
     min-width: 80px;
     height: 32px;
-    color: #fff;
     border: none;
-    background-color: #12181e;
-    color: #fff;
+    background: var(--tertiary);
     text-shadow: 0 -1px 0 rgba(0, 0, 0, .12);
     box-shadow: 0 2px 0 rgba(0, 0, 0, .045);
     border-radius: 4px;
     padding: 0 10px;
     box-sizing: border-box;
     transition: all 0.1s linear;
+    color: var(--primary);
 
     &+button {
       margin-left: 8px;
@@ -653,8 +652,8 @@ body.body-preview #main-outlet-wrapper {
   align-items: center;
 
   .messageToast-text {
-    background: #8c8c8c;
-    color: #fff;
+    background: var(--tertiary-low);
+    color: var(--primary);
     border-radius: 6px;
     width: auto;
     display: inline-flex;

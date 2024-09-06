@@ -8,23 +8,27 @@
 
 https://raw.githubusercontent.com/dlzmoe/linuxdo-scripts/main/themes/linuxdo-themes-1.user.js
 
-![1725612993621](https://imgurl.zishu.me/2024/09/1725612993621.webp)
+![image](https://github.com/user-attachments/assets/4b4a963e-0256-4e49-90a0-2ead8ca4c51a)
+
 
 ---
 
 https://raw.githubusercontent.com/dlzmoe/linuxdo-scripts/main/themes/linuxdo-themes-2.user.js
 
-![1725613042243](https://imgurl.zishu.me/2024/09/1725613042243.webp)
+![image](https://github.com/user-attachments/assets/3d5b7ab8-514e-485f-bd3b-16c27e4b5288)
+
 
 ---
 
 https://raw.githubusercontent.com/dlzmoe/linuxdo-scripts/main/themes/linuxdo-themes-3.user.js
 
-![1725613051659](https://imgurl.zishu.me/2024/09/1725613051659.webp)
+![image](https://github.com/user-attachments/assets/da4f14cd-f3ed-4bb9-af81-1e955a7c8aad)
+
 
 ---
 
 https://raw.githubusercontent.com/dlzmoe/linuxdo-scripts/main/themes/linuxdo-themes-4.user.js
 
-![1725613059255](https://imgurl.zishu.me/2024/09/1725613059255.webp)
+![image](https://github.com/user-attachments/assets/8efdb813-bd78-4d81-a4fd-2fad66718bc7)
+
 

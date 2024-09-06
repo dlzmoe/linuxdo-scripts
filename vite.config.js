@@ -21,6 +21,8 @@ export default defineConfig({
         externalGlobals: {
           vue: cdn.unpkg('Vue', 'dist/vue.global.prod.js'),
           jquery: cdn.unpkg("jQuery", "dist/jquery.min.js"),
+          pangu: cdn.jsdelivr("pangu", "dist/browser/pangu.js"),
+          marked: cdn.jsdelivr("marked", "marked.min.js"),
         },
         minify: false, // 不混淆
       },

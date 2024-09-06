@@ -4,6 +4,8 @@ const app = createApp(App);
 
 import "./assets/app.less";
 import $ from "jquery";
+import pangu from 'pangu';
+import marked from 'marked';
 
 $('body').append('<div id="messageToast"></div>');
 

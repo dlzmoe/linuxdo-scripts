@@ -10,16 +10,15 @@
 </template>
 
 <script>
+// import pangu from 'https://jspm.dev/pangu@4.0.7';
 export default {
   props: ["modelValue", "sort"],
   emits: ["update:modelValue"],
   created() {
     if (this.modelValue) {
-      let scriptpangu = document.createElement("script");
-      scriptpangu.src = "https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js";
-      document.body.appendChild(scriptpangu);
+
       setInterval(() => {
-        pangu.spacingElementByClassName("cooked");
+        pangu.spacingElementByTagName("p");
         pangu.spacingElementByTagName("h1");
         document.addEventListener("DOMContentLoaded", () => {
           pangu.autoSpacingPage();

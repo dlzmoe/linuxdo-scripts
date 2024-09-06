@@ -247,9 +247,6 @@ ${topic_contentdata}`;
     },
   },
   created() {
-    let script = document.createElement("script");
-    script.src = "https://cdn.jsdelivr.net/npm/marked/marked.min.js";
-    document.body.appendChild(script);
 
     if (this.localChecked.value2) {
       $("body").append(`

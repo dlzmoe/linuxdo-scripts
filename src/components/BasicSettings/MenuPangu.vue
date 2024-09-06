@@ -10,7 +10,7 @@
 </template>
 
 <script>
-// import pangu from 'https://jspm.dev/pangu@4.0.7';
+import pangu from 'pangu';
 export default {
   props: ["modelValue", "sort"],
   emits: ["update:modelValue"],

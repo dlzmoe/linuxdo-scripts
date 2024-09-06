@@ -5,8 +5,9 @@ const app = createApp(App);
 import "./assets/app.less";
 import $ from "jquery";
 import pangu from 'pangu';
-import marked from 'marked';
+import { marked } from "marked";
 
+// 自定义提示
 $('body').append('<div id="messageToast"></div>');
 
 app.mount(

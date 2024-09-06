@@ -58,6 +58,9 @@ linux.do 增强插件，话题列表显示创建时间，显示楼层数，新�
 | ![image](https://github.com/user-attachments/assets/05b6510e-0e61-4977-a958-cd8459aaff84) | ![image](https://github.com/user-attachments/assets/4e22e692-85a1-424a-96cc-f39c24b94516) |
 | ![image](https://github.com/user-attachments/assets/b9c8626d-03af-4a55-8a92-1f1ebd9a02bf) | ![image](https://github.com/user-attachments/assets/399c1645-36e1-4fe2-a671-ae40685e87ca) |
 
+## 切换论坛主题
+
+[主题教程](https://github.com/dlzmoe/linuxdo-scripts/tree/main/themes)
 
 ## 使用方法
 

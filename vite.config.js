@@ -15,10 +15,11 @@ export default defineConfig({
         namespace: 'https://github.com/dlzmoe/linuxdo-scripts',
         description: "linux.do 增强插件，功能持续更新，欢迎提出新想法！",
         version: pkg.version,
-        match: ['*://*.linux.do/*'],
+        match: ['*://linux.do/*'],
       },
       build: {
         externalGlobals: {
+          // require 引入
           vue: cdn.unpkg('Vue', 'dist/vue.global.prod.js'),
           jquery: cdn.unpkg("jQuery", "dist/jquery.min.js"),
           pangu: cdn.jsdelivr("pangu", "dist/browser/pangu.js"),

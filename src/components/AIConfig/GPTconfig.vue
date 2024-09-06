@@ -39,6 +39,7 @@
 </template>
 
 <script>
+import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
 export default {
   props: {
     value: {
@@ -124,7 +125,6 @@ ${str}`;
             return response.json();
           })
           .then((gptData) => {
-
             $(".gpt-summary").html(`${marked.parse(gptData.choices[0].message.content)}`);
 
             let summaryCache = JSON.parse(localStorage.getItem("summaryCacheData")) || [];
@@ -247,7 +247,6 @@ ${topic_contentdata}`;
     },
   },
   created() {
-
     if (this.localChecked.value2) {
       $("body").append(`
         <div class="aireply-popup">

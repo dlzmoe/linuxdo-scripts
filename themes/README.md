@@ -2,7 +2,7 @@
 
 以下所有主题无法变色，最好以常规明亮模式使用。
 
-点击链接直接安装
+点击链接开始安装。
 
 ---
 
@@ -30,5 +30,4 @@ https://raw.githubusercontent.com/dlzmoe/linuxdo-scripts/main/themes/linuxdo-the
 https://raw.githubusercontent.com/dlzmoe/linuxdo-scripts/main/themes/linuxdo-themes-4.user.js
 
 ![image](https://github.com/user-attachments/assets/8efdb813-bd78-4d81-a4fd-2fad66718bc7)
-
 

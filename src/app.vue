@@ -487,8 +487,6 @@ export default {
       this.runscripts();
     }, 1000);
 
-
-
   },
 };
 </script>

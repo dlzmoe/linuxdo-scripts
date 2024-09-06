@@ -24,8 +24,8 @@
 export default {
   props: {
     value: {
-      type: String,
-      default: "",
+      type: Array,
+      default: [],
     },
   },
   data() {

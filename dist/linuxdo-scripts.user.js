@@ -1333,9 +1333,9 @@
     emits: ["update:modelValue"],
     created() {
       if (this.modelValue) {
-        let script = document.createElement("script");
-        script.src = "https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js";
-        document.body.appendChild(script);
+        let scriptpangu = document.createElement("script");
+        scriptpangu.src = "https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js";
+        document.body.appendChild(scriptpangu);
         setInterval(() => {
           pangu.spacingElementByClassName("cooked");
           pangu.spacingElementByTagName("h1");

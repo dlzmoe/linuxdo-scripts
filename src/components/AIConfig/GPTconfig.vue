@@ -39,7 +39,11 @@
 </template>
 
 <script>
-import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
+// let marked;
+// if (process.env.NODE_ENV === "development") {
+//   marked = await import("https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js");
+// }
+// import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
 export default {
   props: {
     value: {
@@ -246,7 +250,7 @@ ${topic_contentdata}`;
       });
     },
   },
-  created() {
+  async created() {
     if (this.localChecked.value2) {
       $("body").append(`
         <div class="aireply-popup">

@@ -7,7 +7,7 @@
   "private": true,
   "license": "Apache-2.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --mode development",
     "build": "vite build && py build.py",
     "preview": "vite preview"
   },

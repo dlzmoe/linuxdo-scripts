@@ -7,7 +7,7 @@
     <input type="checkbox" v-model="localChecked.value1" @change="handleChange" />
   </div>
   <div>
-    <p>针对分类：留空对全部分类生效，多个分类用英文，分隔</p>
+    <p>针对分类：留空对全部分类生效，多个分类用英文逗号【,】进行分隔</p>
     <textarea v-model="localChecked.cate" placeholder="搞七捻三"></textarea>
   </div>
 </template>

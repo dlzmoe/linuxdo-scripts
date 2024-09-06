@@ -53,13 +53,13 @@ export default {
   margin: 0;
   font-size: 14px;
   line-height: 1.6;
+  background: var(--d-sidebar-background);
+  color: var(--primary-medium);
 
   & > div {
     margin: 10px 0;
   }
   button {
-    background: #333;
-    color: #fff;
     padding: 8px 10px;
     margin-bottom: 10px;
     border: none;
@@ -67,14 +67,5 @@ export default {
     border-radius: 4px;
   }
 }
-.dark-theme {
-  .UsageTip {
-    background: #333;
-    color: #ccc;
-    button {
-      background: #999;
-      color: #ffffff;
-    }
-  }
-}
+
 </style>

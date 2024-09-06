@@ -129,7 +129,7 @@ ${str}`;
 
             let summaryCache = JSON.parse(localStorage.getItem("summaryCacheData")) || [];
             const regex = /^(https:\/\/linux\.do\/t\/topic\/\d+)(\/\d+)?$/;
-            const match = window.location.href.match(regex)[0];
+            const match = window.location.href.match(regex)[1];
             let existingObject = summaryCache.find((item) => item.name == match);
 
             let newObject = {
@@ -291,7 +291,7 @@ ${topic_contentdata}`;
           if ($(".gpt-summary-wrap").length < 1) {
             let summaryCache = JSON.parse(localStorage.getItem("summaryCacheData")) || [];
             const regex = /^(https:\/\/linux\.do\/t\/topic\/\d+)(\/\d+)?$/;
-            const match = window.location.href.match(regex)[0];
+            const match = window.location.href.match(regex)[1];
 
             let existingObject = summaryCache.find((item) => item.name === match);
 

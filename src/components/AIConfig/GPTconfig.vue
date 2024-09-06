@@ -39,11 +39,7 @@
 </template>
 
 <script>
-// let marked;
-// if (process.env.NODE_ENV === "development") {
-//   marked = await import("https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js");
-// }
-// import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
+import { marked } from "marked";
 export default {
   props: {
     value: {

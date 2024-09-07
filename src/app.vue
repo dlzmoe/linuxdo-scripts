@@ -19,11 +19,12 @@
       </div>
       <div class="menu-flex">
         <ul class="menu-nav">
-          <li class="act"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon-sm"><path fill="currentColor" fill-rule="evenodd" d="M11.568 3.5a1 1 0 0 0-.863.494l-.811 1.381A3 3 0 0 1 7.33 6.856l-1.596.013a1 1 0 0 0-.858.501l-.44.761a1 1 0 0 0-.003.992l.792 1.4a3 3 0 0 1 0 2.954l-.792 1.4a1 1 0 0 0 .004.992l.439.76a1 1 0 0 0 .858.502l1.596.013a3 3 0 0 1 2.564 1.48l.811 1.382a1 1 0 0 0 .863.494h.87a1 1 0 0 0 .862-.494l.812-1.381a3 3 0 0 1 2.563-1.481l1.596-.013a1 1 0 0 0 .859-.501l.439-.761a1 1 0 0 0 .004-.992l-.793-1.4a3 3 0 0 1 0-2.953l.793-1.401a1 1 0 0 0-.004-.992l-.439-.76a1 1 0 0 0-.859-.502l-1.596-.013a3 3 0 0 1-2.563-1.48L13.3 3.993a1 1 0 0 0-.862-.494zM8.98 2.981A3 3 0 0 1 11.568 1.5h.87a3 3 0 0 1 2.588 1.481l.81 1.382a1 1 0 0 0 .855.494l1.597.013a3 3 0 0 1 2.575 1.502l.44.76a3 3 0 0 1 .011 2.975l-.792 1.4a1 1 0 0 0 0 .985l.792 1.401a3 3 0 0 1-.012 2.974l-.439.761a3 3 0 0 1-2.575 1.503l-1.597.012a1 1 0 0 0-.854.494l-.811 1.382a3 3 0 0 1-2.588 1.481h-.87a3 3 0 0 1-2.588-1.481l-.811-1.382a1 1 0 0 0-.855-.494l-1.596-.012a3 3 0 0 1-2.576-1.503l-.439-.76a3 3 0 0 1-.012-2.975l.793-1.4a1 1 0 0 0 0-.985l-.793-1.4a3 3 0 0 1 .012-2.975l.44-.761A3 3 0 0 1 5.717 4.87l1.596-.013a1 1 0 0 0 .855-.494z" clip-rule="evenodd"></path><path fill="currentColor" fill-rule="evenodd" d="M12.003 10.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M8.502 12a3.5 3.5 0 1 1 7 .001 3.5 3.5 0 0 1-7-.001" clip-rule="evenodd"></path></svg>通用设置</li>
-          <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon-sm"><path fill="currentColor" fill-rule="evenodd" d="M12 4a3 3 0 1 0 0 6 3 3 0 0 0 0-6M7 7a5 5 0 1 1 10 0A5 5 0 0 1 7 7m12.028 8.626c-.342-.061-.834.027-1.346.557a1 1 0 0 1-1.438 0c-.512-.53-1.003-.618-1.345-.557-.36.064-.681.312-.837.702-.257.643-.16 2.334 2.901 4.134 3.062-1.8 3.159-3.49 2.901-4.134a1.11 1.11 0 0 0-.836-.702m2.693-.041c.854 2.134-.456 4.844-4.284 6.904a1 1 0 0 1-.948 0c-3.828-2.06-5.137-4.77-4.284-6.904a3.11 3.11 0 0 1 2.343-1.929c.809-.144 1.655.035 2.415.536.76-.5 1.607-.68 2.415-.536a3.11 3.11 0 0 1 2.343 1.929m-11.795-1.38a1 1 0 0 1-.548 1.303C7.06 16.453 5.5 18.581 5.5 21a1 1 0 1 1-2 0c0-3.322 2.141-6.128 5.122-7.344a1 1 0 0 1 1.304.549" clip-rule="evenodd"></path></svg>自定义</li>
-          <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon-sm"><path fill="currentColor" fill-rule="evenodd" d="M12.4 3.767a1 1 0 0 0-.8 0l-6 2.625a1 1 0 0 0-.6.916V13c0 1.714.616 3.283 1.638 4.5A6.99 6.99 0 0 1 12 15c2.153 0 4.078.972 5.362 2.5A6.97 6.97 0 0 0 19 13V7.308a1 1 0 0 0-.6-.916zm3.47 15.067A4.99 4.99 0 0 0 12 17a4.99 4.99 0 0 0-3.87 1.834A6.97 6.97 0 0 0 12 20c1.43 0 2.762-.43 3.87-1.166m-5.072-16.9a3 3 0 0 1 2.405 0l6 2.626A3 3 0 0 1 21 7.308V13a9 9 0 1 1-18 0V7.308A3 3 0 0 1 4.798 4.56zM12 8.5a1.75 1.75 0 1 0 0 3.5 1.75 1.75 0 0 0 0-3.5m-3.75 1.75a3.75 3.75 0 1 1 7.5 0 3.75 3.75 0 0 1-7.5 0" clip-rule="evenodd"></path></svg>用户标签</li>
-          <li><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-openai"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M11.217 19.384a3.501 3.501 0 0 0 6.783 -1.217v-5.167l-6 -3.35" /><path d="M5.214 15.014a3.501 3.501 0 0 0 4.446 5.266l4.34 -2.534v-6.946" /><path d="M6 7.63c-1.391 -.236 -2.787 .395 -3.534 1.689a3.474 3.474 0 0 0 1.271 4.745l4.263 2.514l6 -3.348" /><path d="M12.783 4.616a3.501 3.501 0 0 0 -6.783 1.217v5.067l6 3.45" /><path d="M18.786 8.986a3.501 3.501 0 0 0 -4.446 -5.266l-4.34 2.534v6.946" /><path d="M18 16.302c1.391 .236 2.787 -.395 3.534 -1.689a3.474 3.474 0 0 0 -1.271 -4.745l-4.308 -2.514l-5.955 3.42" /></svg>AI 配置</li>
-          <li><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-refresh"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" /><path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" /></svg>数据备份同步</li>
+          <li class="act"><Setting1 />通用设置</li>
+          <li><Setting2 />自定义</li>
+          <li><Setting3 />用户标签</li>
+          <li><Setting4 />AI 配置</li>
+          <li><Setting5 />主题风格</li>
+          <li><Setting6 />数据同步</li>
           <Updates />
         </ul>
         <div class="menu-body">
@@ -80,7 +81,6 @@
             <MenuEditorJa :sort="19" v-model="settingData.checked19" />
             <!-- 开启列表页导航栏浮动 -->
             <MenuStickyNav :sort="20" v-model="settingData.checked20" />
-           
           </div>
           <div class="menu-body-item">
             <!-- 自定义论坛 logo -->
@@ -103,6 +103,9 @@
             <GPTconfig v-model:value="settingData.gptdata" />
           </div>
           <div class="menu-body-item">
+            <Themes v-model="settingData.themes" />
+          </div>
+          <div class="menu-body-item">
             <SyncBackup v-model:value="settingData.syncbackup" />
           </div>
         </div>
@@ -111,15 +114,13 @@
         <button class="save" @click="save">保存</button>
         <button class="saveload" @click="saveload">保存并刷新</button>
         <button class="floorlottery" @click="openFloorlottery">楼层抽奖</button>
-
         <a
-          style="margin-left:8px"
+          style="margin-left: 8px"
           target="_blank"
           href="https://greasyfork.org/scripts/501827"
         >
           <button class="detection">检测新版本</button>
         </a>
-       
       </div>
     </dialog>
 
@@ -128,11 +129,13 @@
       <div class="menu-header">
         <div class="title">楼层抽奖</div>
       </div>
-      <div class="menu-body" style="margin-top:10px">
+      <div class="menu-body" style="margin-top: 10px">
         <input type="text" v-model="floorlotteryval1" placeholder="请输入总数" />
         <input type="text" v-model="floorlotteryval2" placeholder="请输入抽取的数量" />
         <button class="btn save" @click="drawRandomNumbers">开始抽奖</button>
-        <button class="btn" style="background: #979797" plain @click="closelotter">关闭弹窗</button>
+        <button class="btn" style="background: #979797" plain @click="closelotter">
+          关闭弹窗
+        </button>
         <div style="height: 20px"></div>
         <div v-if="floorlotterloading">正在抽奖...</div>
         <div v-if="floorlotterresult" title="抽奖结果" type="success">
@@ -189,6 +192,9 @@ import UserTags from "./components/UserTags/UserTags.vue";
 // AI 配置
 import GPTconfig from "./components/AIConfig/GPTconfig.vue";
 
+// 主题风格
+import Themes from "./components/Themes/index.vue";
+
 // 数据同步备份
 import SyncBackup from "./components/Sync/SyncBackup.vue";
 
@@ -202,8 +208,22 @@ import AIDialog from "./components/Button/AIDialog.vue";
 import Updates from "./components/Other/Updates.vue";
 import UsageTip from "./components/Other/UsageTip.vue";
 
+// svg 图标
+import Setting1 from "./components/Svg/Setting1.vue";
+import Setting2 from "./components/Svg/Setting2.vue";
+import Setting3 from "./components/Svg/Setting3.vue";
+import Setting4 from "./components/Svg/Setting4.vue";
+import Setting5 from "./components/Svg/Setting5.vue";
+import Setting6 from "./components/Svg/Setting6.vue";
+
 export default {
   components: {
+    Setting1,
+    Setting2,
+    Setting3,
+    Setting4,
+    Setting5,
+    Setting6,
     MenuOpenpostblank,
     MenuNewtopicreminder,
     MenuAutoexpandreply,
@@ -242,6 +262,7 @@ export default {
     MenuBlockKeyword,
     SyncBackup,
     MenuShieldPosts,
+    Themes,
   },
   data() {
     return {
@@ -303,15 +324,19 @@ export default {
           apikey: "",
           baseurl: "https://api.openai.com",
           model: "gpt-4o-mini",
-          prompt: "根据以下帖子内容进行总结，请使用 markdown 格式返回回答，没有字数限制，但要求文字精炼，简介准确，语言要求返回简体中文，并且进行中英文混排优化。可以通过编号列表（1，2，3）列出核心要点。注意不要输出标题，例如：核心要点总结，帖子总结等，直接输出文本段落。",
-          prompt1: "根据以下帖子内容，帮我给作者写一条回复，简短，表明我的观点，用口语回复，不需要很正式。您可以通过讨论的方式进行回复，这将有助于引导其他用户或作者进行互动。",
-          prompt2: "根据以下帖子内容，生成一个合适的标题用于社交论坛发布使用，格式要求：不要书名号或其他符号，只需要一句纯文本。尽量精简到 15 字以内，如果字数不够表达主题，可以适当多生成几个字。",
+          prompt:
+            "根据以下帖子内容进行总结，请使用 markdown 格式返回回答，没有字数限制，但要求文字精炼，简介准确，语言要求返回简体中文，并且进行中英文混排优化。可以通过编号列表（1，2，3）列出核心要点。注意不要输出标题，例如：核心要点总结，帖子总结等，直接输出文本段落。",
+          prompt1:
+            "根据以下帖子内容，帮我给作者写一条回复，简短，表明我的观点，用口语回复，不需要很正式。您可以通过讨论的方式进行回复，这将有助于引导其他用户或作者进行互动。",
+          prompt2:
+            "根据以下帖子内容，生成一个合适的标题用于社交论坛发布使用，格式要求：不要书名号或其他符号，只需要一句纯文本。尽量精简到 15 字以内，如果字数不够表达主题，可以适当多生成几个字。",
         },
         syncbackup: {
           webdavUrl: "",
           webdavUsername: "",
           webdavPassword: "",
-        }
+        },
+        themes: 0,
       },
 
       showautoread: false,
@@ -323,7 +348,7 @@ export default {
   methods: {
     messageToast(message) {
       const messageElement = $(`<div class="messageToast-text">${message}</div>`);
-      $('#messageToast').append(messageElement);
+      $("#messageToast").append(messageElement);
       setTimeout(() => {
         messageElement.remove();
       }, 3000);
@@ -355,7 +380,7 @@ export default {
     // 开始抽奖
     drawRandomNumbers() {
       if (this.floorlotteryval1 === "" || this.floorlotteryval2 === "") {
-        this.messageToast("请输入有效的数字")
+        this.messageToast("请输入有效的数字");
         return false;
       }
 
@@ -363,7 +388,7 @@ export default {
       const count = parseInt(this.floorlotteryval2);
 
       if (isNaN(total) || isNaN(count) || total <= 0 || count <= 0 || count > total) {
-        this.messageToast("请输入有效的数字")
+        this.messageToast("请输入有效的数字");
         return false;
       }
 
@@ -446,7 +471,7 @@ export default {
     // 初始化设置
     initialization() {
       localStorage.removeItem("linxudoscriptssetting");
-      this.messageToast("初始化设置成功，即将自动刷新！")
+      this.messageToast("初始化设置成功，即将自动刷新！");
       setTimeout(() => {
         location.reload();
       }, 1000);
@@ -469,13 +494,12 @@ export default {
 
     const linxudoscriptssetting = localStorage.getItem("linxudoscriptssetting");
     if (linxudoscriptssetting) {
-
       // 从 localStorage 获取现有的设置数据
       let existingData = JSON.parse(localStorage.getItem("linxudoscriptssetting"));
 
       this.settingData = { ...this.settingData, ...existingData };
       localStorage.setItem("linxudoscriptssetting", JSON.stringify(this.settingData));
-      
+
       this.showautoread = this.settingData.checked8.value1;
       this.showlookop = this.settingData.checked9;
       this.showlevelsearch = this.settingData.checked12;
@@ -486,7 +510,6 @@ export default {
     setInterval(() => {
       this.runscripts();
     }, 1000);
-
   },
 };
 </script>

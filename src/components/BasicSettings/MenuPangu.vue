@@ -10,15 +10,14 @@
 </template>
 
 <script>
-import pangu from 'pangu';
+import pangu from "pangu";
 export default {
   props: ["modelValue", "sort"],
   emits: ["update:modelValue"],
   created() {
     if (this.modelValue) {
-
       setInterval(() => {
-        pangu.spacingElementByTagName("p");
+        pangu.spacingElementByClassName("cooked");
         pangu.spacingElementByTagName("h1");
         document.addEventListener("DOMContentLoaded", () => {
           pangu.autoSpacingPage();
@@ -27,9 +26,27 @@ export default {
         if ($(".pangutext").length < 1) {
           $(".save-or-cancel .cancel").before(`<span class="pangutext">混排优化</span>`);
           $(".pangutext").click(function () {
-            const editorstr = $(".d-editor-input").val();
-            const text = pangu.spacing(editorstr);
-            $(".d-editor-input").val(text);
+            const $textarea = $(".d-editor-input");
+            let text = pangu.spacing($textarea.val());
+            $textarea.focus();
+            $textarea.val("");
+            for (let i = 0; i < text.length; i++) {
+              let char = text[i];
+              $textarea.val($textarea.val() + char);
+              let inputEvent = new Event("input", {
+                bubbles: true,
+                cancelable: true,
+              });
+              $textarea[0].dispatchEvent(inputEvent);
+              let keyEvent = new KeyboardEvent("keydown", {
+                key: char,
+                char: char,
+                keyCode: char.charCodeAt(0),
+                which: char.charCodeAt(0),
+                bubbles: true,
+              });
+              $textarea[0].dispatchEvent(keyEvent);
+            }
           });
         }
       }, 1000);

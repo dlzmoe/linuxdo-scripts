@@ -68,25 +68,15 @@ export default {
           setTimeout(() => {
             let $textarea = $(".d-editor-textarea-wrapper textarea");
             let text = $(this).html();
-
-            // this.simulateInput($textarea, text);
-
-            $textarea.focus(); // 聚焦到 textarea
-
+            $textarea.focus();
             for (let i = 0; i < text.length; i++) {
               let char = text[i];
-
-              // 更新textarea的值
               $textarea.val($textarea.val() + char);
-
-              // 创建并派发input事件
               let inputEvent = new Event("input", {
                 bubbles: true,
                 cancelable: true,
               });
               $textarea[0].dispatchEvent(inputEvent);
-
-              // 创建并派发keydown事件
               let keyEvent = new KeyboardEvent("keydown", {
                 key: char,
                 char: char,

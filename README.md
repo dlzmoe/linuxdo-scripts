@@ -14,11 +14,11 @@ linux.do 增强插件，话题列表显示创建时间，显示楼层数，新�
 [Greasyfork 商店安装](https://greasyfork.org/scripts/501827) |
 [Bug 反馈及功能请求](https://github.com/dlzmoe/linuxdo-scripts/issues/new/choose) |
 [使用和开发文档](https://linuxdo-scripts-docs.netlify.app/) |
-[交流群](https://imgurl.zishu.me/1725614265497.webp)
+[插件交流群](https://zishu.me/linuxdo-scripts/)
 
 > [!TIP] 
 > 有什么好玩的功能我会第一时间分享在群聊，感觉自己发帖太频繁了  
-> 交流群：https://imgurl.zishu.me/1725614265497.webp
+> 插件交流群：https://zishu.me/linuxdo-scripts/
 
 ---
 

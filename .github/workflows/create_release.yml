@@ -49,9 +49,9 @@ jobs:
         sed -i "s/\$CURRENT_DATE/$CURRENT_DATE/g" CHANGELOG.md
         gh release create "$PACKAGE_VERSION" linuxdo-scripts.user.js \
         -t "$PACKAGE_VERSION" \
-        -n "New release created with version $PACKAGE_VERSION.
-        
-        $(cat CHANGELOG.md)
+        -n "$(cat CHANGELOG.md)
+
+        ---
         
         [查看 $PACKAGE_VERSION 更新日志](https://github.com/dlzmoe/linuxdo-scripts/blob/main/version-log.md)  [点击前往 greasyfork.org 进行安装](https://greasyfork.org/scripts/501827)
 

@@ -1,6 +1,8 @@
 <h2 align="center">linuxdo 增强插件（linuxdo-scripts）</h2>
 <p align="center">脚本持续更新，欢迎提出 issues，提交 pr ~</p>
 
+[中文简体](https://github.com/dlzmoe/linuxdo-scripts/blob/main/README.md) | [English](https://github.com/dlzmoe/linuxdo-scripts/blob/main/README_EN.md)
+
 <p align="center">
 <img src="https://img.shields.io/github/v/release/dlzmoe/linuxdo-scripts?label=linuxdo%20%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6&labelColor=%235D5D5D&color=%23E97435">
 <img src="https://img.shields.io/github/last-commit/dlzmoe/linuxdo-scripts">

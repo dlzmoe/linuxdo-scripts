@@ -10,6 +10,16 @@
 <img src="https://img.shields.io/github/license/dlzmoe/linuxdo-scripts">
 </p>
 
+## 目录
+  - [功能特性](#功能特性)
+  - [使用方法](#使用方法)
+  - [开发说明](#开发说明)
+  - [更新日志](#更新日志)
+  - [Star History](#star-history)
+  - [Contributor](#contributor)
+  - [免责声明](#免责声明)
+  - [License](#license)
+
 linux.do 增强插件，话题列表显示创建时间，显示楼层数，新标签页打开话题，强制 block（拉黑屏蔽）某人的话题，话题快捷回复（支持自定义），优化签名图显示防止图裂，在话题列表可直接预览详情及评论，功能设置面板导入导出，楼层抽奖，用户自定义标签，只看楼主，自动滚动阅读，支持自定义 css 样式，中英文混排优化，等级信息查询，AI 总结话题功能、智能生成回复，支持 webdav 同步，切换论坛主题皮肤等，功能持续更新，欢迎提出新想法！
 
 [Github 仓库](https://github.com/dlzmoe/linuxdo-scripts) |

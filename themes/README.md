@@ -34,3 +34,6 @@ https://raw.githubusercontent.com/dlzmoe/linuxdo-scripts/main/themes/linuxdo-the
 
 ![image](https://github.com/user-attachments/assets/a19ab8d2-eb65-48c9-aaba-06bc7603d94f)
 
+---
+
+https://raw.githubusercontent.com/dlzmoe/linuxdo-scripts/main/themes/linuxdo-themes-6.user.js

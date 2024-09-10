@@ -1,60 +1,55 @@
+```markdown
 ## linuxdo Enhancement Plugin (linuxdo-scripts)
 
-Continuous updates for the scripts. Feel free to raise issues and submit pull requests!
+Scripts are continuously updated. You are welcome to submit issues and pull requests!
 
 [简体中文](https://github.com/dlzmoe/linuxdo-scripts/blob/main/README.md) | [English](https://github.com/dlzmoe/linuxdo-scripts/blob/main/README_EN.md)
 
-![Release Badge](https://img.shields.io/github/v/release/dlzmoe/linuxdo-scripts?label=linuxdo%20%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6&labelColor=%235D5D5D&color=%23E97435)
-![Last Commit Badge](https://img.shields.io/github/last-commit/dlzmoe/linuxdo-scripts)
-![Stars Badge](https://img.shields.io/github/stars/dlzmoe%2Flinuxdo-scripts?style=flat)
-![License Badge](https://img.shields.io/github/license/dlzmoe/linuxdo-scripts)
+![Version](https://img.shields.io/github/v/release/dlzmoe/linuxdo-scripts?label=linuxdo%20%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6&labelColor=%235D5D5D&color=%23E97435) ![Last Commit](https://img.shields.io/github/last-commit/dlzmoe/linuxdo-scripts) ![Stars](https://img.shields.io/github/stars/dlzmoe%2Flinuxdo-scripts?style=flat) ![License](https://img.shields.io/github/license/dlzmoe/linuxdo-scripts)
 
-The linux.do enhancement plugin includes features like displaying topic creation time, showing floor numbers, opening topics in a new tab, forcing block (blacklisting) of certain users' topics, quick replies (customizable), optimizing signature image display to prevent broken images, direct preview of details and comments in topic lists, import/export for settings panel, floor lottery, user-defined tags, view only the original poster, auto-scrolling reading, support for custom CSS styles, optimization for mixed Chinese and English display, level information query, AI summary of topics, intelligent reply generation, WebDAV synchronization, theme skin switching in forums, etc. Features are continuously updated, and new ideas are welcome!
+The linux.do enhancement plugin displays topic creation times, shows floor numbers, opens topics in new tabs, forcibly blocks topics from specific users, provides quick replies to topics (customizable), optimizes signature image display to prevent images from breaking, allows direct preview of details and comments in the topic list, supports import/export in the function settings panel, allows floor lotteries, provides user-defined tags, shows only the original poster's posts, features auto-scrolling reading, supports custom CSS styles, optimizes mixed Chinese and English layout, provides level information queries, features AI summary of topics and intelligent reply generation, supports WebDAV synchronization, allows switching of forum themes, and more. Functionality is continuously updated, and new ideas are always welcome!
 
-[Github Repository](https://github.com/dlzmoe/linuxdo-scripts) | 
-[Greasyfork Store Installation](https://greasyfork.org/scripts/501827) | 
-[Bug Feedback and Feature Requests](https://github.com/dlzmoe/linuxdo-scripts/issues/new/choose) | 
-[Usage and Development Documentation](https://linuxdo-scripts-docs.netlify.app/) | 
-[Plugin Community Group](https://zishu.me/linuxdo-scripts/)
+[GitHub Repository](https://github.com/dlzmoe/linuxdo-scripts) | [Install from Greasyfork](https://greasyfork.org/scripts/501827) | [Bug Feedback and Feature Requests](https://github.com/dlzmoe/linuxdo-scripts/issues/new/choose) | [Usage and Development Documentation](https://linuxdo-scripts-docs.netlify.app/) | [WeChat Group Chat](https://zishu.me/linuxdo-scripts/) | [Discord Community](https://discord.gg/n2pErsD7Kg)
 
-> **Tip**  
-> I'll share fun features in the group chat as soon as I can.  
-> Plugin community group: https://zishu.me/linuxdo-scripts/
+> **Tip:**  
+> I will share fun features in the group chat as soon as I find them.  
+> WeChat Group Chat: https://zishu.me/linuxdo-scripts/  
+> Discord Community: https://discord.gg/n2pErsD7Kg  
 
 ---
 
-The development environment is Windows / Chrome / Violentmonkey. If you encounter errors or non-functionality using other Greasemonkey managers, try using Violentmonkey (which I'm currently using, as it has better compatibility).
+The development environment is Windows / Chrome / Violentmonkey. If you encounter errors or non-functionality using other script managers, try using Violentmonkey (which I am currently using with good compatibility).
 
-> **Warning**  
-> Arc browser users, please use the Violentmonkey extension.  
-> The Tampermonkey extension cannot be used on Arc browser due to compatibility issues, which are unrelated to the plugin; it’s an issue between the browser and the user script manager.
+> **Warning:**  
+> Arc browser users should use the Violentmonkey extension.  
+> The tampermonkey extension does not work under the Arc browser due to compatibility issues between the browser and script manager, unrelated to the plugin itself.
 
 ## Features
 
-- [x] Display creation time in topic list
-- [x] Show floor numbers
-- [x] Open topics in a new tab
-- [x] Force block (blacklist) certain user topics
-- [x] Quick reply functionality (customizable)
-- [x] Optimize signature image display to prevent broken images
-- [x] Import/export functionality settings panel
+- [x] Displays topic creation time
+- [x] Shows floor numbers
+- [x] Opens topics in new tabs
+- [x] Forcibly blocks topics from specific users
+- [x] Quick replies to topics (customizable)
+- [x] Optimizes signature image display to prevent images from breaking
+- [x] Import/export function settings panel
 - [x] Floor lottery
-- [x] View only original poster toggle feature
+- [x] Toggle "Only see the original poster" feature
 - [x] Auto-scrolling reading
-- [x] Night mode
+- [x] Dark mode
 - [x] User tag functionality
-- [x] Directly preview details and comments in topic list
+- [x] Directly preview details and comments in the topic list
 - [x] Comment box emoji optimization
-- [x] Support for custom CSS styles
-- [x] Optimization for mixed Chinese and English display
-- [x] Add level information query
-- [x] Switch between forum emoji styles
-- [x] AI topic summarization and intelligent reply generation
-- [x] Support for WebDAV synchronization
-- [x] Theme skin switching in forums
+- [x] Supports custom CSS styles
+- [x] Optimizes mixed Chinese and English display
+- [x] New level information query
+- [x] Switch forum emoji style
+- [x] AI topic summary functionality, intelligent reply generation
+- [x] Supports WebDAV synchronization
+- [x] Switch forum theme skin
 
 <details>
-<summary>Part of Screenshot Demonstration:</summary>
+<summary>Some Screenshot Demonstrations:</summary>
 
 | ![image](https://github.com/user-attachments/assets/c70edbe9-ead1-4a6b-b268-7fc956d3f72f) | ![image](https://github.com/user-attachments/assets/bde3b652-4948-4f00-a825-5f235ebf4d78) |
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
@@ -63,9 +58,9 @@ The development environment is Windows / Chrome / Violentmonkey. If you encounte
 
 </details>
 
-## Usage
+## Usage Instructions
 
-Click this link to automatically trigger the script installation program, which can also be used to trigger updates.
+Click this link to automatically trigger the Tampermonkey script installation process, which will also trigger updates thereafter.
 
 https://greasyfork.org/scripts/501827
 
@@ -75,7 +70,7 @@ https://greasyfork.org/scripts/501827
 node: v16.15.1
 ```
 
-Features are developed as components, registering a new component for each new feature to avoid conflicts.
+Features are developed in components. Each new feature registers a new component to avoid conflicts.
 
 Clone this repository and install dependencies, then run the code.
 
@@ -88,9 +83,9 @@ yarn build # Build package
 
 The program will automatically trigger local testing.
 
-> As for automatically building the release package, you need to modify the `version` number in `package.json`, and write the current version update log in `CHANGELOG.md`.
+> Regarding the automatic building of release packages, please update the `version` number in `package.json` and write the current version's change log in `CHANGELOG.md`.
 
-## Changelog
+## Change Log
 
 [version-log.md](https://github.com/dlzmoe/linuxdo-scripts/blob/main/version-log.md)
 
@@ -104,8 +99,9 @@ The program will automatically trigger local testing.
 
 ## Disclaimer
 
-All functionalities provided in this script run only in the browser. The source code used is open and transparent, and this script is for educational and research purposes only, not utilizing any profit schemes or involved with any profit organizations. Any disputes arising from or related to the use of this script should be amicably resolved by all parties. This script disclaims any responsibility for any form of loss or harm caused to users themselves or others when using software provided by this script. By downloading, installing, and using the software provided in this product, the user acknowledges trust in the author and related agreements and disclaimers.
+All functionalities provided by this script operate solely within the browser. The source code is open and transparent. This script is for learning and research purposes only, without any monetization scheme or involvement in any profit-making organization. Any disputes arising from or related to the use of this script should be resolved amicably by the parties involved. This script does not bear any responsibility for any form of loss or harm that may be caused to users or others while using this script. By downloading, installing, and using the software provided in this product, users indicate their trust in the author and its related agreements and disclaimers.
 
 ## License
 
-[Apache-2.0 license](https://github.com/dlzmoe/linuxdo-scripts/blob/main/LICENSE)
+[Apache-2.0 License](https://github.com/dlzmoe/linuxdo-scripts/blob/main/LICENSE)
+```

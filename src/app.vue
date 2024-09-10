@@ -304,7 +304,7 @@ export default {
         checked15: false,
         checked16: false,
         checked17: {
-          value1: false,
+          value1: true,
           value2: "twitter",
         },
         checked18: false,
@@ -480,15 +480,9 @@ export default {
   created() {
     setInterval(() => {
       if ($(".linuxdoscripts-setting").length < 1) {
-        $(".sidebar-footer-actions")
-          .prepend(`<button class="btn no-text btn-icon color-scheme-toggler btn-flat linuxdoscripts-setting" title="设置" type="button">
-        <svg
-          class="fa d-icon d-icon-cog svg-icon svg-string"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <use href="#cog"></use>
-        </svg>
-    </button>`);
+        $(".sidebar-footer-actions").prepend(`
+          <button class="btn no-text btn-icon color-scheme-toggler btn-flat linuxdoscripts-setting" title="设置" type="button">
+          <svg class="fa d-icon d-icon-cog svg-icon svg-string" xmlns="http://www.w3.org/2000/svg"><use href="#cog"></use></svg></button>`);
       }
     }, 1000);
 

@@ -6,10 +6,18 @@ export default {
     init() {
       $(".signature-img").each(function () {
         var self = $(this);
-        var url = self.attr("src");
 
+        // 检查是否已经处理过
+        if (self.data("processed")) {
+          return; // 如果已经处理过，跳过当前元素
+        }
+
+        var url = self.attr("src");
         var img = new Image();
         img.src = url;
+
+        // 标记为已处理
+        self.data("processed", true);
 
         // 图片不可访问
         img.onerror = function () {

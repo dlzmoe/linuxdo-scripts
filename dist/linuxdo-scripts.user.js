@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         linuxdo 增强插件
 // @namespace    https://github.com/dlzmoe/linuxdo-scripts
-// @version      0.3.33
+// @version      0.3.34
 // @author       dlzmoe
 // @description  linux.do 增强插件，功能持续更新，欢迎提出新想法！
 // @license      Apache-2.0
@@ -21,7 +21,7 @@
   'use strict';
 
   const name = "linuxdo-scripts";
-  const version = "0.3.33";
+  const version = "0.3.34";
   const author = "dlzmoe";
   const description = "An enhanced script for the linux.do forum";
   const type = "module";
@@ -1876,9 +1876,14 @@ ${$(".d-editor-input").val()}
         let lastKeyTime = 0;
         const doubleClickTime = 300;
         document.addEventListener("keydown", (event) => {
+          const activeElement = document.activeElement;
+          if (activeElement && activeElement.classList.contains("d-editor-input")) {
+            return;
+          }
           if (event.key === "ArrowRight") {
             const currentTime = Date.now();
             if (currentTime - lastKeyTime <= doubleClickTime) {
+              this.messageToast("正在检测中...");
               this.init();
             }
             lastKeyTime = currentTime;

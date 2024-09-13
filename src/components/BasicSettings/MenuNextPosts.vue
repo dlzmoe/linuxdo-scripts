@@ -65,12 +65,19 @@ export default {
       const doubleClickTime = 300; // 双击的时间间隔（毫秒）
 
       document.addEventListener("keydown", (event) => {
+        // 检查当前焦点元素是否是输入框
+        const activeElement = document.activeElement;
+        if (activeElement && activeElement.classList.contains("d-editor-input")) {
+          return; // 如果输入框聚焦，直接返回
+        }
+
         // 检查是否按下右箭头键
         if (event.key === "ArrowRight") {
           const currentTime = Date.now();
 
           // 检查时间间隔
           if (currentTime - lastKeyTime <= doubleClickTime) {
+            this.messageToast("正在检测中...");
             this.init();
           }
 

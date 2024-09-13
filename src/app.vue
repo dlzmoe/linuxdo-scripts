@@ -81,6 +81,12 @@
             <MenuEditorJa :sort="19" v-model="settingData.checked19" />
             <!-- 开启列表页导航栏浮动 -->
             <MenuStickyNav :sort="20" v-model="settingData.checked20" />
+            <!-- 开启快速打开下一个帖子 -->
+            <MenuNextPosts :sort="21" v-model="settingData.checked22" />
+            <!-- 禁用选中文字分享功能 -->
+            <MenuSelectedShare :sort="22" v-model="settingData.checked23" />
+            <!-- 禁用视频自动播放 -->
+            <MenuDisableAutoplay :sort="23" v-model="settingData.checked24" />
           </div>
           <div class="menu-body-item">
             <!-- 自定义论坛 logo -->
@@ -179,7 +185,9 @@ import MenuShowAI from "./components/BasicSettings/MenuShowAI.vue";
 import MenuEditorJa from "./components/BasicSettings/MenuEditorJa.vue";
 import MenuCreatedOrder from "./components/BasicSettings/MenuCreatedOrder.vue";
 import MenuStickyNav from "./components/BasicSettings/MenuStickyNav.vue";
-import MenuShieldPosts from "./components/CustomText/MenuShieldPosts.vue";
+import MenuNextPosts from "./components/BasicSettings/MenuNextPosts.vue";
+import MenuSelectedShare from "./components/BasicSettings/MenuSelectedShare.vue";
+import MenuDisableAutoplay from "./components/BasicSettings/MenuDisableAutoplay.vue";
 
 // 自定义文字
 import MenuOtherCss from "./components/CustomText/MenuOtherCss.vue";
@@ -187,6 +195,7 @@ import MenuLogoUrl from "./components/CustomText/MenuLogoUrl.vue";
 import MenuCreatereply from "./components/CustomText/MenuCreatereply.vue";
 import MenuBlockuserlist from "./components/CustomText/MenuBlockuserlist.vue";
 import MenuBlockKeyword from "./components/CustomText/MenuBlockKeyword.vue";
+import MenuShieldPosts from "./components/CustomText/MenuShieldPosts.vue";
 
 // 用户标签
 import UserTags from "./components/UserTags/UserTags.vue";
@@ -267,6 +276,9 @@ export default {
     MenuShieldPosts,
     Themes,
     Signature,
+    MenuNextPosts,
+    MenuSelectedShare,
+    MenuDisableAutoplay,
   },
   data() {
     return {
@@ -319,6 +331,9 @@ export default {
           cate: "搞七捻三",
           days: "5",
         },
+        checked22: true,
+        checked23: false,
+        checked24: true,
         usertags: [],
         gptdata: {
           value1: false,

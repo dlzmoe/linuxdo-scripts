@@ -1,6 +1,12 @@
 <template>
   <div>
-    <div class="el-button" style="font-size: 18px" @click="openai" type="primary" title="AI对话">
+    <div
+      class="el-button"
+      style="font-size: 18px"
+      @click="openai"
+      type="primary"
+      title="AI对话"
+    >
       AI
     </div>
   </div>
@@ -8,10 +14,6 @@
 
 <script>
 export default {
-  data() {
-    return {};
-  },
-
   methods: {
     openai() {
       window.open("https://shared.oaifree.com/?temporary-chat=true", "_blank");

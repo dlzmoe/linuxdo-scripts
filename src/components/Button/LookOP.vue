@@ -4,9 +4,6 @@
 
 <script>
 export default {
-  data() {
-    return {};
-  },
   methods: {
     lookop() {
       $(".post-stream").toggleClass("lookopwrapactive");

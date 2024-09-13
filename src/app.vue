@@ -2,6 +2,8 @@
   <div id="linuxdoscripts">
     <div class="linuxdoscripts-opacity"></div>
     <div class="setting-btn">
+      <ReplyBtn v-show="showreplybtn" />
+      <!-- 显示 AI 对话网站 -->
       <AIDialog v-show="showaidialog" />
       <!-- 显示 AI 对话网站 -->
       <LevelDiglog v-show="showlevelsearch" />
@@ -87,6 +89,8 @@
             <MenuSelectedShare :sort="22" v-model="settingData.checked23" />
             <!-- 禁用视频自动播放 -->
             <MenuDisableAutoplay :sort="23" v-model="settingData.checked24" />
+            <!-- 回复悬浮按钮 -->
+            <MenuShowRepltBtn :sort="24" v-model="settingData.checked25" />
           </div>
           <div class="menu-body-item">
             <!-- 自定义论坛 logo -->
@@ -188,6 +192,7 @@ import MenuStickyNav from "./components/BasicSettings/MenuStickyNav.vue";
 import MenuNextPosts from "./components/BasicSettings/MenuNextPosts.vue";
 import MenuSelectedShare from "./components/BasicSettings/MenuSelectedShare.vue";
 import MenuDisableAutoplay from "./components/BasicSettings/MenuDisableAutoplay.vue";
+import MenuShowRepltBtn from "./components/BasicSettings/MenuShowRepltBtn.vue";
 
 // 自定义文字
 import MenuOtherCss from "./components/CustomText/MenuOtherCss.vue";
@@ -214,6 +219,7 @@ import LookOP from "./components/Button/LookOP.vue";
 import LevelDiglog from "./components/Button/LevelDiglog.vue";
 import AutoRead from "./components/Button/AutoRead.vue";
 import AIDialog from "./components/Button/AIDialog.vue";
+import ReplyBtn from "./components/Button/ReplyBtn.vue";
 
 // 其他组件
 import Updates from "./components/Other/Updates.vue";
@@ -279,6 +285,8 @@ export default {
     MenuNextPosts,
     MenuSelectedShare,
     MenuDisableAutoplay,
+    MenuShowRepltBtn,
+    ReplyBtn,
   },
   data() {
     return {
@@ -334,6 +342,7 @@ export default {
         checked22: true,
         checked23: false,
         checked24: true,
+        checked25: true,
         usertags: [],
         gptdata: {
           value1: false,
@@ -362,6 +371,7 @@ export default {
       showlookop: false,
       showlevelsearch: false,
       showaidialog: false,
+      showreplybtn: false,
     };
   },
   methods: {
@@ -485,6 +495,7 @@ export default {
       this.showlookop = this.settingData.checked9;
       this.showlevelsearch = this.settingData.checked12;
       this.showaidialog = this.settingData.checked18;
+      this.showreplybtn = this.settingData.checked25;
     } else {
       localStorage.setItem("linxudoscriptssetting", JSON.stringify(this.settingData));
     }

@@ -4,14 +4,14 @@
     <div class="setting-btn">
       <ReplyBtn v-show="showreplybtn" />
       <!-- 显示回复按钮 -->
+      <LookOP v-show="showlookop" />
+      <!-- 只看楼主 -->
       <AIDialog v-show="showaidialog" />
       <!-- 显示 AI 对话网站 -->
       <LevelDiglog v-show="showlevelsearch" />
       <!-- 查询等级功能 -->
       <AutoRead v-show="showautoread" />
       <!-- 自动阅读按钮 -->
-      <LookOP v-show="showlookop" />
-      <!-- 只看楼主 -->
     </div>
 
     <dialog open id="menu_suspendedball">
@@ -505,8 +505,10 @@ export default {
       setInterval(() => {
         if (window.location.href.includes("/topic/")) {
           $(".replaybtn").show();
+          $(".lookopbtn").show();
         } else {
           $(".replaybtn").hide();
+          $(".lookopbtn").hide();
         }
       }, 1000);
     } else {

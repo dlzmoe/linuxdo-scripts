@@ -1,5 +1,7 @@
 <template>
-  <div class="el-button" @click="lookop" title="只看楼主">楼主</div>
+  <div class="lookopbtn">
+    <div class="el-button" @click="lookop" title="只看楼主">楼主</div>
+  </div>
 </template>
 
 <script>

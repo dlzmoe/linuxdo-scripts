@@ -505,10 +505,8 @@ export default {
       setInterval(() => {
         if (window.location.href.includes("/topic/")) {
           $(".replaybtn").show();
-          $(".lookopbtn").show();
         } else {
           $(".replaybtn").hide();
-          $(".lookopbtn").hide();
         }
       }, 1000);
     } else {

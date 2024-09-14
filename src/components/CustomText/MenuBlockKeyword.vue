@@ -40,7 +40,7 @@ export default {
       // 检查话题标题
       $(".topic-list .main-link .raw-topic-link>*")
         .filter((index, element) => {
-          var text = $(element).html();
+          var text = $(element).text();
           return self.list.some((item) => text.includes(item));
         })
         .parents("tr.topic-list-item")
@@ -49,7 +49,8 @@ export default {
       // 检测评论回复
       $(".topic-body .cooked")
         .filter((index, element) => {
-          var text = $(element).html();
+          var text = $(element).text();
+
           return self.list.some((item) => text.includes(item));
         })
         .parents(".topic-post")

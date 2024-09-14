@@ -3,7 +3,7 @@
     <div class="linuxdoscripts-opacity"></div>
     <div class="setting-btn">
       <ReplyBtn v-show="showreplybtn" />
-      <!-- 显示 AI 对话网站 -->
+      <!-- 显示回复按钮 -->
       <AIDialog v-show="showaidialog" />
       <!-- 显示 AI 对话网站 -->
       <LevelDiglog v-show="showlevelsearch" />
@@ -475,6 +475,11 @@ export default {
     },
   },
   created() {
+    console.log(
+      `%c linuxdo 增强插件 %c 已开启 `,
+      "padding: 2px 1px; color: #fff; background: #606060;",
+      "padding: 2px 1px; color: #fff; background: #42c02e;"
+    );
     setInterval(() => {
       if ($(".linuxdoscripts-setting").length < 1) {
         $(".sidebar-footer-actions").prepend(`
@@ -496,6 +501,14 @@ export default {
       this.showlevelsearch = this.settingData.checked12;
       this.showaidialog = this.settingData.checked18;
       this.showreplybtn = this.settingData.checked25;
+
+      setInterval(() => {
+        if (window.location.href.includes("/topic/")) {
+          $(".replaybtn").show();
+        } else {
+          $(".replaybtn").hide();
+        }
+      }, 1000);
     } else {
       localStorage.setItem("linxudoscriptssetting", JSON.stringify(this.settingData));
     }

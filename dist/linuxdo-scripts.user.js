@@ -201,7 +201,10 @@
     methods: {
       init() {
         $(".topic-body .reply-to-tab[aria-expanded='false']").each(function() {
-          $(this).click();
+          if (!$(this).data("clicked")) {
+            $(this).click();
+            $(this).data("clicked", true);
+          }
         });
       }
     },

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         linuxdo 增强插件
 // @namespace    https://github.com/dlzmoe/linuxdo-scripts
-// @version      0.3.37
+// @version      0.3.38
 // @author       dlzmoe
 // @description  linux.do 增强插件，功能持续更新，欢迎提出新想法！
 // @license      Apache-2.0
@@ -21,7 +21,7 @@
   'use strict';
 
   const name = "linuxdo-scripts";
-  const version = "0.3.37";
+  const version = "0.3.38";
   const author = "dlzmoe";
   const description = "An enhanced script for the linux.do forum";
   const type = "module";
@@ -65,7 +65,7 @@
     }
     return target;
   };
-  const _sfc_main$Q = {
+  const _sfc_main$R = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     data() {
@@ -113,21 +113,21 @@
       this.removeEventListeners();
     }
   };
-  const _hoisted_1$L = { class: "item" };
-  const _hoisted_2$K = { class: "tit" };
-  const _hoisted_3$A = ["checked"];
-  function _sfc_render$Q(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$L, [
-      vue.createElementVNode("div", _hoisted_2$K, vue.toDisplayString($props.sort) + ". 是否新标签页打开话题", 1),
+  const _hoisted_1$M = { class: "item" };
+  const _hoisted_2$L = { class: "tit" };
+  const _hoisted_3$B = ["checked"];
+  function _sfc_render$R(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$M, [
+      vue.createElementVNode("div", _hoisted_2$L, vue.toDisplayString($props.sort) + ". 是否新标签页打开话题", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$A)
+      }, null, 40, _hoisted_3$B)
     ]);
   }
-  const MenuOpenpostblank = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["render", _sfc_render$Q]]);
-  const _sfc_main$P = {
+  const MenuOpenpostblank = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["render", _sfc_render$R]]);
+  const _sfc_main$Q = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     methods: {
@@ -145,21 +145,21 @@
       }
     }
   };
-  const _hoisted_1$K = { class: "item" };
-  const _hoisted_2$J = { class: "tit" };
-  const _hoisted_3$z = ["checked"];
-  function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$K, [
-      vue.createElementVNode("div", _hoisted_2$J, vue.toDisplayString($props.sort) + ". 是否开启新话题提醒", 1),
+  const _hoisted_1$L = { class: "item" };
+  const _hoisted_2$K = { class: "tit" };
+  const _hoisted_3$A = ["checked"];
+  function _sfc_render$Q(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$L, [
+      vue.createElementVNode("div", _hoisted_2$K, vue.toDisplayString($props.sort) + ". 是否开启新话题提醒", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$z)
+      }, null, 40, _hoisted_3$A)
     ]);
   }
-  const MenuNewtopicreminder = /* @__PURE__ */ _export_sfc(_sfc_main$P, [["render", _sfc_render$P]]);
-  const _sfc_main$O = {
+  const MenuNewtopicreminder = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["render", _sfc_render$Q]]);
+  const _sfc_main$P = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     methods: {
@@ -181,12 +181,48 @@
       }
     }
   };
+  const _hoisted_1$K = { class: "item" };
+  const _hoisted_2$J = { class: "tit" };
+  const _hoisted_3$z = ["checked"];
+  function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$K, [
+      vue.createElementVNode("div", _hoisted_2$J, vue.toDisplayString($props.sort) + ". 是否自动展开回复", 1),
+      vue.createElementVNode("input", {
+        type: "checkbox",
+        checked: $props.modelValue,
+        onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
+      }, null, 40, _hoisted_3$z)
+    ]);
+  }
+  const MenuAutoexpandreply = /* @__PURE__ */ _export_sfc(_sfc_main$P, [["render", _sfc_render$P]]);
+  const _sfc_main$O = {
+    props: ["modelValue", "sort"],
+    emits: ["update:modelValue"],
+    methods: {
+      init() {
+        $(".topic-body .reply-to-tab").each(function() {
+          $(this).click();
+        });
+      }
+    },
+    created() {
+      if (this.modelValue) {
+        let pollinglength2 = 0;
+        setInterval(() => {
+          if (pollinglength2 != $(".post-stream .topic-post").length) {
+            pollinglength2 = $(".post-stream .topic-post").length;
+            this.init();
+          }
+        }, 1e3);
+      }
+    }
+  };
   const _hoisted_1$J = { class: "item" };
   const _hoisted_2$I = { class: "tit" };
   const _hoisted_3$y = ["checked"];
   function _sfc_render$O(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$J, [
-      vue.createElementVNode("div", _hoisted_2$I, vue.toDisplayString($props.sort) + ". 是否自动展开回复", 1),
+      vue.createElementVNode("div", _hoisted_2$I, vue.toDisplayString($props.sort) + ". 是否自动展开回复父帖子", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
@@ -194,7 +230,7 @@
       }, null, 40, _hoisted_3$y)
     ]);
   }
-  const MenuAutoexpandreply = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["render", _sfc_render$O]]);
+  const MenuAutoexpandreply1 = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["render", _sfc_render$O]]);
   const _sfc_main$N = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
@@ -4046,6 +4082,7 @@ ${topic_contentdata}`;
       MenuOpenpostblank,
       MenuNewtopicreminder,
       MenuAutoexpandreply,
+      MenuAutoexpandreply1,
       MenuShowcreatetime,
       MenuShowcreatetime1,
       MenuShowfloors,
@@ -4104,6 +4141,7 @@ ${topic_contentdata}`;
           checked1: false,
           checked2: false,
           checked3: false,
+          checked31: false,
           checked4: false,
           checked41: true,
           checked5: true,
@@ -4359,6 +4397,7 @@ ${topic_contentdata}`;
     const _component_MenuOpenpostblank = vue.resolveComponent("MenuOpenpostblank");
     const _component_MenuNewtopicreminder = vue.resolveComponent("MenuNewtopicreminder");
     const _component_MenuAutoexpandreply = vue.resolveComponent("MenuAutoexpandreply");
+    const _component_MenuAutoexpandreply1 = vue.resolveComponent("MenuAutoexpandreply1");
     const _component_MenuShowcreatetime = vue.resolveComponent("MenuShowcreatetime");
     const _component_MenuShowcreatetime1 = vue.resolveComponent("MenuShowcreatetime1");
     const _component_MenuShowfloors = vue.resolveComponent("MenuShowfloors");
@@ -4477,171 +4516,176 @@ ${topic_contentdata}`;
                 modelValue: $data.settingData.checked3,
                 "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => $data.settingData.checked3 = $event)
               }, null, 8, ["modelValue"]),
+              vue.createVNode(_component_MenuAutoexpandreply1, {
+                sort: 3.1,
+                modelValue: $data.settingData.checked31,
+                "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => $data.settingData.checked31 = $event)
+              }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuShowcreatetime, {
                 sort: 4,
                 modelValue: $data.settingData.checked4,
-                "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => $data.settingData.checked4 = $event)
+                "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => $data.settingData.checked4 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuShowcreatetime1, {
                 sort: 4.1,
                 modelValue: $data.settingData.checked41,
-                "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => $data.settingData.checked41 = $event)
+                "onUpdate:modelValue": _cache[7] || (_cache[7] = ($event) => $data.settingData.checked41 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuShowfloors, {
                 sort: 5,
                 modelValue: $data.settingData.checked5,
-                "onUpdate:modelValue": _cache[7] || (_cache[7] = ($event) => $data.settingData.checked5 = $event)
+                "onUpdate:modelValue": _cache[8] || (_cache[8] = ($event) => $data.settingData.checked5 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuHidetopicdetailtitle, {
                 sort: 6,
                 modelValue: $data.settingData.checked6,
-                "onUpdate:modelValue": _cache[8] || (_cache[8] = ($event) => $data.settingData.checked6 = $event)
+                "onUpdate:modelValue": _cache[9] || (_cache[9] = ($event) => $data.settingData.checked6 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuTopicpreview, {
                 sort: 7,
                 modelValue: $data.settingData.checked7,
-                "onUpdate:modelValue": _cache[9] || (_cache[9] = ($event) => $data.settingData.checked7 = $event)
+                "onUpdate:modelValue": _cache[10] || (_cache[10] = ($event) => $data.settingData.checked7 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuAutoRead, {
                 sort: 8,
                 modelValue: $data.settingData.checked8,
-                "onUpdate:modelValue": _cache[10] || (_cache[10] = ($event) => $data.settingData.checked8 = $event)
+                "onUpdate:modelValue": _cache[11] || (_cache[11] = ($event) => $data.settingData.checked8 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuLookOP, {
                 sort: 9,
                 modelValue: $data.settingData.checked9,
-                "onUpdate:modelValue": _cache[11] || (_cache[11] = ($event) => $data.settingData.checked9 = $event)
+                "onUpdate:modelValue": _cache[12] || (_cache[12] = ($event) => $data.settingData.checked9 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuFloorHeight, {
                 sort: 10,
                 modelValue: $data.settingData.checked10,
-                "onUpdate:modelValue": _cache[12] || (_cache[12] = ($event) => $data.settingData.checked10 = $event)
+                "onUpdate:modelValue": _cache[13] || (_cache[13] = ($event) => $data.settingData.checked10 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuPangu, {
                 sort: 11,
                 modelValue: $data.settingData.checked11,
-                "onUpdate:modelValue": _cache[13] || (_cache[13] = ($event) => $data.settingData.checked11 = $event)
+                "onUpdate:modelValue": _cache[14] || (_cache[14] = ($event) => $data.settingData.checked11 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuLevelSearch, {
                 sort: 12,
                 modelValue: $data.settingData.checked12,
-                "onUpdate:modelValue": _cache[14] || (_cache[14] = ($event) => $data.settingData.checked12 = $event)
+                "onUpdate:modelValue": _cache[15] || (_cache[15] = ($event) => $data.settingData.checked12 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuShowUnread, {
                 sort: 13,
                 modelValue: $data.settingData.checked13,
-                "onUpdate:modelValue": _cache[15] || (_cache[15] = ($event) => $data.settingData.checked13 = $event)
+                "onUpdate:modelValue": _cache[16] || (_cache[16] = ($event) => $data.settingData.checked13 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuFilterText, {
                 sort: 14,
                 modelValue: $data.settingData.checked14,
-                "onUpdate:modelValue": _cache[16] || (_cache[16] = ($event) => $data.settingData.checked14 = $event)
+                "onUpdate:modelValue": _cache[17] || (_cache[17] = ($event) => $data.settingData.checked14 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuLookmeSign, {
                 sort: 15,
                 modelValue: $data.settingData.checked15,
-                "onUpdate:modelValue": _cache[17] || (_cache[17] = ($event) => $data.settingData.checked15 = $event)
+                "onUpdate:modelValue": _cache[18] || (_cache[18] = ($event) => $data.settingData.checked15 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuQuickAccess, {
                 sort: 16,
                 modelValue: $data.settingData.checked16,
-                "onUpdate:modelValue": _cache[18] || (_cache[18] = ($event) => $data.settingData.checked16 = $event)
+                "onUpdate:modelValue": _cache[19] || (_cache[19] = ($event) => $data.settingData.checked16 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenureplaceEmojiStyle, {
                 sort: 17,
                 modelValue: $data.settingData.checked17,
-                "onUpdate:modelValue": _cache[19] || (_cache[19] = ($event) => $data.settingData.checked17 = $event)
+                "onUpdate:modelValue": _cache[20] || (_cache[20] = ($event) => $data.settingData.checked17 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuShowAI, {
                 sort: 18,
                 modelValue: $data.settingData.checked18,
-                "onUpdate:modelValue": _cache[20] || (_cache[20] = ($event) => $data.settingData.checked18 = $event)
+                "onUpdate:modelValue": _cache[21] || (_cache[21] = ($event) => $data.settingData.checked18 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuEditorJa, {
                 sort: 19,
                 modelValue: $data.settingData.checked19,
-                "onUpdate:modelValue": _cache[21] || (_cache[21] = ($event) => $data.settingData.checked19 = $event)
+                "onUpdate:modelValue": _cache[22] || (_cache[22] = ($event) => $data.settingData.checked19 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuStickyNav, {
                 sort: 20,
                 modelValue: $data.settingData.checked20,
-                "onUpdate:modelValue": _cache[22] || (_cache[22] = ($event) => $data.settingData.checked20 = $event)
+                "onUpdate:modelValue": _cache[23] || (_cache[23] = ($event) => $data.settingData.checked20 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuNextPosts, {
                 sort: 21,
                 modelValue: $data.settingData.checked22,
-                "onUpdate:modelValue": _cache[23] || (_cache[23] = ($event) => $data.settingData.checked22 = $event)
+                "onUpdate:modelValue": _cache[24] || (_cache[24] = ($event) => $data.settingData.checked22 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuSelectedShare, {
                 sort: 22,
                 modelValue: $data.settingData.checked23,
-                "onUpdate:modelValue": _cache[24] || (_cache[24] = ($event) => $data.settingData.checked23 = $event)
+                "onUpdate:modelValue": _cache[25] || (_cache[25] = ($event) => $data.settingData.checked23 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuDisableAutoplay, {
                 sort: 23,
                 modelValue: $data.settingData.checked24,
-                "onUpdate:modelValue": _cache[25] || (_cache[25] = ($event) => $data.settingData.checked24 = $event)
+                "onUpdate:modelValue": _cache[26] || (_cache[26] = ($event) => $data.settingData.checked24 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuShowRepltBtn, {
                 sort: 24,
                 modelValue: $data.settingData.checked25,
-                "onUpdate:modelValue": _cache[26] || (_cache[26] = ($event) => $data.settingData.checked25 = $event)
+                "onUpdate:modelValue": _cache[27] || (_cache[27] = ($event) => $data.settingData.checked25 = $event)
               }, null, 8, ["modelValue"])
             ]),
             vue.createElementVNode("div", _hoisted_15, [
               vue.createVNode(_component_MenuLogoUrl, {
                 sort: 1,
                 value: $data.settingData.logourl,
-                "onUpdate:value": _cache[27] || (_cache[27] = ($event) => $data.settingData.logourl = $event)
+                "onUpdate:value": _cache[28] || (_cache[28] = ($event) => $data.settingData.logourl = $event)
               }, null, 8, ["value"]),
               vue.createVNode(_component_MenuCreatereply, {
                 sort: 2,
                 value: $data.settingData.QuickReply,
-                "onUpdate:value": _cache[28] || (_cache[28] = ($event) => $data.settingData.QuickReply = $event)
+                "onUpdate:value": _cache[29] || (_cache[29] = ($event) => $data.settingData.QuickReply = $event)
               }, null, 8, ["value"]),
               vue.createVNode(_component_MenuBlockKeyword, {
                 sort: 3,
                 value: $data.settingData.blockkeywrod,
-                "onUpdate:value": _cache[29] || (_cache[29] = ($event) => $data.settingData.blockkeywrod = $event)
+                "onUpdate:value": _cache[30] || (_cache[30] = ($event) => $data.settingData.blockkeywrod = $event)
               }, null, 8, ["value"]),
               vue.createVNode(_component_MenuBlockuserlist, {
                 sort: 4,
                 value: $data.settingData.blockList,
-                "onUpdate:value": _cache[30] || (_cache[30] = ($event) => $data.settingData.blockList = $event)
+                "onUpdate:value": _cache[31] || (_cache[31] = ($event) => $data.settingData.blockList = $event)
               }, null, 8, ["value"]),
               vue.createVNode(_component_MenuShieldPosts, {
                 sort: 5,
                 value: $data.settingData.checked21,
-                "onUpdate:value": _cache[31] || (_cache[31] = ($event) => $data.settingData.checked21 = $event)
+                "onUpdate:value": _cache[32] || (_cache[32] = ($event) => $data.settingData.checked21 = $event)
               }, null, 8, ["value"]),
               vue.createVNode(_component_MenuOtherCss, {
                 sort: 6,
                 value: $data.settingData.othercss,
-                "onUpdate:value": _cache[32] || (_cache[32] = ($event) => $data.settingData.othercss = $event)
+                "onUpdate:value": _cache[33] || (_cache[33] = ($event) => $data.settingData.othercss = $event)
               }, null, 8, ["value"])
             ]),
             vue.createElementVNode("div", _hoisted_16, [
               vue.createVNode(_component_UserTags, {
                 value: $data.settingData.usertags,
-                "onUpdate:value": _cache[33] || (_cache[33] = ($event) => $data.settingData.usertags = $event)
+                "onUpdate:value": _cache[34] || (_cache[34] = ($event) => $data.settingData.usertags = $event)
               }, null, 8, ["value"])
             ]),
             vue.createElementVNode("div", _hoisted_17, [
               vue.createVNode(_component_GPTconfig, {
                 value: $data.settingData.gptdata,
-                "onUpdate:value": _cache[34] || (_cache[34] = ($event) => $data.settingData.gptdata = $event)
+                "onUpdate:value": _cache[35] || (_cache[35] = ($event) => $data.settingData.gptdata = $event)
               }, null, 8, ["value"])
             ]),
             vue.createElementVNode("div", _hoisted_18, [
               vue.createVNode(_component_Themes, {
                 modelValue: $data.settingData.themes,
-                "onUpdate:modelValue": _cache[35] || (_cache[35] = ($event) => $data.settingData.themes = $event)
+                "onUpdate:modelValue": _cache[36] || (_cache[36] = ($event) => $data.settingData.themes = $event)
               }, null, 8, ["modelValue"])
             ]),
             vue.createElementVNode("div", _hoisted_19, [
               vue.createVNode(_component_SyncBackup, {
                 value: $data.settingData.syncbackup,
-                "onUpdate:value": _cache[36] || (_cache[36] = ($event) => $data.settingData.syncbackup = $event)
+                "onUpdate:value": _cache[37] || (_cache[37] = ($event) => $data.settingData.syncbackup = $event)
               }, null, 8, ["value"])
             ])
           ])
@@ -4649,15 +4693,15 @@ ${topic_contentdata}`;
         vue.createElementVNode("div", _hoisted_20, [
           vue.createElementVNode("button", {
             class: "save",
-            onClick: _cache[37] || (_cache[37] = (...args) => $options.save && $options.save(...args))
+            onClick: _cache[38] || (_cache[38] = (...args) => $options.save && $options.save(...args))
           }, "保存"),
           vue.createElementVNode("button", {
             class: "saveload",
-            onClick: _cache[38] || (_cache[38] = (...args) => $options.saveload && $options.saveload(...args))
+            onClick: _cache[39] || (_cache[39] = (...args) => $options.saveload && $options.saveload(...args))
           }, "保存并刷新"),
           vue.createElementVNode("button", {
             class: "floorlottery",
-            onClick: _cache[39] || (_cache[39] = (...args) => $options.openFloorlottery && $options.openFloorlottery(...args))
+            onClick: _cache[40] || (_cache[40] = (...args) => $options.openFloorlottery && $options.openFloorlottery(...args))
           }, "楼层抽奖"),
           _hoisted_21
         ])
@@ -4667,27 +4711,27 @@ ${topic_contentdata}`;
         vue.createElementVNode("div", _hoisted_24, [
           vue.withDirectives(vue.createElementVNode("input", {
             type: "text",
-            "onUpdate:modelValue": _cache[40] || (_cache[40] = ($event) => $data.floorlotteryval1 = $event),
+            "onUpdate:modelValue": _cache[41] || (_cache[41] = ($event) => $data.floorlotteryval1 = $event),
             placeholder: "请输入总数"
           }, null, 512), [
             [vue.vModelText, $data.floorlotteryval1]
           ]),
           vue.withDirectives(vue.createElementVNode("input", {
             type: "text",
-            "onUpdate:modelValue": _cache[41] || (_cache[41] = ($event) => $data.floorlotteryval2 = $event),
+            "onUpdate:modelValue": _cache[42] || (_cache[42] = ($event) => $data.floorlotteryval2 = $event),
             placeholder: "请输入抽取的数量"
           }, null, 512), [
             [vue.vModelText, $data.floorlotteryval2]
           ]),
           vue.createElementVNode("button", {
             class: "btn save",
-            onClick: _cache[42] || (_cache[42] = (...args) => $options.drawRandomNumbers && $options.drawRandomNumbers(...args))
+            onClick: _cache[43] || (_cache[43] = (...args) => $options.drawRandomNumbers && $options.drawRandomNumbers(...args))
           }, "开始抽奖"),
           vue.createElementVNode("button", {
             class: "btn",
             style: { "background": "#979797" },
             plain: "",
-            onClick: _cache[43] || (_cache[43] = (...args) => $options.closelotter && $options.closelotter(...args))
+            onClick: _cache[44] || (_cache[44] = (...args) => $options.closelotter && $options.closelotter(...args))
           }, " 关闭弹窗 "),
           _hoisted_25,
           $data.floorlotterloading ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_26, "正在抽奖...")) : vue.createCommentVNode("", true),

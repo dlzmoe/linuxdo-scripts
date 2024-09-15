@@ -48,6 +48,7 @@
             <MenuNewtopicreminder :sort="2" v-model="settingData.checked2" />
             <!-- 自动展开回复 -->
             <MenuAutoexpandreply :sort="3" v-model="settingData.checked3" />
+            <MenuAutoexpandreply1 :sort="3.1" v-model="settingData.checked31" />
             <!-- 话题列表显示创建时间 -->
             <MenuShowcreatetime :sort="4" v-model="settingData.checked4" />
             <MenuShowcreatetime1 :sort="4.1" v-model="settingData.checked41" />
@@ -169,6 +170,7 @@ import packageJson from "../package.json";
 import MenuOpenpostblank from "./components/BasicSettings/MenuOpenpostblank.vue";
 import MenuNewtopicreminder from "./components/BasicSettings/MenuNewtopicreminder.vue";
 import MenuAutoexpandreply from "./components/BasicSettings/MenuAutoexpandreply.vue";
+import MenuAutoexpandreply1 from "./components/BasicSettings/MenuAutoexpandreply1.vue";
 import MenuShowcreatetime from "./components/BasicSettings/MenuShowcreatetime.vue";
 import MenuShowcreatetime1 from "./components/BasicSettings/MenuShowcreatetime1.vue";
 import MenuShowfloors from "./components/BasicSettings/MenuShowfloors.vue";
@@ -245,6 +247,7 @@ export default {
     MenuOpenpostblank,
     MenuNewtopicreminder,
     MenuAutoexpandreply,
+    MenuAutoexpandreply1,
     MenuShowcreatetime,
     MenuShowcreatetime1,
     MenuShowfloors,
@@ -305,6 +308,7 @@ export default {
         checked1: false,
         checked2: false,
         checked3: false,
+        checked31: false,
         checked4: false,
         checked41: true,
         checked5: true,

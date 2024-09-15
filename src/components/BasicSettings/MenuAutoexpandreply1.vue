@@ -15,18 +15,15 @@ export default {
   emits: ["update:modelValue"],
   methods: {
     init() {
-      $(".topic-body .reply-to-tab").each(function () {
+      $(".topic-body .reply-to-tab[aria-expanded='false']").each(function () {
         $(this).click();
       });
     },
   },
   created() {
     if (this.modelValue) {
-      this.init();
-      let pollinglength2 = 0;
       setInterval(() => {
-        if (pollinglength2 != $(".post-stream .topic-post").length) {
-          pollinglength2 = $(".post-stream .topic-post").length;
+        if ($(".topic-body .reply-to-tab").length > 0) {
           this.init();
         }
       }, 1000);

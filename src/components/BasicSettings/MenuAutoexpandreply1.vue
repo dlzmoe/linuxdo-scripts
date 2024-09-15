@@ -22,6 +22,7 @@ export default {
   },
   created() {
     if (this.modelValue) {
+      this.init();
       let pollinglength2 = 0;
       setInterval(() => {
         if (pollinglength2 != $(".post-stream .topic-post").length) {

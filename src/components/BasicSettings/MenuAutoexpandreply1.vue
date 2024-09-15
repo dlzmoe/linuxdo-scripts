@@ -15,24 +15,26 @@ export default {
   emits: ["update:modelValue"],
   methods: {
     init() {
-      // 遍历所有 aria-expanded 为 false 的按钮
-      $(".topic-body .reply-to-tab[aria-expanded='false']").each(function () {
-        // 检查按钮是否已经被点击过
-        if (!$(this).data("clicked")) {
-          // 点击按钮
-          $(this).click();
+      const tabs = $(".reply-to-tab");
+      let index = 0;
 
-          // 设置标识为已点击
-          $(this).data("clicked", true);
+      const clickNext = () => {
+        if (index >= tabs.length) return;
+
+        const tab = $(tabs[index]);
+        if (!tab.data("clicked")) {
+          tab.click();
+          tab.data("clicked", true);
         }
-      });
+        index++;
+        setTimeout(clickNext, 1000);
+      };
+      clickNext();
     },
   },
-
   created() {
     if (this.modelValue) {
       setInterval(() => {
-        // 检查是否存在按钮
         if ($(".topic-body .reply-to-tab").length > 0) {
           this.init();
         }

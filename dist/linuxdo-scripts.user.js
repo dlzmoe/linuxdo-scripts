@@ -200,12 +200,19 @@
     emits: ["update:modelValue"],
     methods: {
       init() {
-        $(".topic-body .reply-to-tab[aria-expanded='false']").each(function() {
-          if (!$(this).data("clicked")) {
-            $(this).click();
-            $(this).data("clicked", true);
+        const tabs = $(".reply-to-tab");
+        let index = 0;
+        const clickNext = () => {
+          if (index >= tabs.length) return;
+          const tab = $(tabs[index]);
+          if (!tab.data("clicked")) {
+            tab.click();
+            tab.data("clicked", true);
           }
-        });
+          index++;
+          setTimeout(clickNext, 1e3);
+        };
+        clickNext();
       }
     },
     created() {
@@ -4199,7 +4206,7 @@ ${topic_contentdata}`;
             webdavUsername: "",
             webdavPassword: ""
           },
-          themes: 0
+          themes: 6
         },
         showautoread: false,
         showlookop: false,

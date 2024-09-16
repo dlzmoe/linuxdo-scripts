@@ -368,7 +368,7 @@ export default {
           webdavUsername: "",
           webdavPassword: "",
         },
-        themes: 6,
+        themes: 0,
       },
 
       showautoread: false,

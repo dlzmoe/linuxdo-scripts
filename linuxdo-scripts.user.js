@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         linuxdo 增强插件
 // @namespace    https://github.com/dlzmoe/linuxdo-scripts
-// @version      0.3.38
+// @version      0.3.39
 // @author       dlzmoe
 // @description  linux.do 增强插件，功能持续更新，欢迎提出新想法！
 // @license      Apache-2.0
@@ -21,7 +21,7 @@
   'use strict';
 
   const name = "linuxdo-scripts";
-  const version = "0.3.38";
+  const version = "0.3.39";
   const author = "dlzmoe";
   const description = "An enhanced script for the linux.do forum";
   const type = "module";
@@ -4206,7 +4206,7 @@ ${topic_contentdata}`;
             webdavUsername: "",
             webdavPassword: ""
           },
-          themes: 6
+          themes: 0
         },
         showautoread: false,
         showlookop: false,

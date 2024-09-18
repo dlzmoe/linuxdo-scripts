@@ -5,8 +5,8 @@
 如：
 
 ```
-fix: 修复了 script-src 无法引入 js 文件的问题
-feat: 新增了 xx 功能
+🐛 fix: 修复了 script-src 无法引入 js 文件的问题
+✨ feat: 新增了 xx 功能
 ```
 
 - `🔨 chore:` 其他杂项（例如：构建过程或辅助工具的变更）

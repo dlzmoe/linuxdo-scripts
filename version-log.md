@@ -1,3 +1,7 @@
+## 0.3.40
+
+- 优化：调整 UI 样式 [#39](https://github.com/dlzmoe/linuxdo-scripts/pull/39)
+
 ## 0.3.39
 
 - 优化：移除默认主题

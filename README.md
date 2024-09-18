@@ -25,14 +25,14 @@ linux.do 增强插件，话题列表显示创建时间，显示楼层数，新�
 > Discord 社区：https://discord.gg/n2pErsD7Kg  
 
 ## 目录
+  - [目录](#目录)
   - [功能特性](#功能特性)
   - [使用方法](#使用方法)
   - [开发说明](#开发说明)
   - [更新日志](#更新日志)
-  - [Star History](#star-history)
-  - [Contributor](#contributor)
+  - [贡献历史](#贡献历史)
   - [免责声明](#免责声明)
-  - [License](#license)
+  - [版权协议](#版权协议)
 
 ---
 
@@ -111,14 +111,11 @@ yarn build # 打包构建
 [version-log.md](https://github.com/dlzmoe/linuxdo-scripts/blob/main/version-log.md)
 
 
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=dlzmoe/linuxdo-scripts&type=Date)](https://star-history.com/#dlzmoe/linuxdo-scripts&Date)
-
-
-## Contributor
+## 贡献历史
 
 ![Contributor](https://contrib.rocks/image?repo=dlzmoe/linuxdo-scripts)
+
+[![Star History Chart](https://api.star-history.com/svg?repos=dlzmoe/linuxdo-scripts&type=Date)](https://star-history.com/#dlzmoe/linuxdo-scripts&Date)
 
 
 ## 免责声明
@@ -126,6 +123,6 @@ yarn build # 打包构建
 本脚本中提供的所有功能均仅在浏览器中运行，所使用的源代码公开透明可见，且本脚本仅学习研究使用，不使用任何盈利方案或参与任何盈利组织，因使用本脚本引起的或与本脚本有关的任何争议，各方应友好协商解决，本脚本对使用本脚本所提供的软件时可能对用户自己或他人造成的任何形式的损失和伤害不承担任何责任。如用户下载、安装和使用本产品中所提供的软件，即表明用户信任本作者及其相关协议和免责声明。
 
 
-## License
+## 版权协议
 
 [Apache-2.0 license](https://github.com/dlzmoe/linuxdo-scripts/blob/main/LICENSE)

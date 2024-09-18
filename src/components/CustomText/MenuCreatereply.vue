@@ -42,7 +42,7 @@ export default {
       // setInterval(() => {
       if ($(".createreply").length < 1) {
         $(".timeline-container .topic-timeline").append(
-          `<div class="createreply" style="margin-top:4rem;"></div>`
+          `<div class="createreply" style="margin-top:6.4rem;"></div>`
         );
 
         this.list.forEach(function (item) {

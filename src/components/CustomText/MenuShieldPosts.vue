@@ -62,41 +62,47 @@ export default {
     },
     // 屏蔽指定分类、指定时间
     GetTimestamp() {
-      if (this.localChecked.cate == "") {
-        $(".topic-list .age").each((index, element) => {
-          const str = $(element).attr("title");
-          const match = str.match(/创建日期：([\s\S]*?)最新：/);
-          if (match && match[1]) {
-            const creationDate = match[1].trim();
-            const timestamp = this.convertToTimestamp(creationDate);
-            const days = Number(this.localChecked.days) * 86400000;
-            if (Date.now() - timestamp > days) {
-              $(element).parents("tr.topic-list-item").remove();
-            }
-          }
-        });
-      } else {
-        const cateArray = this.localChecked.cate.split(",").map((item) => item.trim());
-        $(".badge-category__wrapper .badge-category__name").each((index, element) => {
-          let htmlContent = $(element).html();
-          htmlContent = htmlContent.replace(/,\s*Lv[1-3]/g, "");
-          if (cateArray.includes(htmlContent.trim())) {
-            // console.log($(element).parents("tr.topic-list-item"));
-
-            $(element).parents("tr.topic-list-item").find('.age').each((index, element) => {
-              const str = $(element).attr("title");
-              const match = str.match(/创建日期：([\s\S]*?)最新：/);
-              if (match && match[1]) {
-                const creationDate = match[1].trim();
-                const timestamp = this.convertToTimestamp(creationDate);
-                const days = Number(this.localChecked.days) * 86400000;
-                if (Date.now() - timestamp > days) {
-                  $(element).parents("tr.topic-list-item").remove();
-                }
+      if (
+        !$(".nav-pills > li.nav-item_posted").hasClass("active") &&
+        !$(".nav-pills > li.nav-item_bookmarks").hasClass("active")
+      ) {
+        if (this.localChecked.cate == "") {
+          $(".topic-list .age").each((index, element) => {
+            const str = $(element).attr("title");
+            const match = str.match(/创建日期：([\s\S]*?)最新：/);
+            if (match && match[1]) {
+              const creationDate = match[1].trim();
+              const timestamp = this.convertToTimestamp(creationDate);
+              const days = Number(this.localChecked.days) * 86400000;
+              if (Date.now() - timestamp > days) {
+                $(element).parents("tr.topic-list-item").remove();
               }
-            });
-          }
-        });
+            }
+          });
+        } else {
+          const cateArray = this.localChecked.cate.split(",").map((item) => item.trim());
+          $(".badge-category__wrapper .badge-category__name").each((index, element) => {
+            let htmlContent = $(element).html();
+            htmlContent = htmlContent.replace(/,\s*Lv[1-3]/g, "");
+            if (cateArray.includes(htmlContent.trim())) {
+              $(element)
+                .parents("tr.topic-list-item")
+                .find(".age")
+                .each((index, element) => {
+                  const str = $(element).attr("title");
+                  const match = str.match(/创建日期：([\s\S]*?)最新：/);
+                  if (match && match[1]) {
+                    const creationDate = match[1].trim();
+                    const timestamp = this.convertToTimestamp(creationDate);
+                    const days = Number(this.localChecked.days) * 86400000;
+                    if (Date.now() - timestamp > days) {
+                      $(element).parents("tr.topic-list-item").remove();
+                    }
+                  }
+                });
+            }
+          });
+        }
       }
     },
   },

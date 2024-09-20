@@ -1,1 +1,1 @@
-- 优化：调整 UI 样式 [#39](https://github.com/dlzmoe/linuxdo-scripts/pull/39)
+- 修复：屏蔽指定天数前的帖子会隐藏收藏夹

@@ -14,12 +14,10 @@ The linux.do enhancement plugin features topic list creation time, floor number 
 [Install from Greasyfork](https://greasyfork.org/scripts/501827) | 
 [Bug Feedback and Feature Requests](https://github.com/dlzmoe/linuxdo-scripts/issues/new/choose) | 
 [Usage and Development Documentation](https://linuxdo-scripts-docs.netlify.app/) | 
-[Wechat Group Chat](https://zishu.me/linuxdo-scripts/) | 
 [Discord Community](https://discord.gg/n2pErsD7Kg) 
 
 > **Tip**  
 > Any fun features will be shared in the group chat. It feels like I'm posting too frequently.  
-> Wechat group: https://zishu.me/linuxdo-scripts/  
 > Discord community: https://discord.gg/n2pErsD7Kg  
 
 ## Table of Contents

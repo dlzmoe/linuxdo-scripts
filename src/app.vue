@@ -136,24 +136,7 @@
     </dialog>
 
     <!-- 楼层抽奖 -->
-    <dialog open v-show="floorlotteryDialog">
-      <div class="menu-header">
-        <div class="title">楼层抽奖</div>
-      </div>
-      <div class="menu-body" style="margin-top: 10px">
-        <input type="text" v-model="floorlotteryval1" placeholder="请输入总数" />
-        <input type="text" v-model="floorlotteryval2" placeholder="请输入抽取的数量" />
-        <button class="btn save" @click="drawRandomNumbers">开始抽奖</button>
-        <button class="btn" style="background: #979797" plain @click="closelotter">
-          关闭弹窗
-        </button>
-        <div style="height: 20px"></div>
-        <div v-if="floorlotterloading">正在抽奖...</div>
-        <div v-if="floorlotterresult" title="抽奖结果" type="success">
-          抽奖结果：{{ floorlotterresult }}
-        </div>
-      </div>
-    </dialog>
+    <FloorLottery />
 
     <!-- 使用提示 -->
     <UsageTip />
@@ -227,6 +210,7 @@ import ReplyBtn from "./components/Button/ReplyBtn.vue";
 import Updates from "./components/Other/Updates.vue";
 import UsageTip from "./components/Other/UsageTip.vue";
 import Signature from "./components/Other/Signature.vue";
+import FloorLottery from "./components/Other/FloorLottery.vue";
 
 // svg 图标
 import Setting1 from "./components/Svg/Setting1.vue";
@@ -290,18 +274,13 @@ export default {
     MenuDisableAutoplay,
     MenuShowRepltBtn,
     ReplyBtn,
+    FloorLottery,
   },
   data() {
     return {
       version: packageJson.version,
       opacity: false,
       open: false,
-
-      floorlotteryDialog: false,
-      floorlotteryval1: "",
-      floorlotteryval2: "",
-      floorlotterloading: false,
-      floorlotterresult: "",
 
       // 设置数据
       settingData: {
@@ -408,47 +387,7 @@ export default {
     // 打开抽奖弹窗
     openFloorlottery() {
       $("#menu_suspendedball").hide();
-      this.floorlotteryDialog = true;
-    },
-    // 开始抽奖
-    drawRandomNumbers() {
-      if (this.floorlotteryval1 === "" || this.floorlotteryval2 === "") {
-        this.messageToast("请输入有效的数字");
-        return false;
-      }
-
-      const total = parseInt(this.floorlotteryval1);
-      const count = parseInt(this.floorlotteryval2);
-
-      if (isNaN(total) || isNaN(count) || total <= 0 || count <= 0 || count > total) {
-        this.messageToast("请输入有效的数字");
-        return false;
-      }
-
-      this.floorlotterloading = true;
-      this.floorlotterresult = "";
-
-      setTimeout(() => {
-        const result = this.getRandomNumbers(total, count);
-        this.floorlotterresult = result.join(", ");
-        this.floorlotterloading = false;
-      }, 1000); // 模拟异步操作
-    },
-    getRandomNumbers(total, count) {
-      const numbers = Array.from({ length: total }, (_, i) => i + 1);
-      const result = [];
-
-      for (let i = 0; i < count; i++) {
-        const randomIndex = Math.floor(Math.random() * numbers.length);
-        result.push(numbers[randomIndex]);
-        numbers.splice(randomIndex, 1);
-      }
-
-      return result;
-    },
-    closelotter() {
-      this.floorlotteryDialog = false;
-      $(".linuxdoscripts-opacity").hide();
+      $("#floorlotteryDialog").show();
     },
     // 默认运行脚本
     runscripts() {

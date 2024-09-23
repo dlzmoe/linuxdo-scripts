@@ -4,7 +4,6 @@
   "author": "dlzmoe",
   "description": "An enhanced script for the linux.do forum",
   "type": "module",
-  "private": true,
   "license": "Apache-2.0",
   "scripts": {
     "dev": "vite --mode development",

@@ -334,6 +334,7 @@ export default {
           btn: true,
           apikey: "",
           baseurl: "https://api.openai.com",
+          full_url: "/v1/chat/completions",
           model: "gpt-4o-mini",
           prompt:
             "根据以下帖子内容进行总结，请使用 markdown 格式返回回答，没有字数限制，但要求文字精炼，简介准确，语言要求返回简体中文，并且进行中英文混排优化。可以通过编号列表（1，2，3）列出核心要点。注意不要输出标题，例如：核心要点总结，帖子总结等，直接输出文本段落。",
@@ -433,10 +434,18 @@ export default {
 
     const linxudoscriptssetting = localStorage.getItem("linxudoscriptssetting");
     if (linxudoscriptssetting) {
-      // 从 localStorage 获取现有的设置数据
+      function deepMerge(target, source) {
+        for (const key in source) {
+          if (source[key] instanceof Object && key in target) {
+            target[key] = deepMerge(target[key], source[key]);
+          } else {
+            target[key] = source[key];
+          }
+        }
+        return target;
+      }
       let existingData = JSON.parse(localStorage.getItem("linxudoscriptssetting"));
-
-      this.settingData = { ...this.settingData, ...existingData };
+      this.settingData = deepMerge(this.settingData, existingData);
       localStorage.setItem("linxudoscriptssetting", JSON.stringify(this.settingData));
 
       this.showautoread = this.settingData.checked8.value1;

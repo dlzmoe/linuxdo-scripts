@@ -15,7 +15,31 @@
   </div>
   <div class="item">
     <div class="tit">WebDav 密码：</div>
-    <input type="text" v-model="tableData.webdavPassword" @blur="handleChange" />
+    <input
+      :type="password ? 'password' : 'text'"
+      v-model="tableData.webdavPassword"
+      @blur="handleChange"
+    />
+    <em @click="showpsw">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="icon icon-tabler icons-tabler-outline icon-tabler-eye"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+        <path
+          d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6"
+        />
+      </svg>
+    </em>
   </div>
 
   <div class="btnwrapper">
@@ -51,6 +75,7 @@ export default {
   },
   data() {
     return {
+      password: true,
       tableData: this.value,
       // webdavUrl: "",
       // webdavUsername: "",
@@ -67,14 +92,16 @@ export default {
     },
     handleChange() {
       this.$emit("update:value", this.tableData);
-      
-      let linxudoscriptssetting = JSON.parse(localStorage.getItem("linxudoscriptssetting"));
+
+      let linxudoscriptssetting = JSON.parse(
+        localStorage.getItem("linxudoscriptssetting")
+      );
       let data = {
         webdavUrl: this.tableData.webdavUrl,
         webdavUsername: this.tableData.webdavUsername,
         webdavPassword: this.tableData.webdavPassword,
       };
-      
+
       linxudoscriptssetting.syncbackup = data;
       localStorage.setItem(
         "linxudoscriptssetting",
@@ -242,6 +269,10 @@ export default {
         this.messageToast("下载失败，请检查是否存在备份！");
       }
     },
+    // 显示/隐藏密码
+    showpsw() {
+      this.password = !this.password;
+    },
   },
   created() {
     const linxudoscriptssetting =
@@ -260,6 +291,7 @@ export default {
   border: none !important;
   padding: 0 !important;
   margin-top: 15px;
+  position: relative;
 
   .tit {
     white-space: nowrap;
@@ -268,6 +300,22 @@ export default {
 
   input {
     margin: 0;
+    width: 100%;
+  }
+
+  em {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      color: #999;
+    }
   }
 }
 

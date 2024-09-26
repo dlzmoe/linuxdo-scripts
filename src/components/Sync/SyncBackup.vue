@@ -15,12 +15,17 @@
   </div>
   <div class="item">
     <div class="tit">WebDav 密码：</div>
+    <!-- <input
+      :type="passwordVisible ? 'text' : 'password'"
+      v-model="tableData.webdavPassword"
+      @blur="handleChange"
+    /> -->
     <input
-      :type="password ? 'password' : 'text'"
+      type="text"
       v-model="tableData.webdavPassword"
       @blur="handleChange"
     />
-    <em @click="showpsw">
+    <!-- <em @click="showpsw">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -39,7 +44,7 @@
           d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6"
         />
       </svg>
-    </em>
+    </em> -->
   </div>
 
   <div class="btnwrapper">
@@ -75,7 +80,7 @@ export default {
   },
   data() {
     return {
-      password: true,
+      passwordVisible : false,
       tableData: this.value,
       // webdavUrl: "",
       // webdavUsername: "",
@@ -275,6 +280,7 @@ export default {
     },
   },
   created() {
+    // this.password = true;
     const linxudoscriptssetting =
       JSON.parse(localStorage.getItem("linxudoscriptssetting")) || [];
     if (linxudoscriptssetting) {

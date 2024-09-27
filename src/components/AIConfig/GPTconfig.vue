@@ -30,7 +30,7 @@
       style="width: 49%; margin-left: 2%"
       type="text"
       v-model="localChecked.full_url"
-      placeholder="接口后缀"
+      placeholder="/v1/chat/completions"
     />
     <input type="text" v-model="localChecked.model" placeholder="模型，如：gpt-4o-mini" />
     <div>6. AI 总结帖子 prompt:</div>

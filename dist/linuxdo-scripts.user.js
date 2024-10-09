@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         linuxdo 增强插件
 // @namespace    https://github.com/dlzmoe/linuxdo-scripts
-// @version      0.3.48
+// @version      0.3.49
 // @author       dlzmoe
 // @description  linux.do 增强插件，功能持续更新，欢迎提出新想法！
 // @license      Apache-2.0
@@ -21,7 +21,7 @@
   'use strict';
 
   const name = "linuxdo-scripts";
-  const version = "0.3.48";
+  const version = "0.3.49";
   const author = "dlzmoe";
   const description = "An enhanced script for the linux.do forum";
   const type = "module";
@@ -4376,6 +4376,22 @@ ${topic_contentdata}`;
           messageElement.remove();
         }, 3e3);
       },
+      // 检测新版本
+      checkversion() {
+        this.messageToast("正在检测新版本...");
+        fetch("https://api.github.com/repos/dlzmoe/linuxdo-scripts/releases/latest").then((response) => response.json()).then((data) => {
+          if (this.version != data.tag_name) {
+            this.messageToast("有新版本可用，即将前往更新！");
+            setTimeout(() => {
+              window.open("https://greasyfork.org/scripts/501827", "_blank");
+            }, 1e3);
+          } else {
+            this.messageToast("当前已是最新版本！");
+          }
+        }).catch((error) => {
+          this.messageToast("检测出错，请刷新后重试！");
+        });
+      },
       // 关闭弹窗
       closedialog() {
         $(".linuxdoscripts-opacity").hide();
@@ -4458,13 +4474,17 @@ ${topic_contentdata}`;
         this.showlevelsearch = this.settingData.checked12;
         this.showaidialog = this.settingData.checked18;
         this.showreplybtn = this.settingData.checked25;
-        setInterval(() => {
-          if (window.location.href.includes("/topic/")) {
-            $(".replaybtn").show();
-          } else {
-            $(".replaybtn").hide();
-          }
-        }, 1e3);
+        if (this.showreplybtn) {
+          setInterval(() => {
+            if (window.location.href.includes("/topic/")) {
+              $(".replaybtn").show();
+              $(".lookopbtn").show();
+            } else {
+              $(".replaybtn").hide();
+              $(".lookopbtn").hide();
+            }
+          }, 1e3);
+        }
       } else {
         localStorage.setItem("linxudoscriptssetting", JSON.stringify(this.settingData));
       }
@@ -4496,13 +4516,6 @@ ${topic_contentdata}`;
   const _hoisted_18 = { class: "menu-body-item" };
   const _hoisted_19 = { class: "menu-body-item" };
   const _hoisted_20 = { class: "menu-footer" };
-  const _hoisted_21 = /* @__PURE__ */ vue.createElementVNode("a", {
-    style: { "margin-left": "8px" },
-    target: "_blank",
-    href: "https://greasyfork.org/scripts/501827"
-  }, [
-    /* @__PURE__ */ vue.createElementVNode("button", { class: "detection" }, "检测新版本")
-  ], -1);
   function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_ReplyBtn = vue.resolveComponent("ReplyBtn");
     const _component_LookOP = vue.resolveComponent("LookOP");
@@ -4826,7 +4839,11 @@ ${topic_contentdata}`;
             class: "floorlottery",
             onClick: _cache[40] || (_cache[40] = (...args) => $options.openFloorlottery && $options.openFloorlottery(...args))
           }, "楼层抽奖"),
-          _hoisted_21
+          vue.createElementVNode("button", {
+            style: { "margin-left": "8px" },
+            class: "detection",
+            onClick: _cache[41] || (_cache[41] = (...args) => $options.checkversion && $options.checkversion(...args))
+          }, " 检测新版本 ")
         ])
       ]),
       vue.createVNode(_component_FloorLottery),

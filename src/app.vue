@@ -125,13 +125,15 @@
         <button class="save" @click="save">保存</button>
         <button class="saveload" @click="saveload">保存并刷新</button>
         <button class="floorlottery" @click="openFloorlottery">楼层抽奖</button>
-        <a
-          style="margin-left: 8px"
+        <!-- <a
+          
           target="_blank"
           href="https://greasyfork.org/scripts/501827"
-        >
-          <button class="detection">检测新版本</button>
-        </a>
+        > -->
+        <button style="margin-left: 8px" class="detection" @click="checkversion">
+          检测新版本
+        </button>
+        <!-- </a> -->
       </div>
     </dialog>
 
@@ -366,6 +368,25 @@ export default {
         messageElement.remove();
       }, 3000);
     },
+    // 检测新版本
+    checkversion() {
+      this.messageToast("正在检测新版本...");
+      fetch("https://api.github.com/repos/dlzmoe/linuxdo-scripts/releases/latest")
+        .then((response) => response.json())
+        .then((data) => {
+          if (this.version != data.tag_name) {
+            this.messageToast("有新版本可用，即将前往更新！");
+            setTimeout(() => {
+              window.open("https://greasyfork.org/scripts/501827", "_blank");
+            }, 1000);
+          } else {
+            this.messageToast("当前已是最新版本！");
+          }
+        })
+        .catch((error) => {
+          this.messageToast("检测出错，请刷新后重试！");
+        });
+    },
     // 关闭弹窗
     closedialog() {
       $(".linuxdoscripts-opacity").hide();
@@ -453,14 +474,17 @@ export default {
       this.showlevelsearch = this.settingData.checked12;
       this.showaidialog = this.settingData.checked18;
       this.showreplybtn = this.settingData.checked25;
-
-      setInterval(() => {
-        if (window.location.href.includes("/topic/")) {
-          $(".replaybtn").show();
-        } else {
-          $(".replaybtn").hide();
-        }
-      }, 1000);
+      if (this.showreplybtn) {
+        setInterval(() => {
+          if (window.location.href.includes("/topic/")) {
+            $(".replaybtn").show();
+            $(".lookopbtn").show();
+          } else {
+            $(".replaybtn").hide();
+            $(".lookopbtn").hide();
+          }
+        }, 1000);
+      }
     } else {
       localStorage.setItem("linxudoscriptssetting", JSON.stringify(this.settingData));
     }

@@ -410,14 +410,20 @@
   text-align: left;
 }
 
-.topicpreview-btn {
+.topicpreview-btn,
+.donottopic-btn {
   padding: 4px 12px !important;
   font-size: 14px !important;
-  opacity: 0 !important
+  opacity: 0 !important;
+  margin-right: 5px !important;
 }
 
-.topic-list-item:hover .topicpreview-btn {
-  opacity: 1 !important;
+.topic-list-item:hover {
+
+  .topicpreview-btn,
+  .donottopic-btn {
+    opacity: 1 !important;
+  }
 }
 
 .topicpreview {

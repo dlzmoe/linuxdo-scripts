@@ -92,6 +92,8 @@
             <MenuDisableAutoplay :sort="23" v-model="settingData.checked24" />
             <!-- 回复悬浮按钮 -->
             <MenuShowRepltBtn :sort="24" v-model="settingData.checked25" />
+            <!-- 列表快速免打扰帖子 -->
+            <MenuDonotTopic :sort="25" v-model="settingData.checked26" />
           </div>
           <div class="menu-body-item">
             <!-- 自定义论坛 logo -->
@@ -180,6 +182,7 @@ import MenuNextPosts from "./components/BasicSettings/MenuNextPosts.vue";
 import MenuSelectedShare from "./components/BasicSettings/MenuSelectedShare.vue";
 import MenuDisableAutoplay from "./components/BasicSettings/MenuDisableAutoplay.vue";
 import MenuShowRepltBtn from "./components/BasicSettings/MenuShowRepltBtn.vue";
+import MenuDonotTopic from "./components/BasicSettings/MenuDonotTopic.vue";
 
 // 自定义文字
 import MenuOtherCss from "./components/CustomText/MenuOtherCss.vue";
@@ -277,6 +280,7 @@ export default {
     MenuShowRepltBtn,
     ReplyBtn,
     FloorLottery,
+    MenuDonotTopic,
   },
   data() {
     return {
@@ -328,6 +332,7 @@ export default {
         checked23: false,
         checked24: true,
         checked25: true,
+        checked26: true,
         usertags: [],
         gptdata: {
           value1: false,

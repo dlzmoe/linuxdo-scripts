@@ -94,6 +94,8 @@
             <MenuShowRepltBtn :sort="24" v-model="settingData.checked25" />
             <!-- 列表快速免打扰帖子 -->
             <MenuDonotTopic :sort="25" v-model="settingData.checked26" />
+            <!-- 自动切换黑夜模式 -->
+            <MenuAutoDark :sort="26" v-model="settingData.checked27" />
           </div>
           <div class="menu-body-item">
             <!-- 自定义论坛 logo -->
@@ -183,6 +185,7 @@ import MenuSelectedShare from "./components/BasicSettings/MenuSelectedShare.vue"
 import MenuDisableAutoplay from "./components/BasicSettings/MenuDisableAutoplay.vue";
 import MenuShowRepltBtn from "./components/BasicSettings/MenuShowRepltBtn.vue";
 import MenuDonotTopic from "./components/BasicSettings/MenuDonotTopic.vue";
+import MenuAutoDark from "./components/BasicSettings/MenuAutoDark.vue";
 
 // 自定义文字
 import MenuOtherCss from "./components/CustomText/MenuOtherCss.vue";
@@ -281,6 +284,7 @@ export default {
     ReplyBtn,
     FloorLottery,
     MenuDonotTopic,
+    MenuAutoDark,
   },
   data() {
     return {
@@ -333,6 +337,7 @@ export default {
         checked24: true,
         checked25: true,
         checked26: true,
+        checked27: false,
         usertags: [],
         gptdata: {
           value1: false,

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         linuxdo 增强插件
 // @namespace    https://github.com/dlzmoe/linuxdo-scripts
-// @version      0.3.51
+// @version      0.3.52
 // @author       dlzmoe
 // @description  linux.do 增强插件，功能持续更新，欢迎提出新想法！
 // @license      Apache-2.0
@@ -21,7 +21,7 @@
   'use strict';
 
   const name = "linuxdo-scripts";
-  const version = "0.3.51";
+  const version = "0.3.52";
   const author = "dlzmoe";
   const description = "An enhanced script for the linux.do forum";
   const type = "module";
@@ -611,12 +611,18 @@
             });
           });
         });
-        $(".topicpreview-opacity").click(function() {
-          $(".topicpreview").hide();
-          $(".topicpreview-container").html(
-            `<p style="text-align: center">正在加载中...</p> `
-          );
-        });
+        $(".topicpreview-opacity").click(this.closePreview);
+      },
+      closePreview() {
+        $(".topicpreview").hide();
+        $(".topicpreview-container").html(
+          `<p style="text-align: center">正在加载中...</p> `
+        );
+      },
+      handleKeyDown(event) {
+        if (event.key === "Escape") {
+          this.closePreview();
+        }
       }
     },
     created() {
@@ -636,7 +642,11 @@
             this.setClick();
           }
         }, 1e3);
+        document.addEventListener("keydown", this.handleKeyDown);
       }
+    },
+    beforeUnmount() {
+      document.removeEventListener("keydown", this.handleKeyDown);
     }
   };
   const _hoisted_1$H = { class: "item" };

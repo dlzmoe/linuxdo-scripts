@@ -92,13 +92,19 @@ export default {
       });
 
       // 关闭弹窗
-      $(".topicpreview-opacity").click(function () {
-        $(".topicpreview").hide();
-        $(".topicpreview-container").html(
-          `<p style="text-align: center">正在加载中...</p> `
-        );
-      });
+      $(".topicpreview-opacity").click(this.closePreview);
     },
+    closePreview() {
+      $(".topicpreview").hide();
+      $(".topicpreview-container").html(
+        `<p style="text-align: center">正在加载中...</p> `
+      );
+    },
+    handleKeyDown(event) {
+      if (event.key === 'Escape') {
+        this.closePreview();
+      }
+    }
   },
   created() {
     if (this.modelValue) {
@@ -118,7 +124,11 @@ export default {
           this.setClick();
         }
       }, 1000);
+      document.addEventListener('keydown', this.handleKeyDown);
     }
   },
+  beforeUnmount() {
+    document.removeEventListener('keydown', this.handleKeyDown);
+  }
 };
 </script>

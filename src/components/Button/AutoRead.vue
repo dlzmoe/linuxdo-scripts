@@ -65,6 +65,8 @@ export default {
         if (scrollPosition + windowHeight >= documentHeight - 1) {
           clearInterval(this.scrollInterval);
           this.scrollInterval = null;
+          this.isScrolling = false;
+          this.status = false;
         } else {
           window.scrollBy(0, distancePerStep);
         }

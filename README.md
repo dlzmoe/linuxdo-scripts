@@ -85,6 +85,12 @@ linux.do 增强插件，话题列表显示创建时间，显示楼层数，新�
 https://greasyfork.org/scripts/501827
 
 
+## 使用方法（小白法）
+首先我们需要安装一个用户脚本管理器，我用的是Greasemonkey 油猴子https://addons.mozilla.org/zh-CN/firefox/addon/greasemonkey/ 安装完成后在浏览器的扩展部分即可看到油猴子
+
+然后我们就可以点击上述链接，下载该脚本。下载完成后，点击浏览器上部的扩展，点击油猴子，就可以看到linuxdo增强插件，可以自主管理插件。
+
+最后我们打开https://linux.do/论坛就可以正常使用插件了。（但是我第一次安装使用卡了一下，多刷新几次就能出现插件了）
 ## 开发说明
 
 ```

@@ -100,6 +100,8 @@
             <MenuHiddenPlaceholder :sort="27" v-model="settingData.checked28" />
             <!-- 是否禁用浏览帖子时 URL 更新楼层数 -->
             <MenuDisableReplaceState :sort="28" v-model="settingData.checked29" />
+            <!-- 是否移除话题上的头像(减少网络请求) -->
+            <MenuRemovePostAvatar :sort="29" v-model="settingData.checked30" />
           </div>
           <div class="menu-body-item">
             <!-- 自定义论坛 logo -->
@@ -192,6 +194,7 @@ import MenuDonotTopic from "./components/BasicSettings/MenuDonotTopic.vue";
 import MenuAutoDark from "./components/BasicSettings/MenuAutoDark.vue";
 import MenuHiddenPlaceholder from "./components/BasicSettings/MenuHiddenPlaceholder.vue";
 import MenuDisableReplaceState from "./components/BasicSettings/MenuDisableReplaceState.vue";
+import MenuRemovePostAvatar from "./components/BasicSettings/MenuRemovePostAvatar.vue";
 
 // 自定义文字
 import MenuOtherCss from "./components/CustomText/MenuOtherCss.vue";
@@ -293,6 +296,7 @@ export default {
     MenuAutoDark,
     MenuHiddenPlaceholder,
     MenuDisableReplaceState,
+    MenuRemovePostAvatar,
   },
   data() {
     return {
@@ -348,6 +352,7 @@ export default {
         checked27: false,
         checked28: false,
         checked29: false,
+        checked30: false,
         usertags: [],
         gptdata: {
           value1: false,

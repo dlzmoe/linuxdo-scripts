@@ -119,6 +119,10 @@ yarn build # 打包构建
 
 > 关于自动构建 Release 包，需要修改 `package.json` 中的 `version` 版本号，并且在 `CHANGELOG.md` 中写入当前版本更新日志。
 
+### CSP 问题
+
+如果加载本地脚本出现 `Refused to load the script xxxxx` 可以使用 [Disable-CSP](https://github.com/lisonge/Disable-CSP) 临时把 CSP 禁用, 开发完成记得改回去。
+
 
 ## 更新日志
 

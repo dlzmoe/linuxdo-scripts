@@ -16,7 +16,10 @@ export default {
   created() {
     if (this.modelValue) {
       $("head").append(`<style>
-        .topic-list-data.posters{display:none!important}
+        .topic-list-data.posters,
+        .topic-list-avatar.pull-left{display:none!important}
+        
+        .topic-list-content.right{margin-left:0!important}
       </style>`);
     }
   },

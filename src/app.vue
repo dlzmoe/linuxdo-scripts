@@ -98,6 +98,8 @@
             <MenuAutoDark :sort="26" v-model="settingData.checked27" />
             <!-- 是否隐藏输入框提示文字 -->
             <MenuHiddenPlaceholder :sort="27" v-model="settingData.checked28" />
+            <!-- 是否禁用浏览帖子时 URL 更新楼层数 -->
+            <MenuDisableReplaceState :sort="28" v-model="settingData.checked29" />
           </div>
           <div class="menu-body-item">
             <!-- 自定义论坛 logo -->
@@ -189,6 +191,7 @@ import MenuShowRepltBtn from "./components/BasicSettings/MenuShowRepltBtn.vue";
 import MenuDonotTopic from "./components/BasicSettings/MenuDonotTopic.vue";
 import MenuAutoDark from "./components/BasicSettings/MenuAutoDark.vue";
 import MenuHiddenPlaceholder from "./components/BasicSettings/MenuHiddenPlaceholder.vue";
+import MenuDisableReplaceState from "./components/BasicSettings/MenuDisableReplaceState.vue";
 
 // 自定义文字
 import MenuOtherCss from "./components/CustomText/MenuOtherCss.vue";
@@ -289,6 +292,7 @@ export default {
     MenuDonotTopic,
     MenuAutoDark,
     MenuHiddenPlaceholder,
+    MenuDisableReplaceState,
   },
   data() {
     return {
@@ -343,6 +347,7 @@ export default {
         checked26: true,
         checked27: false,
         checked28: false,
+        checked29: false,
         usertags: [],
         gptdata: {
           value1: false,

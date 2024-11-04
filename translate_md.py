@@ -47,21 +47,16 @@ def main():
         print(f"Input file {INPUT_FILE} does not exist.")
         return
     
-    # 读取 Markdown 文件
     markdown_content = read_markdown_file(INPUT_FILE)
     
-    # 去除头尾的 ``` 语法
-    # 这里假设 markdown_content 的开头和结尾没有其他内容，只是代码块
     if markdown_content.startswith('```'):
         markdown_content = markdown_content[3:].strip()
     if markdown_content.endswith('```'):
         markdown_content = markdown_content[:-3].strip()
     
-    # 翻译文本
     translated_content = translate_text(markdown_content)
     
     if translated_content:
-        # 写入翻译后的内容到输出文件
         write_markdown_file(OUTPUT_FILE, translated_content)
         print(f"Translation completed. Output saved to {OUTPUT_FILE}.")
     else:

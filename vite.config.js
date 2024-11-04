@@ -25,7 +25,7 @@ export default defineConfig({
           pangu: cdn.jsdelivr("pangu", "dist/browser/pangu.js"),
           marked: cdn.jsdelivr("marked", "marked.min.js"),
         },
-        minify: false, // 不混淆
+        minify: false, // 是否混淆
       },
     }),
   ],

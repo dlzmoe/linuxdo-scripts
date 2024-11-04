@@ -1,3 +1,4 @@
+# 自动生成油猴文件、版本信息等数据
 import os
 import json
 import shutil

@@ -1,21 +1,25 @@
 <template>
   <div>
     <table class="menu-table">
-      <tr>
-        <th>用户名</th>
-        <th>标签</th>
-        <th>操作</th>
-      </tr>
-      <tr v-for="item in tableData" :key="item.name">
-        <td>{{ item.name }}</td>
-        <td>
-          {{ item.tags }}
-        </td>
-        <td>
-          <span class="span" @click="editTags(item)">修改</span>
-          <span class="span" @click="delTags(item)" style="color: #e00">删除！</span>
-        </td>
-      </tr>
+      <thead>
+        <tr>
+          <th>用户名</th>
+          <th>标签</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="item in tableData" :key="item.name">
+          <td>{{ item.name }}</td>
+          <td>
+            {{ item.tags }}
+          </td>
+          <td>
+            <span class="span" @click="editTags(item)">修改</span>
+            <span class="span" @click="delTags(item)" style="color: #e00">删除！</span>
+          </td>
+        </tr>
+      </tbody>
     </table>
   </div>
 </template>

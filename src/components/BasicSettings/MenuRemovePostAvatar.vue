@@ -1,6 +1,6 @@
 <template>
   <div class="item">
-    <div class="tit">{{ sort }}. 是否移除话题上的头像(减少网络请求)</div>
+    <div class="tit">{{ sort }}. 是否移除话题列表上的头像 (减少网络请求)</div>
     <input
       type="checkbox"
       :checked="modelValue"

@@ -1,1 +1,2 @@
-- 优化：移除话题列表头像适配移动端
+- 新增：翻译油猴脚本（整合自 [https://linux.do/t/topic/246430 | delph1s](https://linux.do/t/topic/246430)）
+- 调整：暂时移除自动展开父帖子，存在 bug 暂未修复

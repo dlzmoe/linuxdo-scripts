@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         linuxdo 增强插件
 // @namespace    https://github.com/dlzmoe/linuxdo-scripts
-// @version      0.3.58
+// @version      0.3.59
 // @author       dlzmoe
 // @description  linux.do 增强插件，功能持续更新，欢迎提出新想法！
 // @license      Apache-2.0
@@ -9,19 +9,22 @@
 // @match        *://linux.do/*
 // @require      https://unpkg.com/vue@3.5.12/dist/vue.global.prod.js
 // @require      https://unpkg.com/jquery@3.7.1/dist/jquery.min.js
-// @require      https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.js
-// @require      https://cdn.jsdelivr.net/npm/marked@14.1.3/marked.min.js
+// @require      https://unpkg.com/pangu@4.0.7/dist/browser/pangu.js
+// @require      https://unpkg.com/marked@14.1.3/marked.min.js
+// @require      https://unpkg.com/pinyin-pro@3.26.0//dist/index.js
 // @grant        GM_addStyle
+// @grant        GM_getValue
+// @grant        GM_setValue
 // @grant        GM_xmlhttpRequest
 // ==/UserScript==
 
-(t=>{if(typeof GM_addStyle=="function"){GM_addStyle(t);return}const i=document.createElement("style");i.textContent=t,document.head.append(i)})(' input[type=text][data-v-2be3e9ac]{width:100px!important;outline:none;height:24px;border:1px solid #b6b6b6;border-radius:4px;margin-left:10px;padding:0 10px;box-sizing:border-box}.emojiPicker{top:0;left:100%;position:absolute;display:grid;grid-template-columns:repeat(12,1fr);gap:10px;height:100%;overflow:auto;background-color:#000c;padding:10px;border-radius:5px;z-index:9}.emojiPicker img{cursor:pointer;width:30px;height:30px}.sidebar-section-header-caret.right{transform:rotate(-90deg)}.item select[data-v-d780d688]{height:28px;border:1px solid #b6b6b6;border-radius:4px;width:180px;margin-left:10px;cursor:pointer}.item[data-v-e33f1de9]{border:none!important}.item a[data-v-e33f1de9]:hover{text-decoration:underline}.item[data-v-cb743585],.item[data-v-396734d2],.item[data-v-f84417d4],.item[data-v-77789f1e]{border:none!important}input[type=text][data-v-ac149a76]{width:100px!important;outline:none;height:24px;border:1px solid #b6b6b6;border-radius:4px;margin-left:10px;padding:0 10px;box-sizing:border-box}.linxudoscripts-tag{background:#29a6a9;color:#fff;font-size:14px!important;padding:0 10px;height:26px;text-align:center;display:inline-flex!important;align-items:center;justify-content:center;border-radius:5px}.menu-table{width:100%}.menu-table td,.menu-table th{padding:10px;font-size:14px}.menu-table .span{cursor:pointer}.menu-table .span+.span{margin-left:10px}.item[data-v-d1d5d03b]{border:none}.item[data-v-b5335091]{display:block!important}p[data-v-b5335091]{margin:8px 0!important}ul[data-v-b5335091]{display:flex;flex-wrap:wrap;justify-content:space-between;list-style:none;padding:0}ul li[data-v-b5335091]{width:48%;margin-bottom:30px}input[type=radio][data-v-b5335091]{transform:scale(1.2)}.ls-flex[data-v-b5335091]{display:flex;align-content:center;margin-bottom:10px;cursor:pointer}.ls-flex input[data-v-b5335091]{margin-right:10px}.ls-flex label[data-v-b5335091]{cursor:pointer;font-weight:300}.item[data-v-b0378f6f]{border:none!important;padding:0!important;margin-top:15px;position:relative}.item .tit[data-v-b0378f6f]{white-space:nowrap;width:160px}.item input[data-v-b0378f6f]{margin:0;width:100%}.item em[data-v-b0378f6f]{position:absolute;right:10px;top:50%;transform:translateY(-50%);cursor:pointer;display:flex;align-items:center;justify-content:center}.item em svg[data-v-b0378f6f]{color:#999}.item .lxwebdavpassword[data-v-b0378f6f]{filter:blur(5px)}.item .lxwebdavpassword.act[data-v-b0378f6f]{filter:none}.btnwrapper[data-v-b0378f6f]{margin-top:20px}.post-stream.lookopwrapactive .topic-post{display:none!important}.post-stream.lookopwrapactive .topic-post.topic-owner{display:block!important}.el-button.act[data-v-6520db1a]{background:linear-gradient(to right,var(--tertiary-low),var(--tertiary-high))!important}@keyframes breathAnimation-57dbaeb5{0%,to{transform:scale(1);box-shadow:0 0 5px #00000080}50%{transform:scale(1.1);box-shadow:0 0 10px #000000b3}}.breath-animation[data-v-57dbaeb5]{animation:breathAnimation-57dbaeb5 4s ease-in-out infinite}.minimized[data-v-57dbaeb5]{width:50px!important;height:50px!important;border-radius:50%!important;padding:0!important;overflow:hidden;cursor:pointer}#linuxDoLevelPopupContent[data-v-57dbaeb5]{line-height:1.6;position:fixed;bottom:20px;right:90px;width:250px;height:auto;background-color:var(--tertiary-low);padding:15px;z-index:10000;font-size:14px;border-radius:5px}#linuxDoUserSearch[data-v-57dbaeb5]{width:100%;margin-top:10px}.button[data-v-57dbaeb5]{margin-top:10px}.minimize-button[data-v-57dbaeb5]{position:absolute;top:5px;right:5px;z-index:10001;background:transparent;border:none;cursor:pointer;border-radius:50%;text-align:center;line-height:40px;width:40px;height:40px}.el-button.act[data-v-64839780]{background:linear-gradient(to right,var(--tertiary-low),var(--tertiary-high))!important}.el-button.act svg[data-v-64839780]{animation:spin-64839780 3s linear infinite}@keyframes spin-64839780{0%{transform:rotate(0)}to{transform:rotate(360deg)}}.linuxdoscripts-aidialog{position:fixed;top:0;left:-100%;width:500px;height:100vh;background:#fff;box-shadow:1px 2px 5px #0000003d;z-index:999;padding-top:60px;transition:all .1s linear;opacity:0;visibility:hidden;overflow:hidden}.linuxdoscripts-aidialog.act{left:0;opacity:1;visibility:inherit;overflow:inherit}a[data-v-45c51ed7]:hover{text-decoration:underline}.item-foot[data-v-45c51ed7]{display:flex;flex-direction:column;align-items:flex-start;position:absolute;bottom:70px;left:22px;line-height:2}.item-foot img[data-v-45c51ed7]{width:auto!important;height:20px!important}.UsageTip{position:static;margin:0;font-size:14px;line-height:1.6;background:var(--d-sidebar-background);color:var(--primary-medium)}.UsageTip>div{margin:10px 0}.UsageTip button{padding:8px 10px;margin-bottom:10px;border:none;outline:none;border-radius:4px}.menu-body[data-v-649030ce]{padding:0 15px}.inner[data-v-649030ce]{display:flex;align-items:center;margin-bottom:10px}.inner label[data-v-649030ce]{width:70px;font-weight:400}.inner input[data-v-649030ce]{flex:1;margin:0;max-width:300px}.timeline-container .topic-timeline .timeline-scrollarea{max-width:100px!important}#linuxdoscripts{font-size:14px}#linuxdoscripts input[type=text]{width:100%;background:var(--d-input-bg-color)}#linuxdoscripts input[type=checkbox]{transform:scale(1.2)}#linuxdoscripts #menu_suspendedball{display:none}#linuxdoscripts img{vertical-align:bottom;max-width:100%;height:auto}#linuxdoscripts .close{position:absolute;right:10px;top:45%;cursor:pointer;font-size:34px;color:#999;transform:translateY(-50%) rotate(45deg)}#linuxdoscripts .setting-btn{z-index:199;position:fixed;bottom:20px;right:20px}#linuxdoscripts .setting-btn .el-button{margin:15px 0 0;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--tertiary-low);font-size:14px;cursor:pointer;border:none}#linuxdoscripts .setting-btn .el-button svg{margin:0}#linuxdoscripts .setting-btn .el-button:hover{opacity:.9}#linuxdoscripts .hint{margin-top:5px;color:#d94f4f;font-size:14px}#linuxdoscripts dialog{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:700px;max-width:100vw;background:var(--header_background);color:var(--primary);box-shadow:#0000 0 0,#0000 0 0,#0000001a 0 20px 25px -5px,#0000001a 0 8px 10px -6px;border-radius:16px;padding:15px;z-index:99999;overflow-x:hidden;box-sizing:border-box;margin:0;border:none;outline:none}#linuxdoscripts dialog .menu-about{padding:5px 0;line-height:2}#linuxdoscripts dialog .menu-about .initialization{color:#999;border-bottom:1px dashed #999;cursor:pointer}#linuxdoscripts dialog .menu-about .initialization:hover{color:#333;border-color:#333}#linuxdoscripts dialog p{margin:0;font-size:14px}#linuxdoscripts .menu-header{padding:.5rem .5rem 1rem;border-bottom:1px solid #eee;position:relative}#linuxdoscripts .title{font-size:18px;font-weight:600;display:flex;align-items:center}#linuxdoscripts .title img{margin-left:10px}#linuxdoscripts button{outline:0;min-width:80px;height:32px;border:none;background:var(--tertiary);text-shadow:0 -1px 0 rgba(0,0,0,.12);box-shadow:0 2px #0000000b;border-radius:4px;padding:0 10px;box-sizing:border-box;transition:all .1s linear;color:var(--secondary)}#linuxdoscripts button+button{margin-left:8px}#linuxdoscripts button.saveload{background:#3d9b93}#linuxdoscripts button.detection{background:#810000}#linuxdoscripts button:hover{opacity:.9}#linuxdoscripts .menu-flex{display:flex;justify-content:space-between;align-items:flex-start}#linuxdoscripts .menu-nav{width:140px;display:flex;flex-direction:column;margin:0 20px 0 0;padding-top:15px}#linuxdoscripts .menu-nav li{border-radius:4px;height:32px;width:100%;margin-bottom:5px;box-sizing:border-box;padding:0 10px;display:inline-flex;align-items:center;justify-content:flex-start;font-size:14px;cursor:pointer;line-height:1}#linuxdoscripts .menu-nav li svg{width:16px;margin-right:5px}#linuxdoscripts .menu-nav li.act{background:var(--bbcode-highlight)}#linuxdoscripts .menu-body{flex:1;height:480px;overflow-y:auto;padding-right:10px}#linuxdoscripts .menu-body::-webkit-scrollbar{height:8px;width:8px}#linuxdoscripts .menu-body::-webkit-scrollbar-corner{background:none}#linuxdoscripts .menu-body::-webkit-scrollbar-thumb{background:#dee0e1;border-radius:8px}#linuxdoscripts .menu-body .menu-body-item{display:none}#linuxdoscripts .menu-body .menu-body-item.act{display:block}#linuxdoscripts .menu-footer{display:flex;margin-top:10px;padding-top:6px}#linuxdoscripts .import{margin-left:auto!important}#linuxdoscripts .import,#linuxdoscripts .export{background:#d1f0ff;color:#559095}#linuxdoscripts .floorlottery{background:#ffb003}#linuxdoscripts .menu-body-item{padding-bottom:30px}#linuxdoscripts .menu-body-item .item{border-bottom:1px solid rgba(0,0,0,.05);padding:15px 0;display:flex;align-items:center;justify-content:space-between}#linuxdoscripts .menu-body-item .item input[type=checkbox]{width:30px;height:16px;position:relative;background-color:#dcdfe6;box-shadow:#dfdfdf 0 0 inset;border-radius:20px;background-clip:content-box;display:inline-block;appearance:none;-webkit-appearance:none;-moz-appearance:none;-webkit-user-select:none;user-select:none;outline:none;padding:0}#linuxdoscripts .menu-body-item .item input[type=checkbox]:before{content:"";position:absolute;width:12px;height:12px;background-color:#fff;border-radius:50%;left:2px;top:0;bottom:0;margin:auto;transition:.3s}#linuxdoscripts .menu-body-item .item input[type=checkbox]:checked{background-color:var(--tertiary);transition:.6s}#linuxdoscripts .menu-body-item .item input[type=checkbox]:checked:before{left:14px;transition:.3s}#linuxdoscripts textarea{font-family:inherit;width:100%;min-height:100px!important;border:1px solid #999;outline:0;padding:5px;font-size:14px;margin:5px 0 0;resize:none;border-radius:0;color:var(--d-input-text-color);background:var(--d-input-bg-color)}#linuxdoscripts textarea:focus{border-color:var(--tertiary);outline:2px solid var(--tertiary);outline-offset:-2px}#linuxdoscripts #floorlotterloading img{width:50px;height:50px}#linuxdoscripts .floorlotterywrap{display:none;width:400px;height:300px;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);margin:0;z-index:999}#linuxdoscripts .floorlotterywrap{width:400px;height:300px}#linuxdoscripts .el-checkbox__inner{border:1px solid #979797}#linuxdoscripts label{margin:0}.linuxdoscripts-opacity{display:none;position:fixed;left:0;top:0;width:100vw;height:100vh;background:#00000080;z-index:9999}.linuxlevel.four{background:linear-gradient(to right,red,#00f);-webkit-background-clip:text;color:transparent}.topic-post{position:relative}.linuxfloor{display:flex;color:var(--tertiary);width:30px;height:30px;align-items:center;justify-content:center;border-radius:6px;font-size:16px;margin-left:10px}.signature-p{color:#279a36;font-size:14px;word-break:break-word}.topic-list .views{font-weight:400!important;white-space:nowrap!important}.createreply{display:flex;flex-direction:column;max-width:300px}.createreply button{margin-bottom:10px;justify-content:flex-start;text-align:left}.topicpreview-btn,.donottopic-btn{padding:4px 12px!important;font-size:14px!important;opacity:0!important;margin-right:5px!important}.topic-list-item:hover .topicpreview-btn,.topic-list-item:hover .donottopic-btn{opacity:1!important}.topicpreview{position:fixed;top:0;left:0;z-index:99999;width:100vw;height:100vh;display:flex;justify-content:center;align-items:center;display:none}.topicpreview .topicpreview-container{padding:30px 0;border-radius:5px;width:100%;max-width:800px;overflow-y:auto;height:80vh;z-index:10;background:var(--header_background);position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}.topicpreview .topicpreview-container .topicpreview-title{font-size:22px;font-weight:600;padding:0 30px}.topicpreview .topicpreview-container .topicpreview-date{padding:0 30px;color:#666}.topicpreview .topicpreview-container .topicpreview-content>.item{display:flex;align-items:flex-start;padding:20px 30px}.topicpreview .topicpreview-container .topicpreview-content>.item .itemfloor{width:50px;text-align:left;font-size:16px;padding-top:15px;color:#25b4cf}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost{flex:1;background:var(--tertiary-low);padding:15px;border-radius:10px;font-size:15px;word-break:break-all}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost pre code{max-width:620px}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost img{max-width:100%;max-height:100%;height:auto}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemname{font-size:16px;color:#8f3a3a;display:flex;justify-content:space-between;align-items:center}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemname span{color:#9e9e9e;margin-left:20px}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemdate{color:#b9b9b9;font-size:16px;margin-left:auto}.topicpreview-opacity{position:absolute;top:0;left:0;width:100%;height:100%;opacity:1;background:#0009;z-index:9}.body-preview .sidebar-wrapper{display:none!important}body.body-preview #main-outlet-wrapper{display:block!important;padding-left:50px!important}.body-preview .d-header-wrap,.body-preview .menu_suspendedball{display:none!important}.post-activity{white-space:nowrap;display:inline-block;width:100%;text-align:left}.d-header img{height:var(--d-logo-height);width:auto;max-width:100%;object-fit:contain}.aicreated-btn,.aireplay-btn{outline:none;border:none;background:var(--tertiary-low);display:inline-flex;align-items:center;justify-content:center;line-height:1;font-size:14px;padding:4px 10px;border-radius:3px;margin-bottom:10px;margin-right:10px}.aicreated-btn{display:none}.gpt-summary-wrap{background:var(--tertiary-low);border-radius:5px;padding:10px;font-size:14px;margin:0 0 10px;line-height:1.6}.gpt-summary-wrap .airegenerate{display:none;margin-top:6px;outline:none;border:1px solid #eee;background:#ffe27d;color:#626262;padding:4px 10px;cursor:pointer;border-radius:3px}.aicreatenewtopictitle{margin-left:20px}.aicreatenewtopictitle:hover{text-decoration:underline;cursor:pointer}.aireply-popup{z-index:999999;position:fixed;top:10%;left:50%;transform:translate(-50%);width:500px;padding:20px;background:var(--tertiary-low);color:#333;box-shadow:#0000 0 0,#0000 0 0,#0000001a 0 20px 25px -5px,#0000001a 0 8px 10px -6px;border-radius:10px;display:none}.aireply-popup .aireply-popup-text{width:100%;height:120px}.aireply-popup .aireply-popup-close{outline:0;min-width:80px;height:32px;border:none;background-color:var(--header_background);text-shadow:0 -1px 0 rgba(0,0,0,.12);box-shadow:0 2px #0000000b;border-radius:4px;padding:0 10px;box-sizing:border-box;transition:all .1s linear}#messageToast{z-index:9999999;position:fixed;left:50%;transform:translate(-50%);top:10%;width:100%;display:flex;flex-direction:column;align-items:center}#messageToast .messageToast-text{background:var(--tertiary-low);color:var(--primary);border-radius:6px;width:auto;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;text-align:center;line-height:1;height:40px;min-width:240px;font-size:16px;padding:0 30px;box-sizing:border-box;margin-bottom:10px;opacity:0;animation:messageToast .2s forwards}@keyframes messageToast{0%{transform:translateY(10px);opacity:0}to{transform:translateY(0);opacity:1}}.pangutext{cursor:pointer;margin-left:20px}.pangutext:hover{color:#279a36}.navigation-container.is-active{position:fixed;top:65px;background:var(--header_background);z-index:9;box-shadow:1px 3px 7px #0003;margin-left:-30px;padding-left:30px;border-radius:5px;padding-top:10px;padding-right:20px;min-width:1000px;width:auto}.topic-body.clearfix.highlighted{background-color:var(--tertiary-low)!important} ');
+(t=>{if(typeof GM_addStyle=="function"){GM_addStyle(t);return}const i=document.createElement("style");i.textContent=t,document.head.append(i)})(' input[type=text][data-v-2be3e9ac]{width:100px!important;outline:none;height:24px;border:1px solid #b6b6b6;border-radius:4px;margin-left:10px;padding:0 10px;box-sizing:border-box}.emojiPicker{top:0;left:100%;position:absolute;display:grid;grid-template-columns:repeat(12,1fr);gap:10px;height:100%;overflow:auto;background-color:#000c;padding:10px;border-radius:5px;z-index:9}.emojiPicker img{cursor:pointer;width:30px;height:30px}.sidebar-section-header-caret.right{transform:rotate(-90deg)}.item select[data-v-d780d688]{height:28px;border:1px solid #b6b6b6;border-radius:4px;width:180px;margin-left:10px;cursor:pointer}#multi-lang-say-config-button{display:none}p[data-v-fb78a085]{margin-top:1em!important}.item[data-v-e33f1de9]{border:none!important}.item a[data-v-e33f1de9]:hover{text-decoration:underline}.item[data-v-cb743585],.item[data-v-396734d2],.item[data-v-f84417d4],.item[data-v-77789f1e]{border:none!important}input[type=text][data-v-ac149a76]{width:100px!important;outline:none;height:24px;border:1px solid #b6b6b6;border-radius:4px;margin-left:10px;padding:0 10px;box-sizing:border-box}.linxudoscripts-tag{background:#29a6a9;color:#fff;font-size:14px!important;padding:0 10px;height:26px;text-align:center;display:inline-flex!important;align-items:center;justify-content:center;border-radius:5px}.menu-table{width:100%}.menu-table td,.menu-table th{padding:10px;font-size:14px}.menu-table .span{cursor:pointer}.menu-table .span+.span{margin-left:10px}.item[data-v-d1d5d03b]{border:none}.item[data-v-b5335091]{display:block!important}p[data-v-b5335091]{margin:8px 0!important}ul[data-v-b5335091]{display:flex;flex-wrap:wrap;justify-content:space-between;list-style:none;padding:0}ul li[data-v-b5335091]{width:48%;margin-bottom:30px}input[type=radio][data-v-b5335091]{transform:scale(1.2)}.ls-flex[data-v-b5335091]{display:flex;align-content:center;margin-bottom:10px;cursor:pointer}.ls-flex input[data-v-b5335091]{margin-right:10px}.ls-flex label[data-v-b5335091]{cursor:pointer;font-weight:300}.item[data-v-b0378f6f]{border:none!important;padding:0!important;margin-top:15px;position:relative}.item .tit[data-v-b0378f6f]{white-space:nowrap;width:160px}.item input[data-v-b0378f6f]{margin:0;width:100%}.item em[data-v-b0378f6f]{position:absolute;right:10px;top:50%;transform:translateY(-50%);cursor:pointer;display:flex;align-items:center;justify-content:center}.item em svg[data-v-b0378f6f]{color:#999}.item .lxwebdavpassword[data-v-b0378f6f]{filter:blur(5px)}.item .lxwebdavpassword.act[data-v-b0378f6f]{filter:none}.btnwrapper[data-v-b0378f6f]{margin-top:20px}.post-stream.lookopwrapactive .topic-post{display:none!important}.post-stream.lookopwrapactive .topic-post.topic-owner{display:block!important}.el-button.act[data-v-6520db1a]{background:linear-gradient(to right,var(--tertiary-low),var(--tertiary-high))!important}@keyframes breathAnimation-57dbaeb5{0%,to{transform:scale(1);box-shadow:0 0 5px #00000080}50%{transform:scale(1.1);box-shadow:0 0 10px #000000b3}}.breath-animation[data-v-57dbaeb5]{animation:breathAnimation-57dbaeb5 4s ease-in-out infinite}.minimized[data-v-57dbaeb5]{width:50px!important;height:50px!important;border-radius:50%!important;padding:0!important;overflow:hidden;cursor:pointer}#linuxDoLevelPopupContent[data-v-57dbaeb5]{line-height:1.6;position:fixed;bottom:20px;right:90px;width:250px;height:auto;background-color:var(--tertiary-low);padding:15px;z-index:10000;font-size:14px;border-radius:5px}#linuxDoUserSearch[data-v-57dbaeb5]{width:100%;margin-top:10px}.button[data-v-57dbaeb5]{margin-top:10px}.minimize-button[data-v-57dbaeb5]{position:absolute;top:5px;right:5px;z-index:10001;background:transparent;border:none;cursor:pointer;border-radius:50%;text-align:center;line-height:40px;width:40px;height:40px}.el-button.act[data-v-64839780]{background:linear-gradient(to right,var(--tertiary-low),var(--tertiary-high))!important}.el-button.act svg[data-v-64839780]{animation:spin-64839780 3s linear infinite}@keyframes spin-64839780{0%{transform:rotate(0)}to{transform:rotate(360deg)}}.linuxdoscripts-aidialog{position:fixed;top:0;left:-100%;width:500px;height:100vh;background:#fff;box-shadow:1px 2px 5px #0000003d;z-index:999;padding-top:60px;transition:all .1s linear;opacity:0;visibility:hidden;overflow:hidden}.linuxdoscripts-aidialog.act{left:0;opacity:1;visibility:inherit;overflow:inherit}a[data-v-45c51ed7]:hover{text-decoration:underline}.item-foot[data-v-45c51ed7]{display:flex;flex-direction:column;align-items:flex-start;position:absolute;bottom:70px;left:22px;line-height:2}.item-foot img[data-v-45c51ed7]{width:auto!important;height:20px!important}.UsageTip{position:static;margin:0;font-size:14px;line-height:1.6;background:var(--d-sidebar-background);color:var(--primary-medium)}.UsageTip>div{margin:10px 0}.UsageTip button{padding:8px 10px;margin-bottom:10px;border:none;outline:none;border-radius:4px}.menu-body[data-v-649030ce]{padding:0 15px}.inner[data-v-649030ce]{display:flex;align-items:center;margin-bottom:10px}.inner label[data-v-649030ce]{width:70px;font-weight:400}.inner input[data-v-649030ce]{flex:1;margin:0;max-width:300px}.timeline-container .topic-timeline .timeline-scrollarea{max-width:100px!important}#linuxdoscripts{font-size:14px}#linuxdoscripts input[type=text]{width:100%;background:var(--d-input-bg-color)}#linuxdoscripts input[type=checkbox]{transform:scale(1.2)}#linuxdoscripts #menu_suspendedball{display:none}#linuxdoscripts img{vertical-align:bottom;max-width:100%;height:auto}#linuxdoscripts .close{position:absolute;right:10px;top:45%;cursor:pointer;font-size:34px;color:#999;transform:translateY(-50%) rotate(45deg)}#linuxdoscripts .setting-btn{z-index:199;position:fixed;bottom:20px;right:20px}#linuxdoscripts .setting-btn .el-button{margin:15px 0 0;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--tertiary-low);font-size:14px;cursor:pointer;border:none}#linuxdoscripts .setting-btn .el-button svg{margin:0}#linuxdoscripts .setting-btn .el-button:hover{opacity:.9}#linuxdoscripts .hint{margin-top:5px;color:#d94f4f;font-size:14px}#linuxdoscripts dialog{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:700px;max-width:100vw;background:var(--header_background);color:var(--primary);box-shadow:0 8px 32px #0000001a;border-radius:16px;padding:15px;z-index:99999;overflow-x:hidden;box-sizing:border-box;margin:0;border:none;outline:none}#linuxdoscripts dialog .menu-about{padding:5px 0;line-height:2}#linuxdoscripts dialog .menu-about .initialization{color:#999;border-bottom:1px dashed #999;cursor:pointer}#linuxdoscripts dialog .menu-about .initialization:hover{color:#333;border-color:#333}#linuxdoscripts dialog p{margin:0;font-size:14px}#linuxdoscripts .menu-header{padding:.5rem .5rem 1rem;border-bottom:1px solid #eee;position:relative}#linuxdoscripts .title{font-size:18px;font-weight:600;display:flex;align-items:center}#linuxdoscripts .title img{margin-left:10px}#linuxdoscripts button{padding:10px 16px;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer;transition:all .2s ease;border:none;display:flex;align-items:center;justify-content:center}#linuxdoscripts button+button{margin-left:8px}#linuxdoscripts button.saveload{background:#000;color:#fff}#linuxdoscripts button:hover{opacity:.9}#linuxdoscripts .menu-flex{display:flex;justify-content:space-between;align-items:flex-start}#linuxdoscripts .menu-nav{width:140px;display:flex;flex-direction:column;margin:0 20px 0 0;padding-top:15px}#linuxdoscripts .menu-nav li{border-radius:4px;height:32px;width:100%;margin-bottom:5px;box-sizing:border-box;padding:0 10px;display:inline-flex;align-items:center;justify-content:flex-start;font-size:14px;cursor:pointer;line-height:1}#linuxdoscripts .menu-nav li svg{width:16px;margin-right:5px}#linuxdoscripts .menu-nav li.act{background:var(--bbcode-highlight)}#linuxdoscripts .menu-body{flex:1;height:480px;overflow-y:auto;padding-right:10px}#linuxdoscripts .menu-body::-webkit-scrollbar{height:8px;width:8px}#linuxdoscripts .menu-body::-webkit-scrollbar-corner{background:none}#linuxdoscripts .menu-body::-webkit-scrollbar-thumb{background:#dee0e1;border-radius:8px}#linuxdoscripts .menu-body .menu-body-item{display:none}#linuxdoscripts .menu-body .menu-body-item.act{display:block}#linuxdoscripts .menu-footer{display:flex;margin-top:10px;padding-top:6px}#linuxdoscripts .import{margin-left:auto!important}#linuxdoscripts .import,#linuxdoscripts .export{background:#d1f0ff;color:#559095}#linuxdoscripts .floorlottery{background:#ffb003}#linuxdoscripts .menu-body-item{padding-bottom:30px}#linuxdoscripts .menu-body-item .item{border-bottom:1px solid rgba(0,0,0,.05);padding:15px 0;display:flex;align-items:center;justify-content:space-between}#linuxdoscripts .menu-body-item .item input[type=checkbox]{width:30px;height:16px;position:relative;background-color:#dcdfe6;box-shadow:#dfdfdf 0 0 inset;border-radius:20px;background-clip:content-box;display:inline-block;appearance:none;-webkit-appearance:none;-moz-appearance:none;-webkit-user-select:none;user-select:none;outline:none;padding:0}#linuxdoscripts .menu-body-item .item input[type=checkbox]:before{content:"";position:absolute;width:12px;height:12px;background-color:#fff;border-radius:50%;left:2px;top:0;bottom:0;margin:auto;transition:.3s}#linuxdoscripts .menu-body-item .item input[type=checkbox]:checked{background-color:var(--tertiary);transition:.6s}#linuxdoscripts .menu-body-item .item input[type=checkbox]:checked:before{left:14px;transition:.3s}#linuxdoscripts textarea{font-family:inherit;width:100%;min-height:100px!important;border:1px solid #999;outline:0;padding:5px;font-size:14px;margin:5px 0 0;resize:none;border-radius:0;color:var(--d-input-text-color);background:var(--d-input-bg-color)}#linuxdoscripts textarea:focus{border-color:var(--tertiary);outline:2px solid var(--tertiary);outline-offset:-2px}#linuxdoscripts #floorlotterloading img{width:50px;height:50px}#linuxdoscripts .floorlotterywrap{display:none;width:400px;height:300px;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);margin:0;z-index:999}#linuxdoscripts .floorlotterywrap{width:400px;height:300px}#linuxdoscripts .el-checkbox__inner{border:1px solid #979797}#linuxdoscripts label{margin:0}.linuxdoscripts-opacity{display:none;position:fixed;left:0;top:0;width:100vw;height:100vh;background:#00000080;z-index:9999}.linuxlevel.four{background:linear-gradient(to right,red,#00f);-webkit-background-clip:text;color:transparent}.topic-post{position:relative}.linuxfloor{display:flex;color:var(--tertiary);width:30px;height:30px;align-items:center;justify-content:center;border-radius:6px;font-size:16px;margin-left:10px}.signature-p{color:#279a36;font-size:14px;word-break:break-word}.topic-list .views{font-weight:400!important;white-space:nowrap!important}.createreply{display:flex;flex-direction:column;max-width:300px}.createreply button{margin-bottom:10px;justify-content:flex-start;text-align:left}.topicpreview-btn,.donottopic-btn{padding:4px 12px!important;font-size:14px!important;opacity:0!important;margin-right:5px!important}.topic-list-item:hover .topicpreview-btn,.topic-list-item:hover .donottopic-btn{opacity:1!important}.topicpreview{position:fixed;top:0;left:0;z-index:99999;width:100vw;height:100vh;display:flex;justify-content:center;align-items:center;display:none}.topicpreview .topicpreview-container{padding:30px 0;border-radius:5px;width:100%;max-width:800px;overflow-y:auto;height:80vh;z-index:10;background:var(--header_background);position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}.topicpreview .topicpreview-container .topicpreview-title{font-size:22px;font-weight:600;padding:0 30px}.topicpreview .topicpreview-container .topicpreview-date{padding:0 30px;color:#666}.topicpreview .topicpreview-container .topicpreview-content>.item{display:flex;align-items:flex-start;padding:20px 30px}.topicpreview .topicpreview-container .topicpreview-content>.item .itemfloor{width:50px;text-align:left;font-size:16px;padding-top:15px;color:#25b4cf}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost{flex:1;background:var(--tertiary-low);padding:15px;border-radius:10px;font-size:15px;word-break:break-all}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost pre code{max-width:620px}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost img{max-width:100%;max-height:100%;height:auto}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemname{font-size:16px;color:#8f3a3a;display:flex;justify-content:space-between;align-items:center}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemname span{color:#9e9e9e;margin-left:20px}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemdate{color:#b9b9b9;font-size:16px;margin-left:auto}.topicpreview-opacity{position:absolute;top:0;left:0;width:100%;height:100%;opacity:1;background:#0009;z-index:9}.body-preview .sidebar-wrapper{display:none!important}body.body-preview #main-outlet-wrapper{display:block!important;padding-left:50px!important}.body-preview .d-header-wrap,.body-preview .menu_suspendedball{display:none!important}.post-activity{white-space:nowrap;display:inline-block;width:100%;text-align:left}.d-header img{height:var(--d-logo-height);width:auto;max-width:100%;object-fit:contain}.aicreated-btn,.aireplay-btn{outline:none;border:none;background:var(--tertiary-low);display:inline-flex;align-items:center;justify-content:center;line-height:1;font-size:14px;padding:4px 10px;border-radius:3px;margin-bottom:10px;margin-right:10px}.aicreated-btn{display:none}.gpt-summary-wrap{background:var(--tertiary-low);border-radius:5px;padding:10px;font-size:14px;margin:0 0 10px;line-height:1.6}.gpt-summary-wrap .airegenerate{display:none;margin-top:6px;outline:none;border:1px solid #eee;background:#ffe27d;color:#626262;padding:4px 10px;cursor:pointer;border-radius:3px}.aicreatenewtopictitle{margin-left:20px}.aicreatenewtopictitle:hover{text-decoration:underline;cursor:pointer}.aireply-popup{z-index:999999;position:fixed;top:10%;left:50%;transform:translate(-50%);width:500px;padding:20px;background:var(--tertiary-low);color:#333;box-shadow:#0000 0 0,#0000 0 0,#0000001a 0 20px 25px -5px,#0000001a 0 8px 10px -6px;border-radius:10px;display:none}.aireply-popup .aireply-popup-text{width:100%;height:120px}.aireply-popup .aireply-popup-close{outline:0;min-width:80px;height:32px;border:none;background-color:var(--header_background);text-shadow:0 -1px 0 rgba(0,0,0,.12);box-shadow:0 2px #0000000b;border-radius:4px;padding:0 10px;box-sizing:border-box;transition:all .1s linear}#messageToast{z-index:9999999;position:fixed;left:50%;transform:translate(-50%);top:10%;width:100%;display:flex;flex-direction:column;align-items:center}#messageToast .messageToast-text{background:var(--tertiary-low);color:var(--primary);border-radius:6px;width:auto;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;text-align:center;line-height:1;height:40px;min-width:240px;font-size:16px;padding:0 30px;box-sizing:border-box;margin-bottom:10px;opacity:0;animation:messageToast .2s forwards}@keyframes messageToast{0%{transform:translateY(10px);opacity:0}to{transform:translateY(0);opacity:1}}.pangutext{cursor:pointer;margin-left:20px}.pangutext:hover{color:#279a36}.navigation-container.is-active{position:fixed;top:65px;background:var(--header_background);z-index:9;box-shadow:1px 3px 7px #0003;margin-left:-30px;padding-left:30px;border-radius:5px;padding-top:10px;padding-right:20px;min-width:1000px;width:auto}.topic-body.clearfix.highlighted{background-color:var(--tertiary-low)!important} ');
 
 (function (vue, pangu, marked, $$1) {
   'use strict';
 
   const name = "linuxdo-scripts";
-  const version = "0.3.58";
+  const version = "0.3.59";
   const author = "dlzmoe";
   const description = "An enhanced script for the linux.do forum";
   const type = "module";
@@ -35,6 +38,7 @@
     jquery: "^3.7.1",
     marked: "^14.1.1",
     pangu: "^4.0.7",
+    "pinyin-pro": "^3.26.0",
     vue: "^3.4.27",
     webdav: "^5.7.1"
   };
@@ -64,7 +68,7 @@
     }
     return target;
   };
-  const _sfc_main$X = {
+  const _sfc_main$Z = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     data() {
@@ -112,21 +116,21 @@
       this.removeEventListeners();
     }
   };
-  const _hoisted_1$S = { class: "item" };
-  const _hoisted_2$J = { class: "tit" };
-  const _hoisted_3$A = ["checked"];
-  function _sfc_render$X(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$S, [
-      vue.createElementVNode("div", _hoisted_2$J, vue.toDisplayString($props.sort) + ". 是否新标签页打开话题", 1),
+  const _hoisted_1$U = { class: "item" };
+  const _hoisted_2$K = { class: "tit" };
+  const _hoisted_3$B = ["checked"];
+  function _sfc_render$Z(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$U, [
+      vue.createElementVNode("div", _hoisted_2$K, vue.toDisplayString($props.sort) + ". 是否新标签页打开话题", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$A)
+      }, null, 40, _hoisted_3$B)
     ]);
   }
-  const MenuOpenpostblank = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["render", _sfc_render$X]]);
-  const _sfc_main$W = {
+  const MenuOpenpostblank = /* @__PURE__ */ _export_sfc(_sfc_main$Z, [["render", _sfc_render$Z]]);
+  const _sfc_main$Y = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     methods: {
@@ -144,21 +148,21 @@
       }
     }
   };
-  const _hoisted_1$R = { class: "item" };
-  const _hoisted_2$I = { class: "tit" };
-  const _hoisted_3$z = ["checked"];
-  function _sfc_render$W(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$R, [
-      vue.createElementVNode("div", _hoisted_2$I, vue.toDisplayString($props.sort) + ". 是否开启新话题提醒", 1),
+  const _hoisted_1$T = { class: "item" };
+  const _hoisted_2$J = { class: "tit" };
+  const _hoisted_3$A = ["checked"];
+  function _sfc_render$Y(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$T, [
+      vue.createElementVNode("div", _hoisted_2$J, vue.toDisplayString($props.sort) + ". 是否开启新话题提醒", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$z)
+      }, null, 40, _hoisted_3$A)
     ]);
   }
-  const MenuNewtopicreminder = /* @__PURE__ */ _export_sfc(_sfc_main$W, [["render", _sfc_render$W]]);
-  const _sfc_main$V = {
+  const MenuNewtopicreminder = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["render", _sfc_render$Y]]);
+  const _sfc_main$X = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     methods: {
@@ -180,21 +184,21 @@
       }
     }
   };
-  const _hoisted_1$Q = { class: "item" };
-  const _hoisted_2$H = { class: "tit" };
-  const _hoisted_3$y = ["checked"];
-  function _sfc_render$V(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$Q, [
-      vue.createElementVNode("div", _hoisted_2$H, vue.toDisplayString($props.sort) + ". 是否自动展开回复", 1),
+  const _hoisted_1$S = { class: "item" };
+  const _hoisted_2$I = { class: "tit" };
+  const _hoisted_3$z = ["checked"];
+  function _sfc_render$X(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$S, [
+      vue.createElementVNode("div", _hoisted_2$I, vue.toDisplayString($props.sort) + ". 是否自动展开回复", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$y)
+      }, null, 40, _hoisted_3$z)
     ]);
   }
-  const MenuAutoexpandreply = /* @__PURE__ */ _export_sfc(_sfc_main$V, [["render", _sfc_render$V]]);
-  const _sfc_main$U = {
+  const MenuAutoexpandreply = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["render", _sfc_render$X]]);
+  const _sfc_main$W = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     methods: {
@@ -224,21 +228,21 @@
       }
     }
   };
-  const _hoisted_1$P = { class: "item" };
-  const _hoisted_2$G = { class: "tit" };
-  const _hoisted_3$x = ["checked"];
-  function _sfc_render$U(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$P, [
-      vue.createElementVNode("div", _hoisted_2$G, vue.toDisplayString($props.sort) + ". 是否自动展开回复父帖子", 1),
+  const _hoisted_1$R = { class: "item" };
+  const _hoisted_2$H = { class: "tit" };
+  const _hoisted_3$y = ["checked"];
+  function _sfc_render$W(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$R, [
+      vue.createElementVNode("div", _hoisted_2$H, vue.toDisplayString($props.sort) + ". 是否自动展开回复父帖子", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$x)
+      }, null, 40, _hoisted_3$y)
     ]);
   }
-  const MenuAutoexpandreply1 = /* @__PURE__ */ _export_sfc(_sfc_main$U, [["render", _sfc_render$U]]);
-  const _sfc_main$T = {
+  const MenuAutoexpandreply1 = /* @__PURE__ */ _export_sfc(_sfc_main$W, [["render", _sfc_render$W]]);
+  const _sfc_main$V = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     methods: {
@@ -345,23 +349,23 @@
       }
     }
   };
-  const _hoisted_1$O = { class: "item" };
-  const _hoisted_2$F = { class: "tit" };
-  const _hoisted_3$w = ["checked"];
-  function _sfc_render$T(_ctx, _cache, $props, $setup, $data, $options) {
+  const _hoisted_1$Q = { class: "item" };
+  const _hoisted_2$G = { class: "tit" };
+  const _hoisted_3$x = ["checked"];
+  function _sfc_render$V(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("div", null, [
-      vue.createElementVNode("div", _hoisted_1$O, [
-        vue.createElementVNode("div", _hoisted_2$F, vue.toDisplayString($props.sort) + ". 话题列表显示创建时间", 1),
+      vue.createElementVNode("div", _hoisted_1$Q, [
+        vue.createElementVNode("div", _hoisted_2$G, vue.toDisplayString($props.sort) + ". 话题列表显示创建时间", 1),
         vue.createElementVNode("input", {
           type: "checkbox",
           checked: $props.modelValue,
           onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-        }, null, 40, _hoisted_3$w)
+        }, null, 40, _hoisted_3$x)
       ])
     ]);
   }
-  const MenuShowcreatetime = /* @__PURE__ */ _export_sfc(_sfc_main$T, [["render", _sfc_render$T]]);
-  const _sfc_main$S = {
+  const MenuShowcreatetime = /* @__PURE__ */ _export_sfc(_sfc_main$V, [["render", _sfc_render$V]]);
+  const _sfc_main$U = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     methods: {
@@ -466,21 +470,21 @@
       }
     }
   };
-  const _hoisted_1$N = { class: "item" };
-  const _hoisted_2$E = { class: "tit" };
-  const _hoisted_3$v = ["checked"];
-  function _sfc_render$S(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$N, [
-      vue.createElementVNode("div", _hoisted_2$E, vue.toDisplayString($props.sort) + ". 将浏览量替换为创建时间（与 4 互斥，只可选择一个）", 1),
+  const _hoisted_1$P = { class: "item" };
+  const _hoisted_2$F = { class: "tit" };
+  const _hoisted_3$w = ["checked"];
+  function _sfc_render$U(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$P, [
+      vue.createElementVNode("div", _hoisted_2$F, vue.toDisplayString($props.sort) + ". 将浏览量替换为创建时间（与 4 互斥，只可选择一个）", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$v)
+      }, null, 40, _hoisted_3$w)
     ]);
   }
-  const MenuShowcreatetime1 = /* @__PURE__ */ _export_sfc(_sfc_main$S, [["render", _sfc_render$S]]);
-  const _sfc_main$R = {
+  const MenuShowcreatetime1 = /* @__PURE__ */ _export_sfc(_sfc_main$U, [["render", _sfc_render$U]]);
+  const _sfc_main$T = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     methods: {
@@ -505,21 +509,21 @@
       }
     }
   };
-  const _hoisted_1$M = { class: "item" };
-  const _hoisted_2$D = { class: "tit" };
-  const _hoisted_3$u = ["checked"];
-  function _sfc_render$R(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$M, [
-      vue.createElementVNode("div", _hoisted_2$D, vue.toDisplayString($props.sort) + ". 是否显示楼层数", 1),
+  const _hoisted_1$O = { class: "item" };
+  const _hoisted_2$E = { class: "tit" };
+  const _hoisted_3$v = ["checked"];
+  function _sfc_render$T(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$O, [
+      vue.createElementVNode("div", _hoisted_2$E, vue.toDisplayString($props.sort) + ". 是否显示楼层数", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$u)
+      }, null, 40, _hoisted_3$v)
     ]);
   }
-  const MenuShowfloors = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["render", _sfc_render$R]]);
-  const _sfc_main$Q = {
+  const MenuShowfloors = /* @__PURE__ */ _export_sfc(_sfc_main$T, [["render", _sfc_render$T]]);
+  const _sfc_main$S = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     created() {
@@ -528,21 +532,21 @@
       }
     }
   };
-  const _hoisted_1$L = { class: "item" };
-  const _hoisted_2$C = { class: "tit" };
-  const _hoisted_3$t = ["checked"];
-  function _sfc_render$Q(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$L, [
-      vue.createElementVNode("div", _hoisted_2$C, vue.toDisplayString($props.sort) + ". 隐藏话题详情顶部大标题", 1),
+  const _hoisted_1$N = { class: "item" };
+  const _hoisted_2$D = { class: "tit" };
+  const _hoisted_3$u = ["checked"];
+  function _sfc_render$S(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$N, [
+      vue.createElementVNode("div", _hoisted_2$D, vue.toDisplayString($props.sort) + ". 隐藏话题详情顶部大标题", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$t)
+      }, null, 40, _hoisted_3$u)
     ]);
   }
-  const MenuHidetopicdetailtitle = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["render", _sfc_render$Q]]);
-  const _sfc_main$P = {
+  const MenuHidetopicdetailtitle = /* @__PURE__ */ _export_sfc(_sfc_main$S, [["render", _sfc_render$S]]);
+  const _sfc_main$R = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     methods: {
@@ -649,21 +653,21 @@
       document.removeEventListener("keydown", this.handleKeyDown);
     }
   };
-  const _hoisted_1$K = { class: "item" };
-  const _hoisted_2$B = { class: "tit" };
-  const _hoisted_3$s = ["checked"];
-  function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$K, [
-      vue.createElementVNode("div", _hoisted_2$B, vue.toDisplayString($props.sort) + ". 是否开启话题预览功能", 1),
+  const _hoisted_1$M = { class: "item" };
+  const _hoisted_2$C = { class: "tit" };
+  const _hoisted_3$t = ["checked"];
+  function _sfc_render$R(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$M, [
+      vue.createElementVNode("div", _hoisted_2$C, vue.toDisplayString($props.sort) + ". 是否开启话题预览功能", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$s)
+      }, null, 40, _hoisted_3$t)
     ]);
   }
-  const MenuTopicpreview = /* @__PURE__ */ _export_sfc(_sfc_main$P, [["render", _sfc_render$P]]);
-  const _sfc_main$O = {
+  const MenuTopicpreview = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["render", _sfc_render$R]]);
+  const _sfc_main$Q = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     computed: {
@@ -690,12 +694,12 @@
       }
     }
   };
-  const _hoisted_1$J = { class: "item" };
-  const _hoisted_2$A = { class: "tit" };
-  const _hoisted_3$r = ["checked"];
-  function _sfc_render$O(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$J, [
-      vue.createElementVNode("div", _hoisted_2$A, [
+  const _hoisted_1$L = { class: "item" };
+  const _hoisted_2$B = { class: "tit" };
+  const _hoisted_3$s = ["checked"];
+  function _sfc_render$Q(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$L, [
+      vue.createElementVNode("div", _hoisted_2$B, [
         vue.createTextVNode(vue.toDisplayString($props.sort) + ". 是否显示自动阅读按钮，可调节速度默认 10 ", 1),
         vue.withDirectives(vue.createElementVNode("input", {
           type: "text",
@@ -709,29 +713,29 @@
         type: "checkbox",
         checked: $options.value1,
         onChange: _cache[1] || (_cache[1] = ($event) => $options.updateValue1($event.target.checked))
-      }, null, 40, _hoisted_3$r)
+      }, null, 40, _hoisted_3$s)
     ]);
   }
-  const MenuAutoRead = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["render", _sfc_render$O], ["__scopeId", "data-v-2be3e9ac"]]);
-  const _sfc_main$N = {
+  const MenuAutoRead = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["render", _sfc_render$Q], ["__scopeId", "data-v-2be3e9ac"]]);
+  const _sfc_main$P = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"]
   };
-  const _hoisted_1$I = { class: "item" };
-  const _hoisted_2$z = { class: "tit" };
-  const _hoisted_3$q = ["checked"];
-  function _sfc_render$N(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$I, [
-      vue.createElementVNode("div", _hoisted_2$z, vue.toDisplayString($props.sort) + ". 是否开启只看楼主", 1),
+  const _hoisted_1$K = { class: "item" };
+  const _hoisted_2$A = { class: "tit" };
+  const _hoisted_3$r = ["checked"];
+  function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$K, [
+      vue.createElementVNode("div", _hoisted_2$A, vue.toDisplayString($props.sort) + ". 是否开启只看楼主", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$q)
+      }, null, 40, _hoisted_3$r)
     ]);
   }
-  const MenuLookOP = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["render", _sfc_render$N]]);
-  const _sfc_main$M = {
+  const MenuLookOP = /* @__PURE__ */ _export_sfc(_sfc_main$P, [["render", _sfc_render$P]]);
+  const _sfc_main$O = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     created() {
@@ -742,20 +746,20 @@
       }
     }
   };
-  const _hoisted_1$H = { class: "item" };
-  const _hoisted_2$y = { class: "tit" };
-  const _hoisted_3$p = ["checked"];
-  function _sfc_render$M(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$H, [
-      vue.createElementVNode("div", _hoisted_2$y, vue.toDisplayString($props.sort) + ". 智能限制楼层高度", 1),
+  const _hoisted_1$J = { class: "item" };
+  const _hoisted_2$z = { class: "tit" };
+  const _hoisted_3$q = ["checked"];
+  function _sfc_render$O(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$J, [
+      vue.createElementVNode("div", _hoisted_2$z, vue.toDisplayString($props.sort) + ". 智能限制楼层高度", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$p)
+      }, null, 40, _hoisted_3$q)
     ]);
   }
-  const MenuFloorHeight = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["render", _sfc_render$M]]);
+  const MenuFloorHeight = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["render", _sfc_render$O]]);
   const emojiSet = [
     {
       size: "30x30",
@@ -1380,12 +1384,12 @@
       });
     }
   }, 100);
-  const _sfc_main$L = {};
-  function _sfc_render$L(_ctx, _cache, $props, $setup, $data, $options) {
+  const _sfc_main$N = {};
+  function _sfc_render$N(_ctx, _cache, $props, $setup, $data, $options) {
     return null;
   }
-  const ReplyTBEnjoy = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["render", _sfc_render$L]]);
-  const _sfc_main$K = {
+  const ReplyTBEnjoy = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["render", _sfc_render$N]]);
+  const _sfc_main$M = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     created() {
@@ -1426,12 +1430,30 @@
       }
     }
   };
-  const _hoisted_1$G = { class: "item" };
+  const _hoisted_1$I = { class: "item" };
+  const _hoisted_2$y = { class: "tit" };
+  const _hoisted_3$p = ["checked"];
+  function _sfc_render$M(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$I, [
+      vue.createElementVNode("div", _hoisted_2$y, vue.toDisplayString($props.sort) + ". 是否开启中英文混排优化显示", 1),
+      vue.createElementVNode("input", {
+        type: "checkbox",
+        checked: $props.modelValue,
+        onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
+      }, null, 40, _hoisted_3$p)
+    ]);
+  }
+  const MenuPangu = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["render", _sfc_render$M]]);
+  const _sfc_main$L = {
+    props: ["modelValue", "sort"],
+    emits: ["update:modelValue"]
+  };
+  const _hoisted_1$H = { class: "item" };
   const _hoisted_2$x = { class: "tit" };
   const _hoisted_3$o = ["checked"];
-  function _sfc_render$K(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$G, [
-      vue.createElementVNode("div", _hoisted_2$x, vue.toDisplayString($props.sort) + ". 是否开启中英文混排优化显示", 1),
+  function _sfc_render$L(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$H, [
+      vue.createElementVNode("div", _hoisted_2$x, vue.toDisplayString($props.sort) + ". 是否显示等级查询按钮", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
@@ -1439,26 +1461,8 @@
       }, null, 40, _hoisted_3$o)
     ]);
   }
-  const MenuPangu = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["render", _sfc_render$K]]);
-  const _sfc_main$J = {
-    props: ["modelValue", "sort"],
-    emits: ["update:modelValue"]
-  };
-  const _hoisted_1$F = { class: "item" };
-  const _hoisted_2$w = { class: "tit" };
-  const _hoisted_3$n = ["checked"];
-  function _sfc_render$J(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$F, [
-      vue.createElementVNode("div", _hoisted_2$w, vue.toDisplayString($props.sort) + ". 是否显示等级查询按钮", 1),
-      vue.createElementVNode("input", {
-        type: "checkbox",
-        checked: $props.modelValue,
-        onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$n)
-    ]);
-  }
-  const MenuLevelSearch = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["render", _sfc_render$J]]);
-  const _sfc_main$I = {
+  const MenuLevelSearch = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["render", _sfc_render$L]]);
+  const _sfc_main$K = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     created() {
@@ -1470,21 +1474,21 @@
       }
     }
   };
-  const _hoisted_1$E = { class: "item" };
-  const _hoisted_2$v = { class: "tit" };
-  const _hoisted_3$m = ["checked"];
-  function _sfc_render$I(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$E, [
-      vue.createElementVNode("div", _hoisted_2$v, vue.toDisplayString($props.sort) + ". 消息通知仅显示未读", 1),
+  const _hoisted_1$G = { class: "item" };
+  const _hoisted_2$w = { class: "tit" };
+  const _hoisted_3$n = ["checked"];
+  function _sfc_render$K(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$G, [
+      vue.createElementVNode("div", _hoisted_2$w, vue.toDisplayString($props.sort) + ". 消息通知仅显示未读", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$m)
+      }, null, 40, _hoisted_3$n)
     ]);
   }
-  const MenuShowUnread = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["render", _sfc_render$I]]);
-  const _sfc_main$H = {
+  const MenuShowUnread = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["render", _sfc_render$K]]);
+  const _sfc_main$J = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     created() {
@@ -1493,21 +1497,21 @@
       }
     }
   };
-  const _hoisted_1$D = { class: "item" };
-  const _hoisted_2$u = { class: "tit" };
-  const _hoisted_3$l = ["checked"];
-  function _sfc_render$H(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$D, [
-      vue.createElementVNode("div", _hoisted_2$u, vue.toDisplayString($props.sort) + ". 是否屏蔽模糊文字", 1),
+  const _hoisted_1$F = { class: "item" };
+  const _hoisted_2$v = { class: "tit" };
+  const _hoisted_3$m = ["checked"];
+  function _sfc_render$J(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$F, [
+      vue.createElementVNode("div", _hoisted_2$v, vue.toDisplayString($props.sort) + ". 是否屏蔽模糊文字", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$l)
+      }, null, 40, _hoisted_3$m)
     ]);
   }
-  const MenuFilterText = /* @__PURE__ */ _export_sfc(_sfc_main$H, [["render", _sfc_render$H]]);
-  const _sfc_main$G = {
+  const MenuFilterText = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["render", _sfc_render$J]]);
+  const _sfc_main$I = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     created() {
@@ -1524,21 +1528,21 @@
       }
     }
   };
-  const _hoisted_1$C = { class: "item" };
-  const _hoisted_2$t = { class: "tit" };
-  const _hoisted_3$k = ["checked"];
-  function _sfc_render$G(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$C, [
-      vue.createElementVNode("div", _hoisted_2$t, vue.toDisplayString($props.sort) + ". 只看自己签名尾巴", 1),
+  const _hoisted_1$E = { class: "item" };
+  const _hoisted_2$u = { class: "tit" };
+  const _hoisted_3$l = ["checked"];
+  function _sfc_render$I(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$E, [
+      vue.createElementVNode("div", _hoisted_2$u, vue.toDisplayString($props.sort) + ". 只看自己签名尾巴", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$k)
+      }, null, 40, _hoisted_3$l)
     ]);
   }
-  const MenuLookmeSign = /* @__PURE__ */ _export_sfc(_sfc_main$G, [["render", _sfc_render$G]]);
-  const _sfc_main$F = {
+  const MenuLookmeSign = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["render", _sfc_render$I]]);
+  const _sfc_main$H = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     methods: {
@@ -1585,21 +1589,21 @@
       }
     }
   };
-  const _hoisted_1$B = { class: "item" };
-  const _hoisted_2$s = { class: "tit" };
-  const _hoisted_3$j = ["checked"];
-  function _sfc_render$F(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$B, [
-      vue.createElementVNode("div", _hoisted_2$s, vue.toDisplayString($props.sort) + ". 开启左侧快速访问", 1),
+  const _hoisted_1$D = { class: "item" };
+  const _hoisted_2$t = { class: "tit" };
+  const _hoisted_3$k = ["checked"];
+  function _sfc_render$H(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$D, [
+      vue.createElementVNode("div", _hoisted_2$t, vue.toDisplayString($props.sort) + ". 开启左侧快速访问", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$j)
+      }, null, 40, _hoisted_3$k)
     ]);
   }
-  const MenuQuickAccess = /* @__PURE__ */ _export_sfc(_sfc_main$F, [["render", _sfc_render$F]]);
-  const _sfc_main$E = {
+  const MenuQuickAccess = /* @__PURE__ */ _export_sfc(_sfc_main$H, [["render", _sfc_render$H]]);
+  const _sfc_main$G = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     data() {
@@ -1688,12 +1692,12 @@
       this.observer && this.observer.disconnect();
     }
   };
-  const _hoisted_1$A = { class: "item" };
-  const _hoisted_2$r = { class: "tit" };
-  const _hoisted_3$i = ["value"];
-  function _sfc_render$E(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$A, [
-      vue.createElementVNode("div", _hoisted_2$r, [
+  const _hoisted_1$C = { class: "item" };
+  const _hoisted_2$s = { class: "tit" };
+  const _hoisted_3$j = ["value"];
+  function _sfc_render$G(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$C, [
+      vue.createElementVNode("div", _hoisted_2$s, [
         vue.createTextVNode(vue.toDisplayString($props.sort) + ". 切换论坛表情风格 ", 1),
         vue.withDirectives(vue.createElementVNode("select", {
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $options.value2 = $event)
@@ -1702,7 +1706,7 @@
             return vue.openBlock(), vue.createElementBlock("option", {
               value: item.value,
               key: item.value
-            }, vue.toDisplayString(item.label), 9, _hoisted_3$i);
+            }, vue.toDisplayString(item.label), 9, _hoisted_3$j);
           }), 128))
         ], 512), [
           [vue.vModelSelect, $options.value2]
@@ -1717,26 +1721,26 @@
       ])
     ]);
   }
-  const MenureplaceEmojiStyle = /* @__PURE__ */ _export_sfc(_sfc_main$E, [["render", _sfc_render$E], ["__scopeId", "data-v-d780d688"]]);
-  const _sfc_main$D = {
+  const MenureplaceEmojiStyle = /* @__PURE__ */ _export_sfc(_sfc_main$G, [["render", _sfc_render$G], ["__scopeId", "data-v-d780d688"]]);
+  const _sfc_main$F = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"]
   };
-  const _hoisted_1$z = { class: "item" };
-  const _hoisted_2$q = { class: "tit" };
-  const _hoisted_3$h = ["checked"];
-  function _sfc_render$D(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$z, [
-      vue.createElementVNode("div", _hoisted_2$q, vue.toDisplayString($props.sort) + ". 快速打开 Shared（需提前解锁 Shared）", 1),
+  const _hoisted_1$B = { class: "item" };
+  const _hoisted_2$r = { class: "tit" };
+  const _hoisted_3$i = ["checked"];
+  function _sfc_render$F(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$B, [
+      vue.createElementVNode("div", _hoisted_2$r, vue.toDisplayString($props.sort) + ". 快速打开 Shared（需提前解锁 Shared）", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$h)
+      }, null, 40, _hoisted_3$i)
     ]);
   }
-  const MenuShowAI = /* @__PURE__ */ _export_sfc(_sfc_main$D, [["render", _sfc_render$D]]);
-  const _sfc_main$C = {
+  const MenuShowAI = /* @__PURE__ */ _export_sfc(_sfc_main$F, [["render", _sfc_render$F]]);
+  const _sfc_main$E = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     created() {
@@ -1778,21 +1782,21 @@ ${$(".d-editor-input").val()}
       }
     }
   };
-  const _hoisted_1$y = { class: "item" };
-  const _hoisted_2$p = { class: "tit" };
-  const _hoisted_3$g = ["checked"];
-  function _sfc_render$C(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$y, [
-      vue.createElementVNode("div", _hoisted_2$p, vue.toDisplayString($props.sort) + ". 编辑器切换 ja 字体", 1),
+  const _hoisted_1$A = { class: "item" };
+  const _hoisted_2$q = { class: "tit" };
+  const _hoisted_3$h = ["checked"];
+  function _sfc_render$E(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$A, [
+      vue.createElementVNode("div", _hoisted_2$q, vue.toDisplayString($props.sort) + ". 编辑器切换 ja 字体", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$g)
+      }, null, 40, _hoisted_3$h)
     ]);
   }
-  const MenuEditorJa = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["render", _sfc_render$C]]);
-  const _sfc_main$B = {
+  const MenuEditorJa = /* @__PURE__ */ _export_sfc(_sfc_main$E, [["render", _sfc_render$E]]);
+  const _sfc_main$D = {
     props: {
       value: {
         type: Boolean,
@@ -1836,11 +1840,11 @@ ${$(".d-editor-input").val()}
       }
     }
   };
-  const _hoisted_1$x = { class: "item" };
-  const _hoisted_2$o = { class: "tit" };
-  function _sfc_render$B(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$x, [
-      vue.createElementVNode("div", _hoisted_2$o, vue.toDisplayString($props.sort) + ". 首页新增按创建时间排序", 1),
+  const _hoisted_1$z = { class: "item" };
+  const _hoisted_2$p = { class: "tit" };
+  function _sfc_render$D(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$z, [
+      vue.createElementVNode("div", _hoisted_2$p, vue.toDisplayString($props.sort) + ". 首页新增按创建时间排序", 1),
       vue.withDirectives(vue.createElementVNode("input", {
         type: "checkbox",
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.localChecked = $event),
@@ -1850,8 +1854,8 @@ ${$(".d-editor-input").val()}
       ])
     ]);
   }
-  const MenuCreatedOrder = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["render", _sfc_render$B]]);
-  const _sfc_main$A = {
+  const MenuCreatedOrder = /* @__PURE__ */ _export_sfc(_sfc_main$D, [["render", _sfc_render$D]]);
+  const _sfc_main$C = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     created() {
@@ -1866,21 +1870,21 @@ ${$(".d-editor-input").val()}
       }
     }
   };
-  const _hoisted_1$w = { class: "item" };
-  const _hoisted_2$n = { class: "tit" };
-  const _hoisted_3$f = ["checked"];
-  function _sfc_render$A(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$w, [
-      vue.createElementVNode("div", _hoisted_2$n, vue.toDisplayString($props.sort) + ". 开启列表页导航栏浮动", 1),
+  const _hoisted_1$y = { class: "item" };
+  const _hoisted_2$o = { class: "tit" };
+  const _hoisted_3$g = ["checked"];
+  function _sfc_render$C(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$y, [
+      vue.createElementVNode("div", _hoisted_2$o, vue.toDisplayString($props.sort) + ". 开启列表页导航栏浮动", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$f)
+      }, null, 40, _hoisted_3$g)
     ]);
   }
-  const MenuStickyNav = /* @__PURE__ */ _export_sfc(_sfc_main$A, [["render", _sfc_render$A]]);
-  const _sfc_main$z = {
+  const MenuStickyNav = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["render", _sfc_render$C]]);
+  const _sfc_main$B = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     methods: {
@@ -1926,7 +1930,7 @@ ${$(".d-editor-input").val()}
     },
     created() {
       if (this.modelValue) {
-        let lastKeyTime = 0;
+        let lastKeyTime2 = 0;
         const doubleClickTime = 300;
         document.addEventListener("keydown", (event) => {
           const activeElement = document.activeElement;
@@ -1935,22 +1939,22 @@ ${$(".d-editor-input").val()}
           }
           if (event.key === "ArrowRight") {
             const currentTime = Date.now();
-            if (currentTime - lastKeyTime <= doubleClickTime) {
+            if (currentTime - lastKeyTime2 <= doubleClickTime) {
               this.messageToast("正在检测中...");
               this.init();
             }
-            lastKeyTime = currentTime;
+            lastKeyTime2 = currentTime;
           }
         });
       }
     }
   };
-  const _hoisted_1$v = { class: "item" };
-  const _hoisted_2$m = { class: "tit" };
-  const _hoisted_3$e = ["checked"];
-  function _sfc_render$z(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$v, [
-      vue.createElementVNode("div", _hoisted_2$m, [
+  const _hoisted_1$x = { class: "item" };
+  const _hoisted_2$n = { class: "tit" };
+  const _hoisted_3$f = ["checked"];
+  function _sfc_render$B(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$x, [
+      vue.createElementVNode("div", _hoisted_2$n, [
         vue.createTextVNode(vue.toDisplayString($props.sort) + ". 开启快速打开下一个帖子（快捷键：双击 ", 1),
         _cache[1] || (_cache[1] = vue.createElementVNode("kbd", null, "→", -1)),
         _cache[2] || (_cache[2] = vue.createTextVNode("）"))
@@ -1959,11 +1963,11 @@ ${$(".d-editor-input").val()}
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$e)
+      }, null, 40, _hoisted_3$f)
     ]);
   }
-  const MenuNextPosts = /* @__PURE__ */ _export_sfc(_sfc_main$z, [["render", _sfc_render$z]]);
-  const _sfc_main$y = {
+  const MenuNextPosts = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["render", _sfc_render$B]]);
+  const _sfc_main$A = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     created() {
@@ -1974,21 +1978,21 @@ ${$(".d-editor-input").val()}
       }
     }
   };
-  const _hoisted_1$u = { class: "item" };
-  const _hoisted_2$l = { class: "tit" };
-  const _hoisted_3$d = ["checked"];
-  function _sfc_render$y(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$u, [
-      vue.createElementVNode("div", _hoisted_2$l, vue.toDisplayString($props.sort) + ". 禁用选中文字分享功能", 1),
+  const _hoisted_1$w = { class: "item" };
+  const _hoisted_2$m = { class: "tit" };
+  const _hoisted_3$e = ["checked"];
+  function _sfc_render$A(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$w, [
+      vue.createElementVNode("div", _hoisted_2$m, vue.toDisplayString($props.sort) + ". 禁用选中文字分享功能", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$d)
+      }, null, 40, _hoisted_3$e)
     ]);
   }
-  const MenuSelectedShare = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["render", _sfc_render$y]]);
-  const _sfc_main$x = {
+  const MenuSelectedShare = /* @__PURE__ */ _export_sfc(_sfc_main$A, [["render", _sfc_render$A]]);
+  const _sfc_main$z = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     created() {
@@ -2013,12 +2017,30 @@ ${$(".d-editor-input").val()}
       }
     }
   };
-  const _hoisted_1$t = { class: "item" };
+  const _hoisted_1$v = { class: "item" };
+  const _hoisted_2$l = { class: "tit" };
+  const _hoisted_3$d = ["checked"];
+  function _sfc_render$z(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$v, [
+      vue.createElementVNode("div", _hoisted_2$l, vue.toDisplayString($props.sort) + ". 禁用视频自动播放", 1),
+      vue.createElementVNode("input", {
+        type: "checkbox",
+        checked: $props.modelValue,
+        onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
+      }, null, 40, _hoisted_3$d)
+    ]);
+  }
+  const MenuDisableAutoplay = /* @__PURE__ */ _export_sfc(_sfc_main$z, [["render", _sfc_render$z]]);
+  const _sfc_main$y = {
+    props: ["modelValue", "sort"],
+    emits: ["update:modelValue"]
+  };
+  const _hoisted_1$u = { class: "item" };
   const _hoisted_2$k = { class: "tit" };
   const _hoisted_3$c = ["checked"];
-  function _sfc_render$x(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$t, [
-      vue.createElementVNode("div", _hoisted_2$k, vue.toDisplayString($props.sort) + ". 禁用视频自动播放", 1),
+  function _sfc_render$y(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$u, [
+      vue.createElementVNode("div", _hoisted_2$k, vue.toDisplayString($props.sort) + ". 是否显示回复悬浮按钮", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
@@ -2026,26 +2048,8 @@ ${$(".d-editor-input").val()}
       }, null, 40, _hoisted_3$c)
     ]);
   }
-  const MenuDisableAutoplay = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["render", _sfc_render$x]]);
-  const _sfc_main$w = {
-    props: ["modelValue", "sort"],
-    emits: ["update:modelValue"]
-  };
-  const _hoisted_1$s = { class: "item" };
-  const _hoisted_2$j = { class: "tit" };
-  const _hoisted_3$b = ["checked"];
-  function _sfc_render$w(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$s, [
-      vue.createElementVNode("div", _hoisted_2$j, vue.toDisplayString($props.sort) + ". 是否显示回复悬浮按钮", 1),
-      vue.createElementVNode("input", {
-        type: "checkbox",
-        checked: $props.modelValue,
-        onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$b)
-    ]);
-  }
-  const MenuShowRepltBtn = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["render", _sfc_render$w]]);
-  const _sfc_main$v = {
+  const MenuShowRepltBtn = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["render", _sfc_render$y]]);
+  const _sfc_main$x = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     methods: {
@@ -2107,21 +2111,21 @@ ${$(".d-editor-input").val()}
       }
     }
   };
-  const _hoisted_1$r = { class: "item" };
-  const _hoisted_2$i = { class: "tit" };
-  const _hoisted_3$a = ["checked"];
-  function _sfc_render$v(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$r, [
-      vue.createElementVNode("div", _hoisted_2$i, vue.toDisplayString($props.sort) + ". 列表快速免打扰帖子", 1),
+  const _hoisted_1$t = { class: "item" };
+  const _hoisted_2$j = { class: "tit" };
+  const _hoisted_3$b = ["checked"];
+  function _sfc_render$x(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$t, [
+      vue.createElementVNode("div", _hoisted_2$j, vue.toDisplayString($props.sort) + ". 列表快速免打扰帖子", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$a)
+      }, null, 40, _hoisted_3$b)
     ]);
   }
-  const MenuDonotTopic = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["render", _sfc_render$v]]);
-  const _sfc_main$u = {
+  const MenuDonotTopic = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["render", _sfc_render$x]]);
+  const _sfc_main$w = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     created() {
@@ -2145,21 +2149,21 @@ ${$(".d-editor-input").val()}
       }
     }
   };
-  const _hoisted_1$q = { class: "item" };
-  const _hoisted_2$h = { class: "tit" };
-  const _hoisted_3$9 = ["checked"];
-  function _sfc_render$u(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$q, [
-      vue.createElementVNode("div", _hoisted_2$h, vue.toDisplayString($props.sort) + ". 是否自动切换黑夜模式", 1),
+  const _hoisted_1$s = { class: "item" };
+  const _hoisted_2$i = { class: "tit" };
+  const _hoisted_3$a = ["checked"];
+  function _sfc_render$w(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$s, [
+      vue.createElementVNode("div", _hoisted_2$i, vue.toDisplayString($props.sort) + ". 是否自动切换黑夜模式", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$9)
+      }, null, 40, _hoisted_3$a)
     ]);
   }
-  const MenuAutoDark = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["render", _sfc_render$u]]);
-  const _sfc_main$t = {
+  const MenuAutoDark = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["render", _sfc_render$w]]);
+  const _sfc_main$v = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     created() {
@@ -2170,21 +2174,21 @@ ${$(".d-editor-input").val()}
       }
     }
   };
-  const _hoisted_1$p = { class: "item" };
-  const _hoisted_2$g = { class: "tit" };
-  const _hoisted_3$8 = ["checked"];
-  function _sfc_render$t(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$p, [
-      vue.createElementVNode("div", _hoisted_2$g, vue.toDisplayString($props.sort) + ". 是否隐藏输入框提示文字", 1),
+  const _hoisted_1$r = { class: "item" };
+  const _hoisted_2$h = { class: "tit" };
+  const _hoisted_3$9 = ["checked"];
+  function _sfc_render$v(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$r, [
+      vue.createElementVNode("div", _hoisted_2$h, vue.toDisplayString($props.sort) + ". 是否隐藏输入框提示文字", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$8)
+      }, null, 40, _hoisted_3$9)
     ]);
   }
-  const MenuHiddenPlaceholder = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["render", _sfc_render$t]]);
-  const _sfc_main$s = {
+  const MenuHiddenPlaceholder = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["render", _sfc_render$v]]);
+  const _sfc_main$u = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     created() {
@@ -2198,21 +2202,21 @@ ${$(".d-editor-input").val()}
       }
     }
   };
-  const _hoisted_1$o = { class: "item" };
-  const _hoisted_2$f = { class: "tit" };
-  const _hoisted_3$7 = ["checked"];
-  function _sfc_render$s(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$o, [
-      vue.createElementVNode("div", _hoisted_2$f, vue.toDisplayString($props.sort) + ". 是否禁用浏览帖子时 URL 更新楼层数", 1),
+  const _hoisted_1$q = { class: "item" };
+  const _hoisted_2$g = { class: "tit" };
+  const _hoisted_3$8 = ["checked"];
+  function _sfc_render$u(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$q, [
+      vue.createElementVNode("div", _hoisted_2$g, vue.toDisplayString($props.sort) + ". 是否禁用浏览帖子时 URL 更新楼层数", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$7)
+      }, null, 40, _hoisted_3$8)
     ]);
   }
-  const MenuDisableReplaceState = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["render", _sfc_render$s]]);
-  const _sfc_main$r = {
+  const MenuDisableReplaceState = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["render", _sfc_render$u]]);
+  const _sfc_main$t = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     created() {
@@ -2226,21 +2230,1049 @@ ${$(".d-editor-input").val()}
       }
     }
   };
-  const _hoisted_1$n = { class: "item" };
-  const _hoisted_2$e = { class: "tit" };
-  const _hoisted_3$6 = ["checked"];
-  function _sfc_render$r(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$n, [
-      vue.createElementVNode("div", _hoisted_2$e, vue.toDisplayString($props.sort) + ". 是否移除话题列表上的头像 (减少网络请求)", 1),
+  const _hoisted_1$p = { class: "item" };
+  const _hoisted_2$f = { class: "tit" };
+  const _hoisted_3$7 = ["checked"];
+  function _sfc_render$t(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$p, [
+      vue.createElementVNode("div", _hoisted_2$f, vue.toDisplayString($props.sort) + ". 是否移除话题列表上的头像 (减少网络请求)", 1),
       vue.createElementVNode("input", {
         type: "checkbox",
         checked: $props.modelValue,
         onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-      }, null, 40, _hoisted_3$6)
+      }, null, 40, _hoisted_3$7)
     ]);
   }
-  const MenuRemovePostAvatar = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["render", _sfc_render$r]]);
-  const _sfc_main$q = {
+  const MenuRemovePostAvatar = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["render", _sfc_render$t]]);
+  var _GM_getValue = /* @__PURE__ */ (() => typeof GM_getValue != "undefined" ? GM_getValue : void 0)();
+  var _GM_setValue = /* @__PURE__ */ (() => typeof GM_setValue != "undefined" ? GM_setValue : void 0)();
+  var _GM_xmlhttpRequest = /* @__PURE__ */ (() => typeof GM_xmlhttpRequest != "undefined" ? GM_xmlhttpRequest : void 0)();
+  const REQUIRED_CHARS = 6;
+  const SPACE_PRESS_COUNT = 3;
+  const SPACE_PRESS_TIMEOUT = 1500;
+  const TRANSLATE_PROVIDERS = [
+    {
+      text: "LinuxDo Deeplx",
+      value: "deeplx-linuxdo"
+    },
+    {
+      text: "Deeplx",
+      value: "deeplx"
+    },
+    {
+      text: "Deepl",
+      value: "deepl"
+    },
+    {
+      text: "OpenAI",
+      value: "oai"
+    },
+    {
+      text: "OpenAI Proxy",
+      value: "oai-proxy"
+    }
+  ];
+  const NOT_CUSTOM_URL_PROVIDERS = ["oai", "deepl", "deeplx-linuxdo"];
+  const TRANSLATE_TARGET_LANG = {
+    EN: { oai: "English", deepl: "EN" },
+    ZH: { oai: "Chinese", deepl: "ZH" }
+  };
+  const TRANSLATE_TARGET_LANG_OPTIONS = [
+    {
+      text: "English(英文)",
+      value: "EN"
+    },
+    {
+      text: "中文 (Chinese)",
+      value: "ZH"
+    }
+  ];
+  const DEFAULT_CONFIG = {
+    maxRetryTimes: 5,
+    customUrl: "",
+    authKey: "",
+    enableTranslate: false,
+    translateSourceLang: "ZH",
+    translateTargetLang: "EN",
+    translateProvider: "deeplx-linuxdo",
+    translateModel: "gpt-4o",
+    translateLayout: "top",
+    translateSize: 100,
+    enablePinYin: false,
+    closeConfigAfterSave: true
+  };
+  const uiIDs = {
+    replyControl: "reply-control",
+    configButton: "multi-lang-say-config-button",
+    configPanel: "multi-lang-say-config-panel",
+    customUrlInput: "custom-url-input",
+    authKeyInput: "auth-key-input",
+    enableTranslateSwitch: "enable-translate-switch",
+    translateSourceLangSelect: "translate-source-lang-select",
+    translateTargetLangSelect: "translate-target-lang-select",
+    translateProviderSelect: "translate-provider-select",
+    translateModelInput: "translate-model-input",
+    translateLayoutSelect: "translate-layout-select",
+    translateSizeInput: "translate-size-input",
+    enablePinYinSwitch: "enable-pinyin-switch",
+    closeConfigAfterSaveSwitch: "close-after-save-switch"
+  };
+  let config = {
+    maxRetryTimes: _GM_getValue("maxRetryTimes", DEFAULT_CONFIG.maxRetryTimes),
+    customUrl: _GM_getValue("customUrl", DEFAULT_CONFIG.customUrl),
+    authKey: _GM_getValue("authKey", DEFAULT_CONFIG.authKey),
+    enableTranslate: _GM_getValue("enableTranslate", DEFAULT_CONFIG.enableTranslate),
+    translateSourceLang: _GM_getValue(
+      "translateSourceLang",
+      DEFAULT_CONFIG.translateSourceLang
+    ),
+    translateTargetLang: _GM_getValue(
+      "translateTargetLang",
+      DEFAULT_CONFIG.translateTargetLang
+    ),
+    translateProvider: _GM_getValue("translateProvider", DEFAULT_CONFIG.translateProvider),
+    translateModel: _GM_getValue("translateModel", DEFAULT_CONFIG.translateModel),
+    translateLayout: _GM_getValue("translateLayout", DEFAULT_CONFIG.translateLayout),
+    translateSize: _GM_getValue("translateSize", DEFAULT_CONFIG.translateSize),
+    enablePinYin: _GM_getValue("enablePinYin", DEFAULT_CONFIG.enablePinYin),
+    closeConfigAfterSave: _GM_getValue(
+      "closeConfigAfterSave",
+      DEFAULT_CONFIG.closeConfigAfterSave
+    )
+  };
+  const checkPinYinRequire = () => {
+    if (typeof pinyinPro === "undefined") {
+      console.error("pinyin 库未正确加载！");
+      config.enablePinYin = false;
+      _GM_setValue("enablePinYin", false);
+      return false;
+    }
+    return true;
+  };
+  const containsChinese = (text) => {
+    return /[\u4e00-\u9fa5]/.test(text);
+  };
+  const convertToRuby = (text) => {
+    const pinyin = pinyinPro.pinyin(text);
+    return `<ruby><rb>${text}</rb><rt>${pinyin}</rt></ruby>`;
+  };
+  const getInvertColor = (hex) => {
+    hex = hex.replace("#", "");
+    if (hex.length === 3) {
+      hex = hex.split("").map((c) => c + c).join("");
+    }
+    const r = (255 - parseInt(hex.slice(0, 2), 16)).toString(16).padStart(2, "0");
+    const g = (255 - parseInt(hex.slice(2, 4), 16)).toString(16).padStart(2, "0");
+    const b = (255 - parseInt(hex.slice(4, 6), 16)).toString(16).padStart(2, "0");
+    return `#${r}${g}${b}`;
+  };
+  const deeplxReq = (text) => {
+    return {
+      url: config.authKey ? `${config.customUrl}?token=${config.authKey}` : config.customUrl,
+      headers: {
+        "Content-Type": "application/json"
+      },
+      data: JSON.stringify({
+        text,
+        target_lang: TRANSLATE_TARGET_LANG[config.translateTargetLang].deepl,
+        source_lang: "auto"
+      }),
+      responseType: "json"
+    };
+  };
+  const deeplxLinuxdoReq = (text) => {
+    return {
+      url: `https://api.deeplx.org/${config.authKey}/translate`,
+      headers: {
+        "Content-Type": "application/json"
+      },
+      data: JSON.stringify({
+        text,
+        target_lang: TRANSLATE_TARGET_LANG[config.translateTargetLang].deepl,
+        source_lang: "auto"
+      }),
+      responseType: "json"
+    };
+  };
+  const deeplReq = (text) => {
+    const authKey = config.authKey;
+    const params = new URLSearchParams();
+    params.append("text", text);
+    params.append("target_lang", TRANSLATE_TARGET_LANG[config.translateTargetLang].deepl);
+    params.append("source_lang", TRANSLATE_TARGET_LANG[config.translateSourceLang].deepl);
+    return {
+      url: "https://api.deepl.com/v2/translate",
+      // DeepL Pro API
+      headers: {
+        Authorization: `DeepL-Auth-Key ${authKey}`,
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: params.toString(),
+      responseType: "json"
+    };
+  };
+  const deeplRes = (res) => {
+    var _a, _b;
+    return (_b = (_a = res == null ? void 0 : res.translations) == null ? void 0 : _a[0]) == null ? void 0 : _b.text;
+  };
+  const oaiReq = (text, model = "gpt-3.5-turbo", url = "https://api.openai.com/v1/chat/completions", temperature = 0.5, maxTokens = 32e3) => {
+    const authKey = config.authKey;
+    return {
+      url,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${authKey}`
+      },
+      data: JSON.stringify({
+        model,
+        // 或者您订阅的其他模型，例如 'gpt-4'
+        messages: [
+          {
+            role: "system",
+            content: "You are a highly skilled translation engine. Your function is to translate texts accurately into the target {{to}}, maintaining the original format, technical terms, and abbreviations. Do not add any explanations or annotations to the translated text."
+          },
+          {
+            role: "user",
+            content: `Translate the following source text to ${TRANSLATE_TARGET_LANG[config.translateTargetLang].oai}, Output translation directly without any additional text.
+Source Text: ${text}
+Translated Text:`
+          }
+        ],
+        temperature,
+        // 控制生成内容的随机性，范围是 0 到 1
+        max_tokens: maxTokens
+        // 响应的最大标记数
+      }),
+      responseType: "json"
+    };
+  };
+  const oaiRes = (res) => {
+    return res.choices[0].message.content.trim();
+  };
+  const translateText = (text) => {
+    const isDeepl = config.translateProvider === "deepl";
+    const isOAI = config.translateProvider === "oai" || config.translateProvider === "oai-proxy";
+    let reqData;
+    if (!config.authKey) {
+      if (!config.customUrl) return "";
+      if (config.translateProvider === "deeplx") reqData = deeplxReq(text);
+      return "";
+    } else if (isDeepl) {
+      reqData = deeplReq(text);
+    } else if (isOAI) {
+      reqData = oaiReq(
+        text,
+        config.translateModel,
+        NOT_CUSTOM_URL_PROVIDERS.includes(config.translateProvider) ? "https://api.openai.com/v1/chat/completions" : config.customUrl,
+        0.5,
+        1600
+      );
+    } else {
+      reqData = deeplxLinuxdoReq(text);
+    }
+    return new Promise((resolve, reject) => {
+      _GM_xmlhttpRequest({
+        method: "POST",
+        url: reqData.url,
+        headers: reqData.headers,
+        data: reqData.data,
+        responseType: reqData.responseType,
+        onload: function(res) {
+          console.log("Translation response:", res);
+          console.log("Request details:", reqData);
+          if (res.status === 200) {
+            try {
+              const response = typeof res.response === "string" ? JSON.parse(res.response) : res.response;
+              console.log("Parsed response:", response);
+              let translation;
+              if (isDeepl) {
+                translation = deeplRes(response);
+                console.log("DeepL translation:", translation);
+              } else if (isOAI) {
+                translation = oaiRes(response);
+                console.log("OAI translation:", translation);
+              } else {
+                translation = response == null ? void 0 : response.data;
+                console.log("DeepLX translation:", translation);
+              }
+              resolve(translation || "");
+            } catch (error) {
+              console.error("Error parsing response:", error);
+              resolve("");
+            }
+          } else {
+            console.error("Translation failed:", {
+              status: res.status,
+              statusText: res.statusText,
+              response: res.response,
+              responseText: res.responseText,
+              finalUrl: res.finalUrl,
+              headers: res.responseHeaders
+            });
+            resolve("");
+          }
+        },
+        onerror: function(err) {
+          console.error("Translation error details:", {
+            error: err,
+            errorText: err.toString(),
+            status: err.status,
+            statusText: err.statusText,
+            responseText: err.responseText
+          });
+          resolve("");
+        }
+      });
+    });
+  };
+  const processTranslateText = async (text) => {
+    const protectedBlocks = [
+      // Markdown 代码块
+      {
+        regex: /```[\s\S]*?```/g,
+        type: "code"
+      },
+      // BBCode 标签块 (处理嵌套标签)
+      {
+        regex: /\[(size|spoiler|center|color|grid).*?\][\s\S]*?\[\/\1\]/g,
+        type: "bbcode"
+      },
+      // 已有的 ruby 标签
+      {
+        regex: /<ruby>[\s\S]*?<\/ruby>/g,
+        type: "ruby"
+      },
+      // HTML 标签块
+      {
+        regex: /<[^>]+>[\s\S]*?<\/[^>]+>/g,
+        type: "html"
+      },
+      // 图片标签
+      {
+        regex: /\[image\]\(.*?\)/g,
+        type: "image"
+      }
+    ];
+    let placeholders = /* @__PURE__ */ new Map();
+    let placeholderCounter = 0;
+    let processedText = text;
+    for (const block of protectedBlocks) {
+      processedText = processedText.replace(block.regex, (match) => {
+        const placeholder = `__PROTECTED_${block.type}_${placeholderCounter++}__`;
+        placeholders.set(placeholder, match);
+        return placeholder;
+      });
+    }
+    const segments = processedText.split(/(\n)/);
+    let translatedSegments = [];
+    for (const segment of segments) {
+      if (!segment.trim() || segment === "\n") {
+        translatedSegments.push(segment);
+        continue;
+      }
+      if (segment.startsWith("__PROTECTED_")) {
+        translatedSegments.push(placeholders.get(segment));
+        continue;
+      }
+      const segmentTranslate = await translateText(segment);
+      if (config.translateLayout === "bottom") {
+        translatedSegments.push(
+          `${segment}
+[size=${config.translateSize}]${segmentTranslate}[/size]`
+        );
+      } else {
+        translatedSegments.push(
+          `[size=${config.translateSize}]<ruby><rb>${segment}</rb><rt>${segmentTranslate}</rt></ruby>[/size]`
+        );
+      }
+    }
+    return translatedSegments.join("");
+  };
+  const processTextArea = () => {
+    let textarea = document.querySelector(`#${uiIDs.replyControl} textarea`);
+    let text = textarea.value.trim();
+    let originalLength = text.length;
+    if (text.length !== 0 && originalLength >= REQUIRED_CHARS) {
+      const rubyRegex = /(<ruby>[\s\S]*?<\/ruby>)/g;
+      if (config.enableTranslate) {
+        textarea.value = "开始翻译...";
+        processTranslateText(text).then((res) => {
+          textarea.value = res;
+          const inputEvent2 = new Event("input", {
+            bubbles: true,
+            cancelable: true
+          });
+          textarea.dispatchEvent(inputEvent2);
+        });
+        return;
+      }
+      if (!config.enableTranslate && config.enablePinYin) {
+        if (containsChinese(text)) {
+          const parts = text.split(rubyRegex);
+          text = parts.map((part) => {
+            if (rubyRegex.test(part)) {
+              return part;
+            } else {
+              if (containsChinese(part)) {
+                const segments = part.split(/([\u4e00-\u9fa5]+)/g);
+                return segments.map((segment) => {
+                  if (containsChinese(segment)) {
+                    return convertToRuby(segment);
+                  } else {
+                    return segment;
+                  }
+                }).join("");
+              } else {
+                return part;
+              }
+            }
+          }).join("");
+        }
+      }
+      textarea.value = text;
+      const inputEvent = new Event("input", {
+        bubbles: true,
+        cancelable: true
+      });
+      textarea.dispatchEvent(inputEvent);
+    }
+  };
+  const handleClick = (event) => {
+    if (config.enableTranslate) {
+      return;
+    }
+    if (event.target && event.target.closest("button.create")) {
+      processTextArea();
+    }
+  };
+  let spacePresses = 0;
+  let lastKeyTime = 0;
+  let timeoutHandle = null;
+  const handleKeydown = (event) => {
+    if (event.ctrlKey && event.key === "Enter") {
+      processTextArea();
+      return;
+    }
+    if (event.altKey && event.keyCode === 68) {
+      event.preventDefault();
+      processTextArea();
+      return;
+    }
+    const currentTime = Date.now();
+    if (event.code === "Space") {
+      if (currentTime - lastKeyTime > SPACE_PRESS_TIMEOUT) {
+        spacePresses = 1;
+      } else {
+        spacePresses += 1;
+      }
+      lastKeyTime = currentTime;
+      if (timeoutHandle) {
+        clearTimeout(timeoutHandle);
+      }
+      timeoutHandle = setTimeout(() => {
+        spacePresses = 0;
+      }, SPACE_PRESS_TIMEOUT);
+      if (spacePresses === SPACE_PRESS_COUNT) {
+        spacePresses = 0;
+        processTextArea();
+      }
+    } else {
+      spacePresses = 0;
+      if (timeoutHandle) {
+        clearTimeout(timeoutHandle);
+        timeoutHandle = null;
+      }
+    }
+  };
+  const saveConfig = () => {
+    const customUrlInput = document.getElementById(uiIDs.customUrlInput);
+    config.customUrl = customUrlInput.value.trim();
+    const authKeyInput = document.getElementById(uiIDs.authKeyInput);
+    config.authKey = authKeyInput.value.trim();
+    const translateModelInput = document.getElementById(uiIDs.translateModelInput);
+    config.translateModel = translateModelInput.value;
+    const transalteSizeInput = document.getElementById(uiIDs.translateSizeInput);
+    config.translateSize = transalteSizeInput.value;
+    console.log(config);
+    _GM_setValue("customUrl", config.customUrl);
+    _GM_setValue("authKey", config.authKey);
+    _GM_setValue("enableTranslate", config.enableTranslate);
+    _GM_setValue("translateModel", config.translateModel);
+    _GM_setValue("translateSize", config.translateSize);
+    _GM_setValue("enablePinYin", config.enablePinYin);
+    _GM_setValue("closeConfigAfterSave", config.closeConfigAfterSave);
+    if (config.closeConfigAfterSave) {
+      const panel = document.getElementById(uiIDs.configPanel);
+      toggleConfigPanelAnimation(panel);
+    }
+  };
+  const restoreDefaults = () => {
+    if (confirm("确定要将所有设置恢复为默认值吗？")) {
+      config = JSON.parse(JSON.stringify(DEFAULT_CONFIG));
+      _GM_setValue("maxRetryTimes", config.maxRetryTimes);
+      _GM_setValue("customUrl", config.customUrl);
+      _GM_setValue("authKey", config.authKey);
+      _GM_setValue("enableTranslate", config.enableTranslate);
+      _GM_setValue("translateSourceLang", config.translateSourceLang);
+      _GM_setValue("translateTargetLang", config.translateTargetLang);
+      _GM_setValue("translateModel", config.translateModel);
+      _GM_setValue("translateLayout", config.translateLayout);
+      _GM_setValue("translateSize", config.translateSize);
+      _GM_setValue("enablePinYin", config.enablePinYin);
+      _GM_setValue("closeConfigAfterSave", config.closeConfigAfterSave);
+      const panel = document.getElementById(uiIDs.configPanel);
+      if (panel) {
+        updateConfigPanelContent(panel);
+      }
+    }
+  };
+  const createFormGroup = (labelText, element) => {
+    const group = document.createElement("div");
+    group.className = "form-group";
+    const label = document.createElement("label");
+    label.className = "form-label";
+    label.textContent = labelText;
+    group.appendChild(label);
+    group.appendChild(element);
+    return group;
+  };
+  const createSelect = (eleId, configId, options, defaultValue, onChange = void 0) => {
+    const select = document.createElement("select");
+    select.className = "modern-select";
+    select.id = eleId;
+    options.forEach((option) => {
+      const optionElement = document.createElement("option");
+      optionElement.value = option.value;
+      optionElement.textContent = option.text;
+      select.appendChild(optionElement);
+    });
+    select.value = defaultValue;
+    if (onChange !== void 0) {
+      select.addEventListener("change", (e) => onChange(e));
+    } else {
+      select.addEventListener("change", (e) => {
+        config[configId] = e.target.value;
+        console.log(`[存储配置] ${configId}: ${config[configId]}`);
+        _GM_setValue(configId, config[configId]);
+      });
+    }
+    return select;
+  };
+  const createInput = (eleId, value, type2 = "text", placeholder = "") => {
+    const input = document.createElement("input");
+    input.className = "modern-input";
+    input.id = eleId;
+    input.type = type2;
+    input.value = value;
+    input.placeholder = placeholder;
+    return input;
+  };
+  const createSwitch = (eleId, configId, checked, labelText) => {
+    const container = document.createElement("div");
+    container.className = "switch-container";
+    const label = document.createElement("span");
+    label.className = "form-label";
+    label.style.margin = "0";
+    label.textContent = labelText;
+    const switchEl = document.createElement("div");
+    switchEl.id = eleId;
+    switchEl.className = `modern-switch${checked ? " active" : ""}`;
+    switchEl.addEventListener("click", () => {
+      switchEl.classList.toggle("active");
+      config[configId] = switchEl.classList.contains("active");
+      console.log(`[存储配置] ${configId}: ${config[configId]}`);
+      _GM_setValue(configId, config[configId]);
+    });
+    container.appendChild(label);
+    container.appendChild(switchEl);
+    return container;
+  };
+  const createButton = (text, onClick, variant = "secondary") => {
+    const button = document.createElement("button");
+    button.className = `modern-button ${variant}`;
+    button.textContent = text;
+    button.addEventListener("click", onClick);
+    return button;
+  };
+  const updateConfigPanelContent = (panel, panelContent) => {
+    panelContent.innerHTML = "";
+    const translateProviderSelect = createSelect(
+      uiIDs.translateProviderSelect,
+      "translateProvider",
+      TRANSLATE_PROVIDERS,
+      config.translateProvider,
+      (e) => {
+        config.translateProvider = e.target.value;
+        const notCustomUrl2 = NOT_CUSTOM_URL_PROVIDERS.includes(config.translateProvider);
+        const urlInput = document.getElementById(uiIDs.customUrlInput);
+        if (notCustomUrl2) {
+          if (urlInput) {
+            urlInput.disabled = true;
+          }
+        } else {
+          if (urlInput) {
+            urlInput.disabled = false;
+          }
+        }
+        console.log(`[存储配置] translateProvider: ${config.translateProvider}`);
+        _GM_setValue("translateProvider", config.translateProvider);
+      }
+    );
+    panelContent.appendChild(
+      createFormGroup("翻译服务商 (Provider)", translateProviderSelect)
+    );
+    const customUrlInput = createInput(
+      uiIDs.customUrlInput,
+      config.customUrl,
+      "text",
+      "填写自定义请求地址"
+    );
+    const notCustomUrl = NOT_CUSTOM_URL_PROVIDERS.includes(config.translateProvider);
+    if (notCustomUrl) {
+      customUrlInput.disabled = true;
+    }
+    panelContent.appendChild(createFormGroup("自定义链接 (Custom URL)", customUrlInput));
+    const authKeyInput = createInput(
+      uiIDs.authKeyInput,
+      config.authKey,
+      "text",
+      "输入认证密钥"
+    );
+    panelContent.appendChild(createFormGroup("认证密钥 (Auth Key)", authKeyInput));
+    const modelInput = createInput(
+      uiIDs.translateModelInput,
+      config.translateModel,
+      "text",
+      "输入翻译模型"
+    );
+    panelContent.appendChild(createFormGroup("翻译模型 (AI Model)", modelInput));
+    const targetSourceSelect = createSelect(
+      uiIDs.translateSourceLangSelect,
+      "translateSourceLang",
+      TRANSLATE_TARGET_LANG_OPTIONS,
+      config.translateSourceLang
+    );
+    const targetLangSelect = createSelect(
+      uiIDs.translateTargetLangSelect,
+      "translateTargetLang",
+      TRANSLATE_TARGET_LANG_OPTIONS,
+      config.translateTargetLang
+    );
+    panelContent.appendChild(
+      createFormGroup("源语言 (Source Language)", targetSourceSelect)
+    );
+    panelContent.appendChild(
+      createFormGroup("目标语言 (Target Language)", targetLangSelect)
+    );
+    const sizeInput = createInput(
+      uiIDs.translateSizeInput,
+      config.translateSize,
+      "number",
+      "默认值为 100(字体大小为原始的 100%)"
+    );
+    panelContent.appendChild(createFormGroup("翻译字体大小 (百分比)", sizeInput));
+    const layoutSelect = createSelect(
+      uiIDs.translateLayoutSelect,
+      "translateLayout",
+      [
+        { text: "翻译在上 (Translation On Top)", value: "top" },
+        { text: "翻译在下 (Translation On Bottom)", value: "bottom" }
+      ],
+      config.translateLayout
+    );
+    panelContent.appendChild(createFormGroup("翻译布局 (Layout)", layoutSelect));
+    panelContent.appendChild(
+      createSwitch(
+        uiIDs.enableTranslateSwitch,
+        "enableTranslate",
+        config.enableTranslate,
+        "启用翻译 (Enable Translate)"
+      )
+    );
+    if (checkPinYinRequire()) {
+      panelContent.appendChild(
+        createSwitch(
+          uiIDs.enablePinYinSwitch,
+          "enablePinYin",
+          config.enablePinYin,
+          "启用拼音注音 (Enable Pinyin)"
+        )
+      );
+    }
+    panelContent.appendChild(
+      createSwitch(
+        uiIDs.closeConfigAfterSaveSwitch,
+        "closeConfigAfterSave",
+        config.closeConfigAfterSave,
+        "保存后自动关闭 (Close Panel After Save)"
+      )
+    );
+    const buttonGroup = document.createElement("div");
+    buttonGroup.className = "button-group";
+    buttonGroup.appendChild(createButton("恢复默认", restoreDefaults));
+    buttonGroup.appendChild(createButton("保存设置", saveConfig, "primary"));
+    buttonGroup.appendChild(
+      createButton(
+        "关闭",
+        () => {
+          toggleConfigPanelAnimation(panel);
+        },
+        "ghost"
+      )
+    );
+    panelContent.appendChild(buttonGroup);
+  };
+  const createConfigPanel = () => {
+    const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+    let themeColor = "#DDDDDD";
+    let invertedColor = "#222222";
+    if (themeColorMeta) {
+      themeColor = themeColorMeta.getAttribute("content");
+      invertedColor = getInvertColor(themeColor);
+    }
+    const style = document.createElement("style");
+    style.textContent = `
+      :root {
+        --panel-bg: ${themeColor};
+        --panel-text: ${invertedColor};
+        --panel-border: ${invertedColor};
+        --button-bg: ${invertedColor};
+        --button-text: ${themeColor};
+        --button-hover-bg: ${getInvertColor(invertedColor)};
+      }
+
+      .modern-panel {
+        position: fixed;
+        top: 80px;
+        right: 20px;
+        width: 360px;
+        background: color-mix(in srgb, var(--panel-bg) 85%, transparent);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-radius: 16px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        z-index: 10000;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        border: 1px solid color-mix(in srgb, var(--panel-border) 30%, transparent);
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        color: var(--panel-text);
+      }
+
+      .modern-panel.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .modern-panel-header {
+        padding: 20px 24px;
+        border-bottom: 1px solid color-mix(in srgb, var(--panel-border) 10%, transparent);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .modern-panel-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--panel-text);
+        margin: 0;
+      }
+
+      .modern-panel-content {
+        padding: 24px;
+        max-height: calc(80vh - 140px);
+        overflow-y: auto;
+      }
+
+      .modern-panel-content::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      .modern-panel-content::-webkit-scrollbar-thumb {
+        background: color-mix(in srgb, var(--panel-border) 20%, transparent);
+        border-radius: 3px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-label {
+        display: block;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--panel-text);
+        margin-bottom: 8px;
+      }
+
+      .modern-select {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid color-mix(in srgb, var(--panel-border) 20%, transparent);
+        border-radius: 8px;
+        background: color-mix(in srgb, var(--panel-bg) 90%, transparent);
+        color: var(--panel-text);
+        font-size: 14px;
+        transition: all 0.2s ease;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23999' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+        cursor: pointer;
+      }
+
+      .modern-select:hover {
+        border-color: color-mix(in srgb, var(--panel-border) 40%, transparent);
+      }
+
+      .modern-select:focus {
+        outline: none;
+        border-color: var(--button-bg);
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--button-bg) 10%, transparent);
+      }
+
+      .modern-input {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid color-mix(in srgb, var(--panel-border) 20%, transparent);
+        border-radius: 8px;
+        background: color-mix(in srgb, var(--panel-bg) 90%, transparent);
+        color: var(--panel-text);
+        font-size: 14px;
+        transition: all 0.2s ease;
+      }
+
+      .modern-input:hover {
+        border-color: color-mix(in srgb, var(--panel-border) 40%, transparent);
+      }
+
+      .modern-input:focus {
+        outline: none;
+        border-color: var(--button-bg);
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--button-bg) 10%, transparent);
+      }
+
+      .switch-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+      }
+
+      .modern-switch {
+        position: relative;
+        width: 44px;
+        height: 24px;
+        background: color-mix(in srgb, var(--panel-border) 20%, transparent);
+        border-radius: 12px;
+        padding: 2px;
+        transition: background 0.3s ease;
+        cursor: pointer;
+      }
+
+      .modern-switch.active {
+        background: var(--button-bg);
+      }
+
+      .modern-switch::after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 10px;
+        background: var(--panel-bg);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .modern-switch.active::after {
+        transform: translateX(20px);
+      }
+
+      .button-group {
+        display: flex;
+        gap: 12px;
+        margin-top: 24px;
+        padding-top: 20px;
+        border-top: 1px solid color-mix(in srgb, var(--panel-border) 10%, transparent);
+      }
+
+      .modern-button {
+        flex: 1;
+        padding: 10px 16px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+      }
+
+      .modern-button.primary {
+        background: var(--button-bg);
+        color: var(--button-text);
+      }
+
+      .modern-button.secondary {
+        background: color-mix(in srgb, var(--panel-border) 10%, transparent);
+        color: var(--panel-text);
+      }
+
+      .modern-button.secondary:hover {
+        background: color-mix(in srgb, var(--panel-border) 20%, transparent);
+      }
+
+      .modern-button.ghost {
+        background: color-mix(in srgb, var(--panel-border) 10%, transparent);
+        color: var(--panel-text);
+      }
+
+      .modern-button.ghost:hover {
+        background: color-mix(in srgb, var(--panel-border) 10%, transparent);
+      }
+    }`;
+    document.head.appendChild(style);
+    const panel = document.createElement("div");
+    panel.id = uiIDs.configPanel;
+    panel.className = "modern-panel";
+    panel.style.display = "none";
+    const header = document.createElement("div");
+    header.className = "modern-panel-header";
+    const title = document.createElement("h3");
+    title.className = "modern-panel-title";
+    title.textContent = "设置";
+    header.appendChild(title);
+    const content = document.createElement("div");
+    content.className = "modern-panel-content";
+    console.log();
+    updateConfigPanelContent(panel, content);
+    panel.appendChild(header);
+    panel.appendChild(content);
+    document.body.appendChild(panel);
+    return panel;
+  };
+  const toggleConfigPanelAnimation = (panel) => {
+    if (panel.style.display === "none") {
+      panel.classList.add("show");
+      setTimeout(() => {
+        panel.style.display = "block";
+      }, 10);
+    } else {
+      panel.classList.remove("show");
+      setTimeout(() => {
+        panel.style.display = "none";
+      }, 300);
+    }
+  };
+  const toggleConfigPanel = () => {
+    let panel = document.getElementById(uiIDs.configPanel);
+    panel = panel || createConfigPanel();
+    toggleConfigPanelAnimation(panel);
+  };
+  const createConfigButton = () => {
+    const toolbar = document.querySelector(".d-editor-button-bar");
+    if (!toolbar || document.getElementById(uiIDs.configButton)) return;
+    const configButton = document.createElement("button");
+    configButton.id = uiIDs.configButton;
+    configButton.className = "btn btn-flat btn-icon no-text user-menu-tab active";
+    configButton.title = "配置";
+    configButton.innerHTML = '<svg class="fa d-icon d-icon-discourse-other-tab svg-icon svg-string" xmlns="http://www.w3.org/2000/svg"><use href="#discourse-other-tab"></use></svg>';
+    configButton.onclick = toggleConfigPanel;
+    toolbar.appendChild(configButton);
+  };
+  const watchReplyControl = () => {
+    const replyControl = document.getElementById(uiIDs.replyControl);
+    if (!replyControl) return;
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === "attributes" && mutation.attributeName === "class") {
+          if (replyControl.classList.contains("closed")) {
+            const panel = document.getElementById(uiIDs.configPanel);
+            if (panel) {
+              panel.style.display = "none";
+            }
+          } else {
+            setTimeout(createConfigButton, 500);
+          }
+        }
+      });
+    });
+    observer.observe(replyControl, { attributes: true });
+  };
+  const watchForEditor = () => {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === "childList") {
+          const addedNodes = mutation.addedNodes;
+          for (let node of addedNodes) {
+            if (node.nodeType === Node.ELEMENT_NODE && node.classList.contains("d-editor")) {
+              createConfigButton();
+              return;
+            }
+          }
+        }
+      });
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+  };
+  const init = () => {
+    const container = document.getElementById(uiIDs.replyControl);
+    container.addEventListener("click", handleClick, true);
+    document.addEventListener("keydown", handleKeydown, true);
+    if (!document.getElementById(uiIDs.configButton)) {
+      createConfigButton();
+    }
+    watchReplyControl();
+    watchForEditor();
+  };
+  const _sfc_main$s = {
+    props: ["modelValue", "sort"],
+    emits: ["update:modelValue"],
+    mounted() {
+      if (this.modelValue) {
+        setTimeout(() => {
+          init();
+        }, 1e3);
+        $("head").append(
+          `<style>#multi-lang-say-config-button{display:block!important;}</style>`
+        );
+      }
+    }
+  };
+  const _hoisted_1$o = { class: "item" };
+  const _hoisted_2$e = { class: "tit" };
+  const _hoisted_3$6 = ["checked"];
+  function _sfc_render$s(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
+      vue.createElementVNode("div", _hoisted_1$o, [
+        vue.createElementVNode("div", _hoisted_2$e, vue.toDisplayString($props.sort) + ". 是否开启翻译/拼音", 1),
+        vue.createElementVNode("input", {
+          type: "checkbox",
+          checked: $props.modelValue,
+          onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
+        }, null, 40, _hoisted_3$6)
+      ]),
+      _cache[1] || (_cache[1] = vue.createElementVNode("p", null, "开启后在回复编辑器中会显示设置按钮。", -1)),
+      _cache[2] || (_cache[2] = vue.createElementVNode("p", null, [
+        vue.createTextVNode(" 本功能与 "),
+        vue.createElementVNode("a", {
+          href: "https://linux.do/t/topic/246430",
+          target: "_blank"
+        }, "https://linux.do/t/topic/246430"),
+        vue.createTextVNode(" 脚本完全一致，经授权进行合并。 ")
+      ], -1)),
+      _cache[3] || (_cache[3] = vue.createElementVNode("p", null, "后续优化会将设置面板迁移进来。", -1))
+    ], 64);
+  }
+  const MenuTranslate = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["render", _sfc_render$s], ["__scopeId", "data-v-fb78a085"]]);
+  const _sfc_main$r = {
     props: {
       value: {
         type: String,
@@ -2272,11 +3304,11 @@ ${$(".d-editor-input").val()}
       }
     }
   };
-  const _hoisted_1$m = { class: "item" };
+  const _hoisted_1$n = { class: "item" };
   const _hoisted_2$d = { class: "tit" };
-  function _sfc_render$q(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$r(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-      vue.createElementVNode("div", _hoisted_1$m, [
+      vue.createElementVNode("div", _hoisted_1$n, [
         vue.createElementVNode("div", _hoisted_2$d, vue.toDisplayString($props.sort) + ". 自定义 CSS（支持 import 引入第三方样式文件） ", 1)
       ]),
       vue.withDirectives(vue.createElementVNode("textarea", {
@@ -2288,8 +3320,8 @@ ${$(".d-editor-input").val()}
       ])
     ], 64);
   }
-  const MenuOtherCss = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["render", _sfc_render$q], ["__scopeId", "data-v-e33f1de9"]]);
-  const _sfc_main$p = {
+  const MenuOtherCss = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["render", _sfc_render$r], ["__scopeId", "data-v-e33f1de9"]]);
+  const _sfc_main$q = {
     props: {
       value: {
         type: String,
@@ -2324,11 +3356,11 @@ ${$(".d-editor-input").val()}
       }
     }
   };
-  const _hoisted_1$l = { class: "item" };
+  const _hoisted_1$m = { class: "item" };
   const _hoisted_2$c = { class: "tit" };
-  function _sfc_render$p(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$q(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-      vue.createElementVNode("div", _hoisted_1$l, [
+      vue.createElementVNode("div", _hoisted_1$m, [
         vue.createElementVNode("div", _hoisted_2$c, vue.toDisplayString($props.sort) + ". 自定义论坛 logo", 1)
       ]),
       vue.withDirectives(vue.createElementVNode("input", {
@@ -2341,8 +3373,8 @@ ${$(".d-editor-input").val()}
       ])
     ], 64);
   }
-  const MenuLogoUrl = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["render", _sfc_render$p], ["__scopeId", "data-v-cb743585"]]);
-  const _sfc_main$o = {
+  const MenuLogoUrl = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["render", _sfc_render$q], ["__scopeId", "data-v-cb743585"]]);
+  const _sfc_main$p = {
     props: {
       value: {
         type: String,
@@ -2422,11 +3454,11 @@ ${$(".d-editor-input").val()}
       }
     }
   };
-  const _hoisted_1$k = { class: "item" };
+  const _hoisted_1$l = { class: "item" };
   const _hoisted_2$b = { class: "tit" };
-  function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$p(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-      vue.createElementVNode("div", _hoisted_1$k, [
+      vue.createElementVNode("div", _hoisted_1$l, [
         vue.createElementVNode("div", _hoisted_2$b, vue.toDisplayString($props.sort) + ". 自定义快捷回复（换行分隔）", 1)
       ]),
       vue.withDirectives(vue.createElementVNode("textarea", {
@@ -2438,8 +3470,8 @@ ${$(".d-editor-input").val()}
       ])
     ], 64);
   }
-  const MenuCreatereply = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["render", _sfc_render$o], ["__scopeId", "data-v-396734d2"]]);
-  const _sfc_main$n = {
+  const MenuCreatereply = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["render", _sfc_render$p], ["__scopeId", "data-v-396734d2"]]);
+  const _sfc_main$o = {
     props: {
       value: {
         type: String,
@@ -2494,11 +3526,11 @@ ${$(".d-editor-input").val()}
       }
     }
   };
-  const _hoisted_1$j = { class: "item" };
+  const _hoisted_1$k = { class: "item" };
   const _hoisted_2$a = { class: "tit" };
-  function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-      vue.createElementVNode("div", _hoisted_1$j, [
+      vue.createElementVNode("div", _hoisted_1$k, [
         vue.createElementVNode("div", _hoisted_2$a, vue.toDisplayString($props.sort) + ". 屏蔽指定用户（使用英文，分隔）", 1)
       ]),
       vue.withDirectives(vue.createElementVNode("textarea", {
@@ -2510,8 +3542,8 @@ ${$(".d-editor-input").val()}
       ])
     ], 64);
   }
-  const MenuBlockuserlist = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["render", _sfc_render$n], ["__scopeId", "data-v-f84417d4"]]);
-  const _sfc_main$m = {
+  const MenuBlockuserlist = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["render", _sfc_render$o], ["__scopeId", "data-v-f84417d4"]]);
+  const _sfc_main$n = {
     props: {
       value: {
         type: String,
@@ -2566,11 +3598,11 @@ ${$(".d-editor-input").val()}
       }
     }
   };
-  const _hoisted_1$i = { class: "item" };
+  const _hoisted_1$j = { class: "item" };
   const _hoisted_2$9 = { class: "tit" };
-  function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-      vue.createElementVNode("div", _hoisted_1$i, [
+      vue.createElementVNode("div", _hoisted_1$j, [
         vue.createElementVNode("div", _hoisted_2$9, vue.toDisplayString($props.sort) + ". 关键词屏蔽功能（使用英文，分隔）屏蔽包含关键字的话题和回复 ", 1)
       ]),
       vue.withDirectives(vue.createElementVNode("textarea", {
@@ -2581,8 +3613,8 @@ ${$(".d-editor-input").val()}
       ])
     ], 64);
   }
-  const MenuBlockKeyword = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["render", _sfc_render$m], ["__scopeId", "data-v-77789f1e"]]);
-  const _sfc_main$l = {
+  const MenuBlockKeyword = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["render", _sfc_render$n], ["__scopeId", "data-v-77789f1e"]]);
+  const _sfc_main$m = {
     props: {
       value: {
         type: Object,
@@ -2679,14 +3711,14 @@ ${$(".d-editor-input").val()}
       }
     }
   };
-  const _hoisted_1$h = {
+  const _hoisted_1$i = {
     class: "item",
     style: { "border": "none" }
   };
   const _hoisted_2$8 = { class: "tit" };
-  function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-      vue.createElementVNode("div", _hoisted_1$h, [
+      vue.createElementVNode("div", _hoisted_1$i, [
         vue.createElementVNode("div", _hoisted_2$8, [
           vue.createTextVNode(vue.toDisplayString($props.sort) + ". 屏蔽指定天数前的帖子 ", 1),
           vue.withDirectives(vue.createElementVNode("input", {
@@ -2716,8 +3748,8 @@ ${$(".d-editor-input").val()}
       ])
     ], 64);
   }
-  const MenuShieldPosts = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["render", _sfc_render$l], ["__scopeId", "data-v-ac149a76"]]);
-  const _sfc_main$k = {
+  const MenuShieldPosts = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["render", _sfc_render$m], ["__scopeId", "data-v-ac149a76"]]);
+  const _sfc_main$l = {
     props: {
       value: {
         type: Array,
@@ -2813,12 +3845,12 @@ ${$(".d-editor-input").val()}
       }, 1e3);
     }
   };
-  const _hoisted_1$g = { class: "menu-table" };
+  const _hoisted_1$h = { class: "menu-table" };
   const _hoisted_2$7 = ["onClick"];
   const _hoisted_3$5 = ["onClick"];
-  function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("div", null, [
-      vue.createElementVNode("table", _hoisted_1$g, [
+      vue.createElementVNode("table", _hoisted_1$h, [
         _cache[0] || (_cache[0] = vue.createElementVNode("thead", null, [
           vue.createElementVNode("tr", null, [
             vue.createElementVNode("th", null, "用户名"),
@@ -2850,8 +3882,8 @@ ${$(".d-editor-input").val()}
       ])
     ]);
   }
-  const UserTags = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["render", _sfc_render$k]]);
-  const _sfc_main$j = {
+  const UserTags = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["render", _sfc_render$l]]);
+  const _sfc_main$k = {
     props: {
       value: {
         type: Object,
@@ -2902,20 +3934,20 @@ ${$(".d-editor-input").val()}
          <div class="gpt-summary">AI 总结：正在使用 AI 总结内容中，请稍后...</div>
           </div>`
         );
-        const config = JSON.parse(localStorage.getItem("linxudoscriptssetting")).gptdata;
+        const config2 = JSON.parse(localStorage.getItem("linxudoscriptssetting")).gptdata;
         return new Promise((resolve, reject) => {
           const str = $("#topic-title h1 a").text() + $("#post_1 .cooked").text();
-          const prompt2 = `${config.prompt}
+          const prompt2 = `${config2.prompt}
 帖子内容如下：
 ${str}`;
-          fetch(`${config.baseurl}${config.full_url}`, {
+          fetch(`${config2.baseurl}${config2.full_url}`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer ${config.apikey}`
+              Authorization: `Bearer ${config2.apikey}`
             },
             body: JSON.stringify({
-              model: config.model,
+              model: config2.model,
               messages: [
                 {
                   role: "user",
@@ -2956,20 +3988,20 @@ ${str}`;
       async setAIRelpy() {
         $(".aireply-popup").show();
         $(".aireply-popup-text").html("AI 推荐回复正在生成中，请稍后。。。");
-        const config = JSON.parse(localStorage.getItem("linxudoscriptssetting")).gptdata;
+        const config2 = JSON.parse(localStorage.getItem("linxudoscriptssetting")).gptdata;
         return new Promise((resolve, reject) => {
           const str = $("#topic-title h1 a").text() + $("#post_1 .cooked").text();
-          const prompt2 = `${config.prompt1}
+          const prompt2 = `${config2.prompt1}
 帖子内容如下：
 ${str}`;
-          fetch(`${config.baseurl}${config.full_url}`, {
+          fetch(`${config2.baseurl}${config2.full_url}`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer ${config.apikey}`
+              Authorization: `Bearer ${config2.apikey}`
             },
             body: JSON.stringify({
-              model: config.model,
+              model: config2.model,
               messages: [
                 {
                   role: "user",
@@ -2999,18 +4031,18 @@ ${str}`;
       async getCreateNewTopicTitle() {
         return new Promise((resolve, reject) => {
           const topic_contentdata = $(".d-editor-preview").html();
-          const config = JSON.parse(localStorage.getItem("linxudoscriptssetting")).gptdata;
-          const prompt2 = `${config.prompt2}
+          const config2 = JSON.parse(localStorage.getItem("linxudoscriptssetting")).gptdata;
+          const prompt2 = `${config2.prompt2}
 帖子内容如下：
 ${topic_contentdata}`;
-          fetch(`${config.baseurl}${config.full_url}`, {
+          fetch(`${config2.baseurl}${config2.full_url}`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer ${config.apikey}`
+              Authorization: `Bearer ${config2.apikey}`
             },
             body: JSON.stringify({
-              model: config.model,
+              model: config2.model,
               messages: [
                 {
                   role: "user",
@@ -3120,13 +4152,13 @@ ${topic_contentdata}`;
       }
     }
   };
-  const _hoisted_1$f = { class: "item" };
+  const _hoisted_1$g = { class: "item" };
   const _hoisted_2$6 = { class: "item" };
   const _hoisted_3$4 = { class: "item" };
   const _hoisted_4$4 = { class: "item" };
-  function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("div", null, [
-      vue.createElementVNode("div", _hoisted_1$f, [
+      vue.createElementVNode("div", _hoisted_1$g, [
         _cache[15] || (_cache[15] = vue.createElementVNode("div", { class: "tit" }, "1. 是否开启 AI 生成话题总结", -1)),
         vue.withDirectives(vue.createElementVNode("input", {
           type: "checkbox",
@@ -3220,8 +4252,8 @@ ${topic_contentdata}`;
       _cache[23] || (_cache[23] = vue.createElementVNode("div", { style: { "margin-top": "10px" } }, " 注意：请按照指定格式填写参数；不支持 http，请使用 https。 ", -1))
     ]);
   }
-  const GPTconfig = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["render", _sfc_render$j], ["__scopeId", "data-v-d1d5d03b"]]);
-  const _sfc_main$i = {
+  const GPTconfig = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["render", _sfc_render$k], ["__scopeId", "data-v-d1d5d03b"]]);
+  const _sfc_main$j = {
     props: ["modelValue"],
     emits: ["update:modelValue"],
     data() {
@@ -3307,15 +4339,15 @@ ${topic_contentdata}`;
       }
     }
   };
-  const _hoisted_1$e = { class: "item" };
+  const _hoisted_1$f = { class: "item" };
   const _hoisted_2$5 = { class: "ls-flex" };
   const _hoisted_3$3 = ["id", "value", "onChange"];
   const _hoisted_4$3 = ["for"];
   const _hoisted_5$2 = ["for"];
   const _hoisted_6$2 = ["for"];
   const _hoisted_7$1 = ["src", "alt"];
-  function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$e, [
+  function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$f, [
       _cache[1] || (_cache[1] = vue.createElementVNode("p", null, "切换论坛主题：", -1)),
       _cache[2] || (_cache[2] = vue.createElementVNode("p", null, "无法修改，如果有样式问题无法解决，因为是直接 copy 别的论坛样式文件。", -1)),
       _cache[3] || (_cache[3] = vue.createElementVNode("p", null, [
@@ -3363,8 +4395,8 @@ ${topic_contentdata}`;
       ])
     ]);
   }
-  const Themes = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$i], ["__scopeId", "data-v-b5335091"]]);
-  const _sfc_main$h = {
+  const Themes = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["render", _sfc_render$j], ["__scopeId", "data-v-b5335091"]]);
+  const _sfc_main$i = {
     data() {
       return {};
     },
@@ -3427,7 +4459,7 @@ ${topic_contentdata}`;
       }
     }
   };
-  function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
       vue.createElementVNode("input", {
         type: "file",
@@ -3447,8 +4479,8 @@ ${topic_contentdata}`;
       }, "导出")
     ], 64);
   }
-  const ManualBackup = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["render", _sfc_render$h]]);
-  const _sfc_main$g = {
+  const ManualBackup = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$i]]);
+  const _sfc_main$h = {
     props: {
       value: {
         type: Object,
@@ -3656,15 +4688,15 @@ ${topic_contentdata}`;
       }
     }
   };
-  const _hoisted_1$d = { class: "item" };
+  const _hoisted_1$e = { class: "item" };
   const _hoisted_2$4 = { class: "item" };
   const _hoisted_3$2 = { class: "item" };
   const _hoisted_4$2 = { class: "btnwrapper" };
-  function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_ManualBackup = vue.resolveComponent("ManualBackup");
     return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
       _cache[12] || (_cache[12] = vue.createElementVNode("div", { class: "item" }, "用于在云端同步设置数据，无需手动导入导出。（同步前先保存设置）", -1)),
-      vue.createElementVNode("div", _hoisted_1$d, [
+      vue.createElementVNode("div", _hoisted_1$e, [
         _cache[9] || (_cache[9] = vue.createElementVNode("div", { class: "tit" }, "WebDav 地址：", -1)),
         vue.withDirectives(vue.createElementVNode("input", {
           type: "text",
@@ -3710,8 +4742,8 @@ ${topic_contentdata}`;
       vue.createVNode(_component_ManualBackup)
     ], 64);
   }
-  const SyncBackup = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["render", _sfc_render$g], ["__scopeId", "data-v-b0378f6f"]]);
-  const _sfc_main$f = {
+  const SyncBackup = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["render", _sfc_render$h], ["__scopeId", "data-v-b0378f6f"]]);
+  const _sfc_main$g = {
     data() {
       return {
         status: false
@@ -3724,9 +4756,9 @@ ${topic_contentdata}`;
       }
     }
   };
-  const _hoisted_1$c = { class: "lookopbtn" };
-  function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$c, [
+  const _hoisted_1$d = { class: "lookopbtn" };
+  function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$d, [
       vue.createElementVNode("div", {
         class: vue.normalizeClass(["el-button", { act: $data.status }]),
         onClick: _cache[0] || (_cache[0] = (...args) => $options.lookop && $options.lookop(...args)),
@@ -3734,8 +4766,8 @@ ${topic_contentdata}`;
       }, " 楼主 ", 2)
     ]);
   }
-  const LookOP = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$f], ["__scopeId", "data-v-6520db1a"]]);
-  const _sfc_main$e = {
+  const LookOP = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["render", _sfc_render$g], ["__scopeId", "data-v-6520db1a"]]);
+  const _sfc_main$f = {
     data() {
       return {
         isMinimized: true,
@@ -3883,12 +4915,12 @@ ${topic_contentdata}`;
       }, 1e3);
     }
   };
-  const _hoisted_1$b = {
+  const _hoisted_1$c = {
     key: 0,
     id: "linuxDoLevelPopupContent"
   };
   const _hoisted_2$3 = ["innerHTML"];
-  function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("div", null, [
       vue.createElementVNode("div", {
         class: vue.normalizeClass(["el-button", ["linuxDoLevelPopup", $data.isMinimized ? "minimized" : ""]]),
@@ -3897,7 +4929,7 @@ ${topic_contentdata}`;
       }, _cache[3] || (_cache[3] = [
         vue.createElementVNode("span", null, "等级", -1)
       ]), 2),
-      !$data.isMinimized ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_1$b, [
+      !$data.isMinimized ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_1$c, [
         vue.createElementVNode("div", { innerHTML: $data.content }, null, 8, _hoisted_2$3),
         vue.withDirectives(vue.createElementVNode("input", {
           "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => $data.username = $event),
@@ -3918,8 +4950,8 @@ ${topic_contentdata}`;
       ])) : vue.createCommentVNode("", true)
     ]);
   }
-  const LevelDiglog = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$e], ["__scopeId", "data-v-57dbaeb5"]]);
-  const _sfc_main$d = {
+  const LevelDiglog = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$f], ["__scopeId", "data-v-57dbaeb5"]]);
+  const _sfc_main$e = {
     data() {
       return {
         num: 10,
@@ -3969,7 +5001,7 @@ ${topic_contentdata}`;
       }
     }
   };
-  const _hoisted_1$a = {
+  const _hoisted_1$b = {
     key: 0,
     xmlns: "http://www.w3.org/2000/svg",
     width: "24",
@@ -3990,13 +5022,13 @@ ${topic_contentdata}`;
     "stroke-linejoin": "round",
     class: "icon icon-tabler icons-tabler-outline icon-tabler-loader"
   };
-  function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("div", {
       class: vue.normalizeClass(["el-button", { act: $data.status }]),
       onClick: _cache[0] || (_cache[0] = (...args) => $options.autoread && $options.autoread(...args)),
       title: "自动阅读"
     }, [
-      $data.status == false ? (vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$a, _cache[1] || (_cache[1] = [
+      $data.status == false ? (vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$b, _cache[1] || (_cache[1] = [
         vue.createElementVNode("path", {
           stroke: "none",
           d: "M0 0h24v24H0z",
@@ -4009,15 +5041,15 @@ ${topic_contentdata}`;
       ]))) : vue.createCommentVNode("", true)
     ], 2);
   }
-  const AutoRead = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$d], ["__scopeId", "data-v-64839780"]]);
-  const _sfc_main$c = {
+  const AutoRead = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$e], ["__scopeId", "data-v-64839780"]]);
+  const _sfc_main$d = {
     methods: {
       openai() {
         window.open("https://shared.oaifree.com/?temporary-chat=true", "_blank");
       }
     }
   };
-  function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("div", null, [
       vue.createElementVNode("div", {
         class: "el-button",
@@ -4028,17 +5060,17 @@ ${topic_contentdata}`;
       }, " AI ")
     ]);
   }
-  const AIDialog = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$c]]);
-  const _sfc_main$b = {
+  const AIDialog = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$d]]);
+  const _sfc_main$c = {
     methods: {
       replaybtn() {
         $('button[title="开始撰写此话题的回复"]')[0].click();
       }
     }
   };
-  const _hoisted_1$9 = { class: "replaybtn" };
-  function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$9, [
+  const _hoisted_1$a = { class: "replaybtn" };
+  function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$a, [
       vue.createElementVNode("div", {
         class: "el-button",
         style: { "font-size": "18px" },
@@ -4055,17 +5087,17 @@ ${topic_contentdata}`;
       ]))
     ]);
   }
-  const ReplyBtn = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$b]]);
-  const _sfc_main$a = {
+  const ReplyBtn = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$c]]);
+  const _sfc_main$b = {
     data() {
       return {
         version: packageJson.version
       };
     }
   };
-  const _hoisted_1$8 = { class: "item-foot" };
-  function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$8, [
+  const _hoisted_1$9 = { class: "item-foot" };
+  function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$9, [
       _cache[0] || (_cache[0] = vue.createElementVNode("span", null, [
         vue.createElementVNode("a", {
           href: "https://github.com/dlzmoe/linuxdo-scripts",
@@ -4075,8 +5107,8 @@ ${topic_contentdata}`;
       vue.createElementVNode("span", null, "当前版本：" + vue.toDisplayString($data.version), 1)
     ]);
   }
-  const Updates = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$a], ["__scopeId", "data-v-45c51ed7"]]);
-  const _sfc_main$9 = {
+  const Updates = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$b], ["__scopeId", "data-v-45c51ed7"]]);
+  const _sfc_main$a = {
     created() {
       setTimeout(() => {
         const isShowplugininstallationprompts = localStorage.getItem(
@@ -4119,44 +5151,44 @@ ${topic_contentdata}`;
       }, 100);
     }
   };
-  function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
     return null;
   }
-  const UsageTip = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$9]]);
-  const _sfc_main$8 = {
+  const UsageTip = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$a]]);
+  const _sfc_main$9 = {
     methods: {
       init() {
         $(".signature-img").each(function() {
-          var self = $(this);
-          if (self.data("processed")) {
-            return;
-          }
-          var url = self.attr("src");
-          var img = new Image();
-          img.src = url;
-          self.data("processed", true);
-          img.onerror = function() {
-            if (self.siblings(".signature-p").length < 1) {
-              self.after(
-                `<p class="signature-p">${url}（该用户签名不可访问，已自动转文字）</p>`
+          var self1 = $(this);
+          var url1 = self1.attr("src");
+          var img1 = new Image();
+          img1.src = url1;
+          img1.onerror = function() {
+            if (self1.siblings(".signature-p").length < 1) {
+              self1.after(
+                `<p class="signature-p">${url1}（该用户签名不可访问，已自动转文字）</p>`
               );
-              self.hide();
+              self1.hide();
             }
           };
         });
       }
     },
     created() {
+      let pollinglength2 = 0;
       setInterval(() => {
-        this.init();
+        if (pollinglength2 != $(".post-stream .topic-post").length) {
+          pollinglength2 = $(".post-stream .topic-post").length;
+          this.init();
+        }
       }, 1e3);
     }
   };
-  function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
     return null;
   }
-  const Signature = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$8]]);
-  const _sfc_main$7 = {
+  const Signature = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$9]]);
+  const _sfc_main$8 = {
     data() {
       return {
         floorlotteryval1: "",
@@ -4202,7 +5234,7 @@ ${topic_contentdata}`;
       }
     }
   };
-  const _hoisted_1$7 = { id: "floorlotteryDialog" };
+  const _hoisted_1$8 = { id: "floorlotteryDialog" };
   const _hoisted_2$1 = {
     class: "menu-body",
     style: { "margin-top": "10px" }
@@ -4215,8 +5247,8 @@ ${topic_contentdata}`;
     title: "抽奖结果",
     type: "success"
   };
-  function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("dialog", _hoisted_1$7, [
+  function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("dialog", _hoisted_1$8, [
       _cache[7] || (_cache[7] = vue.createElementVNode("div", { class: "menu-header" }, [
         vue.createElementVNode("div", { class: "title" }, "楼层抽奖")
       ], -1)),
@@ -4255,9 +5287,9 @@ ${topic_contentdata}`;
       ])
     ]);
   }
-  const FloorLottery = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$7], ["__scopeId", "data-v-649030ce"]]);
-  const _sfc_main$6 = {};
-  const _hoisted_1$6 = {
+  const FloorLottery = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$8], ["__scopeId", "data-v-649030ce"]]);
+  const _sfc_main$7 = {};
+  const _hoisted_1$7 = {
     xmlns: "http://www.w3.org/2000/svg",
     width: "24",
     height: "24",
@@ -4265,8 +5297,8 @@ ${topic_contentdata}`;
     viewBox: "0 0 24 24",
     class: "icon-sm"
   };
-  function _sfc_render$6(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$6, _cache[0] || (_cache[0] = [
+  function _sfc_render$7(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$7, _cache[0] || (_cache[0] = [
       vue.createElementVNode("path", {
         fill: "currentColor",
         "fill-rule": "evenodd",
@@ -4281,7 +5313,27 @@ ${topic_contentdata}`;
       }, null, -1)
     ]));
   }
-  const Setting1 = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$6]]);
+  const Setting1 = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$7]]);
+  const _sfc_main$6 = {};
+  const _hoisted_1$6 = {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "24",
+    height: "24",
+    fill: "none",
+    viewBox: "0 0 24 24",
+    class: "icon-sm"
+  };
+  function _sfc_render$6(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$6, _cache[0] || (_cache[0] = [
+      vue.createElementVNode("path", {
+        fill: "currentColor",
+        "fill-rule": "evenodd",
+        d: "M12 4a3 3 0 1 0 0 6 3 3 0 0 0 0-6M7 7a5 5 0 1 1 10 0A5 5 0 0 1 7 7m12.028 8.626c-.342-.061-.834.027-1.346.557a1 1 0 0 1-1.438 0c-.512-.53-1.003-.618-1.345-.557-.36.064-.681.312-.837.702-.257.643-.16 2.334 2.901 4.134 3.062-1.8 3.159-3.49 2.901-4.134a1.11 1.11 0 0 0-.836-.702m2.693-.041c.854 2.134-.456 4.844-4.284 6.904a1 1 0 0 1-.948 0c-3.828-2.06-5.137-4.77-4.284-6.904a3.11 3.11 0 0 1 2.343-1.929c.809-.144 1.655.035 2.415.536.76-.5 1.607-.68 2.415-.536a3.11 3.11 0 0 1 2.343 1.929m-11.795-1.38a1 1 0 0 1-.548 1.303C7.06 16.453 5.5 18.581 5.5 21a1 1 0 1 1-2 0c0-3.322 2.141-6.128 5.122-7.344a1 1 0 0 1 1.304.549",
+        "clip-rule": "evenodd"
+      }, null, -1)
+    ]));
+  }
+  const Setting2 = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$6]]);
   const _sfc_main$5 = {};
   const _hoisted_1$5 = {
     xmlns: "http://www.w3.org/2000/svg",
@@ -4296,34 +5348,14 @@ ${topic_contentdata}`;
       vue.createElementVNode("path", {
         fill: "currentColor",
         "fill-rule": "evenodd",
-        d: "M12 4a3 3 0 1 0 0 6 3 3 0 0 0 0-6M7 7a5 5 0 1 1 10 0A5 5 0 0 1 7 7m12.028 8.626c-.342-.061-.834.027-1.346.557a1 1 0 0 1-1.438 0c-.512-.53-1.003-.618-1.345-.557-.36.064-.681.312-.837.702-.257.643-.16 2.334 2.901 4.134 3.062-1.8 3.159-3.49 2.901-4.134a1.11 1.11 0 0 0-.836-.702m2.693-.041c.854 2.134-.456 4.844-4.284 6.904a1 1 0 0 1-.948 0c-3.828-2.06-5.137-4.77-4.284-6.904a3.11 3.11 0 0 1 2.343-1.929c.809-.144 1.655.035 2.415.536.76-.5 1.607-.68 2.415-.536a3.11 3.11 0 0 1 2.343 1.929m-11.795-1.38a1 1 0 0 1-.548 1.303C7.06 16.453 5.5 18.581 5.5 21a1 1 0 1 1-2 0c0-3.322 2.141-6.128 5.122-7.344a1 1 0 0 1 1.304.549",
-        "clip-rule": "evenodd"
-      }, null, -1)
-    ]));
-  }
-  const Setting2 = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$5]]);
-  const _sfc_main$4 = {};
-  const _hoisted_1$4 = {
-    xmlns: "http://www.w3.org/2000/svg",
-    width: "24",
-    height: "24",
-    fill: "none",
-    viewBox: "0 0 24 24",
-    class: "icon-sm"
-  };
-  function _sfc_render$4(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$4, _cache[0] || (_cache[0] = [
-      vue.createElementVNode("path", {
-        fill: "currentColor",
-        "fill-rule": "evenodd",
         d: "M12.4 3.767a1 1 0 0 0-.8 0l-6 2.625a1 1 0 0 0-.6.916V13c0 1.714.616 3.283 1.638 4.5A6.99 6.99 0 0 1 12 15c2.153 0 4.078.972 5.362 2.5A6.97 6.97 0 0 0 19 13V7.308a1 1 0 0 0-.6-.916zm3.47 15.067A4.99 4.99 0 0 0 12 17a4.99 4.99 0 0 0-3.87 1.834A6.97 6.97 0 0 0 12 20c1.43 0 2.762-.43 3.87-1.166m-5.072-16.9a3 3 0 0 1 2.405 0l6 2.626A3 3 0 0 1 21 7.308V13a9 9 0 1 1-18 0V7.308A3 3 0 0 1 4.798 4.56zM12 8.5a1.75 1.75 0 1 0 0 3.5 1.75 1.75 0 0 0 0-3.5m-3.75 1.75a3.75 3.75 0 1 1 7.5 0 3.75 3.75 0 0 1-7.5 0",
         "clip-rule": "evenodd"
       }, null, -1)
     ]));
   }
-  const Setting3 = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$4]]);
-  const _sfc_main$3 = {};
-  const _hoisted_1$3 = {
+  const Setting3 = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$5]]);
+  const _sfc_main$4 = {};
+  const _hoisted_1$4 = {
     xmlns: "http://www.w3.org/2000/svg",
     width: "24",
     height: "24",
@@ -4335,14 +5367,14 @@ ${topic_contentdata}`;
     "stroke-linejoin": "round",
     class: "icon icon-tabler icons-tabler-outline icon-tabler-brand-openai"
   };
-  function _sfc_render$3(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$3, _cache[0] || (_cache[0] = [
+  function _sfc_render$4(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$4, _cache[0] || (_cache[0] = [
       vue.createStaticVNode('<path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M11.217 19.384a3.501 3.501 0 0 0 6.783 -1.217v-5.167l-6 -3.35"></path><path d="M5.214 15.014a3.501 3.501 0 0 0 4.446 5.266l4.34 -2.534v-6.946"></path><path d="M6 7.63c-1.391 -.236 -2.787 .395 -3.534 1.689a3.474 3.474 0 0 0 1.271 4.745l4.263 2.514l6 -3.348"></path><path d="M12.783 4.616a3.501 3.501 0 0 0 -6.783 1.217v5.067l6 3.45"></path><path d="M18.786 8.986a3.501 3.501 0 0 0 -4.446 -5.266l-4.34 2.534v6.946"></path><path d="M18 16.302c1.391 .236 2.787 -.395 3.534 -1.689a3.474 3.474 0 0 0 -1.271 -4.745l-4.308 -2.514l-5.955 3.42"></path>', 7)
     ]));
   }
-  const Setting4 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$3]]);
-  const _sfc_main$2 = {};
-  const _hoisted_1$2 = {
+  const Setting4 = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$4]]);
+  const _sfc_main$3 = {};
+  const _hoisted_1$3 = {
     xmlns: "http://www.w3.org/2000/svg",
     width: "24",
     height: "24",
@@ -4354,14 +5386,14 @@ ${topic_contentdata}`;
     "stroke-linejoin": "round",
     class: "icon icon-tabler icons-tabler-outline icon-tabler-cheese"
   };
-  function _sfc_render$2(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$2, _cache[0] || (_cache[0] = [
+  function _sfc_render$3(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$3, _cache[0] || (_cache[0] = [
       vue.createStaticVNode('<path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M4.519 20.008l16.481 -.008v-3.5a2 2 0 1 1 0 -4v-3.5h-16.722"></path><path d="M21 9l-9.385 -4.992c-2.512 .12 -4.758 1.42 -6.327 3.425c-1.423 1.82 -2.288 4.221 -2.288 6.854c0 2.117 .56 4.085 1.519 5.721"></path><path d="M15 13v.01"></path><path d="M8 13v.01"></path><path d="M11 16v.01"></path>', 6)
     ]));
   }
-  const Setting5 = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$2]]);
-  const _sfc_main$1 = {};
-  const _hoisted_1$1 = {
+  const Setting5 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$3]]);
+  const _sfc_main$2 = {};
+  const _hoisted_1$2 = {
     xmlns: "http://www.w3.org/2000/svg",
     width: "24",
     height: "24",
@@ -4373,8 +5405,8 @@ ${topic_contentdata}`;
     "stroke-linejoin": "round",
     class: "icon icon-tabler icons-tabler-outline icon-tabler-refresh"
   };
-  function _sfc_render$1(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$1, _cache[0] || (_cache[0] = [
+  function _sfc_render$2(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$2, _cache[0] || (_cache[0] = [
       vue.createElementVNode("path", {
         stroke: "none",
         d: "M0 0h24v24H0z",
@@ -4384,7 +5416,26 @@ ${topic_contentdata}`;
       vue.createElementVNode("path", { d: "M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" }, null, -1)
     ]));
   }
-  const Setting6 = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
+  const Setting6 = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$2]]);
+  const _sfc_main$1 = {};
+  const _hoisted_1$1 = {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "24",
+    height: "24",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    "stroke-width": "2",
+    "stroke-linecap": "round",
+    "stroke-linejoin": "round",
+    class: "icon icon-tabler icons-tabler-outline icon-tabler-language-hiragana"
+  };
+  function _sfc_render$1(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$1, _cache[0] || (_cache[0] = [
+      vue.createStaticVNode('<path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M4 5h7"></path><path d="M7 4c0 4.846 0 7 .5 8"></path><path d="M10 8.5c0 2.286 -2 4.5 -3.5 4.5s-2.5 -1.135 -2.5 -2c0 -2 1 -3 3 -3s5 .57 5 2.857c0 1.524 -.667 2.571 -2 3.143"></path><path d="M12 20l4 -9l4 9"></path><path d="M19.1 18h-6.2"></path>', 6)
+    ]));
+  }
+  const Setting7 = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
   const _sfc_main = {
     components: {
       Setting1,
@@ -4393,6 +5444,7 @@ ${topic_contentdata}`;
       Setting4,
       Setting5,
       Setting6,
+      Setting7,
       MenuOpenpostblank,
       MenuNewtopicreminder,
       MenuAutoexpandreply,
@@ -4444,7 +5496,8 @@ ${topic_contentdata}`;
       MenuAutoDark,
       MenuHiddenPlaceholder,
       MenuDisableReplaceState,
-      MenuRemovePostAvatar
+      MenuRemovePostAvatar,
+      MenuTranslate
     },
     data() {
       return {
@@ -4500,6 +5553,7 @@ ${topic_contentdata}`;
           checked28: false,
           checked29: false,
           checked30: false,
+          checked32: false,
           usertags: [],
           gptdata: {
             value1: false,
@@ -4672,7 +5726,8 @@ ${topic_contentdata}`;
   const _hoisted_14 = { class: "menu-body-item" };
   const _hoisted_15 = { class: "menu-body-item" };
   const _hoisted_16 = { class: "menu-body-item" };
-  const _hoisted_17 = { class: "menu-footer" };
+  const _hoisted_17 = { class: "menu-body-item" };
+  const _hoisted_18 = { class: "menu-footer" };
   function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_ReplyBtn = vue.resolveComponent("ReplyBtn");
     const _component_LookOP = vue.resolveComponent("LookOP");
@@ -4683,13 +5738,13 @@ ${topic_contentdata}`;
     const _component_Setting2 = vue.resolveComponent("Setting2");
     const _component_Setting3 = vue.resolveComponent("Setting3");
     const _component_Setting4 = vue.resolveComponent("Setting4");
+    const _component_Setting7 = vue.resolveComponent("Setting7");
     const _component_Setting5 = vue.resolveComponent("Setting5");
     const _component_Setting6 = vue.resolveComponent("Setting6");
     const _component_Updates = vue.resolveComponent("Updates");
     const _component_MenuOpenpostblank = vue.resolveComponent("MenuOpenpostblank");
     const _component_MenuNewtopicreminder = vue.resolveComponent("MenuNewtopicreminder");
     const _component_MenuAutoexpandreply = vue.resolveComponent("MenuAutoexpandreply");
-    const _component_MenuAutoexpandreply1 = vue.resolveComponent("MenuAutoexpandreply1");
     const _component_MenuShowcreatetime = vue.resolveComponent("MenuShowcreatetime");
     const _component_MenuShowcreatetime1 = vue.resolveComponent("MenuShowcreatetime1");
     const _component_MenuShowfloors = vue.resolveComponent("MenuShowfloors");
@@ -4725,6 +5780,7 @@ ${topic_contentdata}`;
     const _component_MenuOtherCss = vue.resolveComponent("MenuOtherCss");
     const _component_UserTags = vue.resolveComponent("UserTags");
     const _component_GPTconfig = vue.resolveComponent("GPTconfig");
+    const _component_MenuTranslate = vue.resolveComponent("MenuTranslate");
     const _component_Themes = vue.resolveComponent("Themes");
     const _component_SyncBackup = vue.resolveComponent("SyncBackup");
     const _component_FloorLottery = vue.resolveComponent("FloorLottery");
@@ -4732,7 +5788,7 @@ ${topic_contentdata}`;
     const _component_ReplyTBEnjoy = vue.resolveComponent("ReplyTBEnjoy");
     const _component_Signature = vue.resolveComponent("Signature");
     return vue.openBlock(), vue.createElementBlock("div", _hoisted_1, [
-      _cache[57] || (_cache[57] = vue.createElementVNode("div", { class: "linuxdoscripts-opacity" }, null, -1)),
+      _cache[58] || (_cache[58] = vue.createElementVNode("div", { class: "linuxdoscripts-opacity" }, null, -1)),
       vue.createElementVNode("div", _hoisted_2, [
         vue.withDirectives(vue.createVNode(_component_ReplyBtn, null, null, 512), [
           [vue.vShow, $data.showreplybtn]
@@ -4777,26 +5833,30 @@ ${topic_contentdata}`;
               _cache[51] || (_cache[51] = vue.createTextVNode("AI 配置"))
             ]),
             vue.createElementVNode("li", null, [
+              vue.createVNode(_component_Setting7),
+              _cache[52] || (_cache[52] = vue.createTextVNode("翻译/拼音"))
+            ]),
+            vue.createElementVNode("li", null, [
               vue.createVNode(_component_Setting5),
-              _cache[52] || (_cache[52] = vue.createTextVNode("主题风格"))
+              _cache[53] || (_cache[53] = vue.createTextVNode("主题风格"))
             ]),
             vue.createElementVNode("li", null, [
               vue.createVNode(_component_Setting6),
-              _cache[53] || (_cache[53] = vue.createTextVNode("数据同步"))
+              _cache[54] || (_cache[54] = vue.createTextVNode("数据同步"))
             ]),
             vue.createVNode(_component_Updates)
           ]),
           vue.createElementVNode("div", _hoisted_8, [
             vue.createElementVNode("div", _hoisted_9, [
               vue.createElementVNode("div", _hoisted_10, [
-                _cache[56] || (_cache[56] = vue.createElementVNode("p", null, "请注意，该设置面板数据全部保存在本地浏览器缓存中，注意备份。", -1)),
+                _cache[57] || (_cache[57] = vue.createElementVNode("p", null, "请注意，该设置面板数据全部保存在本地浏览器缓存中，注意备份。", -1)),
                 vue.createElementVNode("p", _hoisted_11, [
-                  _cache[54] || (_cache[54] = vue.createTextVNode(" 如果感觉哪里不太对劲，点我")),
+                  _cache[55] || (_cache[55] = vue.createTextVNode(" 如果感觉哪里不太对劲，点我")),
                   vue.createElementVNode("span", {
                     class: "initialization",
                     onClick: _cache[1] || (_cache[1] = (...args) => $options.initialization && $options.initialization(...args))
                   }, "初始化设置"),
-                  _cache[55] || (_cache[55] = vue.createTextVNode("，会清除所有的设置数据并初始化！！ "))
+                  _cache[56] || (_cache[56] = vue.createTextVNode("，会清除所有的设置数据并初始化！！ "))
                 ])
               ]),
               vue.createVNode(_component_MenuOpenpostblank, {
@@ -4814,198 +5874,200 @@ ${topic_contentdata}`;
                 modelValue: $data.settingData.checked3,
                 "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => $data.settingData.checked3 = $event)
               }, null, 8, ["modelValue"]),
-              vue.createVNode(_component_MenuAutoexpandreply1, {
-                sort: 3.1,
-                modelValue: $data.settingData.checked31,
-                "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => $data.settingData.checked31 = $event)
-              }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuShowcreatetime, {
                 sort: 4,
                 modelValue: $data.settingData.checked4,
-                "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => $data.settingData.checked4 = $event)
+                "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => $data.settingData.checked4 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuShowcreatetime1, {
                 sort: 4.1,
                 modelValue: $data.settingData.checked41,
-                "onUpdate:modelValue": _cache[7] || (_cache[7] = ($event) => $data.settingData.checked41 = $event)
+                "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => $data.settingData.checked41 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuShowfloors, {
                 sort: 5,
                 modelValue: $data.settingData.checked5,
-                "onUpdate:modelValue": _cache[8] || (_cache[8] = ($event) => $data.settingData.checked5 = $event)
+                "onUpdate:modelValue": _cache[7] || (_cache[7] = ($event) => $data.settingData.checked5 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuHidetopicdetailtitle, {
                 sort: 6,
                 modelValue: $data.settingData.checked6,
-                "onUpdate:modelValue": _cache[9] || (_cache[9] = ($event) => $data.settingData.checked6 = $event)
+                "onUpdate:modelValue": _cache[8] || (_cache[8] = ($event) => $data.settingData.checked6 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuTopicpreview, {
                 sort: 7,
                 modelValue: $data.settingData.checked7,
-                "onUpdate:modelValue": _cache[10] || (_cache[10] = ($event) => $data.settingData.checked7 = $event)
+                "onUpdate:modelValue": _cache[9] || (_cache[9] = ($event) => $data.settingData.checked7 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuAutoRead, {
                 sort: 8,
                 modelValue: $data.settingData.checked8,
-                "onUpdate:modelValue": _cache[11] || (_cache[11] = ($event) => $data.settingData.checked8 = $event)
+                "onUpdate:modelValue": _cache[10] || (_cache[10] = ($event) => $data.settingData.checked8 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuLookOP, {
                 sort: 9,
                 modelValue: $data.settingData.checked9,
-                "onUpdate:modelValue": _cache[12] || (_cache[12] = ($event) => $data.settingData.checked9 = $event)
+                "onUpdate:modelValue": _cache[11] || (_cache[11] = ($event) => $data.settingData.checked9 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuFloorHeight, {
                 sort: 10,
                 modelValue: $data.settingData.checked10,
-                "onUpdate:modelValue": _cache[13] || (_cache[13] = ($event) => $data.settingData.checked10 = $event)
+                "onUpdate:modelValue": _cache[12] || (_cache[12] = ($event) => $data.settingData.checked10 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuPangu, {
                 sort: 11,
                 modelValue: $data.settingData.checked11,
-                "onUpdate:modelValue": _cache[14] || (_cache[14] = ($event) => $data.settingData.checked11 = $event)
+                "onUpdate:modelValue": _cache[13] || (_cache[13] = ($event) => $data.settingData.checked11 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuLevelSearch, {
                 sort: 12,
                 modelValue: $data.settingData.checked12,
-                "onUpdate:modelValue": _cache[15] || (_cache[15] = ($event) => $data.settingData.checked12 = $event)
+                "onUpdate:modelValue": _cache[14] || (_cache[14] = ($event) => $data.settingData.checked12 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuShowUnread, {
                 sort: 13,
                 modelValue: $data.settingData.checked13,
-                "onUpdate:modelValue": _cache[16] || (_cache[16] = ($event) => $data.settingData.checked13 = $event)
+                "onUpdate:modelValue": _cache[15] || (_cache[15] = ($event) => $data.settingData.checked13 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuFilterText, {
                 sort: 14,
                 modelValue: $data.settingData.checked14,
-                "onUpdate:modelValue": _cache[17] || (_cache[17] = ($event) => $data.settingData.checked14 = $event)
+                "onUpdate:modelValue": _cache[16] || (_cache[16] = ($event) => $data.settingData.checked14 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuLookmeSign, {
                 sort: 15,
                 modelValue: $data.settingData.checked15,
-                "onUpdate:modelValue": _cache[18] || (_cache[18] = ($event) => $data.settingData.checked15 = $event)
+                "onUpdate:modelValue": _cache[17] || (_cache[17] = ($event) => $data.settingData.checked15 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuQuickAccess, {
                 sort: 16,
                 modelValue: $data.settingData.checked16,
-                "onUpdate:modelValue": _cache[19] || (_cache[19] = ($event) => $data.settingData.checked16 = $event)
+                "onUpdate:modelValue": _cache[18] || (_cache[18] = ($event) => $data.settingData.checked16 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenureplaceEmojiStyle, {
                 sort: 17,
                 modelValue: $data.settingData.checked17,
-                "onUpdate:modelValue": _cache[20] || (_cache[20] = ($event) => $data.settingData.checked17 = $event)
+                "onUpdate:modelValue": _cache[19] || (_cache[19] = ($event) => $data.settingData.checked17 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuShowAI, {
                 sort: 18,
                 modelValue: $data.settingData.checked18,
-                "onUpdate:modelValue": _cache[21] || (_cache[21] = ($event) => $data.settingData.checked18 = $event)
+                "onUpdate:modelValue": _cache[20] || (_cache[20] = ($event) => $data.settingData.checked18 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuEditorJa, {
                 sort: 19,
                 modelValue: $data.settingData.checked19,
-                "onUpdate:modelValue": _cache[22] || (_cache[22] = ($event) => $data.settingData.checked19 = $event)
+                "onUpdate:modelValue": _cache[21] || (_cache[21] = ($event) => $data.settingData.checked19 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuStickyNav, {
                 sort: 20,
                 modelValue: $data.settingData.checked20,
-                "onUpdate:modelValue": _cache[23] || (_cache[23] = ($event) => $data.settingData.checked20 = $event)
+                "onUpdate:modelValue": _cache[22] || (_cache[22] = ($event) => $data.settingData.checked20 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuNextPosts, {
                 sort: 21,
                 modelValue: $data.settingData.checked22,
-                "onUpdate:modelValue": _cache[24] || (_cache[24] = ($event) => $data.settingData.checked22 = $event)
+                "onUpdate:modelValue": _cache[23] || (_cache[23] = ($event) => $data.settingData.checked22 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuSelectedShare, {
                 sort: 22,
                 modelValue: $data.settingData.checked23,
-                "onUpdate:modelValue": _cache[25] || (_cache[25] = ($event) => $data.settingData.checked23 = $event)
+                "onUpdate:modelValue": _cache[24] || (_cache[24] = ($event) => $data.settingData.checked23 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuDisableAutoplay, {
                 sort: 23,
                 modelValue: $data.settingData.checked24,
-                "onUpdate:modelValue": _cache[26] || (_cache[26] = ($event) => $data.settingData.checked24 = $event)
+                "onUpdate:modelValue": _cache[25] || (_cache[25] = ($event) => $data.settingData.checked24 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuShowRepltBtn, {
                 sort: 24,
                 modelValue: $data.settingData.checked25,
-                "onUpdate:modelValue": _cache[27] || (_cache[27] = ($event) => $data.settingData.checked25 = $event)
+                "onUpdate:modelValue": _cache[26] || (_cache[26] = ($event) => $data.settingData.checked25 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuDonotTopic, {
                 sort: 25,
                 modelValue: $data.settingData.checked26,
-                "onUpdate:modelValue": _cache[28] || (_cache[28] = ($event) => $data.settingData.checked26 = $event)
+                "onUpdate:modelValue": _cache[27] || (_cache[27] = ($event) => $data.settingData.checked26 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuAutoDark, {
                 sort: 26,
                 modelValue: $data.settingData.checked27,
-                "onUpdate:modelValue": _cache[29] || (_cache[29] = ($event) => $data.settingData.checked27 = $event)
+                "onUpdate:modelValue": _cache[28] || (_cache[28] = ($event) => $data.settingData.checked27 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuHiddenPlaceholder, {
                 sort: 27,
                 modelValue: $data.settingData.checked28,
-                "onUpdate:modelValue": _cache[30] || (_cache[30] = ($event) => $data.settingData.checked28 = $event)
+                "onUpdate:modelValue": _cache[29] || (_cache[29] = ($event) => $data.settingData.checked28 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuDisableReplaceState, {
                 sort: 28,
                 modelValue: $data.settingData.checked29,
-                "onUpdate:modelValue": _cache[31] || (_cache[31] = ($event) => $data.settingData.checked29 = $event)
+                "onUpdate:modelValue": _cache[30] || (_cache[30] = ($event) => $data.settingData.checked29 = $event)
               }, null, 8, ["modelValue"]),
               vue.createVNode(_component_MenuRemovePostAvatar, {
                 sort: 29,
                 modelValue: $data.settingData.checked30,
-                "onUpdate:modelValue": _cache[32] || (_cache[32] = ($event) => $data.settingData.checked30 = $event)
+                "onUpdate:modelValue": _cache[31] || (_cache[31] = ($event) => $data.settingData.checked30 = $event)
               }, null, 8, ["modelValue"])
             ]),
             vue.createElementVNode("div", _hoisted_12, [
               vue.createVNode(_component_MenuLogoUrl, {
                 sort: 1,
                 value: $data.settingData.logourl,
-                "onUpdate:value": _cache[33] || (_cache[33] = ($event) => $data.settingData.logourl = $event)
+                "onUpdate:value": _cache[32] || (_cache[32] = ($event) => $data.settingData.logourl = $event)
               }, null, 8, ["value"]),
               vue.createVNode(_component_MenuCreatereply, {
                 sort: 2,
                 value: $data.settingData.QuickReply,
-                "onUpdate:value": _cache[34] || (_cache[34] = ($event) => $data.settingData.QuickReply = $event)
+                "onUpdate:value": _cache[33] || (_cache[33] = ($event) => $data.settingData.QuickReply = $event)
               }, null, 8, ["value"]),
               vue.createVNode(_component_MenuBlockKeyword, {
                 sort: 3,
                 value: $data.settingData.blockkeywrod,
-                "onUpdate:value": _cache[35] || (_cache[35] = ($event) => $data.settingData.blockkeywrod = $event)
+                "onUpdate:value": _cache[34] || (_cache[34] = ($event) => $data.settingData.blockkeywrod = $event)
               }, null, 8, ["value"]),
               vue.createVNode(_component_MenuBlockuserlist, {
                 sort: 4,
                 value: $data.settingData.blockList,
-                "onUpdate:value": _cache[36] || (_cache[36] = ($event) => $data.settingData.blockList = $event)
+                "onUpdate:value": _cache[35] || (_cache[35] = ($event) => $data.settingData.blockList = $event)
               }, null, 8, ["value"]),
               vue.createVNode(_component_MenuShieldPosts, {
                 sort: 5,
                 value: $data.settingData.checked21,
-                "onUpdate:value": _cache[37] || (_cache[37] = ($event) => $data.settingData.checked21 = $event)
+                "onUpdate:value": _cache[36] || (_cache[36] = ($event) => $data.settingData.checked21 = $event)
               }, null, 8, ["value"]),
               vue.createVNode(_component_MenuOtherCss, {
                 sort: 6,
                 value: $data.settingData.othercss,
-                "onUpdate:value": _cache[38] || (_cache[38] = ($event) => $data.settingData.othercss = $event)
+                "onUpdate:value": _cache[37] || (_cache[37] = ($event) => $data.settingData.othercss = $event)
               }, null, 8, ["value"])
             ]),
             vue.createElementVNode("div", _hoisted_13, [
               vue.createVNode(_component_UserTags, {
                 value: $data.settingData.usertags,
-                "onUpdate:value": _cache[39] || (_cache[39] = ($event) => $data.settingData.usertags = $event)
+                "onUpdate:value": _cache[38] || (_cache[38] = ($event) => $data.settingData.usertags = $event)
               }, null, 8, ["value"])
             ]),
             vue.createElementVNode("div", _hoisted_14, [
               vue.createVNode(_component_GPTconfig, {
                 value: $data.settingData.gptdata,
-                "onUpdate:value": _cache[40] || (_cache[40] = ($event) => $data.settingData.gptdata = $event)
+                "onUpdate:value": _cache[39] || (_cache[39] = ($event) => $data.settingData.gptdata = $event)
               }, null, 8, ["value"])
             ]),
             vue.createElementVNode("div", _hoisted_15, [
+              vue.createVNode(_component_MenuTranslate, {
+                sort: 1,
+                modelValue: $data.settingData.checked32,
+                "onUpdate:modelValue": _cache[40] || (_cache[40] = ($event) => $data.settingData.checked32 = $event)
+              }, null, 8, ["modelValue"])
+            ]),
+            vue.createElementVNode("div", _hoisted_16, [
               vue.createVNode(_component_Themes, {
                 modelValue: $data.settingData.themes,
                 "onUpdate:modelValue": _cache[41] || (_cache[41] = ($event) => $data.settingData.themes = $event)
               }, null, 8, ["modelValue"])
             ]),
-            vue.createElementVNode("div", _hoisted_16, [
+            vue.createElementVNode("div", _hoisted_17, [
               vue.createVNode(_component_SyncBackup, {
                 value: $data.settingData.syncbackup,
                 "onUpdate:value": _cache[42] || (_cache[42] = ($event) => $data.settingData.syncbackup = $event)
@@ -5013,7 +6075,7 @@ ${topic_contentdata}`;
             ])
           ])
         ]),
-        vue.createElementVNode("div", _hoisted_17, [
+        vue.createElementVNode("div", _hoisted_18, [
           vue.createElementVNode("button", {
             class: "save",
             onClick: _cache[43] || (_cache[43] = (...args) => $options.save && $options.save(...args))

@@ -1,6 +1,6 @@
 {
   "name": "linuxdo-scripts",
-  "version": "0.3.58",
+  "version": "0.3.59",
   "author": "dlzmoe",
   "description": "An enhanced script for the linux.do forum",
   "type": "module",
@@ -14,6 +14,7 @@
     "jquery": "^3.7.1",
     "marked": "^14.1.1",
     "pangu": "^4.0.7",
+    "pinyin-pro": "^3.26.0",
     "vue": "^3.4.27",
     "webdav": "^5.7.1"
   },

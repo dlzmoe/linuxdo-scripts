@@ -25,6 +25,7 @@
           <li><Setting2 />自定义</li>
           <li><Setting3 />用户标签</li>
           <li><Setting4 />AI 配置</li>
+          <li><Setting7 />翻译/拼音</li>
           <li><Setting5 />主题风格</li>
           <li><Setting6 />数据同步</li>
           <Updates />
@@ -48,7 +49,7 @@
             <MenuNewtopicreminder :sort="2" v-model="settingData.checked2" />
             <!-- 自动展开回复 -->
             <MenuAutoexpandreply :sort="3" v-model="settingData.checked3" />
-            <MenuAutoexpandreply1 :sort="3.1" v-model="settingData.checked31" />
+            <!-- <MenuAutoexpandreply1 :sort="3.1" v-model="settingData.checked31" /> -->
             <!-- 话题列表显示创建时间 -->
             <MenuShowcreatetime :sort="4" v-model="settingData.checked4" />
             <MenuShowcreatetime1 :sort="4.1" v-model="settingData.checked41" />
@@ -102,6 +103,7 @@
             <MenuDisableReplaceState :sort="28" v-model="settingData.checked29" />
             <!-- 是否移除话题上的头像 (减少网络请求) -->
             <MenuRemovePostAvatar :sort="29" v-model="settingData.checked30" />
+
           </div>
           <div class="menu-body-item">
             <!-- 自定义论坛 logo -->
@@ -124,6 +126,9 @@
             <GPTconfig v-model:value="settingData.gptdata" />
           </div>
           <div class="menu-body-item">
+            <MenuTranslate :sort="1" v-model="settingData.checked32" />
+          </div>
+          <div class="menu-body-item">
             <Themes v-model="settingData.themes" />
           </div>
           <div class="menu-body-item">
@@ -136,7 +141,6 @@
         <button class="saveload" @click="saveload">保存并刷新</button>
         <button class="floorlottery" @click="openFloorlottery">楼层抽奖</button>
         <!-- <a
-          
           target="_blank"
           href="https://greasyfork.org/scripts/501827"
         > -->
@@ -195,6 +199,7 @@ import MenuAutoDark from "./components/BasicSettings/MenuAutoDark.vue";
 import MenuHiddenPlaceholder from "./components/BasicSettings/MenuHiddenPlaceholder.vue";
 import MenuDisableReplaceState from "./components/BasicSettings/MenuDisableReplaceState.vue";
 import MenuRemovePostAvatar from "./components/BasicSettings/MenuRemovePostAvatar.vue";
+import MenuTranslate from "./components/BasicSettings/MenuTranslate.vue";
 
 // 自定义文字
 import MenuOtherCss from "./components/CustomText/MenuOtherCss.vue";
@@ -236,6 +241,7 @@ import Setting3 from "./components/Svg/Setting3.vue";
 import Setting4 from "./components/Svg/Setting4.vue";
 import Setting5 from "./components/Svg/Setting5.vue";
 import Setting6 from "./components/Svg/Setting6.vue";
+import Setting7 from "./components/Svg/Setting7.vue";
 
 export default {
   components: {
@@ -245,6 +251,7 @@ export default {
     Setting4,
     Setting5,
     Setting6,
+    Setting7,
     MenuOpenpostblank,
     MenuNewtopicreminder,
     MenuAutoexpandreply,
@@ -297,6 +304,7 @@ export default {
     MenuHiddenPlaceholder,
     MenuDisableReplaceState,
     MenuRemovePostAvatar,
+    MenuTranslate,
   },
   data() {
     return {
@@ -353,6 +361,7 @@ export default {
         checked28: false,
         checked29: false,
         checked30: false,
+        checked32: false,
         usertags: [],
         gptdata: {
           value1: false,

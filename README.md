@@ -105,6 +105,9 @@ https://greasyfork.org/scripts/501827
 node: v16.15.1
 ```
 
+> [!NOTE]
+> 必备：由于论坛开启了 CSP，本地开发时无法注入脚本，需要安装 [谷歌扩展 - Disable-CSP](https://github.com/lisonge/Disable-CSP) 跳过 CSP，并开启第一个选项 `Disable HTTP CSP`。
+
 功能以组件形式展开，每次新增一个功能，注册一个新的组件避免冲突。
 
 安装本仓库并下载依赖，运行代码。
@@ -113,12 +116,9 @@ node: v16.15.1
 git clone https://github.com/dlzmoe/linuxdo-scripts
 yarn # 安装依赖
 yarn dev # 本地运行
-yarn build # 打包构建
 ```
 
-程序会自动触发本地测试。
-
-> 关于自动构建 Release 包，需要修改 `package.json` 中的 `version` 版本号，并且在 `CHANGELOG.md` 中写入当前版本更新日志。
+无需构建，PR 代码后我将会审核，没有太大问题都会在最短时间内合并。
 
 ### CSP 问题
 

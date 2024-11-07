@@ -1,3 +1,7 @@
+## 0.3.60
+
+- 修复：css 的兼容性问题
+
 ## 0.3.59
 
 - 新增：翻译油猴脚本（整合自 [https://linux.do/t/topic/246430 | delph1s](https://linux.do/t/topic/246430)）

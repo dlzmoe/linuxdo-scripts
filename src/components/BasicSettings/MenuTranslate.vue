@@ -352,8 +352,11 @@ const translateText = (text) => {
 
   if (!config.authKey) {
     if (!config.customUrl) return "";
-    if (config.translateProvider === "deeplx") reqData = deeplxReq(text);
-    return "";
+    if (config.translateProvider === "deeplx") {
+      reqData = deeplxReq(text);
+    } else {
+      return "";
+    }
   } else if (isDeepl) {
     reqData = deeplReq(text);
   } else if (isOAI) {

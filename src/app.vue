@@ -102,7 +102,7 @@
             <!-- 是否禁用浏览帖子时 URL 更新楼层数 -->
             <MenuDisableReplaceState :sort="28" v-model="settingData.checked29" />
             <!-- 是否移除话题上的头像 (减少网络请求) -->
-            <MenuRemovePostAvatar :sort="29" v-model="settingData.checked30" />
+            <MenuRemovePostAvatar :sort="29" v-model="settingData.removePostavatarData" />
 
           </div>
           <div class="menu-body-item">
@@ -360,8 +360,11 @@ export default {
         checked27: false,
         checked28: false,
         checked29: false,
-        checked30: false,
         checked32: false,
+        removePostavatarData: {
+          enable: false,
+          showAuthor: false,
+        },
         usertags: [],
         gptdata: {
           value1: false,

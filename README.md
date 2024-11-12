@@ -1,4 +1,3 @@
-<p align="center"><img src="./github-header-image.png"></p>
 <h2 align="center">linuxdo 增强插件（linuxdo-scripts）</h2>
 <p align="center">脚本持续更新，欢迎提出 issues，提交 pr ~</p>
 

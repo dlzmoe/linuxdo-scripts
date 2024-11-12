@@ -1,4 +1,3 @@
-<p align="center"><img src="./github-header-image.png"></p>
 <h2 align="center">linuxdo Enhancement Plugin (linuxdo-scripts)</h2>
 <p align="center">Scripts are continuously updated, issues and pull requests are welcome ~</p>
 

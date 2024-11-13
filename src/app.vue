@@ -103,7 +103,6 @@
             <MenuDisableReplaceState :sort="28" v-model="settingData.checked29" />
             <!-- 是否移除话题上的头像 (减少网络请求) -->
             <MenuRemovePostAvatar :sort="29" v-model="settingData.removePostavatarData" />
-
           </div>
           <div class="menu-body-item">
             <!-- 自定义论坛 logo -->
@@ -199,7 +198,6 @@ import MenuAutoDark from "./components/BasicSettings/MenuAutoDark.vue";
 import MenuHiddenPlaceholder from "./components/BasicSettings/MenuHiddenPlaceholder.vue";
 import MenuDisableReplaceState from "./components/BasicSettings/MenuDisableReplaceState.vue";
 import MenuRemovePostAvatar from "./components/BasicSettings/MenuRemovePostAvatar.vue";
-import MenuTranslate from "./components/BasicSettings/MenuTranslate.vue";
 
 // 自定义文字
 import MenuOtherCss from "./components/CustomText/MenuOtherCss.vue";
@@ -242,6 +240,8 @@ import Setting4 from "./components/Svg/Setting4.vue";
 import Setting5 from "./components/Svg/Setting5.vue";
 import Setting6 from "./components/Svg/Setting6.vue";
 import Setting7 from "./components/Svg/Setting7.vue";
+
+import MenuTranslate from "./components/BasicSettings/MenuTranslate.vue";
 
 export default {
   components: {

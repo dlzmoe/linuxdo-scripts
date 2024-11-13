@@ -1,7 +1,7 @@
 <template>
   <div class="item">
     <div class="tit">
-      <!-- 是否保留发帖人仅 PC端 类主站样式有效，移动端默认只有发帖人 -->
+      <!-- 是否保留发帖人仅 PC 端 类主站样式有效，移动端默认只有发帖人 -->
       {{ sort }}. 是否移除话题列表上的头像（是否保留发帖人
       <input
         type="checkbox"

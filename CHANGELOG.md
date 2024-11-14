@@ -1,1 +1,1 @@
-- 优化：备份的解析逻辑
+- 优化：添加错误处理、优化关键字处理、改进轮询逻辑、增加空值检查以及在销毁前清除轮询等措施，以增强此 MenuBlockKeyword 代码容错性和健壮性（[#71](https://github.com/dlzmoe/linuxdo-scripts/pull/71)）

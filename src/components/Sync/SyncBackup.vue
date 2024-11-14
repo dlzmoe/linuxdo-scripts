@@ -257,13 +257,23 @@ export default {
     },
   },
   created() {
-    const linxudoscriptssetting =
-      JSON.parse(localStorage.getItem("linxudoscriptssetting")) || [];
-    if (linxudoscriptssetting) {
-      this.tableData.webdavUrl = linxudoscriptssetting.syncbackup.webdavUrl;
-      this.tableData.webdavUsername = linxudoscriptssetting.syncbackup.webdavUsername;
-      this.tableData.webdavPassword = linxudoscriptssetting.syncbackup.webdavPassword;
+    let linxudoscriptssetting = {};  // 默认一个空对象
+    try {
+      const storedData = localStorage.getItem("linxudoscriptssetting");
+      if (storedData) {
+        linxudoscriptssetting = JSON.parse(storedData);  // 尝试解析 JSON
+      }
+    } catch (error) {
+      console.error("Error parsing localStorage data:", error);
     }
+
+    // 安全访问 syncbackup 属性，使用可选链（Optional Chaining）来避免访问 undefined
+    const syncbackup = linxudoscriptssetting.syncbackup || {};  // 如果没有 syncbackup，则默认空对象
+
+    // 使用可选链和默认值处理 undefined 和 null
+    this.tableData.webdavUrl = syncbackup?.webdavUrl || '';  // 如果 syncbackup.webdavUrl 不存在，默认为 ''
+    this.tableData.webdavUsername = syncbackup?.webdavUsername || '';  // 同理
+    this.tableData.webdavPassword = syncbackup?.webdavPassword || '';  // 同理
   },
 };
 </script>

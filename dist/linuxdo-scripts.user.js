@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         linuxdo 增强插件
 // @namespace    https://github.com/dlzmoe/linuxdo-scripts
-// @version      0.3.63
+// @version      0.3.64
 // @author       dlzmoe
 // @description  linux.do 增强插件，功能持续更新，欢迎提出新想法！
 // @license      Apache-2.0
@@ -18,13 +18,13 @@
 // @grant        GM_xmlhttpRequest
 // ==/UserScript==
 
-(t=>{if(typeof GM_addStyle=="function"){GM_addStyle(t);return}const i=document.createElement("style");i.textContent=t,document.head.append(i)})(' input[type=text][data-v-2be3e9ac]{width:100px!important;outline:none;height:24px;border:1px solid #b6b6b6;border-radius:4px;margin-left:10px;padding:0 10px;box-sizing:border-box}.emojiPicker{top:0;left:100%;position:absolute;display:grid;grid-template-columns:repeat(12,1fr);gap:10px;height:100%;overflow:auto;background-color:#000c;padding:10px;border-radius:5px;z-index:9}.emojiPicker img{cursor:pointer;width:30px;height:30px}.sidebar-section-header-caret.right{transform:rotate(-90deg)}.item select[data-v-d780d688]{height:28px;border:1px solid #b6b6b6;border-radius:4px;width:180px;margin-left:10px;cursor:pointer}#multi-lang-say-config-button{display:none}p[data-v-d8d12b86]{margin-top:1em!important}.item[data-v-e33f1de9]{border:none!important}.item a[data-v-e33f1de9]:hover{text-decoration:underline}.item[data-v-cb743585],.item[data-v-396734d2],.item[data-v-f84417d4],.item[data-v-77789f1e]{border:none!important}input[type=text][data-v-ac149a76]{width:100px!important;outline:none;height:24px;border:1px solid #b6b6b6;border-radius:4px;margin-left:10px;padding:0 10px;box-sizing:border-box}.linxudoscripts-tag{background:#29a6a9;color:#fff;font-size:14px!important;padding:0 10px;height:26px;text-align:center;display:inline-flex!important;align-items:center;justify-content:center;border-radius:5px}.menu-table{width:100%}.menu-table td,.menu-table th{padding:10px;font-size:14px}.menu-table .span{cursor:pointer}.menu-table .span+.span{margin-left:10px}.item[data-v-d1d5d03b]{border:none}.item[data-v-b5335091]{display:block!important}p[data-v-b5335091]{margin:8px 0!important}ul[data-v-b5335091]{display:flex;flex-wrap:wrap;justify-content:space-between;list-style:none;padding:0}ul li[data-v-b5335091]{width:48%;margin-bottom:30px}input[type=radio][data-v-b5335091]{transform:scale(1.2)}.ls-flex[data-v-b5335091]{display:flex;align-content:center;margin-bottom:10px;cursor:pointer}.ls-flex input[data-v-b5335091]{margin-right:10px}.ls-flex label[data-v-b5335091]{cursor:pointer;font-weight:300}.item[data-v-b0378f6f]{border:none!important;padding:0!important;margin-top:15px;position:relative}.item .tit[data-v-b0378f6f]{white-space:nowrap;width:160px}.item input[data-v-b0378f6f]{margin:0;width:100%}.item em[data-v-b0378f6f]{position:absolute;right:10px;top:50%;transform:translateY(-50%);cursor:pointer;display:flex;align-items:center;justify-content:center}.item em svg[data-v-b0378f6f]{color:#999}.item .lxwebdavpassword[data-v-b0378f6f]{filter:blur(5px)}.item .lxwebdavpassword.act[data-v-b0378f6f]{filter:none}.btnwrapper[data-v-b0378f6f]{margin-top:20px}.post-stream.lookopwrapactive .topic-post{display:none!important}.post-stream.lookopwrapactive .topic-post.topic-owner{display:block!important}.el-button.act[data-v-6520db1a]{background:linear-gradient(to right,var(--tertiary-low),var(--tertiary-high))!important}@keyframes breathAnimation-57dbaeb5{0%,to{transform:scale(1);box-shadow:0 0 5px #00000080}50%{transform:scale(1.1);box-shadow:0 0 10px #000000b3}}.breath-animation[data-v-57dbaeb5]{animation:breathAnimation-57dbaeb5 4s ease-in-out infinite}.minimized[data-v-57dbaeb5]{width:50px!important;height:50px!important;border-radius:50%!important;padding:0!important;overflow:hidden;cursor:pointer}#linuxDoLevelPopupContent[data-v-57dbaeb5]{line-height:1.6;position:fixed;bottom:20px;right:90px;width:250px;height:auto;background-color:var(--tertiary-low);padding:15px;z-index:10000;font-size:14px;border-radius:5px}#linuxDoUserSearch[data-v-57dbaeb5]{width:100%;margin-top:10px}.button[data-v-57dbaeb5]{margin-top:10px}.minimize-button[data-v-57dbaeb5]{position:absolute;top:5px;right:5px;z-index:10001;background:transparent;border:none;cursor:pointer;border-radius:50%;text-align:center;line-height:40px;width:40px;height:40px}.el-button.act[data-v-64839780]{background:linear-gradient(to right,var(--tertiary-low),var(--tertiary-high))!important}.el-button.act svg[data-v-64839780]{animation:spin-64839780 3s linear infinite}@keyframes spin-64839780{0%{transform:rotate(0)}to{transform:rotate(360deg)}}.linuxdoscripts-aidialog{position:fixed;top:0;left:-100%;width:500px;height:100vh;background:#fff;box-shadow:1px 2px 5px #0000003d;z-index:999;padding-top:60px;transition:all .1s linear;opacity:0;visibility:hidden;overflow:hidden}.linuxdoscripts-aidialog.act{left:0;opacity:1;visibility:inherit;overflow:inherit}a[data-v-45c51ed7]:hover{text-decoration:underline}.item-foot[data-v-45c51ed7]{display:flex;flex-direction:column;align-items:flex-start;position:absolute;bottom:70px;left:22px;line-height:2}.item-foot img[data-v-45c51ed7]{width:auto!important;height:20px!important}.UsageTip{position:static;margin:0;font-size:14px;line-height:1.6;background:var(--d-sidebar-background);color:var(--primary-medium)}.UsageTip>div{margin:10px 0}.UsageTip button{padding:8px 10px;margin-bottom:10px;border:none;outline:none;border-radius:4px}.menu-body[data-v-649030ce]{padding:0 15px}.inner[data-v-649030ce]{display:flex;align-items:center;margin-bottom:10px}.inner label[data-v-649030ce]{width:70px;font-weight:400}.inner input[data-v-649030ce]{flex:1;margin:0;max-width:300px}.timeline-container .topic-timeline .timeline-scrollarea{max-width:100px!important}#linuxdoscripts{font-size:14px}#linuxdoscripts input[type=text]{width:100%;background:var(--d-input-bg-color)}#linuxdoscripts input[type=checkbox]{transform:scale(1.2)}#linuxdoscripts #menu_suspendedball{display:none}#linuxdoscripts img{vertical-align:bottom;max-width:100%;height:auto}#linuxdoscripts .close{position:absolute;right:10px;top:45%;cursor:pointer;font-size:34px;color:#999;transform:translateY(-50%) rotate(45deg)}#linuxdoscripts .setting-btn{z-index:199;position:fixed;bottom:20px;right:20px}#linuxdoscripts .setting-btn .el-button{margin:15px 0 0;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--tertiary-low);font-size:14px;cursor:pointer;border:none}#linuxdoscripts .setting-btn .el-button svg{margin:0}#linuxdoscripts .setting-btn .el-button:hover{opacity:.9}#linuxdoscripts .hint{margin-top:5px;color:#d94f4f;font-size:14px}#linuxdoscripts dialog{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:700px;max-width:100vw;background:var(--header_background);color:var(--primary);box-shadow:0 8px 32px #0000001a;border-radius:16px;padding:15px;z-index:99999;overflow-x:hidden;box-sizing:border-box;margin:0;border:none;outline:none}#linuxdoscripts dialog .menu-about{padding:5px 0;line-height:2}#linuxdoscripts dialog .menu-about .initialization{color:#999;border-bottom:1px dashed #999;cursor:pointer}#linuxdoscripts dialog .menu-about .initialization:hover{color:#333;border-color:#333}#linuxdoscripts dialog p{margin:0;font-size:14px}#linuxdoscripts .menu-header{padding:.5rem .5rem 1rem;border-bottom:1px solid #eee;position:relative}#linuxdoscripts .title{font-size:18px;font-weight:600;display:flex;align-items:center}#linuxdoscripts .title img{margin-left:10px}#linuxdoscripts button{padding:10px 16px;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer;transition:all .2s ease;border:none;display:inline-flex;align-items:center;justify-content:center;background-color:var(--primary-low)}#linuxdoscripts button+button{margin-left:8px}#linuxdoscripts button.saveload{background:#000;color:#fff}#linuxdoscripts button:hover{opacity:.9}#linuxdoscripts .menu-flex{display:flex;justify-content:space-between;align-items:flex-start}#linuxdoscripts .menu-nav{width:140px;display:flex;flex-direction:column;margin:0 20px 0 0;padding-top:15px}#linuxdoscripts .menu-nav li{border-radius:4px;height:32px;width:100%;margin-bottom:5px;box-sizing:border-box;padding:0 10px;display:inline-flex;align-items:center;justify-content:flex-start;font-size:14px;cursor:pointer;line-height:1}#linuxdoscripts .menu-nav li svg{width:16px;margin-right:5px}#linuxdoscripts .menu-nav li.act{background:var(--d-selected)}#linuxdoscripts .menu-body{flex:1;height:480px;overflow-y:auto;padding-right:10px}#linuxdoscripts .menu-body::-webkit-scrollbar{height:8px;width:8px}#linuxdoscripts .menu-body::-webkit-scrollbar-corner{background:none}#linuxdoscripts .menu-body::-webkit-scrollbar-thumb{background:#dee0e1;border-radius:8px}#linuxdoscripts .menu-body .menu-body-item{display:none}#linuxdoscripts .menu-body .menu-body-item.act{display:block}#linuxdoscripts .menu-footer{display:flex;margin-top:10px;padding-top:6px}#linuxdoscripts .import{margin-left:auto!important}#linuxdoscripts .import,#linuxdoscripts .export{background:#d1f0ff;color:#559095}#linuxdoscripts .floorlottery{background:#ffb003}#linuxdoscripts .menu-body-item{padding-bottom:30px}#linuxdoscripts .menu-body-item .item{border-bottom:1px solid rgba(0,0,0,.05);padding:15px 0;display:flex;align-items:center;justify-content:space-between}#linuxdoscripts .menu-body-item .item .tit{height:100%;display:flex;align-items:center}#linuxdoscripts .menu-body-item .item input,#linuxdoscripts .menu-body-item .item select{margin-top:0;margin-bottom:0}#linuxdoscripts .menu-body-item .item input[type=checkbox]{width:30px;height:16px;position:relative;background-color:#dcdfe6;box-shadow:#dfdfdf 0 0 inset;border-radius:20px;background-clip:content-box;display:inline-block;appearance:none;-webkit-appearance:none;-moz-appearance:none;-webkit-user-select:none;user-select:none;outline:none;padding:0}#linuxdoscripts .menu-body-item .item input[type=checkbox]:before{content:"";position:absolute;width:12px;height:12px;background-color:#fff;border-radius:50%;left:2px;top:0;bottom:0;margin:auto;transition:.3s}#linuxdoscripts .menu-body-item .item input[type=checkbox]:checked{background-color:var(--tertiary);transition:.6s}#linuxdoscripts .menu-body-item .item input[type=checkbox]:checked:before{left:14px;transition:.3s}#linuxdoscripts textarea{font-family:inherit;width:100%;min-height:100px!important;border:1px solid #999;outline:0;padding:5px;font-size:14px;margin:5px 0 0;resize:none;border-radius:0;color:var(--d-input-text-color);background:var(--d-input-bg-color)}#linuxdoscripts textarea:focus{border-color:var(--tertiary);outline:2px solid var(--tertiary);outline-offset:-2px}#linuxdoscripts #floorlotterloading img{width:50px;height:50px}#linuxdoscripts .floorlotterywrap{display:none;width:400px;height:300px;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);margin:0;z-index:999}#linuxdoscripts .floorlotterywrap{width:400px;height:300px}#linuxdoscripts .el-checkbox__inner{border:1px solid #979797}#linuxdoscripts label{margin:0}.linuxdoscripts-opacity{display:none;position:fixed;left:0;top:0;width:100vw;height:100vh;background:#00000080;z-index:9999}.linuxlevel.four{background:linear-gradient(to right,red,#00f);-webkit-background-clip:text;color:transparent}.topic-post{position:relative}.linuxfloor{display:flex;color:var(--tertiary);width:30px;height:30px;align-items:center;justify-content:center;border-radius:6px;font-size:16px;margin-left:10px}.signature-p{color:#279a36;font-size:14px;word-break:break-word}.topic-list .views{font-weight:400!important;white-space:nowrap!important}.createreply{display:flex;flex-direction:column;max-width:300px}.createreply button{margin-bottom:10px;justify-content:flex-start;text-align:left}.topicpreview-btn,.donottopic-btn{padding:4px 12px!important;font-size:14px!important;opacity:0!important;margin-right:5px!important}.topic-list-item:hover .topicpreview-btn,.topic-list-item:hover .donottopic-btn{opacity:1!important}.topicpreview{position:fixed;top:0;left:0;z-index:99999;width:100vw;height:100vh;display:flex;justify-content:center;align-items:center;display:none}.topicpreview .topicpreview-container{padding:30px 0;border-radius:5px;width:100%;max-width:800px;overflow-y:auto;height:80vh;z-index:10;background:var(--header_background);position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}.topicpreview .topicpreview-container .topicpreview-title{font-size:22px;font-weight:600;padding:0 30px}.topicpreview .topicpreview-container .topicpreview-date{padding:0 30px;color:#666}.topicpreview .topicpreview-container .topicpreview-content>.item{display:flex;align-items:flex-start;padding:20px 30px}.topicpreview .topicpreview-container .topicpreview-content>.item .itemfloor{width:50px;text-align:left;font-size:16px;padding-top:15px;color:#25b4cf}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost{flex:1;background:var(--tertiary-low);padding:15px;border-radius:10px;font-size:15px;word-break:break-all}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost pre code{max-width:620px}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost img{max-width:100%;max-height:100%;height:auto}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemname{font-size:16px;color:#8f3a3a;display:flex;justify-content:space-between;align-items:center}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemname span{color:#9e9e9e;margin-left:20px}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemdate{color:#b9b9b9;font-size:16px;margin-left:auto}.topicpreview-opacity{position:absolute;top:0;left:0;width:100%;height:100%;opacity:1;background:#0009;z-index:9}.body-preview .sidebar-wrapper{display:none!important}body.body-preview #main-outlet-wrapper{display:block!important;padding-left:50px!important}.body-preview .d-header-wrap,.body-preview .menu_suspendedball{display:none!important}.post-activity{white-space:nowrap;display:inline-block;width:100%;text-align:left}.d-header img{height:var(--d-logo-height);width:auto;max-width:100%;object-fit:contain}.aicreated-btn,.aireplay-btn{outline:none;border:none;background:var(--tertiary-low);display:inline-flex;align-items:center;justify-content:center;line-height:1;font-size:14px;padding:4px 10px;border-radius:3px;margin-bottom:10px;margin-right:10px}.aicreated-btn{display:none}.gpt-summary-wrap{background:var(--tertiary-low);border-radius:5px;padding:10px;font-size:14px;margin:0 0 10px;line-height:1.6}.gpt-summary-wrap .airegenerate{display:none;margin-top:6px;outline:none;border:1px solid #eee;background:#ffe27d;color:#626262;padding:4px 10px;cursor:pointer;border-radius:3px}.aicreatenewtopictitle{margin-left:20px}.aicreatenewtopictitle:hover{text-decoration:underline;cursor:pointer}.aireply-popup{z-index:999999;position:fixed;top:10%;left:50%;transform:translate(-50%);width:500px;padding:20px;background:var(--tertiary-low);color:#333;box-shadow:#0000 0 0,#0000 0 0,#0000001a 0 20px 25px -5px,#0000001a 0 8px 10px -6px;border-radius:10px;display:none}.aireply-popup .aireply-popup-text{width:100%;height:120px}.aireply-popup .aireply-popup-close{outline:0;min-width:80px;height:32px;border:none;background-color:var(--header_background);text-shadow:0 -1px 0 rgba(0,0,0,.12);box-shadow:0 2px #0000000b;border-radius:4px;padding:0 10px;box-sizing:border-box;transition:all .1s linear}#messageToast{z-index:9999999;position:fixed;left:50%;transform:translate(-50%);top:10%;width:100%;display:flex;flex-direction:column;align-items:center}#messageToast .messageToast-text{background:var(--tertiary-low);color:var(--primary);border-radius:6px;width:auto;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;text-align:center;line-height:1;height:40px;min-width:240px;font-size:16px;padding:0 30px;box-sizing:border-box;margin-bottom:10px;opacity:0;animation:messageToast .2s forwards}@keyframes messageToast{0%{transform:translateY(10px);opacity:0}to{transform:translateY(0);opacity:1}}.pangutext{cursor:pointer;margin-left:20px}.pangutext:hover{color:#279a36}.navigation-container.is-active{position:fixed;top:65px;background:var(--header_background);z-index:9;box-shadow:1px 3px 7px #0003;margin-left:-30px;padding-left:30px;border-radius:5px;padding-top:10px;padding-right:20px;min-width:1000px;width:auto}.topic-body.clearfix.highlighted{background-color:var(--tertiary-low)!important} ');
+(t=>{if(typeof GM_addStyle=="function"){GM_addStyle(t);return}const i=document.createElement("style");i.textContent=t,document.head.append(i)})(' input[type=text][data-v-2be3e9ac]{width:100px!important;outline:none;height:24px;border:1px solid #b6b6b6;border-radius:4px;margin-left:10px;padding:0 10px;box-sizing:border-box}.emojiPicker{top:0;left:100%;position:absolute;display:grid;grid-template-columns:repeat(12,1fr);gap:10px;height:100%;overflow:auto;background-color:#000c;padding:10px;border-radius:5px;z-index:9}.emojiPicker img{cursor:pointer;width:30px;height:30px}.sidebar-section-header-caret.right{transform:rotate(-90deg)}.item select[data-v-d780d688]{height:28px;border:1px solid #b6b6b6;border-radius:4px;width:180px;margin-left:10px;cursor:pointer}.item[data-v-e33f1de9]{border:none!important}.item a[data-v-e33f1de9]:hover{text-decoration:underline}.item[data-v-cb743585],.item[data-v-396734d2],.item[data-v-f84417d4],.item[data-v-77789f1e]{border:none!important}input[type=text][data-v-ac149a76]{width:100px!important;outline:none;height:24px;border:1px solid #b6b6b6;border-radius:4px;margin-left:10px;padding:0 10px;box-sizing:border-box}.linxudoscripts-tag{background:#29a6a9;color:#fff;font-size:14px!important;padding:0 10px;height:26px;text-align:center;display:inline-flex!important;align-items:center;justify-content:center;border-radius:5px}.menu-table{width:100%}.menu-table td,.menu-table th{padding:10px;font-size:14px}.menu-table .span{cursor:pointer}.menu-table .span+.span{margin-left:10px}.item[data-v-d1d5d03b]{border:none}.item[data-v-b5335091]{display:block!important}p[data-v-b5335091]{margin:8px 0!important}ul[data-v-b5335091]{display:flex;flex-wrap:wrap;justify-content:space-between;list-style:none;padding:0}ul li[data-v-b5335091]{width:48%;margin-bottom:30px}input[type=radio][data-v-b5335091]{transform:scale(1.2)}.ls-flex[data-v-b5335091]{display:flex;align-content:center;margin-bottom:10px;cursor:pointer}.ls-flex input[data-v-b5335091]{margin-right:10px}.ls-flex label[data-v-b5335091]{cursor:pointer;font-weight:300}.item[data-v-a2abb68b]{border:none!important;padding:0!important;margin-top:15px;position:relative}.item .tit[data-v-a2abb68b]{white-space:nowrap;width:160px}.item input[data-v-a2abb68b]{margin:0;width:100%}.item em[data-v-a2abb68b]{position:absolute;right:10px;top:50%;transform:translateY(-50%);cursor:pointer;display:flex;align-items:center;justify-content:center}.item em svg[data-v-a2abb68b]{color:#999}.item .lxwebdavpassword[data-v-a2abb68b]{filter:blur(5px)}.item .lxwebdavpassword.act[data-v-a2abb68b]{filter:none}.btnwrapper[data-v-a2abb68b]{margin-top:20px}.post-stream.lookopwrapactive .topic-post{display:none!important}.post-stream.lookopwrapactive .topic-post.topic-owner{display:block!important}.el-button.act[data-v-6520db1a]{background:linear-gradient(to right,var(--tertiary-low),var(--tertiary-high))!important}@keyframes breathAnimation-57dbaeb5{0%,to{transform:scale(1);box-shadow:0 0 5px #00000080}50%{transform:scale(1.1);box-shadow:0 0 10px #000000b3}}.breath-animation[data-v-57dbaeb5]{animation:breathAnimation-57dbaeb5 4s ease-in-out infinite}.minimized[data-v-57dbaeb5]{width:50px!important;height:50px!important;border-radius:50%!important;padding:0!important;overflow:hidden;cursor:pointer}#linuxDoLevelPopupContent[data-v-57dbaeb5]{line-height:1.6;position:fixed;bottom:20px;right:90px;width:250px;height:auto;background-color:var(--tertiary-low);padding:15px;z-index:10000;font-size:14px;border-radius:5px}#linuxDoUserSearch[data-v-57dbaeb5]{width:100%;margin-top:10px}.button[data-v-57dbaeb5]{margin-top:10px}.minimize-button[data-v-57dbaeb5]{position:absolute;top:5px;right:5px;z-index:10001;background:transparent;border:none;cursor:pointer;border-radius:50%;text-align:center;line-height:40px;width:40px;height:40px}.el-button.act[data-v-64839780]{background:linear-gradient(to right,var(--tertiary-low),var(--tertiary-high))!important}.el-button.act svg[data-v-64839780]{animation:spin-64839780 3s linear infinite}@keyframes spin-64839780{0%{transform:rotate(0)}to{transform:rotate(360deg)}}.linuxdoscripts-aidialog{position:fixed;top:0;left:-100%;width:500px;height:100vh;background:#fff;box-shadow:1px 2px 5px #0000003d;z-index:999;padding-top:60px;transition:all .1s linear;opacity:0;visibility:hidden;overflow:hidden}.linuxdoscripts-aidialog.act{left:0;opacity:1;visibility:inherit;overflow:inherit}a[data-v-45c51ed7]:hover{text-decoration:underline}.item-foot[data-v-45c51ed7]{display:flex;flex-direction:column;align-items:flex-start;position:absolute;bottom:70px;left:22px;line-height:2}.item-foot img[data-v-45c51ed7]{width:auto!important;height:20px!important}.UsageTip{position:static;margin:0;font-size:14px;line-height:1.6;background:var(--d-sidebar-background);color:var(--primary-medium)}.UsageTip>div{margin:10px 0}.UsageTip button{padding:8px 10px;margin-bottom:10px;border:none;outline:none;border-radius:4px}.menu-body[data-v-649030ce]{padding:0 15px}.inner[data-v-649030ce]{display:flex;align-items:center;margin-bottom:10px}.inner label[data-v-649030ce]{width:70px;font-weight:400}.inner input[data-v-649030ce]{flex:1;margin:0;max-width:300px}#multi-lang-say-config-button{display:none}p[data-v-d8d12b86]{margin-top:1em!important}.timeline-container .topic-timeline .timeline-scrollarea{max-width:100px!important}#linuxdoscripts{font-size:14px}#linuxdoscripts input[type=text]{width:100%;background:var(--d-input-bg-color)}#linuxdoscripts input[type=checkbox]{transform:scale(1.2)}#linuxdoscripts #menu_suspendedball{display:none}#linuxdoscripts img{vertical-align:bottom;max-width:100%;height:auto}#linuxdoscripts .close{position:absolute;right:10px;top:45%;cursor:pointer;font-size:34px;color:#999;transform:translateY(-50%) rotate(45deg)}#linuxdoscripts .setting-btn{z-index:199;position:fixed;bottom:20px;right:20px}#linuxdoscripts .setting-btn .el-button{margin:15px 0 0;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--tertiary-low);font-size:14px;cursor:pointer;border:none}#linuxdoscripts .setting-btn .el-button svg{margin:0}#linuxdoscripts .setting-btn .el-button:hover{opacity:.9}#linuxdoscripts .hint{margin-top:5px;color:#d94f4f;font-size:14px}#linuxdoscripts dialog{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:700px;max-width:100vw;background:var(--header_background);color:var(--primary);box-shadow:0 8px 32px #0000001a;border-radius:16px;padding:15px;z-index:99999;overflow-x:hidden;box-sizing:border-box;margin:0;border:none;outline:none}#linuxdoscripts dialog .menu-about{padding:5px 0;line-height:2}#linuxdoscripts dialog .menu-about .initialization{color:#999;border-bottom:1px dashed #999;cursor:pointer}#linuxdoscripts dialog .menu-about .initialization:hover{color:#333;border-color:#333}#linuxdoscripts dialog p{margin:0;font-size:14px}#linuxdoscripts .menu-header{padding:.5rem .5rem 1rem;border-bottom:1px solid #eee;position:relative}#linuxdoscripts .title{font-size:18px;font-weight:600;display:flex;align-items:center}#linuxdoscripts .title img{margin-left:10px}#linuxdoscripts button{padding:10px 16px;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer;transition:all .2s ease;border:none;display:inline-flex;align-items:center;justify-content:center;background-color:var(--primary-low)}#linuxdoscripts button+button{margin-left:8px}#linuxdoscripts button.saveload{background:#000;color:#fff}#linuxdoscripts button:hover{opacity:.9}#linuxdoscripts .menu-flex{display:flex;justify-content:space-between;align-items:flex-start}#linuxdoscripts .menu-nav{width:140px;display:flex;flex-direction:column;margin:0 20px 0 0;padding-top:15px}#linuxdoscripts .menu-nav li{border-radius:4px;height:32px;width:100%;margin-bottom:5px;box-sizing:border-box;padding:0 10px;display:inline-flex;align-items:center;justify-content:flex-start;font-size:14px;cursor:pointer;line-height:1}#linuxdoscripts .menu-nav li svg{width:16px;margin-right:5px}#linuxdoscripts .menu-nav li.act{background:var(--d-selected)}#linuxdoscripts .menu-body{flex:1;height:480px;overflow-y:auto;padding-right:10px}#linuxdoscripts .menu-body::-webkit-scrollbar{height:8px;width:8px}#linuxdoscripts .menu-body::-webkit-scrollbar-corner{background:none}#linuxdoscripts .menu-body::-webkit-scrollbar-thumb{background:#dee0e1;border-radius:8px}#linuxdoscripts .menu-body .menu-body-item{display:none}#linuxdoscripts .menu-body .menu-body-item.act{display:block}#linuxdoscripts .menu-footer{display:flex;margin-top:10px;padding-top:6px}#linuxdoscripts .import{margin-left:auto!important}#linuxdoscripts .import,#linuxdoscripts .export{background:#d1f0ff;color:#559095}#linuxdoscripts .floorlottery{background:#ffb003}#linuxdoscripts .menu-body-item{padding-bottom:30px}#linuxdoscripts .menu-body-item .item{border-bottom:1px solid rgba(0,0,0,.05);padding:15px 0;display:flex;align-items:center;justify-content:space-between}#linuxdoscripts .menu-body-item .item .tit{height:100%;display:flex;align-items:center}#linuxdoscripts .menu-body-item .item input,#linuxdoscripts .menu-body-item .item select{margin-top:0;margin-bottom:0}#linuxdoscripts .menu-body-item .item input[type=checkbox]{width:30px;height:16px;position:relative;background-color:#dcdfe6;box-shadow:#dfdfdf 0 0 inset;border-radius:20px;background-clip:content-box;display:inline-block;appearance:none;-webkit-appearance:none;-moz-appearance:none;-webkit-user-select:none;user-select:none;outline:none;padding:0}#linuxdoscripts .menu-body-item .item input[type=checkbox]:before{content:"";position:absolute;width:12px;height:12px;background-color:#fff;border-radius:50%;left:2px;top:0;bottom:0;margin:auto;transition:.3s}#linuxdoscripts .menu-body-item .item input[type=checkbox]:checked{background-color:var(--tertiary);transition:.6s}#linuxdoscripts .menu-body-item .item input[type=checkbox]:checked:before{left:14px;transition:.3s}#linuxdoscripts textarea{font-family:inherit;width:100%;min-height:100px!important;border:1px solid #999;outline:0;padding:5px;font-size:14px;margin:5px 0 0;resize:none;border-radius:0;color:var(--d-input-text-color);background:var(--d-input-bg-color)}#linuxdoscripts textarea:focus{border-color:var(--tertiary);outline:2px solid var(--tertiary);outline-offset:-2px}#linuxdoscripts #floorlotterloading img{width:50px;height:50px}#linuxdoscripts .floorlotterywrap{display:none;width:400px;height:300px;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);margin:0;z-index:999}#linuxdoscripts .floorlotterywrap{width:400px;height:300px}#linuxdoscripts .el-checkbox__inner{border:1px solid #979797}#linuxdoscripts label{margin:0}.linuxdoscripts-opacity{display:none;position:fixed;left:0;top:0;width:100vw;height:100vh;background:#00000080;z-index:9999}.linuxlevel.four{background:linear-gradient(to right,red,#00f);-webkit-background-clip:text;color:transparent}.topic-post{position:relative}.linuxfloor{display:flex;color:var(--tertiary);width:30px;height:30px;align-items:center;justify-content:center;border-radius:6px;font-size:16px;margin-left:10px}.signature-p{color:#279a36;font-size:14px;word-break:break-word}.topic-list .views{font-weight:400!important;white-space:nowrap!important}.createreply{display:flex;flex-direction:column;max-width:300px}.createreply button{margin-bottom:10px;justify-content:flex-start;text-align:left}.topicpreview-btn,.donottopic-btn{padding:4px 12px!important;font-size:14px!important;opacity:0!important;margin-right:5px!important}.topic-list-item:hover .topicpreview-btn,.topic-list-item:hover .donottopic-btn{opacity:1!important}.topicpreview{position:fixed;top:0;left:0;z-index:99999;width:100vw;height:100vh;display:flex;justify-content:center;align-items:center;display:none}.topicpreview .topicpreview-container{padding:30px 0;border-radius:5px;width:100%;max-width:800px;overflow-y:auto;height:80vh;z-index:10;background:var(--header_background);position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}.topicpreview .topicpreview-container .topicpreview-title{font-size:22px;font-weight:600;padding:0 30px}.topicpreview .topicpreview-container .topicpreview-date{padding:0 30px;color:#666}.topicpreview .topicpreview-container .topicpreview-content>.item{display:flex;align-items:flex-start;padding:20px 30px}.topicpreview .topicpreview-container .topicpreview-content>.item .itemfloor{width:50px;text-align:left;font-size:16px;padding-top:15px;color:#25b4cf}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost{flex:1;background:var(--tertiary-low);padding:15px;border-radius:10px;font-size:15px;word-break:break-all}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost pre code{max-width:620px}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost img{max-width:100%;max-height:100%;height:auto}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemname{font-size:16px;color:#8f3a3a;display:flex;justify-content:space-between;align-items:center}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemname span{color:#9e9e9e;margin-left:20px}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemdate{color:#b9b9b9;font-size:16px;margin-left:auto}.topicpreview-opacity{position:absolute;top:0;left:0;width:100%;height:100%;opacity:1;background:#0009;z-index:9}.body-preview .sidebar-wrapper{display:none!important}body.body-preview #main-outlet-wrapper{display:block!important;padding-left:50px!important}.body-preview .d-header-wrap,.body-preview .menu_suspendedball{display:none!important}.post-activity{white-space:nowrap;display:inline-block;width:100%;text-align:left}.d-header img{height:var(--d-logo-height);width:auto;max-width:100%;object-fit:contain}.aicreated-btn,.aireplay-btn{outline:none;border:none;background:var(--tertiary-low);display:inline-flex;align-items:center;justify-content:center;line-height:1;font-size:14px;padding:4px 10px;border-radius:3px;margin-bottom:10px;margin-right:10px}.aicreated-btn{display:none}.gpt-summary-wrap{background:var(--tertiary-low);border-radius:5px;padding:10px;font-size:14px;margin:0 0 10px;line-height:1.6}.gpt-summary-wrap .airegenerate{display:none;margin-top:6px;outline:none;border:1px solid #eee;background:#ffe27d;color:#626262;padding:4px 10px;cursor:pointer;border-radius:3px}.aicreatenewtopictitle{margin-left:20px}.aicreatenewtopictitle:hover{text-decoration:underline;cursor:pointer}.aireply-popup{z-index:999999;position:fixed;top:10%;left:50%;transform:translate(-50%);width:500px;padding:20px;background:var(--tertiary-low);color:#333;box-shadow:#0000 0 0,#0000 0 0,#0000001a 0 20px 25px -5px,#0000001a 0 8px 10px -6px;border-radius:10px;display:none}.aireply-popup .aireply-popup-text{width:100%;height:120px}.aireply-popup .aireply-popup-close{outline:0;min-width:80px;height:32px;border:none;background-color:var(--header_background);text-shadow:0 -1px 0 rgba(0,0,0,.12);box-shadow:0 2px #0000000b;border-radius:4px;padding:0 10px;box-sizing:border-box;transition:all .1s linear}#messageToast{z-index:9999999;position:fixed;left:50%;transform:translate(-50%);top:10%;width:100%;display:flex;flex-direction:column;align-items:center}#messageToast .messageToast-text{background:var(--tertiary-low);color:var(--primary);border-radius:6px;width:auto;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;text-align:center;line-height:1;height:40px;min-width:240px;font-size:16px;padding:0 30px;box-sizing:border-box;margin-bottom:10px;opacity:0;animation:messageToast .2s forwards}@keyframes messageToast{0%{transform:translateY(10px);opacity:0}to{transform:translateY(0);opacity:1}}.pangutext{cursor:pointer;margin-left:20px}.pangutext:hover{color:#279a36}.navigation-container.is-active{position:fixed;top:65px;background:var(--header_background);z-index:9;box-shadow:1px 3px 7px #0003;margin-left:-30px;padding-left:30px;border-radius:5px;padding-top:10px;padding-right:20px;min-width:1000px;width:auto}.topic-body.clearfix.highlighted{background-color:var(--tertiary-low)!important} ');
 
 (function (vue, pangu, marked, $$1) {
   'use strict';
 
   const name = "linuxdo-scripts";
-  const version = "0.3.63";
+  const version = "0.3.64";
   const author = "dlzmoe";
   const description = "An enhanced script for the linux.do forum";
   const type = "module";
@@ -2260,6 +2260,2177 @@ ${$(".d-editor-input").val()}
     ]);
   }
   const MenuRemovePostAvatar = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["render", _sfc_render$t]]);
+  const _sfc_main$s = {
+    props: {
+      value: {
+        type: String,
+        default: ""
+      },
+      sort: {
+        type: Number,
+        required: true
+      }
+    },
+    data() {
+      return {
+        textarea: this.value
+      };
+    },
+    watch: {
+      value(newValue) {
+        this.textarea = newValue;
+      }
+    },
+    methods: {
+      handleChange() {
+        this.$emit("update:value", this.textarea);
+      }
+    },
+    created() {
+      if (this.textarea) {
+        $("body").after(`<style>${this.textarea}</style>`);
+      }
+    }
+  };
+  const _hoisted_1$o = { class: "item" };
+  const _hoisted_2$e = { class: "tit" };
+  function _sfc_render$s(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
+      vue.createElementVNode("div", _hoisted_1$o, [
+        vue.createElementVNode("div", _hoisted_2$e, vue.toDisplayString($props.sort) + ". 自定义 CSS（支持 import 引入第三方样式文件） ", 1)
+      ]),
+      vue.withDirectives(vue.createElementVNode("textarea", {
+        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.textarea = $event),
+        onInput: _cache[1] || (_cache[1] = (...args) => $options.handleChange && $options.handleChange(...args)),
+        placeholder: "body{font-size:16px;}"
+      }, "  ", 544), [
+        [vue.vModelText, $data.textarea]
+      ])
+    ], 64);
+  }
+  const MenuOtherCss = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["render", _sfc_render$s], ["__scopeId", "data-v-e33f1de9"]]);
+  const _sfc_main$r = {
+    props: {
+      value: {
+        type: String,
+        default: ""
+      },
+      sort: {
+        type: Number,
+        required: true
+      }
+    },
+    data() {
+      return {
+        textarea: this.value
+      };
+    },
+    watch: {
+      value(newValue) {
+        this.textarea = newValue;
+      }
+    },
+    methods: {
+      handleChange() {
+        this.$emit("update:value", this.textarea);
+      },
+      init() {
+        $(".d-header .title a").html(`<img src="${this.textarea}">`);
+      }
+    },
+    created() {
+      if (this.textarea && this.textarea != "") {
+        this.init();
+      }
+    }
+  };
+  const _hoisted_1$n = { class: "item" };
+  const _hoisted_2$d = { class: "tit" };
+  function _sfc_render$r(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
+      vue.createElementVNode("div", _hoisted_1$n, [
+        vue.createElementVNode("div", _hoisted_2$d, vue.toDisplayString($props.sort) + ". 自定义论坛 logo", 1)
+      ]),
+      vue.withDirectives(vue.createElementVNode("input", {
+        type: "text",
+        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.textarea = $event),
+        onInput: _cache[1] || (_cache[1] = (...args) => $options.handleChange && $options.handleChange(...args)),
+        placeholder: "输入图片链接"
+      }, null, 544), [
+        [vue.vModelText, $data.textarea]
+      ])
+    ], 64);
+  }
+  const MenuLogoUrl = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["render", _sfc_render$r], ["__scopeId", "data-v-cb743585"]]);
+  const _sfc_main$q = {
+    props: {
+      value: {
+        type: String,
+        default: "前排围观，支持一下\n感谢分享，支持一下\n有点厉害，支持一下"
+      },
+      sort: {
+        type: Number,
+        required: true
+      }
+    },
+    data() {
+      return {
+        textarea: this.value
+      };
+    },
+    watch: {
+      value(newValue) {
+        this.textarea = newValue;
+      }
+    },
+    methods: {
+      handleChange() {
+        this.$emit("update:value", this.textarea);
+      },
+      init() {
+        this.list = this.textarea.split(/\r?\n/) || [];
+        if ($(".createreply").length < 1) {
+          $(".timeline-container .topic-timeline").append(
+            `<div class="createreply" style="margin-top:6.4rem;"></div>`
+          );
+          this.list.forEach(function(item) {
+            var $li = $(
+              '<button class="btn btn-default create reply-to-post no-text btn-icon" type="button"></button>'
+            ).text(item);
+            $(".createreply").append($li);
+          });
+          $(".createreply button").click(function() {
+            if ($(".timeline-footer-controls button.create").length != 0) {
+              $(".timeline-footer-controls button.create")[0].click();
+            }
+            if ($("#topic-footer-buttons .topic-footer-main-buttons button.create").length != 0) {
+              $(
+                "#topic-footer-buttons .topic-footer-main-buttons button.create"
+              )[0].click();
+            }
+            setTimeout(() => {
+              let $textarea = $(".d-editor-textarea-wrapper textarea");
+              let text = $(this).html();
+              $textarea.focus();
+              for (let i = 0; i < text.length; i++) {
+                let char = text[i];
+                $textarea.val($textarea.val() + char);
+                let inputEvent = new Event("input", {
+                  bubbles: true,
+                  cancelable: true
+                });
+                $textarea[0].dispatchEvent(inputEvent);
+                let keyEvent = new KeyboardEvent("keydown", {
+                  key: char,
+                  char,
+                  keyCode: char.charCodeAt(0),
+                  which: char.charCodeAt(0),
+                  bubbles: true
+                });
+                $textarea[0].dispatchEvent(keyEvent);
+              }
+            }, 1e3);
+          });
+        }
+      }
+    },
+    created() {
+      if (this.textarea) {
+        setInterval(() => {
+          this.init();
+        }, 1e3);
+      }
+    }
+  };
+  const _hoisted_1$m = { class: "item" };
+  const _hoisted_2$c = { class: "tit" };
+  function _sfc_render$q(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
+      vue.createElementVNode("div", _hoisted_1$m, [
+        vue.createElementVNode("div", _hoisted_2$c, vue.toDisplayString($props.sort) + ". 自定义快捷回复（换行分隔）", 1)
+      ]),
+      vue.withDirectives(vue.createElementVNode("textarea", {
+        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.textarea = $event),
+        onInput: _cache[1] || (_cache[1] = (...args) => $options.handleChange && $options.handleChange(...args)),
+        placeholder: "前排围观支持一下\\n感谢分享大佬厉害啊\\n有点厉害支持~~"
+      }, "  ", 544), [
+        [vue.vModelText, $data.textarea]
+      ])
+    ], 64);
+  }
+  const MenuCreatereply = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["render", _sfc_render$q], ["__scopeId", "data-v-396734d2"]]);
+  const _sfc_main$p = {
+    props: {
+      value: {
+        type: String,
+        default: ""
+      },
+      sort: {
+        type: Number,
+        required: true
+      }
+    },
+    data() {
+      return {
+        textarea: this.value
+      };
+    },
+    watch: {
+      value(newValue) {
+        this.textarea = newValue;
+      }
+    },
+    methods: {
+      handleChange() {
+        this.$emit("update:value", this.textarea);
+      },
+      init() {
+        this.list = this.textarea.split(",") || [];
+        var self = this;
+        $(".topic-list .topic-list-data.posters>a:nth-child(1)").filter((index, element) => {
+          var user = $(element).attr("data-user-card");
+          return self.list.indexOf(user) !== -1;
+        }).parents("tr.topic-list-item").remove();
+        $(".topic-post .full-name a").filter((index, element) => {
+          var user = $(element).attr("data-user-card");
+          return self.list.indexOf(user) !== -1;
+        }).parents(".topic-post").remove();
+      }
+    },
+    created() {
+      if (this.textarea) {
+        let pollinglength1 = 0;
+        let pollinglength2 = 0;
+        setInterval(() => {
+          if (pollinglength1 != $(".topic-list-body tr").length) {
+            pollinglength1 = $(".topic-list-body tr").length;
+            this.init();
+          }
+          if (pollinglength2 != $(".post-stream .topic-post").length) {
+            pollinglength2 = $(".post-stream .topic-post").length;
+            this.init();
+          }
+        }, 1e3);
+      }
+    }
+  };
+  const _hoisted_1$l = { class: "item" };
+  const _hoisted_2$b = { class: "tit" };
+  function _sfc_render$p(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
+      vue.createElementVNode("div", _hoisted_1$l, [
+        vue.createElementVNode("div", _hoisted_2$b, vue.toDisplayString($props.sort) + ". 屏蔽指定用户（使用英文，分隔）", 1)
+      ]),
+      vue.withDirectives(vue.createElementVNode("textarea", {
+        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.textarea = $event),
+        onInput: _cache[1] || (_cache[1] = (...args) => $options.handleChange && $options.handleChange(...args)),
+        placeholder: "user1,user2,user3"
+      }, "  ", 544), [
+        [vue.vModelText, $data.textarea]
+      ])
+    ], 64);
+  }
+  const MenuBlockuserlist = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["render", _sfc_render$p], ["__scopeId", "data-v-f84417d4"]]);
+  const _sfc_main$o = {
+    props: {
+      value: {
+        type: String,
+        default: ""
+      },
+      sort: {
+        type: Number,
+        required: true
+      }
+    },
+    data() {
+      return {
+        textarea: this.value
+      };
+    },
+    watch: {
+      value(newValue) {
+        this.textarea = newValue;
+      }
+    },
+    methods: {
+      handleChange() {
+        this.$emit("update:value", this.textarea);
+      },
+      init() {
+        this.list = this.textarea.split(",") || [];
+        var self = this;
+        $(".topic-list .main-link .raw-topic-link>*").filter((index, element) => {
+          var text = $(element).text();
+          return self.list.some((item) => text.includes(item));
+        }).parents("tr.topic-list-item").remove();
+        $(".topic-body .cooked").filter((index, element) => {
+          var text = $(element).text();
+          return self.list.some((item) => text.includes(item));
+        }).parents(".topic-post").remove();
+      }
+    },
+    created() {
+      if (this.textarea) {
+        let pollinglength1 = 0;
+        let pollinglength2 = 0;
+        setInterval(() => {
+          if (pollinglength1 != $(".topic-list-body tr").length) {
+            pollinglength1 = $(".topic-list-body tr").length;
+            this.init();
+          }
+          if (pollinglength2 != $(".post-stream .topic-post").length) {
+            pollinglength2 = $(".post-stream .topic-post").length;
+            this.init();
+          }
+        }, 1e3);
+      }
+    }
+  };
+  const _hoisted_1$k = { class: "item" };
+  const _hoisted_2$a = { class: "tit" };
+  function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
+      vue.createElementVNode("div", _hoisted_1$k, [
+        vue.createElementVNode("div", _hoisted_2$a, vue.toDisplayString($props.sort) + ". 关键词屏蔽功能（使用英文，分隔）屏蔽包含关键字的话题和回复 ", 1)
+      ]),
+      vue.withDirectives(vue.createElementVNode("textarea", {
+        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.textarea = $event),
+        onInput: _cache[1] || (_cache[1] = (...args) => $options.handleChange && $options.handleChange(...args))
+      }, " ", 544), [
+        [vue.vModelText, $data.textarea]
+      ])
+    ], 64);
+  }
+  const MenuBlockKeyword = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["render", _sfc_render$o], ["__scopeId", "data-v-77789f1e"]]);
+  const _sfc_main$n = {
+    props: {
+      value: {
+        type: Object,
+        default: {
+          value1: false,
+          cate: "搞七捻三",
+          days: "5"
+        }
+      },
+      sort: {
+        type: Number,
+        required: true
+      }
+    },
+    data() {
+      return {
+        localChecked: this.value
+      };
+    },
+    watch: {
+      value(newValue) {
+        this.localChecked = newValue;
+      }
+    },
+    methods: {
+      handleChange() {
+        this.$emit("update:value", this.localChecked);
+      },
+      // 过滤时间格式
+      convertToTimestamp(dateStr) {
+        const cleanedDateStr = dateStr.replace(/\s+/g, "");
+        const datePattern = /(\d{4})年(\d{1,2})月(\d{1,2})日(\d{2}):(\d{2})/;
+        const dateMatch = cleanedDateStr.match(datePattern);
+        if (dateMatch) {
+          const year = parseInt(dateMatch[1], 10);
+          const month = parseInt(dateMatch[2], 10) - 1;
+          const day = parseInt(dateMatch[3], 10);
+          const hours = parseInt(dateMatch[4], 10);
+          const minutes = parseInt(dateMatch[5], 10);
+          const date = new Date(year, month, day, hours, minutes);
+          return date.getTime();
+        }
+        return null;
+      },
+      // 屏蔽指定分类、指定时间
+      GetTimestamp() {
+        if (!$(".nav-pills > li.nav-item_posted").hasClass("active") && !$(".nav-pills > li.nav-item_bookmarks").hasClass("active")) {
+          if (this.localChecked.cate == "") {
+            $(".topic-list .age").each((index, element) => {
+              const str = $(element).attr("title");
+              const match = str.match(/创建日期：([\s\S]*?)最新：/);
+              if (match && match[1]) {
+                const creationDate = match[1].trim();
+                const timestamp = this.convertToTimestamp(creationDate);
+                const days = Number(this.localChecked.days) * 864e5;
+                if (Date.now() - timestamp > days) {
+                  $(element).parents("tr.topic-list-item").remove();
+                }
+              }
+            });
+          } else {
+            const cateArray = this.localChecked.cate.split(",").map((item) => item.trim());
+            $(".badge-category__wrapper .badge-category__name").each((index, element) => {
+              let htmlContent = $(element).html();
+              htmlContent = htmlContent.replace(/,\s*Lv[1-3]/g, "");
+              if (cateArray.includes(htmlContent.trim())) {
+                $(element).parents("tr.topic-list-item").find(".age").each((index2, element2) => {
+                  const str = $(element2).attr("title");
+                  const match = str.match(/创建日期：([\s\S]*?)最新：/);
+                  if (match && match[1]) {
+                    const creationDate = match[1].trim();
+                    const timestamp = this.convertToTimestamp(creationDate);
+                    const days = Number(this.localChecked.days) * 864e5;
+                    if (Date.now() - timestamp > days) {
+                      $(element2).parents("tr.topic-list-item").remove();
+                    }
+                  }
+                });
+              }
+            });
+          }
+        }
+      }
+    },
+    created() {
+      if (this.localChecked.value1) {
+        let pollinglength1 = 0;
+        setInterval(() => {
+          if (pollinglength1 != $(".topic-list-body tr").length) {
+            pollinglength1 = $(".topic-list-body tr").length;
+            this.GetTimestamp();
+          }
+        }, 1e3);
+      }
+    }
+  };
+  const _hoisted_1$j = {
+    class: "item",
+    style: { "border": "none" }
+  };
+  const _hoisted_2$9 = { class: "tit" };
+  function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
+      vue.createElementVNode("div", _hoisted_1$j, [
+        vue.createElementVNode("div", _hoisted_2$9, [
+          vue.createTextVNode(vue.toDisplayString($props.sort) + ". 屏蔽指定天数前的帖子 ", 1),
+          vue.withDirectives(vue.createElementVNode("input", {
+            type: "text",
+            "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.localChecked.days = $event),
+            placeholder: "默认天数 5"
+          }, null, 512), [
+            [vue.vModelText, $data.localChecked.days]
+          ])
+        ]),
+        vue.withDirectives(vue.createElementVNode("input", {
+          type: "checkbox",
+          "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => $data.localChecked.value1 = $event),
+          onChange: _cache[2] || (_cache[2] = (...args) => $options.handleChange && $options.handleChange(...args))
+        }, null, 544), [
+          [vue.vModelCheckbox, $data.localChecked.value1]
+        ])
+      ]),
+      vue.createElementVNode("div", null, [
+        _cache[4] || (_cache[4] = vue.createElementVNode("p", null, "针对分类：留空对全部分类生效，多个分类用英文逗号【,】进行分隔", -1)),
+        vue.withDirectives(vue.createElementVNode("textarea", {
+          "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => $data.localChecked.cate = $event),
+          placeholder: "搞七捻三"
+        }, null, 512), [
+          [vue.vModelText, $data.localChecked.cate]
+        ])
+      ])
+    ], 64);
+  }
+  const MenuShieldPosts = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["render", _sfc_render$n], ["__scopeId", "data-v-ac149a76"]]);
+  const _sfc_main$m = {
+    props: {
+      value: {
+        type: Array,
+        default: []
+      }
+    },
+    data() {
+      return {
+        tableData: this.value
+      };
+    },
+    watch: {
+      value(newValue) {
+        this.tableData = newValue;
+      }
+    },
+    methods: {
+      handleChange() {
+        this.$emit("update:value", this.tableData);
+      },
+      // 修改标签
+      editTags(item) {
+        var tags = prompt(`对 @${item.name} 修改标签`, item.tags);
+        if (tags == null) {
+          return item.tags;
+        }
+        if (tags != item.tags) {
+          var existingPerson = this.tableData.find((items) => items.name === item.name);
+          if (existingPerson) {
+            existingPerson.tags = tags;
+          } else {
+            this.tableData.push({ name: person, tags });
+          }
+          let settingData1 = localStorage.getItem("linxudoscriptssetting");
+          settingData1 = JSON.parse(settingData1);
+          settingData1.usertags = this.tableData;
+          localStorage.setItem("linxudoscriptssetting", JSON.stringify(settingData1));
+          this.$emit("update:value", this.tableData);
+        }
+      },
+      delTags(item) {
+        var del = confirm("是否确认删除！");
+        if (del == true) {
+          this.tableData.splice(item, 1);
+          let settingData1 = localStorage.getItem("linxudoscriptssetting");
+          settingData1 = JSON.parse(settingData1);
+          settingData1.usertags = this.tableData;
+          localStorage.setItem("linxudoscriptssetting", JSON.stringify(settingData1));
+          this.$emit("update:value", this.tableData);
+        }
+      }
+    },
+    created() {
+      let settingData = localStorage.getItem("linxudoscriptssetting");
+      settingData = JSON.parse(settingData);
+      if (!settingData.usertags) {
+        settingData.usertags = [];
+      }
+      settingData.usertags = settingData.usertags.filter((user) => user.tags);
+      this.tableData = settingData.usertags;
+      setInterval(() => {
+        if ($(".addusertag").length < 1) {
+          $(".usercard-controls").append(
+            `<li><button class="btn addusertag" type="button">添加用户标签</button></li>`
+          );
+          $(".addusertag").click(function() {
+            var person2 = $(".user-card .user-profile-link").attr("href").replace("/u/", "");
+            var tags = prompt(`对 @${person2} 设置标签（保存后刷新页面）`, "");
+            if (tags == null) {
+              return false;
+            }
+            var lowerCasePerson = person2.toLowerCase();
+            var existingPerson = settingData.usertags.find(
+              (item) => item.name.toLowerCase() === lowerCasePerson
+            );
+            if (existingPerson) {
+              existingPerson.tags = tags;
+            } else {
+              settingData.usertags.push({ name: person2, tags });
+            }
+            localStorage.setItem("linxudoscriptssetting", JSON.stringify(settingData));
+          });
+        }
+        $(".topic-post").each(function() {
+          const username = $(this).find(".first a").attr("data-user-card").toLowerCase();
+          const userTag = settingData.usertags.find((user) => user.name === username);
+          if (userTag) {
+            if ($(this).find(".linxudoscripts-tag").length < 1) {
+              $(this).find(".names").append(`<span class="linxudoscripts-tag"># ${userTag.tags}</span>`);
+            }
+          }
+        });
+      }, 1e3);
+    }
+  };
+  const _hoisted_1$i = { class: "menu-table" };
+  const _hoisted_2$8 = ["onClick"];
+  const _hoisted_3$6 = ["onClick"];
+  function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", null, [
+      vue.createElementVNode("table", _hoisted_1$i, [
+        _cache[0] || (_cache[0] = vue.createElementVNode("thead", null, [
+          vue.createElementVNode("tr", null, [
+            vue.createElementVNode("th", null, "用户名"),
+            vue.createElementVNode("th", null, "标签"),
+            vue.createElementVNode("th", null, "操作")
+          ])
+        ], -1)),
+        vue.createElementVNode("tbody", null, [
+          (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList($data.tableData, (item) => {
+            return vue.openBlock(), vue.createElementBlock("tr", {
+              key: item.name
+            }, [
+              vue.createElementVNode("td", null, vue.toDisplayString(item.name), 1),
+              vue.createElementVNode("td", null, vue.toDisplayString(item.tags), 1),
+              vue.createElementVNode("td", null, [
+                vue.createElementVNode("span", {
+                  class: "span",
+                  onClick: ($event) => $options.editTags(item)
+                }, "修改", 8, _hoisted_2$8),
+                vue.createElementVNode("span", {
+                  class: "span",
+                  onClick: ($event) => $options.delTags(item),
+                  style: { "color": "#e00" }
+                }, "删除！", 8, _hoisted_3$6)
+              ])
+            ]);
+          }), 128))
+        ])
+      ])
+    ]);
+  }
+  const UserTags = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["render", _sfc_render$m]]);
+  const _sfc_main$l = {
+    props: {
+      value: {
+        type: Object,
+        default: {
+          value1: false,
+          value2: false,
+          title: false,
+          btn: true,
+          apikey: "",
+          baseurl: "https://api.openai.com",
+          full_url: "/v1/chat/completions",
+          model: "gpt-4o-mini",
+          prompt: "根据以下帖子内容进行总结，请使用 markdown 格式返回回答，没有字数限制，但要求文字精炼，简介准确，语言要求返回简体中文，并且进行中英文混排优化。可以通过编号列表（1，2，3）列出核心要点。注意不要输出标题，例如：核心要点总结，帖子总结等，直接输出文本段落。",
+          prompt1: "根据以下帖子内容，帮我给作者写一条回复，简短，表明我的观点，用口语回复，不需要很正式。您可以通过讨论的方式进行回复，这将有助于引导其他用户或作者进行互动。",
+          prompt2: "根据以下帖子内容，生成一个合适的标题用于社交论坛发布使用，格式要求：不要书名号或其他符号，只需要一句纯文本。尽量精简到 15 字以内，如果字数不够表达主题，可以适当多生成几个字。"
+        }
+      }
+    },
+    data() {
+      return {
+        localChecked: this.value
+      };
+    },
+    watch: {
+      value(newValue) {
+        this.localChecked = newValue;
+      }
+    },
+    methods: {
+      handleChange() {
+        this.$emit("update:value", this.localChecked);
+      },
+      getTopicUrl(url) {
+        const regex = /^(https:\/\/linux\.do\/t\/topic\/\d+)(\/\d+)?$/;
+        const match = url.match(regex);
+        return match ? match[1] : url;
+      },
+      // 是否开启手动生成
+      setCreatedBtn() {
+        if (this.localChecked.btn) {
+          $("head").append("<style>.aicreated-btn{display:inline-flex!important}</style>");
+        }
+      },
+      // 获取帖子内容并生成总结
+      async getPostContent() {
+        $(".post-stream").before(
+          `<div class="gpt-summary-wrap">
+         <div class="gpt-summary">AI 总结：正在使用 AI 总结内容中，请稍后...</div>
+          </div>`
+        );
+        const config2 = JSON.parse(localStorage.getItem("linxudoscriptssetting")).gptdata;
+        return new Promise((resolve, reject) => {
+          const str = $("#topic-title h1 a").text() + $("#post_1 .cooked").text();
+          const prompt2 = `${config2.prompt}
+帖子内容如下：
+${str}`;
+          fetch(`${config2.baseurl}${config2.full_url}`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${config2.apikey}`
+            },
+            body: JSON.stringify({
+              model: config2.model,
+              messages: [
+                {
+                  role: "user",
+                  content: prompt2
+                }
+              ],
+              temperature: 0.7
+            })
+          }).then((response) => {
+            if (!response.ok) {
+              reject(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+          }).then((gptData) => {
+            $(".gpt-summary").html(`${marked.marked.parse(gptData.choices[0].message.content)}`);
+            let summaryCache = JSON.parse(localStorage.getItem("summaryCacheData")) || [];
+            const regex = /^(https:\/\/linux\.do\/t\/topic\/\d+)(\/\d+)?$/;
+            const match = window.location.href.match(regex)[1];
+            let existingObject = summaryCache.find((item) => item.name == match);
+            let newObject = {
+              name: match,
+              value: gptData.choices[0].message.content
+            };
+            if (existingObject) {
+              existingObject.value = newObject.value;
+            } else {
+              summaryCache.push(newObject);
+            }
+            localStorage.setItem("summaryCacheData", JSON.stringify(summaryCache));
+            resolve();
+          }).catch((error) => {
+            $(".gpt-summary").html(`生成失败，请检查配置是否正确并刷新重试！`);
+            console.log(error);
+          });
+        });
+      },
+      // 生成 AI 回复
+      async setAIRelpy() {
+        $(".aireply-popup").show();
+        $(".aireply-popup-text").html("AI 推荐回复正在生成中，请稍后。。。");
+        const config2 = JSON.parse(localStorage.getItem("linxudoscriptssetting")).gptdata;
+        return new Promise((resolve, reject) => {
+          const str = $("#topic-title h1 a").text() + $("#post_1 .cooked").text();
+          const prompt2 = `${config2.prompt1}
+帖子内容如下：
+${str}`;
+          fetch(`${config2.baseurl}${config2.full_url}`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${config2.apikey}`
+            },
+            body: JSON.stringify({
+              model: config2.model,
+              messages: [
+                {
+                  role: "user",
+                  content: prompt2
+                }
+              ],
+              temperature: 0.7
+            })
+          }).then((response) => {
+            if (!response.ok) {
+              reject(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+          }).then((gptData) => {
+            this.AIReplyPopup(gptData.choices[0].message.content);
+            resolve();
+          }).catch((error) => {
+            console.log(error);
+          });
+        });
+      },
+      // 推荐回复弹窗
+      AIReplyPopup(text) {
+        $(".aireply-popup-text").html(text);
+      },
+      // AI 根据新建话题内容生成标题
+      async getCreateNewTopicTitle() {
+        return new Promise((resolve, reject) => {
+          const topic_contentdata = $(".d-editor-preview").html();
+          const config2 = JSON.parse(localStorage.getItem("linxudoscriptssetting")).gptdata;
+          const prompt2 = `${config2.prompt2}
+帖子内容如下：
+${topic_contentdata}`;
+          fetch(`${config2.baseurl}${config2.full_url}`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${config2.apikey}`
+            },
+            body: JSON.stringify({
+              model: config2.model,
+              messages: [
+                {
+                  role: "user",
+                  content: prompt2
+                }
+              ],
+              temperature: 0.7
+            })
+          }).then((response) => {
+            if (!response.ok) {
+              reject(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+          }).then((gptData) => {
+            $("#reply-title").val(gptData.choices[0].message.content);
+            resolve();
+          }).catch((error) => {
+            console.log(error);
+            $("#reply-title").val(`抱歉生成失败，请检查配置或者反馈给开发者！`);
+          });
+        });
+      }
+    },
+    async created() {
+      if (this.localChecked.value2) {
+        $("body").append(`
+        <div class="aireply-popup">
+          <textarea class="aireply-popup-text"></textarea>
+          <button class="aireply-popup-close">关闭</button>
+        </div>
+      `);
+        setInterval(() => {
+          if ($(".gpt-summary-wrap").length < 1 && $(".aireplay-btn").length < 1) {
+            $("#topic-title").after(
+              `<button class="aireplay-btn" type="button">AI 回复</button>`
+            );
+            $(".aireplay-btn").click(() => {
+              this.setAIRelpy();
+            });
+            $(".aireply-popup-close").click(() => {
+              $(".aireply-popup").hide();
+              $(".aireply-popup-text").html("AI 推荐回复正在生成中，请稍后。。。");
+            });
+          }
+        }, 1e3);
+      }
+      if (this.localChecked.value1) {
+        setInterval(() => {
+          if ($(".gpt-summary-wrap").length < 1 && $(".aicreated-btn").length < 1) {
+            $("#topic-title").after(
+              `<button class="aicreated-btn" type="button">AI 总结</button>`
+            );
+            $(".aicreated-btn").click(() => {
+              $(".gpt-summary-wrap").remove();
+              this.getPostContent();
+            });
+          }
+        }, 1e3);
+        this.setCreatedBtn();
+        setInterval(() => {
+          if ($(".post-stream").length > 0) {
+            if ($(".gpt-summary-wrap").length < 1) {
+              let summaryCache = JSON.parse(localStorage.getItem("summaryCacheData")) || [];
+              const regex = /^(https:\/\/linux\.do\/t\/topic\/\d+)(\/\d+)?$/;
+              const match = window.location.href.match(regex)[1];
+              let existingObject = summaryCache.find((item) => item.name === match);
+              if (existingObject) {
+                $(".post-stream").before(
+                  `<div class="gpt-summary-wrap">
+<div class="gpt-summary">${marked.marked.parse(existingObject.value)}</div>
+</div>`
+                );
+              }
+            }
+            if (!this.localChecked.btn) {
+              if ($(".gpt-summary-wrap").length < 1) {
+                this.getPostContent();
+              }
+            }
+            $(".topic-list .main-link a.title").click(() => {
+              $(".gpt-summary-wrap").remove();
+            });
+          }
+        }, 1e3);
+      }
+      if (this.localChecked.title) {
+        setInterval(() => {
+          if ($(".action-title").length > 0) {
+            if ($(".action-title").html().includes("创建新话题")) {
+              if ($(".aicreatenewtopictitle").length < 1) {
+                $(".action-title").append(
+                  '<span class="aicreatenewtopictitle">AI 生成标题</span>'
+                );
+                $(".aicreatenewtopictitle").click(() => {
+                  $("#reply-title").val("正在生成中，请稍后...");
+                  this.getCreateNewTopicTitle();
+                });
+              }
+            }
+          }
+        }, 1e3);
+        let summaryCacheData = JSON.parse(localStorage.getItem("summaryCacheData")) || [];
+        if (summaryCacheData.length > 20) {
+          summaryCacheData = summaryCacheData.slice(-20);
+        }
+        localStorage.setItem("summaryCacheData", JSON.stringify(summaryCacheData));
+      }
+    }
+  };
+  const _hoisted_1$h = { class: "item" };
+  const _hoisted_2$7 = { class: "item" };
+  const _hoisted_3$5 = { class: "item" };
+  const _hoisted_4$4 = { class: "item" };
+  function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", null, [
+      vue.createElementVNode("div", _hoisted_1$h, [
+        _cache[15] || (_cache[15] = vue.createElementVNode("div", { class: "tit" }, "1. 是否开启 AI 生成话题总结", -1)),
+        vue.withDirectives(vue.createElementVNode("input", {
+          type: "checkbox",
+          "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.localChecked.value1 = $event),
+          onChange: _cache[1] || (_cache[1] = (...args) => $options.handleChange && $options.handleChange(...args))
+        }, null, 544), [
+          [vue.vModelCheckbox, $data.localChecked.value1]
+        ])
+      ]),
+      vue.createElementVNode("div", _hoisted_2$7, [
+        _cache[16] || (_cache[16] = vue.createElementVNode("div", { class: "tit" }, "2. 是否显示手动总结按钮", -1)),
+        vue.withDirectives(vue.createElementVNode("input", {
+          type: "checkbox",
+          "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => $data.localChecked.btn = $event),
+          onChange: _cache[3] || (_cache[3] = (...args) => $options.handleChange && $options.handleChange(...args))
+        }, null, 544), [
+          [vue.vModelCheckbox, $data.localChecked.btn]
+        ])
+      ]),
+      vue.createElementVNode("div", _hoisted_3$5, [
+        _cache[17] || (_cache[17] = vue.createElementVNode("div", { class: "tit" }, "3. 是否开启 AI 生成回复推荐", -1)),
+        vue.withDirectives(vue.createElementVNode("input", {
+          type: "checkbox",
+          "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => $data.localChecked.value2 = $event),
+          onChange: _cache[5] || (_cache[5] = (...args) => $options.handleChange && $options.handleChange(...args))
+        }, null, 544), [
+          [vue.vModelCheckbox, $data.localChecked.value2]
+        ])
+      ]),
+      vue.createElementVNode("div", _hoisted_4$4, [
+        _cache[18] || (_cache[18] = vue.createElementVNode("div", { class: "tit" }, "4. 新建话题使用 AI 生成标题", -1)),
+        vue.withDirectives(vue.createElementVNode("input", {
+          type: "checkbox",
+          "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => $data.localChecked.title = $event),
+          onChange: _cache[7] || (_cache[7] = (...args) => $options.handleChange && $options.handleChange(...args))
+        }, null, 544), [
+          [vue.vModelCheckbox, $data.localChecked.title]
+        ])
+      ]),
+      _cache[19] || (_cache[19] = vue.createElementVNode("div", { class: "item" }, [
+        vue.createElementVNode("div", { class: "tit" }, "5. 配置信息")
+      ], -1)),
+      vue.withDirectives(vue.createElementVNode("input", {
+        type: "text",
+        "onUpdate:modelValue": _cache[8] || (_cache[8] = ($event) => $data.localChecked.apikey = $event),
+        placeholder: "sk-xxxxxxxx"
+      }, null, 512), [
+        [vue.vModelText, $data.localChecked.apikey]
+      ]),
+      vue.withDirectives(vue.createElementVNode("input", {
+        style: { "width": "49%" },
+        type: "text",
+        "onUpdate:modelValue": _cache[9] || (_cache[9] = ($event) => $data.localChecked.baseurl = $event),
+        placeholder: "https://api.openai.com"
+      }, null, 512), [
+        [vue.vModelText, $data.localChecked.baseurl]
+      ]),
+      vue.withDirectives(vue.createElementVNode("input", {
+        style: { "width": "49%", "margin-left": "2%" },
+        type: "text",
+        "onUpdate:modelValue": _cache[10] || (_cache[10] = ($event) => $data.localChecked.full_url = $event),
+        placeholder: "/v1/chat/completions"
+      }, null, 512), [
+        [vue.vModelText, $data.localChecked.full_url]
+      ]),
+      vue.withDirectives(vue.createElementVNode("input", {
+        type: "text",
+        "onUpdate:modelValue": _cache[11] || (_cache[11] = ($event) => $data.localChecked.model = $event),
+        placeholder: "模型，如：gpt-4o-mini"
+      }, null, 512), [
+        [vue.vModelText, $data.localChecked.model]
+      ]),
+      _cache[20] || (_cache[20] = vue.createElementVNode("div", null, "6. AI 总结帖子 prompt:", -1)),
+      vue.withDirectives(vue.createElementVNode("textarea", {
+        "onUpdate:modelValue": _cache[12] || (_cache[12] = ($event) => $data.localChecked.prompt = $event)
+      }, null, 512), [
+        [vue.vModelText, $data.localChecked.prompt]
+      ]),
+      _cache[21] || (_cache[21] = vue.createElementVNode("div", null, "7. AI 生成回复 prompt:", -1)),
+      vue.withDirectives(vue.createElementVNode("textarea", {
+        "onUpdate:modelValue": _cache[13] || (_cache[13] = ($event) => $data.localChecked.prompt1 = $event)
+      }, null, 512), [
+        [vue.vModelText, $data.localChecked.prompt1]
+      ]),
+      _cache[22] || (_cache[22] = vue.createElementVNode("div", null, "8. AI 生成标题 prompt:", -1)),
+      vue.withDirectives(vue.createElementVNode("textarea", {
+        "onUpdate:modelValue": _cache[14] || (_cache[14] = ($event) => $data.localChecked.prompt2 = $event)
+      }, null, 512), [
+        [vue.vModelText, $data.localChecked.prompt2]
+      ]),
+      _cache[23] || (_cache[23] = vue.createElementVNode("div", { style: { "margin-top": "10px" } }, " 注意：请按照指定格式填写参数；不支持 http，请使用 https。 ", -1))
+    ]);
+  }
+  const GPTconfig = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["render", _sfc_render$l], ["__scopeId", "data-v-d1d5d03b"]]);
+  const _sfc_main$k = {
+    props: ["modelValue"],
+    emits: ["update:modelValue"],
+    data() {
+      return {
+        radio: this.modelValue,
+        // 初始化 radio
+        list: [
+          {
+            id: 0,
+            name: "ls-themes0",
+            imgurl: ""
+          },
+          {
+            id: 6,
+            name: "ls-themes6",
+            imgurl: "https://linux.do/uploads/default/original/3X/d/9/d935995d90221b7acdde23df142ba7bbe3c38bf0.png"
+          },
+          {
+            id: 5,
+            name: "ls-themes5",
+            imgurl: "https://linux.do/uploads/default/optimized/3X/3/a/3a9cfbddfd2385ec4c638a10b15055220332e65c_2_1035x565.png"
+          },
+          {
+            id: 4,
+            name: "ls-themes4",
+            imgurl: "https://linux.do/uploads/default/optimized/3X/8/f/8fb7fe2251b44a6ea1831055bf5ac3ef2c12b4ea_2_1035x544.jpeg"
+          },
+          {
+            id: 3,
+            name: "ls-themes3",
+            imgurl: "https://linux.do/uploads/default/optimized/3X/2/5/25f83e28507a9ec9fe8ad41874ed578c2e007ff6_2_1035x544.jpeg"
+          },
+          {
+            id: 2,
+            name: "ls-themes2",
+            imgurl: "https://linux.do/uploads/default/optimized/3X/b/b/bbaa57335e0eab7e4db7ddb5944b613ce0cb5b89_2_1035x544.jpeg"
+          },
+          {
+            id: 1,
+            name: "ls-themes1",
+            imgurl: "https://linux.do/uploads/default/optimized/3X/2/f/2f1a0d87acb496eb544e17a72022c58ccfd72104_2_1035x544.jpeg"
+          }
+        ],
+        jsonData: [
+          {
+            id: 1,
+            content: "<link href='https://forum.godotengine.org/stylesheets/color_definitions_godot-light_14_5_bfb37f9ae1fb41e9775aafca6e20cddcf38a5ef5.css' media='all' rel='stylesheet' class='light-scheme'><link href='https://forum.godotengine.org/stylesheets/color_definitions_godot-dark_15_5_5ddd0db082f3ae82a3ba77b0ccd1e9a549731798.css' media='(prefers-color-scheme:dark)' rel='stylesheet' class='dark-scheme'><link href='https://forum.godotengine.org/stylesheets/desktop_6551c8b35c64f23dde7a58f9883f833dcb41d6c2.css' media='all' rel='stylesheet' data-target='desktop'><link href='https://forum.godotengine.org/stylesheets/checklist_6551c8b35c64f23dde7a58f9883f833dcb41d6c2.css' media='all' rel='stylesheet' data-target='checklist'><link href='https://forum.godotengine.org/stylesheets/discourse-details_6551c8b35c64f23dde7a58f9883f833dcb41d6c2.css' media='all' rel='stylesheet' data-target='discourse-details'><link href='https://forum.godotengine.org/stylesheets/discourse-lazy-videos_6551c8b35c64f23dde7a58f9883f833dcb41d6c2.css' media='all' rel='stylesheet' data-target='discourse-lazy-videos'><link href='https://forum.godotengine.org/stylesheets/discourse-local-dates_6551c8b35c64f23dde7a58f9883f833dcb41d6c2.css' media='all' rel='stylesheet' data-target='discourse-local-dates'><link href='https://forum.godotengine.org/stylesheets/discourse-narrative-bot_6551c8b35c64f23dde7a58f9883f833dcb41d6c2.css' media='all' rel='stylesheet' data-target='discourse-narrative-bot'><link href='https://forum.godotengine.org/stylesheets/discourse-presence_6551c8b35c64f23dde7a58f9883f833dcb41d6c2.css' media='all' rel='stylesheet' data-target='discourse-presence'><link href='https://forum.godotengine.org/stylesheets/discourse-solved_6551c8b35c64f23dde7a58f9883f833dcb41d6c2.css' media='all' rel='stylesheet' data-target='discourse-solved'><link href='https://forum.godotengine.org/stylesheets/docker_manager_6551c8b35c64f23dde7a58f9883f833dcb41d6c2.css' media='all' rel='stylesheet' data-target='docker_manager'><link href='https://forum.godotengine.org/stylesheets/footnote_6551c8b35c64f23dde7a58f9883f833dcb41d6c2.css' media='all' rel='stylesheet' data-target='footnote'><link href='https://forum.godotengine.org/stylesheets/poll_6551c8b35c64f23dde7a58f9883f833dcb41d6c2.css' media='all' rel='stylesheet' data-target='poll'><link href='https://forum.godotengine.org/stylesheets/spoiler-alert_6551c8b35c64f23dde7a58f9883f833dcb41d6c2.css' media='all' rel='stylesheet' data-target='spoiler-alert'><link href='https://forum.godotengine.org/stylesheets/poll_desktop_6551c8b35c64f23dde7a58f9883f833dcb41d6c2.css' media='all' rel='stylesheet' data-target='poll_desktop'><link href='https://forum.godotengine.org/stylesheets/desktop_theme_9_818c40f50955dc75b8ee82ebc6b63677c57bad1a.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='9' data-theme-name='custom header links'><link href='https://forum.godotengine.org/stylesheets/desktop_theme_3_da63025974d890f429338f0221ce160e14b07fc7.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='3' data-theme-name='godot tweaks'><link href='https://forum.godotengine.org/stylesheets/desktop_theme_12_279dc32ddce5227f4513713baa0e0caf3dc6f846.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='12' data-theme-name='post badges'><link href='https://forum.godotengine.org/stylesheets/desktop_theme_7_b736b09c69b69b5359282426c2559c196e5d619e.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='7' data-theme-name='search banner'><link href='https://forum.godotengine.org/stylesheets/desktop_theme_5_73982ca8b55af63e007c66d4bd9ddc7af40f0b7f.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='5' data-theme-name='godot theme'>"
+          },
+          {
+            id: 2,
+            content: "<link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/color_definitions_hf-light_3_4_e9f0e3d0b716595aad22a8443d01cdbaf9dff610.css' media='all' rel='stylesheet' class='light-scheme'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/color_definitions_hf-dark_4_4_a909a408a44c8e15765a6792c5aa2abab3fbfdfc.css' media='(prefers-color-scheme:dark)' rel='stylesheet' class='dark-scheme'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/desktop_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='desktop'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/checklist_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='checklist'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-adplugin_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-adplugin'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-ai_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-ai'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-akismet_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-akismet'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-cakeday_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-cakeday'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-details_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-details'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-lazy-videos_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-lazy-videos'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-local-dates_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-local-dates'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-math_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-math'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-narrative-bot_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-narrative-bot'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-policy_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-policy'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-presence_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-presence'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-reactions_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-reactions'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-solved_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-solved'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-templates_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-templates'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-topic-voting_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-topic-voting'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/footnote_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='footnote'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/hosted-site_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='hosted-site'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/poll_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='poll'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/spoiler-alert_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='spoiler-alert'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-ai_desktop_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-ai_desktop'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-reactions_desktop_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-reactions_desktop'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-topic-voting_desktop_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-topic-voting_desktop'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/poll_desktop_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='poll_desktop'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/desktop_theme_4_dc1402c93670f70f3de138ee4819934dae9704d0.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='4' data-theme-name='discourse-huggingface-theme'>"
+          },
+          {
+            id: 3,
+            content: "<link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='desktop'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/checklist_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='checklist'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-akismet_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-akismet'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-cakeday_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-cakeday'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-custom-topic-lists_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-custom-topic-lists'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-data-explorer_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-data-explorer'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-details_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-details'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-lazy-videos_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-lazy-videos'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-local-dates_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-local-dates'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-math_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-math'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-narrative-bot_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-narrative-bot'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-policy_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-policy'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-post-voting_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-post-voting'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-presence_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-presence'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-preset-topic-composer_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-preset-topic-composer'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-reactions_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-reactions'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-rss-polling_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-rss-polling'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-signatures_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-signatures'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-solved_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-solved'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-templates_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-templates'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-user-notes_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-user-notes'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/footnote_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='footnote'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/hosted-site_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='hosted-site'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/poll_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='poll'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/spoiler-alert_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='spoiler-alert'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-post-voting_desktop_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-post-voting_desktop'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-reactions_desktop_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-reactions_desktop'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/poll_desktop_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='poll_desktop'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_21_7ad18baff84d86d2854bef0ea3531d2b132f80e7.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='21' data-theme-name='category badge styles'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_43_3f15e2f66fc3e5c3aebf2b816db682ffddd62aec.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='43' data-theme-name='category banners'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_44_76340a944941297c187ed34184cc60417a9431da.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='44' data-theme-name='category icons'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_41_5dae38cddbdae9477debd421890ea804b79ec6bb.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='41' data-theme-name='collapsible category groups'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_2_7e9be53a9033f4321fe3ff84ac7ac5916c6f7422.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='2' data-theme-name='dark-light toggle'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_14_11cc9920871247240c539d33b999ff8565c0528e.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='14' data-theme-name='discotoc'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_22_60ced06ad2f59e47b7897d05ee076d301232f5fd.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='22' data-theme-name='discourse-icon'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_13_56d83ffa5ca70edecf74b36d321e04576f4ef1b8.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='13' data-theme-name='discourse-mermaid-theme-component'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_6_953aa87e9ac9cc51e20305e98e782fbec1b0decd.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='6' data-theme-name='discourse-search-banner'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_45_726192e6534fe4d91047ee004c17310f78672e52.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='45' data-theme-name='experimental filter component'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_46_07c0c0f168d9030b56037a94a177640f8e52ed4a.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='46' data-theme-name='full width'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_15_f7eb451c3ff264d93f495b3d6fac50216f49e72d.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='15' data-theme-name='image comparison slider'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_16_5b0101e1835bb5a0e53726e669f272edb9d23bbd.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='16' data-theme-name='pdf previews'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_48_e048fdfd4a9755e059453bb30952ad45bf05e097.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='48' data-theme-name='tag icons'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_17_91ca32199f3209aafcae04ddf03498ed470c69f1.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='17' data-theme-name='tiles - gallery component'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_18_0559ffde96204857d0ebc8c686798e0873b0c584.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='18' data-theme-name='topic thumbnails'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_28_1fc38880197870acc63fb0a16acf5aced129415b.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='28' data-theme-name='unformatted code detector'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_49_b140cc9a50e4dd4d7f5154a7adfd1c85c59e3b63.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='49' data-theme-name='unity: brand identity'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_25_30313f97df8e6b00d3ee8693aa3671cce7c9919a.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='25' data-theme-name='unity: dsa'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_12_132a4fbaac41ffa5dd9101b35885f1a153acdbc5.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='12' data-theme-name='unity: onetrust'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_50_cb48ef097d7269de9b930e7a46b126ce5b9df9e4.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='50' data-theme-name='unity: theme extras'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_10_36ca6f6783651cde9551aca71e209742439766d4.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='10' data-theme-name='unity'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_51_285c9656e620803a07e356ce8cb738d955d8ad2d.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='51' data-theme-name='hotfix: restyle experimental topic summary'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_24_5c1029e2582d7c1b73ef31e86f4ea0f297bd8a06.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='24' data-theme-name='override-mermaid-styles'>"
+          },
+          {
+            id: 4,
+            content: "<link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/color_definitions_google-ai-for-developers_8_2_a146065001d103c6f508d0aecd9795e2b85e0231.css' media='all' rel='stylesheet' class='light-scheme'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/desktop_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='desktop'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/checklist_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='checklist'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-ai_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-ai'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-akismet_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-akismet'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-cakeday_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-cakeday'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-data-explorer_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-data-explorer'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-details_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-details'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-lazy-videos_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-lazy-videos'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-local-dates_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-local-dates'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-narrative-bot_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-narrative-bot'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-policy_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-policy'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-presence_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-presence'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-reactions_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-reactions'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-solved_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-solved'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-templates_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-templates'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-topic-voting_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-topic-voting'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/footnote_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='footnote'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/hosted-site_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='hosted-site'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/poll_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='poll'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/spoiler-alert_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='spoiler-alert'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-ai_desktop_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-ai_desktop'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-reactions_desktop_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-reactions_desktop'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-topic-voting_desktop_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-topic-voting_desktop'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/poll_desktop_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='poll_desktop'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/desktop_theme_4_89b44c1aa4a914829f5dab76be36f050017112fd.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='4' data-theme-name='discourse header search'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/desktop_theme_3_a8a980bc06c18d3fc858c318921f96f6581459cf.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='3' data-theme-name='discourse-material-icons'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/desktop_theme_9_ad782db09c6a21e86f43e7f9fbbaa30324037bf5.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='9' data-theme-name='global notice custom css'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/desktop_theme_8_878e84961d78833adf9238d6eda91eb9292d7ed3.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='8' data-theme-name='temp nav fixes'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/desktop_theme_2_c35f48dbd27cfaac6e78670aa85b8a0bd9a462fa.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='2' data-theme-name='google ai'>"
+          },
+          {
+            id: 5,
+            content: "<link href='https://forum.ksec.co.uk/stylesheets/color_definitions_light_7_2_5186d2d3066aedb3bfcac1027d47b8b0b5350afb.css' media='all' rel='stylesheet' class='light-scheme'><link href='https://forum.ksec.co.uk/stylesheets/color_definitions_dark_1_2_a0603164c6b779ba925871d7963187c6a6dfa8d0.css' media='(prefers-color-scheme:dark)' rel='stylesheet' class='dark-scheme'><link href='https://forum.ksec.co.uk/stylesheets/desktop_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='desktop'><link href='https://forum.ksec.co.uk/stylesheets/checklist_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='checklist'><link href='https://forum.ksec.co.uk/stylesheets/discourse-ai_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='discourse-ai'><link href='https://forum.ksec.co.uk/stylesheets/discourse-akismet_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='discourse-akismet'><link href='https://forum.ksec.co.uk/stylesheets/discourse-cakeday_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='discourse-cakeday'><link href='https://forum.ksec.co.uk/stylesheets/discourse-details_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='discourse-details'><link href='https://forum.ksec.co.uk/stylesheets/discourse-gamification_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='discourse-gamification'><link href='https://forum.ksec.co.uk/stylesheets/discourse-lazy-videos_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='discourse-lazy-videos'><link href='https://forum.ksec.co.uk/stylesheets/discourse-local-dates_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='discourse-local-dates'><link href='https://forum.ksec.co.uk/stylesheets/discourse-narrative-bot_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='discourse-narrative-bot'><link href='https://forum.ksec.co.uk/stylesheets/discourse-presence_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='discourse-presence'><link href='https://forum.ksec.co.uk/stylesheets/discourse-reactions_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='discourse-reactions'><link href='https://forum.ksec.co.uk/stylesheets/discourse-rss-polling_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='discourse-rss-polling'><link href='https://forum.ksec.co.uk/stylesheets/docker_manager_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='docker_manager'><link href='https://forum.ksec.co.uk/stylesheets/footnote_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='footnote'><link href='https://forum.ksec.co.uk/stylesheets/poll_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='poll'><link href='https://forum.ksec.co.uk/stylesheets/spoiler-alert_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='spoiler-alert'><link href='https://forum.ksec.co.uk/stylesheets/discourse-ai_desktop_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='discourse-ai_desktop'><link href='https://forum.ksec.co.uk/stylesheets/discourse-gamification_desktop_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='discourse-gamification_desktop'><link href='https://forum.ksec.co.uk/stylesheets/discourse-reactions_desktop_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='discourse-reactions_desktop'><link href='https://forum.ksec.co.uk/stylesheets/poll_desktop_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='poll_desktop'><link href='https://forum.ksec.co.uk/stylesheets/desktop_theme_4_51fe4f92f85e2ddf8cb2ac39b3f18429f14452c8.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='4' data-theme-name='discourse clickable topic'><link href='https://forum.ksec.co.uk/stylesheets/desktop_theme_6_003073d7e039da7d37eb1e79b3772306ac8657f4.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='6' data-theme-name='discourse-gifs'><link href='https://forum.ksec.co.uk/stylesheets/desktop_theme_5_ce3252be82b7db613c78ea4f283dcf17abe51741.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='5' data-theme-name='discourse-search-banner'><link href='https://forum.ksec.co.uk/stylesheets/desktop_theme_9_12b3533905718e859faa16d62a11c119e4d64875.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='9' data-theme-name='icon header links'><link href='https://forum.ksec.co.uk/stylesheets/desktop_theme_3_28ffee2ef9ff10c2ad27c49227f68bb1da72a779.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='3' data-theme-name='modern category + group boxes'><link href='https://forum.ksec.co.uk/stylesheets/desktop_theme_2_dd1b36aa59bc2c658ff7a7825007d31f580dab8b.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='2' data-theme-name='air theme'><link href='https://forum.ksec.co.uk/stylesheets/desktop_theme_11_f4cc23465e9e5bf8d991504b6106825edc03c16a.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='11' data-theme-name='custom css &amp; html'>"
+          },
+          {
+            id: 6,
+            content: "<link href='https://thepros.get.it/stylesheets/color_definitions_get-it-light_11_2_ee762a2dd28c63827357489083590cecd6db9323.css' media='all' rel='stylesheet' class='light-scheme'><link href='https://thepros.get.it/stylesheets/color_definitions_dark_1_2_09865b07ec4b67b9401e67edb03a78a33aadf245.css' media='(prefers-color-scheme:dark)' rel='stylesheet' class='dark-scheme'><link href='https://thepros.get.it/stylesheets/desktop_7c3d1efacb3c0d0d50e7279609b75879527a37ad.css' media='all' rel='stylesheet' data-target='desktop'><link href='https://thepros.get.it/stylesheets/chat_7c3d1efacb3c0d0d50e7279609b75879527a37ad.css' media='all' rel='stylesheet' data-target='chat'><link href='https://thepros.get.it/stylesheets/checklist_7c3d1efacb3c0d0d50e7279609b75879527a37ad.css' media='all' rel='stylesheet' data-target='checklist'><link href='https://thepros.get.it/stylesheets/discourse-details_7c3d1efacb3c0d0d50e7279609b75879527a37ad.css' media='all' rel='stylesheet' data-target='discourse-details'><link href='https://thepros.get.it/stylesheets/discourse-lazy-videos_7c3d1efacb3c0d0d50e7279609b75879527a37ad.css' media='all' rel='stylesheet' data-target='discourse-lazy-videos'><link href='https://thepros.get.it/stylesheets/discourse-local-dates_7c3d1efacb3c0d0d50e7279609b75879527a37ad.css' media='all' rel='stylesheet' data-target='discourse-local-dates'><link href='https://thepros.get.it/stylesheets/discourse-narrative-bot_7c3d1efacb3c0d0d50e7279609b75879527a37ad.css' media='all' rel='stylesheet' data-target='discourse-narrative-bot'><link href='https://thepros.get.it/stylesheets/discourse-presence_7c3d1efacb3c0d0d50e7279609b75879527a37ad.css' media='all' rel='stylesheet' data-target='discourse-presence'><link href='https://thepros.get.it/stylesheets/docker_manager_7c3d1efacb3c0d0d50e7279609b75879527a37ad.css' media='all' rel='stylesheet' data-target='docker_manager'><link href='https://thepros.get.it/stylesheets/footnote_7c3d1efacb3c0d0d50e7279609b75879527a37ad.css' media='all' rel='stylesheet' data-target='footnote'><link href='https://thepros.get.it/stylesheets/poll_7c3d1efacb3c0d0d50e7279609b75879527a37ad.css' media='all' rel='stylesheet' data-target='poll'><link href='https://thepros.get.it/stylesheets/spoiler-alert_7c3d1efacb3c0d0d50e7279609b75879527a37ad.css' media='all' rel='stylesheet' data-target='spoiler-alert'><link href='https://thepros.get.it/stylesheets/chat_desktop_7c3d1efacb3c0d0d50e7279609b75879527a37ad.css' media='all' rel='stylesheet' data-target='chat_desktop'><link href='https://thepros.get.it/stylesheets/poll_desktop_7c3d1efacb3c0d0d50e7279609b75879527a37ad.css' media='all' rel='stylesheet' data-target='poll_desktop'><link href='https://thepros.get.it/stylesheets/desktop_theme_4_b593f6a33945d84e8923041356dbae20f78de862.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='4' data-theme-name='clickable topic'><link href='https://thepros.get.it/stylesheets/desktop_theme_3_d0247eb7936be09a3ee02299f743974ceebc1031.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='3' data-theme-name='modern category + group boxes'><link href='https://thepros.get.it/stylesheets/desktop_theme_5_7bc2214caaf0db1a71f3fd05dc0fb629f55ac150.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='5' data-theme-name='search banner'><link href='https://thepros.get.it/stylesheets/desktop_theme_2_381e73ac5235cf49a7c855137e4af4cc4d4a80ef.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='2' data-theme-name='air theme'>"
+          }
+        ]
+      };
+    },
+    watch: {
+      modelValue(newValue) {
+        this.radio = newValue;
+      }
+    },
+    created() {
+      if (this.modelValue && this.modelValue !== 0) {
+        let result = this.jsonData.find((item) => item.id === this.modelValue);
+        if (result) {
+          $("body").append(result.content);
+        }
+      }
+    }
+  };
+  const _hoisted_1$g = { class: "item" };
+  const _hoisted_2$6 = { class: "ls-flex" };
+  const _hoisted_3$4 = ["id", "value", "onChange"];
+  const _hoisted_4$3 = ["for"];
+  const _hoisted_5$2 = ["for"];
+  const _hoisted_6$2 = ["for"];
+  const _hoisted_7$1 = ["src", "alt"];
+  function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$g, [
+      _cache[1] || (_cache[1] = vue.createElementVNode("p", null, "切换论坛主题：", -1)),
+      _cache[2] || (_cache[2] = vue.createElementVNode("p", null, "无法修改，如果有样式问题无法解决，因为是直接 copy 别的论坛样式文件。", -1)),
+      _cache[3] || (_cache[3] = vue.createElementVNode("p", null, [
+        vue.createElementVNode("a", {
+          href: "https://github.com/dlzmoe/linuxdo-scripts/tree/main/themes",
+          target: "_blank"
+        }, " 如何单独使用，不依托于增强插件？ ")
+      ], -1)),
+      _cache[4] || (_cache[4] = vue.createElementVNode("hr", null, null, -1)),
+      vue.createElementVNode("ul", null, [
+        (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList($data.list, (item) => {
+          return vue.openBlock(), vue.createElementBlock("li", {
+            key: item.id
+          }, [
+            vue.createElementVNode("div", _hoisted_2$6, [
+              vue.withDirectives(vue.createElementVNode("input", {
+                type: "radio",
+                id: item.name,
+                name: "ls-themes",
+                "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.radio = $event),
+                value: item.id,
+                onChange: ($event) => _ctx.$emit("update:modelValue", item.id)
+              }, null, 40, _hoisted_3$4), [
+                [vue.vModelRadio, $data.radio]
+              ]),
+              item.id !== 0 ? (vue.openBlock(), vue.createElementBlock("label", {
+                key: 0,
+                for: item.name
+              }, "风格 " + vue.toDisplayString(item.id), 9, _hoisted_4$3)) : (vue.openBlock(), vue.createElementBlock("label", {
+                key: 1,
+                for: item.name
+              }, "关闭", 8, _hoisted_5$2))
+            ]),
+            vue.createElementVNode("label", {
+              for: item.name
+            }, [
+              item.id !== 0 ? (vue.openBlock(), vue.createElementBlock("img", {
+                key: 0,
+                src: item.imgurl,
+                alt: item.name
+              }, null, 8, _hoisted_7$1)) : vue.createCommentVNode("", true)
+            ], 8, _hoisted_6$2)
+          ]);
+        }), 128))
+      ])
+    ]);
+  }
+  const Themes = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["render", _sfc_render$k], ["__scopeId", "data-v-b5335091"]]);
+  const _sfc_main$j = {
+    data() {
+      return {};
+    },
+    methods: {
+      messageToast(message) {
+        const messageElement = $(`<div class="messageToast-text">${message}</div>`);
+        $("#messageToast").append(messageElement);
+        setTimeout(() => {
+          messageElement.remove();
+        }, 3e3);
+      },
+      // 导入数据
+      triggerFileInput() {
+        this.$refs.fileInput.click();
+      },
+      handleFileUpload(event) {
+        const file = event.target.files[0];
+        if (file && file.type === "application/json") {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            try {
+              const jsonData = JSON.parse(e.target.result);
+              this.importData(jsonData);
+            } catch (error) {
+              console.error("Error parsing JSON:", error);
+            }
+          };
+          reader.readAsText(file);
+        } else {
+          console.error("Please select a valid JSON file.");
+        }
+      },
+      // 处理导入的数据
+      importData(data) {
+        localStorage.setItem("linxudoscriptssetting", data);
+        this.messageToast("导入成功，即将刷新页面！");
+        setTimeout(() => {
+          location.reload();
+        }, 1500);
+      },
+      // 导出数据
+      exportData() {
+        const today = /* @__PURE__ */ new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, "0");
+        const day = String(today.getDate()).padStart(2, "0");
+        const formattedDate = year + month + day;
+        const data = localStorage.getItem("linxudoscriptssetting");
+        const dataStr = JSON.stringify(data, null, 2);
+        const blob = new Blob([dataStr], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = `linuxdo-script-data-${formattedDate}.json`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+        this.messageToast("导出成功！");
+      }
+    }
+  };
+  function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
+      vue.createElementVNode("input", {
+        type: "file",
+        id: "fileInput",
+        ref: "fileInput",
+        style: { "display": "none" },
+        accept: ".json",
+        onChange: _cache[0] || (_cache[0] = (...args) => $options.handleFileUpload && $options.handleFileUpload(...args))
+      }, null, 544),
+      vue.createElementVNode("button", {
+        class: "btn import",
+        onClick: _cache[1] || (_cache[1] = (...args) => $options.triggerFileInput && $options.triggerFileInput(...args))
+      }, "导入"),
+      vue.createElementVNode("button", {
+        class: "btn export",
+        onClick: _cache[2] || (_cache[2] = (...args) => $options.exportData && $options.exportData(...args))
+      }, "导出")
+    ], 64);
+  }
+  const ManualBackup = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["render", _sfc_render$j]]);
+  const _sfc_main$i = {
+    props: {
+      value: {
+        type: Object,
+        default: {
+          webdavUrl: "",
+          webdavUsername: "",
+          webdavPassword: ""
+        }
+      }
+    },
+    components: {
+      ManualBackup
+    },
+    watch: {
+      value(newValue) {
+        this.tableData = newValue;
+      }
+    },
+    data() {
+      return {
+        tableData: this.value
+        // webdavUrl: "",
+        // webdavUsername: "",
+        // webdavPassword: "",
+      };
+    },
+    methods: {
+      messageToast(message) {
+        const messageElement = $(`<div class="messageToast-text">${message}</div>`);
+        $("#messageToast").append(messageElement);
+        setTimeout(() => {
+          messageElement.remove();
+        }, 3e3);
+      },
+      handleChange() {
+        $(".lxwebdavpassword").removeClass("act");
+        this.$emit("update:value", this.tableData);
+        let linxudoscriptssetting = JSON.parse(
+          localStorage.getItem("linxudoscriptssetting")
+        );
+        let data = {
+          webdavUrl: this.tableData.webdavUrl,
+          webdavUsername: this.tableData.webdavUsername,
+          webdavPassword: this.tableData.webdavPassword
+        };
+        linxudoscriptssetting.syncbackup = data;
+        localStorage.setItem(
+          "linxudoscriptssetting",
+          JSON.stringify(linxudoscriptssetting)
+        );
+      },
+      // 检查文件夹是否存在
+      checkFolderExists(folderUrl) {
+        return new Promise((resolve, reject) => {
+          GM_xmlhttpRequest({
+            method: "PROPFIND",
+            url: folderUrl,
+            headers: {
+              Authorization: "Basic " + btoa(`${this.tableData.webdavUsername}:${this.tableData.webdavPassword}`),
+              Depth: "1"
+              // 只检查一层
+            },
+            onload: function(response) {
+              if (response.status === 207) {
+                resolve(true);
+              } else if (response.status === 404) {
+                resolve(false);
+              } else {
+                reject(new Error(`Error checking folder: ${response.statusText}`));
+              }
+            },
+            onerror: function(error) {
+              reject(error);
+            }
+          });
+        });
+      },
+      // 创建文件夹
+      createFolder(folderUrl) {
+        return new Promise((resolve, reject) => {
+          GM_xmlhttpRequest({
+            method: "MKCOL",
+            url: folderUrl,
+            headers: {
+              Authorization: "Basic " + btoa(`${this.tableData.webdavUsername}:${this.tableData.webdavPassword}`)
+            },
+            onload: function(response) {
+              if (response.status === 201) {
+                resolve(true);
+              } else {
+                reject(new Error(`Error creating folder: ${response.statusText}`));
+              }
+            },
+            onerror: function(error) {
+              reject(error);
+            }
+          });
+        });
+      },
+      // 检查并创建文件夹
+      async checkAndCreateFolder() {
+        const folderUrl = `${this.tableData.webdavUrl}linuxdo-scripts-backup/`;
+        try {
+          const exists = await this.checkFolderExists(folderUrl);
+          if (!exists) {
+            await this.createFolder(folderUrl);
+            console.log("Folder 'linuxdo-scripts-backup' created successfully.");
+          } else {
+            console.log("Folder 'linuxdo-scripts-backup' already exists.");
+          }
+          const data = localStorage.getItem("linxudoscriptssetting");
+          let fileData;
+          try {
+            fileData = JSON.stringify(JSON.parse(data));
+          } catch (error) {
+            console.error("Error parsing localStorage data:", error);
+            return;
+          }
+          const uploadUrl = `${this.tableData.webdavUrl}linuxdo-scripts-backup/data.json`;
+          try {
+            const uploadResponse = await this.uploadFile(uploadUrl, fileData);
+            this.messageToast("同步到云端成功！");
+          } catch (error) {
+            console.error("Upload failed:", error);
+            this.messageToast("同步失败！");
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      },
+      uploadFile(url, fileData) {
+        return new Promise((resolve, reject) => {
+          GM_xmlhttpRequest({
+            method: "PUT",
+            url,
+            data: fileData,
+            headers: {
+              "Content-Type": "text/plain",
+              Authorization: "Basic " + btoa(`${this.tableData.webdavUsername}:${this.tableData.webdavPassword}`)
+            },
+            onload: function(response) {
+              if (response.status >= 200 && response.status < 300) {
+                resolve(response);
+              } else {
+                reject(new Error(`Upload failed: ${response.statusText}`));
+              }
+            },
+            onerror: function(error) {
+              reject(error);
+            }
+          });
+        });
+      },
+      downloadFile(url) {
+        return new Promise((resolve, reject) => {
+          GM_xmlhttpRequest({
+            method: "GET",
+            url,
+            headers: {
+              Authorization: "Basic " + btoa(`${this.tableData.webdavUsername}:${this.tableData.webdavPassword}`)
+            },
+            onload: function(response) {
+              if (response.status >= 200 && response.status < 300) {
+                resolve(response.responseText);
+              } else {
+                reject(new Error(`Download failed: ${response.statusText}`));
+              }
+            },
+            onerror: function(error) {
+              reject(error);
+            }
+          });
+        });
+      },
+      // 上传
+      async uploadSampleFile() {
+        this.checkAndCreateFolder();
+      },
+      // 下载
+      async downloadSampleFile() {
+        const downloadUrl = `${this.tableData.webdavUrl}linuxdo-scripts-backup/data.json`;
+        try {
+          const downloadResponse = await this.downloadFile(downloadUrl);
+          localStorage.setItem("linxudoscriptssetting", downloadResponse);
+          this.messageToast("下载成功，即将刷新页面！");
+          setTimeout(() => {
+            location.reload();
+          }, 1500);
+        } catch (error) {
+          console.error(error);
+          this.messageToast("下载失败，请检查是否存在备份！");
+        }
+      },
+      // 显示/隐藏密码
+      showpsw() {
+        $(".lxwebdavpassword").addClass("act");
+      }
+    },
+    created() {
+      let linxudoscriptssetting = {};
+      try {
+        const storedData = localStorage.getItem("linxudoscriptssetting");
+        if (storedData) {
+          linxudoscriptssetting = JSON.parse(storedData);
+        }
+      } catch (error) {
+        console.error("Error parsing localStorage data:", error);
+      }
+      const syncbackup = linxudoscriptssetting.syncbackup || {};
+      this.tableData.webdavUrl = (syncbackup == null ? void 0 : syncbackup.webdavUrl) || "";
+      this.tableData.webdavUsername = (syncbackup == null ? void 0 : syncbackup.webdavUsername) || "";
+      this.tableData.webdavPassword = (syncbackup == null ? void 0 : syncbackup.webdavPassword) || "";
+    }
+  };
+  const _hoisted_1$f = { class: "item" };
+  const _hoisted_2$5 = { class: "item" };
+  const _hoisted_3$3 = { class: "item" };
+  const _hoisted_4$2 = { class: "btnwrapper" };
+  function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_ManualBackup = vue.resolveComponent("ManualBackup");
+    return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
+      _cache[12] || (_cache[12] = vue.createElementVNode("div", { class: "item" }, "用于在云端同步设置数据，无需手动导入导出。（同步前先保存设置）", -1)),
+      vue.createElementVNode("div", _hoisted_1$f, [
+        _cache[9] || (_cache[9] = vue.createElementVNode("div", { class: "tit" }, "WebDav 地址：", -1)),
+        vue.withDirectives(vue.createElementVNode("input", {
+          type: "text",
+          "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.tableData.webdavUrl = $event),
+          onBlur: _cache[1] || (_cache[1] = (...args) => $options.handleChange && $options.handleChange(...args)),
+          placeholder: "https://dav.xxxx.com/dav/"
+        }, null, 544), [
+          [vue.vModelText, $data.tableData.webdavUrl]
+        ])
+      ]),
+      vue.createElementVNode("div", _hoisted_2$5, [
+        _cache[10] || (_cache[10] = vue.createElementVNode("div", { class: "tit" }, "WebDav 用户名：", -1)),
+        vue.withDirectives(vue.createElementVNode("input", {
+          type: "text",
+          "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => $data.tableData.webdavUsername = $event),
+          onBlur: _cache[3] || (_cache[3] = (...args) => $options.handleChange && $options.handleChange(...args))
+        }, null, 544), [
+          [vue.vModelText, $data.tableData.webdavUsername]
+        ])
+      ]),
+      vue.createElementVNode("div", _hoisted_3$3, [
+        _cache[11] || (_cache[11] = vue.createElementVNode("div", { class: "tit" }, "WebDav 密码：", -1)),
+        vue.withDirectives(vue.createElementVNode("input", {
+          type: "text",
+          class: "lxwebdavpassword",
+          "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => $data.tableData.webdavPassword = $event),
+          onBlur: _cache[5] || (_cache[5] = (...args) => $options.handleChange && $options.handleChange(...args)),
+          onFocus: _cache[6] || (_cache[6] = (...args) => $options.showpsw && $options.showpsw(...args))
+        }, null, 544), [
+          [vue.vModelText, $data.tableData.webdavPassword]
+        ])
+      ]),
+      vue.createElementVNode("div", _hoisted_4$2, [
+        vue.createElementVNode("button", {
+          onClick: _cache[7] || (_cache[7] = (...args) => $options.uploadSampleFile && $options.uploadSampleFile(...args))
+        }, "同步到云端"),
+        vue.createElementVNode("button", {
+          onClick: _cache[8] || (_cache[8] = (...args) => $options.downloadSampleFile && $options.downloadSampleFile(...args))
+        }, "下载到本地")
+      ]),
+      _cache[13] || (_cache[13] = vue.createElementVNode("hr", null, null, -1)),
+      _cache[14] || (_cache[14] = vue.createElementVNode("div", { style: { "margin": "10px 0" } }, "手动导入导出数据：", -1)),
+      vue.createVNode(_component_ManualBackup)
+    ], 64);
+  }
+  const SyncBackup = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$i], ["__scopeId", "data-v-a2abb68b"]]);
+  const _sfc_main$h = {
+    data() {
+      return {
+        status: false
+      };
+    },
+    methods: {
+      lookop() {
+        this.status = !this.status;
+        $(".post-stream").toggleClass("lookopwrapactive");
+      }
+    }
+  };
+  const _hoisted_1$e = { class: "lookopbtn" };
+  function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$e, [
+      vue.createElementVNode("div", {
+        class: vue.normalizeClass(["el-button", { act: $data.status }]),
+        onClick: _cache[0] || (_cache[0] = (...args) => $options.lookop && $options.lookop(...args)),
+        title: "只看楼主"
+      }, " 楼主 ", 2)
+    ]);
+  }
+  const LookOP = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["render", _sfc_render$h], ["__scopeId", "data-v-6520db1a"]]);
+  const _sfc_main$g = {
+    data() {
+      return {
+        isMinimized: true,
+        content: "输入用户名查询等级信息",
+        username: "",
+        levelDescriptions: {
+          0: "游客",
+          1: "基本用户",
+          2: "成员",
+          3: "活跃用户",
+          4: "领导者"
+        },
+        levelRequirements: {
+          0: { topics_entered: 5, posts_read_count: 30, time_read: 600 },
+          1: {
+            days_visited: 15,
+            likes_given: 1,
+            likes_received: 1,
+            post_count: 3,
+            topics_entered: 20,
+            posts_read_count: 100,
+            time_read: 3600
+          },
+          2: {
+            days_visited: 50,
+            likes_given: 30,
+            likes_received: 20,
+            post_count: 10,
+            topics_entered: 0,
+            posts_read_count: 0
+          }
+        }
+      };
+    },
+    methods: {
+      async fetchAboutData() {
+        try {
+          const response = await fetch("/about.json", {
+            headers: {
+              Accept: "application/json",
+              "User-Agent": "Mozilla/5.0"
+            },
+            method: "GET"
+          });
+          if (!response.ok) throw new Error(`HTTP 错误！状态：${response.status}`);
+          return await response.json();
+        } catch (error) {
+          console.error("获取关于页面数据失败：", error);
+          this.displayError("获取关于页面数据失败");
+          return null;
+        }
+      },
+      async fetchUserData(username) {
+        try {
+          const response = await fetch(`/u/${username}/summary.json`, {
+            headers: {
+              Accept: "application/json",
+              "User-Agent": "Mozilla/5.0"
+            },
+            method: "GET"
+          });
+          if (!response.ok) throw new Error(`HTTP 错误！状态：${response.status}`);
+          return await response.json();
+        } catch (error) {
+          console.error("获取用户数据失败：", error);
+          this.displayError("获取用户数据失败");
+          return null;
+        }
+      },
+      async handleSearch() {
+        if (this.username == "") {
+          return false;
+        }
+        this.content = "正在查询中，请稍后...";
+        const username = this.username.trim();
+        if (username) {
+          const aboutData = await this.fetchAboutData();
+          const userData = await this.fetchUserData(username);
+          if (userData && aboutData) {
+            const userSummary = userData.user_summary;
+            const user = userData.users[0];
+            const status = aboutData.about.stats;
+            this.updatePopupContent(userSummary, user, status);
+          }
+        }
+      },
+      updatePopupContent(userSummary, user, status) {
+        if (userSummary && user) {
+          let content = `<strong>信任等级：</strong>${this.levelDescriptions[user.trust_level]}<br><strong>升级进度：</strong><br>`;
+          if (user.trust_level === 3) {
+            content += `联系管理员以升级到领导者<br>`;
+          } else if (user.trust_level === 4) {
+            content += `您已是最高信任等级<br>`;
+          } else {
+            const requirements = this.levelRequirements[user.trust_level];
+            if (user.trust_level === 2) {
+              requirements.posts_read_count = Math.min(
+                Math.floor(status.posts_30_days / 4),
+                2e4
+              );
+              requirements.topics_entered = Math.min(
+                Math.floor(status.topics_30_days / 4),
+                500
+              );
+            }
+            Object.entries(requirements).forEach(([key, val]) => {
+              const currentVal = userSummary[key] || 0;
+              const color = currentVal >= val ? "green" : "red";
+              content += `${this.translateStat(
+              key
+            )}: <span style="color: ${color};">${currentVal} / ${val}</span><br>`;
+            });
+          }
+          this.content = content;
+        }
+      },
+      togglePopupSize() {
+        this.isMinimized = !this.isMinimized;
+      },
+      displayError(message) {
+        this.content = `<strong>错误：</strong>${message}`;
+      },
+      translateStat(stat) {
+        const translations = {
+          days_visited: "访问天数",
+          likes_given: "给出的赞",
+          likes_received: "收到的赞",
+          post_count: "帖子数量",
+          posts_read_count: "阅读的帖子数",
+          topics_entered: "进入的主题数",
+          time_read: "阅读时间"
+        };
+        return translations[stat] || stat;
+      }
+    },
+    created() {
+      setInterval(() => {
+        if (!this.username) {
+          const src = $("#toggle-current-user img.avatar").attr("src");
+          const match = src.match(/\/user_avatar\/linux\.do\/([^\/]+)/);
+          if (match && match[1]) {
+            this.username = match[1];
+          }
+        }
+      }, 1e3);
+    }
+  };
+  const _hoisted_1$d = {
+    key: 0,
+    id: "linuxDoLevelPopupContent"
+  };
+  const _hoisted_2$4 = ["innerHTML"];
+  function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", null, [
+      vue.createElementVNode("div", {
+        class: vue.normalizeClass(["el-button", ["linuxDoLevelPopup", $data.isMinimized ? "minimized" : ""]]),
+        onClick: _cache[0] || (_cache[0] = (...args) => $options.togglePopupSize && $options.togglePopupSize(...args)),
+        title: "等级查询"
+      }, _cache[3] || (_cache[3] = [
+        vue.createElementVNode("span", null, "等级", -1)
+      ]), 2),
+      !$data.isMinimized ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_1$d, [
+        vue.createElementVNode("div", { innerHTML: $data.content }, null, 8, _hoisted_2$4),
+        vue.withDirectives(vue.createElementVNode("input", {
+          "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => $data.username = $event),
+          autocomplete: "off",
+          type: "text",
+          placeholder: "请输入用户名...",
+          id: "linuxDoUserSearch"
+        }, null, 512), [
+          [vue.vModelText, $data.username]
+        ]),
+        vue.createElementVNode("button", {
+          onClick: _cache[2] || (_cache[2] = (...args) => $options.handleSearch && $options.handleSearch(...args)),
+          class: "btn btn-icon-text",
+          type: "button"
+        }, _cache[4] || (_cache[4] = [
+          vue.createElementVNode("span", { class: "d-button-label" }, "搜索", -1)
+        ]))
+      ])) : vue.createCommentVNode("", true)
+    ]);
+  }
+  const LevelDiglog = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["render", _sfc_render$g], ["__scopeId", "data-v-57dbaeb5"]]);
+  const _sfc_main$f = {
+    data() {
+      return {
+        num: 10,
+        // 滚动速度
+        isScrolling: false,
+        scrollInterval: null,
+        status: false
+      };
+    },
+    methods: {
+      scrollToBottomSlowly(distancePerStep = this.num, delayPerStep = 50) {
+        if (this.scrollInterval !== null) {
+          clearInterval(this.scrollInterval);
+        }
+        this.scrollInterval = setInterval(() => {
+          const documentHeight = document.body.scrollHeight;
+          const windowHeight = window.innerHeight;
+          const scrollPosition = window.scrollY;
+          if (scrollPosition + windowHeight >= documentHeight - 1) {
+            clearInterval(this.scrollInterval);
+            this.scrollInterval = null;
+            this.isScrolling = false;
+            this.status = false;
+          } else {
+            window.scrollBy(0, distancePerStep);
+          }
+        }, delayPerStep);
+      },
+      autoread() {
+        if (this.isScrolling) {
+          clearInterval(this.scrollInterval);
+          this.scrollInterval = null;
+          this.isScrolling = false;
+          this.status = false;
+        } else {
+          this.scrollToBottomSlowly();
+          this.isScrolling = true;
+          this.status = true;
+        }
+      }
+    },
+    created() {
+      let linxudoscriptssetting = localStorage.getItem("linxudoscriptssetting");
+      if (linxudoscriptssetting) {
+        linxudoscriptssetting = JSON.parse(linxudoscriptssetting);
+        this.num = Number(linxudoscriptssetting.checked8.value2);
+      }
+    }
+  };
+  const _hoisted_1$c = {
+    key: 0,
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "24",
+    height: "24",
+    viewBox: "0 0 24 24",
+    fill: "currentColor"
+  };
+  const _hoisted_2$3 = {
+    key: 1,
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "24",
+    height: "24",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    "stroke-width": "2",
+    "stroke-linecap": "round",
+    "stroke-linejoin": "round",
+    class: "icon icon-tabler icons-tabler-outline icon-tabler-loader"
+  };
+  function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", {
+      class: vue.normalizeClass(["el-button", { act: $data.status }]),
+      onClick: _cache[0] || (_cache[0] = (...args) => $options.autoread && $options.autoread(...args)),
+      title: "自动阅读"
+    }, [
+      $data.status == false ? (vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$c, _cache[1] || (_cache[1] = [
+        vue.createElementVNode("path", {
+          stroke: "none",
+          d: "M0 0h24v24H0z",
+          fill: "none"
+        }, null, -1),
+        vue.createElementVNode("path", { d: "M12.088 4.82a10 10 0 0 1 9.412 .314a1 1 0 0 1 .493 .748l.007 .118v13a1 1 0 0 1 -1.5 .866a8 8 0 0 0 -8 0a1 1 0 0 1 -1 0a8 8 0 0 0 -7.733 -.148l-.327 .18l-.103 .044l-.049 .016l-.11 .026l-.061 .01l-.117 .006h-.042l-.11 -.012l-.077 -.014l-.108 -.032l-.126 -.056l-.095 -.056l-.089 -.067l-.06 -.056l-.073 -.082l-.064 -.089l-.022 -.036l-.032 -.06l-.044 -.103l-.016 -.049l-.026 -.11l-.01 -.061l-.004 -.049l-.002 -.068v-13a1 1 0 0 1 .5 -.866a10 10 0 0 1 9.412 -.314l.088 .044l.088 -.044z" }, null, -1)
+      ]))) : vue.createCommentVNode("", true),
+      $data.status == true ? (vue.openBlock(), vue.createElementBlock("svg", _hoisted_2$3, _cache[2] || (_cache[2] = [
+        vue.createStaticVNode('<path stroke="none" d="M0 0h24v24H0z" fill="none" data-v-64839780></path><path d="M12 6l0 -3" data-v-64839780></path><path d="M16.25 7.75l2.15 -2.15" data-v-64839780></path><path d="M18 12l3 0" data-v-64839780></path><path d="M16.25 16.25l2.15 2.15" data-v-64839780></path><path d="M12 18l0 3" data-v-64839780></path><path d="M7.75 16.25l-2.15 2.15" data-v-64839780></path><path d="M6 12l-3 0" data-v-64839780></path><path d="M7.75 7.75l-2.15 -2.15" data-v-64839780></path>', 9)
+      ]))) : vue.createCommentVNode("", true)
+    ], 2);
+  }
+  const AutoRead = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$f], ["__scopeId", "data-v-64839780"]]);
+  const _sfc_main$e = {
+    methods: {
+      openai() {
+        window.open("https://shared.oaifree.com/?temporary-chat=true", "_blank");
+      }
+    }
+  };
+  function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", null, [
+      vue.createElementVNode("div", {
+        class: "el-button",
+        style: { "font-size": "18px" },
+        onClick: _cache[0] || (_cache[0] = (...args) => $options.openai && $options.openai(...args)),
+        type: "primary",
+        title: "AI对话"
+      }, " AI ")
+    ]);
+  }
+  const AIDialog = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$e]]);
+  const _sfc_main$d = {
+    methods: {
+      replaybtn() {
+        $('button[title="开始撰写此话题的回复"]')[0].click();
+      }
+    }
+  };
+  const _hoisted_1$b = { class: "replaybtn" };
+  function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$b, [
+      vue.createElementVNode("div", {
+        class: "el-button",
+        style: { "font-size": "18px" },
+        onClick: _cache[0] || (_cache[0] = (...args) => $options.replaybtn && $options.replaybtn(...args)),
+        type: "primary",
+        title: "回复"
+      }, _cache[1] || (_cache[1] = [
+        vue.createElementVNode("svg", {
+          class: "fa d-icon d-icon-reply svg-icon svg-string",
+          xmlns: "http://www.w3.org/2000/svg"
+        }, [
+          vue.createElementVNode("use", { href: "#reply" })
+        ], -1)
+      ]))
+    ]);
+  }
+  const ReplyBtn = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$d]]);
+  const _sfc_main$c = {
+    data() {
+      return {
+        version: packageJson.version
+      };
+    }
+  };
+  const _hoisted_1$a = { class: "item-foot" };
+  function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$a, [
+      _cache[0] || (_cache[0] = vue.createElementVNode("span", null, [
+        vue.createElementVNode("a", {
+          href: "https://github.com/dlzmoe/linuxdo-scripts",
+          target: "_blank"
+        }, " Github 源码 ")
+      ], -1)),
+      vue.createElementVNode("span", null, "当前版本：" + vue.toDisplayString($data.version), 1)
+    ]);
+  }
+  const Updates = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$c], ["__scopeId", "data-v-45c51ed7"]]);
+  const _sfc_main$b = {
+    created() {
+      setTimeout(() => {
+        const isShowplugininstallationprompts = localStorage.getItem(
+          "isShowplugininstallationprompts"
+        );
+        if (isShowplugininstallationprompts == "true") ;
+        else {
+          if ($(".UsageTip").length < 1) {
+            $(".sidebar-footer-container").before(`
+            <dialog open class="UsageTip">
+              <div class="title">友情提示</div>
+              <div>
+                佬友你好，你已经成功安装 linuxdo 增强插件啦！<a
+                  href="https://linuxdo-scripts-docs.netlify.app/"
+                  target="_blank">
+                  使用文档
+                  </a>
+              </div>
+              <div style="color:#e00">
+                设置按钮在下方切换主题的旁边哦~ 有个小齿轮，点击它开始配置插件！
+              </div>
+              <div>如果可以的话欢迎点个 star 支持一下~</div>
+              <div>
+                <a href="https://github.com/dlzmoe/linuxdo-scripts/" target="_blank">
+                  <img
+                    src="https://img.shields.io/github/stars/dlzmoe%2Flinuxdo-scripts?style=for-the-badge&labelColor=%235D5D5D&color=%23E97435"
+                    alt="icon"
+                  />
+                </a>
+              </div>
+              <button class="clicktohide">点击我，该提示永远不会出现啦</button>
+            </dialog>
+           `);
+            $(".clicktohide").click(function() {
+              localStorage.setItem("isShowplugininstallationprompts", true);
+              $(".UsageTip").remove();
+            });
+          }
+        }
+      }, 100);
+    }
+  };
+  function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
+    return null;
+  }
+  const UsageTip = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$b]]);
+  const _sfc_main$a = {
+    methods: {
+      init() {
+        $(".signature-img").each(function() {
+          var self1 = $(this);
+          var url1 = self1.attr("src");
+          var img1 = new Image();
+          img1.src = url1;
+          img1.onerror = function() {
+            if (self1.siblings(".signature-p").length < 1) {
+              self1.after(
+                `<p class="signature-p">${url1}（该用户签名不可访问，已自动转文字）</p>`
+              );
+              self1.hide();
+            }
+          };
+        });
+      }
+    },
+    created() {
+      let pollinglength2 = 0;
+      setInterval(() => {
+        if (pollinglength2 != $(".post-stream .topic-post").length) {
+          pollinglength2 = $(".post-stream .topic-post").length;
+          this.init();
+        }
+      }, 1e3);
+    }
+  };
+  function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
+    return null;
+  }
+  const Signature = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$a]]);
+  const _sfc_main$9 = {
+    data() {
+      return {
+        floorlotteryval1: "",
+        floorlotteryval2: "",
+        floorlotterloading: false,
+        floorlotterresult: ""
+      };
+    },
+    methods: {
+      // 开始抽奖
+      drawRandomNumbers() {
+        if (this.floorlotteryval1 === "" || this.floorlotteryval2 === "") {
+          this.messageToast("请输入有效的数字");
+          return false;
+        }
+        const total = parseInt(this.floorlotteryval1);
+        const count = parseInt(this.floorlotteryval2);
+        if (isNaN(total) || isNaN(count) || total <= 0 || count <= 0 || count > total) {
+          this.messageToast("请输入有效的数字");
+          return false;
+        }
+        this.floorlotterloading = true;
+        this.floorlotterresult = "";
+        setTimeout(() => {
+          const result = this.getRandomNumbers(total, count);
+          this.floorlotterresult = result.join(", ");
+          this.floorlotterloading = false;
+        }, 1e3);
+      },
+      getRandomNumbers(total, count) {
+        const numbers = Array.from({ length: total }, (_, i) => i + 1);
+        const result = [];
+        for (let i = 0; i < count; i++) {
+          const randomIndex = Math.floor(Math.random() * numbers.length);
+          result.push(numbers[randomIndex]);
+          numbers.splice(randomIndex, 1);
+        }
+        return result;
+      },
+      closelotter() {
+        $("#floorlotteryDialog").hide();
+        $(".linuxdoscripts-opacity").hide();
+      }
+    }
+  };
+  const _hoisted_1$9 = { id: "floorlotteryDialog" };
+  const _hoisted_2$2 = {
+    class: "menu-body",
+    style: { "margin-top": "10px" }
+  };
+  const _hoisted_3$2 = { class: "inner" };
+  const _hoisted_4$1 = { class: "inner" };
+  const _hoisted_5$1 = { key: 0 };
+  const _hoisted_6$1 = {
+    key: 1,
+    title: "抽奖结果",
+    type: "success"
+  };
+  function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("dialog", _hoisted_1$9, [
+      _cache[7] || (_cache[7] = vue.createElementVNode("div", { class: "menu-header" }, [
+        vue.createElementVNode("div", { class: "title" }, "楼层抽奖")
+      ], -1)),
+      vue.createElementVNode("div", _hoisted_2$2, [
+        vue.createElementVNode("div", _hoisted_3$2, [
+          _cache[4] || (_cache[4] = vue.createElementVNode("label", null, "总楼层数：", -1)),
+          vue.withDirectives(vue.createElementVNode("input", {
+            type: "text",
+            "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.floorlotteryval1 = $event)
+          }, null, 512), [
+            [vue.vModelText, $data.floorlotteryval1]
+          ])
+        ]),
+        vue.createElementVNode("div", _hoisted_4$1, [
+          _cache[5] || (_cache[5] = vue.createElementVNode("label", null, "抽奖数量：", -1)),
+          vue.withDirectives(vue.createElementVNode("input", {
+            type: "text",
+            "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => $data.floorlotteryval2 = $event)
+          }, null, 512), [
+            [vue.vModelText, $data.floorlotteryval2]
+          ])
+        ]),
+        vue.createElementVNode("button", {
+          class: "btn save",
+          onClick: _cache[2] || (_cache[2] = (...args) => $options.drawRandomNumbers && $options.drawRandomNumbers(...args))
+        }, "开始抽奖"),
+        vue.createElementVNode("button", {
+          class: "btn",
+          style: { "background": "#979797" },
+          plain: "",
+          onClick: _cache[3] || (_cache[3] = (...args) => $options.closelotter && $options.closelotter(...args))
+        }, " 关闭弹窗 "),
+        _cache[6] || (_cache[6] = vue.createElementVNode("div", { style: { "height": "20px" } }, null, -1)),
+        $data.floorlotterloading ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_5$1, "正在抽奖...")) : vue.createCommentVNode("", true),
+        $data.floorlotterresult ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_6$1, " 抽奖结果：恭喜 " + vue.toDisplayString($data.floorlotterresult) + " 楼中奖！ ", 1)) : vue.createCommentVNode("", true)
+      ])
+    ]);
+  }
+  const FloorLottery = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$9], ["__scopeId", "data-v-649030ce"]]);
+  const _sfc_main$8 = {};
+  const _hoisted_1$8 = {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "24",
+    height: "24",
+    fill: "none",
+    viewBox: "0 0 24 24",
+    class: "icon-sm"
+  };
+  function _sfc_render$8(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$8, _cache[0] || (_cache[0] = [
+      vue.createElementVNode("path", {
+        fill: "currentColor",
+        "fill-rule": "evenodd",
+        d: "M11.568 3.5a1 1 0 0 0-.863.494l-.811 1.381A3 3 0 0 1 7.33 6.856l-1.596.013a1 1 0 0 0-.858.501l-.44.761a1 1 0 0 0-.003.992l.792 1.4a3 3 0 0 1 0 2.954l-.792 1.4a1 1 0 0 0 .004.992l.439.76a1 1 0 0 0 .858.502l1.596.013a3 3 0 0 1 2.564 1.48l.811 1.382a1 1 0 0 0 .863.494h.87a1 1 0 0 0 .862-.494l.812-1.381a3 3 0 0 1 2.563-1.481l1.596-.013a1 1 0 0 0 .859-.501l.439-.761a1 1 0 0 0 .004-.992l-.793-1.4a3 3 0 0 1 0-2.953l.793-1.401a1 1 0 0 0-.004-.992l-.439-.76a1 1 0 0 0-.859-.502l-1.596-.013a3 3 0 0 1-2.563-1.48L13.3 3.993a1 1 0 0 0-.862-.494zM8.98 2.981A3 3 0 0 1 11.568 1.5h.87a3 3 0 0 1 2.588 1.481l.81 1.382a1 1 0 0 0 .855.494l1.597.013a3 3 0 0 1 2.575 1.502l.44.76a3 3 0 0 1 .011 2.975l-.792 1.4a1 1 0 0 0 0 .985l.792 1.401a3 3 0 0 1-.012 2.974l-.439.761a3 3 0 0 1-2.575 1.503l-1.597.012a1 1 0 0 0-.854.494l-.811 1.382a3 3 0 0 1-2.588 1.481h-.87a3 3 0 0 1-2.588-1.481l-.811-1.382a1 1 0 0 0-.855-.494l-1.596-.012a3 3 0 0 1-2.576-1.503l-.439-.76a3 3 0 0 1-.012-2.975l.793-1.4a1 1 0 0 0 0-.985l-.793-1.4a3 3 0 0 1 .012-2.975l.44-.761A3 3 0 0 1 5.717 4.87l1.596-.013a1 1 0 0 0 .855-.494z",
+        "clip-rule": "evenodd"
+      }, null, -1),
+      vue.createElementVNode("path", {
+        fill: "currentColor",
+        "fill-rule": "evenodd",
+        d: "M12.003 10.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M8.502 12a3.5 3.5 0 1 1 7 .001 3.5 3.5 0 0 1-7-.001",
+        "clip-rule": "evenodd"
+      }, null, -1)
+    ]));
+  }
+  const Setting1 = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$8]]);
+  const _sfc_main$7 = {};
+  const _hoisted_1$7 = {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "24",
+    height: "24",
+    fill: "none",
+    viewBox: "0 0 24 24",
+    class: "icon-sm"
+  };
+  function _sfc_render$7(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$7, _cache[0] || (_cache[0] = [
+      vue.createElementVNode("path", {
+        fill: "currentColor",
+        "fill-rule": "evenodd",
+        d: "M12 4a3 3 0 1 0 0 6 3 3 0 0 0 0-6M7 7a5 5 0 1 1 10 0A5 5 0 0 1 7 7m12.028 8.626c-.342-.061-.834.027-1.346.557a1 1 0 0 1-1.438 0c-.512-.53-1.003-.618-1.345-.557-.36.064-.681.312-.837.702-.257.643-.16 2.334 2.901 4.134 3.062-1.8 3.159-3.49 2.901-4.134a1.11 1.11 0 0 0-.836-.702m2.693-.041c.854 2.134-.456 4.844-4.284 6.904a1 1 0 0 1-.948 0c-3.828-2.06-5.137-4.77-4.284-6.904a3.11 3.11 0 0 1 2.343-1.929c.809-.144 1.655.035 2.415.536.76-.5 1.607-.68 2.415-.536a3.11 3.11 0 0 1 2.343 1.929m-11.795-1.38a1 1 0 0 1-.548 1.303C7.06 16.453 5.5 18.581 5.5 21a1 1 0 1 1-2 0c0-3.322 2.141-6.128 5.122-7.344a1 1 0 0 1 1.304.549",
+        "clip-rule": "evenodd"
+      }, null, -1)
+    ]));
+  }
+  const Setting2 = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$7]]);
+  const _sfc_main$6 = {};
+  const _hoisted_1$6 = {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "24",
+    height: "24",
+    fill: "none",
+    viewBox: "0 0 24 24",
+    class: "icon-sm"
+  };
+  function _sfc_render$6(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$6, _cache[0] || (_cache[0] = [
+      vue.createElementVNode("path", {
+        fill: "currentColor",
+        "fill-rule": "evenodd",
+        d: "M12.4 3.767a1 1 0 0 0-.8 0l-6 2.625a1 1 0 0 0-.6.916V13c0 1.714.616 3.283 1.638 4.5A6.99 6.99 0 0 1 12 15c2.153 0 4.078.972 5.362 2.5A6.97 6.97 0 0 0 19 13V7.308a1 1 0 0 0-.6-.916zm3.47 15.067A4.99 4.99 0 0 0 12 17a4.99 4.99 0 0 0-3.87 1.834A6.97 6.97 0 0 0 12 20c1.43 0 2.762-.43 3.87-1.166m-5.072-16.9a3 3 0 0 1 2.405 0l6 2.626A3 3 0 0 1 21 7.308V13a9 9 0 1 1-18 0V7.308A3 3 0 0 1 4.798 4.56zM12 8.5a1.75 1.75 0 1 0 0 3.5 1.75 1.75 0 0 0 0-3.5m-3.75 1.75a3.75 3.75 0 1 1 7.5 0 3.75 3.75 0 0 1-7.5 0",
+        "clip-rule": "evenodd"
+      }, null, -1)
+    ]));
+  }
+  const Setting3 = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$6]]);
+  const _sfc_main$5 = {};
+  const _hoisted_1$5 = {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "24",
+    height: "24",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    "stroke-width": "2",
+    "stroke-linecap": "round",
+    "stroke-linejoin": "round",
+    class: "icon icon-tabler icons-tabler-outline icon-tabler-brand-openai"
+  };
+  function _sfc_render$5(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$5, _cache[0] || (_cache[0] = [
+      vue.createStaticVNode('<path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M11.217 19.384a3.501 3.501 0 0 0 6.783 -1.217v-5.167l-6 -3.35"></path><path d="M5.214 15.014a3.501 3.501 0 0 0 4.446 5.266l4.34 -2.534v-6.946"></path><path d="M6 7.63c-1.391 -.236 -2.787 .395 -3.534 1.689a3.474 3.474 0 0 0 1.271 4.745l4.263 2.514l6 -3.348"></path><path d="M12.783 4.616a3.501 3.501 0 0 0 -6.783 1.217v5.067l6 3.45"></path><path d="M18.786 8.986a3.501 3.501 0 0 0 -4.446 -5.266l-4.34 2.534v6.946"></path><path d="M18 16.302c1.391 .236 2.787 -.395 3.534 -1.689a3.474 3.474 0 0 0 -1.271 -4.745l-4.308 -2.514l-5.955 3.42"></path>', 7)
+    ]));
+  }
+  const Setting4 = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$5]]);
+  const _sfc_main$4 = {};
+  const _hoisted_1$4 = {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "24",
+    height: "24",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    "stroke-width": "2",
+    "stroke-linecap": "round",
+    "stroke-linejoin": "round",
+    class: "icon icon-tabler icons-tabler-outline icon-tabler-cheese"
+  };
+  function _sfc_render$4(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$4, _cache[0] || (_cache[0] = [
+      vue.createStaticVNode('<path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M4.519 20.008l16.481 -.008v-3.5a2 2 0 1 1 0 -4v-3.5h-16.722"></path><path d="M21 9l-9.385 -4.992c-2.512 .12 -4.758 1.42 -6.327 3.425c-1.423 1.82 -2.288 4.221 -2.288 6.854c0 2.117 .56 4.085 1.519 5.721"></path><path d="M15 13v.01"></path><path d="M8 13v.01"></path><path d="M11 16v.01"></path>', 6)
+    ]));
+  }
+  const Setting5 = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$4]]);
+  const _sfc_main$3 = {};
+  const _hoisted_1$3 = {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "24",
+    height: "24",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    "stroke-width": "2",
+    "stroke-linecap": "round",
+    "stroke-linejoin": "round",
+    class: "icon icon-tabler icons-tabler-outline icon-tabler-refresh"
+  };
+  function _sfc_render$3(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$3, _cache[0] || (_cache[0] = [
+      vue.createElementVNode("path", {
+        stroke: "none",
+        d: "M0 0h24v24H0z",
+        fill: "none"
+      }, null, -1),
+      vue.createElementVNode("path", { d: "M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" }, null, -1),
+      vue.createElementVNode("path", { d: "M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" }, null, -1)
+    ]));
+  }
+  const Setting6 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$3]]);
+  const _sfc_main$2 = {};
+  const _hoisted_1$2 = {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "24",
+    height: "24",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    "stroke-width": "2",
+    "stroke-linecap": "round",
+    "stroke-linejoin": "round",
+    class: "icon icon-tabler icons-tabler-outline icon-tabler-language-hiragana"
+  };
+  function _sfc_render$2(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$2, _cache[0] || (_cache[0] = [
+      vue.createStaticVNode('<path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M4 5h7"></path><path d="M7 4c0 4.846 0 7 .5 8"></path><path d="M10 8.5c0 2.286 -2 4.5 -3.5 4.5s-2.5 -1.135 -2.5 -2c0 -2 1 -3 3 -3s5 .57 5 2.857c0 1.524 -.667 2.571 -2 3.143"></path><path d="M12 20l4 -9l4 9"></path><path d="M19.1 18h-6.2"></path>', 6)
+    ]));
+  }
+  const Setting7 = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$2]]);
   var _GM_getValue = /* @__PURE__ */ (() => typeof GM_getValue != "undefined" ? GM_getValue : void 0)();
   var _GM_setValue = /* @__PURE__ */ (() => typeof GM_setValue != "undefined" ? GM_setValue : void 0)();
   var _GM_xmlhttpRequest = /* @__PURE__ */ (() => typeof GM_xmlhttpRequest != "undefined" ? GM_xmlhttpRequest : void 0)();
@@ -3251,7 +5422,7 @@ Translated Text:`
     watchReplyControl();
     watchForEditor();
   };
-  const _sfc_main$s = {
+  const _sfc_main$1 = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
     mounted() {
@@ -3265,18 +5436,18 @@ Translated Text:`
       }
     }
   };
-  const _hoisted_1$o = { class: "item" };
-  const _hoisted_2$e = { class: "tit" };
-  const _hoisted_3$6 = ["checked"];
-  function _sfc_render$s(_ctx, _cache, $props, $setup, $data, $options) {
+  const _hoisted_1$1 = { class: "item" };
+  const _hoisted_2$1 = { class: "tit" };
+  const _hoisted_3$1 = ["checked"];
+  function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-      vue.createElementVNode("div", _hoisted_1$o, [
-        vue.createElementVNode("div", _hoisted_2$e, vue.toDisplayString($props.sort) + ". 是否开启翻译/拼音", 1),
+      vue.createElementVNode("div", _hoisted_1$1, [
+        vue.createElementVNode("div", _hoisted_2$1, vue.toDisplayString($props.sort) + ". 是否开启翻译/拼音", 1),
         vue.createElementVNode("input", {
           type: "checkbox",
           checked: $props.modelValue,
           onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked))
-        }, null, 40, _hoisted_3$6)
+        }, null, 40, _hoisted_3$1)
       ]),
       _cache[1] || (_cache[1] = vue.createElementVNode("p", null, "开启后在回复编辑器中会显示设置按钮。", -1)),
       _cache[2] || (_cache[2] = vue.createElementVNode("p", null, [
@@ -3290,2171 +5461,7 @@ Translated Text:`
       _cache[3] || (_cache[3] = vue.createElementVNode("p", null, "后续优化会将设置面板迁移进来。", -1))
     ], 64);
   }
-  const MenuTranslate = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["render", _sfc_render$s], ["__scopeId", "data-v-d8d12b86"]]);
-  const _sfc_main$r = {
-    props: {
-      value: {
-        type: String,
-        default: ""
-      },
-      sort: {
-        type: Number,
-        required: true
-      }
-    },
-    data() {
-      return {
-        textarea: this.value
-      };
-    },
-    watch: {
-      value(newValue) {
-        this.textarea = newValue;
-      }
-    },
-    methods: {
-      handleChange() {
-        this.$emit("update:value", this.textarea);
-      }
-    },
-    created() {
-      if (this.textarea) {
-        $("body").after(`<style>${this.textarea}</style>`);
-      }
-    }
-  };
-  const _hoisted_1$n = { class: "item" };
-  const _hoisted_2$d = { class: "tit" };
-  function _sfc_render$r(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-      vue.createElementVNode("div", _hoisted_1$n, [
-        vue.createElementVNode("div", _hoisted_2$d, vue.toDisplayString($props.sort) + ". 自定义 CSS（支持 import 引入第三方样式文件） ", 1)
-      ]),
-      vue.withDirectives(vue.createElementVNode("textarea", {
-        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.textarea = $event),
-        onInput: _cache[1] || (_cache[1] = (...args) => $options.handleChange && $options.handleChange(...args)),
-        placeholder: "body{font-size:16px;}"
-      }, "  ", 544), [
-        [vue.vModelText, $data.textarea]
-      ])
-    ], 64);
-  }
-  const MenuOtherCss = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["render", _sfc_render$r], ["__scopeId", "data-v-e33f1de9"]]);
-  const _sfc_main$q = {
-    props: {
-      value: {
-        type: String,
-        default: ""
-      },
-      sort: {
-        type: Number,
-        required: true
-      }
-    },
-    data() {
-      return {
-        textarea: this.value
-      };
-    },
-    watch: {
-      value(newValue) {
-        this.textarea = newValue;
-      }
-    },
-    methods: {
-      handleChange() {
-        this.$emit("update:value", this.textarea);
-      },
-      init() {
-        $(".d-header .title a").html(`<img src="${this.textarea}">`);
-      }
-    },
-    created() {
-      if (this.textarea && this.textarea != "") {
-        this.init();
-      }
-    }
-  };
-  const _hoisted_1$m = { class: "item" };
-  const _hoisted_2$c = { class: "tit" };
-  function _sfc_render$q(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-      vue.createElementVNode("div", _hoisted_1$m, [
-        vue.createElementVNode("div", _hoisted_2$c, vue.toDisplayString($props.sort) + ". 自定义论坛 logo", 1)
-      ]),
-      vue.withDirectives(vue.createElementVNode("input", {
-        type: "text",
-        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.textarea = $event),
-        onInput: _cache[1] || (_cache[1] = (...args) => $options.handleChange && $options.handleChange(...args)),
-        placeholder: "输入图片链接"
-      }, null, 544), [
-        [vue.vModelText, $data.textarea]
-      ])
-    ], 64);
-  }
-  const MenuLogoUrl = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["render", _sfc_render$q], ["__scopeId", "data-v-cb743585"]]);
-  const _sfc_main$p = {
-    props: {
-      value: {
-        type: String,
-        default: "前排围观，支持一下\n感谢分享，支持一下\n有点厉害，支持一下"
-      },
-      sort: {
-        type: Number,
-        required: true
-      }
-    },
-    data() {
-      return {
-        textarea: this.value
-      };
-    },
-    watch: {
-      value(newValue) {
-        this.textarea = newValue;
-      }
-    },
-    methods: {
-      handleChange() {
-        this.$emit("update:value", this.textarea);
-      },
-      init() {
-        this.list = this.textarea.split(/\r?\n/) || [];
-        if ($(".createreply").length < 1) {
-          $(".timeline-container .topic-timeline").append(
-            `<div class="createreply" style="margin-top:6.4rem;"></div>`
-          );
-          this.list.forEach(function(item) {
-            var $li = $(
-              '<button class="btn btn-default create reply-to-post no-text btn-icon" type="button"></button>'
-            ).text(item);
-            $(".createreply").append($li);
-          });
-          $(".createreply button").click(function() {
-            if ($(".timeline-footer-controls button.create").length != 0) {
-              $(".timeline-footer-controls button.create")[0].click();
-            }
-            if ($("#topic-footer-buttons .topic-footer-main-buttons button.create").length != 0) {
-              $(
-                "#topic-footer-buttons .topic-footer-main-buttons button.create"
-              )[0].click();
-            }
-            setTimeout(() => {
-              let $textarea = $(".d-editor-textarea-wrapper textarea");
-              let text = $(this).html();
-              $textarea.focus();
-              for (let i = 0; i < text.length; i++) {
-                let char = text[i];
-                $textarea.val($textarea.val() + char);
-                let inputEvent = new Event("input", {
-                  bubbles: true,
-                  cancelable: true
-                });
-                $textarea[0].dispatchEvent(inputEvent);
-                let keyEvent = new KeyboardEvent("keydown", {
-                  key: char,
-                  char,
-                  keyCode: char.charCodeAt(0),
-                  which: char.charCodeAt(0),
-                  bubbles: true
-                });
-                $textarea[0].dispatchEvent(keyEvent);
-              }
-            }, 1e3);
-          });
-        }
-      }
-    },
-    created() {
-      if (this.textarea) {
-        setInterval(() => {
-          this.init();
-        }, 1e3);
-      }
-    }
-  };
-  const _hoisted_1$l = { class: "item" };
-  const _hoisted_2$b = { class: "tit" };
-  function _sfc_render$p(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-      vue.createElementVNode("div", _hoisted_1$l, [
-        vue.createElementVNode("div", _hoisted_2$b, vue.toDisplayString($props.sort) + ". 自定义快捷回复（换行分隔）", 1)
-      ]),
-      vue.withDirectives(vue.createElementVNode("textarea", {
-        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.textarea = $event),
-        onInput: _cache[1] || (_cache[1] = (...args) => $options.handleChange && $options.handleChange(...args)),
-        placeholder: "前排围观支持一下\\n感谢分享大佬厉害啊\\n有点厉害支持~~"
-      }, "  ", 544), [
-        [vue.vModelText, $data.textarea]
-      ])
-    ], 64);
-  }
-  const MenuCreatereply = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["render", _sfc_render$p], ["__scopeId", "data-v-396734d2"]]);
-  const _sfc_main$o = {
-    props: {
-      value: {
-        type: String,
-        default: ""
-      },
-      sort: {
-        type: Number,
-        required: true
-      }
-    },
-    data() {
-      return {
-        textarea: this.value
-      };
-    },
-    watch: {
-      value(newValue) {
-        this.textarea = newValue;
-      }
-    },
-    methods: {
-      handleChange() {
-        this.$emit("update:value", this.textarea);
-      },
-      init() {
-        this.list = this.textarea.split(",") || [];
-        var self = this;
-        $(".topic-list .topic-list-data.posters>a:nth-child(1)").filter((index, element) => {
-          var user = $(element).attr("data-user-card");
-          return self.list.indexOf(user) !== -1;
-        }).parents("tr.topic-list-item").remove();
-        $(".topic-post .full-name a").filter((index, element) => {
-          var user = $(element).attr("data-user-card");
-          return self.list.indexOf(user) !== -1;
-        }).parents(".topic-post").remove();
-      }
-    },
-    created() {
-      if (this.textarea) {
-        let pollinglength1 = 0;
-        let pollinglength2 = 0;
-        setInterval(() => {
-          if (pollinglength1 != $(".topic-list-body tr").length) {
-            pollinglength1 = $(".topic-list-body tr").length;
-            this.init();
-          }
-          if (pollinglength2 != $(".post-stream .topic-post").length) {
-            pollinglength2 = $(".post-stream .topic-post").length;
-            this.init();
-          }
-        }, 1e3);
-      }
-    }
-  };
-  const _hoisted_1$k = { class: "item" };
-  const _hoisted_2$a = { class: "tit" };
-  function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-      vue.createElementVNode("div", _hoisted_1$k, [
-        vue.createElementVNode("div", _hoisted_2$a, vue.toDisplayString($props.sort) + ". 屏蔽指定用户（使用英文，分隔）", 1)
-      ]),
-      vue.withDirectives(vue.createElementVNode("textarea", {
-        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.textarea = $event),
-        onInput: _cache[1] || (_cache[1] = (...args) => $options.handleChange && $options.handleChange(...args)),
-        placeholder: "user1,user2,user3"
-      }, "  ", 544), [
-        [vue.vModelText, $data.textarea]
-      ])
-    ], 64);
-  }
-  const MenuBlockuserlist = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["render", _sfc_render$o], ["__scopeId", "data-v-f84417d4"]]);
-  const _sfc_main$n = {
-    props: {
-      value: {
-        type: String,
-        default: ""
-      },
-      sort: {
-        type: Number,
-        required: true
-      }
-    },
-    data() {
-      return {
-        textarea: this.value
-      };
-    },
-    watch: {
-      value(newValue) {
-        this.textarea = newValue;
-      }
-    },
-    methods: {
-      handleChange() {
-        this.$emit("update:value", this.textarea);
-      },
-      init() {
-        this.list = this.textarea.split(",") || [];
-        var self = this;
-        $(".topic-list .main-link .raw-topic-link>*").filter((index, element) => {
-          var text = $(element).text();
-          return self.list.some((item) => text.includes(item));
-        }).parents("tr.topic-list-item").remove();
-        $(".topic-body .cooked").filter((index, element) => {
-          var text = $(element).text();
-          return self.list.some((item) => text.includes(item));
-        }).parents(".topic-post").remove();
-      }
-    },
-    created() {
-      if (this.textarea) {
-        let pollinglength1 = 0;
-        let pollinglength2 = 0;
-        setInterval(() => {
-          if (pollinglength1 != $(".topic-list-body tr").length) {
-            pollinglength1 = $(".topic-list-body tr").length;
-            this.init();
-          }
-          if (pollinglength2 != $(".post-stream .topic-post").length) {
-            pollinglength2 = $(".post-stream .topic-post").length;
-            this.init();
-          }
-        }, 1e3);
-      }
-    }
-  };
-  const _hoisted_1$j = { class: "item" };
-  const _hoisted_2$9 = { class: "tit" };
-  function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-      vue.createElementVNode("div", _hoisted_1$j, [
-        vue.createElementVNode("div", _hoisted_2$9, vue.toDisplayString($props.sort) + ". 关键词屏蔽功能（使用英文，分隔）屏蔽包含关键字的话题和回复 ", 1)
-      ]),
-      vue.withDirectives(vue.createElementVNode("textarea", {
-        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.textarea = $event),
-        onInput: _cache[1] || (_cache[1] = (...args) => $options.handleChange && $options.handleChange(...args))
-      }, " ", 544), [
-        [vue.vModelText, $data.textarea]
-      ])
-    ], 64);
-  }
-  const MenuBlockKeyword = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["render", _sfc_render$n], ["__scopeId", "data-v-77789f1e"]]);
-  const _sfc_main$m = {
-    props: {
-      value: {
-        type: Object,
-        default: {
-          value1: false,
-          cate: "搞七捻三",
-          days: "5"
-        }
-      },
-      sort: {
-        type: Number,
-        required: true
-      }
-    },
-    data() {
-      return {
-        localChecked: this.value
-      };
-    },
-    watch: {
-      value(newValue) {
-        this.localChecked = newValue;
-      }
-    },
-    methods: {
-      handleChange() {
-        this.$emit("update:value", this.localChecked);
-      },
-      // 过滤时间格式
-      convertToTimestamp(dateStr) {
-        const cleanedDateStr = dateStr.replace(/\s+/g, "");
-        const datePattern = /(\d{4})年(\d{1,2})月(\d{1,2})日(\d{2}):(\d{2})/;
-        const dateMatch = cleanedDateStr.match(datePattern);
-        if (dateMatch) {
-          const year = parseInt(dateMatch[1], 10);
-          const month = parseInt(dateMatch[2], 10) - 1;
-          const day = parseInt(dateMatch[3], 10);
-          const hours = parseInt(dateMatch[4], 10);
-          const minutes = parseInt(dateMatch[5], 10);
-          const date = new Date(year, month, day, hours, minutes);
-          return date.getTime();
-        }
-        return null;
-      },
-      // 屏蔽指定分类、指定时间
-      GetTimestamp() {
-        if (!$(".nav-pills > li.nav-item_posted").hasClass("active") && !$(".nav-pills > li.nav-item_bookmarks").hasClass("active")) {
-          if (this.localChecked.cate == "") {
-            $(".topic-list .age").each((index, element) => {
-              const str = $(element).attr("title");
-              const match = str.match(/创建日期：([\s\S]*?)最新：/);
-              if (match && match[1]) {
-                const creationDate = match[1].trim();
-                const timestamp = this.convertToTimestamp(creationDate);
-                const days = Number(this.localChecked.days) * 864e5;
-                if (Date.now() - timestamp > days) {
-                  $(element).parents("tr.topic-list-item").remove();
-                }
-              }
-            });
-          } else {
-            const cateArray = this.localChecked.cate.split(",").map((item) => item.trim());
-            $(".badge-category__wrapper .badge-category__name").each((index, element) => {
-              let htmlContent = $(element).html();
-              htmlContent = htmlContent.replace(/,\s*Lv[1-3]/g, "");
-              if (cateArray.includes(htmlContent.trim())) {
-                $(element).parents("tr.topic-list-item").find(".age").each((index2, element2) => {
-                  const str = $(element2).attr("title");
-                  const match = str.match(/创建日期：([\s\S]*?)最新：/);
-                  if (match && match[1]) {
-                    const creationDate = match[1].trim();
-                    const timestamp = this.convertToTimestamp(creationDate);
-                    const days = Number(this.localChecked.days) * 864e5;
-                    if (Date.now() - timestamp > days) {
-                      $(element2).parents("tr.topic-list-item").remove();
-                    }
-                  }
-                });
-              }
-            });
-          }
-        }
-      }
-    },
-    created() {
-      if (this.localChecked.value1) {
-        let pollinglength1 = 0;
-        setInterval(() => {
-          if (pollinglength1 != $(".topic-list-body tr").length) {
-            pollinglength1 = $(".topic-list-body tr").length;
-            this.GetTimestamp();
-          }
-        }, 1e3);
-      }
-    }
-  };
-  const _hoisted_1$i = {
-    class: "item",
-    style: { "border": "none" }
-  };
-  const _hoisted_2$8 = { class: "tit" };
-  function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-      vue.createElementVNode("div", _hoisted_1$i, [
-        vue.createElementVNode("div", _hoisted_2$8, [
-          vue.createTextVNode(vue.toDisplayString($props.sort) + ". 屏蔽指定天数前的帖子 ", 1),
-          vue.withDirectives(vue.createElementVNode("input", {
-            type: "text",
-            "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.localChecked.days = $event),
-            placeholder: "默认天数 5"
-          }, null, 512), [
-            [vue.vModelText, $data.localChecked.days]
-          ])
-        ]),
-        vue.withDirectives(vue.createElementVNode("input", {
-          type: "checkbox",
-          "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => $data.localChecked.value1 = $event),
-          onChange: _cache[2] || (_cache[2] = (...args) => $options.handleChange && $options.handleChange(...args))
-        }, null, 544), [
-          [vue.vModelCheckbox, $data.localChecked.value1]
-        ])
-      ]),
-      vue.createElementVNode("div", null, [
-        _cache[4] || (_cache[4] = vue.createElementVNode("p", null, "针对分类：留空对全部分类生效，多个分类用英文逗号【,】进行分隔", -1)),
-        vue.withDirectives(vue.createElementVNode("textarea", {
-          "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => $data.localChecked.cate = $event),
-          placeholder: "搞七捻三"
-        }, null, 512), [
-          [vue.vModelText, $data.localChecked.cate]
-        ])
-      ])
-    ], 64);
-  }
-  const MenuShieldPosts = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["render", _sfc_render$m], ["__scopeId", "data-v-ac149a76"]]);
-  const _sfc_main$l = {
-    props: {
-      value: {
-        type: Array,
-        default: []
-      }
-    },
-    data() {
-      return {
-        tableData: this.value
-      };
-    },
-    watch: {
-      value(newValue) {
-        this.tableData = newValue;
-      }
-    },
-    methods: {
-      handleChange() {
-        this.$emit("update:value", this.tableData);
-      },
-      // 修改标签
-      editTags(item) {
-        var tags = prompt(`对 @${item.name} 修改标签`, item.tags);
-        if (tags == null) {
-          return item.tags;
-        }
-        if (tags != item.tags) {
-          var existingPerson = this.tableData.find((items) => items.name === item.name);
-          if (existingPerson) {
-            existingPerson.tags = tags;
-          } else {
-            this.tableData.push({ name: person, tags });
-          }
-          let settingData1 = localStorage.getItem("linxudoscriptssetting");
-          settingData1 = JSON.parse(settingData1);
-          settingData1.usertags = this.tableData;
-          localStorage.setItem("linxudoscriptssetting", JSON.stringify(settingData1));
-          this.$emit("update:value", this.tableData);
-        }
-      },
-      delTags(item) {
-        var del = confirm("是否确认删除！");
-        if (del == true) {
-          this.tableData.splice(item, 1);
-          let settingData1 = localStorage.getItem("linxudoscriptssetting");
-          settingData1 = JSON.parse(settingData1);
-          settingData1.usertags = this.tableData;
-          localStorage.setItem("linxudoscriptssetting", JSON.stringify(settingData1));
-          this.$emit("update:value", this.tableData);
-        }
-      }
-    },
-    created() {
-      let settingData = localStorage.getItem("linxudoscriptssetting");
-      settingData = JSON.parse(settingData);
-      if (!settingData.usertags) {
-        settingData.usertags = [];
-      }
-      settingData.usertags = settingData.usertags.filter((user) => user.tags);
-      this.tableData = settingData.usertags;
-      setInterval(() => {
-        if ($(".addusertag").length < 1) {
-          $(".usercard-controls").append(
-            `<li><button class="btn addusertag" type="button">添加用户标签</button></li>`
-          );
-          $(".addusertag").click(function() {
-            var person2 = $(".user-card .user-profile-link").attr("href").replace("/u/", "");
-            var tags = prompt(`对 @${person2} 设置标签（保存后刷新页面）`, "");
-            if (tags == null) {
-              return false;
-            }
-            var lowerCasePerson = person2.toLowerCase();
-            var existingPerson = settingData.usertags.find(
-              (item) => item.name.toLowerCase() === lowerCasePerson
-            );
-            if (existingPerson) {
-              existingPerson.tags = tags;
-            } else {
-              settingData.usertags.push({ name: person2, tags });
-            }
-            localStorage.setItem("linxudoscriptssetting", JSON.stringify(settingData));
-          });
-        }
-        $(".topic-post").each(function() {
-          const username = $(this).find(".first a").attr("data-user-card").toLowerCase();
-          const userTag = settingData.usertags.find((user) => user.name === username);
-          if (userTag) {
-            if ($(this).find(".linxudoscripts-tag").length < 1) {
-              $(this).find(".names").append(`<span class="linxudoscripts-tag"># ${userTag.tags}</span>`);
-            }
-          }
-        });
-      }, 1e3);
-    }
-  };
-  const _hoisted_1$h = { class: "menu-table" };
-  const _hoisted_2$7 = ["onClick"];
-  const _hoisted_3$5 = ["onClick"];
-  function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", null, [
-      vue.createElementVNode("table", _hoisted_1$h, [
-        _cache[0] || (_cache[0] = vue.createElementVNode("thead", null, [
-          vue.createElementVNode("tr", null, [
-            vue.createElementVNode("th", null, "用户名"),
-            vue.createElementVNode("th", null, "标签"),
-            vue.createElementVNode("th", null, "操作")
-          ])
-        ], -1)),
-        vue.createElementVNode("tbody", null, [
-          (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList($data.tableData, (item) => {
-            return vue.openBlock(), vue.createElementBlock("tr", {
-              key: item.name
-            }, [
-              vue.createElementVNode("td", null, vue.toDisplayString(item.name), 1),
-              vue.createElementVNode("td", null, vue.toDisplayString(item.tags), 1),
-              vue.createElementVNode("td", null, [
-                vue.createElementVNode("span", {
-                  class: "span",
-                  onClick: ($event) => $options.editTags(item)
-                }, "修改", 8, _hoisted_2$7),
-                vue.createElementVNode("span", {
-                  class: "span",
-                  onClick: ($event) => $options.delTags(item),
-                  style: { "color": "#e00" }
-                }, "删除！", 8, _hoisted_3$5)
-              ])
-            ]);
-          }), 128))
-        ])
-      ])
-    ]);
-  }
-  const UserTags = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["render", _sfc_render$l]]);
-  const _sfc_main$k = {
-    props: {
-      value: {
-        type: Object,
-        default: {
-          value1: false,
-          value2: false,
-          title: false,
-          btn: true,
-          apikey: "",
-          baseurl: "https://api.openai.com",
-          full_url: "/v1/chat/completions",
-          model: "gpt-4o-mini",
-          prompt: "根据以下帖子内容进行总结，请使用 markdown 格式返回回答，没有字数限制，但要求文字精炼，简介准确，语言要求返回简体中文，并且进行中英文混排优化。可以通过编号列表（1，2，3）列出核心要点。注意不要输出标题，例如：核心要点总结，帖子总结等，直接输出文本段落。",
-          prompt1: "根据以下帖子内容，帮我给作者写一条回复，简短，表明我的观点，用口语回复，不需要很正式。您可以通过讨论的方式进行回复，这将有助于引导其他用户或作者进行互动。",
-          prompt2: "根据以下帖子内容，生成一个合适的标题用于社交论坛发布使用，格式要求：不要书名号或其他符号，只需要一句纯文本。尽量精简到 15 字以内，如果字数不够表达主题，可以适当多生成几个字。"
-        }
-      }
-    },
-    data() {
-      return {
-        localChecked: this.value
-      };
-    },
-    watch: {
-      value(newValue) {
-        this.localChecked = newValue;
-      }
-    },
-    methods: {
-      handleChange() {
-        this.$emit("update:value", this.localChecked);
-      },
-      getTopicUrl(url) {
-        const regex = /^(https:\/\/linux\.do\/t\/topic\/\d+)(\/\d+)?$/;
-        const match = url.match(regex);
-        return match ? match[1] : url;
-      },
-      // 是否开启手动生成
-      setCreatedBtn() {
-        if (this.localChecked.btn) {
-          $("head").append("<style>.aicreated-btn{display:inline-flex!important}</style>");
-        }
-      },
-      // 获取帖子内容并生成总结
-      async getPostContent() {
-        $(".post-stream").before(
-          `<div class="gpt-summary-wrap">
-         <div class="gpt-summary">AI 总结：正在使用 AI 总结内容中，请稍后...</div>
-          </div>`
-        );
-        const config2 = JSON.parse(localStorage.getItem("linxudoscriptssetting")).gptdata;
-        return new Promise((resolve, reject) => {
-          const str = $("#topic-title h1 a").text() + $("#post_1 .cooked").text();
-          const prompt2 = `${config2.prompt}
-帖子内容如下：
-${str}`;
-          fetch(`${config2.baseurl}${config2.full_url}`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${config2.apikey}`
-            },
-            body: JSON.stringify({
-              model: config2.model,
-              messages: [
-                {
-                  role: "user",
-                  content: prompt2
-                }
-              ],
-              temperature: 0.7
-            })
-          }).then((response) => {
-            if (!response.ok) {
-              reject(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-          }).then((gptData) => {
-            $(".gpt-summary").html(`${marked.marked.parse(gptData.choices[0].message.content)}`);
-            let summaryCache = JSON.parse(localStorage.getItem("summaryCacheData")) || [];
-            const regex = /^(https:\/\/linux\.do\/t\/topic\/\d+)(\/\d+)?$/;
-            const match = window.location.href.match(regex)[1];
-            let existingObject = summaryCache.find((item) => item.name == match);
-            let newObject = {
-              name: match,
-              value: gptData.choices[0].message.content
-            };
-            if (existingObject) {
-              existingObject.value = newObject.value;
-            } else {
-              summaryCache.push(newObject);
-            }
-            localStorage.setItem("summaryCacheData", JSON.stringify(summaryCache));
-            resolve();
-          }).catch((error) => {
-            $(".gpt-summary").html(`生成失败，请检查配置是否正确并刷新重试！`);
-            console.log(error);
-          });
-        });
-      },
-      // 生成 AI 回复
-      async setAIRelpy() {
-        $(".aireply-popup").show();
-        $(".aireply-popup-text").html("AI 推荐回复正在生成中，请稍后。。。");
-        const config2 = JSON.parse(localStorage.getItem("linxudoscriptssetting")).gptdata;
-        return new Promise((resolve, reject) => {
-          const str = $("#topic-title h1 a").text() + $("#post_1 .cooked").text();
-          const prompt2 = `${config2.prompt1}
-帖子内容如下：
-${str}`;
-          fetch(`${config2.baseurl}${config2.full_url}`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${config2.apikey}`
-            },
-            body: JSON.stringify({
-              model: config2.model,
-              messages: [
-                {
-                  role: "user",
-                  content: prompt2
-                }
-              ],
-              temperature: 0.7
-            })
-          }).then((response) => {
-            if (!response.ok) {
-              reject(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-          }).then((gptData) => {
-            this.AIReplyPopup(gptData.choices[0].message.content);
-            resolve();
-          }).catch((error) => {
-            console.log(error);
-          });
-        });
-      },
-      // 推荐回复弹窗
-      AIReplyPopup(text) {
-        $(".aireply-popup-text").html(text);
-      },
-      // AI 根据新建话题内容生成标题
-      async getCreateNewTopicTitle() {
-        return new Promise((resolve, reject) => {
-          const topic_contentdata = $(".d-editor-preview").html();
-          const config2 = JSON.parse(localStorage.getItem("linxudoscriptssetting")).gptdata;
-          const prompt2 = `${config2.prompt2}
-帖子内容如下：
-${topic_contentdata}`;
-          fetch(`${config2.baseurl}${config2.full_url}`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${config2.apikey}`
-            },
-            body: JSON.stringify({
-              model: config2.model,
-              messages: [
-                {
-                  role: "user",
-                  content: prompt2
-                }
-              ],
-              temperature: 0.7
-            })
-          }).then((response) => {
-            if (!response.ok) {
-              reject(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-          }).then((gptData) => {
-            $("#reply-title").val(gptData.choices[0].message.content);
-            resolve();
-          }).catch((error) => {
-            console.log(error);
-            $("#reply-title").val(`抱歉生成失败，请检查配置或者反馈给开发者！`);
-          });
-        });
-      }
-    },
-    async created() {
-      if (this.localChecked.value2) {
-        $("body").append(`
-        <div class="aireply-popup">
-          <textarea class="aireply-popup-text"></textarea>
-          <button class="aireply-popup-close">关闭</button>
-        </div>
-      `);
-        setInterval(() => {
-          if ($(".gpt-summary-wrap").length < 1 && $(".aireplay-btn").length < 1) {
-            $("#topic-title").after(
-              `<button class="aireplay-btn" type="button">AI 回复</button>`
-            );
-            $(".aireplay-btn").click(() => {
-              this.setAIRelpy();
-            });
-            $(".aireply-popup-close").click(() => {
-              $(".aireply-popup").hide();
-              $(".aireply-popup-text").html("AI 推荐回复正在生成中，请稍后。。。");
-            });
-          }
-        }, 1e3);
-      }
-      if (this.localChecked.value1) {
-        setInterval(() => {
-          if ($(".gpt-summary-wrap").length < 1 && $(".aicreated-btn").length < 1) {
-            $("#topic-title").after(
-              `<button class="aicreated-btn" type="button">AI 总结</button>`
-            );
-            $(".aicreated-btn").click(() => {
-              $(".gpt-summary-wrap").remove();
-              this.getPostContent();
-            });
-          }
-        }, 1e3);
-        this.setCreatedBtn();
-        setInterval(() => {
-          if ($(".post-stream").length > 0) {
-            if ($(".gpt-summary-wrap").length < 1) {
-              let summaryCache = JSON.parse(localStorage.getItem("summaryCacheData")) || [];
-              const regex = /^(https:\/\/linux\.do\/t\/topic\/\d+)(\/\d+)?$/;
-              const match = window.location.href.match(regex)[1];
-              let existingObject = summaryCache.find((item) => item.name === match);
-              if (existingObject) {
-                $(".post-stream").before(
-                  `<div class="gpt-summary-wrap">
-<div class="gpt-summary">${marked.marked.parse(existingObject.value)}</div>
-</div>`
-                );
-              }
-            }
-            if (!this.localChecked.btn) {
-              if ($(".gpt-summary-wrap").length < 1) {
-                this.getPostContent();
-              }
-            }
-            $(".topic-list .main-link a.title").click(() => {
-              $(".gpt-summary-wrap").remove();
-            });
-          }
-        }, 1e3);
-      }
-      if (this.localChecked.title) {
-        setInterval(() => {
-          if ($(".action-title").length > 0) {
-            if ($(".action-title").html().includes("创建新话题")) {
-              if ($(".aicreatenewtopictitle").length < 1) {
-                $(".action-title").append(
-                  '<span class="aicreatenewtopictitle">AI 生成标题</span>'
-                );
-                $(".aicreatenewtopictitle").click(() => {
-                  $("#reply-title").val("正在生成中，请稍后...");
-                  this.getCreateNewTopicTitle();
-                });
-              }
-            }
-          }
-        }, 1e3);
-        let summaryCacheData = JSON.parse(localStorage.getItem("summaryCacheData")) || [];
-        if (summaryCacheData.length > 20) {
-          summaryCacheData = summaryCacheData.slice(-20);
-        }
-        localStorage.setItem("summaryCacheData", JSON.stringify(summaryCacheData));
-      }
-    }
-  };
-  const _hoisted_1$g = { class: "item" };
-  const _hoisted_2$6 = { class: "item" };
-  const _hoisted_3$4 = { class: "item" };
-  const _hoisted_4$4 = { class: "item" };
-  function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", null, [
-      vue.createElementVNode("div", _hoisted_1$g, [
-        _cache[15] || (_cache[15] = vue.createElementVNode("div", { class: "tit" }, "1. 是否开启 AI 生成话题总结", -1)),
-        vue.withDirectives(vue.createElementVNode("input", {
-          type: "checkbox",
-          "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.localChecked.value1 = $event),
-          onChange: _cache[1] || (_cache[1] = (...args) => $options.handleChange && $options.handleChange(...args))
-        }, null, 544), [
-          [vue.vModelCheckbox, $data.localChecked.value1]
-        ])
-      ]),
-      vue.createElementVNode("div", _hoisted_2$6, [
-        _cache[16] || (_cache[16] = vue.createElementVNode("div", { class: "tit" }, "2. 是否显示手动总结按钮", -1)),
-        vue.withDirectives(vue.createElementVNode("input", {
-          type: "checkbox",
-          "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => $data.localChecked.btn = $event),
-          onChange: _cache[3] || (_cache[3] = (...args) => $options.handleChange && $options.handleChange(...args))
-        }, null, 544), [
-          [vue.vModelCheckbox, $data.localChecked.btn]
-        ])
-      ]),
-      vue.createElementVNode("div", _hoisted_3$4, [
-        _cache[17] || (_cache[17] = vue.createElementVNode("div", { class: "tit" }, "3. 是否开启 AI 生成回复推荐", -1)),
-        vue.withDirectives(vue.createElementVNode("input", {
-          type: "checkbox",
-          "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => $data.localChecked.value2 = $event),
-          onChange: _cache[5] || (_cache[5] = (...args) => $options.handleChange && $options.handleChange(...args))
-        }, null, 544), [
-          [vue.vModelCheckbox, $data.localChecked.value2]
-        ])
-      ]),
-      vue.createElementVNode("div", _hoisted_4$4, [
-        _cache[18] || (_cache[18] = vue.createElementVNode("div", { class: "tit" }, "4. 新建话题使用 AI 生成标题", -1)),
-        vue.withDirectives(vue.createElementVNode("input", {
-          type: "checkbox",
-          "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => $data.localChecked.title = $event),
-          onChange: _cache[7] || (_cache[7] = (...args) => $options.handleChange && $options.handleChange(...args))
-        }, null, 544), [
-          [vue.vModelCheckbox, $data.localChecked.title]
-        ])
-      ]),
-      _cache[19] || (_cache[19] = vue.createElementVNode("div", { class: "item" }, [
-        vue.createElementVNode("div", { class: "tit" }, "5. 配置信息")
-      ], -1)),
-      vue.withDirectives(vue.createElementVNode("input", {
-        type: "text",
-        "onUpdate:modelValue": _cache[8] || (_cache[8] = ($event) => $data.localChecked.apikey = $event),
-        placeholder: "sk-xxxxxxxx"
-      }, null, 512), [
-        [vue.vModelText, $data.localChecked.apikey]
-      ]),
-      vue.withDirectives(vue.createElementVNode("input", {
-        style: { "width": "49%" },
-        type: "text",
-        "onUpdate:modelValue": _cache[9] || (_cache[9] = ($event) => $data.localChecked.baseurl = $event),
-        placeholder: "https://api.openai.com"
-      }, null, 512), [
-        [vue.vModelText, $data.localChecked.baseurl]
-      ]),
-      vue.withDirectives(vue.createElementVNode("input", {
-        style: { "width": "49%", "margin-left": "2%" },
-        type: "text",
-        "onUpdate:modelValue": _cache[10] || (_cache[10] = ($event) => $data.localChecked.full_url = $event),
-        placeholder: "/v1/chat/completions"
-      }, null, 512), [
-        [vue.vModelText, $data.localChecked.full_url]
-      ]),
-      vue.withDirectives(vue.createElementVNode("input", {
-        type: "text",
-        "onUpdate:modelValue": _cache[11] || (_cache[11] = ($event) => $data.localChecked.model = $event),
-        placeholder: "模型，如：gpt-4o-mini"
-      }, null, 512), [
-        [vue.vModelText, $data.localChecked.model]
-      ]),
-      _cache[20] || (_cache[20] = vue.createElementVNode("div", null, "6. AI 总结帖子 prompt:", -1)),
-      vue.withDirectives(vue.createElementVNode("textarea", {
-        "onUpdate:modelValue": _cache[12] || (_cache[12] = ($event) => $data.localChecked.prompt = $event)
-      }, null, 512), [
-        [vue.vModelText, $data.localChecked.prompt]
-      ]),
-      _cache[21] || (_cache[21] = vue.createElementVNode("div", null, "7. AI 生成回复 prompt:", -1)),
-      vue.withDirectives(vue.createElementVNode("textarea", {
-        "onUpdate:modelValue": _cache[13] || (_cache[13] = ($event) => $data.localChecked.prompt1 = $event)
-      }, null, 512), [
-        [vue.vModelText, $data.localChecked.prompt1]
-      ]),
-      _cache[22] || (_cache[22] = vue.createElementVNode("div", null, "8. AI 生成标题 prompt:", -1)),
-      vue.withDirectives(vue.createElementVNode("textarea", {
-        "onUpdate:modelValue": _cache[14] || (_cache[14] = ($event) => $data.localChecked.prompt2 = $event)
-      }, null, 512), [
-        [vue.vModelText, $data.localChecked.prompt2]
-      ]),
-      _cache[23] || (_cache[23] = vue.createElementVNode("div", { style: { "margin-top": "10px" } }, " 注意：请按照指定格式填写参数；不支持 http，请使用 https。 ", -1))
-    ]);
-  }
-  const GPTconfig = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["render", _sfc_render$k], ["__scopeId", "data-v-d1d5d03b"]]);
-  const _sfc_main$j = {
-    props: ["modelValue"],
-    emits: ["update:modelValue"],
-    data() {
-      return {
-        radio: this.modelValue,
-        // 初始化 radio
-        list: [
-          {
-            id: 0,
-            name: "ls-themes0",
-            imgurl: ""
-          },
-          {
-            id: 6,
-            name: "ls-themes6",
-            imgurl: "https://linux.do/uploads/default/original/3X/d/9/d935995d90221b7acdde23df142ba7bbe3c38bf0.png"
-          },
-          {
-            id: 5,
-            name: "ls-themes5",
-            imgurl: "https://linux.do/uploads/default/optimized/3X/3/a/3a9cfbddfd2385ec4c638a10b15055220332e65c_2_1035x565.png"
-          },
-          {
-            id: 4,
-            name: "ls-themes4",
-            imgurl: "https://linux.do/uploads/default/optimized/3X/8/f/8fb7fe2251b44a6ea1831055bf5ac3ef2c12b4ea_2_1035x544.jpeg"
-          },
-          {
-            id: 3,
-            name: "ls-themes3",
-            imgurl: "https://linux.do/uploads/default/optimized/3X/2/5/25f83e28507a9ec9fe8ad41874ed578c2e007ff6_2_1035x544.jpeg"
-          },
-          {
-            id: 2,
-            name: "ls-themes2",
-            imgurl: "https://linux.do/uploads/default/optimized/3X/b/b/bbaa57335e0eab7e4db7ddb5944b613ce0cb5b89_2_1035x544.jpeg"
-          },
-          {
-            id: 1,
-            name: "ls-themes1",
-            imgurl: "https://linux.do/uploads/default/optimized/3X/2/f/2f1a0d87acb496eb544e17a72022c58ccfd72104_2_1035x544.jpeg"
-          }
-        ],
-        jsonData: [
-          {
-            id: 1,
-            content: "<link href='https://forum.godotengine.org/stylesheets/color_definitions_godot-light_14_5_bfb37f9ae1fb41e9775aafca6e20cddcf38a5ef5.css' media='all' rel='stylesheet' class='light-scheme'><link href='https://forum.godotengine.org/stylesheets/color_definitions_godot-dark_15_5_5ddd0db082f3ae82a3ba77b0ccd1e9a549731798.css' media='(prefers-color-scheme:dark)' rel='stylesheet' class='dark-scheme'><link href='https://forum.godotengine.org/stylesheets/desktop_6551c8b35c64f23dde7a58f9883f833dcb41d6c2.css' media='all' rel='stylesheet' data-target='desktop'><link href='https://forum.godotengine.org/stylesheets/checklist_6551c8b35c64f23dde7a58f9883f833dcb41d6c2.css' media='all' rel='stylesheet' data-target='checklist'><link href='https://forum.godotengine.org/stylesheets/discourse-details_6551c8b35c64f23dde7a58f9883f833dcb41d6c2.css' media='all' rel='stylesheet' data-target='discourse-details'><link href='https://forum.godotengine.org/stylesheets/discourse-lazy-videos_6551c8b35c64f23dde7a58f9883f833dcb41d6c2.css' media='all' rel='stylesheet' data-target='discourse-lazy-videos'><link href='https://forum.godotengine.org/stylesheets/discourse-local-dates_6551c8b35c64f23dde7a58f9883f833dcb41d6c2.css' media='all' rel='stylesheet' data-target='discourse-local-dates'><link href='https://forum.godotengine.org/stylesheets/discourse-narrative-bot_6551c8b35c64f23dde7a58f9883f833dcb41d6c2.css' media='all' rel='stylesheet' data-target='discourse-narrative-bot'><link href='https://forum.godotengine.org/stylesheets/discourse-presence_6551c8b35c64f23dde7a58f9883f833dcb41d6c2.css' media='all' rel='stylesheet' data-target='discourse-presence'><link href='https://forum.godotengine.org/stylesheets/discourse-solved_6551c8b35c64f23dde7a58f9883f833dcb41d6c2.css' media='all' rel='stylesheet' data-target='discourse-solved'><link href='https://forum.godotengine.org/stylesheets/docker_manager_6551c8b35c64f23dde7a58f9883f833dcb41d6c2.css' media='all' rel='stylesheet' data-target='docker_manager'><link href='https://forum.godotengine.org/stylesheets/footnote_6551c8b35c64f23dde7a58f9883f833dcb41d6c2.css' media='all' rel='stylesheet' data-target='footnote'><link href='https://forum.godotengine.org/stylesheets/poll_6551c8b35c64f23dde7a58f9883f833dcb41d6c2.css' media='all' rel='stylesheet' data-target='poll'><link href='https://forum.godotengine.org/stylesheets/spoiler-alert_6551c8b35c64f23dde7a58f9883f833dcb41d6c2.css' media='all' rel='stylesheet' data-target='spoiler-alert'><link href='https://forum.godotengine.org/stylesheets/poll_desktop_6551c8b35c64f23dde7a58f9883f833dcb41d6c2.css' media='all' rel='stylesheet' data-target='poll_desktop'><link href='https://forum.godotengine.org/stylesheets/desktop_theme_9_818c40f50955dc75b8ee82ebc6b63677c57bad1a.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='9' data-theme-name='custom header links'><link href='https://forum.godotengine.org/stylesheets/desktop_theme_3_da63025974d890f429338f0221ce160e14b07fc7.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='3' data-theme-name='godot tweaks'><link href='https://forum.godotengine.org/stylesheets/desktop_theme_12_279dc32ddce5227f4513713baa0e0caf3dc6f846.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='12' data-theme-name='post badges'><link href='https://forum.godotengine.org/stylesheets/desktop_theme_7_b736b09c69b69b5359282426c2559c196e5d619e.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='7' data-theme-name='search banner'><link href='https://forum.godotengine.org/stylesheets/desktop_theme_5_73982ca8b55af63e007c66d4bd9ddc7af40f0b7f.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='5' data-theme-name='godot theme'>"
-          },
-          {
-            id: 2,
-            content: "<link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/color_definitions_hf-light_3_4_e9f0e3d0b716595aad22a8443d01cdbaf9dff610.css' media='all' rel='stylesheet' class='light-scheme'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/color_definitions_hf-dark_4_4_a909a408a44c8e15765a6792c5aa2abab3fbfdfc.css' media='(prefers-color-scheme:dark)' rel='stylesheet' class='dark-scheme'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/desktop_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='desktop'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/checklist_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='checklist'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-adplugin_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-adplugin'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-ai_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-ai'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-akismet_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-akismet'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-cakeday_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-cakeday'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-details_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-details'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-lazy-videos_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-lazy-videos'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-local-dates_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-local-dates'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-math_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-math'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-narrative-bot_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-narrative-bot'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-policy_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-policy'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-presence_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-presence'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-reactions_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-reactions'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-solved_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-solved'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-templates_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-templates'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-topic-voting_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-topic-voting'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/footnote_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='footnote'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/hosted-site_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='hosted-site'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/poll_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='poll'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/spoiler-alert_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='spoiler-alert'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-ai_desktop_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-ai_desktop'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-reactions_desktop_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-reactions_desktop'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/discourse-topic-voting_desktop_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='discourse-topic-voting_desktop'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/poll_desktop_9690da8ac361c476ab1b25cc9aaade81b0eb2977.css' media='all' rel='stylesheet' data-target='poll_desktop'><link href='https://sea2.discourse-cdn.com/hellohellohello/stylesheets/desktop_theme_4_dc1402c93670f70f3de138ee4819934dae9704d0.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='4' data-theme-name='discourse-huggingface-theme'>"
-          },
-          {
-            id: 3,
-            content: "<link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='desktop'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/checklist_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='checklist'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-akismet_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-akismet'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-cakeday_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-cakeday'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-custom-topic-lists_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-custom-topic-lists'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-data-explorer_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-data-explorer'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-details_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-details'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-lazy-videos_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-lazy-videos'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-local-dates_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-local-dates'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-math_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-math'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-narrative-bot_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-narrative-bot'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-policy_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-policy'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-post-voting_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-post-voting'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-presence_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-presence'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-preset-topic-composer_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-preset-topic-composer'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-reactions_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-reactions'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-rss-polling_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-rss-polling'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-signatures_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-signatures'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-solved_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-solved'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-templates_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-templates'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-user-notes_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-user-notes'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/footnote_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='footnote'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/hosted-site_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='hosted-site'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/poll_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='poll'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/spoiler-alert_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='spoiler-alert'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-post-voting_desktop_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-post-voting_desktop'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/discourse-reactions_desktop_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='discourse-reactions_desktop'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/poll_desktop_cfd252fc4676c9752a6eddc24d305200f1bae9d3.css' media='all' rel='stylesheet' data-target='poll_desktop'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_21_7ad18baff84d86d2854bef0ea3531d2b132f80e7.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='21' data-theme-name='category badge styles'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_43_3f15e2f66fc3e5c3aebf2b816db682ffddd62aec.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='43' data-theme-name='category banners'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_44_76340a944941297c187ed34184cc60417a9431da.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='44' data-theme-name='category icons'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_41_5dae38cddbdae9477debd421890ea804b79ec6bb.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='41' data-theme-name='collapsible category groups'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_2_7e9be53a9033f4321fe3ff84ac7ac5916c6f7422.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='2' data-theme-name='dark-light toggle'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_14_11cc9920871247240c539d33b999ff8565c0528e.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='14' data-theme-name='discotoc'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_22_60ced06ad2f59e47b7897d05ee076d301232f5fd.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='22' data-theme-name='discourse-icon'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_13_56d83ffa5ca70edecf74b36d321e04576f4ef1b8.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='13' data-theme-name='discourse-mermaid-theme-component'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_6_953aa87e9ac9cc51e20305e98e782fbec1b0decd.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='6' data-theme-name='discourse-search-banner'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_45_726192e6534fe4d91047ee004c17310f78672e52.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='45' data-theme-name='experimental filter component'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_46_07c0c0f168d9030b56037a94a177640f8e52ed4a.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='46' data-theme-name='full width'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_15_f7eb451c3ff264d93f495b3d6fac50216f49e72d.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='15' data-theme-name='image comparison slider'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_16_5b0101e1835bb5a0e53726e669f272edb9d23bbd.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='16' data-theme-name='pdf previews'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_48_e048fdfd4a9755e059453bb30952ad45bf05e097.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='48' data-theme-name='tag icons'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_17_91ca32199f3209aafcae04ddf03498ed470c69f1.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='17' data-theme-name='tiles - gallery component'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_18_0559ffde96204857d0ebc8c686798e0873b0c584.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='18' data-theme-name='topic thumbnails'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_28_1fc38880197870acc63fb0a16acf5aced129415b.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='28' data-theme-name='unformatted code detector'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_49_b140cc9a50e4dd4d7f5154a7adfd1c85c59e3b63.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='49' data-theme-name='unity: brand identity'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_25_30313f97df8e6b00d3ee8693aa3671cce7c9919a.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='25' data-theme-name='unity: dsa'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_12_132a4fbaac41ffa5dd9101b35885f1a153acdbc5.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='12' data-theme-name='unity: onetrust'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_50_cb48ef097d7269de9b930e7a46b126ce5b9df9e4.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='50' data-theme-name='unity: theme extras'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_10_36ca6f6783651cde9551aca71e209742439766d4.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='10' data-theme-name='unity'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_51_285c9656e620803a07e356ce8cb738d955d8ad2d.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='51' data-theme-name='hotfix: restyle experimental topic summary'><link href='https://dub2.discourse-cdn.com/unity/stylesheets/desktop_theme_24_5c1029e2582d7c1b73ef31e86f4ea0f297bd8a06.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='24' data-theme-name='override-mermaid-styles'>"
-          },
-          {
-            id: 4,
-            content: "<link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/color_definitions_google-ai-for-developers_8_2_a146065001d103c6f508d0aecd9795e2b85e0231.css' media='all' rel='stylesheet' class='light-scheme'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/desktop_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='desktop'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/checklist_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='checklist'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-ai_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-ai'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-akismet_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-akismet'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-cakeday_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-cakeday'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-data-explorer_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-data-explorer'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-details_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-details'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-lazy-videos_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-lazy-videos'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-local-dates_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-local-dates'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-narrative-bot_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-narrative-bot'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-policy_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-policy'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-presence_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-presence'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-reactions_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-reactions'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-solved_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-solved'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-templates_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-templates'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-topic-voting_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-topic-voting'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/footnote_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='footnote'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/hosted-site_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='hosted-site'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/poll_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='poll'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/spoiler-alert_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='spoiler-alert'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-ai_desktop_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-ai_desktop'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-reactions_desktop_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-reactions_desktop'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/discourse-topic-voting_desktop_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='discourse-topic-voting_desktop'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/poll_desktop_512b34b3c789d4724f7cb6afc7f9dbb5bdcf63bc.css' media='all' rel='stylesheet' data-target='poll_desktop'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/desktop_theme_4_89b44c1aa4a914829f5dab76be36f050017112fd.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='4' data-theme-name='discourse header search'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/desktop_theme_3_a8a980bc06c18d3fc858c318921f96f6581459cf.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='3' data-theme-name='discourse-material-icons'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/desktop_theme_9_ad782db09c6a21e86f43e7f9fbbaa30324037bf5.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='9' data-theme-name='global notice custom css'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/desktop_theme_8_878e84961d78833adf9238d6eda91eb9292d7ed3.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='8' data-theme-name='temp nav fixes'><link href='https://yyz1.discourse-cdn.com/googleaitrial/stylesheets/desktop_theme_2_c35f48dbd27cfaac6e78670aa85b8a0bd9a462fa.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='2' data-theme-name='google ai'>"
-          },
-          {
-            id: 5,
-            content: "<link href='https://forum.ksec.co.uk/stylesheets/color_definitions_light_7_2_5186d2d3066aedb3bfcac1027d47b8b0b5350afb.css' media='all' rel='stylesheet' class='light-scheme'><link href='https://forum.ksec.co.uk/stylesheets/color_definitions_dark_1_2_a0603164c6b779ba925871d7963187c6a6dfa8d0.css' media='(prefers-color-scheme:dark)' rel='stylesheet' class='dark-scheme'><link href='https://forum.ksec.co.uk/stylesheets/desktop_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='desktop'><link href='https://forum.ksec.co.uk/stylesheets/checklist_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='checklist'><link href='https://forum.ksec.co.uk/stylesheets/discourse-ai_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='discourse-ai'><link href='https://forum.ksec.co.uk/stylesheets/discourse-akismet_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='discourse-akismet'><link href='https://forum.ksec.co.uk/stylesheets/discourse-cakeday_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='discourse-cakeday'><link href='https://forum.ksec.co.uk/stylesheets/discourse-details_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='discourse-details'><link href='https://forum.ksec.co.uk/stylesheets/discourse-gamification_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='discourse-gamification'><link href='https://forum.ksec.co.uk/stylesheets/discourse-lazy-videos_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='discourse-lazy-videos'><link href='https://forum.ksec.co.uk/stylesheets/discourse-local-dates_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='discourse-local-dates'><link href='https://forum.ksec.co.uk/stylesheets/discourse-narrative-bot_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='discourse-narrative-bot'><link href='https://forum.ksec.co.uk/stylesheets/discourse-presence_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='discourse-presence'><link href='https://forum.ksec.co.uk/stylesheets/discourse-reactions_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='discourse-reactions'><link href='https://forum.ksec.co.uk/stylesheets/discourse-rss-polling_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='discourse-rss-polling'><link href='https://forum.ksec.co.uk/stylesheets/docker_manager_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='docker_manager'><link href='https://forum.ksec.co.uk/stylesheets/footnote_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='footnote'><link href='https://forum.ksec.co.uk/stylesheets/poll_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='poll'><link href='https://forum.ksec.co.uk/stylesheets/spoiler-alert_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='spoiler-alert'><link href='https://forum.ksec.co.uk/stylesheets/discourse-ai_desktop_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='discourse-ai_desktop'><link href='https://forum.ksec.co.uk/stylesheets/discourse-gamification_desktop_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='discourse-gamification_desktop'><link href='https://forum.ksec.co.uk/stylesheets/discourse-reactions_desktop_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='discourse-reactions_desktop'><link href='https://forum.ksec.co.uk/stylesheets/poll_desktop_1f2801adf122e33ac71771f0a0d92bf223707572.css' media='all' rel='stylesheet' data-target='poll_desktop'><link href='https://forum.ksec.co.uk/stylesheets/desktop_theme_4_51fe4f92f85e2ddf8cb2ac39b3f18429f14452c8.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='4' data-theme-name='discourse clickable topic'><link href='https://forum.ksec.co.uk/stylesheets/desktop_theme_6_003073d7e039da7d37eb1e79b3772306ac8657f4.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='6' data-theme-name='discourse-gifs'><link href='https://forum.ksec.co.uk/stylesheets/desktop_theme_5_ce3252be82b7db613c78ea4f283dcf17abe51741.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='5' data-theme-name='discourse-search-banner'><link href='https://forum.ksec.co.uk/stylesheets/desktop_theme_9_12b3533905718e859faa16d62a11c119e4d64875.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='9' data-theme-name='icon header links'><link href='https://forum.ksec.co.uk/stylesheets/desktop_theme_3_28ffee2ef9ff10c2ad27c49227f68bb1da72a779.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='3' data-theme-name='modern category + group boxes'><link href='https://forum.ksec.co.uk/stylesheets/desktop_theme_2_dd1b36aa59bc2c658ff7a7825007d31f580dab8b.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='2' data-theme-name='air theme'><link href='https://forum.ksec.co.uk/stylesheets/desktop_theme_11_f4cc23465e9e5bf8d991504b6106825edc03c16a.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='11' data-theme-name='custom css &amp; html'>"
-          },
-          {
-            id: 6,
-            content: "<link href='https://thepros.get.it/stylesheets/color_definitions_get-it-light_11_2_ee762a2dd28c63827357489083590cecd6db9323.css' media='all' rel='stylesheet' class='light-scheme'><link href='https://thepros.get.it/stylesheets/color_definitions_dark_1_2_09865b07ec4b67b9401e67edb03a78a33aadf245.css' media='(prefers-color-scheme:dark)' rel='stylesheet' class='dark-scheme'><link href='https://thepros.get.it/stylesheets/desktop_7c3d1efacb3c0d0d50e7279609b75879527a37ad.css' media='all' rel='stylesheet' data-target='desktop'><link href='https://thepros.get.it/stylesheets/chat_7c3d1efacb3c0d0d50e7279609b75879527a37ad.css' media='all' rel='stylesheet' data-target='chat'><link href='https://thepros.get.it/stylesheets/checklist_7c3d1efacb3c0d0d50e7279609b75879527a37ad.css' media='all' rel='stylesheet' data-target='checklist'><link href='https://thepros.get.it/stylesheets/discourse-details_7c3d1efacb3c0d0d50e7279609b75879527a37ad.css' media='all' rel='stylesheet' data-target='discourse-details'><link href='https://thepros.get.it/stylesheets/discourse-lazy-videos_7c3d1efacb3c0d0d50e7279609b75879527a37ad.css' media='all' rel='stylesheet' data-target='discourse-lazy-videos'><link href='https://thepros.get.it/stylesheets/discourse-local-dates_7c3d1efacb3c0d0d50e7279609b75879527a37ad.css' media='all' rel='stylesheet' data-target='discourse-local-dates'><link href='https://thepros.get.it/stylesheets/discourse-narrative-bot_7c3d1efacb3c0d0d50e7279609b75879527a37ad.css' media='all' rel='stylesheet' data-target='discourse-narrative-bot'><link href='https://thepros.get.it/stylesheets/discourse-presence_7c3d1efacb3c0d0d50e7279609b75879527a37ad.css' media='all' rel='stylesheet' data-target='discourse-presence'><link href='https://thepros.get.it/stylesheets/docker_manager_7c3d1efacb3c0d0d50e7279609b75879527a37ad.css' media='all' rel='stylesheet' data-target='docker_manager'><link href='https://thepros.get.it/stylesheets/footnote_7c3d1efacb3c0d0d50e7279609b75879527a37ad.css' media='all' rel='stylesheet' data-target='footnote'><link href='https://thepros.get.it/stylesheets/poll_7c3d1efacb3c0d0d50e7279609b75879527a37ad.css' media='all' rel='stylesheet' data-target='poll'><link href='https://thepros.get.it/stylesheets/spoiler-alert_7c3d1efacb3c0d0d50e7279609b75879527a37ad.css' media='all' rel='stylesheet' data-target='spoiler-alert'><link href='https://thepros.get.it/stylesheets/chat_desktop_7c3d1efacb3c0d0d50e7279609b75879527a37ad.css' media='all' rel='stylesheet' data-target='chat_desktop'><link href='https://thepros.get.it/stylesheets/poll_desktop_7c3d1efacb3c0d0d50e7279609b75879527a37ad.css' media='all' rel='stylesheet' data-target='poll_desktop'><link href='https://thepros.get.it/stylesheets/desktop_theme_4_b593f6a33945d84e8923041356dbae20f78de862.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='4' data-theme-name='clickable topic'><link href='https://thepros.get.it/stylesheets/desktop_theme_3_d0247eb7936be09a3ee02299f743974ceebc1031.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='3' data-theme-name='modern category + group boxes'><link href='https://thepros.get.it/stylesheets/desktop_theme_5_7bc2214caaf0db1a71f3fd05dc0fb629f55ac150.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='5' data-theme-name='search banner'><link href='https://thepros.get.it/stylesheets/desktop_theme_2_381e73ac5235cf49a7c855137e4af4cc4d4a80ef.css' media='all' rel='stylesheet' data-target='desktop_theme' data-theme-id='2' data-theme-name='air theme'>"
-          }
-        ]
-      };
-    },
-    watch: {
-      modelValue(newValue) {
-        this.radio = newValue;
-      }
-    },
-    created() {
-      if (this.modelValue && this.modelValue !== 0) {
-        let result = this.jsonData.find((item) => item.id === this.modelValue);
-        if (result) {
-          $("body").append(result.content);
-        }
-      }
-    }
-  };
-  const _hoisted_1$f = { class: "item" };
-  const _hoisted_2$5 = { class: "ls-flex" };
-  const _hoisted_3$3 = ["id", "value", "onChange"];
-  const _hoisted_4$3 = ["for"];
-  const _hoisted_5$2 = ["for"];
-  const _hoisted_6$2 = ["for"];
-  const _hoisted_7$1 = ["src", "alt"];
-  function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$f, [
-      _cache[1] || (_cache[1] = vue.createElementVNode("p", null, "切换论坛主题：", -1)),
-      _cache[2] || (_cache[2] = vue.createElementVNode("p", null, "无法修改，如果有样式问题无法解决，因为是直接 copy 别的论坛样式文件。", -1)),
-      _cache[3] || (_cache[3] = vue.createElementVNode("p", null, [
-        vue.createElementVNode("a", {
-          href: "https://github.com/dlzmoe/linuxdo-scripts/tree/main/themes",
-          target: "_blank"
-        }, " 如何单独使用，不依托于增强插件？ ")
-      ], -1)),
-      _cache[4] || (_cache[4] = vue.createElementVNode("hr", null, null, -1)),
-      vue.createElementVNode("ul", null, [
-        (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList($data.list, (item) => {
-          return vue.openBlock(), vue.createElementBlock("li", {
-            key: item.id
-          }, [
-            vue.createElementVNode("div", _hoisted_2$5, [
-              vue.withDirectives(vue.createElementVNode("input", {
-                type: "radio",
-                id: item.name,
-                name: "ls-themes",
-                "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.radio = $event),
-                value: item.id,
-                onChange: ($event) => _ctx.$emit("update:modelValue", item.id)
-              }, null, 40, _hoisted_3$3), [
-                [vue.vModelRadio, $data.radio]
-              ]),
-              item.id !== 0 ? (vue.openBlock(), vue.createElementBlock("label", {
-                key: 0,
-                for: item.name
-              }, "风格 " + vue.toDisplayString(item.id), 9, _hoisted_4$3)) : (vue.openBlock(), vue.createElementBlock("label", {
-                key: 1,
-                for: item.name
-              }, "关闭", 8, _hoisted_5$2))
-            ]),
-            vue.createElementVNode("label", {
-              for: item.name
-            }, [
-              item.id !== 0 ? (vue.openBlock(), vue.createElementBlock("img", {
-                key: 0,
-                src: item.imgurl,
-                alt: item.name
-              }, null, 8, _hoisted_7$1)) : vue.createCommentVNode("", true)
-            ], 8, _hoisted_6$2)
-          ]);
-        }), 128))
-      ])
-    ]);
-  }
-  const Themes = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["render", _sfc_render$j], ["__scopeId", "data-v-b5335091"]]);
-  const _sfc_main$i = {
-    data() {
-      return {};
-    },
-    methods: {
-      messageToast(message) {
-        const messageElement = $(`<div class="messageToast-text">${message}</div>`);
-        $("#messageToast").append(messageElement);
-        setTimeout(() => {
-          messageElement.remove();
-        }, 3e3);
-      },
-      // 导入数据
-      triggerFileInput() {
-        this.$refs.fileInput.click();
-      },
-      handleFileUpload(event) {
-        const file = event.target.files[0];
-        if (file && file.type === "application/json") {
-          const reader = new FileReader();
-          reader.onload = (e) => {
-            try {
-              const jsonData = JSON.parse(e.target.result);
-              this.importData(jsonData);
-            } catch (error) {
-              console.error("Error parsing JSON:", error);
-            }
-          };
-          reader.readAsText(file);
-        } else {
-          console.error("Please select a valid JSON file.");
-        }
-      },
-      // 处理导入的数据
-      importData(data) {
-        localStorage.setItem("linxudoscriptssetting", data);
-        this.messageToast("导入成功，即将刷新页面！");
-        setTimeout(() => {
-          location.reload();
-        }, 1500);
-      },
-      // 导出数据
-      exportData() {
-        const today = /* @__PURE__ */ new Date();
-        const year = today.getFullYear();
-        const month = String(today.getMonth() + 1).padStart(2, "0");
-        const day = String(today.getDate()).padStart(2, "0");
-        const formattedDate = year + month + day;
-        const data = localStorage.getItem("linxudoscriptssetting");
-        const dataStr = JSON.stringify(data, null, 2);
-        const blob = new Blob([dataStr], { type: "application/json" });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = `linuxdo-script-data-${formattedDate}.json`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        URL.revokeObjectURL(url);
-        this.messageToast("导出成功！");
-      }
-    }
-  };
-  function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-      vue.createElementVNode("input", {
-        type: "file",
-        id: "fileInput",
-        ref: "fileInput",
-        style: { "display": "none" },
-        accept: ".json",
-        onChange: _cache[0] || (_cache[0] = (...args) => $options.handleFileUpload && $options.handleFileUpload(...args))
-      }, null, 544),
-      vue.createElementVNode("button", {
-        class: "btn import",
-        onClick: _cache[1] || (_cache[1] = (...args) => $options.triggerFileInput && $options.triggerFileInput(...args))
-      }, "导入"),
-      vue.createElementVNode("button", {
-        class: "btn export",
-        onClick: _cache[2] || (_cache[2] = (...args) => $options.exportData && $options.exportData(...args))
-      }, "导出")
-    ], 64);
-  }
-  const ManualBackup = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$i]]);
-  const _sfc_main$h = {
-    props: {
-      value: {
-        type: Object,
-        default: {
-          webdavUrl: "",
-          webdavUsername: "",
-          webdavPassword: ""
-        }
-      }
-    },
-    components: {
-      ManualBackup
-    },
-    watch: {
-      value(newValue) {
-        this.tableData = newValue;
-      }
-    },
-    data() {
-      return {
-        tableData: this.value
-        // webdavUrl: "",
-        // webdavUsername: "",
-        // webdavPassword: "",
-      };
-    },
-    methods: {
-      messageToast(message) {
-        const messageElement = $(`<div class="messageToast-text">${message}</div>`);
-        $("#messageToast").append(messageElement);
-        setTimeout(() => {
-          messageElement.remove();
-        }, 3e3);
-      },
-      handleChange() {
-        $(".lxwebdavpassword").removeClass("act");
-        this.$emit("update:value", this.tableData);
-        let linxudoscriptssetting = JSON.parse(
-          localStorage.getItem("linxudoscriptssetting")
-        );
-        let data = {
-          webdavUrl: this.tableData.webdavUrl,
-          webdavUsername: this.tableData.webdavUsername,
-          webdavPassword: this.tableData.webdavPassword
-        };
-        linxudoscriptssetting.syncbackup = data;
-        localStorage.setItem(
-          "linxudoscriptssetting",
-          JSON.stringify(linxudoscriptssetting)
-        );
-      },
-      // 检查文件夹是否存在
-      checkFolderExists(folderUrl) {
-        return new Promise((resolve, reject) => {
-          GM_xmlhttpRequest({
-            method: "PROPFIND",
-            url: folderUrl,
-            headers: {
-              Authorization: "Basic " + btoa(`${this.tableData.webdavUsername}:${this.tableData.webdavPassword}`),
-              Depth: "1"
-              // 只检查一层
-            },
-            onload: function(response) {
-              if (response.status === 207) {
-                resolve(true);
-              } else if (response.status === 404) {
-                resolve(false);
-              } else {
-                reject(new Error(`Error checking folder: ${response.statusText}`));
-              }
-            },
-            onerror: function(error) {
-              reject(error);
-            }
-          });
-        });
-      },
-      // 创建文件夹
-      createFolder(folderUrl) {
-        return new Promise((resolve, reject) => {
-          GM_xmlhttpRequest({
-            method: "MKCOL",
-            url: folderUrl,
-            headers: {
-              Authorization: "Basic " + btoa(`${this.tableData.webdavUsername}:${this.tableData.webdavPassword}`)
-            },
-            onload: function(response) {
-              if (response.status === 201) {
-                resolve(true);
-              } else {
-                reject(new Error(`Error creating folder: ${response.statusText}`));
-              }
-            },
-            onerror: function(error) {
-              reject(error);
-            }
-          });
-        });
-      },
-      // 检查并创建文件夹
-      async checkAndCreateFolder() {
-        const folderUrl = `${this.tableData.webdavUrl}linuxdo-scripts-backup/`;
-        try {
-          const exists = await this.checkFolderExists(folderUrl);
-          if (!exists) {
-            await this.createFolder(folderUrl);
-            console.log("Folder 'linuxdo-scripts-backup' created successfully.");
-          } else {
-            console.log("Folder 'linuxdo-scripts-backup' already exists.");
-          }
-          const data = localStorage.getItem("linxudoscriptssetting");
-          let fileData;
-          try {
-            fileData = JSON.stringify(JSON.parse(data));
-          } catch (error) {
-            console.error("Error parsing localStorage data:", error);
-            return;
-          }
-          const uploadUrl = `${this.tableData.webdavUrl}linuxdo-scripts-backup/data.json`;
-          try {
-            const uploadResponse = await this.uploadFile(uploadUrl, fileData);
-            this.messageToast("同步到云端成功！");
-          } catch (error) {
-            console.error("Upload failed:", error);
-            this.messageToast("同步失败！");
-          }
-        } catch (error) {
-          console.error(error);
-        }
-      },
-      uploadFile(url, fileData) {
-        return new Promise((resolve, reject) => {
-          GM_xmlhttpRequest({
-            method: "PUT",
-            url,
-            data: fileData,
-            headers: {
-              "Content-Type": "text/plain",
-              Authorization: "Basic " + btoa(`${this.tableData.webdavUsername}:${this.tableData.webdavPassword}`)
-            },
-            onload: function(response) {
-              if (response.status >= 200 && response.status < 300) {
-                resolve(response);
-              } else {
-                reject(new Error(`Upload failed: ${response.statusText}`));
-              }
-            },
-            onerror: function(error) {
-              reject(error);
-            }
-          });
-        });
-      },
-      downloadFile(url) {
-        return new Promise((resolve, reject) => {
-          GM_xmlhttpRequest({
-            method: "GET",
-            url,
-            headers: {
-              Authorization: "Basic " + btoa(`${this.tableData.webdavUsername}:${this.tableData.webdavPassword}`)
-            },
-            onload: function(response) {
-              if (response.status >= 200 && response.status < 300) {
-                resolve(response.responseText);
-              } else {
-                reject(new Error(`Download failed: ${response.statusText}`));
-              }
-            },
-            onerror: function(error) {
-              reject(error);
-            }
-          });
-        });
-      },
-      // 上传
-      async uploadSampleFile() {
-        this.checkAndCreateFolder();
-      },
-      // 下载
-      async downloadSampleFile() {
-        const downloadUrl = `${this.tableData.webdavUrl}linuxdo-scripts-backup/data.json`;
-        try {
-          const downloadResponse = await this.downloadFile(downloadUrl);
-          localStorage.setItem("linxudoscriptssetting", downloadResponse);
-          this.messageToast("下载成功，即将刷新页面！");
-          setTimeout(() => {
-            location.reload();
-          }, 1500);
-        } catch (error) {
-          console.error(error);
-          this.messageToast("下载失败，请检查是否存在备份！");
-        }
-      },
-      // 显示/隐藏密码
-      showpsw() {
-        $(".lxwebdavpassword").addClass("act");
-      }
-    },
-    created() {
-      const linxudoscriptssetting = JSON.parse(localStorage.getItem("linxudoscriptssetting")) || [];
-      if (linxudoscriptssetting) {
-        this.tableData.webdavUrl = linxudoscriptssetting.syncbackup.webdavUrl;
-        this.tableData.webdavUsername = linxudoscriptssetting.syncbackup.webdavUsername;
-        this.tableData.webdavPassword = linxudoscriptssetting.syncbackup.webdavPassword;
-      }
-    }
-  };
-  const _hoisted_1$e = { class: "item" };
-  const _hoisted_2$4 = { class: "item" };
-  const _hoisted_3$2 = { class: "item" };
-  const _hoisted_4$2 = { class: "btnwrapper" };
-  function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_ManualBackup = vue.resolveComponent("ManualBackup");
-    return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-      _cache[12] || (_cache[12] = vue.createElementVNode("div", { class: "item" }, "用于在云端同步设置数据，无需手动导入导出。（同步前先保存设置）", -1)),
-      vue.createElementVNode("div", _hoisted_1$e, [
-        _cache[9] || (_cache[9] = vue.createElementVNode("div", { class: "tit" }, "WebDav 地址：", -1)),
-        vue.withDirectives(vue.createElementVNode("input", {
-          type: "text",
-          "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.tableData.webdavUrl = $event),
-          onBlur: _cache[1] || (_cache[1] = (...args) => $options.handleChange && $options.handleChange(...args)),
-          placeholder: "https://dav.xxxx.com/dav/"
-        }, null, 544), [
-          [vue.vModelText, $data.tableData.webdavUrl]
-        ])
-      ]),
-      vue.createElementVNode("div", _hoisted_2$4, [
-        _cache[10] || (_cache[10] = vue.createElementVNode("div", { class: "tit" }, "WebDav 用户名：", -1)),
-        vue.withDirectives(vue.createElementVNode("input", {
-          type: "text",
-          "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => $data.tableData.webdavUsername = $event),
-          onBlur: _cache[3] || (_cache[3] = (...args) => $options.handleChange && $options.handleChange(...args))
-        }, null, 544), [
-          [vue.vModelText, $data.tableData.webdavUsername]
-        ])
-      ]),
-      vue.createElementVNode("div", _hoisted_3$2, [
-        _cache[11] || (_cache[11] = vue.createElementVNode("div", { class: "tit" }, "WebDav 密码：", -1)),
-        vue.withDirectives(vue.createElementVNode("input", {
-          type: "text",
-          class: "lxwebdavpassword",
-          "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => $data.tableData.webdavPassword = $event),
-          onBlur: _cache[5] || (_cache[5] = (...args) => $options.handleChange && $options.handleChange(...args)),
-          onFocus: _cache[6] || (_cache[6] = (...args) => $options.showpsw && $options.showpsw(...args))
-        }, null, 544), [
-          [vue.vModelText, $data.tableData.webdavPassword]
-        ])
-      ]),
-      vue.createElementVNode("div", _hoisted_4$2, [
-        vue.createElementVNode("button", {
-          onClick: _cache[7] || (_cache[7] = (...args) => $options.uploadSampleFile && $options.uploadSampleFile(...args))
-        }, "同步到云端"),
-        vue.createElementVNode("button", {
-          onClick: _cache[8] || (_cache[8] = (...args) => $options.downloadSampleFile && $options.downloadSampleFile(...args))
-        }, "下载到本地")
-      ]),
-      _cache[13] || (_cache[13] = vue.createElementVNode("hr", null, null, -1)),
-      _cache[14] || (_cache[14] = vue.createElementVNode("div", { style: { "margin": "10px 0" } }, "手动导入导出数据：", -1)),
-      vue.createVNode(_component_ManualBackup)
-    ], 64);
-  }
-  const SyncBackup = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["render", _sfc_render$h], ["__scopeId", "data-v-b0378f6f"]]);
-  const _sfc_main$g = {
-    data() {
-      return {
-        status: false
-      };
-    },
-    methods: {
-      lookop() {
-        this.status = !this.status;
-        $(".post-stream").toggleClass("lookopwrapactive");
-      }
-    }
-  };
-  const _hoisted_1$d = { class: "lookopbtn" };
-  function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$d, [
-      vue.createElementVNode("div", {
-        class: vue.normalizeClass(["el-button", { act: $data.status }]),
-        onClick: _cache[0] || (_cache[0] = (...args) => $options.lookop && $options.lookop(...args)),
-        title: "只看楼主"
-      }, " 楼主 ", 2)
-    ]);
-  }
-  const LookOP = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["render", _sfc_render$g], ["__scopeId", "data-v-6520db1a"]]);
-  const _sfc_main$f = {
-    data() {
-      return {
-        isMinimized: true,
-        content: "输入用户名查询等级信息",
-        username: "",
-        levelDescriptions: {
-          0: "游客",
-          1: "基本用户",
-          2: "成员",
-          3: "活跃用户",
-          4: "领导者"
-        },
-        levelRequirements: {
-          0: { topics_entered: 5, posts_read_count: 30, time_read: 600 },
-          1: {
-            days_visited: 15,
-            likes_given: 1,
-            likes_received: 1,
-            post_count: 3,
-            topics_entered: 20,
-            posts_read_count: 100,
-            time_read: 3600
-          },
-          2: {
-            days_visited: 50,
-            likes_given: 30,
-            likes_received: 20,
-            post_count: 10,
-            topics_entered: 0,
-            posts_read_count: 0
-          }
-        }
-      };
-    },
-    methods: {
-      async fetchAboutData() {
-        try {
-          const response = await fetch("/about.json", {
-            headers: {
-              Accept: "application/json",
-              "User-Agent": "Mozilla/5.0"
-            },
-            method: "GET"
-          });
-          if (!response.ok) throw new Error(`HTTP 错误！状态：${response.status}`);
-          return await response.json();
-        } catch (error) {
-          console.error("获取关于页面数据失败：", error);
-          this.displayError("获取关于页面数据失败");
-          return null;
-        }
-      },
-      async fetchUserData(username) {
-        try {
-          const response = await fetch(`/u/${username}/summary.json`, {
-            headers: {
-              Accept: "application/json",
-              "User-Agent": "Mozilla/5.0"
-            },
-            method: "GET"
-          });
-          if (!response.ok) throw new Error(`HTTP 错误！状态：${response.status}`);
-          return await response.json();
-        } catch (error) {
-          console.error("获取用户数据失败：", error);
-          this.displayError("获取用户数据失败");
-          return null;
-        }
-      },
-      async handleSearch() {
-        if (this.username == "") {
-          return false;
-        }
-        this.content = "正在查询中，请稍后...";
-        const username = this.username.trim();
-        if (username) {
-          const aboutData = await this.fetchAboutData();
-          const userData = await this.fetchUserData(username);
-          if (userData && aboutData) {
-            const userSummary = userData.user_summary;
-            const user = userData.users[0];
-            const status = aboutData.about.stats;
-            this.updatePopupContent(userSummary, user, status);
-          }
-        }
-      },
-      updatePopupContent(userSummary, user, status) {
-        if (userSummary && user) {
-          let content = `<strong>信任等级：</strong>${this.levelDescriptions[user.trust_level]}<br><strong>升级进度：</strong><br>`;
-          if (user.trust_level === 3) {
-            content += `联系管理员以升级到领导者<br>`;
-          } else if (user.trust_level === 4) {
-            content += `您已是最高信任等级<br>`;
-          } else {
-            const requirements = this.levelRequirements[user.trust_level];
-            if (user.trust_level === 2) {
-              requirements.posts_read_count = Math.min(
-                Math.floor(status.posts_30_days / 4),
-                2e4
-              );
-              requirements.topics_entered = Math.min(
-                Math.floor(status.topics_30_days / 4),
-                500
-              );
-            }
-            Object.entries(requirements).forEach(([key, val]) => {
-              const currentVal = userSummary[key] || 0;
-              const color = currentVal >= val ? "green" : "red";
-              content += `${this.translateStat(
-              key
-            )}: <span style="color: ${color};">${currentVal} / ${val}</span><br>`;
-            });
-          }
-          this.content = content;
-        }
-      },
-      togglePopupSize() {
-        this.isMinimized = !this.isMinimized;
-      },
-      displayError(message) {
-        this.content = `<strong>错误：</strong>${message}`;
-      },
-      translateStat(stat) {
-        const translations = {
-          days_visited: "访问天数",
-          likes_given: "给出的赞",
-          likes_received: "收到的赞",
-          post_count: "帖子数量",
-          posts_read_count: "阅读的帖子数",
-          topics_entered: "进入的主题数",
-          time_read: "阅读时间"
-        };
-        return translations[stat] || stat;
-      }
-    },
-    created() {
-      setInterval(() => {
-        if (!this.username) {
-          const src = $("#toggle-current-user img.avatar").attr("src");
-          const match = src.match(/\/user_avatar\/linux\.do\/([^\/]+)/);
-          if (match && match[1]) {
-            this.username = match[1];
-          }
-        }
-      }, 1e3);
-    }
-  };
-  const _hoisted_1$c = {
-    key: 0,
-    id: "linuxDoLevelPopupContent"
-  };
-  const _hoisted_2$3 = ["innerHTML"];
-  function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", null, [
-      vue.createElementVNode("div", {
-        class: vue.normalizeClass(["el-button", ["linuxDoLevelPopup", $data.isMinimized ? "minimized" : ""]]),
-        onClick: _cache[0] || (_cache[0] = (...args) => $options.togglePopupSize && $options.togglePopupSize(...args)),
-        title: "等级查询"
-      }, _cache[3] || (_cache[3] = [
-        vue.createElementVNode("span", null, "等级", -1)
-      ]), 2),
-      !$data.isMinimized ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_1$c, [
-        vue.createElementVNode("div", { innerHTML: $data.content }, null, 8, _hoisted_2$3),
-        vue.withDirectives(vue.createElementVNode("input", {
-          "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => $data.username = $event),
-          autocomplete: "off",
-          type: "text",
-          placeholder: "请输入用户名...",
-          id: "linuxDoUserSearch"
-        }, null, 512), [
-          [vue.vModelText, $data.username]
-        ]),
-        vue.createElementVNode("button", {
-          onClick: _cache[2] || (_cache[2] = (...args) => $options.handleSearch && $options.handleSearch(...args)),
-          class: "btn btn-icon-text",
-          type: "button"
-        }, _cache[4] || (_cache[4] = [
-          vue.createElementVNode("span", { class: "d-button-label" }, "搜索", -1)
-        ]))
-      ])) : vue.createCommentVNode("", true)
-    ]);
-  }
-  const LevelDiglog = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$f], ["__scopeId", "data-v-57dbaeb5"]]);
-  const _sfc_main$e = {
-    data() {
-      return {
-        num: 10,
-        // 滚动速度
-        isScrolling: false,
-        scrollInterval: null,
-        status: false
-      };
-    },
-    methods: {
-      scrollToBottomSlowly(distancePerStep = this.num, delayPerStep = 50) {
-        if (this.scrollInterval !== null) {
-          clearInterval(this.scrollInterval);
-        }
-        this.scrollInterval = setInterval(() => {
-          const documentHeight = document.body.scrollHeight;
-          const windowHeight = window.innerHeight;
-          const scrollPosition = window.scrollY;
-          if (scrollPosition + windowHeight >= documentHeight - 1) {
-            clearInterval(this.scrollInterval);
-            this.scrollInterval = null;
-            this.isScrolling = false;
-            this.status = false;
-          } else {
-            window.scrollBy(0, distancePerStep);
-          }
-        }, delayPerStep);
-      },
-      autoread() {
-        if (this.isScrolling) {
-          clearInterval(this.scrollInterval);
-          this.scrollInterval = null;
-          this.isScrolling = false;
-          this.status = false;
-        } else {
-          this.scrollToBottomSlowly();
-          this.isScrolling = true;
-          this.status = true;
-        }
-      }
-    },
-    created() {
-      let linxudoscriptssetting = localStorage.getItem("linxudoscriptssetting");
-      if (linxudoscriptssetting) {
-        linxudoscriptssetting = JSON.parse(linxudoscriptssetting);
-        this.num = Number(linxudoscriptssetting.checked8.value2);
-      }
-    }
-  };
-  const _hoisted_1$b = {
-    key: 0,
-    xmlns: "http://www.w3.org/2000/svg",
-    width: "24",
-    height: "24",
-    viewBox: "0 0 24 24",
-    fill: "currentColor"
-  };
-  const _hoisted_2$2 = {
-    key: 1,
-    xmlns: "http://www.w3.org/2000/svg",
-    width: "24",
-    height: "24",
-    viewBox: "0 0 24 24",
-    fill: "none",
-    stroke: "currentColor",
-    "stroke-width": "2",
-    "stroke-linecap": "round",
-    "stroke-linejoin": "round",
-    class: "icon icon-tabler icons-tabler-outline icon-tabler-loader"
-  };
-  function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", {
-      class: vue.normalizeClass(["el-button", { act: $data.status }]),
-      onClick: _cache[0] || (_cache[0] = (...args) => $options.autoread && $options.autoread(...args)),
-      title: "自动阅读"
-    }, [
-      $data.status == false ? (vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$b, _cache[1] || (_cache[1] = [
-        vue.createElementVNode("path", {
-          stroke: "none",
-          d: "M0 0h24v24H0z",
-          fill: "none"
-        }, null, -1),
-        vue.createElementVNode("path", { d: "M12.088 4.82a10 10 0 0 1 9.412 .314a1 1 0 0 1 .493 .748l.007 .118v13a1 1 0 0 1 -1.5 .866a8 8 0 0 0 -8 0a1 1 0 0 1 -1 0a8 8 0 0 0 -7.733 -.148l-.327 .18l-.103 .044l-.049 .016l-.11 .026l-.061 .01l-.117 .006h-.042l-.11 -.012l-.077 -.014l-.108 -.032l-.126 -.056l-.095 -.056l-.089 -.067l-.06 -.056l-.073 -.082l-.064 -.089l-.022 -.036l-.032 -.06l-.044 -.103l-.016 -.049l-.026 -.11l-.01 -.061l-.004 -.049l-.002 -.068v-13a1 1 0 0 1 .5 -.866a10 10 0 0 1 9.412 -.314l.088 .044l.088 -.044z" }, null, -1)
-      ]))) : vue.createCommentVNode("", true),
-      $data.status == true ? (vue.openBlock(), vue.createElementBlock("svg", _hoisted_2$2, _cache[2] || (_cache[2] = [
-        vue.createStaticVNode('<path stroke="none" d="M0 0h24v24H0z" fill="none" data-v-64839780></path><path d="M12 6l0 -3" data-v-64839780></path><path d="M16.25 7.75l2.15 -2.15" data-v-64839780></path><path d="M18 12l3 0" data-v-64839780></path><path d="M16.25 16.25l2.15 2.15" data-v-64839780></path><path d="M12 18l0 3" data-v-64839780></path><path d="M7.75 16.25l-2.15 2.15" data-v-64839780></path><path d="M6 12l-3 0" data-v-64839780></path><path d="M7.75 7.75l-2.15 -2.15" data-v-64839780></path>', 9)
-      ]))) : vue.createCommentVNode("", true)
-    ], 2);
-  }
-  const AutoRead = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$e], ["__scopeId", "data-v-64839780"]]);
-  const _sfc_main$d = {
-    methods: {
-      openai() {
-        window.open("https://shared.oaifree.com/?temporary-chat=true", "_blank");
-      }
-    }
-  };
-  function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", null, [
-      vue.createElementVNode("div", {
-        class: "el-button",
-        style: { "font-size": "18px" },
-        onClick: _cache[0] || (_cache[0] = (...args) => $options.openai && $options.openai(...args)),
-        type: "primary",
-        title: "AI对话"
-      }, " AI ")
-    ]);
-  }
-  const AIDialog = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$d]]);
-  const _sfc_main$c = {
-    methods: {
-      replaybtn() {
-        $('button[title="开始撰写此话题的回复"]')[0].click();
-      }
-    }
-  };
-  const _hoisted_1$a = { class: "replaybtn" };
-  function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$a, [
-      vue.createElementVNode("div", {
-        class: "el-button",
-        style: { "font-size": "18px" },
-        onClick: _cache[0] || (_cache[0] = (...args) => $options.replaybtn && $options.replaybtn(...args)),
-        type: "primary",
-        title: "回复"
-      }, _cache[1] || (_cache[1] = [
-        vue.createElementVNode("svg", {
-          class: "fa d-icon d-icon-reply svg-icon svg-string",
-          xmlns: "http://www.w3.org/2000/svg"
-        }, [
-          vue.createElementVNode("use", { href: "#reply" })
-        ], -1)
-      ]))
-    ]);
-  }
-  const ReplyBtn = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$c]]);
-  const _sfc_main$b = {
-    data() {
-      return {
-        version: packageJson.version
-      };
-    }
-  };
-  const _hoisted_1$9 = { class: "item-foot" };
-  function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$9, [
-      _cache[0] || (_cache[0] = vue.createElementVNode("span", null, [
-        vue.createElementVNode("a", {
-          href: "https://github.com/dlzmoe/linuxdo-scripts",
-          target: "_blank"
-        }, " Github 源码 ")
-      ], -1)),
-      vue.createElementVNode("span", null, "当前版本：" + vue.toDisplayString($data.version), 1)
-    ]);
-  }
-  const Updates = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$b], ["__scopeId", "data-v-45c51ed7"]]);
-  const _sfc_main$a = {
-    created() {
-      setTimeout(() => {
-        const isShowplugininstallationprompts = localStorage.getItem(
-          "isShowplugininstallationprompts"
-        );
-        if (isShowplugininstallationprompts == "true") ;
-        else {
-          if ($(".UsageTip").length < 1) {
-            $(".sidebar-footer-container").before(`
-            <dialog open class="UsageTip">
-              <div class="title">友情提示</div>
-              <div>
-                佬友你好，你已经成功安装 linuxdo 增强插件啦！<a
-                  href="https://linuxdo-scripts-docs.netlify.app/"
-                  target="_blank">
-                  使用文档
-                  </a>
-              </div>
-              <div style="color:#e00">
-                设置按钮在下方切换主题的旁边哦~ 有个小齿轮，点击它开始配置插件！
-              </div>
-              <div>如果可以的话欢迎点个 star 支持一下~</div>
-              <div>
-                <a href="https://github.com/dlzmoe/linuxdo-scripts/" target="_blank">
-                  <img
-                    src="https://img.shields.io/github/stars/dlzmoe%2Flinuxdo-scripts?style=for-the-badge&labelColor=%235D5D5D&color=%23E97435"
-                    alt="icon"
-                  />
-                </a>
-              </div>
-              <button class="clicktohide">点击我，该提示永远不会出现啦</button>
-            </dialog>
-           `);
-            $(".clicktohide").click(function() {
-              localStorage.setItem("isShowplugininstallationprompts", true);
-              $(".UsageTip").remove();
-            });
-          }
-        }
-      }, 100);
-    }
-  };
-  function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
-    return null;
-  }
-  const UsageTip = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$a]]);
-  const _sfc_main$9 = {
-    methods: {
-      init() {
-        $(".signature-img").each(function() {
-          var self1 = $(this);
-          var url1 = self1.attr("src");
-          var img1 = new Image();
-          img1.src = url1;
-          img1.onerror = function() {
-            if (self1.siblings(".signature-p").length < 1) {
-              self1.after(
-                `<p class="signature-p">${url1}（该用户签名不可访问，已自动转文字）</p>`
-              );
-              self1.hide();
-            }
-          };
-        });
-      }
-    },
-    created() {
-      let pollinglength2 = 0;
-      setInterval(() => {
-        if (pollinglength2 != $(".post-stream .topic-post").length) {
-          pollinglength2 = $(".post-stream .topic-post").length;
-          this.init();
-        }
-      }, 1e3);
-    }
-  };
-  function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
-    return null;
-  }
-  const Signature = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$9]]);
-  const _sfc_main$8 = {
-    data() {
-      return {
-        floorlotteryval1: "",
-        floorlotteryval2: "",
-        floorlotterloading: false,
-        floorlotterresult: ""
-      };
-    },
-    methods: {
-      // 开始抽奖
-      drawRandomNumbers() {
-        if (this.floorlotteryval1 === "" || this.floorlotteryval2 === "") {
-          this.messageToast("请输入有效的数字");
-          return false;
-        }
-        const total = parseInt(this.floorlotteryval1);
-        const count = parseInt(this.floorlotteryval2);
-        if (isNaN(total) || isNaN(count) || total <= 0 || count <= 0 || count > total) {
-          this.messageToast("请输入有效的数字");
-          return false;
-        }
-        this.floorlotterloading = true;
-        this.floorlotterresult = "";
-        setTimeout(() => {
-          const result = this.getRandomNumbers(total, count);
-          this.floorlotterresult = result.join(", ");
-          this.floorlotterloading = false;
-        }, 1e3);
-      },
-      getRandomNumbers(total, count) {
-        const numbers = Array.from({ length: total }, (_, i) => i + 1);
-        const result = [];
-        for (let i = 0; i < count; i++) {
-          const randomIndex = Math.floor(Math.random() * numbers.length);
-          result.push(numbers[randomIndex]);
-          numbers.splice(randomIndex, 1);
-        }
-        return result;
-      },
-      closelotter() {
-        $("#floorlotteryDialog").hide();
-        $(".linuxdoscripts-opacity").hide();
-      }
-    }
-  };
-  const _hoisted_1$8 = { id: "floorlotteryDialog" };
-  const _hoisted_2$1 = {
-    class: "menu-body",
-    style: { "margin-top": "10px" }
-  };
-  const _hoisted_3$1 = { class: "inner" };
-  const _hoisted_4$1 = { class: "inner" };
-  const _hoisted_5$1 = { key: 0 };
-  const _hoisted_6$1 = {
-    key: 1,
-    title: "抽奖结果",
-    type: "success"
-  };
-  function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("dialog", _hoisted_1$8, [
-      _cache[7] || (_cache[7] = vue.createElementVNode("div", { class: "menu-header" }, [
-        vue.createElementVNode("div", { class: "title" }, "楼层抽奖")
-      ], -1)),
-      vue.createElementVNode("div", _hoisted_2$1, [
-        vue.createElementVNode("div", _hoisted_3$1, [
-          _cache[4] || (_cache[4] = vue.createElementVNode("label", null, "总楼层数：", -1)),
-          vue.withDirectives(vue.createElementVNode("input", {
-            type: "text",
-            "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.floorlotteryval1 = $event)
-          }, null, 512), [
-            [vue.vModelText, $data.floorlotteryval1]
-          ])
-        ]),
-        vue.createElementVNode("div", _hoisted_4$1, [
-          _cache[5] || (_cache[5] = vue.createElementVNode("label", null, "抽奖数量：", -1)),
-          vue.withDirectives(vue.createElementVNode("input", {
-            type: "text",
-            "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => $data.floorlotteryval2 = $event)
-          }, null, 512), [
-            [vue.vModelText, $data.floorlotteryval2]
-          ])
-        ]),
-        vue.createElementVNode("button", {
-          class: "btn save",
-          onClick: _cache[2] || (_cache[2] = (...args) => $options.drawRandomNumbers && $options.drawRandomNumbers(...args))
-        }, "开始抽奖"),
-        vue.createElementVNode("button", {
-          class: "btn",
-          style: { "background": "#979797" },
-          plain: "",
-          onClick: _cache[3] || (_cache[3] = (...args) => $options.closelotter && $options.closelotter(...args))
-        }, " 关闭弹窗 "),
-        _cache[6] || (_cache[6] = vue.createElementVNode("div", { style: { "height": "20px" } }, null, -1)),
-        $data.floorlotterloading ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_5$1, "正在抽奖...")) : vue.createCommentVNode("", true),
-        $data.floorlotterresult ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_6$1, " 抽奖结果：恭喜 " + vue.toDisplayString($data.floorlotterresult) + " 楼中奖！ ", 1)) : vue.createCommentVNode("", true)
-      ])
-    ]);
-  }
-  const FloorLottery = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$8], ["__scopeId", "data-v-649030ce"]]);
-  const _sfc_main$7 = {};
-  const _hoisted_1$7 = {
-    xmlns: "http://www.w3.org/2000/svg",
-    width: "24",
-    height: "24",
-    fill: "none",
-    viewBox: "0 0 24 24",
-    class: "icon-sm"
-  };
-  function _sfc_render$7(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$7, _cache[0] || (_cache[0] = [
-      vue.createElementVNode("path", {
-        fill: "currentColor",
-        "fill-rule": "evenodd",
-        d: "M11.568 3.5a1 1 0 0 0-.863.494l-.811 1.381A3 3 0 0 1 7.33 6.856l-1.596.013a1 1 0 0 0-.858.501l-.44.761a1 1 0 0 0-.003.992l.792 1.4a3 3 0 0 1 0 2.954l-.792 1.4a1 1 0 0 0 .004.992l.439.76a1 1 0 0 0 .858.502l1.596.013a3 3 0 0 1 2.564 1.48l.811 1.382a1 1 0 0 0 .863.494h.87a1 1 0 0 0 .862-.494l.812-1.381a3 3 0 0 1 2.563-1.481l1.596-.013a1 1 0 0 0 .859-.501l.439-.761a1 1 0 0 0 .004-.992l-.793-1.4a3 3 0 0 1 0-2.953l.793-1.401a1 1 0 0 0-.004-.992l-.439-.76a1 1 0 0 0-.859-.502l-1.596-.013a3 3 0 0 1-2.563-1.48L13.3 3.993a1 1 0 0 0-.862-.494zM8.98 2.981A3 3 0 0 1 11.568 1.5h.87a3 3 0 0 1 2.588 1.481l.81 1.382a1 1 0 0 0 .855.494l1.597.013a3 3 0 0 1 2.575 1.502l.44.76a3 3 0 0 1 .011 2.975l-.792 1.4a1 1 0 0 0 0 .985l.792 1.401a3 3 0 0 1-.012 2.974l-.439.761a3 3 0 0 1-2.575 1.503l-1.597.012a1 1 0 0 0-.854.494l-.811 1.382a3 3 0 0 1-2.588 1.481h-.87a3 3 0 0 1-2.588-1.481l-.811-1.382a1 1 0 0 0-.855-.494l-1.596-.012a3 3 0 0 1-2.576-1.503l-.439-.76a3 3 0 0 1-.012-2.975l.793-1.4a1 1 0 0 0 0-.985l-.793-1.4a3 3 0 0 1 .012-2.975l.44-.761A3 3 0 0 1 5.717 4.87l1.596-.013a1 1 0 0 0 .855-.494z",
-        "clip-rule": "evenodd"
-      }, null, -1),
-      vue.createElementVNode("path", {
-        fill: "currentColor",
-        "fill-rule": "evenodd",
-        d: "M12.003 10.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M8.502 12a3.5 3.5 0 1 1 7 .001 3.5 3.5 0 0 1-7-.001",
-        "clip-rule": "evenodd"
-      }, null, -1)
-    ]));
-  }
-  const Setting1 = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$7]]);
-  const _sfc_main$6 = {};
-  const _hoisted_1$6 = {
-    xmlns: "http://www.w3.org/2000/svg",
-    width: "24",
-    height: "24",
-    fill: "none",
-    viewBox: "0 0 24 24",
-    class: "icon-sm"
-  };
-  function _sfc_render$6(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$6, _cache[0] || (_cache[0] = [
-      vue.createElementVNode("path", {
-        fill: "currentColor",
-        "fill-rule": "evenodd",
-        d: "M12 4a3 3 0 1 0 0 6 3 3 0 0 0 0-6M7 7a5 5 0 1 1 10 0A5 5 0 0 1 7 7m12.028 8.626c-.342-.061-.834.027-1.346.557a1 1 0 0 1-1.438 0c-.512-.53-1.003-.618-1.345-.557-.36.064-.681.312-.837.702-.257.643-.16 2.334 2.901 4.134 3.062-1.8 3.159-3.49 2.901-4.134a1.11 1.11 0 0 0-.836-.702m2.693-.041c.854 2.134-.456 4.844-4.284 6.904a1 1 0 0 1-.948 0c-3.828-2.06-5.137-4.77-4.284-6.904a3.11 3.11 0 0 1 2.343-1.929c.809-.144 1.655.035 2.415.536.76-.5 1.607-.68 2.415-.536a3.11 3.11 0 0 1 2.343 1.929m-11.795-1.38a1 1 0 0 1-.548 1.303C7.06 16.453 5.5 18.581 5.5 21a1 1 0 1 1-2 0c0-3.322 2.141-6.128 5.122-7.344a1 1 0 0 1 1.304.549",
-        "clip-rule": "evenodd"
-      }, null, -1)
-    ]));
-  }
-  const Setting2 = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$6]]);
-  const _sfc_main$5 = {};
-  const _hoisted_1$5 = {
-    xmlns: "http://www.w3.org/2000/svg",
-    width: "24",
-    height: "24",
-    fill: "none",
-    viewBox: "0 0 24 24",
-    class: "icon-sm"
-  };
-  function _sfc_render$5(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$5, _cache[0] || (_cache[0] = [
-      vue.createElementVNode("path", {
-        fill: "currentColor",
-        "fill-rule": "evenodd",
-        d: "M12.4 3.767a1 1 0 0 0-.8 0l-6 2.625a1 1 0 0 0-.6.916V13c0 1.714.616 3.283 1.638 4.5A6.99 6.99 0 0 1 12 15c2.153 0 4.078.972 5.362 2.5A6.97 6.97 0 0 0 19 13V7.308a1 1 0 0 0-.6-.916zm3.47 15.067A4.99 4.99 0 0 0 12 17a4.99 4.99 0 0 0-3.87 1.834A6.97 6.97 0 0 0 12 20c1.43 0 2.762-.43 3.87-1.166m-5.072-16.9a3 3 0 0 1 2.405 0l6 2.626A3 3 0 0 1 21 7.308V13a9 9 0 1 1-18 0V7.308A3 3 0 0 1 4.798 4.56zM12 8.5a1.75 1.75 0 1 0 0 3.5 1.75 1.75 0 0 0 0-3.5m-3.75 1.75a3.75 3.75 0 1 1 7.5 0 3.75 3.75 0 0 1-7.5 0",
-        "clip-rule": "evenodd"
-      }, null, -1)
-    ]));
-  }
-  const Setting3 = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$5]]);
-  const _sfc_main$4 = {};
-  const _hoisted_1$4 = {
-    xmlns: "http://www.w3.org/2000/svg",
-    width: "24",
-    height: "24",
-    viewBox: "0 0 24 24",
-    fill: "none",
-    stroke: "currentColor",
-    "stroke-width": "2",
-    "stroke-linecap": "round",
-    "stroke-linejoin": "round",
-    class: "icon icon-tabler icons-tabler-outline icon-tabler-brand-openai"
-  };
-  function _sfc_render$4(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$4, _cache[0] || (_cache[0] = [
-      vue.createStaticVNode('<path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M11.217 19.384a3.501 3.501 0 0 0 6.783 -1.217v-5.167l-6 -3.35"></path><path d="M5.214 15.014a3.501 3.501 0 0 0 4.446 5.266l4.34 -2.534v-6.946"></path><path d="M6 7.63c-1.391 -.236 -2.787 .395 -3.534 1.689a3.474 3.474 0 0 0 1.271 4.745l4.263 2.514l6 -3.348"></path><path d="M12.783 4.616a3.501 3.501 0 0 0 -6.783 1.217v5.067l6 3.45"></path><path d="M18.786 8.986a3.501 3.501 0 0 0 -4.446 -5.266l-4.34 2.534v6.946"></path><path d="M18 16.302c1.391 .236 2.787 -.395 3.534 -1.689a3.474 3.474 0 0 0 -1.271 -4.745l-4.308 -2.514l-5.955 3.42"></path>', 7)
-    ]));
-  }
-  const Setting4 = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$4]]);
-  const _sfc_main$3 = {};
-  const _hoisted_1$3 = {
-    xmlns: "http://www.w3.org/2000/svg",
-    width: "24",
-    height: "24",
-    viewBox: "0 0 24 24",
-    fill: "none",
-    stroke: "currentColor",
-    "stroke-width": "2",
-    "stroke-linecap": "round",
-    "stroke-linejoin": "round",
-    class: "icon icon-tabler icons-tabler-outline icon-tabler-cheese"
-  };
-  function _sfc_render$3(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$3, _cache[0] || (_cache[0] = [
-      vue.createStaticVNode('<path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M4.519 20.008l16.481 -.008v-3.5a2 2 0 1 1 0 -4v-3.5h-16.722"></path><path d="M21 9l-9.385 -4.992c-2.512 .12 -4.758 1.42 -6.327 3.425c-1.423 1.82 -2.288 4.221 -2.288 6.854c0 2.117 .56 4.085 1.519 5.721"></path><path d="M15 13v.01"></path><path d="M8 13v.01"></path><path d="M11 16v.01"></path>', 6)
-    ]));
-  }
-  const Setting5 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$3]]);
-  const _sfc_main$2 = {};
-  const _hoisted_1$2 = {
-    xmlns: "http://www.w3.org/2000/svg",
-    width: "24",
-    height: "24",
-    viewBox: "0 0 24 24",
-    fill: "none",
-    stroke: "currentColor",
-    "stroke-width": "2",
-    "stroke-linecap": "round",
-    "stroke-linejoin": "round",
-    class: "icon icon-tabler icons-tabler-outline icon-tabler-refresh"
-  };
-  function _sfc_render$2(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$2, _cache[0] || (_cache[0] = [
-      vue.createElementVNode("path", {
-        stroke: "none",
-        d: "M0 0h24v24H0z",
-        fill: "none"
-      }, null, -1),
-      vue.createElementVNode("path", { d: "M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" }, null, -1),
-      vue.createElementVNode("path", { d: "M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" }, null, -1)
-    ]));
-  }
-  const Setting6 = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$2]]);
-  const _sfc_main$1 = {};
-  const _hoisted_1$1 = {
-    xmlns: "http://www.w3.org/2000/svg",
-    width: "24",
-    height: "24",
-    viewBox: "0 0 24 24",
-    fill: "none",
-    stroke: "currentColor",
-    "stroke-width": "2",
-    "stroke-linecap": "round",
-    "stroke-linejoin": "round",
-    class: "icon icon-tabler icons-tabler-outline icon-tabler-language-hiragana"
-  };
-  function _sfc_render$1(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$1, _cache[0] || (_cache[0] = [
-      vue.createStaticVNode('<path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M4 5h7"></path><path d="M7 4c0 4.846 0 7 .5 8"></path><path d="M10 8.5c0 2.286 -2 4.5 -3.5 4.5s-2.5 -1.135 -2.5 -2c0 -2 1 -3 3 -3s5 .57 5 2.857c0 1.524 -.667 2.571 -2 3.143"></path><path d="M12 20l4 -9l4 9"></path><path d="M19.1 18h-6.2"></path>', 6)
-    ]));
-  }
-  const Setting7 = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
+  const MenuTranslate = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1], ["__scopeId", "data-v-d8d12b86"]]);
   const _sfc_main = {
     components: {
       Setting1,

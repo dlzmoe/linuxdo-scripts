@@ -34,47 +34,69 @@ export default {
       this.$emit("update:value", this.textarea);
     },
     init() {
-      this.list = this.textarea.split(",") || [];
-      var self = this;
+      if (!this.textarea) return;
 
-      // 检查话题标题
-      $(".topic-list .main-link .raw-topic-link>*")
-        .filter((index, element) => {
-          var text = $(element).text();
-          return self.list.some((item) => text.includes(item));
-        })
-        .parents("tr.topic-list-item")
-        .remove();
+      // 将用户输入的关键字分割为数组，并去除空格和空值
+      const keywords = this.textarea.split(",").map((keyword) => keyword.trim()).filter(Boolean);
+      if (keywords.length === 0) return;
 
-      // 检测评论回复
-      $(".topic-body .cooked")
-        .filter((index, element) => {
-          var text = $(element).text();
+      // 安全检查jQuery的使用，防止元素不可用时出错
+      try {
+        // 检查话题标题
+        $(".topic-list .main-link .raw-topic-link>*")
+            .filter((index, element) => {
+              const text = $(element).text();
+              return keywords.some((keyword) => text.includes(keyword));
+            })
+            .parents("tr.topic-list-item")
+            .remove();
 
-          return self.list.some((item) => text.includes(item));
-        })
-        .parents(".topic-post")
-        .remove();
+        // 检查评论回复
+        $(".topic-body .cooked")
+            .filter((index, element) => {
+              const text = $(element).text();
+              return keywords.some((keyword) => text.includes(keyword));
+            })
+            .parents(".topic-post")
+            .remove();
+      } catch (error) {
+        console.error("init方法出错:", error);
+      }
     },
   },
   created() {
     if (this.textarea) {
-      let pollinglength1 = 0;
-      let pollinglength2 = 0;
-      setInterval(() => {
-        if (pollinglength1 != $(".topic-list-body tr").length) {
-          pollinglength1 = $(".topic-list-body tr").length;
-          this.init();
-        }
-        if (pollinglength2 != $(".post-stream .topic-post").length) {
-          pollinglength2 = $(".post-stream .topic-post").length;
-          this.init();
+      let previousTopicListLength = 0;
+      let previousPostStreamLength = 0;
+
+      this.pollingInterval = setInterval(() => {
+        try {
+          const currentTopicListLength = $(".topic-list-body tr").length || 0;
+          const currentPostStreamLength = $(".post-stream .topic-post").length || 0;
+
+          if (previousTopicListLength !== currentTopicListLength) {
+            previousTopicListLength = currentTopicListLength;
+            this.init();
+          }
+          if (previousPostStreamLength !== currentPostStreamLength) {
+            previousPostStreamLength = currentPostStreamLength;
+            this.init();
+          }
+        } catch (error) {
+          console.error("轮询逻辑出错:", error);
         }
       }, 1000);
     }
   },
+  beforeDestroy() {
+    // 在组件销毁前清除定时器，防止内存泄漏
+    if (this.pollingInterval) {
+      clearInterval(this.pollingInterval);
+    }
+  },
 };
 </script>
+
 <style lang="less" scoped>
 .item {
   border: none !important;

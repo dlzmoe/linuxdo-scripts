@@ -24,6 +24,7 @@ linux.do 增强插件，话题列表显示创建时间，显示楼层数，新�
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/anghunk)
 
+
 ## 目录
   - [目录](#目录)
   - [功能特性](#功能特性)
@@ -40,7 +41,8 @@ linux.do 增强插件，话题列表显示创建时间，显示楼层数，新�
 
 > [!WARNING]  
 >  Arc 浏览器用户请使用暴力猴扩展。
->  Arc 浏览器下篡改猴扩展无法使用，存在兼容性问题，与插件无关，是浏览器和油猴管理器之间的问题。  
+>  Arc 浏览器下篡改猴扩展无法使用，存在兼容性问题。
+
 
 ## 功能特性
 
@@ -80,9 +82,9 @@ linux.do 增强插件，话题列表显示创建时间，显示楼层数，新�
 
 ## 使用方法
 
-点击此链接将会自动触发油猴脚本安装程序，后续也可以触发更新。
+点击此链接进入 Greasyfork 商店进行下载安装。
 
-https://greasyfork.org/scripts/501827
+[https://greasyfork.org/scripts/501827](https://greasyfork.org/scripts/501827)
 
 
 ### （小白法）

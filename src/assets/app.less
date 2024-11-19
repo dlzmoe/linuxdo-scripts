@@ -752,3 +752,35 @@ body.body-preview #main-outlet-wrapper {
 .topic-body.clearfix.highlighted {
   background-color: var(--tertiary-low) !important;
 }
+
+.hotranking-container {
+  position: fixed;
+  right: 100px;
+  bottom: 20px;
+  background: #fff;
+  box-shadow: 1px 10px 20px rgba(0, 0, 0, .2);
+  border-radius: 10px;
+  width: 400px;
+  height: 380px;
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: 999;
+
+  .flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  ul,
+  ol {
+    li {
+      padding: 2px 0;
+
+      a:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

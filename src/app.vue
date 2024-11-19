@@ -2,6 +2,7 @@
   <div id="linuxdoscripts">
     <div class="linuxdoscripts-opacity"></div>
     <div class="setting-btn">
+      
       <ReplyBtn v-show="showreplybtn" />
       <!-- 显示回复按钮 -->
       <LookOP v-show="showlookop" />
@@ -12,6 +13,8 @@
       <!-- 查询等级功能 -->
       <AutoRead v-show="showautoread" />
       <!-- 自动阅读按钮 -->
+      <HotRankingList v-show="showhotranking" />
+      <!-- 最热排行榜 -->
     </div>
 
     <dialog open id="menu_suspendedball">
@@ -103,6 +106,8 @@
             <MenuDisableReplaceState :sort="28" v-model="settingData.checked29" />
             <!-- 是否移除话题上的头像 (减少网络请求) -->
             <MenuRemovePostAvatar :sort="29" v-model="settingData.removePostavatarData" />
+            <!-- 是否显示最热帖子排行榜 -->
+            <MenuHotRankingList :sort="30" v-model="settingData.checked33" />
           </div>
           <div class="menu-body-item">
             <!-- 自定义论坛 logo -->
@@ -198,6 +203,7 @@ import MenuAutoDark from "./components/BasicSettings/MenuAutoDark.vue";
 import MenuHiddenPlaceholder from "./components/BasicSettings/MenuHiddenPlaceholder.vue";
 import MenuDisableReplaceState from "./components/BasicSettings/MenuDisableReplaceState.vue";
 import MenuRemovePostAvatar from "./components/BasicSettings/MenuRemovePostAvatar.vue";
+import MenuHotRankingList from "./components/BasicSettings/MenuHotRankingList.vue";
 
 // 自定义文字
 import MenuOtherCss from "./components/CustomText/MenuOtherCss.vue";
@@ -225,6 +231,7 @@ import LevelDiglog from "./components/Button/LevelDiglog.vue";
 import AutoRead from "./components/Button/AutoRead.vue";
 import AIDialog from "./components/Button/AIDialog.vue";
 import ReplyBtn from "./components/Button/ReplyBtn.vue";
+import HotRankingList from "./components/Button/HotRankingList.vue";
 
 // 其他组件
 import Updates from "./components/Other/Updates.vue";
@@ -305,6 +312,8 @@ export default {
     MenuDisableReplaceState,
     MenuRemovePostAvatar,
     MenuTranslate,
+    MenuHotRankingList,
+    HotRankingList,
   },
   data() {
     return {
@@ -361,6 +370,7 @@ export default {
         checked28: false,
         checked29: false,
         checked32: false,
+        checked33: false,
         removePostavatarData: {
           enable: false,
           showAuthor: false,
@@ -395,6 +405,7 @@ export default {
       showlevelsearch: false,
       showaidialog: false,
       showreplybtn: false,
+      showhotranking: false,
     };
   },
   methods: {
@@ -511,6 +522,7 @@ export default {
       this.showlevelsearch = this.settingData.checked12;
       this.showaidialog = this.settingData.checked18;
       this.showreplybtn = this.settingData.checked25;
+      this.showhotranking = this.settingData.checked33;
       if (this.showreplybtn) {
         setInterval(() => {
           if (window.location.href.includes("/topic/")) {

@@ -1,14 +1,12 @@
 <template>
-  <div>
-    <div
-      class="el-button"
-      style="font-size: 18px"
-      @click="openai"
-      type="primary"
-      title="AI对话"
-    >
-      AI
-    </div>
+  <div
+    class="el-button"
+    style="font-size: 18px"
+    @click="openai"
+    type="primary"
+    title="AI对话"
+  >
+    AI
   </div>
 </template>
 

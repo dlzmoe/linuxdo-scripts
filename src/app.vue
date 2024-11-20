@@ -2,7 +2,6 @@
   <div id="linuxdoscripts">
     <div class="linuxdoscripts-opacity"></div>
     <div class="setting-btn">
-      
       <ReplyBtn v-show="showreplybtn" />
       <!-- 显示回复按钮 -->
       <LookOP v-show="showlookop" />
@@ -131,6 +130,7 @@
           </div>
           <div class="menu-body-item">
             <MenuTranslate :sort="1" v-model="settingData.checked32" />
+            <isTranslate :sort="1" v-model="settingData.checked32_1" />
           </div>
           <div class="menu-body-item">
             <Themes v-model="settingData.themes" />
@@ -144,10 +144,7 @@
         <button class="save" @click="save">保存</button>
         <button class="saveload" @click="saveload">保存并刷新</button>
         <button class="floorlottery" @click="openFloorlottery">楼层抽奖</button>
-        <!-- <a
-          target="_blank"
-          href="https://greasyfork.org/scripts/501827"
-        > -->
+        <!-- <a target="_blank" href="https://greasyfork.org/scripts/501827"> -->
         <button style="margin-left: 8px" class="detection" @click="checkversion">
           检测新版本
         </button>
@@ -248,7 +245,9 @@ import Setting5 from "./components/Svg/Setting5.vue";
 import Setting6 from "./components/Svg/Setting6.vue";
 import Setting7 from "./components/Svg/Setting7.vue";
 
-import MenuTranslate from "./components/BasicSettings/MenuTranslate.vue";
+// 拼音翻译功能
+import MenuTranslate from "./components/Translate/MenuTranslate.vue";
+import isTranslate from "./components/Translate/isTranslate.vue";
 
 export default {
   components: {
@@ -312,6 +311,7 @@ export default {
     MenuDisableReplaceState,
     MenuRemovePostAvatar,
     MenuTranslate,
+    isTranslate,
     MenuHotRankingList,
     HotRankingList,
   },
@@ -370,6 +370,7 @@ export default {
         checked28: false,
         checked29: false,
         checked32: false,
+        checked32_1: false,
         checked33: false,
         removePostavatarData: {
           enable: false,

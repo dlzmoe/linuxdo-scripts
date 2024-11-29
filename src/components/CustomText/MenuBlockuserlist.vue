@@ -41,7 +41,7 @@ export default {
           return self.list.indexOf(user) !== -1;
         })
         .parents("tr.topic-list-item")
-        .remove();
+        .hide();
 
       $(".topic-post .full-name a")
         .filter((index, element) => {
@@ -49,7 +49,7 @@ export default {
           return self.list.indexOf(user) !== -1;
         })
         .parents(".topic-post")
-        .remove();
+        .hide();
     },
   },
   created() {

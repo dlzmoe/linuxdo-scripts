@@ -40,7 +40,7 @@ export default {
       const keywords = this.textarea.split(",").map((keyword) => keyword.trim()).filter(Boolean);
       if (keywords.length === 0) return;
 
-      // 安全检查jQuery的使用，防止元素不可用时出错
+      // 安全检查 jQuery 的使用，防止元素不可用时出错
       try {
         // 检查话题标题
         $(".topic-list .main-link .raw-topic-link>*")
@@ -49,7 +49,7 @@ export default {
               return keywords.some((keyword) => text.includes(keyword));
             })
             .parents("tr.topic-list-item")
-            .remove();
+            .hide();
 
         // 检查评论回复
         $(".topic-body .cooked")
@@ -58,9 +58,9 @@ export default {
               return keywords.some((keyword) => text.includes(keyword));
             })
             .parents(".topic-post")
-            .remove();
+            .hide();
       } catch (error) {
-        console.error("init方法出错:", error);
+        console.error("init 方法出错：", error);
       }
     },
   },
@@ -83,7 +83,7 @@ export default {
             this.init();
           }
         } catch (error) {
-          console.error("轮询逻辑出错:", error);
+          console.error("轮询逻辑出错：", error);
         }
       }, 1000);
     }

@@ -23,6 +23,10 @@
 (function (vue, pangu, marked, $$1) {
   'use strict';
 
+  if (document.getElementById('challenge-form')) {
+      return;
+  }
+
   const name = "linuxdo-scripts";
   const version = "0.3.70";
   const author = "dlzmoe";

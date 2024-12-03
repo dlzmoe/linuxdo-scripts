@@ -1,1 +1,1 @@
-- 优化：关键词屏蔽功能造成页面下拉失败
+- 新增：返回顶部功能（https://github.com/dlzmoe/linuxdo-scripts/pull/76）

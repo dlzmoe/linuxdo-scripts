@@ -11,6 +11,8 @@ import { pinyin } from "pinyin-pro";
 // 自定义提示
 $('body').append('<div id="messageToast"></div>');
 
+// import "./styles/moyu.less";
+
 app.mount(
   (() => {
     const appDiv = document.createElement('div');

@@ -429,30 +429,23 @@ export default {
     };
   },
   methods: {
-    messageToast(message) {
-      const messageElement = $(`<div class="messageToast-text">${message}</div>`);
-      $("#messageToast").append(messageElement);
-      setTimeout(() => {
-        messageElement.remove();
-      }, 3000);
-    },
     // 检测新版本
     checkversion() {
-      this.messageToast("正在检测新版本...");
+      this.$messageToast("正在检测新版本...");
       fetch("https://api.github.com/repos/dlzmoe/linuxdo-scripts/releases/latest")
         .then((response) => response.json())
         .then((data) => {
           if (this.version != data.tag_name) {
-            this.messageToast("有新版本可用，即将前往更新！");
+            this.$messageToast("有新版本可用，即将前往更新！");
             setTimeout(() => {
               window.open("https://greasyfork.org/scripts/501827", "_blank");
             }, 1000);
           } else {
-            this.messageToast("当前已是最新版本！");
+            this.$messageToast("当前已是最新版本！");
           }
         })
         .catch((error) => {
-          this.messageToast("检测出错，请刷新后重试！");
+          this.$messageToast("检测出错，请刷新后重试！");
         });
     },
     // 关闭弹窗
@@ -464,7 +457,7 @@ export default {
     save() {
       localStorage.setItem("linxudoscriptssetting", JSON.stringify(this.settingData));
 
-      this.messageToast("保存成功！");
+      this.$messageToast("保存成功！");
       $(".linuxdoscripts-opacity").hide();
       $("#menu_suspendedball").hide();
     },
@@ -501,7 +494,7 @@ export default {
     // 初始化设置
     initialization() {
       localStorage.removeItem("linxudoscriptssetting");
-      this.messageToast("初始化设置成功，即将自动刷新！");
+      this.$messageToast("初始化设置成功，即将自动刷新！");
       setTimeout(() => {
         location.reload();
       }, 1000);

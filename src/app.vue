@@ -112,6 +112,8 @@
             <MenuHotRankingList :sort="30" v-model="settingData.checked33" />
             <!-- 是否显示返回顶部按钮 -->
             <MenuBackToTop :sort="31" v-model="settingData.checked34" />
+            <!-- 是否显示快捷点赞主题按钮 -->
+            <MenuQuickLikeTopic :sort="32" v-model="settingData.checked35" />
           </div>
           <div class="menu-body-item">
             <!-- 自定义论坛 logo -->
@@ -207,6 +209,7 @@ import MenuDisableReplaceState from "./components/BasicSettings/MenuDisableRepla
 import MenuRemovePostAvatar from "./components/BasicSettings/MenuRemovePostAvatar.vue";
 import MenuHotRankingList from "./components/BasicSettings/MenuHotRankingList.vue";
 import MenuBackToTop from "./components/BasicSettings/MenuBackToTop.vue";
+import MenuQuickLikeTopic from "./components/BasicSettings/MenuQuickLikeTopic.vue";
 
 // 自定义文字
 import MenuOtherCss from "./components/CustomText/MenuOtherCss.vue";
@@ -323,6 +326,7 @@ export default {
     HotRankingList,
     MenuBackToTop,
     BackToTop,
+    MenuQuickLikeTopic
   },
   data() {
     return {

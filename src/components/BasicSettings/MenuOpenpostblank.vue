@@ -19,6 +19,17 @@ export default {
     };
   },
   methods: {
+    createSuperLabel(url, id) {
+      let a = document.createElement("a");
+      a.setAttribute("href", url);
+      a.setAttribute("target", "_blank");
+      a.setAttribute("id", id);
+      // 防止反复添加
+      if (!document.getElementById(id)) {
+        document.body.appendChild(a);
+      }
+      a.click();
+    },
     init() {
       // 移除之前的事件监听器
       this.removeEventListeners();
@@ -27,7 +38,8 @@ export default {
         const listener = (event) => {
           event.preventDefault();
           var url = $(element).attr("href");
-          window.open(url, "_blank");
+          // window.open(url, "_blank");
+          this.createSuperLabel(url, url);
         };
         $(element).on("click", listener);
         this.eventListeners.push({ element, listener });

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         linuxdo 增强插件
 // @namespace    https://github.com/dlzmoe/linuxdo-scripts
-// @version      0.3.71
+// @version      0.3.72
 // @author       dlzmoe
 // @description  linux.do 增强插件，功能持续更新，欢迎提出新想法！
 // @license      Apache-2.0
@@ -24,7 +24,7 @@
   'use strict';
 
   const name = "linuxdo-scripts";
-  const version = "0.3.71";
+  const version = "0.3.72";
   const author = "dlzmoe";
   const description = "An enhanced script for the linux.do forum";
   const type = "module";
@@ -77,13 +77,23 @@
       };
     },
     methods: {
+      createSuperLabel(url, id) {
+        let a = document.createElement("a");
+        a.setAttribute("href", url);
+        a.setAttribute("target", "_blank");
+        a.setAttribute("id", id);
+        if (!document.getElementById(id)) {
+          document.body.appendChild(a);
+        }
+        a.click();
+      },
       init() {
         this.removeEventListeners();
         $(".topic-list a.title,.topic .search-link").each((index, element) => {
           const listener = (event) => {
             event.preventDefault();
             var url = $(element).attr("href");
-            window.open(url, "_blank");
+            this.createSuperLabel(url, url);
           };
           $(element).on("click", listener);
           this.eventListeners.push({ element, listener });

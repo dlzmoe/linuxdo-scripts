@@ -1,1 +1,1 @@
-- fix: 修复 Cloudflare 质询循环问题（https://github.com/dlzmoe/linuxdo-scripts/pull/77）
+- fix: 优化新标签页打开逻辑

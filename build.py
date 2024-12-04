@@ -13,6 +13,18 @@ destination_script_file = 'linuxdo-scripts.user.js'
 if os.path.exists(source_script_file):
     shutil.copy(source_script_file, destination_script_file)
     print(f"已将 {source_script_file} 复制到根目录下。")
+    # 找到 'use strict'; 字段，在后面加上一段文字
+    with open(destination_script_file, 'r+', encoding='utf-8') as file:
+        content = file.read()
+        position = content.find("'use strict';")
+        if position != -1:
+            insertion_text = "\n\n  if (document.getElementById('challenge-form')) {\n      return;\n   }"
+            content = content[:position + len("'use strict';")] + insertion_text + content[position + len("'use strict';"):]
+            file.seek(0)
+            file.write(content)
+            file.truncate()
+        else:
+            print(f"文件 {destination_script_file} 中未找到 'use strict'; 字段。")
 else:
     print(f"文件 {source_script_file} 不存在，请检查路径。")
 

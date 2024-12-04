@@ -1,1 +1,1 @@
-- 新增：返回顶部功能（https://github.com/dlzmoe/linuxdo-scripts/pull/76）
+- fix: 修复 Cloudflare 质询循环问题（https://github.com/dlzmoe/linuxdo-scripts/pull/77）

@@ -44,13 +44,6 @@ export default {
     },
   },
   methods: {
-    messageToast(message) {
-      const messageElement = $(`<div class="messageToast-text">${message}</div>`);
-      $("#messageToast").append(messageElement);
-      setTimeout(() => {
-        messageElement.remove();
-      }, 3000);
-    },
     handleKeyDown(event) {
       if (this.isFocusedOnInput) return; // 聚焦输入框时不触发
 
@@ -62,7 +55,7 @@ export default {
         );
         if (button) {
           button.click();
-          this.messageToast('已点赞！');
+          this.$messageToast('已点赞！');
         } else {
           console.log("按钮未找到");
         }

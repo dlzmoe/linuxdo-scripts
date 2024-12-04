@@ -39,7 +39,7 @@ export default {
     // 开始抽奖
     drawRandomNumbers() {
       if (this.floorlotteryval1 === "" || this.floorlotteryval2 === "") {
-        this.messageToast("请输入有效的数字");
+        this.$messageToast("请输入有效的数字");
         return false;
       }
 
@@ -47,7 +47,7 @@ export default {
       const count = parseInt(this.floorlotteryval2);
 
       if (isNaN(total) || isNaN(count) || total <= 0 || count <= 0 || count > total) {
-        this.messageToast("请输入有效的数字");
+        this.$messageToast("请输入有效的数字");
         return false;
       }
 

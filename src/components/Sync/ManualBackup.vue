@@ -17,13 +17,6 @@ export default {
     return {};
   },
   methods: {
-    messageToast(message) {
-      const messageElement = $(`<div class="messageToast-text">${message}</div>`);
-      $("#messageToast").append(messageElement);
-      setTimeout(() => {
-        messageElement.remove();
-      }, 3000);
-    },
     // 导入数据
     triggerFileInput() {
       this.$refs.fileInput.click();
@@ -48,7 +41,7 @@ export default {
     // 处理导入的数据
     importData(data) {
       localStorage.setItem("linxudoscriptssetting", data);
-      this.messageToast("导入成功，即将刷新页面！");
+      this.$messageToast("导入成功，即将刷新页面！");
       setTimeout(() => {
         location.reload();
       }, 1500);
@@ -73,7 +66,7 @@ export default {
       document.body.removeChild(link);
       URL.revokeObjectURL(url);
 
-      this.messageToast("导出成功！");
+      this.$messageToast("导出成功！");
     },
   },
 };

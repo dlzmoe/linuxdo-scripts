@@ -34,6 +34,7 @@ export default {
     query() {
       this.list = [];
       this.init();
+      this.$messageToast('刷新成功！')
     },
     init() {
       fetch("/top.json")

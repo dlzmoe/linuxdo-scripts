@@ -64,13 +64,6 @@ export default {
     };
   },
   methods: {
-    messageToast(message) {
-      const messageElement = $(`<div class="messageToast-text">${message}</div>`);
-      $("#messageToast").append(messageElement);
-      setTimeout(() => {
-        messageElement.remove();
-      }, 3000);
-    },
     handleChange() {
       $(".lxwebdavpassword").removeClass("act");
       this.$emit("update:value", this.tableData);
@@ -171,10 +164,10 @@ export default {
 
         try {
           const uploadResponse = await this.uploadFile(uploadUrl, fileData);
-          this.messageToast("同步到云端成功！");
+          this.$messageToast("同步到云端成功！");
         } catch (error) {
           console.error("Upload failed:", error);
-          this.messageToast("同步失败！");
+          this.$messageToast("同步失败！");
         }
       } catch (error) {
         console.error(error);
@@ -242,13 +235,13 @@ export default {
         const downloadResponse = await this.downloadFile(downloadUrl);
         localStorage.setItem("linxudoscriptssetting", downloadResponse);
 
-        this.messageToast("下载成功，即将刷新页面！");
+        this.$messageToast("下载成功，即将刷新页面！");
         setTimeout(() => {
           location.reload();
         }, 1500);
       } catch (error) {
         console.error(error);
-        this.messageToast("下载失败，请检查是否存在备份！");
+        this.$messageToast("下载失败，请检查是否存在备份！");
       }
     },
     // 显示/隐藏密码

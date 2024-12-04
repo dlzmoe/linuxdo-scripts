@@ -114,6 +114,8 @@
             <MenuBackToTop :sort="31" v-model="settingData.checked34" />
             <!-- 是否显示快捷点赞主题按钮 -->
             <MenuQuickLikeTopic :sort="32" v-model="settingData.checked35" />
+            <!-- 是否支持将文本快捷复制为图片 -->
+            <MenuCopyTextAsImage :sort="33" v-model="settingData.checked36" />
           </div>
           <div class="menu-body-item">
             <!-- 自定义论坛 logo -->
@@ -210,6 +212,7 @@ import MenuRemovePostAvatar from "./components/BasicSettings/MenuRemovePostAvata
 import MenuHotRankingList from "./components/BasicSettings/MenuHotRankingList.vue";
 import MenuBackToTop from "./components/BasicSettings/MenuBackToTop.vue";
 import MenuQuickLikeTopic from "./components/BasicSettings/MenuQuickLikeTopic.vue";
+import MenuCopyTextAsImage from "./components/BasicSettings/MenuCopyTextAsImage.vue";
 
 // 自定义文字
 import MenuOtherCss from "./components/CustomText/MenuOtherCss.vue";
@@ -326,7 +329,8 @@ export default {
     HotRankingList,
     MenuBackToTop,
     BackToTop,
-    MenuQuickLikeTopic
+    MenuQuickLikeTopic,
+    MenuCopyTextAsImage
   },
   data() {
     return {

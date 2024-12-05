@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         linuxdo 增强插件
 // @namespace    https://github.com/dlzmoe/linuxdo-scripts
-// @version      0.3.74
+// @version      0.3.75
 // @author       dlzmoe
 // @description  linux.do 增强插件，功能持续更新，欢迎提出新想法！
 // @license      Apache-2.0
@@ -24,7 +24,7 @@
   'use strict';
 
   const name = "linuxdo-scripts";
-  const version = "0.3.74";
+  const version = "0.3.75";
   const author = "dlzmoe";
   const description = "An enhanced script for the linux.do forum";
   const type = "module";
@@ -4379,7 +4379,18 @@ ${topic_contentdata}`;
           this.list = data.topic_list.topics.slice(0, 10);
         }).catch((error) => {
         });
+      },
+      handleClickOutside(event) {
+        if (!event.target.closest(".hotranking") && !event.target.closest(".hotranking-container")) {
+          this.show = false;
+        }
       }
+    },
+    mounted() {
+      document.addEventListener("click", this.handleClickOutside);
+    },
+    beforeDestroy() {
+      document.removeEventListener("click", this.handleClickOutside);
     },
     created() {
       this.init();

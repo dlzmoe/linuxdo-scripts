@@ -34,7 +34,7 @@ export default {
     query() {
       this.list = [];
       this.init();
-      this.$messageToast('刷新成功！')
+      this.$messageToast("刷新成功！");
     },
     init() {
       fetch("/top.json")
@@ -44,6 +44,20 @@ export default {
         })
         .catch((error) => {});
     },
+    handleClickOutside(event) {
+      if (
+        !event.target.closest(".hotranking") &&
+        !event.target.closest(".hotranking-container")
+      ) {
+        this.show = false;
+      }
+    },
+  },
+  mounted() {
+    document.addEventListener("click", this.handleClickOutside);
+  },
+  beforeDestroy() {
+    document.removeEventListener("click", this.handleClickOutside);
   },
   created() {
     this.init();

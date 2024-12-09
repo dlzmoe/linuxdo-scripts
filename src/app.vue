@@ -30,7 +30,6 @@
           <li><Setting2 />自定义</li>
           <li><Setting3 />用户标签</li>
           <li><Setting4 />AI 配置</li>
-          <li><Setting7 />翻译/拼音</li>
           <li><Setting5 />主题风格</li>
           <li><Setting6 />数据同步</li>
           <Updates />
@@ -136,10 +135,6 @@
           </div>
           <div class="menu-body-item">
             <GPTconfig v-model:value="settingData.gptdata" />
-          </div>
-          <div class="menu-body-item">
-            <MenuTranslate :sort="1" v-model="settingData.checked32" />
-            <isTranslate :sort="1" v-model="settingData.checked32_1" />
           </div>
           <div class="menu-body-item">
             <Themes v-model="settingData.themes" />
@@ -258,10 +253,6 @@ import Setting5 from "./components/Svg/Setting5.vue";
 import Setting6 from "./components/Svg/Setting6.vue";
 import Setting7 from "./components/Svg/Setting7.vue";
 
-// 拼音翻译功能
-import MenuTranslate from "./components/Translate/MenuTranslate.vue";
-import isTranslate from "./components/Translate/isTranslate.vue";
-
 export default {
   components: {
     Setting1,
@@ -323,8 +314,6 @@ export default {
     MenuHiddenPlaceholder,
     MenuDisableReplaceState,
     MenuRemovePostAvatar,
-    MenuTranslate,
-    isTranslate,
     MenuHotRankingList,
     HotRankingList,
     MenuBackToTop,
@@ -386,8 +375,6 @@ export default {
         checked27: false,
         checked28: false,
         checked29: false,
-        checked32: false,
-        checked32_1: false,
         checked33: false,
         checked34: false,
         removePostavatarData: {

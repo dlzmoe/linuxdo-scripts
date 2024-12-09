@@ -497,7 +497,7 @@ export default {
       if ($(".linuxdoscripts-setting").length < 1) {
         $(".sidebar-footer-actions").prepend(`
           <button class="btn no-text btn-icon color-scheme-toggler btn-flat linuxdoscripts-setting" title="设置" type="button">
-          <svg class="fa d-icon d-icon-cog svg-icon svg-string" xmlns="http://www.w3.org/2000/svg"><use href="#cog"></use></svg></button>`);
+          <svg class="fa d-icon d-icon-gear svg-icon svg-string" xmlns="http://www.w3.org/2000/svg"><use href="#gear"></use></svg></button>`);
       }
     }, 1000);
 

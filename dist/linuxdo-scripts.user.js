@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         linuxdo 增强插件
 // @namespace    https://github.com/dlzmoe/linuxdo-scripts
-// @version      0.4.1
+// @version      0.4.2
 // @author       dlzmoe
 // @description  linux.do 增强插件，功能持续更新，欢迎提出新想法！
 // @license      Apache-2.0
@@ -22,7 +22,7 @@
   'use strict';
 
   const name = "linuxdo-scripts";
-  const version = "0.4.1";
+  const version = "0.4.2";
   const author = "dlzmoe";
   const description = "An enhanced script for the linux.do forum";
   const type = "module";
@@ -1352,7 +1352,7 @@
         "emoji-picker-button"
       );
       emojiButton.title = "插入贴吧表情包";
-      emojiButton.innerHTML = "<svg class='fa d-icon d-icon-far-smile svg-icon svg-string' xmlns='http://www.w3.org/2000/svg'><use href='#far-smile'></use></svg>";
+      emojiButton.innerHTML = "<svg class='fa d-icon d-icon-far-face-smile svg-icon svg-string' xmlns='http://www.w3.org/2000/svg'><use href='#far-face-smile'></use></svg>";
       editor.appendChild(emojiButton);
       emojiButton.addEventListener("click", function() {
         var emojiPicker = document.createElement("div");
@@ -5043,7 +5043,7 @@ ${topic_contentdata}`;
         if ($(".linuxdoscripts-setting").length < 1) {
           $(".sidebar-footer-actions").prepend(`
           <button class="btn no-text btn-icon color-scheme-toggler btn-flat linuxdoscripts-setting" title="设置" type="button">
-          <svg class="fa d-icon d-icon-cog svg-icon svg-string" xmlns="http://www.w3.org/2000/svg"><use href="#cog"></use></svg></button>`);
+          <svg class="fa d-icon d-icon-gear svg-icon svg-string" xmlns="http://www.w3.org/2000/svg"><use href="#gear"></use></svg></button>`);
         }
       }, 1e3);
       const linxudoscriptssetting = localStorage.getItem("linxudoscriptssetting");

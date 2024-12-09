@@ -701,7 +701,7 @@ setInterval(() => {
     );
     emojiButton.title = "插入贴吧表情包";
     emojiButton.innerHTML =
-      "<svg class='fa d-icon d-icon-far-smile svg-icon svg-string' xmlns='http://www.w3.org/2000/svg'><use href='#far-smile'></use></svg>";
+      "<svg class='fa d-icon d-icon-far-face-smile svg-icon svg-string' xmlns='http://www.w3.org/2000/svg'><use href='#far-face-smile'></use></svg>";
     editor.appendChild(emojiButton);
     emojiButton.addEventListener("click", function () {
       var emojiPicker = document.createElement("div");

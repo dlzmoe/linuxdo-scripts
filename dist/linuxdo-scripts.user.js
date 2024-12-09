@@ -450,7 +450,7 @@
               color = "#cccccc";
               $(element).siblings(".views").html(
                 `<span class="linuxtime" style="color:${color}">
-               <img style="width:20px;vertical-align:sub;" src="https://linux.do/uploads/default/original/3X/b/d/bdf4a2ff2b3639c4f74462f2da8383f9c5cdb25e.png">${this.formattedDate(
+               <img style="width:20px;vertical-align:sub;" src="https://raw.githubusercontent.com/dlzmoe/linuxdo-scripts/refs/heads/main/src/assets/mubei.png">${this.formattedDate(
                 timestamp
               )}
                 </span>`

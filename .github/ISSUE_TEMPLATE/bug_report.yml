@@ -1,8 +1,5 @@
----
 title: "【\U0001F41E 错误报告】"
 labels: bug
----
-
 name: "\U0001F41E 错误报告"
 description: 创建报告以帮助我们改进
 body:

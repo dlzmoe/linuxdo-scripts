@@ -1,1 +1,1 @@
-- fix: 更新了一批图标 svg
+- fix: 更新 icon 图标

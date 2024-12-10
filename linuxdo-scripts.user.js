@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         linuxdo 增强插件
 // @namespace    https://github.com/dlzmoe/linuxdo-scripts
-// @version      0.4.2
+// @version      0.4.3
 // @author       dlzmoe
 // @description  linux.do 增强插件，功能持续更新，欢迎提出新想法！
 // @license      Apache-2.0
-// @icon         https://cdn.linux.do/uploads/default/optimized/3X/9/d/9dd49731091ce8656e94433a26a3ef36062b3994_2_32x32.png
+// @icon         https://linux.do/uploads/default/optimized/3X/9/d/9dd49731091ce8656e94433a26a3ef36062b3994_2_32x32.png
 // @match        *://linux.do/*
 // @require      https://unpkg.com/vue@3.5.12/dist/vue.global.prod.js
 // @require      https://unpkg.com/jquery@3.7.1/dist/jquery.min.js
@@ -26,7 +26,7 @@
    }
 
   const name = "linuxdo-scripts";
-  const version = "0.4.2";
+  const version = "0.4.3";
   const author = "dlzmoe";
   const description = "An enhanced script for the linux.do forum";
   const type = "module";

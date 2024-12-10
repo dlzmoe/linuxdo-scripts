@@ -15,7 +15,7 @@ export default {
   props: {
     value: {
       type: String,
-      default: "前排围观，支持一下\n感谢分享，支持一下\n有点厉害，支持一下",
+      default: "",
     },
     sort: {
       type: Number,

@@ -343,7 +343,7 @@ export default {
           value2: 10,
         },
         checked9: true,
-        QuickReply: "前排围观支持一下\n感谢分享大佬厉害啊\n有点厉害支持~~",
+        QuickReply: "",
         blockList: "",
         blockkeywrod: "",
         checked10: false,

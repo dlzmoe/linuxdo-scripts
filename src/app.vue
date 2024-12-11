@@ -115,6 +115,8 @@
             <MenuQuickLikeTopic :sort="32" v-model="settingData.checked35" />
             <!-- 是否支持将文本快捷复制为图片 -->
             <MenuCopyTextAsImage :sort="33" v-model="settingData.checked36" />
+            <!-- 隐藏新消息小蓝点（除帖子未读小蓝点） -->
+            <MenuHideNewBluedot :sort="34" v-model="settingData.checked37" />
           </div>
           <div class="menu-body-item">
             <!-- 自定义论坛 logo -->
@@ -208,6 +210,7 @@ import MenuHotRankingList from "./components/BasicSettings/MenuHotRankingList.vu
 import MenuBackToTop from "./components/BasicSettings/MenuBackToTop.vue";
 import MenuQuickLikeTopic from "./components/BasicSettings/MenuQuickLikeTopic.vue";
 import MenuCopyTextAsImage from "./components/BasicSettings/MenuCopyTextAsImage.vue";
+import MenuHideNewBluedot from "./components/BasicSettings/MenuHideNewBluedot.vue";
 
 // 自定义文字
 import MenuOtherCss from "./components/CustomText/MenuOtherCss.vue";
@@ -319,7 +322,8 @@ export default {
     MenuBackToTop,
     BackToTop,
     MenuQuickLikeTopic,
-    MenuCopyTextAsImage
+    MenuCopyTextAsImage,
+    MenuHideNewBluedot,
   },
   data() {
     return {
@@ -377,6 +381,9 @@ export default {
         checked29: false,
         checked33: false,
         checked34: false,
+        checked35: false,
+        checked36: false,
+        checked37: false,
         removePostavatarData: {
           enable: false,
           showAuthor: false,

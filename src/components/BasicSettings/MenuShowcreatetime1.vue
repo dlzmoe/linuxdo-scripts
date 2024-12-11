@@ -111,7 +111,7 @@ export default {
               .siblings(".views")
               .html(
                 `<span class="linuxtime" style="color:${color}">
-               <img style="width:20px;vertical-align:sub;" src="https://raw.githubusercontent.com/dlzmoe/linuxdo-scripts/refs/heads/main/src/assets/mubei.png">${this.formattedDate(
+               <img style="width:20px;vertical-align:sub;" src="https://linux.do/uploads/default/original/4X/4/0/8/408c29a1d1dfaada3160fb2ae366cf3a7c7c1696.png">${this.formattedDate(
                  timestamp
                )}
                 </span>`

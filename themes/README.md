@@ -4,6 +4,8 @@
 
 点击链接开始安装。
 
+> 使用此主题不支持进行样式更新。
+
 ---
 
 https://raw.githubusercontent.com/dlzmoe/linuxdo-scripts/main/themes/linuxdo-themes-1.user.js

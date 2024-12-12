@@ -119,6 +119,8 @@
             <MenuHideNewBluedot :sort="34" v-model="settingData.checked37" />
             <!-- gif 头像转静态图片 -->
             <MenuGifToPng :sort="35" v-model="settingData.checked38" />
+            <!-- 新增是否隐藏首页 banner 区域 -->
+            <MenuHideHomeBanner :sort="36" v-model="settingData.checked39" />
           </div>
           <div class="menu-body-item">
             <!-- 自定义论坛 logo -->
@@ -214,6 +216,7 @@ import MenuQuickLikeTopic from "./components/BasicSettings/MenuQuickLikeTopic.vu
 import MenuCopyTextAsImage from "./components/BasicSettings/MenuCopyTextAsImage.vue";
 import MenuHideNewBluedot from "./components/BasicSettings/MenuHideNewBluedot.vue";
 import MenuGifToPng from "./components/BasicSettings/MenuGifToPng.vue";
+import MenuHideHomeBanner from "./components/BasicSettings/MenuHideHomeBanner.vue";
 
 // 自定义文字
 import MenuOtherCss from "./components/CustomText/MenuOtherCss.vue";
@@ -328,6 +331,7 @@ export default {
     MenuCopyTextAsImage,
     MenuHideNewBluedot,
     MenuGifToPng,
+    MenuHideHomeBanner,
   },
   data() {
     return {
@@ -389,6 +393,7 @@ export default {
         checked36: false,
         checked37: false,
         checked38: false,
+        checked39: false,
         removePostavatarData: {
           enable: false,
           showAuthor: false,

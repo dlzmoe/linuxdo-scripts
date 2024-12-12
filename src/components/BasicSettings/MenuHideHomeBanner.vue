@@ -1,6 +1,6 @@
 <template>
   <div class="item">
-    <div class="tit">{{ sort }}. 是否隐藏新消息小蓝点（除帖子未读小蓝点）</div>
+    <div class="tit">{{ sort }}. 是否隐藏首页 banner 区域</div>
     <input
       type="checkbox"
       :checked="modelValue"
@@ -16,8 +16,8 @@ export default {
   created() {
     if (this.modelValue) {
       $("head").append(`<style>
-      .sidebar-section-link-suffix.icon.unread,
-      .topic-post-badges{display:none !important}
+      .search-banner{display:none!important;}
+      #main-outlet{padding-top:1.5em!important;}
       </style>`);
     }
   },

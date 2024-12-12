@@ -112,7 +112,7 @@ export default {
                 .find(".post-activity")
                 .append(
                   `<span class="linuxtime" style="color:${color}">
-                  （<img style="width:20px;vertical-align:sub;" src="https://linux.do/uploads/default/original/3X/b/d/bdf4a2ff2b3639c4f74462f2da8383f9c5cdb25e.png">${this.formattedDate(
+                  （<img style="width:20px;vertical-align:sub;" src="https://linux.do/uploads/default/original/4X/4/0/8/408c29a1d1dfaada3160fb2ae366cf3a7c7c1696.png">${this.formattedDate(
                     timestamp
                   )}）
                 </span>`

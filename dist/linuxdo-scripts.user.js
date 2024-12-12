@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         linuxdo 增强插件
 // @namespace    https://github.com/dlzmoe/linuxdo-scripts
-// @version      0.4.5
+// @version      0.4.6
 // @author       dlzmoe
 // @description  linux.do 增强插件，功能持续更新，欢迎提出新想法！
 // @license      Apache-2.0
@@ -22,7 +22,7 @@
   'use strict';
 
   const name = "linuxdo-scripts";
-  const version = "0.4.5";
+  const version = "0.4.6";
   const author = "dlzmoe";
   const description = "An enhanced script for the linux.do forum";
   const type = "module";
@@ -328,7 +328,7 @@
                 color = "#cccccc";
                 $(element).find(".post-activity").append(
                   `<span class="linuxtime" style="color:${color}">
-                  （<img style="width:20px;vertical-align:sub;" src="https://linux.do/uploads/default/original/3X/b/d/bdf4a2ff2b3639c4f74462f2da8383f9c5cdb25e.png">${this.formattedDate(
+                  （<img style="width:20px;vertical-align:sub;" src="https://linux.do/uploads/default/original/4X/4/0/8/408c29a1d1dfaada3160fb2ae366cf3a7c7c1696.png">${this.formattedDate(
                   timestamp
                 )}）
                 </span>`

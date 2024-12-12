@@ -1,5 +1,5 @@
 <h2 align="center">linuxdo 增强插件（linuxdo-scripts）</h2>
-<p align="center">脚本持续更新，欢迎提出 issues，提交 pr ~</p>
+<p align="center">脚本持续更新，欢迎提出 Issues，提交 Pr ~</p>
 
 [中文简体](https://github.com/dlzmoe/linuxdo-scripts/blob/main/README.md) | [English](https://github.com/dlzmoe/linuxdo-scripts/blob/main/README_EN.md)
 
@@ -29,7 +29,9 @@ linux.do 增强插件，话题列表显示创建时间，显示楼层数，新�
   - [目录](#目录)
   - [功能特性](#功能特性)
   - [使用方法](#使用方法)
+    - [小白法](#小白法)
   - [开发说明](#开发说明)
+    - [CSP 问题](#csp-问题)
   - [更新日志](#更新日志)
   - [贡献历史](#贡献历史)
   - [免责声明](#免责声明)
@@ -87,7 +89,7 @@ linux.do 增强插件，话题列表显示创建时间，显示楼层数，新�
 [https://greasyfork.org/scripts/501827](https://greasyfork.org/scripts/501827)
 
 
-### （小白法）
+### 小白法
 
 - [Chrome - 暴力猴](https://chromewebstore.google.com/detail/jinjaccalgkegednnccohejagnlnfdag)
 - [Edge - 暴力猴](https://microsoftedge.microsoft.com/addons/detail/violentmonkey/eeagobfjdenkkddmbclomhiblgggliao)

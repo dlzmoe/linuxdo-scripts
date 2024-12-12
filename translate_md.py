@@ -5,7 +5,6 @@ from dotenv import load_dotenv
 # 加载 .env 文件中的环境变量
 load_dotenv()
 
-# 配置选项
 OPENAI_URL = os.getenv("OPENAI_URL")
 API_KEY = os.getenv("API_KEY")
 MODEL = os.getenv("MODEL")

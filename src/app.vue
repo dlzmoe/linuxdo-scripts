@@ -16,7 +16,6 @@
       <!-- 自动阅读按钮 -->
       <HotRankingList v-show="showhotranking" />
       <!-- 最热排行榜 -->
-
     </div>
 
     <dialog open id="menu_suspendedball">
@@ -39,11 +38,9 @@
             <div class="menu-about">
               <p>请注意，该设置面板数据全部保存在本地浏览器缓存中，注意备份。</p>
               <p class="hint">
-                如果感觉哪里不太对劲，点我<span
-                  class="initialization"
-                  @click="initialization"
-                  >初始化设置</span
-                >，会清除所有的设置数据并初始化！！
+                如果感觉哪里不太对劲，点我
+                <span class="initialization" @click="initialization">初始化设置</span>
+                ，会清除所有的设置数据并初始化！！
               </p>
             </div>
 

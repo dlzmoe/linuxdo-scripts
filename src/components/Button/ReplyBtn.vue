@@ -1,5 +1,5 @@
 <template>
-  <div class="replybtn">
+  <div class="replaybtn">
     <div
       class="el-button"
       style="font-size: 18px"
@@ -20,7 +20,7 @@
 <script>
 export default {
   methods: {
-    replybtn() {
+    replaybtn() {
       $('button[title="开始撰写此话题的回复"]')[0].click();
     },
   },

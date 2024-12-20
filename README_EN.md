@@ -128,4 +128,4 @@ All features provided by this script run only in the browser. The source code us
 
 ## Copyright Agreement
 
-[Apache-2.0 License](https://github.com/dlzmoe/linuxdo-scripts/blob/main/LICENSE)
+[MIT license](https://github.com/dlzmoe/linuxdo-scripts/blob/main/LICENSE)

@@ -141,4 +141,4 @@ yarn dev # 本地运行
 
 ## 版权协议
 
-[Apache-2.0 license](https://github.com/dlzmoe/linuxdo-scripts/blob/main/LICENSE)
+[MIT license](https://github.com/dlzmoe/linuxdo-scripts/blob/main/LICENSE)

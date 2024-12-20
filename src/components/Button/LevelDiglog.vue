@@ -70,7 +70,8 @@ export default {
           },
           method: "GET",
         });
-        if (!response.ok) throw new Error(`HTTP 错误！状态：${response.status}`);
+        if (!response.ok)
+          throw new Error(`HTTP 错误！状态：${response.status}`);
         return await response.json();
       } catch (error) {
         console.error("获取关于页面数据失败：", error);
@@ -87,7 +88,8 @@ export default {
           },
           method: "GET",
         });
-        if (!response.ok) throw new Error(`HTTP 错误！状态：${response.status}`);
+        if (!response.ok)
+          throw new Error(`HTTP 错误！状态：${response.status}`);
         return await response.json();
       } catch (error) {
         console.error("获取用户数据失败：", error);
@@ -170,10 +172,13 @@ export default {
   created() {
     setInterval(() => {
       if (!this.username) {
-        const src = $("#toggle-current-user img.avatar").attr("src");
-        const match = src.match(/\/user_avatar\/linux\.do\/([^\/]+)/);
-        if (match && match[1]) {
-          this.username = match[1];
+        const avatarImg = $("#toggle-current-user img.avatar");
+        const src = avatarImg.length ? avatarImg.attr("src") : null;
+        if (src) {
+          const match = src.match(/\/user_avatar\/linux\.do\/([^\/]+)/);
+          if (match && match[1]) {
+            this.username = match[1];
+          }
         }
       }
     }, 1000);

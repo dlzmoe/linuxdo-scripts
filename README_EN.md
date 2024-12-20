@@ -13,11 +13,6 @@ The linux.do enhanced plugin adds features such as displaying creation time for 
 
 [GitHub Repository](https://github.com/dlzmoe/linuxdo-scripts) | [Greasyfork Store Installation](https://greasyfork.org/scripts/501827) | [Bug Feedback & Feature Requests](https://github.com/dlzmoe/linuxdo-scripts/issues/new/choose) | [Usage and Development Documentation](https://linuxdo-scripts-docs.netlify.app/) | [Discord Community](https://discord.gg/n2pErsD7Kg)
 
-> **TIP**  
-> I will share any fun features promptly in the group chat. I feel like I post too frequently.  
-> Discord Community: [https://discord.gg/n2pErsD7Kg](https://discord.gg/n2pErsD7Kg)  
-
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/anghunk)
 
 ## Table of Contents
 - [Table of Contents](#table-of-contents)

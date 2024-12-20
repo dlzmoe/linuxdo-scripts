@@ -18,12 +18,6 @@ linux.do 增强插件，话题列表显示创建时间，显示楼层数，新�
 [使用和开发文档](https://linuxdo-scripts-docs.netlify.app/) |
 [Discord 社区](https://discord.gg/n2pErsD7Kg)
 
-> [!TIP] 
-> 有什么好玩的功能我会第一时间分享在群聊，感觉自己发帖太频繁了  
-> Discord 社区：https://discord.gg/n2pErsD7Kg  
-
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/anghunk)
-
 
 ## 目录
   - [目录](#目录)
@@ -39,7 +33,7 @@ linux.do 增强插件，话题列表显示创建时间，显示楼层数，新�
 
 ---
 
-开发环境为 windows / chrome / 暴力猴，使用其他油猴管理器如果报错或者不生效，可以尝试使用暴力猴（我目前正在使用的，兼容性比较好）。
+开发环境为 Windows / Chrome / 暴力猴（Violentmonkey），使用其他油猴管理器如果报错或者不生效，可以尝试使用暴力猴（我目前正在使用的，兼容性比较好）。
 
 > [!WARNING]  
 >  Arc 浏览器用户请使用暴力猴扩展。

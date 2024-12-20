@@ -24,7 +24,6 @@ export default defineConfig({
           jquery: cdn.unpkg("jQuery", "dist/jquery.min.js"),
           pangu: cdn.unpkg("pangu", "dist/browser/pangu.js"),
           marked: cdn.unpkg("marked", "marked.min.js"),
-          "pinyin-pro": cdn.unpkg("pinyin-pro", "/dist/index.js"),
         },
         minify: false, // 是否混淆
       },

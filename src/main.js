@@ -4,7 +4,6 @@ import "./assets/app.less";
 import $ from "jquery";
 import pangu from 'pangu';
 import { marked } from "marked";
-import { pinyin } from "pinyin-pro";
 
 // 创建并配置 Vue 应用
 const app = createApp(App);

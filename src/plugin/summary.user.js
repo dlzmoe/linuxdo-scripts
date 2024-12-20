@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name        L站2024年度总结
+// @name        L 站 2024 年度总结
 // @namespace   https://github.com/dlzmoe/linuxdo-scripts
 // @match       https://linux.do/*
 // @grant       none
@@ -11,13 +11,9 @@
   'use strict';
   var myusername = "anghunk";
   $('head').append(`<style>.annualsummary{position:fixed;left:0;top:0;height:100vh;overflow-y:auto;width:500px;z-index:99999}</style>`)
-  var Summary = {};
-  var About = {};
-  var Name = {};
   fetch(`https://linux.do/u/${myusername}/summary.json`)
     .then((response) => response.json())
     .then((data) => {
-      Summary = data;
       localStorage.setItem('2024summary', JSON.stringify(data));
     })
     .catch((error) => {
@@ -26,16 +22,14 @@
   fetch(`https://linux.do/u/about.json`)
     .then((response) => response.json())
     .then((data) => {
-      About = data;
       localStorage.setItem('2024about', JSON.stringify(data));
     })
     .catch((error) => {
       console.log(error)
     });
-    fetch(`https://linux.do/u/${myusername}.json`)
+  fetch(`https://linux.do/u/${myusername}.json`)
     .then((response) => response.json())
     .then((data) => {
-      Name = data;
       localStorage.setItem('2024name', JSON.stringify(data));
     })
     .catch((error) => {

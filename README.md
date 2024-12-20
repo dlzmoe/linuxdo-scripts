@@ -1,3 +1,5 @@
+## 暂时停止使用，在维护中（绕不过始皇的限制）
+
 <h2 align="center">linuxdo 增强插件（linuxdo-scripts）</h2>
 <p align="center">脚本持续更新，欢迎提出 Issues，提交 Pr ~</p>
 

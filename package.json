@@ -4,7 +4,7 @@
   "author": "dlzmoe",
   "description": "An enhanced script for the linux.do forum",
   "type": "module",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "scripts": {
     "dev": "vite --mode development",
     "build": "vite build && py build.py",

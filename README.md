@@ -131,7 +131,7 @@ yarn dev # 本地运行
 
 ![Contributor](https://contrib.rocks/image?repo=dlzmoe/linuxdo-scripts)
 
-[![Star History Chart](https://api.star-history.com/svg?repos=dlzmoe/linuxdo-scripts&type=Date)](https://star-history.com/#dlzmoe/linuxdo-scripts&Date)
+[![Stargazers over time](https://starchart.cc/dlzmoe/linuxdo-scripts.svg?variant=adaptive)](https://starchart.cc/dlzmoe/linuxdo-scripts)
 
 
 ## 免责声明

@@ -15,6 +15,16 @@ export default {
   props: ["modelValue", "sort"],
   emits: ["update:modelValue"],
   methods: {
+    // 提示组件
+    messageToast(message) {
+      const messageElement = document.createElement("div");
+      messageElement.className = "messageToast-text";
+      messageElement.innerText = message;
+      document.getElementById("messageToast").appendChild(messageElement);
+      setTimeout(() => {
+        messageElement.remove();
+      }, 3000);
+    },
     async init() {
       const id = $(".post-stream .topic-post:last-child")
         .find("article")
@@ -28,7 +38,7 @@ export default {
         try {
           const response = await fetch(newUrl);
           if (response.ok) {
-            this.$messageToast("正在跳转下一个帖子！");
+            this.messageToast("正在跳转下一个帖子！");
             window.location.href = newUrl;
             return true;
           } else {
@@ -36,7 +46,7 @@ export default {
           }
         } catch (error) {
           console.error("请求出错：", error);
-          this.$messageToast("请求出错，请稍后再试。");
+          this.messageToast("请求出错，请稍后再试。");
           return false;
         }
       };
@@ -49,7 +59,7 @@ export default {
         currentId++;
       }
       if (currentId === parseInt(id) + 1 + maxAttempts) {
-        this.$messageToast("已是最新帖子！");
+        this.messageToast("已是最新帖子！");
       }
     },
   },
@@ -71,7 +81,7 @@ export default {
 
           // 检查时间间隔
           if (currentTime - lastKeyTime <= doubleClickTime) {
-            this.$messageToast("正在检测中...");
+            this.messageToast("正在检测中...");
             this.init();
           }
 

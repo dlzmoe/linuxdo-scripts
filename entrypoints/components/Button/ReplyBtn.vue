@@ -2,17 +2,11 @@
   <div class="replaybtn">
     <div
       class="el-button"
-      style="font-size: 18px"
       @click="replaybtn"
       type="primary"
       title="回复"
     >
-      <svg
-        class="fa d-icon d-icon-reply svg-icon svg-string"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <use href="#reply"></use>
-      </svg>
+      回复
     </div>
   </div>
 </template>

@@ -1,8 +1,26 @@
 <template>
-  <button class="btn no-text btn-icon color-scheme-toggler btn-flat linuxdoscripts-setting" title="设置" type="button" @click="setting">
-    <svg class="fa d-icon d-icon-gear svg-icon svg-string" xmlns="http://www.w3.org/2000/svg"><use href="#gear"></use></svg>设置</button>
+  <button class="linuxdoscripts-setting" title="设置" type="button" @click="setting">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="icon icon-tabler icons-tabler-outline icon-tabler-settings"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path
+        d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"
+      />
+      <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+    </svg>
+  </button>
   <div id="linuxdoscripts">
-    <div class="linuxdoscripts-opacity" v-show="showdialog"></div>
+    <div class="linuxdoscripts-opacity" v-show="opacity"></div>
     <div class="setting-btn">
       <BackToTop v-show="showbacktotop" />
       <!-- 返回顶部按钮 -->
@@ -10,8 +28,6 @@
       <!-- 显示回复按钮 -->
       <LookOP v-show="showlookop" />
       <!-- 只看楼主 -->
-      <AIDialog v-show="showaidialog" />
-      <!-- 显示 AI 对话网站 -->
       <LevelDiglog v-show="showlevelsearch" />
       <!-- 查询等级功能 -->
       <AutoRead v-show="showautoread" />
@@ -22,21 +38,21 @@
 
     <dialog open id="menu_suspendedball" v-show="showdialog">
       <div class="menu-header">
-        <div class="title">linuxdo 增强插件设置</div>
+        <div class="title">LinuxDo Scripts 扩展设置</div>
         <div class="close" @click="closedialog">+</div>
       </div>
       <div class="menu-flex">
         <ul class="menu-nav">
-          <li class="act"><Setting1 />通用设置</li>
-          <li><Setting2 />自定义</li>
-          <li><Setting3 />用户标签</li>
-          <li><Setting4 />AI 配置</li>
-          <li><Setting5 />主题风格</li>
-          <li><Setting6 />数据同步</li>
+          <li @click="showItem(0)" :class="{ act : activeIndex == 0 }"><Setting1 />通用设置</li>
+          <li @click="showItem(1)" :class="{ act : activeIndex == 1 }"><Setting2 />自定义</li>
+          <li @click="showItem(2)" :class="{ act : activeIndex == 2 }"><Setting3 />用户标签</li>
+          <li @click="showItem(3)" :class="{ act : activeIndex == 3 }"><Setting4 />AI 配置</li>
+          <li @click="showItem(4)" :class="{ act : activeIndex == 4 }"><Setting5 />主题风格</li>
+          <li @click="showItem(5)" :class="{ act : activeIndex == 5 }"><Setting6 />数据同步</li>
           <Updates />
         </ul>
         <div class="menu-body">
-          <div class="menu-body-item act">
+          <div class="menu-body-item" v-show="activeIndex == 0">
             <div class="menu-about">
               <p>请注意，该设置面板数据全部保存在本地浏览器缓存中，注意备份。</p>
               <p class="hint">
@@ -78,12 +94,8 @@
             <MenuFilterText :sort="14" v-model="settingData.checked14" />
             <!-- 只看自己签名 -->
             <MenuLookmeSign :sort="15" v-model="settingData.checked15" />
-            <!-- 开启左侧快速访问 -->
-            <MenuQuickAccess :sort="16" v-model="settingData.checked16" />
             <!-- 切换论坛表情风格 -->
             <MenureplaceEmojiStyle :sort="17" v-model="settingData.checked17" />
-            <!-- 显示 AI 对话网站 -->
-            <MenuShowAI :sort="18" v-model="settingData.checked18" />
             <!-- 编辑器切换 ja 字体 -->
             <MenuEditorJa :sort="19" v-model="settingData.checked19" />
             <!-- 开启列表页导航栏浮动 -->
@@ -121,7 +133,7 @@
             <!-- 新增是否隐藏首页 banner 区域 -->
             <MenuHideHomeBanner :sort="36" v-model="settingData.checked39" />
           </div>
-          <div class="menu-body-item">
+          <div class="menu-body-item" v-show="activeIndex == 1">
             <!-- 自定义论坛 logo -->
             <MenuLogoUrl :sort="1" v-model:value="settingData.logourl" />
             <!-- 自定义快捷回复 -->
@@ -135,16 +147,16 @@
             <!-- 自定义 CSS -->
             <MenuOtherCss :sort="6" v-model:value="settingData.othercss" />
           </div>
-          <div class="menu-body-item">
+          <div class="menu-body-item" v-show="activeIndex == 2">
             <UserTags v-model:value="settingData.usertags" />
           </div>
-          <div class="menu-body-item">
+          <div class="menu-body-item" v-show="activeIndex == 3">
             <GPTconfig v-model:value="settingData.gptdata" />
           </div>
-          <div class="menu-body-item">
+          <div class="menu-body-item" v-show="activeIndex == 4">
             <Themes v-model="settingData.themes" />
           </div>
-          <div class="menu-body-item">
+          <div class="menu-body-item" v-show="activeIndex == 5">
             <SyncBackup v-model:value="settingData.syncbackup" />
           </div>
         </div>
@@ -154,24 +166,46 @@
         <button class="saveload" @click="saveload">保存并刷新</button>
         <button class="floorlottery" @click="openFloorlottery">楼层抽奖</button>
         <!-- <a target="_blank" href="https://greasyfork.org/scripts/501827"> -->
-        <button style="margin-left: 8px" class="detection" @click="checkversion">
+        <!-- <button style="margin-left: 8px" class="detection" @click="checkversion">
           检测新版本
-        </button>
+        </button> -->
         <!-- </a> -->
       </div>
     </dialog>
 
     <!-- 楼层抽奖 -->
-    <FloorLottery />
-
+    <dialog v-show="showFloorLottery" id="floorlotteryDialog" open>
+      <div class="menu-header">
+        <div class="title">楼层抽奖</div>
+      </div>
+      <div class="menu-body" style="margin-top: 10px">
+        <div class="inner">
+          <label>总楼层数：</label>
+          <input type="text" v-model="floorlotteryval1" />
+        </div>
+        <div class="inner">
+          <label>抽奖数量：</label>
+          <input type="text" v-model="floorlotteryval2" />
+        </div>
+        <button class="btn save" @click="drawRandomNumbers">开始抽奖</button>
+        <button class="btn" style="background: #979797" plain @click="closelotter">
+          关闭弹窗
+        </button>
+        <div style="height: 20px"></div>
+        <div v-if="floorlotterloading">正在抽奖...</div>
+        <div v-if="floorlotterresult" title="抽奖结果" type="success">
+          抽奖结果：恭喜 {{ floorlotterresult }} 楼中奖！
+        </div>
+      </div>
+    </dialog>
     <!-- 使用提示 -->
     <UsageTip />
     <!-- 回复弹窗显示贴吧表情 -->
     <ReplyTBEnjoy />
     <!-- 修复小尾巴裂图 -->
     <Signature />
-
   </div>
+  <div id="messageToast"></div>
 </template>
 
 <script>
@@ -197,9 +231,7 @@ import MenuLevelSearch from "./components/BasicSettings/MenuLevelSearch.vue";
 import MenuShowUnread from "./components/BasicSettings/MenuShowUnread.vue";
 import MenuFilterText from "./components/BasicSettings/MenuFilterText.vue";
 import MenuLookmeSign from "./components/BasicSettings/MenuLookmeSign.vue";
-import MenuQuickAccess from "./components/BasicSettings/MenuQuickAccess.vue";
 import MenureplaceEmojiStyle from "./components/BasicSettings/MenureplaceEmojiStyle.vue";
-import MenuShowAI from "./components/BasicSettings/MenuShowAI.vue";
 import MenuEditorJa from "./components/BasicSettings/MenuEditorJa.vue";
 import MenuCreatedOrder from "./components/BasicSettings/MenuCreatedOrder.vue";
 import MenuStickyNav from "./components/BasicSettings/MenuStickyNav.vue";
@@ -244,7 +276,6 @@ import SyncBackup from "./components/Sync/SyncBackup.vue";
 import LookOP from "./components/Button/LookOP.vue";
 import LevelDiglog from "./components/Button/LevelDiglog.vue";
 import AutoRead from "./components/Button/AutoRead.vue";
-import AIDialog from "./components/Button/AIDialog.vue";
 import ReplyBtn from "./components/Button/ReplyBtn.vue";
 import HotRankingList from "./components/Button/HotRankingList.vue";
 import BackToTop from "./components/Button/BackToTop.vue";
@@ -253,7 +284,6 @@ import BackToTop from "./components/Button/BackToTop.vue";
 import Updates from "./components/Other/Updates.vue";
 import UsageTip from "./components/Other/UsageTip.vue";
 import Signature from "./components/Other/Signature.vue";
-import FloorLottery from "./components/Other/FloorLottery.vue";
 
 // svg 图标
 import Setting1 from "./components/Svg/Setting1.vue";
@@ -301,10 +331,7 @@ export default {
     MenuShowUnread,
     MenuFilterText,
     MenuLookmeSign,
-    MenuQuickAccess,
     MenureplaceEmojiStyle,
-    MenuShowAI,
-    AIDialog,
     MenuEditorJa,
     MenuCreatedOrder,
     GPTconfig,
@@ -319,7 +346,6 @@ export default {
     MenuDisableAutoplay,
     MenuShowRepltBtn,
     ReplyBtn,
-    FloorLottery,
     MenuDonotTopic,
     MenuAutoDark,
     MenuHiddenPlaceholder,
@@ -337,8 +363,17 @@ export default {
   },
   data() {
     return {
+      opacity: false,
       showdialog: false,
+      showFloorLottery: false,
 
+      activeIndex: 0, // 当前激活的索引
+
+      // 楼层抽奖
+      floorlotteryval1: "",
+      floorlotteryval2: "",
+      floorlotterloading: false,
+      floorlotterresult: "",
 
       version: packageJson.version,
       opacity: false,
@@ -371,12 +406,10 @@ export default {
         checked13: false,
         checked14: false,
         checked15: false,
-        checked16: false,
         checked17: {
           value1: true,
           value2: "twitter",
         },
-        checked18: false,
         checked19: false,
         checked20: true,
         checked21: {
@@ -431,48 +464,99 @@ export default {
       showautoread: false,
       showlookop: false,
       showlevelsearch: false,
-      showaidialog: false,
       showreplybtn: false,
       showhotranking: false,
       showbacktotop: false,
     };
   },
   methods: {
-    setting(){
-      console.log('设置');
+    // 开始抽奖
+    drawRandomNumbers() {
+      if (this.floorlotteryval1 === "" || this.floorlotteryval2 === "") {
+        this.messageToast("请输入有效的数字");
+        return false;
+      }
+
+      const total = parseInt(this.floorlotteryval1);
+      const count = parseInt(this.floorlotteryval2);
+
+      if (isNaN(total) || isNaN(count) || total <= 0 || count <= 0 || count > total) {
+        this.messageToast("请输入有效的数字");
+        return false;
+      }
+
+      this.floorlotterloading = true;
+      this.floorlotterresult = "";
+
+      setTimeout(() => {
+        const result = this.getRandomNumbers(total, count);
+        this.floorlotterresult = result.join(", ");
+        this.floorlotterloading = false;
+      }, 1000); // 模拟异步操作
+    },
+    getRandomNumbers(total, count) {
+      const numbers = Array.from({ length: total }, (_, i) => i + 1);
+      const result = [];
+
+      for (let i = 0; i < count; i++) {
+        const randomIndex = Math.floor(Math.random() * numbers.length);
+        result.push(numbers[randomIndex]);
+        numbers.splice(randomIndex, 1);
+      }
+
+      return result;
+    },
+    closelotter() {
+      this.showFloorLottery = false;
+      this.opacity = false;
+    },
+    // 提示组件
+    messageToast(message) {
+      const messageElement = document.createElement("div");
+      messageElement.className = "messageToast-text";
+      messageElement.innerText = message;
+      document.getElementById("messageToast").appendChild(messageElement);
+      setTimeout(() => {
+        messageElement.remove();
+      }, 3000);
+    },
+    // 打开设置
+    setting() {
+      console.log("设置");
       this.showdialog = true;
+      this.opacity = true;
     },
     // 检测新版本
     checkversion() {
-      this.$messageToast("正在检测新版本...");
+      this.messageToast("正在检测新版本...");
       fetch("https://api.github.com/repos/dlzmoe/linuxdo-scripts/releases/latest")
         .then((response) => response.json())
         .then((data) => {
           if (this.version != data.tag_name) {
-            this.$messageToast("有新版本可用，即将前往更新！");
+            this.messageToast("有新版本可用，即将前往更新！");
             setTimeout(() => {
               window.open("https://greasyfork.org/scripts/501827", "_blank");
             }, 1000);
           } else {
-            this.$messageToast("当前已是最新版本！");
+            this.messageToast("当前已是最新版本！");
           }
         })
         .catch((error) => {
-          this.$messageToast("检测出错，请刷新后重试！");
+          this.messageToast("检测出错，请刷新后重试！");
         });
     },
     // 关闭弹窗
     closedialog() {
-      $(".linuxdoscripts-opacity").hide();
-      $("#menu_suspendedball").hide();
+      this.showdialog = false;
+      this.opacity = false;
     },
     // 保存设置
     save() {
       localStorage.setItem("linxudoscriptssetting", JSON.stringify(this.settingData));
 
-      this.$messageToast("保存成功！");
-      $(".linuxdoscripts-opacity").hide();
-      $("#menu_suspendedball").hide();
+      this.messageToast("保存成功！");
+      this.showdialog = false;
+      this.opacity = false;
     },
     // 保存并刷新
     saveload() {
@@ -482,39 +566,24 @@ export default {
 
     // 打开抽奖弹窗
     openFloorlottery() {
-      $("#menu_suspendedball").hide();
-      $("#floorlotteryDialog").show();
+      this.showdialog = false;
+      (this.opacity = true), (this.showFloorLottery = true);
     },
-    // 默认运行脚本
-    runscripts() {
-      $(".linuxdoscripts-setting").click(function () {
-        alert('123')
-        $(".linuxdoscripts-opacity").show();
-        $("#menu_suspendedball").show();
-      });
-
-      if ($(".menu-nav").length > 0) {
-        $(".menu-nav li").each(function () {
-          $(this).click(function () {
-            const num = $(this).index();
-            $(".menu-nav li").removeClass("act");
-            $(this).addClass("act");
-            $(".menu-body-item").removeClass("act");
-            $(".menu-body-item").eq(num).addClass("act");
-          });
-        });
-      }
+    showItem(index) {
+      // 更新激活索引
+      this.activeIndex = index;
     },
     // 初始化设置
     initialization() {
       localStorage.removeItem("linxudoscriptssetting");
-      this.$messageToast("初始化设置成功，即将自动刷新！");
+      this.messageToast("初始化设置成功，即将自动刷新！");
       setTimeout(() => {
         location.reload();
       }, 1000);
     },
   },
   created() {
+    $("body").append('<div id="messageToast"></div>');
     console.log(
       `%c linuxdo 增强插件 %c 已开启 `,
       "padding: 2px 1px; color: #fff; background: #606060;",
@@ -547,7 +616,6 @@ export default {
       this.showautoread = this.settingData.checked8.value1;
       this.showlookop = this.settingData.checked9;
       this.showlevelsearch = this.settingData.checked12;
-      this.showaidialog = this.settingData.checked18;
       this.showreplybtn = this.settingData.checked25;
       this.showhotranking = this.settingData.checked33;
       this.showbacktotop = this.settingData.checked34;
@@ -565,9 +633,6 @@ export default {
     } else {
       localStorage.setItem("linxudoscriptssetting", JSON.stringify(this.settingData));
     }
-    setTimeout(() => {
-      this.runscripts();
-    }, 1000);
   },
 };
 </script>

@@ -1,12 +1,13 @@
-## 插件目前在维修中，将近上线，请耐心等待！
-
-<h2 align="center">linuxdo 增强插件（linuxdo-scripts）</h2>
+<h2 align="center">LinuxDo Scripts 扩展（原名：linuxdo-scripts 增强插件）</h2>
 <p align="center">脚本持续更新，欢迎提出 Issues，提交 Pr ~</p>
+
+> 由油猴插件重构成浏览器扩展，进入 1.0 版本。  
+> 暂时未上架扩展商店，可以在 releases 中下载最新安装包，最近整理一下正式发布。
 
 [中文简体](https://github.com/dlzmoe/linuxdo-scripts/blob/main/README.md) | [English](https://github.com/dlzmoe/linuxdo-scripts/blob/main/README_EN.md)
 
 <p align="center">
-<img src="https://img.shields.io/github/v/release/dlzmoe/linuxdo-scripts?label=linuxdo%20%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6&labelColor=%235D5D5D&color=%23E97435">
+<img src="https://img.shields.io/github/v/release/dlzmoe/linuxdo-scripts?label=LinuxDo Scripts 扩展&labelColor=%235D5D5D&color=%23E97435">
 <img src="https://img.shields.io/github/last-commit/dlzmoe/linuxdo-scripts">
 <img src="https://img.shields.io/github/stars/dlzmoe%2Flinuxdo-scripts?style=flat">
 <img src="https://img.shields.io/github/license/dlzmoe/linuxdo-scripts">
@@ -15,34 +16,16 @@
 linux.do 增强插件，话题列表显示创建时间，显示楼层数，新标签页打开话题，强制 block（拉黑屏蔽）某人的话题，话题快捷回复（支持自定义），优化签名图显示防止图裂，在话题列表可直接预览详情及评论，功能设置面板导入导出，楼层抽奖，用户自定义标签，只看楼主，自动滚动阅读，支持自定义 css 样式，中英文混排优化，等级信息查询，AI 总结话题功能、智能生成回复，支持 webdav 同步，切换论坛主题皮肤等，更多功能请查看设置列表，功能持续更新，欢迎提出新想法！
 
 [Github 仓库](https://github.com/dlzmoe/linuxdo-scripts) |
-[Greasyfork 商店安装](https://greasyfork.org/scripts/501827) |
+~~[Greasyfork 商店安装](https://greasyfork.org/scripts/501827)~~ |
 [Bug 反馈及功能请求](https://github.com/dlzmoe/linuxdo-scripts/issues/new/choose) |
 [使用和开发文档](https://linuxdo-scripts-docs.netlify.app/) |
 [Discord 社区](https://discord.gg/n2pErsD7Kg)
 
 
-## 目录
-  - [目录](#目录)
-  - [功能特性](#功能特性)
-  - [使用方法](#使用方法)
-    - [小白法](#小白法)
-  - [开发说明](#开发说明)
-    - [CSP 问题](#csp-问题)
-  - [更新日志](#更新日志)
-  - [贡献历史](#贡献历史)
-  - [免责声明](#免责声明)
-  - [版权协议](#版权协议)
-
----
-
-开发环境为 Windows / Chrome / 暴力猴（Violentmonkey），使用其他油猴管理器如果报错或者不生效，可以尝试使用暴力猴（我目前正在使用的，兼容性比较好）。
-
-> [!WARNING]  
->  Arc 浏览器用户请使用暴力猴扩展。
->  Arc 浏览器下篡改猴扩展无法使用，存在兼容性问题。
-
-
 ## 功能特性
+
+<details>
+<summary>功能列表：</summary>
 
 - [x] 话题列表显示创建时间
 - [x] 显示楼层数
@@ -67,6 +50,8 @@ linux.do 增强插件，话题列表显示创建时间，显示楼层数，新�
 - [x] 切换论坛主题皮肤
 - [x] 更多功能请查看设置列表
 
+</details>
+
 <details>
 <summary>部分截图演示：</summary>
 
@@ -80,22 +65,9 @@ linux.do 增强插件，话题列表显示创建时间，显示楼层数，新�
 
 ## 使用方法
 
-点击此链接进入 Greasyfork 商店进行下载安装。
+点击此链接进入 releases 进行下载安装。
 
-[https://greasyfork.org/scripts/501827](https://greasyfork.org/scripts/501827)
-
-
-### 小白法
-
-- [Chrome - 暴力猴](https://chromewebstore.google.com/detail/jinjaccalgkegednnccohejagnlnfdag)
-- [Edge - 暴力猴](https://microsoftedge.microsoft.com/addons/detail/violentmonkey/eeagobfjdenkkddmbclomhiblgggliao)
-- [Firefox - 油猴子](https://addons.mozilla.org/zh-CN/firefox/addon/greasemonkey/)
-
-首先我们需要安装一个用户脚本管理器，选择对应浏览器的管理器进行下载安装，安装完成后在浏览器的扩展部分即可看到油猴子。
-
-然后我们就可以点击上述链接（[https://greasyfork.org/scripts/501827](https://greasyfork.org/scripts/501827)），下载该脚本。下载完成后，点击浏览器右上角扩展，点击油猴图标，就可以看到 linuxdo 增强插件，可以自主管理插件。
-
-最后我们打开 [https://linux.do/](https://linux.do/) 论坛就可以正常使用插件了。（安装后需刷新论坛页面才可正常使用）
+https://github.com/dlzmoe/linuxdo-scripts/releases
 
 
 ## 开发说明
@@ -103,9 +75,6 @@ linux.do 增强插件，话题列表显示创建时间，显示楼层数，新�
 ```
 node: v16.15.1
 ```
-
-> [!NOTE]
-> 必备：由于论坛开启了 CSP，本地开发时无法注入脚本，需要安装 [谷歌扩展 - Disable-CSP](https://github.com/lisonge/Disable-CSP) 跳过 CSP，并开启第一个选项 `Disable HTTP CSP`。
 
 功能以组件形式展开，每次新增一个功能，注册一个新的组件避免冲突。
 
@@ -118,11 +87,6 @@ yarn dev # 本地运行
 ```
 
 无需构建，PR 代码后我将会审核，没有太大问题都会在最短时间内合并。
-
-### CSP 问题
-
-如果加载本地脚本出现 `Refused to load the script xxxxx` 可以使用 [Disable-CSP](https://github.com/lisonge/Disable-CSP) 临时把 CSP 禁用，开发完成记得改回去。
-
 
 ## 更新日志
 

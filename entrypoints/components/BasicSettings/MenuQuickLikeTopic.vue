@@ -45,6 +45,16 @@ export default {
     },
   },
   methods: {
+    // 提示组件
+    messageToast(message) {
+      const messageElement = document.createElement("div");
+      messageElement.className = "messageToast-text";
+      messageElement.innerText = message;
+      document.getElementById("messageToast").appendChild(messageElement);
+      setTimeout(() => {
+        messageElement.remove();
+      }, 3000);
+    },
     handleKeyDown(event) {
       if (this.isFocusedOnInput) return; // 聚焦输入框时不触发
 
@@ -56,7 +66,7 @@ export default {
         );
         if (button) {
           button.click();
-          this.$messageToast('已点赞！');
+          this.messageToast("已点赞！");
         } else {
           console.log("按钮未找到");
         }

@@ -3,8 +3,18 @@
   left: 10px;
   bottom: 10px;
   z-index: 9;
-  width: 20px;
-  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: #000;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, .6);
 }
 
 .timeline-container .topic-timeline .timeline-scrollarea {
@@ -21,11 +31,12 @@
 }
 
 #linuxdoscripts input[type=checkbox] {
+  width: auto;
   transform: scale(1.2);
 }
 
-#linuxdoscripts #menu_suspendedball {
-  // display: none;
+#linuxdoscripts input[type=radio] {
+  width: auto;
 }
 
 #linuxdoscripts img {
@@ -175,6 +186,7 @@
   width: 140px;
   display: flex;
   flex-direction: column;
+  padding: 0;
   margin: 0;
   padding-top: 15px;
   margin-right: 20px;
@@ -208,7 +220,7 @@
   flex: 1;
   height: 480px;
   overflow-y: auto;
-  padding-right: 10px;
+  box-sizing: border-box;
 }
 
 #linuxdoscripts .menu-body::-webkit-scrollbar {
@@ -223,14 +235,6 @@
 #linuxdoscripts .menu-body::-webkit-scrollbar-thumb {
   background: #DEE0E1;
   border-radius: 8px;
-}
-
-#linuxdoscripts .menu-body .menu-body-item {
-  display: none;
-}
-
-#linuxdoscripts .menu-body .menu-body-item.act {
-  display: block;
 }
 
 #linuxdoscripts .menu-footer {
@@ -322,6 +326,26 @@
   transition: 0.3s;
 }
 
+#linuxdoscripts input {
+  font-family: inherit;
+  width: 100%;
+  border: 1px solid #999;
+  outline: 0;
+  padding: 5px;
+  font-size: 14px;
+  margin: 0;
+  resize: none;
+  border-radius: 0;
+  color: var(--d-input-text-color);
+  background: var(--d-input-bg-color);
+}
+
+#linuxdoscripts input:focus {
+  border-color: var(--tertiary);
+  outline: 2px solid var(--tertiary);
+  outline-offset: -2px;
+}
+
 #linuxdoscripts textarea {
   font-family: inherit;
   width: 100%;
@@ -331,7 +355,6 @@
   padding: 5px;
   font-size: 14px;
   margin: 0;
-  margin-top: 5px;
   resize: none;
   border-radius: 0;
   color: var(--d-input-text-color);
@@ -767,4 +790,25 @@ body.body-preview #main-outlet-wrapper {
 .hotranking-container ul li a:hover,
 .hotranking-container ol li a:hover {
   text-decoration: underline;
+}
+
+.menu-body {
+  padding: 0 15px;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+
+  label {
+    width: 70px;
+    font-weight: 400;
+  }
+
+  input {
+    flex: 1;
+    margin: 0;
+    max-width: 300px;
+  }
 }

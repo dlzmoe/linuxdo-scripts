@@ -20,19 +20,25 @@
       <div class="tit">5. 配置信息</div>
     </div>
     <input type="text" v-model="localChecked.apikey" placeholder="sk-xxxxxxxx" />
-    <input
-      style="width: 49%"
-      type="text"
-      v-model="localChecked.baseurl"
-      placeholder="https://api.openai.com"
-    />
-    <input
-      style="width: 49%; margin-left: 2%"
-      type="text"
-      v-model="localChecked.full_url"
-      placeholder="/v1/chat/completions"
-    />
-    <input type="text" v-model="localChecked.model" placeholder="模型，如：gpt-4o-mini" />
+    <div class="flex">
+      <input
+        style="width: 49%"
+        type="text"
+        v-model="localChecked.baseurl"
+        placeholder="https://api.openai.com"
+      />
+      <input
+        style="width: 49%; margin-left: 2%"
+        type="text"
+        v-model="localChecked.full_url"
+        placeholder="/v1/chat/completions"
+      />
+      <input
+        type="text"
+        v-model="localChecked.model"
+        placeholder="模型，如：gpt-4o-mini"
+      />
+    </div>
     <div>6. AI 总结帖子 prompt:</div>
     <textarea v-model="localChecked.prompt"></textarea>
     <div>7. AI 生成回复 prompt:</div>
@@ -352,8 +358,15 @@ ${topic_contentdata}`;
   },
 };
 </script>
-<style scoped>
+<style scoped lang="less">
 .item {
   border: none;
+}
+.flex {
+  display: flex;
+
+  input {
+    flex: 1;
+  }
 }
 </style>

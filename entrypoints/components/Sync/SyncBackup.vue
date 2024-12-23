@@ -65,6 +65,16 @@ export default {
     };
   },
   methods: {
+    // 提示组件
+    messageToast(message) {
+      const messageElement = document.createElement("div");
+      messageElement.className = "messageToast-text";
+      messageElement.innerText = message;
+      document.getElementById("messageToast").appendChild(messageElement);
+      setTimeout(() => {
+        messageElement.remove();
+      }, 3000);
+    },
     handleChange() {
       $(".lxwebdavpassword").removeClass("act");
       this.$emit("update:value", this.tableData);
@@ -165,10 +175,10 @@ export default {
 
         try {
           const uploadResponse = await this.uploadFile(uploadUrl, fileData);
-          this.$messageToast("同步到云端成功！");
+          this.messageToast("同步到云端成功！");
         } catch (error) {
           console.error("Upload failed:", error);
-          this.$messageToast("同步失败！");
+          this.messageToast("同步失败！");
         }
       } catch (error) {
         console.error(error);
@@ -236,13 +246,13 @@ export default {
         const downloadResponse = await this.downloadFile(downloadUrl);
         localStorage.setItem("linxudoscriptssetting", downloadResponse);
 
-        this.$messageToast("下载成功，即将刷新页面！");
+        this.messageToast("下载成功，即将刷新页面！");
         setTimeout(() => {
           location.reload();
         }, 1500);
       } catch (error) {
         console.error(error);
-        this.$messageToast("下载失败，请检查是否存在备份！");
+        this.messageToast("下载失败，请检查是否存在备份！");
       }
     },
     // 显示/隐藏密码
@@ -251,23 +261,23 @@ export default {
     },
   },
   created() {
-    let linxudoscriptssetting = {};  // 默认一个空对象
+    let linxudoscriptssetting = {}; // 默认一个空对象
     try {
       const storedData = localStorage.getItem("linxudoscriptssetting");
       if (storedData) {
-        linxudoscriptssetting = JSON.parse(storedData);  // 尝试解析 JSON
+        linxudoscriptssetting = JSON.parse(storedData); // 尝试解析 JSON
       }
     } catch (error) {
       console.error("Error parsing localStorage data:", error);
     }
 
     // 安全访问 syncbackup 属性，使用可选链（Optional Chaining）来避免访问 undefined
-    const syncbackup = linxudoscriptssetting.syncbackup || {};  // 如果没有 syncbackup，则默认空对象
+    const syncbackup = linxudoscriptssetting.syncbackup || {}; // 如果没有 syncbackup，则默认空对象
 
     // 使用可选链和默认值处理 undefined 和 null
-    this.tableData.webdavUrl = syncbackup?.webdavUrl || '';  // 如果 syncbackup.webdavUrl 不存在，默认为 ''
-    this.tableData.webdavUsername = syncbackup?.webdavUsername || '';  // 同理
-    this.tableData.webdavPassword = syncbackup?.webdavPassword || '';  // 同理
+    this.tableData.webdavUrl = syncbackup?.webdavUrl || ""; // 如果 syncbackup.webdavUrl 不存在，默认为 ''
+    this.tableData.webdavUsername = syncbackup?.webdavUsername || ""; // 同理
+    this.tableData.webdavPassword = syncbackup?.webdavPassword || ""; // 同理
   },
 };
 </script>

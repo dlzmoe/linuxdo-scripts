@@ -2,14 +2,6 @@
   <div class="item">
     <p>切换论坛主题：</p>
     <p>无法修改，如果有样式问题无法解决，因为是直接 copy 别的论坛样式文件。</p>
-    <p>
-      <a
-        href="https://github.com/dlzmoe/linuxdo-scripts/tree/main/themes"
-        target="_blank"
-      >
-        如何单独使用，不依托于增强插件？
-      </a>
-    </p>
     <hr />
     <ul>
       <li v-for="item in list" :key="item.id">

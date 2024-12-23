@@ -7,7 +7,7 @@ export default defineConfig({
   manifest: {
     name: "LinuxDo Scripts",
     version: "1.0.0",
-    description: "为 linxu.do 用户提供了一些增强功能。",
+    description: "为 linux.do 用户提供了一些增强功能。",
     permissions: ["storage", "scripting", "activeTab", "contextMenus"],
   },
   hooks: {
@@ -20,6 +20,7 @@ export default defineConfig({
         manifest.content_scripts.push({
           matches: ["https://linux.do/*"],
           js: ["content-scripts/content.js"],
+          css: ["content-scripts/content.css"],
           // If the script has CSS, add it here.
         });
       }

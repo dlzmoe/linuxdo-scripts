@@ -18,6 +18,16 @@ export default {
     return {};
   },
   methods: {
+    // 提示组件
+    messageToast(message) {
+      const messageElement = document.createElement("div");
+      messageElement.className = "messageToast-text";
+      messageElement.innerText = message;
+      document.getElementById("messageToast").appendChild(messageElement);
+      setTimeout(() => {
+        messageElement.remove();
+      }, 3000);
+    },
     // 导入数据
     triggerFileInput() {
       this.$refs.fileInput.click();
@@ -42,7 +52,7 @@ export default {
     // 处理导入的数据
     importData(data) {
       localStorage.setItem("linxudoscriptssetting", data);
-      this.$messageToast("导入成功，即将刷新页面！");
+      this.messageToast("导入成功，即将刷新页面！");
       setTimeout(() => {
         location.reload();
       }, 1500);
@@ -67,7 +77,7 @@ export default {
       document.body.removeChild(link);
       URL.revokeObjectURL(url);
 
-      this.$messageToast("导出成功！");
+      this.messageToast("导出成功！");
     },
   },
 };

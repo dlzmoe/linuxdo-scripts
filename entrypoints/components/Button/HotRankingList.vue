@@ -3,7 +3,7 @@
     <div class="hotranking">
       <div class="el-button" @click="hotranking" title="只看楼主">热门</div>
     </div>
-    <div class="hotranking-container" v-show="show">
+    <div class="hotranking-container" v-show="showhot">
       <div class="flex">
         <div class="title">今日最热帖子</div>
         <button @click="query">刷新</button>
@@ -24,18 +24,28 @@ import $ from "jquery";
 export default {
   data() {
     return {
-      show: false,
+      showhot: false,
       list: [],
     };
   },
   methods: {
+    // 提示组件
+    messageToast(message) {
+      const messageElement = document.createElement("div");
+      messageElement.className = "messageToast-text";
+      messageElement.innerText = message;
+      document.getElementById("messageToast").appendChild(messageElement);
+      setTimeout(() => {
+        messageElement.remove();
+      }, 3000);
+    },
     hotranking() {
-      this.show = !this.show;
+      this.showhot = !this.showhot;
     },
     query() {
       this.list = [];
       this.init();
-      this.$messageToast("刷新成功！");
+      this.messageToast("刷新成功！");
     },
     init() {
       fetch("/top.json")
@@ -45,23 +55,16 @@ export default {
         })
         .catch((error) => {});
     },
-    handleClickOutside(event) {
-      if (
-        !event.target.closest(".hotranking") &&
-        !event.target.closest(".hotranking-container")
-      ) {
-        this.show = false;
-      }
-    },
   },
-  mounted() {
-    document.addEventListener("click", this.handleClickOutside);
-  },
-  beforeDestroy() {
-    document.removeEventListener("click", this.handleClickOutside);
-  },
+
   created() {
     this.init();
   },
 };
 </script>
+
+<style lang="less" scoped>
+ol {
+  padding: 0 0 0 20px;
+}
+</style>

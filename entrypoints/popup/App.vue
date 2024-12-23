@@ -1,7 +1,5 @@
 <template>
-  <div id="linuxdoscripts">
-    111
-  </div>
+  
 </template>
 
 <script>

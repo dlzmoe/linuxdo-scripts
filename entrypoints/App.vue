@@ -2,7 +2,7 @@
   <button class="btn no-text btn-icon color-scheme-toggler btn-flat linuxdoscripts-setting" title="设置" type="button" @click="setting">
     <svg class="fa d-icon d-icon-gear svg-icon svg-string" xmlns="http://www.w3.org/2000/svg"><use href="#gear"></use></svg>设置</button>
   <div id="linuxdoscripts">
-    <div class="linuxdoscripts-opacity"></div>
+    <div class="linuxdoscripts-opacity" v-show="showdialog"></div>
     <div class="setting-btn">
       <BackToTop v-show="showbacktotop" />
       <!-- 返回顶部按钮 -->
@@ -337,7 +337,7 @@ export default {
   },
   data() {
     return {
-      showdialog: true,
+      showdialog: false,
 
 
       version: packageJson.version,
@@ -440,7 +440,7 @@ export default {
   methods: {
     setting(){
       console.log('设置');
-      
+      this.showdialog = true;
     },
     // 检测新版本
     checkversion() {

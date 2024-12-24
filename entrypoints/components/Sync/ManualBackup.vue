@@ -51,7 +51,7 @@ export default {
     },
     // 处理导入的数据
     importData(data) {
-      localStorage.setItem("linxudoscriptssetting", data);
+      localStorage.setItem("linxudoscriptssettingDMI", data);
       this.messageToast("导入成功，即将刷新页面！");
       setTimeout(() => {
         location.reload();
@@ -65,7 +65,7 @@ export default {
       const day = String(today.getDate()).padStart(2, "0");
       const formattedDate = year + month + day;
 
-      const data = localStorage.getItem("linxudoscriptssetting");
+      const data = localStorage.getItem("linxudoscriptssettingDMI");
       const dataStr = JSON.stringify(data, null, 2);
       const blob = new Blob([dataStr], { type: "application/json" });
       const url = URL.createObjectURL(blob);

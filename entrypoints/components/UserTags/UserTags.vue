@@ -63,10 +63,10 @@ export default {
           // 如果不存在，新增对象
           this.tableData.push({ name: person, tags: tags });
         }
-        let settingData1 = localStorage.getItem("linxudoscriptssetting");
+        let settingData1 = localStorage.getItem("linxudoscriptssettingDMI");
         settingData1 = JSON.parse(settingData1);
         settingData1.usertags = this.tableData;
-        localStorage.setItem("linxudoscriptssetting", JSON.stringify(settingData1));
+        localStorage.setItem("linxudoscriptssettingDMI", JSON.stringify(settingData1));
 
         this.$emit("update:value", this.tableData);
       }
@@ -76,17 +76,17 @@ export default {
       if (del == true) {
         this.tableData.splice(item, 1);
 
-        let settingData1 = localStorage.getItem("linxudoscriptssetting");
+        let settingData1 = localStorage.getItem("linxudoscriptssettingDMI");
         settingData1 = JSON.parse(settingData1);
         settingData1.usertags = this.tableData;
-        localStorage.setItem("linxudoscriptssetting", JSON.stringify(settingData1));
+        localStorage.setItem("linxudoscriptssettingDMI", JSON.stringify(settingData1));
 
         this.$emit("update:value", this.tableData);
       }
     },
   },
   created() {
-    let settingData = localStorage.getItem("linxudoscriptssetting");
+    let settingData = localStorage.getItem("linxudoscriptssettingDMI");
     settingData = JSON.parse(settingData);
 
     if (!settingData.usertags) {
@@ -120,7 +120,7 @@ export default {
             settingData.usertags.push({ name: person, tags: tags });
           }
 
-          localStorage.setItem("linxudoscriptssetting", JSON.stringify(settingData));
+          localStorage.setItem("linxudoscriptssettingDMI", JSON.stringify(settingData));
         });
       }
 

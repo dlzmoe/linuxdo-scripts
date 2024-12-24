@@ -79,8 +79,8 @@ export default {
       $(".lxwebdavpassword").removeClass("act");
       this.$emit("update:value", this.tableData);
 
-      let linxudoscriptssetting = JSON.parse(
-        localStorage.getItem("linxudoscriptssetting")
+      let linxudoscriptssettingDMI = JSON.parse(
+        localStorage.getItem("linxudoscriptssettingDMI")
       );
       let data = {
         webdavUrl: this.tableData.webdavUrl,
@@ -88,10 +88,10 @@ export default {
         webdavPassword: this.tableData.webdavPassword,
       };
 
-      linxudoscriptssetting.syncbackup = data;
+      linxudoscriptssettingDMI.syncbackup = data;
       localStorage.setItem(
-        "linxudoscriptssetting",
-        JSON.stringify(linxudoscriptssetting)
+        "linxudoscriptssettingDMI",
+        JSON.stringify(linxudoscriptssettingDMI)
       );
     },
     // 检查文件夹是否存在
@@ -162,7 +162,7 @@ export default {
           console.log("Folder 'linuxdo-scripts-backup' already exists.");
         }
 
-        const data = localStorage.getItem("linxudoscriptssetting");
+        const data = localStorage.getItem("linxudoscriptssettingDMI");
         let fileData;
         try {
           fileData = JSON.stringify(JSON.parse(data)); // 确保是 JSON 格式
@@ -241,7 +241,7 @@ export default {
 
       try {
         const downloadResponse = await this.downloadFile(downloadUrl);
-        localStorage.setItem("linxudoscriptssetting", downloadResponse);
+        localStorage.setItem("linxudoscriptssettingDMI", downloadResponse);
 
         this.messageToast("下载成功，即将刷新页面！");
         setTimeout(() => {
@@ -258,18 +258,18 @@ export default {
     },
   },
   created() {
-    let linxudoscriptssetting = {}; // 默认一个空对象
+    let linxudoscriptssettingDMI = {}; // 默认一个空对象
     try {
-      const storedData = localStorage.getItem("linxudoscriptssetting");
+      const storedData = localStorage.getItem("linxudoscriptssettingDMI");
       if (storedData) {
-        linxudoscriptssetting = JSON.parse(storedData); // 尝试解析 JSON
+        linxudoscriptssettingDMI = JSON.parse(storedData); // 尝试解析 JSON
       }
     } catch (error) {
       console.error("Error parsing localStorage data:", error);
     }
 
     // 安全访问 syncbackup 属性，使用可选链（Optional Chaining）来避免访问 undefined
-    const syncbackup = linxudoscriptssetting.syncbackup || {}; // 如果没有 syncbackup，则默认空对象
+    const syncbackup = linxudoscriptssettingDMI.syncbackup || {}; // 如果没有 syncbackup，则默认空对象
 
     // 使用可选链和默认值处理 undefined 和 null
     this.tableData.webdavUrl = syncbackup?.webdavUrl || ""; // 如果 syncbackup.webdavUrl 不存在，默认为 ''

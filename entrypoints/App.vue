@@ -98,8 +98,6 @@
             <MenuEditorJa :sort="17" v-model="settingData.checked19" />
             <!-- 开启列表页导航栏浮动 -->
             <MenuStickyNav :sort="18" v-model="settingData.checked20" />
-            <!-- 开启快速打开下一个帖子 -->
-            <MenuNextPosts :sort="19" v-model="settingData.checked22" />
             <!-- 禁用选中文字分享功能 -->
             <MenuSelectedShare :sort="20" v-model="settingData.checked23" />
             <!-- 禁用视频自动播放 -->
@@ -227,7 +225,6 @@ import MenureplaceEmojiStyle from "./components/BasicSettings/MenureplaceEmojiSt
 import MenuEditorJa from "./components/BasicSettings/MenuEditorJa.vue";
 import MenuCreatedOrder from "./components/BasicSettings/MenuCreatedOrder.vue";
 import MenuStickyNav from "./components/BasicSettings/MenuStickyNav.vue";
-import MenuNextPosts from "./components/BasicSettings/MenuNextPosts.vue";
 import MenuSelectedShare from "./components/BasicSettings/MenuSelectedShare.vue";
 import MenuDisableAutoplay from "./components/BasicSettings/MenuDisableAutoplay.vue";
 import MenuShowRepltBtn from "./components/BasicSettings/MenuShowRepltBtn.vue";
@@ -330,7 +327,6 @@ export default {
     MenuShieldPosts,
     Themes,
     Signature,
-    MenuNextPosts,
     MenuSelectedShare,
     MenuDisableAutoplay,
     MenuShowRepltBtn,
@@ -402,7 +398,6 @@ export default {
           cate: "搞七捻三",
           days: "5",
         },
-        checked22: true,
         checked23: false,
         checked24: true,
         checked25: true,
@@ -516,7 +511,7 @@ export default {
     },
     // 保存设置
     save() {
-      localStorage.setItem("linxudoscriptssetting", JSON.stringify(this.settingData));
+      localStorage.setItem("linxudoscriptssettingDMI", JSON.stringify(this.settingData));
 
       this.messageToast("保存成功！");
       this.showdialog = false;
@@ -539,7 +534,7 @@ export default {
     },
     // 初始化设置
     initialization() {
-      localStorage.removeItem("linxudoscriptssetting");
+      localStorage.removeItem("linxudoscriptssettingDMI");
       this.messageToast("初始化设置成功，即将自动刷新！");
       setTimeout(() => {
         location.reload();
@@ -561,8 +556,8 @@ export default {
     //   }
     // }, 1000);
 
-    const linxudoscriptssetting = localStorage.getItem("linxudoscriptssetting");
-    if (linxudoscriptssetting) {
+    const linxudoscriptssettingDMI = localStorage.getItem("linxudoscriptssettingDMI");
+    if (linxudoscriptssettingDMI) {
       function deepMerge(target, source) {
         for (const key in source) {
           if (source[key] instanceof Object && key in target) {
@@ -573,9 +568,9 @@ export default {
         }
         return target;
       }
-      let existingData = JSON.parse(localStorage.getItem("linxudoscriptssetting"));
+      let existingData = JSON.parse(localStorage.getItem("linxudoscriptssettingDMI"));
       this.settingData = deepMerge(this.settingData, existingData);
-      localStorage.setItem("linxudoscriptssetting", JSON.stringify(this.settingData));
+      localStorage.setItem("linxudoscriptssettingDMI", JSON.stringify(this.settingData));
 
       this.showlookop = this.settingData.checked9;
       this.showlevelsearch = this.settingData.checked12;
@@ -594,7 +589,7 @@ export default {
         }, 1000);
       }
     } else {
-      localStorage.setItem("linxudoscriptssetting", JSON.stringify(this.settingData));
+      localStorage.setItem("linxudoscriptssettingDMI", JSON.stringify(this.settingData));
     }
   },
 };

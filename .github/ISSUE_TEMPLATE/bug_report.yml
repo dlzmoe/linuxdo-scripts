@@ -19,8 +19,8 @@ body:
   - type: input
     id: version
     attributes:
-      label: 你使用的浏览器 + 油猴管理器 + 插件版本
-      placeholder: 如：Chrome / 暴力猴 / 0.0.1 
+      label: 你使用的浏览器版本 + 扩展插件版本号
+      placeholder: 如：Chrome 131 / 1.0.1 
     validations:
       required: true
   - type: textarea

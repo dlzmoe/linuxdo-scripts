@@ -2,7 +2,7 @@
 <p align="center">脚本持续更新，欢迎提出 Issues，提交 Pr ~</p>
 
 > 由油猴插件重构成浏览器扩展，进入 1.0 版本。  
-> 暂时未上架扩展商店，可以在 releases 中下载最新安装包，最近整理一下正式发布。
+> 暂时未上架扩展商店，可以在 releases 中下载最新安装包。
 
 [中文简体](https://github.com/dlzmoe/linuxdo-scripts/blob/main/README.md) | [English](https://github.com/dlzmoe/linuxdo-scripts/blob/main/README_EN.md)
 

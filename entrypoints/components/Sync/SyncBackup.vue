@@ -213,27 +213,24 @@ export default {
 
     downloadFile(url) {
       return new Promise((resolve, reject) => {
-        GM_xmlhttpRequest({
-          method: "GET",
-          url: url,
-          headers: {
-            Authorization:
-              "Basic " +
-              btoa(`${this.tableData.webdavUsername}:${this.tableData.webdavPassword}`),
+        chrome.runtime.sendMessage(
+          {
+            action: "fetchData",
+            url: url,
+            username: this.tableData.webdavUsername,
+            password: this.tableData.webdavPassword,
           },
-          onload: function (response) {
-            if (response.status >= 200 && response.status < 300) {
-              resolve(response.responseText);
+          (response) => {
+            if (response.success) {
+              resolve(response.data);
             } else {
-              reject(new Error(`Download failed: ${response.statusText}`));
+              reject(new Error(response.error));
             }
-          },
-          onerror: function (error) {
-            reject(error);
-          },
-        });
+          }
+        );
       });
     },
+
     // 上传
     async uploadSampleFile() {
       this.checkAndCreateFolder();

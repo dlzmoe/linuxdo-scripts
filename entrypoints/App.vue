@@ -1,5 +1,6 @@
 <template>
-  <button class="linuxdoscripts-setting" title="设置" type="button" @click="setting">
+  <div class="linuxdoscripts-setting-wrap">
+    <button class="linuxdoscripts-setting" title="设置" type="button" @click="setting">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="24"
@@ -18,7 +19,8 @@
       />
       <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
     </svg>
-  </button>
+    </button>
+  </div>
   <div id="linuxdoscripts">
     <div class="linuxdoscripts-opacity" v-show="opacity"></div>
     <div class="setting-btn">
@@ -30,8 +32,6 @@
       <!-- 只看楼主 -->
       <LevelDiglog v-show="showlevelsearch" />
       <!-- 查询等级功能 -->
-      <AutoRead v-show="showautoread" />
-      <!-- 自动阅读按钮 -->
       <HotRankingList v-show="showhotranking" />
       <!-- 最热排行榜 -->
     </div>
@@ -48,7 +48,7 @@
           <li @click="showItem(2)" :class="{ act : activeIndex == 2 }"><Setting3 />用户标签</li>
           <li @click="showItem(3)" :class="{ act : activeIndex == 3 }"><Setting4 />AI 配置</li>
           <li @click="showItem(4)" :class="{ act : activeIndex == 4 }"><Setting5 />主题风格</li>
-          <li @click="showItem(5)" :class="{ act : activeIndex == 5 }"><Setting6 />数据同步</li>
+          <!-- <li @click="showItem(5)" :class="{ act : activeIndex == 5 }"><Setting6 />数据同步</li> -->
           <Updates />
         </ul>
         <div class="menu-body">
@@ -78,8 +78,6 @@
             <MenuHidetopicdetailtitle :sort="6" v-model="settingData.checked6" />
             <!-- 话题预览功能 -->
             <MenuTopicpreview :sort="7" v-model="settingData.checked7" />
-            <!-- 显示自动阅读按钮 -->
-            <MenuAutoRead :sort="8" v-model="settingData.checked8" />
             <!-- 只看楼主按钮 -->
             <MenuLookOP :sort="9" v-model="settingData.checked9" />
             <!-- 智能限制楼层高度 -->
@@ -95,43 +93,43 @@
             <!-- 只看自己签名 -->
             <MenuLookmeSign :sort="15" v-model="settingData.checked15" />
             <!-- 切换论坛表情风格 -->
-            <MenureplaceEmojiStyle :sort="17" v-model="settingData.checked17" />
+            <MenureplaceEmojiStyle :sort="16" v-model="settingData.checked17" />
             <!-- 编辑器切换 ja 字体 -->
-            <MenuEditorJa :sort="19" v-model="settingData.checked19" />
+            <MenuEditorJa :sort="17" v-model="settingData.checked19" />
             <!-- 开启列表页导航栏浮动 -->
-            <MenuStickyNav :sort="20" v-model="settingData.checked20" />
+            <MenuStickyNav :sort="18" v-model="settingData.checked20" />
             <!-- 开启快速打开下一个帖子 -->
-            <MenuNextPosts :sort="21" v-model="settingData.checked22" />
+            <MenuNextPosts :sort="19" v-model="settingData.checked22" />
             <!-- 禁用选中文字分享功能 -->
-            <MenuSelectedShare :sort="22" v-model="settingData.checked23" />
+            <MenuSelectedShare :sort="20" v-model="settingData.checked23" />
             <!-- 禁用视频自动播放 -->
-            <MenuDisableAutoplay :sort="23" v-model="settingData.checked24" />
+            <MenuDisableAutoplay :sort="21" v-model="settingData.checked24" />
             <!-- 回复悬浮按钮 -->
-            <MenuShowRepltBtn :sort="24" v-model="settingData.checked25" />
+            <MenuShowRepltBtn :sort="22" v-model="settingData.checked25" />
             <!-- 列表快速免打扰帖子 -->
-            <MenuDonotTopic :sort="25" v-model="settingData.checked26" />
+            <MenuDonotTopic :sort="23" v-model="settingData.checked26" />
             <!-- 自动切换黑夜模式 -->
-            <MenuAutoDark :sort="26" v-model="settingData.checked27" />
+            <MenuAutoDark :sort="24" v-model="settingData.checked27" />
             <!-- 是否隐藏输入框提示文字 -->
-            <MenuHiddenPlaceholder :sort="27" v-model="settingData.checked28" />
+            <MenuHiddenPlaceholder :sort="25" v-model="settingData.checked28" />
             <!-- 是否禁用浏览帖子时 URL 更新楼层数 -->
-            <MenuDisableReplaceState :sort="28" v-model="settingData.checked29" />
+            <MenuDisableReplaceState :sort="26" v-model="settingData.checked29" />
             <!-- 是否移除话题上的头像 (减少网络请求) -->
-            <MenuRemovePostAvatar :sort="29" v-model="settingData.removePostavatarData" />
+            <MenuRemovePostAvatar :sort="27" v-model="settingData.removePostavatarData" />
             <!-- 是否显示最热帖子排行榜 -->
-            <MenuHotRankingList :sort="30" v-model="settingData.checked33" />
+            <MenuHotRankingList :sort="28" v-model="settingData.checked33" />
             <!-- 是否显示返回顶部按钮 -->
-            <MenuBackToTop :sort="31" v-model="settingData.checked34" />
+            <MenuBackToTop :sort="29" v-model="settingData.checked34" />
             <!-- 是否显示快捷点赞主题按钮 -->
-            <MenuQuickLikeTopic :sort="32" v-model="settingData.checked35" />
+            <MenuQuickLikeTopic :sort="30" v-model="settingData.checked35" />
             <!-- 是否支持将文本快捷复制为图片 -->
-            <MenuCopyTextAsImage :sort="33" v-model="settingData.checked36" />
+            <MenuCopyTextAsImage :sort="31" v-model="settingData.checked36" />
             <!-- 隐藏新消息小蓝点（除帖子未读小蓝点） -->
-            <MenuHideNewBluedot :sort="34" v-model="settingData.checked37" />
+            <MenuHideNewBluedot :sort="32" v-model="settingData.checked37" />
             <!-- gif 头像转静态图片 -->
-            <MenuGifToPng :sort="35" v-model="settingData.checked38" />
+            <MenuGifToPng :sort="33" v-model="settingData.checked38" />
             <!-- 新增是否隐藏首页 banner 区域 -->
-            <MenuHideHomeBanner :sort="36" v-model="settingData.checked39" />
+            <MenuHideHomeBanner :sort="34" v-model="settingData.checked39" />
           </div>
           <div class="menu-body-item" v-show="activeIndex == 1">
             <!-- 自定义论坛 logo -->
@@ -165,11 +163,6 @@
         <button class="save" @click="save">保存</button>
         <button class="saveload" @click="saveload">保存并刷新</button>
         <button class="floorlottery" @click="openFloorlottery">楼层抽奖</button>
-        <!-- <a target="_blank" href="https://greasyfork.org/scripts/501827"> -->
-        <!-- <button style="margin-left: 8px" class="detection" @click="checkversion">
-          检测新版本
-        </button> -->
-        <!-- </a> -->
       </div>
     </dialog>
 
@@ -222,7 +215,6 @@ import MenuShowcreatetime1 from "./components/BasicSettings/MenuShowcreatetime1.
 import MenuShowfloors from "./components/BasicSettings/MenuShowfloors.vue";
 import MenuHidetopicdetailtitle from "./components/BasicSettings/MenuHidetopicdetailtitle.vue";
 import MenuTopicpreview from "./components/BasicSettings/MenuTopicpreview.vue";
-import MenuAutoRead from "./components/BasicSettings/MenuAutoRead.vue";
 import MenuLookOP from "./components/BasicSettings/MenuLookOP.vue";
 import MenuFloorHeight from "./components/BasicSettings/MenuFloorHeight.vue";
 import ReplyTBEnjoy from "./components/BasicSettings/ReplyTBEnjoy.vue";
@@ -275,7 +267,6 @@ import SyncBackup from "./components/Sync/SyncBackup.vue";
 // 按钮
 import LookOP from "./components/Button/LookOP.vue";
 import LevelDiglog from "./components/Button/LevelDiglog.vue";
-import AutoRead from "./components/Button/AutoRead.vue";
 import ReplyBtn from "./components/Button/ReplyBtn.vue";
 import HotRankingList from "./components/Button/HotRankingList.vue";
 import BackToTop from "./components/Button/BackToTop.vue";
@@ -314,8 +305,6 @@ export default {
     MenuTopicpreview,
     MenuCreatereply,
     MenuBlockuserlist,
-    MenuAutoRead,
-    AutoRead,
     Updates,
     MenuLookOP,
     LookOP,
@@ -390,10 +379,6 @@ export default {
         checked5: true,
         checked6: false,
         checked7: false,
-        checked8: {
-          value1: true,
-          value2: 10,
-        },
         checked9: true,
         QuickReply: "",
         blockList: "",
@@ -411,7 +396,7 @@ export default {
           value2: "twitter",
         },
         checked19: false,
-        checked20: true,
+        checked20: false,
         checked21: {
           value1: false,
           cate: "搞七捻三",
@@ -461,7 +446,6 @@ export default {
         themes: 0,
       },
 
-      showautoread: false,
       showlookop: false,
       showlevelsearch: false,
       showreplybtn: false,
@@ -522,28 +506,8 @@ export default {
     },
     // 打开设置
     setting() {
-      console.log("设置");
       this.showdialog = true;
       this.opacity = true;
-    },
-    // 检测新版本
-    checkversion() {
-      this.messageToast("正在检测新版本...");
-      fetch("https://api.github.com/repos/dlzmoe/linuxdo-scripts/releases/latest")
-        .then((response) => response.json())
-        .then((data) => {
-          if (this.version != data.tag_name) {
-            this.messageToast("有新版本可用，即将前往更新！");
-            setTimeout(() => {
-              window.open("https://greasyfork.org/scripts/501827", "_blank");
-            }, 1000);
-          } else {
-            this.messageToast("当前已是最新版本！");
-          }
-        })
-        .catch((error) => {
-          this.messageToast("检测出错，请刷新后重试！");
-        });
     },
     // 关闭弹窗
     closedialog() {
@@ -613,7 +577,6 @@ export default {
       this.settingData = deepMerge(this.settingData, existingData);
       localStorage.setItem("linxudoscriptssetting", JSON.stringify(this.settingData));
 
-      this.showautoread = this.settingData.checked8.value1;
       this.showlookop = this.settingData.checked9;
       this.showlevelsearch = this.settingData.checked12;
       this.showreplybtn = this.settingData.checked25;

@@ -15,14 +15,10 @@ export default {
             <dialog open class="UsageTip">
               <div class="title">友情提示</div>
               <div>
-                佬友你好，你已经成功安装 linuxdo 增强插件啦！<a
-                  href="https://linuxdo-scripts-docs.netlify.app/"
-                  target="_blank">
-                  使用文档
-                  </a>
+                佬友你好，你已经成功安装 LinuxDo Scripts 扩展啦！
               </div>
               <div style="color:#e00">
-                设置按钮在下方切换主题的旁边哦~ 有个小齿轮，点击它开始配置插件！
+                鼠标移动到浏览器最左侧可以滑出设置按钮，点击它开始配置插件！
               </div>
               <div>如果可以的话欢迎点个 star 支持一下~</div>
               <div>

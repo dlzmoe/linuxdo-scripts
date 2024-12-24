@@ -11,7 +11,7 @@ export default defineContentScript({
   async main(ctx) {
     // 3. Define your UI
     const ui = await createShadowRootUi(ctx, {
-      name: 'linuxdo-script-ui',
+      name: 'linuxdo-scripts-ui',
       position: 'inline',
       anchor: 'body',
       onMount: (container) => {

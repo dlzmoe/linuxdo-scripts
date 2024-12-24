@@ -1,0 +1,64 @@
+{
+  "manifest_version": 3,
+  "name": "LinuxDo Scripts",
+  "description": "为 linux.do 用户提供了一些增强功能。",
+  "version": "1.0.1",
+  "icons": {
+    "16": "icon/16.png",
+    "32": "icon/32.png",
+    "48": "icon/48.png",
+    "96": "icon/96.png",
+    "128": "icon/128.png"
+  },
+  "permissions": [
+    "storage",
+    "scripting",
+    "tabs"
+  ],
+  "commands": {
+    "wxt:reload-extension": {
+      "description": "Reload the extension during development",
+      "suggested_key": {
+        "default": "Alt+R"
+      }
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Default Popup Title",
+    "default_popup": "popup.html"
+  },
+  "host_permissions": [
+    "https://linux.do/",
+    "http://localhost/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "content-scripts/content.css"
+      ],
+      "matches": [
+        "https://linux.do/*"
+      ]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval' http://localhost:3000; object-src 'self';",
+    "sandbox": "script-src 'self' 'unsafe-inline' 'unsafe-eval' http://localhost:3000; sandbox allow-scripts allow-forms allow-popups allow-modals; child-src 'self';"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://linux.do/*"
+      ],
+      "js": [
+        "content-scripts/content.js"
+      ],
+      "css": [
+        "content-scripts/content.css"
+      ]
+    }
+  ]
+}

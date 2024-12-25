@@ -16585,9 +16585,9 @@ Expected function or array of functions, received type ${typeof value}.`
   const description = "manifest.json description";
   const version$1 = "1.0.2";
   const type = "module";
-  const scripts = { "dev": "wxt", "dev:firefox": "wxt -b firefox", "build": "wxt build", "build:firefox": "wxt build -b firefox", "zip": "wxt zip", "zip:firefox": "wxt zip -b firefox", "compile": "vue-tsc --noEmit", "postinstall": "wxt prepare" };
+  const scripts = { "dev": "wxt", "dev:firefox": "wxt -b firefox", "zip1": "wxt && node scripts/zip.js && py build.py", "build": "wxt build", "build:firefox": "wxt build -b firefox", "zip": "wxt zip", "zip:firefox": "wxt zip -b firefox", "compile": "vue-tsc --noEmit", "postinstall": "wxt prepare" };
   const dependencies = { "element-plus": "^2.9.1", "jquery": "^3.7.1", "marked": "^14.1.1", "pangu": "^4.0.7", "vue": "^3.5.12", "webdav": "^5.7.1", "webext-dynamic-content-scripts": "^10.0.3", "webext-permission-toggle": "^5.0.1" };
-  const devDependencies = { "@types/chrome": "^0.0.280", "@wxt-dev/module-vue": "^1.0.1", "less": "^4.2.1", "less-loader": "^8.0.0", "style-loader": "^2.0.0", "typescript": "5.6.3", "vue-tsc": "^2.1.10", "wxt": "^0.19.13" };
+  const devDependencies = { "@types/chrome": "^0.0.280", "@wxt-dev/module-vue": "^1.0.1", "adm-zip": "^0.5.16", "less": "^4.2.1", "less-loader": "^8.0.0", "style-loader": "^2.0.0", "typescript": "5.6.3", "vue-tsc": "^2.1.10", "wxt": "^0.19.13" };
   const packageJson = {
     name,
     description,
@@ -81368,7 +81368,6 @@ For more detail, please visit: ${ref2}
       ui.mount();
     }
   });
-  content;
   function initPlugins() {
   }
   function print(method, ...args) {

@@ -200,6 +200,7 @@
 </template>
 
 <script>
+import "./app.less";
 import $ from "jquery";
 
 // 基础设置

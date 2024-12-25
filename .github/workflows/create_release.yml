@@ -47,7 +47,8 @@ jobs:
         CURRENT_DATE=$(TZ='Asia/Shanghai' date +'%Y-%m-%d  %H:%M')
         sed -i "s/\$PACKAGE_VERSION/$PACKAGE_VERSION/g" CHANGELOG.md
         sed -i "s/\$CURRENT_DATE/$CURRENT_DATE/g" CHANGELOG.md
-        gh release create "$PACKAGE_VERSION" .output/chrome-mv3.zip \
+        gh release create "$PACKAGE_VERSION" .output/linuxdo-scripts-$PACKAGE_VERSION-chrome.zip \
+        gh release create "$PACKAGE_VERSION" .output/linuxdo-scripts-$PACKAGE_VERSION-firefox.zip \
         -t "$PACKAGE_VERSION" \
         -n "$(cat CHANGELOG.md)
 
@@ -55,7 +56,7 @@ jobs:
 
         使用方法，Chrome、Edge、Arc 用户请在 [Chrome 商店中安装](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj)
         
-        或者下载下方的 chrome-mv3.zip，然后打开 chrome://extensions/，勾选开发者模式，将下载的 zip 包拖拽进去即可。
+        火狐浏览器用户下载下方的安装包使用。
         
         [查看 $PACKAGE_VERSION 更新日志](https://github.com/dlzmoe/linuxdo-scripts/blob/main/version-log.md)
 

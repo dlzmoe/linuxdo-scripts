@@ -1,7 +1,7 @@
 @charset "UTF-8";.linuxdoscripts-setting-wrap {
   position: fixed;
   left: 0;
-  top: 0;
+  bottom: 0;
   width: 60px;
   height: 100vh;
   z-index: 9;
@@ -19,6 +19,16 @@
 .linuxdoscripts-setting-wrap:hover > button {
   opacity: 1;
   margin-left: 0;
+}
+@media (max-width: 768px) {
+  .linuxdoscripts-setting-wrap {
+    height: auto;
+    position: fixed;
+  }
+  .linuxdoscripts-setting-wrap > button {
+    opacity: 1;
+    margin-left: 0;
+  }
 }
 .linuxdoscripts-setting {
   display: flex;

@@ -2,11 +2,12 @@
   "name": "linuxdo-scripts",
   "description": "manifest.json description",
   "private": true,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "scripts": {
     "dev": "wxt",
     "dev:firefox": "wxt -b firefox",
+    "zip1": "node scripts/zip.js && py build.py",
     "build": "wxt build",
     "build:firefox": "wxt build -b firefox",
     "zip": "wxt zip",
@@ -27,6 +28,7 @@
   "devDependencies": {
     "@types/chrome": "^0.0.280",
     "@wxt-dev/module-vue": "^1.0.1",
+    "adm-zip": "^0.5.16",
     "less": "^4.2.1",
     "less-loader": "^8.0.0",
     "style-loader": "^2.0.0",

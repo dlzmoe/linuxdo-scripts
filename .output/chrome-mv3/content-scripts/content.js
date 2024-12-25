@@ -16583,7 +16583,7 @@ Expected function or array of functions, received type ${typeof value}.`
   const $ = /* @__PURE__ */ getDefaultExportFromCjs(jqueryExports);
   const name = "linuxdo-scripts";
   const description = "manifest.json description";
-  const version$1 = "1.0.1";
+  const version$1 = "1.0.2";
   const type = "module";
   const scripts = { "dev": "wxt", "dev:firefox": "wxt -b firefox", "build": "wxt build", "build:firefox": "wxt build -b firefox", "zip": "wxt zip", "zip:firefox": "wxt zip -b firefox", "compile": "vue-tsc --noEmit", "postinstall": "wxt prepare" };
   const dependencies = { "element-plus": "^2.9.1", "jquery": "^3.7.1", "marked": "^14.1.1", "pangu": "^4.0.7", "vue": "^3.5.12", "webdav": "^5.7.1", "webext-dynamic-content-scripts": "^10.0.3", "webext-permission-toggle": "^5.0.1" };

@@ -1,7 +1,7 @@
 .linuxdoscripts-setting-wrap {
   position: fixed;
   left: 0;
-  top: 0;
+  bottom: 0;
   width: 60px;
   height: 100vh;
   z-index: 9;
@@ -25,11 +25,19 @@
   }
 }
 
+@media(max-width:768px) {
+  .linuxdoscripts-setting-wrap {
+    height: auto;
+    position: fixed;
+
+    &>button {
+      opacity: 1;
+      margin-left: 0;
+    }
+  }
+}
+
 .linuxdoscripts-setting {
-  // position: fixed;
-  // left: 10px;
-  // bottom: 10px;
-  // z-index: 9;
   display: flex;
   align-items: center;
   justify-content: center;

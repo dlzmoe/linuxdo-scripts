@@ -1,3 +1,7 @@
+> [!NOTE]
+> 特别活动：【L 站 2024 年度总结】脚本 - [源码](./plugin/summary.user.js) / [直接安装](https://raw.githubusercontent.com/dlzmoe/linuxdo-scripts/refs/heads/main/plugin/summary.user.js)
+
+
 <h2 align="center">LinuxDo Scripts 扩展（原名：linuxdo-scripts 增强插件）</h2>
 <p align="center">脚本持续更新，欢迎提出 Issues，提交 Pr ~</p>
 

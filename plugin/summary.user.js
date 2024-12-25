@@ -10,6 +10,7 @@
 (function () {
   'use strict';
   var myusername = "anghunk";
+  
   $('head').append(`<style>.annualsummary{position:fixed;left:0;top:0;height:100vh;overflow-y:auto;width:500px;z-index:99999}</style>`)
   fetch(`https://linux.do/u/${myusername}/summary.json`)
     .then((response) => response.json())

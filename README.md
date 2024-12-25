@@ -1,7 +1,6 @@
 > [!NOTE]
 > 特别活动：【L 站 2024 年度总结】脚本 - [源码](./plugin/summary.user.js) / [直接安装](https://raw.githubusercontent.com/dlzmoe/linuxdo-scripts/refs/heads/main/plugin/summary.user.js)
 
-
 <h2 align="center">LinuxDo Scripts 扩展（原名：linuxdo-scripts 增强插件）</h2>
 <p align="center">脚本持续更新，欢迎提出 Issues，提交 Pr ~</p>
 
@@ -25,6 +24,13 @@ LinuxDo Scripts 扩展，话题列表显示创建时间，显示楼层数，新�
 [使用和开发文档](https://linuxdo-scripts-docs.netlify.app/) |
 [Discord 社区](https://discord.gg/n2pErsD7Kg)
 
+## 使用方法
+
+点击此链接进入 releases 进行下载安装。
+
+https://github.com/dlzmoe/linuxdo-scripts/releases
+
+![image](https://github.com/user-attachments/assets/1553917a-1b3b-44f4-b624-2ca2a1616e4f)
 
 ## 功能特性
 
@@ -66,14 +72,6 @@ LinuxDo Scripts 扩展，话题列表显示创建时间，显示楼层数，新�
 
 </details>
 
-
-## 使用方法
-
-点击此链接进入 releases 进行下载安装。
-
-https://github.com/dlzmoe/linuxdo-scripts/releases
-
-
 ## 开发说明
 
 ```
@@ -96,18 +94,15 @@ yarn dev # 本地运行
 
 [version-log.md](https://github.com/dlzmoe/linuxdo-scripts/blob/main/version-log.md)
 
-
 ## 贡献历史
 
 ![Contributor](https://contrib.rocks/image?repo=dlzmoe/linuxdo-scripts)
 
 [![Stargazers over time](https://starchart.cc/dlzmoe/linuxdo-scripts.svg?variant=adaptive)](https://starchart.cc/dlzmoe/linuxdo-scripts)
 
-
 ## 免责声明
 
 本脚本中提供的所有功能均仅在浏览器中运行，所使用的源代码公开透明可见，且本脚本仅学习研究使用，不使用任何盈利方案或参与任何盈利组织，因使用本脚本引起的或与本脚本有关的任何争议，各方应友好协商解决，本脚本对使用本脚本所提供的软件时可能对用户自己或他人造成的任何形式的损失和伤害不承担任何责任。如用户下载、安装和使用本产品中所提供的软件，即表明用户信任本作者及其相关协议和免责声明。
-
 
 ## 版权协议
 

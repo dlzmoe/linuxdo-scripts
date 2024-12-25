@@ -58,7 +58,7 @@ export default {
     handleKeyDown(event) {
       if (this.isFocusedOnInput) return; // 聚焦输入框时不触发
 
-      if (event.key.toLowerCase() === "q") {
+      if (event.key === "q") {
         // 处理大小写
         const parentSelector = "#post_1"; // 静态的 postId
         const button = document.querySelector(
@@ -74,16 +74,16 @@ export default {
     },
     handleFocus(event) {
       if (
-        event.target.tagName.toLowerCase() === "input" ||
-        event.target.tagName.toLowerCase() === "textarea"
+        event.target.tagName === "input" ||
+        event.target.tagName === "textarea"
       ) {
         this.isFocusedOnInput = true; // 当聚焦在输入框时
       }
     },
     handleBlur(event) {
       if (
-        event.target.tagName.toLowerCase() === "input" ||
-        event.target.tagName.toLowerCase() === "textarea"
+        event.target.tagName === "input" ||
+        event.target.tagName === "textarea"
       ) {
         this.isFocusedOnInput = false; // 当失去焦点时
       }

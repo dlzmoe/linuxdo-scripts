@@ -20,21 +20,14 @@ export default {
       $(".post-stream").toggleClass("lookopwrapactive");
     },
   },
+  created() {
+    $("head").append(`<style>
+.post-stream.lookopwrapactive .topic-post{display:none !important;}
+.post-stream.lookopwrapactive .topic-post.topic-owner{display: block !important;}
+    </style>`);
+  },
 };
 </script>
-<style lang="less">
-.post-stream {
-  &.lookopwrapactive {
-    .topic-post {
-      display: none !important;
-
-      &.topic-owner {
-        display: block !important;
-      }
-    }
-  }
-}
-</style>
 <style lang="less" scoped>
 .el-button {
   &.act {

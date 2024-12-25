@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "wxt",
     "dev:firefox": "wxt -b firefox",
-    "build": "wxt build && wxt zip && py scripts/build.py",
+    "build": "wxt build && py scripts/build.py",
+    "py": "py scripts/build.py",
     "build:firefox": "wxt build -b firefox",
     "zip": "wxt zip",
     "zip:firefox": "wxt zip -b firefox",

@@ -15,6 +15,16 @@ export default {
   props: ["modelValue", "sort"],
   emits: ["update:modelValue"],
   methods: {
+    // 提示组件
+    messageToast(message) {
+      const messageElement = document.createElement("div");
+      messageElement.className = "messageToast-text";
+      messageElement.innerText = message;
+      document.getElementById("messageToast").appendChild(messageElement);
+      setTimeout(() => {
+        messageElement.remove();
+      }, 3000);
+    },
     init() {
       $(".topic-list .main-link a.title").each(function () {
         const id = $(this).attr("data-topic-id");
@@ -56,13 +66,8 @@ export default {
               })
               .then(() => {
                 $(this).parents(".topic-list-item").remove();
-                const messageElement = $(
-                  `<div class="messageToast-text">帖子已设为免打扰！</div>`
-                );
                 $("#messageToast").append(messageElement);
-                setTimeout(() => {
-                  messageElement.remove();
-                }, 3000);
+                this.messageToast("帖子已设为免打扰！");
                 resolve();
               })
               .catch((error) => {

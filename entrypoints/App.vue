@@ -48,7 +48,7 @@
           <li @click="showItem(2)" :class="{ act : activeIndex == 2 }"><Setting3 />用户标签</li>
           <li @click="showItem(3)" :class="{ act : activeIndex == 3 }"><Setting4 />AI 配置</li>
           <li @click="showItem(4)" :class="{ act : activeIndex == 4 }"><Setting5 />主题风格</li>
-          <!-- <li @click="showItem(5)" :class="{ act : activeIndex == 5 }"><Setting6 />数据同步</li> -->
+          <li @click="showItem(5)" :class="{ act : activeIndex == 5 }"><Setting6 />数据同步</li>
           <Updates />
         </ul>
         <div class="menu-body">
@@ -198,7 +198,6 @@
 </template>
 
 <script>
-import "./app.less";
 import $ from "jquery";
 
 // 基础设置
@@ -540,7 +539,7 @@ export default {
   created() {
     $("body").append('<div id="messageToast"></div>');
     console.log(
-      `%c linuxdo 增强插件 %c 已开启 `,
+      `%c linuxdo 增强插件 v${packageJson.version} %c 已开启 `,
       "padding: 2px 1px; color: #fff; background: #606060;",
       "padding: 2px 1px; color: #fff; background: #42c02e;"
     );

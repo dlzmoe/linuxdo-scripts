@@ -1,6 +1,7 @@
 <template>
   <div class="item">用于在云端同步设置数据，无需手动导入导出。（同步前先保存设置）</div>
-  <div class="item">
+  <p style="color:#999;margin-top:10px;">待定。。。</p>
+  <!-- <div class="item">
     <div class="tit">WebDav 地址：</div>
     <input
       type="text"
@@ -28,7 +29,7 @@
     <button @click="uploadSampleFile">同步到云端</button>
     <button @click="downloadSampleFile">下载到本地</button>
   </div>
-  <hr />
+  <hr /> -->
   <!-- 手动导入导出 -->
   <div style="margin: 10px 0">手动导入导出数据：</div>
   <ManualBackup />

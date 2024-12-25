@@ -12,8 +12,6 @@
       <!-- 显示 AI 对话网站 -->
       <LevelDiglog v-show="showlevelsearch" />
       <!-- 查询等级功能 -->
-      <AutoRead v-show="showautoread" />
-      <!-- 自动阅读按钮 -->
       <HotRankingList v-show="showhotranking" />
       <!-- 最热排行榜 -->
     </div>
@@ -60,8 +58,6 @@
             <MenuHidetopicdetailtitle :sort="6" v-model="settingData.checked6" />
             <!-- 话题预览功能 -->
             <MenuTopicpreview :sort="7" v-model="settingData.checked7" />
-            <!-- 显示自动阅读按钮 -->
-            <MenuAutoRead :sort="8" v-model="settingData.checked8" />
             <!-- 只看楼主按钮 -->
             <MenuLookOP :sort="9" v-model="settingData.checked9" />
             <!-- 智能限制楼层高度 -->
@@ -110,8 +106,6 @@
             <MenuBackToTop :sort="31" v-model="settingData.checked34" />
             <!-- 是否显示快捷点赞主题按钮 -->
             <MenuQuickLikeTopic :sort="32" v-model="settingData.checked35" />
-            <!-- 是否支持将文本快捷复制为图片 -->
-            <MenuCopyTextAsImage :sort="33" v-model="settingData.checked36" />
             <!-- 隐藏新消息小蓝点（除帖子未读小蓝点） -->
             <MenuHideNewBluedot :sort="34" v-model="settingData.checked37" />
             <!-- gif 头像转静态图片 -->
@@ -184,7 +178,6 @@ import MenuShowcreatetime1 from "./components/BasicSettings/MenuShowcreatetime1.
 import MenuShowfloors from "./components/BasicSettings/MenuShowfloors.vue";
 import MenuHidetopicdetailtitle from "./components/BasicSettings/MenuHidetopicdetailtitle.vue";
 import MenuTopicpreview from "./components/BasicSettings/MenuTopicpreview.vue";
-import MenuAutoRead from "./components/BasicSettings/MenuAutoRead.vue";
 import MenuLookOP from "./components/BasicSettings/MenuLookOP.vue";
 import MenuFloorHeight from "./components/BasicSettings/MenuFloorHeight.vue";
 import ReplyTBEnjoy from "./components/BasicSettings/ReplyTBEnjoy.vue";
@@ -211,7 +204,6 @@ import MenuRemovePostAvatar from "./components/BasicSettings/MenuRemovePostAvata
 import MenuHotRankingList from "./components/BasicSettings/MenuHotRankingList.vue";
 import MenuBackToTop from "./components/BasicSettings/MenuBackToTop.vue";
 import MenuQuickLikeTopic from "./components/BasicSettings/MenuQuickLikeTopic.vue";
-import MenuCopyTextAsImage from "./components/BasicSettings/MenuCopyTextAsImage.vue";
 import MenuHideNewBluedot from "./components/BasicSettings/MenuHideNewBluedot.vue";
 import MenuGifToPng from "./components/BasicSettings/MenuGifToPng.vue";
 import MenuHideHomeBanner from "./components/BasicSettings/MenuHideHomeBanner.vue";
@@ -239,7 +231,6 @@ import SyncBackup from "./components/Sync/SyncBackup.vue";
 // 按钮
 import LookOP from "./components/Button/LookOP.vue";
 import LevelDiglog from "./components/Button/LevelDiglog.vue";
-import AutoRead from "./components/Button/AutoRead.vue";
 import AIDialog from "./components/Button/AIDialog.vue";
 import ReplyBtn from "./components/Button/ReplyBtn.vue";
 import HotRankingList from "./components/Button/HotRankingList.vue";
@@ -280,8 +271,6 @@ export default {
     MenuTopicpreview,
     MenuCreatereply,
     MenuBlockuserlist,
-    MenuAutoRead,
-    AutoRead,
     Updates,
     MenuLookOP,
     LookOP,
@@ -326,7 +315,6 @@ export default {
     MenuBackToTop,
     BackToTop,
     MenuQuickLikeTopic,
-    MenuCopyTextAsImage,
     MenuHideNewBluedot,
     MenuGifToPng,
     MenuHideHomeBanner,
@@ -348,10 +336,6 @@ export default {
         checked5: true,
         checked6: false,
         checked7: false,
-        checked8: {
-          value1: true,
-          value2: 10,
-        },
         checked9: true,
         QuickReply: "",
         blockList: "",
@@ -388,7 +372,6 @@ export default {
         checked33: false,
         checked34: false,
         checked35: false,
-        checked36: false,
         checked37: false,
         checked38: false,
         checked39: false,
@@ -421,7 +404,6 @@ export default {
         themes: 0,
       },
 
-      showautoread: false,
       showlookop: false,
       showlevelsearch: false,
       showaidialog: false,
@@ -532,7 +514,6 @@ export default {
       this.settingData = deepMerge(this.settingData, existingData);
       localStorage.setItem("linxudoscriptssetting", JSON.stringify(this.settingData));
 
-      this.showautoread = this.settingData.checked8.value1;
       this.showlookop = this.settingData.checked9;
       this.showlevelsearch = this.settingData.checked12;
       this.showaidialog = this.settingData.checked18;

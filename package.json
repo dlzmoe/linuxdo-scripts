@@ -2,18 +2,19 @@
   "name": "linuxdo-scripts",
   "description": "manifest.json description",
   "private": true,
-  "version": "1.0.5",
+  "version": "1.0.6",
   "type": "module",
   "scripts": {
     "dev": "wxt",
     "dev:firefox": "wxt -b firefox",
-    "build": "wxt build && py scripts/build.py",
+    "build": "wxt build",
     "py": "py scripts/build.py",
     "build:firefox": "wxt build -b firefox",
     "zip": "wxt zip",
     "zip:firefox": "wxt zip -b firefox",
     "compile": "vue-tsc --noEmit",
-    "postinstall": "wxt prepare"
+    "postinstall": "wxt prepare",
+    "publish": "wxt build && wxt zip && wxt zip -b firefox && py scripts/build.py"
   },
   "dependencies": {
     "element-plus": "^2.9.1",

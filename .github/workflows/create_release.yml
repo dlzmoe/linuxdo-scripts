@@ -53,7 +53,7 @@ jobs:
 
         ---
 
-        使用方法，下载下方的 `chrome-mv3.zip`，然后打开 `chrome://extensions/`，勾选开发者模式，将下载的 zip 包拖拽进去即可。
+        使用方法，下载下方的 chrome-mv3.zip，然后打开 chrome://extensions/，勾选开发者模式，将下载的 zip 包拖拽进去即可。
         
         [查看 $PACKAGE_VERSION 更新日志](https://github.com/dlzmoe/linuxdo-scripts/blob/main/version-log.md)
 

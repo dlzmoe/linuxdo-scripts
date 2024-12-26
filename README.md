@@ -2,10 +2,7 @@
 > 特别活动：【L 站 2024 年度总结】脚本 - [源码](./plugin/summary.user.js) / [直接安装](https://raw.githubusercontent.com/dlzmoe/linuxdo-scripts/refs/heads/main/plugin/summary.user.js)
 
 <h2 align="center">LinuxDo Scripts 扩展（原名：linuxdo-scripts 增强插件）</h2>
-<p align="center">脚本持续更新，欢迎提出 Issues，提交 Pr ~</p>
-
-> 由油猴插件重构成浏览器扩展，进入 1.0 版本。  
-> 暂时未上架扩展商店，可以在 releases 中下载最新安装包。
+<p align="center">持续更新，欢迎提出 Issues，提交 Pr ~</p>
 
 [中文简体](https://github.com/dlzmoe/linuxdo-scripts/blob/main/README.md) | [English](https://github.com/dlzmoe/linuxdo-scripts/blob/main/README_EN.md)
 
@@ -25,10 +22,10 @@ LinuxDo Scripts 扩展，话题列表显示创建时间，显示楼层数，新�
 [使用和开发文档](https://linuxdo-scripts-docs.netlify.app/) |
 [Discord 社区](https://discord.gg/n2pErsD7Kg)
 
-
 ## 安装使用
 
 - Chrome、Edge、Arc 用户请在 [Chrome 商店中安装](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj)
+- 火狐浏览器用户点击链接下载压缩包使用。[下载压缩包](https://github.com/dlzmoe/linuxdo-scripts/releases)
 
 ![image](https://github.com/user-attachments/assets/1553917a-1b3b-44f4-b624-2ca2a1616e4f)
 

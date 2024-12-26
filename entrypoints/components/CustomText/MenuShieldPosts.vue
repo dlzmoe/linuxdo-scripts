@@ -120,6 +120,7 @@ export default {
   },
 };
 </script>
+
 <style lang="less" scoped>
 input[type="text"] {
   width: 100px !important;

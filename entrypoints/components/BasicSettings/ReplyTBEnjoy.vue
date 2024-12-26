@@ -753,26 +753,3 @@ setInterval(() => {
   }
 }, 100);
 </script>
-
-<style lang="less">
-.emojiPicker {
-  top: 0;
-  left: 100%;
-  position: absolute;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 10px;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.8);
-  padding: 10px;
-  border-radius: 5px;
-  z-index: 9;
-
-  img {
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
-  }
-}
-</style>

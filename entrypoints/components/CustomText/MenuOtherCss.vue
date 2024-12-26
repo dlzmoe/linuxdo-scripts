@@ -43,6 +43,7 @@ export default {
   },
 };
 </script>
+
 <style lang="less" scoped>
 .item {
   border: none !important;

@@ -25,7 +25,6 @@ LinuxDo Scripts 扩展，话题列表显示创建时间，显示楼层数，新�
 ## 安装使用
 
 - Chrome、Edge、Arc 用户请在 [Chrome 商店中安装](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj)
-- 火狐浏览器用户点击链接下载压缩包使用。[下载压缩包](https://github.com/dlzmoe/linuxdo-scripts/releases)
 
 ![image](https://github.com/user-attachments/assets/1553917a-1b3b-44f4-b624-2ca2a1616e4f)
 

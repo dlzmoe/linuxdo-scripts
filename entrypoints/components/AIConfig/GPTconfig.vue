@@ -22,30 +22,31 @@
     <input type="text" v-model="localChecked.apikey" placeholder="sk-xxxxxxxx" />
     <div class="flex">
       <input
-        style="width: 49%"
+        style="width: 33%"
         type="text"
         v-model="localChecked.baseurl"
         placeholder="https://api.openai.com"
       />
       <input
-        style="width: 49%; margin-left: 2%"
+        style="width: 32%; margin-left: 1%"
         type="text"
         v-model="localChecked.full_url"
         placeholder="/v1/chat/completions"
       />
       <input
+        style="width: 32%; margin-left: 1%"
         type="text"
         v-model="localChecked.model"
         placeholder="模型，如：gpt-4o-mini"
       />
     </div>
-    <div>6. AI 总结帖子 prompt:</div>
+    <div class="item">6. AI 总结帖子 prompt:</div>
     <textarea v-model="localChecked.prompt"></textarea>
-    <div>7. AI 生成回复 prompt:</div>
+    <div class="item">7. AI 生成回复 prompt:</div>
     <textarea v-model="localChecked.prompt1"></textarea>
-    <div>8. AI 生成标题 prompt:</div>
+    <div class="item">8. AI 生成标题 prompt:</div>
     <textarea v-model="localChecked.prompt2"></textarea>
-    <div style="margin-top: 10px">
+    <div class="item" style="margin-top: 10px">
       注意：请按照指定格式填写参数；不支持 http，请使用 https。
     </div>
   </div>
@@ -221,7 +222,8 @@ ${str}`;
     async getCreateNewTopicTitle() {
       return new Promise((resolve, reject) => {
         const topic_contentdata = $(".d-editor-preview").html();
-        const config = JSON.parse(localStorage.getItem("linxudoscriptssettingDMI")).gptdata;
+        const config = JSON.parse(localStorage.getItem("linxudoscriptssettingDMI"))
+          .gptdata;
         const prompt = `${config.prompt2}
 帖子内容如下：
 ${topic_contentdata}`;
@@ -358,12 +360,15 @@ ${topic_contentdata}`;
   },
 };
 </script>
-<style scoped lang="less">
+
+<style lang="less" scoped>
 .item {
-  border: none;
+  border: none !important;
+  padding-bottom: 5px !important;
 }
 .flex {
   display: flex;
+  margin-top: 10px;
 
   input {
     flex: 1;

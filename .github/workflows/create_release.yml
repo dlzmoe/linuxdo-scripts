@@ -54,9 +54,7 @@ jobs:
         ---
 
         使用方法，Chrome、Edge、Arc 用户请在 [Chrome 商店中安装](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj)
-        
-        火狐浏览器用户点击链接下载安装包使用。[下载](https://github.com/dlzmoe/linuxdo-scripts/tree/main/.output)
-        
+                
         发布于：$CURRENT_DATE"
       env:
         GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}

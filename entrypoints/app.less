@@ -290,6 +290,7 @@
 
 #linuxdoscripts .floorlottery {
   background: #FFB003;
+  color: #fff;
 }
 
 #linuxdoscripts .menu-body-item {
@@ -876,5 +877,47 @@ body.body-preview #main-outlet-wrapper {
     &+.span {
       margin-left: 10px;
     }
+  }
+}
+
+.emojiPicker {
+  top: 0;
+  left: 100%;
+  position: absolute;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 10px;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 9;
+
+  img {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.UsageTip {
+  position: static;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  background: var(--d-sidebar-background);
+  color: var(--primary-medium);
+
+  &>div {
+    margin: 10px 0;
+  }
+
+  button {
+    padding: 8px 10px;
+    margin-bottom: 10px;
+    border: none;
+    outline: none;
+    border-radius: 4px;
   }
 }

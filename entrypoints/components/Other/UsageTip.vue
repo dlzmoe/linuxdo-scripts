@@ -43,26 +43,3 @@ export default {
   },
 };
 </script>
-
-<style lang="less">
-.UsageTip {
-  position: static;
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.6;
-  background: var(--d-sidebar-background);
-  color: var(--primary-medium);
-
-  & > div {
-    margin: 10px 0;
-  }
-  button {
-    padding: 8px 10px;
-    margin-bottom: 10px;
-    border: none;
-    outline: none;
-    border-radius: 4px;
-  }
-}
-
-</style>

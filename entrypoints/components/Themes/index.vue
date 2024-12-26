@@ -1,7 +1,7 @@
 <template>
   <div class="item">
     <p>切换论坛主题：</p>
-    <p>无法修改，如果有样式问题无法解决，因为是直接 copy 别的论坛样式文件。</p>
+    <p>如果存在样式问题请切换其他主题或者关闭，因为这个功能直接 copy Discourse 框架下其他论坛的样式文件，我也改不了。</p>
     <hr />
     <ul>
       <li v-for="item in list" :key="item.id">
@@ -159,7 +159,7 @@ input[type="radio"] {
   cursor: pointer;
 
   input {
-    margin-right: 10px;
+    margin-right: 10px !important;
   }
 
   label {

@@ -1,50 +1,62 @@
-## LinuxDo Scripts (formerly: linuxdo-scripts)
+> **Note**
+> Special Event: [L Station 2024 Annual Summary] Script - [Source Code](./plugin/summary.user.js) / [Direct Install](https://raw.githubusercontent.com/dlzmoe/linuxdo-scripts/refs/heads/main/plugin/summary.user.js)
 
-> The script is continuously updated. Feel free to submit issues or pull requests ~  
-> Reconstructed into a browser extension via the Tampermonkey plugin, version 1.0 is now available.  
-> It is not yet available in the extension store, but you can download the latest installation package from the releases section.
+<h2 align="center">LinuxDo Scripts Extension (formerly known as: linuxdo-scripts Enhancement Plugin)</h2>
+<p align="center">The scripts are continuously updated; feel free to raise Issues and submit Pull Requests!</p>
+
+> Rebuilt from a Tampermonkey plugin to a browser extension, now at version 1.0.  
+> Currently not available in the extension store, you can download the latest installation package from releases.
 
 [简体中文](https://github.com/dlzmoe/linuxdo-scripts/blob/main/README.md) | [English](https://github.com/dlzmoe/linuxdo-scripts/blob/main/README_EN.md)
 
-![Release Badge](https://img.shields.io/github/v/release/dlzmoe/linuxdo-scripts?label=LinuxDo Scripts 扩展&labelColor=%235D5D5D&color=%23E97435)
-![Last Commit](https://img.shields.io/github/last-commit/dlzmoe/linuxdo-scripts)
-![Stars](https://img.shields.io/github/stars/dlzmoe%2Flinuxdo-scripts?style=flat)
-![License](https://img.shields.io/github/license/dlzmoe/linuxdo-scripts)
+<p align="center">
+<img src="https://img.shields.io/github/v/release/dlzmoe/linuxdo-scripts?label=LinuxDo Scripts 扩展&labelColor=%235D5D5D&color=%23E97435">
+<img src="https://img.shields.io/github/last-commit/dlzmoe/linuxdo-scripts">
+<img src="https://img.shields.io/github/stars/dlzmoe%2Flinuxdo-scripts?style=flat">
+<img src="https://img.shields.io/github/license/dlzmoe/linuxdo-scripts">
+</p>
 
-LinuxDo Scripts extension includes features like displaying the creation time in topic lists, showing floor counts, opening topics in new tabs, force-blocking certain users' topics, quick replies (with customization), optimizing signature image display to prevent broken images, previewing topic details and comments directly from the topic list, importing and exporting the feature settings panel, floor-based lottery, user-defined tags, view-only owner mode, auto-scrolling reading, custom CSS support, optimized mixed language display, level information lookup, AI-powered topic summaries and auto-generated replies, WebDAV synchronization support, forum theme skin switching, and more. For more features, please refer to the settings list. Features are continuously updated, and new ideas are always welcome!
+The LinuxDo Scripts extension offers features such as displaying creation times in topic lists, showing post counts, opening topics in new tabs, forcing block (blacklisting) specific topics, quick replies (customizable), optimizing signature images to prevent distortion, direct preview of details and comments in topic lists, import/export panels for settings, lottery for posts, user-defined tags, options to view only the original poster's messages, auto-scrolling for reading, support for custom CSS styles, mixed English and Chinese optimization, level information queries, AI topic summarization and smart response generation, WebDAV synchronization, theme skin switching for the forum, and many more features. Please check the settings list for continuous updates and new ideas!
 
-[GitHub Repository](https://github.com/dlzmoe/linuxdo-scripts) |  
-~~[Greasyfork Store Installation](https://greasyfork.org/scripts/501827)~~ |  
-[Bug Reports & Feature Requests](https://github.com/dlzmoe/linuxdo-scripts/issues/new/choose) |  
-[Usage and Development Docs](https://linuxdo-scripts-docs.netlify.app/) |  
+[Github Repository](https://github.com/dlzmoe/linuxdo-scripts) |
+[Chrome Store](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj) |
+~~[Greasyfork Store Installation](https://greasyfork.org/scripts/501827)~~ |
+[Bug Feedback and Feature Requests](https://github.com/dlzmoe/linuxdo-scripts/issues/new/choose) |
+[Usage and Development Documentation](https://linuxdo-scripts-docs.netlify.app/) |
 [Discord Community](https://discord.gg/n2pErsD7Kg)
+
+## Installation and Usage
+
+- Chrome, Edge, and Arc users please [install from the Chrome Store](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj)
+
+![image](https://github.com/user-attachments/assets/1553917a-1b3b-44f4-b624-2ca2a1616e4f)
 
 ## Features
 
 <details>
 <summary>Feature List:</summary>
 
-- [x] Display creation time in topic list
-- [x] Show floor count
+- [x] Display creation time in topic lists
+- [x] Show post counts
 - [x] Open topics in new tabs
-- [x] Force-block (blacklist) topics from specific users
-- [x] Quick reply to topics (supports customization)
-- [x] Optimize signature image display to prevent broken images
-- [x] Import and export feature settings panel
-- [x] Floor-based lottery
-- [x] Toggle "View Only Owner" mode
-- [x] Auto-scrolling reading mode
+- [x] Force block (blacklist) specific topics
+- [x] Quick replies (customizable)
+- [x] Optimize signature image display to prevent distortion
+- [x] Import/export settings panel
+- [x] Lottery for posts
+- [x] Toggle view for only the original poster
+- [x] Auto-scrolling for reading
 - [x] Dark mode
-- [x] User tag feature
-- [x] Direct preview of topic details and comments in the topic list
-- [x] Emoji optimization in comment box
-- [x] Supports custom CSS styles
-- [x] Optimized mixed Chinese and English display
-- [x] Added level information lookup
-- [x] Switch forum emoji styles
-- [x] AI-powered topic summary and auto-generated replies
-- [x] WebDAV synchronization support
-- [x] Switch forum theme skin
+- [x] User tagging feature
+- [x] Direct preview of details and comments in topic lists
+- [x] Comment box emoji optimization
+- [x] Support for custom CSS styles
+- [x] Mixed Chinese and English layout optimization
+- [x] New level information query feature
+- [x] Toggle forum emoji styles
+- [x] AI topic summarization and smart response generation
+- [x] Support for WebDAV synchronization
+- [x] Switch forum theme skins
 - [x] More features can be found in the settings list
 
 </details>
@@ -59,28 +71,23 @@ LinuxDo Scripts extension includes features like displaying the creation time in
 
 </details>
 
-## Usage
-
-Click this link to go to releases for installation and download:  
-[Releases](https://github.com/dlzmoe/linuxdo-scripts/releases)
-
 ## Development Instructions
 
 ```
-node: v16.15.1
+node: v22.12.0
 ```
 
-Features are organized as components. Each time a new feature is added, a new component is registered to avoid conflicts.
+Features are developed as components to avoid conflicts. 
 
-To install this repository and download dependencies, run the following commands:
+Clone this repository, installe dependencies, and run the code.
 
-```bash
+```shell
 git clone https://github.com/dlzmoe/linuxdo-scripts
 yarn # Install dependencies
 yarn dev # Run locally
 ```
 
-No need for building; after submitting a pull request, I'll review and merge it as soon as possible if there are no major issues.
+No build is required; I will review PR code and merge without many issues in the shortest time.
 
 ## Changelog
 
@@ -94,8 +101,8 @@ No need for building; after submitting a pull request, I'll review and merge it 
 
 ## Disclaimer
 
-All functionalities provided by this script run only in the browser. The source code is open and transparent. This script is for educational and research purposes only, and does not participate in any profit-making schemes or organizations. Any disputes arising from the use of this script should be resolved amicably by the parties involved. The author and the script will not be held responsible for any damages or losses caused to the user or others while using the software provided by this script. By downloading, installing, or using the software provided by this product, the user acknowledges trust in the author and agrees to the related agreements and disclaimers.
+All features provided by this script run solely in the browser, and the source code used is transparent and publicly available. This script is for educational and research purposes only, does not utilize any profit schemes, nor does it participate in any profit organizations. Any disputes arising from the use of this script, all parties should resolve amicably. This script holds no responsibility for any losses or injuries that may occur to the user or others when using the software provided via this script. By downloading, installing, and using the software provided in this product, users indicate their trust in the authors and their related agreements and disclaimers.
 
-## License
+## License Agreement
 
-[MIT License](https://github.com/dlzmoe/linuxdo-scripts/blob/main/LICENSE)
+[MIT license](https://github.com/dlzmoe/linuxdo-scripts/blob/main/LICENSE)

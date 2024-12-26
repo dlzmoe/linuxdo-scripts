@@ -9,7 +9,7 @@ export default defineConfig({
     name: 'LinuxDo Scripts',
     version: pkg.version,
     description: '为 linux.do 用户提供了一些增强功能。',
-    permissions: [],
+    permissions: ['storage']
   },
   hooks: {
     'build:manifestGenerated': (wxt, manifest) => {

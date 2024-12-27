@@ -18254,21 +18254,42 @@ ${$(".d-editor-input").val()}
   const _sfc_main$r = {
     props: ["modelValue", "sort"],
     emits: ["update:modelValue"],
+    methods: {
+      // 提示组件
+      messageToast(message) {
+        const messageElement2 = document.createElement("div");
+        messageElement2.className = "messageToast-text";
+        messageElement2.innerText = message;
+        document.getElementById("messageToast").appendChild(messageElement2);
+        setTimeout(() => {
+          messageElement2.remove();
+        }, 3e3);
+      }
+    },
     created() {
       if (this.modelValue) {
+        const vm = this;
         setInterval(() => {
           if ($(".linxudoscripts-bookmark").length < 1) {
             $(".topic-map__contents").after(
               '<button class="btn btn-icon-text linxudoscripts-bookmark" type="button"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-bookmark-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 17l-6 4v-14a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v5" /><path d="M16 19h6" /><path d="M19 16v6" /></svg><span class="d-button-label">收藏</span></button>'
             );
             $(".linxudoscripts-bookmark").click(function() {
-              const url = "https://linux.do" + $("#topic-title h1 a").attr("href");
-              const title = "https://linux.do" + $("#topic-title h1 a").text().trim();
-              console.log(url, title);
-              const data = { url, title };
-              chrome.storage.local.set({ bookmarkData: data }, function() {
-                console.log("Data is stored.");
-                window.location.href = "chrome-extension://pogbablcilijeecbofdmojlocebdffbc/bookmark.html";
+              const title = $(".header-title .topic-link").text().trim();
+              const cate = $('meta[property="og:article:section"]').attr("content");
+              const tags = $('meta[property="og:article:tag"]').map(function() {
+                return $(this).attr("content");
+              }).get();
+              const url = "https://linux.do" + $(".header-title .topic-link").attr("href");
+              const data = {
+                url,
+                title,
+                cate,
+                tags
+              };
+              console.log(data);
+              chrome.storage.local.set({ bookmarkData: data }, () => {
+                vm.messageToast("收藏成功，请前往收藏夹查看。");
               });
             });
           }
@@ -23212,7 +23233,6 @@ ${topic_contentdata}`;
     const _component_MenuHideNewBluedot = resolveComponent("MenuHideNewBluedot");
     const _component_MenuGifToPng = resolveComponent("MenuGifToPng");
     const _component_MenuHideHomeBanner = resolveComponent("MenuHideHomeBanner");
-    const _component_MenuBookmark = resolveComponent("MenuBookmark");
     const _component_MenuLogoUrl = resolveComponent("MenuLogoUrl");
     const _component_MenuCreatereply = resolveComponent("MenuCreatereply");
     const _component_MenuBlockKeyword = resolveComponent("MenuBlockKeyword");
@@ -23236,7 +23256,7 @@ ${topic_contentdata}`;
             title: "设置",
             type: "button",
             onClick: _cache[0] || (_cache[0] = (...args) => $options.setting && $options.setting(...args))
-          }, _cache[59] || (_cache[59] = [
+          }, _cache[58] || (_cache[58] = [
             createBaseVNode(
               "svg",
               {
@@ -23332,7 +23352,7 @@ ${topic_contentdata}`;
             _hoisted_5,
             [
               createBaseVNode("div", _hoisted_6, [
-                _cache[60] || (_cache[60] = createBaseVNode(
+                _cache[59] || (_cache[59] = createBaseVNode(
                   "div",
                   { class: "title" },
                   "LinuxDo Scripts 扩展设置",
@@ -23354,7 +23374,7 @@ ${topic_contentdata}`;
                     },
                     [
                       createVNode(_component_Setting1),
-                      _cache[61] || (_cache[61] = createTextVNode("通用设置"))
+                      _cache[60] || (_cache[60] = createTextVNode("通用设置"))
                     ],
                     2
                     /* CLASS */
@@ -23367,7 +23387,7 @@ ${topic_contentdata}`;
                     },
                     [
                       createVNode(_component_Setting2),
-                      _cache[62] || (_cache[62] = createTextVNode("自定义"))
+                      _cache[61] || (_cache[61] = createTextVNode("自定义"))
                     ],
                     2
                     /* CLASS */
@@ -23380,7 +23400,7 @@ ${topic_contentdata}`;
                     },
                     [
                       createVNode(_component_Setting3),
-                      _cache[63] || (_cache[63] = createTextVNode("用户标签"))
+                      _cache[62] || (_cache[62] = createTextVNode("用户标签"))
                     ],
                     2
                     /* CLASS */
@@ -23393,7 +23413,7 @@ ${topic_contentdata}`;
                     },
                     [
                       createVNode(_component_Setting4),
-                      _cache[64] || (_cache[64] = createTextVNode("AI 配置"))
+                      _cache[63] || (_cache[63] = createTextVNode("AI 配置"))
                     ],
                     2
                     /* CLASS */
@@ -23406,7 +23426,7 @@ ${topic_contentdata}`;
                     },
                     [
                       createVNode(_component_Setting5),
-                      _cache[65] || (_cache[65] = createTextVNode("主题风格"))
+                      _cache[64] || (_cache[64] = createTextVNode("主题风格"))
                     ],
                     2
                     /* CLASS */
@@ -23419,7 +23439,7 @@ ${topic_contentdata}`;
                     },
                     [
                       createVNode(_component_Setting6),
-                      _cache[66] || (_cache[66] = createTextVNode("数据同步"))
+                      _cache[65] || (_cache[65] = createTextVNode("数据同步"))
                     ],
                     2
                     /* CLASS */
@@ -23432,7 +23452,7 @@ ${topic_contentdata}`;
                     _hoisted_10,
                     [
                       createBaseVNode("div", _hoisted_11, [
-                        _cache[69] || (_cache[69] = createBaseVNode(
+                        _cache[68] || (_cache[68] = createBaseVNode(
                           "p",
                           null,
                           "请注意，该设置面板数据全部保存在本地浏览器缓存中，注意备份。",
@@ -23440,12 +23460,12 @@ ${topic_contentdata}`;
                           /* HOISTED */
                         )),
                         createBaseVNode("p", _hoisted_12, [
-                          _cache[67] || (_cache[67] = createTextVNode(" 如果感觉哪里不太对劲，点我 ")),
+                          _cache[66] || (_cache[66] = createTextVNode(" 如果感觉哪里不太对劲，点我 ")),
                           createBaseVNode("span", {
                             class: "initialization",
                             onClick: _cache[8] || (_cache[8] = (...args) => $options.initialization && $options.initialization(...args))
                           }, "初始化设置"),
-                          _cache[68] || (_cache[68] = createTextVNode(" ，会清除所有的设置数据并初始化！！ "))
+                          _cache[67] || (_cache[67] = createTextVNode(" ，会清除所有的设置数据并初始化！！ "))
                         ])
                       ]),
                       createCommentVNode(" 新标签页打开 "),
@@ -23641,11 +23661,7 @@ ${topic_contentdata}`;
                         "onUpdate:modelValue": _cache[40] || (_cache[40] = ($event) => $data.settingData.checked39 = $event)
                       }, null, 8, ["modelValue"]),
                       createCommentVNode(" 是否开启收藏功能 "),
-                      createVNode(_component_MenuBookmark, {
-                        sort: 35,
-                        modelValue: $data.settingData.checked40,
-                        "onUpdate:modelValue": _cache[41] || (_cache[41] = ($event) => $data.settingData.checked40 = $event)
-                      }, null, 8, ["modelValue"])
+                      createCommentVNode(' <MenuBookmark :sort="35" v-model="settingData.checked40" /> ')
                     ],
                     512
                     /* NEED_PATCH */
@@ -23660,37 +23676,37 @@ ${topic_contentdata}`;
                       createVNode(_component_MenuLogoUrl, {
                         sort: 1,
                         value: $data.settingData.logourl,
-                        "onUpdate:value": _cache[42] || (_cache[42] = ($event) => $data.settingData.logourl = $event)
+                        "onUpdate:value": _cache[41] || (_cache[41] = ($event) => $data.settingData.logourl = $event)
                       }, null, 8, ["value"]),
                       createCommentVNode(" 自定义快捷回复 "),
                       createVNode(_component_MenuCreatereply, {
                         sort: 2,
                         value: $data.settingData.QuickReply,
-                        "onUpdate:value": _cache[43] || (_cache[43] = ($event) => $data.settingData.QuickReply = $event)
+                        "onUpdate:value": _cache[42] || (_cache[42] = ($event) => $data.settingData.QuickReply = $event)
                       }, null, 8, ["value"]),
                       createCommentVNode(" 关键词屏蔽功能 "),
                       createVNode(_component_MenuBlockKeyword, {
                         sort: 3,
                         value: $data.settingData.blockkeywrod,
-                        "onUpdate:value": _cache[44] || (_cache[44] = ($event) => $data.settingData.blockkeywrod = $event)
+                        "onUpdate:value": _cache[43] || (_cache[43] = ($event) => $data.settingData.blockkeywrod = $event)
                       }, null, 8, ["value"]),
                       createCommentVNode(" 屏蔽指定用户 "),
                       createVNode(_component_MenuBlockuserlist, {
                         sort: 4,
                         value: $data.settingData.blockList,
-                        "onUpdate:value": _cache[45] || (_cache[45] = ($event) => $data.settingData.blockList = $event)
+                        "onUpdate:value": _cache[44] || (_cache[44] = ($event) => $data.settingData.blockList = $event)
                       }, null, 8, ["value"]),
                       createCommentVNode(" 屏蔽指定分类的多少天前的帖子 "),
                       createVNode(_component_MenuShieldPosts, {
                         sort: 5,
                         value: $data.settingData.checked21,
-                        "onUpdate:value": _cache[46] || (_cache[46] = ($event) => $data.settingData.checked21 = $event)
+                        "onUpdate:value": _cache[45] || (_cache[45] = ($event) => $data.settingData.checked21 = $event)
                       }, null, 8, ["value"]),
                       createCommentVNode(" 自定义 CSS "),
                       createVNode(_component_MenuOtherCss, {
                         sort: 6,
                         value: $data.settingData.othercss,
-                        "onUpdate:value": _cache[47] || (_cache[47] = ($event) => $data.settingData.othercss = $event)
+                        "onUpdate:value": _cache[46] || (_cache[46] = ($event) => $data.settingData.othercss = $event)
                       }, null, 8, ["value"])
                     ],
                     512
@@ -23704,7 +23720,7 @@ ${topic_contentdata}`;
                     [
                       createVNode(_component_UserTags, {
                         value: $data.settingData.usertags,
-                        "onUpdate:value": _cache[48] || (_cache[48] = ($event) => $data.settingData.usertags = $event)
+                        "onUpdate:value": _cache[47] || (_cache[47] = ($event) => $data.settingData.usertags = $event)
                       }, null, 8, ["value"])
                     ],
                     512
@@ -23718,7 +23734,7 @@ ${topic_contentdata}`;
                     [
                       createVNode(_component_GPTconfig, {
                         value: $data.settingData.gptdata,
-                        "onUpdate:value": _cache[49] || (_cache[49] = ($event) => $data.settingData.gptdata = $event)
+                        "onUpdate:value": _cache[48] || (_cache[48] = ($event) => $data.settingData.gptdata = $event)
                       }, null, 8, ["value"])
                     ],
                     512
@@ -23732,7 +23748,7 @@ ${topic_contentdata}`;
                     [
                       createVNode(_component_Themes, {
                         modelValue: $data.settingData.themes,
-                        "onUpdate:modelValue": _cache[50] || (_cache[50] = ($event) => $data.settingData.themes = $event)
+                        "onUpdate:modelValue": _cache[49] || (_cache[49] = ($event) => $data.settingData.themes = $event)
                       }, null, 8, ["modelValue"])
                     ],
                     512
@@ -23746,7 +23762,7 @@ ${topic_contentdata}`;
                     [
                       createVNode(_component_SyncBackup, {
                         value: $data.settingData.syncbackup,
-                        "onUpdate:value": _cache[51] || (_cache[51] = ($event) => $data.settingData.syncbackup = $event)
+                        "onUpdate:value": _cache[50] || (_cache[50] = ($event) => $data.settingData.syncbackup = $event)
                       }, null, 8, ["value"])
                     ],
                     512
@@ -23759,15 +23775,15 @@ ${topic_contentdata}`;
               createBaseVNode("div", _hoisted_18, [
                 createBaseVNode("button", {
                   class: "save",
-                  onClick: _cache[52] || (_cache[52] = (...args) => $options.save && $options.save(...args))
+                  onClick: _cache[51] || (_cache[51] = (...args) => $options.save && $options.save(...args))
                 }, "保存"),
                 createBaseVNode("button", {
                   class: "saveload",
-                  onClick: _cache[53] || (_cache[53] = (...args) => $options.saveload && $options.saveload(...args))
+                  onClick: _cache[52] || (_cache[52] = (...args) => $options.saveload && $options.saveload(...args))
                 }, "保存并刷新"),
                 createBaseVNode("button", {
                   class: "floorlottery",
-                  onClick: _cache[54] || (_cache[54] = (...args) => $options.openFloorlottery && $options.openFloorlottery(...args))
+                  onClick: _cache[53] || (_cache[53] = (...args) => $options.openFloorlottery && $options.openFloorlottery(...args))
                 }, "楼层抽奖")
               ])
             ],
@@ -23781,7 +23797,7 @@ ${topic_contentdata}`;
             "dialog",
             _hoisted_19,
             [
-              _cache[73] || (_cache[73] = createBaseVNode(
+              _cache[72] || (_cache[72] = createBaseVNode(
                 "div",
                 { class: "menu-header" },
                 [
@@ -23792,7 +23808,7 @@ ${topic_contentdata}`;
               )),
               createBaseVNode("div", _hoisted_20, [
                 createBaseVNode("div", _hoisted_21, [
-                  _cache[70] || (_cache[70] = createBaseVNode(
+                  _cache[69] || (_cache[69] = createBaseVNode(
                     "label",
                     null,
                     "总楼层数：",
@@ -23803,7 +23819,7 @@ ${topic_contentdata}`;
                     "input",
                     {
                       type: "text",
-                      "onUpdate:modelValue": _cache[55] || (_cache[55] = ($event) => $data.floorlotteryval1 = $event)
+                      "onUpdate:modelValue": _cache[54] || (_cache[54] = ($event) => $data.floorlotteryval1 = $event)
                     },
                     null,
                     512
@@ -23813,7 +23829,7 @@ ${topic_contentdata}`;
                   ])
                 ]),
                 createBaseVNode("div", _hoisted_22, [
-                  _cache[71] || (_cache[71] = createBaseVNode(
+                  _cache[70] || (_cache[70] = createBaseVNode(
                     "label",
                     null,
                     "抽奖数量：",
@@ -23824,7 +23840,7 @@ ${topic_contentdata}`;
                     "input",
                     {
                       type: "text",
-                      "onUpdate:modelValue": _cache[56] || (_cache[56] = ($event) => $data.floorlotteryval2 = $event)
+                      "onUpdate:modelValue": _cache[55] || (_cache[55] = ($event) => $data.floorlotteryval2 = $event)
                     },
                     null,
                     512
@@ -23835,15 +23851,15 @@ ${topic_contentdata}`;
                 ]),
                 createBaseVNode("button", {
                   class: "btn save",
-                  onClick: _cache[57] || (_cache[57] = (...args) => $options.drawRandomNumbers && $options.drawRandomNumbers(...args))
+                  onClick: _cache[56] || (_cache[56] = (...args) => $options.drawRandomNumbers && $options.drawRandomNumbers(...args))
                 }, "开始抽奖"),
                 createBaseVNode("button", {
                   class: "btn",
                   style: { "background": "#979797" },
                   plain: "",
-                  onClick: _cache[58] || (_cache[58] = (...args) => $options.closelotter && $options.closelotter(...args))
+                  onClick: _cache[57] || (_cache[57] = (...args) => $options.closelotter && $options.closelotter(...args))
                 }, " 关闭弹窗 "),
-                _cache[72] || (_cache[72] = createBaseVNode(
+                _cache[71] || (_cache[71] = createBaseVNode(
                   "div",
                   { style: { "height": "20px" } },
                   null,
@@ -23872,7 +23888,7 @@ ${topic_contentdata}`;
           createCommentVNode(" 修复小尾巴裂图 "),
           createVNode(_component_Signature)
         ]),
-        _cache[74] || (_cache[74] = createBaseVNode(
+        _cache[73] || (_cache[73] = createBaseVNode(
           "div",
           { id: "messageToast" },
           null,

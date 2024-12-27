@@ -14,8 +14,21 @@ import $ from "jquery";
 export default {
   props: ["modelValue", "sort"],
   emits: ["update:modelValue"],
+  methods: {
+    // 提示组件
+    messageToast(message) {
+      const messageElement = document.createElement("div");
+      messageElement.className = "messageToast-text";
+      messageElement.innerText = message;
+      document.getElementById("messageToast").appendChild(messageElement);
+      setTimeout(() => {
+        messageElement.remove();
+      }, 3000);
+    },
+  },
   created() {
     if (this.modelValue) {
+      const vm = this;
       setInterval(() => {
         if ($(".linxudoscripts-bookmark").length < 1) {
           $(".topic-map__contents").after(
@@ -23,18 +36,26 @@ export default {
           );
 
           $(".linxudoscripts-bookmark").click(function () {
-            const url = "https://linux.do" + $("#topic-title h1 a").attr("href");
-            const title = "https://linux.do" + $("#topic-title h1 a").text().trim();
+            const title = $(".header-title .topic-link").text().trim();
+            const cate = $('meta[property="og:article:section"]').attr("content");
+            const tags = $('meta[property="og:article:tag"]')
+              .map(function () {
+                return $(this).attr("content");
+              })
+              .get();
+            const url = "https://linux.do" + $(".header-title .topic-link").attr("href");
 
-            console.log(url, title);
+            const data = {
+              url: url,
+              title: title,
+              cate: cate,
+              tags: tags,
+            };
 
-            const data = { url: url, title: title };
+            console.log(data);
 
-            chrome.storage.local.set({ bookmarkData: data }, function () {
-              console.log("Data is stored.");
-
-              window.location.href =
-                "chrome-extension://pogbablcilijeecbofdmojlocebdffbc/bookmark.html";
+            chrome.storage.local.set({ bookmarkData: data }, () => {
+              vm.messageToast("收藏成功，请前往收藏夹查看。");
             });
           });
         }

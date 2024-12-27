@@ -2,7 +2,7 @@
   "name": "linuxdo-scripts",
   "description": "manifest.json description",
   "private": true,
-  "version": "1.0.7",
+  "version": "1.0.8",
   "type": "module",
   "scripts": {
     "dev": "wxt",
@@ -32,6 +32,7 @@
     "adm-zip": "^0.5.16",
     "less": "^4.2.1",
     "less-loader": "^8.0.0",
+    "sass": "^1.77.8",
     "style-loader": "^2.0.0",
     "typescript": "5.6.3",
     "vue-tsc": "^2.1.10",

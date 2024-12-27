@@ -15,3 +15,12 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     });
   }
 });
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.action === 'open_bookmark_page') {
+    const extensionID = chrome.runtime.id;
+    const extensionURL = `chrome-extension://${extensionID}/bookmark.html`;
+
+    chrome.tabs.create({ url: extensionURL });
+  }
+});

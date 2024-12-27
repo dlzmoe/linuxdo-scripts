@@ -36,16 +36,20 @@ export default {
           );
 
           $(".linxudoscripts-bookmark").click(function () {
-            const title = $(".header-title .topic-link").text().trim();
-            const cate = $('meta[property="og:article:section"]').attr("content");
-            const tags = $('meta[property="og:article:tag"]')
+            var title = $(".header-title .topic-link").text().trim();
+            var cate = $(
+              ".categories-wrapper .badge-category__wrapper .badge-category__name"
+            )
+              .text()
+              .trim();
+            var tags = $("#topic-title .discourse-tags .discourse-tag.box")
               .map(function () {
-                return $(this).attr("content");
+                return $(this).text().trim();
               })
               .get();
-            const url = "https://linux.do" + $(".header-title .topic-link").attr("href");
+            var url = "https://linux.do" + $(".header-title .topic-link").attr("href");
 
-            const data = {
+            var data = {
               url: url,
               title: title,
               cate: cate,
@@ -57,6 +61,9 @@ export default {
             chrome.storage.local.set({ bookmarkData: data }, () => {
               vm.messageToast("收藏成功，请前往收藏夹查看。");
             });
+
+            // 发送消息到后台脚本
+            chrome.runtime.sendMessage({ action: "open_bookmark_page" });
           });
         }
       }, 1000);

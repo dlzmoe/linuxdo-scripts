@@ -127,7 +127,7 @@
             <!-- 新增是否隐藏首页 banner 区域 -->
             <MenuHideHomeBanner :sort="34" v-model="settingData.checked39" />
             <!-- 是否开启收藏功能 -->
-            <!-- <MenuBookmark :sort="35" v-model="settingData.checked40" /> -->
+            <MenuBookmark :sort="35" v-model="settingData.checked40" />
           </div>
           <div class="menu-body-item" v-show="activeIndex == 1">
             <!-- 自定义论坛 logo -->

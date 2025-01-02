@@ -19,10 +19,12 @@ export default {
       const timestamp = Number(time);
       const date = new Date(timestamp);
       const now = new Date();
-      const isToday =
+      const isToday = 
         now.getFullYear() === date.getFullYear() &&
         now.getMonth() === date.getMonth() &&
         now.getDate() === date.getDate();
+
+      const isThisYear = now.getFullYear() === date.getFullYear();
 
       const year = date.getFullYear();
       const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -30,9 +32,15 @@ export default {
       const hours = String(date.getHours()).padStart(2, "0");
       const minutes = String(date.getMinutes()).padStart(2, "0");
 
-      return isToday ? `${hours}:${minutes}` : `${month}/${day} ${hours}:${minutes}`;
+      if (isToday) {
+        return `${hours}:${minutes}`;
+      } else if (isThisYear) {
+        return `${month}/${day} ${hours}:${minutes}`;
+      } else {
+        return `${year}/${month}/${day} ${hours}:${minutes}`;
+      }
     },
-
+    
     convertToTimestamp(dateStr) {
       const cleanedDateStr = dateStr.replace(/\s+/g, ""); // 去掉所有空格
       const datePattern = /(\d{4})年(\d{1,2})月(\d{1,2})日(\d{2}):(\d{2})/;

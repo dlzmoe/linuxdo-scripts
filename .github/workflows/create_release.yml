@@ -47,14 +47,15 @@ jobs:
         CURRENT_DATE=$(TZ='Asia/Shanghai' date +'%Y-%m-%d  %H:%M')
         sed -i "s/\$PACKAGE_VERSION/$PACKAGE_VERSION/g" CHANGELOG.md
         sed -i "s/\$CURRENT_DATE/$CURRENT_DATE/g" CHANGELOG.md
-        gh release create "$PACKAGE_VERSION" .output/linuxdo-scripts-$PACKAGE_VERSION-firefox.zip \
         -t "$PACKAGE_VERSION" \
         -n "$(cat CHANGELOG.md)
 
         ---
 
-        使用方法，Chrome、Edge、Arc 用户请在 [Chrome 商店中安装](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj)
-                
+        使用方法:  
+        - Chrome、Edge、Arc 用户请在 [Chrome 商店中安装](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj)
+        - Firefox 用户请在 [Firefox 商店中安装](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/)
+
         发布于：$CURRENT_DATE"
       env:
         GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}

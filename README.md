@@ -17,6 +17,7 @@ LinuxDo Scripts 扩展，话题列表显示创建时间，显示楼层数，新�
 
 [Github 仓库](https://github.com/dlzmoe/linuxdo-scripts) |
 [Chrome 商店](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj) |
+[Firefox 商店](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/) |
 ~~[Greasyfork 商店安装](https://greasyfork.org/scripts/501827)~~ |
 [Bug 反馈及功能请求](https://github.com/dlzmoe/linuxdo-scripts/issues/new/choose) |
 [使用和开发文档](https://linuxdo-scripts-docs.netlify.app/) |
@@ -25,6 +26,7 @@ LinuxDo Scripts 扩展，话题列表显示创建时间，显示楼层数，新�
 ## 安装使用
 
 - Chrome、Edge、Arc 用户请在 [Chrome 商店中安装](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj)
+- Firefox 用户请在 [Firefox 商店中安装](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/)
 
 ![image](https://github.com/user-attachments/assets/1553917a-1b3b-44f4-b624-2ca2a1616e4f)
 

@@ -7,10 +7,11 @@
 [中文简体](https://github.com/dlzmoe/linuxdo-scripts/blob/main/README.md) | [English](https://github.com/dlzmoe/linuxdo-scripts/blob/main/README_EN.md)
 
 <p align="center">
-<img src="https://img.shields.io/github/v/release/dlzmoe/linuxdo-scripts?label=LinuxDo Scripts 扩展&labelColor=%235D5D5D&color=%23E97435">
-<img src="https://img.shields.io/github/last-commit/dlzmoe/linuxdo-scripts">
-<img src="https://img.shields.io/github/stars/dlzmoe%2Flinuxdo-scripts?style=flat">
-<img src="https://img.shields.io/github/license/dlzmoe/linuxdo-scripts">
+<img src="https://img.shields.io/github/v/release/dlzmoe/linuxdo-scripts?style=flat-square&label=LinuxDo Scripts 扩展&labelColor=%235D5D5D&color=%23E97435">
+<img src="https://img.shields.io/github/last-commit/dlzmoe/linuxdo-scripts?style=flat-square&">
+<img src="https://img.shields.io/github/stars/dlzmoe/linuxdo-scripts?style=flat-square&label=Github%20Stars">
+<img src="https://img.shields.io/chrome-web-store/users/fbgblmjbeebanackldpbmpacppflgmlj?style=flat-square&label=Chrome%20Web%20Store">
+<img src="https://img.shields.io/github/license/dlzmoe/linuxdo-scripts?style=flat-square&">
 </p>
 
 LinuxDo Scripts 扩展，话题列表显示创建时间，显示楼层数，新标签页打开话题，强制 block（拉黑屏蔽）某人的话题，话题快捷回复（支持自定义），优化签名图显示防止图裂，在话题列表可直接预览详情及评论，功能设置面板导入导出，楼层抽奖，用户自定义标签，只看楼主，自动滚动阅读，支持自定义 css 样式，中英文混排优化，等级信息查询，AI 总结话题功能、智能生成回复，支持 webdav 同步，切换论坛主题皮肤等，更多功能请查看设置列表，功能持续更新，欢迎提出新想法！

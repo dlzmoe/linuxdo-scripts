@@ -12,10 +12,8 @@
   },
   "permissions": [
     "storage",
-    "activeTab",
-    "scripting",
-    "<all_urls>",
-    "tabs"
+    "tabs",
+    "scripting"
   ],
   "commands": {
     "wxt:reload-extension": {

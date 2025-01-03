@@ -18,7 +18,7 @@ LinuxDo Scripts 扩展，话题列表显示创建时间，显示楼层数，新�
 [Github 仓库](https://github.com/dlzmoe/linuxdo-scripts) |
 [Chrome 商店](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj) |
 [Firefox 商店](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/) |
-~~[Greasyfork 商店安装](https://greasyfork.org/scripts/501827)~~ |
+~~[Greasyfork 商店安装](https://greasyfork.org/scripts/501827)~~   
 [Bug 反馈及功能请求](https://github.com/dlzmoe/linuxdo-scripts/issues/new/choose) |
 [使用和开发文档](https://linuxdo-scripts-docs.netlify.app/) |
 [Discord 社区](https://discord.gg/n2pErsD7Kg)

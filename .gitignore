@@ -26,4 +26,4 @@ web-ext.config.ts
 
 .env
 package-lock.json
-.output/*
+.output

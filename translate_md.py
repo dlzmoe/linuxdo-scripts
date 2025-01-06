@@ -1,5 +1,6 @@
 import os
 import requests
+import time
 from dotenv import load_dotenv
 
 # 加载 .env 文件中的环境变量
@@ -26,12 +27,14 @@ def translate_text(text):
         "Content-Type": "application/json"
     }
     
-    prompt = f"Translate the following text to {TARGET_LANGUAGE} Markdown syntax is not preserved :\n\n{text}"
+    prompt = f"Translate the following text to {TARGET_LANGUAGE}. Markdown syntax is not preserved:\n\n{text}"
     
     data = {
         "model": MODEL,
         "messages": [{"role": "user", "content": prompt}]
     }
+    
+    print("正在翻译...请稍候")
     
     response = requests.post(OPENAI_URL, headers=headers, json=data)
     
@@ -43,7 +46,7 @@ def translate_text(text):
 
 def main():
     if not os.path.exists(INPUT_FILE):
-        print(f"Input file {INPUT_FILE} does not exist.")
+        print(f"输入文件 {INPUT_FILE} 不存在")
         return
     
     markdown_content = read_markdown_file(INPUT_FILE)
@@ -52,14 +55,16 @@ def main():
         markdown_content = markdown_content[3:].strip()
     if markdown_content.endswith('```'):
         markdown_content = markdown_content[:-3].strip()
+
+    print(f"{time.strftime('%X')}：开始翻译")
     
     translated_content = translate_text(markdown_content)
     
     if translated_content:
         write_markdown_file(OUTPUT_FILE, translated_content)
-        print(f"Translation completed. Output saved to {OUTPUT_FILE}.")
+        print(f"{time.strftime('%X')}：翻译完成，输出保存到 {OUTPUT_FILE}")
     else:
-        print("Translation failed.")
+        print("翻译失败")
 
 if __name__ == "__main__":
     main()

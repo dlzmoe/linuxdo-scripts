@@ -2,9 +2,9 @@
 layout: home
 
 hero:
-  name: linuxdo-scripts
+  name: LinuxDo Scripts 扩展
   # text: linuxdo-scripts 增强插件使用文档
-  tagline: linux.do 增强插件，功能持续更新，欢迎提出新想法！
+  tagline: LinuxDo Scripts 扩展，功能持续更新，欢迎提出新想法！
   image:
     src: https://vitepress.dev/vitepress-logo-large.webp
     alt: Docs
@@ -15,6 +15,12 @@ hero:
     - theme: alt
       text: Github
       link: https://github.com/dlzmoe/linuxdo-scripts
+    - theme: alt
+      text: Chrome 扩展
+      link: https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj
+    - theme: alt
+      text: 火狐扩展
+      link: https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/
 
 features:
   - icon: ⚡

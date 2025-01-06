@@ -4,12 +4,12 @@ import AutoSidebar from 'vite-plugin-vitepress-auto-sidebar';
 const taskLists = require('markdown-it-task-checkbox')
 
 export default {
-  title: 'linuxdo-scripts 文档',
+  title: 'LinuxDo Scripts 扩展',
   dist: '/dist',
   head: [
     ['link', {
       rel: 'icon',
-      href: 'https://cdn.linux.do/uploads/default/optimized/3X/9/d/9dd49731091ce8656e94433a26a3ef36062b3994_2_32x32.png'
+      href: 'https://github.com/dlzmoe/linuxdo-scripts/blob/main/public/icon/128.png?raw=true'
     }]
   ],
   vite: {
@@ -36,7 +36,7 @@ export default {
   },
   ignoreDeadLinks: true,
   themeConfig: {
-    siteTitle: 'linuxdo-scripts 使用文档',
+    siteTitle: 'LinuxDo Scripts 扩展',
     nav,
     editLink: {
       pattern: 'https://github.com/dlzmoe/linuxdo-scripts/blob/main/docs/docs/:path',

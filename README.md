@@ -14,7 +14,7 @@
 <img src="https://img.shields.io/github/license/dlzmoe/linuxdo-scripts?style=flat-square&">
 </p>
 
-LinuxDo Scripts 扩展，话题列表显示创建时间，显示楼层数，新标签页打开话题，强制 block（拉黑屏蔽）某人的话题，话题快捷回复（支持自定义），优化签名图显示防止图裂，在话题列表可直接预览详情及评论，功能设置面板导入导出，楼层抽奖，用户自定义标签，只看楼主，自动滚动阅读，支持自定义 css 样式，中英文混排优化，等级信息查询，AI 总结话题功能、智能生成回复，支持 webdav 同步，切换论坛主题皮肤等，更多功能请查看设置列表，功能持续更新，欢迎提出新想法！
+LinuxDo Scripts 扩展，话题列表显示创建时间，显示楼层数，新标签页打开话题，强制 block（拉黑屏蔽）某人的话题，话题快捷回复（支持自定义），优化签名图显示防止图裂，在话题列表可直接预览详情及评论，功能设置面板导入导出，楼层抽奖，用户自定义标签，只看楼主，支持自定义 css 样式，中英文混排优化，等级信息查询，AI 总结话题功能、智能生成回复，支持 webdav 同步，切换论坛主题皮肤等，更多功能请查看设置列表，功能持续更新，欢迎提出新想法！
 
 [Github 仓库](https://github.com/dlzmoe/linuxdo-scripts) |
 [Chrome 商店](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj) |
@@ -45,7 +45,6 @@ LinuxDo Scripts 扩展，话题列表显示创建时间，显示楼层数，新�
 - [x] 功能设置面板导入导出
 - [x] 楼层抽奖
 - [x] 只看楼主切换功能
-- [x] 自动滚动阅读
 - [x] 黑夜模式
 - [x] 用户标签功能
 - [x] 在话题列表可直接预览详情及评论
@@ -74,7 +73,7 @@ LinuxDo Scripts 扩展，话题列表显示创建时间，显示楼层数，新�
 ## 开发说明
 
 ```
-node: v22.12.0
+node: v18.17.0
 ```
 
 功能以组件形式展开，每次新增一个功能，注册一个新的组件避免冲突。
@@ -86,6 +85,8 @@ git clone https://github.com/dlzmoe/linuxdo-scripts
 yarn # 安装依赖
 yarn dev # 本地运行
 ```
+
+启动后，打开本地 `.output` 文件夹，把 `chrome-mv3` 拖拽到 `chrome://extensions/` 中即可开发。
 
 无需构建，PR 代码后我将会审核，没有太大问题都会在最短时间内合并。
 

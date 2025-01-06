@@ -23,14 +23,14 @@
     </div>
     <div class="container">
       <el-table :data="tableData.list">
-        <el-table-column prop="title" label="标题">
+        <el-table-column prop="title" label="标题" min-width="300">
           <template v-slot="scope">
             <a :href="scope.row.url" target="_blank">{{ scope.row.title }}</a>
           </template>
         </el-table-column>
-        <el-table-column prop="cate" label="分类" />
-        <el-table-column prop="tags" label="标签" />
-        <el-table-column label="操作">
+        <el-table-column prop="cate" label="分类" width="200" />
+        <el-table-column prop="tags" label="标签" width="200" />
+        <el-table-column label="操作" width="200" fixed="right">
           <template v-slot="scope">
             <el-button type="primary" @click="openMoveDialog(scope.row)">修改</el-button>
             <el-button type="danger" @click="openDelDialog(scope.row)">删除</el-button>

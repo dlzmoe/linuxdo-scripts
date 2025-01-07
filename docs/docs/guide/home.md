@@ -37,4 +37,4 @@
 - Chrome、Edge、Arc 用户请在 [Chrome 商店中安装](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj)
 - Firefox 用户请在 [Firefox 商店中安装](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/)
 
-![image](https://github.com/user-attachments/assets/1553917a-1b3b-44f4-b624-2ca2a1616e4f)
+![20250107_143840](https://github.com/user-attachments/assets/8bb2a63d-fac2-4f98-b8bf-5f9735589635)

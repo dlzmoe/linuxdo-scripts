@@ -21,7 +21,7 @@ LinuxDo Scripts Extension, displays creation time in topic lists, shows floor nu
 [Firefox Add-ons](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/) |
 ~~[Greasyfork Installation](https://greasyfork.org/scripts/501827)~~   
 [Bug Reports and Feature Requests](https://github.com/dlzmoe/linuxdo-scripts/issues/new/choose) |
-[Usage and Development Documentation](https://linuxdo-scripts-docs.netlify.app/) |
+[Usage and Development Documentation](https://linuxdo-scripts-docs.zishu.me/) |
 [Discord Community](https://discord.gg/n2pErsD7Kg)
 
 ## Installation and Usage

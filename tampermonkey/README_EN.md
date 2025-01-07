@@ -11,7 +11,7 @@ Scripts are continuously updated. Issues and PR submissions are welcome!
 
 The linux.do enhanced plugin adds features such as displaying creation time for topics, showing floor count, opening topics in a new tab, forcing block on certain users' topics, quick replies (customizable), optimizing signature image display, directly previewing details and comments in the topic list, import/export settings panel, floor lottery, user-defined tags, view only the original poster, auto-scrolling reading, support for custom CSS styles, mixed Chinese and English optimization, rank information query, AI topic summarization, intelligent reply generation, WebDAV sync support, theme skin switching, and more! More features can be found in the settings list. Continuous updates are made, and new ideas are welcome!
 
-[GitHub Repository](https://github.com/dlzmoe/linuxdo-scripts) | [Greasyfork Store Installation](https://greasyfork.org/scripts/501827) | [Bug Feedback & Feature Requests](https://github.com/dlzmoe/linuxdo-scripts/issues/new/choose) | [Usage and Development Documentation](https://linuxdo-scripts-docs.netlify.app/) | [Discord Community](https://discord.gg/n2pErsD7Kg)
+[GitHub Repository](https://github.com/dlzmoe/linuxdo-scripts) | [Greasyfork Store Installation](https://greasyfork.org/scripts/501827) | [Bug Feedback & Feature Requests](https://github.com/dlzmoe/linuxdo-scripts/issues/new/choose) | [Usage and Development Documentation](https://linuxdo-scripts-docs.zishu.me/) | [Discord Community](https://discord.gg/n2pErsD7Kg)
 
 
 ## Table of Contents

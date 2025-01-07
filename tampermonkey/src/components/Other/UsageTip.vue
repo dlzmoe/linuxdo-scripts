@@ -15,7 +15,7 @@ export default {
               <div class="title">友情提示</div>
               <div>
                 佬友你好，你已经成功安装 linuxdo 增强插件啦！<a
-                  href="https://linuxdo-scripts-docs.netlify.app/"
+                  href="https://linuxdo-scripts-docs.zishu.me/"
                   target="_blank">
                   使用文档
                   </a>

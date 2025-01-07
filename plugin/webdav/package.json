@@ -1,0 +1,25 @@
+{
+  "name": "linuxdo-scripts-webdav-sync",
+  "version": "0.0.1",
+  "author": "dlzmoe",
+  "description": "A Tampermonkey script to add a WebDAV sync patch to the LinuxDo Scripts extension.",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite --mode development",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.4.27",
+    "webdav": "^5.7.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "less": "^4.1.0",
+    "less-loader": "^8.0.0",
+    "style-loader": "^2.0.0",
+    "vite": "^5.2.12",
+    "vite-plugin-monkey": "^4.0.0"
+  }
+}

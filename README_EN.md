@@ -68,7 +68,7 @@ The LinuxDo Scripts extension displays the creation time of topics, shows the nu
 ## Development Notes
 
 ```
-node: v18.17.0
+node: v22.12.0
 ```
 
 Features are developed as components. Each new feature is registered as a new component to avoid conflicts.

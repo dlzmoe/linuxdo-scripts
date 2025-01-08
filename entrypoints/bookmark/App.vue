@@ -73,9 +73,13 @@
             <a :href="scope.row.url" target="_blank">{{ scope.row.title }}</a>
           </template>
         </el-table-column>
-        <el-table-column prop="cate" label="话题分类" width="200" />
-        <el-table-column prop="tags" label="标签" width="200" />
-        <el-table-column label="操作" width="200" fixed="right">
+        <el-table-column prop="cate" label="话题分类" width="160" />
+        <el-table-column prop="tags" label="标签" width="200">
+          <template v-slot="scope">
+            {{ scope.row.tags.join('，') }}
+          </template>
+        </el-table-column>
+        <el-table-column label="操作" width="180" fixed="right">
           <template v-slot="scope" v-if="menutype == 'folder'">
             <el-button type="primary" @click="openMoveDialog(scope.row)">修改</el-button>
             <el-button type="danger" @click="openDelDialog(scope.row)">删除</el-button>

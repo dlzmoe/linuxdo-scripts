@@ -25,7 +25,7 @@
             @click="selectItem(item.id)"
             :class="{ selected: item.id === selectedItemId }"
           >
-            {{ item.name }}
+            {{ item.name }} <em>{{ item.list.length }}</em>
           </li>
         </ul>
       </div>
@@ -489,7 +489,55 @@ export default {
             const data = JSON.parse(e.target.result)
             // 简单的验证数据结构
             if (Array.isArray(data)) {
-              this.bookmarklist = data
+
+              // 创建一个 Map 用于存储按 name 分组的数据
+              const mergedMap = new Map();
+              
+              // 先处理现有数据
+              this.bookmarklist.forEach(bookmark => {
+                if (mergedMap.has(bookmark.name)) {
+                  // 如果已存在相同 name，合并 list
+                  mergedMap.get(bookmark.name).list.push(...bookmark.list);
+                } else {
+                  // 不存在则添加新条目
+                  mergedMap.set(bookmark.name, { 
+                    id: bookmark.id,
+                    name: bookmark.name,
+                    list: [...bookmark.list]
+                  });
+                }
+              });
+
+              // 处理新数据
+              data.forEach(bookmark => {
+                if (mergedMap.has(bookmark.name)) {
+                  // 存在相同 name 则合并 list
+                  mergedMap.get(bookmark.name).list.push(...bookmark.list);
+                } else {
+                  // 不存在则添加新条目
+                  mergedMap.set(bookmark.name, {
+                    id: bookmark.id,
+                    name: bookmark.name,
+                    list: [...bookmark.list]
+                  });
+                }
+              });
+
+              // 对每个分组的 list 去重
+              mergedMap.forEach(bookmark => {
+                const uniqueUrls = new Map();
+                bookmark.list = bookmark.list.filter(item => {
+                  if (!uniqueUrls.has(item.url)) {
+                    uniqueUrls.set(item.url, true);
+                    return true;
+                  }
+                  return false;
+                });
+              });
+
+              // 转换回数组形式
+              this.bookmarklist = Array.from(mergedMap.values());
+
               this.tableData = this.bookmarklist[this.selectedItemId]
               localStorage.setItem(
                 'bookmarkData',
@@ -628,7 +676,7 @@ export default {
       }
     },
 
-    // 同样需要修改导入方法
+    // 导入方法
     async importFromWebDAV() {
       try {
         this.importing = true;
@@ -666,7 +714,55 @@ export default {
           // 解析 JSON 数据
           const data = JSON.parse(content);
           if (Array.isArray(data)) {
-            this.bookmarklist = data;
+     
+             // 创建一个 Map 用于存储按 name 分组的数据
+            const mergedMap = new Map();
+            
+            // 先处理现有数据
+            this.bookmarklist.forEach(bookmark => {
+              if (mergedMap.has(bookmark.name)) {
+                // 如果已存在相同 name，合并 list
+                mergedMap.get(bookmark.name).list.push(...bookmark.list);
+              } else {
+                // 不存在则添加新条目
+                mergedMap.set(bookmark.name, { 
+                  id: bookmark.id,
+                  name: bookmark.name,
+                  list: [...bookmark.list]
+                });
+              }
+            });
+
+            // 处理新数据
+            data.forEach(bookmark => {
+              if (mergedMap.has(bookmark.name)) {
+                // 存在相同 name 则合并 list
+                mergedMap.get(bookmark.name).list.push(...bookmark.list);
+              } else {
+                // 不存在则添加新条目
+                mergedMap.set(bookmark.name, {
+                  id: bookmark.id,
+                  name: bookmark.name,
+                  list: [...bookmark.list]
+                });
+              }
+            });
+
+            // 对每个分组的 list 去重
+            mergedMap.forEach(bookmark => {
+              const uniqueUrls = new Map();
+              bookmark.list = bookmark.list.filter(item => {
+                if (!uniqueUrls.has(item.url)) {
+                  uniqueUrls.set(item.url, true);
+                  return true;
+                }
+                return false;
+              });
+            });
+
+            // 转换回数组形式
+            this.bookmarklist = Array.from(mergedMap.values());
+
             this.tableData = this.bookmarklist[this.selectedItemId];
             localStorage.setItem('bookmarkData', JSON.stringify(this.bookmarklist));
             this.initPostCategory();
@@ -824,10 +920,11 @@ export default {
           localStorage.setItem('bookmarkData', JSON.stringify(vm.bookmarklist))
         }
 
-        this.initPostCategory();
-        this.initPostTags();
       }
     })
+
+    this.initPostCategory();
+    this.initPostTags();
 
     // 加载 WebDAV 配置
     const webdavConfig = localStorage.getItem('webdavConfig');

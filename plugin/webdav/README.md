@@ -1,3 +1,3 @@
-## lobechat-webdav
+## LinuxDo Scripts Webdav Sync
 
-给 lobechat 程序添加 webdav 同步的功能。
+给 LinuxDo Scripts 扩展添加 Webdav 同步的补丁。

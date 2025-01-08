@@ -1,22 +1,19 @@
-> [!NOTE]
-> Special Event: [L Site 2024 Annual Summary] Script - [Source Code](./plugin/summary.user.js) / [Direct Install](https://raw.githubusercontent.com/dlzmoe/linuxdo-scripts/refs/heads/main/plugin/summary.user.js)
-
-<h2 align="center">LinuxDo Scripts Extension (formerly: linuxdo-scripts Enhancement Plugin)</h2>
-<p align="center">Continuously updated, welcome to raise Issues and submit PRs ~</p>
-
 [Simplified Chinese](https://github.com/dlzmoe/linuxdo-scripts/blob/main/README.md) | [English](https://github.com/dlzmoe/linuxdo-scripts/blob/main/README_EN.md)
 
-<p align="center">
+## LinuxDo Scripts Extension
+
+> (Formerly known as: linuxdo-scripts enhancement plugin) Continuously updated with new features, welcome to suggest new ideas! Now available on Chrome Web Store and Firefox Add-ons!
+
 <img src="https://img.shields.io/github/v/release/dlzmoe/linuxdo-scripts?style=flat-square&label=LinuxDo Scripts Extension&labelColor=%235D5D5D&color=%23E97435">
 <img src="https://img.shields.io/github/last-commit/dlzmoe/linuxdo-scripts?style=flat-square&">
 <img src="https://img.shields.io/github/stars/dlzmoe/linuxdo-scripts?style=flat-square&label=Github%20Stars">
 <img src="https://img.shields.io/chrome-web-store/users/fbgblmjbeebanackldpbmpacppflgmlj?style=flat-square&label=Chrome%20Web%20Store">
 <img src="https://img.shields.io/github/license/dlzmoe/linuxdo-scripts?style=flat-square&">
-</p>
 
-LinuxDo Scripts Extension, displays creation time in topic lists, shows floor numbers, opens topics in new tabs, forcibly blocks (blacklists) someone's topics, quick replies to topics (supports customization), optimizes signature image display to prevent broken images, previews details and comments directly in topic lists, imports and exports function settings panels, floor lottery, user-defined tags, view only the original poster, supports custom CSS styles, optimizes mixed Chinese and English display, level information query, AI topic summarization, intelligent reply generation, supports WebDAV synchronization, switches forum theme skins, and more. Please check the settings list for more features, which are continuously updated. Welcome to propose new ideas!
+![20250107_143840](https://github.com/user-attachments/assets/8bb2a63d-fac2-4f98-b8bf-5f9735589635)
 
-[Github Repository](https://github.com/dlzmoe/linuxdo-scripts) |
+The LinuxDo Scripts extension displays the creation time of topics, shows the number of floors, opens topics in new tabs, allows forced blocking of certain users' topics, provides quick replies to topics (with customization), optimizes signature image display to prevent broken images, allows previewing details and comments directly from the topic list, supports import/export of settings, floor lottery, user-defined tags, view-only mode for the original poster, custom CSS styles, optimized display of mixed Chinese and English text, level information lookup, AI topic summarization, smart reply generation, forum theme skin switching, and more. For more features, please check the settings list. Features are continuously updated, and new ideas are welcome!
+
 [Chrome Web Store](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj) |
 [Firefox Add-ons](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/) |
 ~~[Greasyfork Installation](https://greasyfork.org/scripts/501827)~~   
@@ -26,37 +23,34 @@ LinuxDo Scripts Extension, displays creation time in topic lists, shows floor nu
 
 ## Installation and Usage
 
-- Chrome, Edge, Arc users please install from [Chrome Web Store](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj)
-- Firefox users please install from [Firefox Add-ons](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/)
-
-![20250107_143840](https://github.com/user-attachments/assets/8bb2a63d-fac2-4f98-b8bf-5f9735589635)
+- Chrome, Edge, and Arc users can install it from the [Chrome Web Store](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj)
+- Firefox users can install it from the [Firefox Add-ons](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/)
 
 ## Features
 
 <details>
 <summary>Feature List:</summary>
 
-- [x] Display creation time in topic lists
-- [x] Show floor numbers
+- [x] Display topic creation time in the topic list
+- [x] Show the number of floors
 - [x] Open topics in new tabs
-- [x] Forcibly block (blacklist) someone's topics
-- [x] Quick replies to topics (supports customization)
+- [x] Force block (blacklist) certain users' topics
+- [x] Quick replies to topics (with customization)
 - [x] Optimize signature image display to prevent broken images
-- [x] Import and export function settings panels
+- [x] Import/export settings panel
 - [x] Floor lottery
-- [x] View only the original poster
+- [x] View-only mode for the original poster
 - [x] Dark mode
 - [x] User-defined tags
-- [x] Preview details and comments directly in topic lists
-- [x] Optimize comment box emoticons
-- [x] Support custom CSS styles
-- [x] Optimize mixed Chinese and English display
-- [x] Add level information query
+- [x] Preview topic details and comments directly from the topic list
+- [x] Optimized comment box emoticons
+- [x] Support for custom CSS styles
+- [x] Optimized display of mixed Chinese and English text
+- [x] Added level information lookup
 - [x] Switch forum emoticon styles
-- [x] AI topic summarization, intelligent reply generation
-- [x] Support WebDAV synchronization
+- [x] AI topic summarization and smart reply generation
 - [x] Switch forum theme skins
-- [x] More features, please check the settings list
+- [x] More features available in the settings list
 
 </details>
 
@@ -70,13 +64,13 @@ LinuxDo Scripts Extension, displays creation time in topic lists, shows floor nu
 
 </details>
 
-## Development Instructions
+## Development Notes
 
 ```
 node: v18.17.0
 ```
 
-Features are developed in a component-based manner. Each time a new feature is added, a new component is registered to avoid conflicts.
+Features are developed as components. Each new feature is registered as a new component to avoid conflicts.
 
 Clone this repository and install dependencies, then run the code.
 
@@ -86,9 +80,9 @@ yarn # Install dependencies
 yarn dev # Run locally
 ```
 
-After starting, open the local `.output` folder and drag `chrome-mv3` to `chrome://extensions/` to start development.
+After starting, open the local `.output` folder and drag `chrome-mv3` into `chrome://extensions/` to start development.
 
-No build is required. After submitting PR code, I will review it, and if there are no major issues, it will be merged as soon as possible.
+No build is required. After submitting a PR, I will review it, and if there are no major issues, it will be merged as soon as possible.
 
 ## Changelog
 
@@ -98,11 +92,11 @@ No build is required. After submitting PR code, I will review it, and if there a
 
 ![Contributor](https://contrib.rocks/image?repo=dlzmoe/linuxdo-scripts)
 
-[![Stargazers over time](https://starchart.cc/dlzmoe/linuxdo-scripts.svg?variant=adaptive)](https://starchart.cc/dlzmoe/linuxdo-scripts)
+![Stargazers over time](https://starchart.cc/dlzmoe/linuxdo-scripts.svg?variant=adaptive)
 
 ## Disclaimer
 
-All features provided in this script run only in the browser. The source code used is publicly visible and transparent. This script is for learning and research purposes only and does not use any profit schemes or participate in any profit organizations. Any disputes arising from or related to the use of this script should be resolved through friendly negotiation. This script is not responsible for any form of loss or damage caused to the user or others when using the software provided by this script. By downloading, installing, and using the software provided in this product, the user agrees to trust the author and the relevant agreements and disclaimers.
+All features provided in this script run only in the browser, and the source code is publicly visible. This script is for learning and research purposes only and does not participate in any profit schemes or organizations. Any disputes arising from or related to the use of this script should be resolved through friendly negotiation. This script is not responsible for any form of loss or damage caused to the user or others while using the software provided by this script. By downloading, installing, and using the software provided in this product, the user agrees to trust the author and the related agreements and disclaimers.
 
 ## License
 

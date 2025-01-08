@@ -257,7 +257,6 @@ export default {
         const downloadResponse = await this.downloadFile(downloadUrl);
         const importData = JSON.parse(downloadResponse);
         console.log(importData);
-        // localStorage.setItem("lobechat_webdav_backup_importData", importData);
         this.msg = "下载成功，即将同步数据，请勿操作页面！";
 
         // 覆盖云端数据到本地 indexedDB 中

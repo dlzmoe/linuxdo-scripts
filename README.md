@@ -1,25 +1,22 @@
-> [!NOTE]
-> 特别活动：【L 站 2024 年度总结】脚本 - [源码](./plugin/summary.user.js) / [直接安装](https://raw.githubusercontent.com/dlzmoe/linuxdo-scripts/refs/heads/main/plugin/summary.user.js)
-
-<h2 align="center">LinuxDo Scripts 扩展（原名：linuxdo-scripts 增强插件）</h2>
-<p align="center">持续更新，欢迎提出 Issues，提交 Pr ~</p>
-
 [中文简体](https://github.com/dlzmoe/linuxdo-scripts/blob/main/README.md) | [English](https://github.com/dlzmoe/linuxdo-scripts/blob/main/README_EN.md)
 
-<p align="center">
+## LinuxDo Scripts 扩展
+
+> （原名：linuxdo-scripts 增强插件）功能持续更新，欢迎提出新想法！已上架 Chrome Web Store 和 Firefox 商店！
+
 <img src="https://img.shields.io/github/v/release/dlzmoe/linuxdo-scripts?style=flat-square&label=LinuxDo Scripts 扩展&labelColor=%235D5D5D&color=%23E97435">
 <img src="https://img.shields.io/github/last-commit/dlzmoe/linuxdo-scripts?style=flat-square&">
 <img src="https://img.shields.io/github/stars/dlzmoe/linuxdo-scripts?style=flat-square&label=Github%20Stars">
 <img src="https://img.shields.io/chrome-web-store/users/fbgblmjbeebanackldpbmpacppflgmlj?style=flat-square&label=Chrome%20Web%20Store">
 <img src="https://img.shields.io/github/license/dlzmoe/linuxdo-scripts?style=flat-square&">
-</p>
 
-LinuxDo Scripts 扩展，话题列表显示创建时间，显示楼层数，新标签页打开话题，强制 block（拉黑屏蔽）某人的话题，话题快捷回复（支持自定义），优化签名图显示防止图裂，在话题列表可直接预览详情及评论，功能设置面板导入导出，楼层抽奖，用户自定义标签，只看楼主，支持自定义 css 样式，中英文混排优化，等级信息查询，AI 总结话题功能、智能生成回复，支持 webdav 同步，切换论坛主题皮肤等，更多功能请查看设置列表，功能持续更新，欢迎提出新想法！
+![20250107_143840](https://github.com/user-attachments/assets/8bb2a63d-fac2-4f98-b8bf-5f9735589635)
 
-[Github 仓库](https://github.com/dlzmoe/linuxdo-scripts) |
+LinuxDo Scripts 扩展，话题列表显示创建时间，显示楼层数，新标签页打开话题，强制 block（拉黑屏蔽）某人的话题，话题快捷回复（支持自定义），优化签名图显示防止图裂，在话题列表可直接预览详情及评论，功能设置面板导入导出，楼层抽奖，用户自定义标签，只看楼主，支持自定义 css 样式，中英文混排优化，等级信息查询，AI 总结话题功能、智能生成回复，切换论坛主题皮肤等，更多功能请查看设置列表，功能持续更新，欢迎提出新想法！
+
 [Chrome 商店](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj) |
 [Firefox 商店](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/) |
-~~[Greasyfork 商店安装](https://greasyfork.org/scripts/501827)~~   
+~~[Greasyfork 安装](https://greasyfork.org/scripts/501827)~~   
 [Bug 反馈及功能请求](https://github.com/dlzmoe/linuxdo-scripts/issues/new/choose) |
 [使用和开发文档](https://linuxdo-scripts-docs.zishu.me/) |
 [Discord 社区](https://discord.gg/n2pErsD7Kg)
@@ -28,8 +25,6 @@ LinuxDo Scripts 扩展，话题列表显示创建时间，显示楼层数，新�
 
 - Chrome、Edge、Arc 用户请在 [Chrome 商店中安装](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj)
 - Firefox 用户请在 [Firefox 商店中安装](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/)
-
-![20250107_143840](https://github.com/user-attachments/assets/8bb2a63d-fac2-4f98-b8bf-5f9735589635)
 
 ## 功能特性
 
@@ -54,7 +49,6 @@ LinuxDo Scripts 扩展，话题列表显示创建时间，显示楼层数，新�
 - [x] 新增等级信息查询
 - [x] 切换论坛表情风格
 - [x] AI 总结话题功能、智能生成回复
-- [x] 支持 webdav 同步
 - [x] 切换论坛主题皮肤
 - [x] 更多功能请查看设置列表
 
@@ -98,7 +92,7 @@ yarn dev # 本地运行
 
 ![Contributor](https://contrib.rocks/image?repo=dlzmoe/linuxdo-scripts)
 
-[![Stargazers over time](https://starchart.cc/dlzmoe/linuxdo-scripts.svg?variant=adaptive)](https://starchart.cc/dlzmoe/linuxdo-scripts)
+![Stargazers over time](https://starchart.cc/dlzmoe/linuxdo-scripts.svg?variant=adaptive)
 
 ## 免责声明
 

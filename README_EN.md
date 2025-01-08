@@ -2,17 +2,16 @@
 
 ## LinuxDo Scripts Extension
 
-> (Formerly known as: linuxdo-scripts enhancement plugin) Continuously updated with new features, welcome to suggest new ideas! Now available on Chrome Web Store and Firefox Add-ons!
-
+<p>
 <img src="https://img.shields.io/github/v/release/dlzmoe/linuxdo-scripts?style=flat-square&label=LinuxDo Scripts Extension&labelColor=%235D5D5D&color=%23E97435">
-<img src="https://img.shields.io/github/last-commit/dlzmoe/linuxdo-scripts?style=flat-square&">
 <img src="https://img.shields.io/github/stars/dlzmoe/linuxdo-scripts?style=flat-square&label=Github%20Stars">
 <img src="https://img.shields.io/chrome-web-store/users/fbgblmjbeebanackldpbmpacppflgmlj?style=flat-square&label=Chrome%20Web%20Store">
 <img src="https://img.shields.io/github/license/dlzmoe/linuxdo-scripts?style=flat-square&">
+</p>
 
-![20250107_143840](https://github.com/user-attachments/assets/8bb2a63d-fac2-4f98-b8bf-5f9735589635)
+![image](https://github.com/user-attachments/assets/8824696c-f2d4-4cfd-8273-901a3d007a39)
 
-The LinuxDo Scripts extension displays the creation time of topics, shows the number of floors, opens topics in new tabs, allows forced blocking of certain users' topics, provides quick replies to topics (with customization), optimizes signature image display to prevent broken images, allows previewing details and comments directly from the topic list, supports import/export of settings, floor lottery, user-defined tags, view-only mode for the original poster, custom CSS styles, optimized display of mixed Chinese and English text, level information lookup, AI topic summarization, smart reply generation, forum theme skin switching, and more. For more features, please check the settings list. Features are continuously updated, and new ideas are welcome!
+The LinuxDo Scripts extension displays the creation time of topics, shows the number of floors, opens topics in new tabs, forcibly blocks (blacklists) certain users' topics, provides quick replies to topics (with customization), optimizes signature image display to prevent broken images, allows previewing details and comments directly in the topic list, imports and exports settings, offers floor-based giveaways, user-defined tags, view-only OP (original poster) mode, supports custom CSS styles, optimizes mixed Chinese and English text display, adds level information queries, AI topic summarization, intelligent reply generation, forum theme skin switching, and more. Check the settings list for more features, which are continuously updated. New ideas are welcome!
 
 [Chrome Web Store](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj) |
 [Firefox Add-ons](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/) |
@@ -23,8 +22,10 @@ The LinuxDo Scripts extension displays the creation time of topics, shows the nu
 
 ## Installation and Usage
 
-- Chrome, Edge, and Arc users can install it from the [Chrome Web Store](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj)
-- Firefox users can install it from the [Firefox Add-ons](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/)
+- Chrome, Edge, and Arc users can install it from the [Chrome Web Store](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj).
+- Firefox users can install it from the [Firefox Add-ons Store](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/).
+
+[Demo Video](https://github.com/dlzmoe/linuxdo-scripts/blob/main/start.md)
 
 ## Features
 
@@ -37,18 +38,18 @@ The LinuxDo Scripts extension displays the creation time of topics, shows the nu
 - [x] Force block (blacklist) certain users' topics
 - [x] Quick replies to topics (with customization)
 - [x] Optimize signature image display to prevent broken images
-- [x] Import/export settings panel
-- [x] Floor lottery
-- [x] View-only mode for the original poster
+- [x] Import and export settings
+- [x] Floor-based giveaways
+- [x] View-only OP (original poster) mode
 - [x] Dark mode
 - [x] User-defined tags
-- [x] Preview topic details and comments directly from the topic list
-- [x] Optimized comment box emoticons
-- [x] Support for custom CSS styles
-- [x] Optimized display of mixed Chinese and English text
-- [x] Added level information lookup
-- [x] Switch forum emoticon styles
-- [x] AI topic summarization and smart reply generation
+- [x] Preview topic details and comments directly in the topic list
+- [x] Optimize comment box emojis
+- [x] Support custom CSS styles
+- [x] Optimize mixed Chinese and English text display
+- [x] Add level information queries
+- [x] Switch forum emoji styles
+- [x] AI topic summarization and intelligent reply generation
 - [x] Switch forum theme skins
 - [x] More features available in the settings list
 
@@ -96,7 +97,7 @@ No build is required. After submitting a PR, I will review it, and if there are 
 
 ## Disclaimer
 
-All features provided in this script run only in the browser, and the source code is publicly visible. This script is for learning and research purposes only and does not participate in any profit schemes or organizations. Any disputes arising from or related to the use of this script should be resolved through friendly negotiation. This script is not responsible for any form of loss or damage caused to the user or others while using the software provided by this script. By downloading, installing, and using the software provided in this product, the user agrees to trust the author and the related agreements and disclaimers.
+All features provided by this script run only in the browser. The source code is transparent and visible. This script is for learning and research purposes only and does not participate in any profit schemes or organizations. Any disputes arising from or related to the use of this script should be resolved through friendly negotiation. This script is not responsible for any form of loss or damage caused to users or others while using the software provided by this script. By downloading, installing, and using the software provided in this product, users indicate their trust in the author and agree to the relevant agreements and disclaimers.
 
 ## License
 

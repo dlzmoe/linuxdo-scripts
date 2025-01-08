@@ -1,13 +1,13 @@
 export default defineBackground(() => {
   console.log('Hello background!', { id: browser.runtime.id });
 });
-
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+const browserAPI = (typeof browser !== 'undefined' ? browser : chrome);
+browserAPI.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'sendData') {
     // 查询所有打开的标签页
-    chrome.tabs.query({ url: '*://linux.do/*' }, (tabs) => {
+    browserAPI.tabs.query({ url: '*://linux.do/*' }, (tabs) => {
       tabs.forEach((tab) => {
-        chrome.tabs.sendMessage(tab.id, {
+        browserAPI.tabs.sendMessage(tab.id, {
           action: 'setData',
           data: request.data
         });
@@ -16,11 +16,9 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   }
 });
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+browserAPI.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'open_bookmark_page') {
-    const extensionID = chrome.runtime.id;
-    const extensionURL = `chrome-extension://${extensionID}/bookmark.html`;
-
-    chrome.tabs.create({ url: extensionURL });
+    const extensionURL = browserAPI.runtime.getURL('bookmark.html');
+    browserAPI.tabs.create({ url: extensionURL });
   }
 });

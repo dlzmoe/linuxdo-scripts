@@ -64,13 +64,13 @@ export default {
             }
 
             console.log(data)
-
-            chrome.storage.local.set({ bookmarkData: data }, () => {
+            const browserAPI = (typeof browser !== 'undefined' ? browser : chrome);
+            browserAPI.storage.local.set({ bookmarkData: data }, () => {
               vm.messageToast('收藏成功，请前往收藏夹查看。')
             })
 
             // 发送消息到后台脚本
-            chrome.runtime.sendMessage({ action: 'open_bookmark_page' })
+            browserAPI.runtime.sendMessage({ action: 'open_bookmark_page' })
           })
         }
       }, 1000)

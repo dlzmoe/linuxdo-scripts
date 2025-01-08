@@ -11,7 +11,7 @@
 
 ![image](https://github.com/user-attachments/assets/8824696c-f2d4-4cfd-8273-901a3d007a39)
 
-LinuxDo Scripts 扩展，话题列表显示创建时间，显示楼层数，新标签页打开话题，强制 block（拉黑屏蔽）某人的话题，话题快捷回复（支持自定义），优化签名图显示防止图裂，在话题列表可直接预览详情及评论，功能设置面板导入导出，楼层抽奖，用户自定义标签，只看楼主，支持自定义 css 样式，中英文混排优化，等级信息查询，AI 总结话题功能、智能生成回复，切换论坛主题皮肤等，更多功能请查看设置列表，功能持续更新，欢迎提出新想法！
+LinuxDo Scripts 扩展，帖子收藏夹多维度管理，话题列表显示创建时间，显示楼层数，新标签页打开话题，强制 block（拉黑屏蔽）某人的话题，话题快捷回复（支持自定义），优化签名图显示防止图裂，在话题列表可直接预览详情及评论，功能设置面板导入导出，楼层抽奖，用户自定义标签，只看楼主，支持自定义 css 样式，中英文混排优化，等级信息查询，AI 总结话题功能、智能生成回复，切换论坛主题皮肤等，更多功能请查看设置列表，功能持续更新，欢迎提出新想法！
 
 [Chrome 商店](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj) |
 [Firefox 商店](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/) |

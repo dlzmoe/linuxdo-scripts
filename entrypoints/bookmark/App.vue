@@ -453,8 +453,8 @@ export default {
     }
     this.init()
     const vm = this
-
-    chrome.storage.local.get('bookmarkData', (result) => {
+    const browserAPI = (typeof browser !== 'undefined' ? browser : chrome);
+    browserAPI.storage.local.get('bookmarkData', (result) => {
       if (result.bookmarkData) {
         // 检查是否已有相同的 URL
         const isUrlExist = vm.bookmarklist.some((bookmarkGroup) =>

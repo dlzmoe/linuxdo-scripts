@@ -14,9 +14,6 @@
 
 <script>
 export default {
-  data() {
-    return {}
-  },
   methods: {
     openSetting() {
       const browserAPI = typeof browser !== 'undefined' ? browser : chrome

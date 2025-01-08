@@ -7,7 +7,10 @@
       <div class="item" @click="toggleMenu('cate')" :class="{active:menutype == 'cate'}" title="话题分类"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="currentColor"  class="icon icon-tabler icons-tabler-filled icon-tabler-category"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 3h-6a1 1 0 0 0 -1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1 -1v-6a1 1 0 0 0 -1 -1z" /><path d="M20 3h-6a1 1 0 0 0 -1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1 -1v-6a1 1 0 0 0 -1 -1z" /><path d="M10 13h-6a1 1 0 0 0 -1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1 -1v-6a1 1 0 0 0 -1 -1z" /><path d="M17 13a4 4 0 1 1 -3.995 4.2l-.005 -.2l.005 -.2a4 4 0 0 1 3.995 -3.8z" /></svg></div>
       <!-- 标签 -->
       <div class="item" @click="toggleMenu('tags')" :class="{active:menutype == 'tags'}" title="标签"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="currentColor"  class="icon icon-tabler icons-tabler-filled icon-tabler-tags"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9.172 5a3 3 0 0 1 2.121 .879l5.71 5.71a3.41 3.41 0 0 1 0 4.822l-3.592 3.592a3.41 3.41 0 0 1 -4.822 0l-5.71 -5.71a3 3 0 0 1 -.879 -2.121v-4.172a3 3 0 0 1 3 -3zm-2.172 4h-.01a1 1 0 1 0 .01 2a1 1 0 0 0 0 -2" /><path d="M14.293 5.293a1 1 0 0 1 1.414 0l4.593 4.592a5.82 5.82 0 0 1 0 8.23l-1.592 1.592a1 1 0 0 1 -1.414 -1.414l1.592 -1.592a3.82 3.82 0 0 0 0 -5.402l-4.592 -4.592a1 1 0 0 1 0 -1.414" /></svg></div>
+      <!-- Webdav 同步 -->
+      <div class="item" @click="openWebdavDialog" title="WebDAV 同步"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z"/></svg></div>
     </div>
+
     <div class="aside">
       <div v-show="menutype == 'folder'">
         <div class="page-title">文件夹</div>
@@ -52,19 +55,6 @@
           </li>
         </ul>
       </div>
-
-      <ul class="btn">
-        <el-button type="primary" @click="exportData">导出</el-button>
-        <label for="file-upload" class="el-button el-button--primary">
-          导入
-        </label>
-        <input
-          id="file-upload"
-          type="file"
-          @change="importData"
-          style="display: none"
-        />
-      </ul>
     </div>
     <div class="container">
       <el-table :data="tableData.list">
@@ -171,9 +161,121 @@
       </div>
     </template>
   </el-dialog>
+
+  <!-- Webdav 同步 -->
+  <el-dialog v-model="WebdavDialog" title="收藏夹 WebDAV 同步设置" width="550">
+    <el-form :model="webdavConfig" label-width="100px">
+      <el-form-item label="服务器地址">
+        <el-input v-model="webdavConfig.serverUrl" placeholder="https://example.com/dav/"/>
+      </el-form-item>
+      <el-form-item label="用户名">
+        <el-input v-model="webdavConfig.username" placeholder="用户名"/>
+      </el-form-item>
+      <el-form-item label="密码">
+        <el-input v-model="webdavConfig.password" placeholder="密码"/>
+      </el-form-item>
+    </el-form>
+    <div class="webdav-actions">
+      <el-button type="primary" @click="saveWebDAVConfig">保存配置</el-button>
+    </div>
+
+    <el-divider>云端同步操作</el-divider>
+    <div class="webdav-sync-actions">
+      <el-button type="primary" @click="exportToWebDAV" :loading="exporting">导出到 WebDAV</el-button>
+      <el-button type="primary" @click="importFromWebDAV" :loading="importing">从 WebDAV 导入</el-button>
+    </div>
+    <el-divider>手动同步操作</el-divider>
+    <el-button type="primary" @click="exportData">导出 json 文件</el-button>
+    <label for="file-upload" class="el-button el-button--primary">导入 json 文件</label>
+    <input id="file-upload" type="file" @change="importData" style="display: none" />
+  </el-dialog>
 </template>
 
 <script>
+// WebDAVClient 类定义
+class WebDAVClient {
+  constructor(serverUrl, username, password) {
+    if (!serverUrl || typeof serverUrl !== 'string') {
+      throw new Error('服务器地址不能为空');
+    }
+    this.serverUrl = serverUrl.endsWith('/') ? serverUrl : serverUrl + '/';
+    this.auth = 'Basic ' + btoa(username + ':' + password);
+  }
+
+  async request(method, path, data = null, headers = {}) {
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      // 移除路径开头的斜杠，并编码路径中的特殊字符
+      path = path.replace(/^\/+/, '');
+      const url = this.serverUrl + encodeURIComponent(path);
+      
+      xhr.open(method, url, true);
+      
+      // 添加认证头
+      xhr.setRequestHeader('Authorization', this.auth);
+      
+      // 添加其他头部
+      Object.entries(headers).forEach(([key, value]) => {
+        xhr.setRequestHeader(key, value);
+      });
+
+      xhr.onload = function() {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          resolve(xhr.response);
+        } else {
+          reject(new Error(`请求失败: ${xhr.status} ${xhr.statusText}`));
+        }
+      };
+
+      xhr.onerror = function() {
+        reject(new Error('网络请求失败'));
+      };
+
+      // 正确地处理请求体
+      if (data) {
+        // 如果是字符串，直接发送
+        if (typeof data === 'string') {
+          xhr.send(data);
+        } 
+        // 如果是对象，转换为JSON字符串
+        else if (typeof data === 'object') {
+          xhr.send(JSON.stringify(data));
+        }
+      } else {
+        xhr.send();
+      }
+    });
+  }
+
+  async putFile(path, content) {
+    return this.request('PUT', path, content, {
+      'Content-Type': 'application/json;charset=UTF-8'
+    });
+  }
+
+  async getFile(path) {
+    return this.request('GET', path);
+  }
+
+  async exists(path) {
+    try {
+      await this.request('PROPFIND', path, null, {
+        'Depth': '0'
+      });
+      return true;
+    } catch (e) {
+      if (e.message.includes('404')) {
+        return false;
+      }
+      throw e;
+    }
+  }
+
+  async createDirectory(path) {
+    return this.request('MKCOL', path);
+  }
+}
+
 export default {
   data() {
     return {
@@ -218,6 +320,18 @@ export default {
 
       // 删除指定帖子
       delDialogVisible: false,
+
+      // webdav 同步
+      WebdavDialog: false,
+      webdavConfig: {
+        serverUrl: '',
+        username: '',
+        password: '',
+        folder: 'linuxdo-scripts-backup/', // 默认文件夹
+        filename: JSON.stringify(localStorage.getItem("bookmarkData")),
+      },
+      importing: false,
+      exporting: false
     }
   },
   computed: {
@@ -447,6 +561,243 @@ export default {
       this.selectItemTagsId = id
       this.tableData = this.tagslist[this.selectItemTagsId]
     },
+
+    /*
+    * webdav 同步
+    */
+    openWebdavDialog() {
+      this.WebdavDialog = true;
+    },
+    // 获取完整的文件路径
+    getFullPath() {
+      let folder = this.webdavConfig.folder.trim()
+      // 确保文件夹路径以/开头和结尾
+      if (!folder.startsWith('/')) folder = '/' + folder
+      if (!folder.endsWith('/')) folder = folder + '/'
+      return folder + this.webdavConfig.filename.trim()
+    },
+
+    async exportToWebDAV() {
+      try {
+        this.exporting = true;
+        const config = JSON.parse(localStorage.getItem('webdavConfig'));
+        if (!config) {
+          throw new Error('请先配置 WebDAV 信息');
+        }
+
+        const client = new WebDAVClient(
+          config.serverUrl,
+          config.username,
+          atob(config.password)
+        );
+
+        // 规范化文件夹路径
+        let folder = config.folder || '';
+        folder = folder.replace(/^\/+|\/+$/g, ''); // 移除开头和结尾的斜杠
+        if (folder) {
+          folder += '/';
+        }
+
+        // 确保文件夹存在
+        if (folder) {
+          try {
+            const exists = await client.exists(folder);
+            if (!exists) {
+              await client.createDirectory(folder);
+            }
+          } catch (error) {
+            throw new Error('创建文件夹失败：' + error.message);
+          }
+        }
+
+        // 正确构建文件路径
+        const filePath = folder + 'bookmarks.json';  // 使用固定的文件名
+        
+        // 将数据转换为 JSON 字符串
+        const bookmarkData = JSON.stringify(this.bookmarklist);
+
+        // 上传文件
+        await client.putFile(filePath, bookmarkData);
+        
+        this.$message.success('导出到 WebDAV 成功');
+      } catch (error) {
+        console.error('导出错误：', error);
+        this.$message.error('导出失败：' + error.message);
+      } finally {
+        this.exporting = false;
+      }
+    },
+
+    // 同样需要修改导入方法
+    async importFromWebDAV() {
+      try {
+        this.importing = true;
+        const config = JSON.parse(localStorage.getItem('webdavConfig'));
+        if (!config) {
+          throw new Error('请先配置 WebDAV 信息');
+        }
+
+        const client = new WebDAVClient(
+          config.serverUrl,
+          config.username,
+          atob(config.password)
+        );
+
+        // 规范化文件夹路径
+        let folder = config.folder || '';
+        folder = folder.replace(/^\/+|\/+$/g, ''); // 移除开头和结尾的斜杠
+        if (folder) {
+          folder += '/';
+        }
+
+        // 使用和导出相同的文件路径
+        const filePath = folder + 'bookmarks.json';
+
+        // 检查文件是否存在
+        const exists = await client.exists(filePath);
+        if (!exists) {
+          throw new Error('WebDAV 服务器上未找到书签文件');
+        }
+
+        // 读取文件内容
+        const content = await client.getFile(filePath);
+        
+        try {
+          // 解析 JSON 数据
+          const data = JSON.parse(content);
+          if (Array.isArray(data)) {
+            this.bookmarklist = data;
+            this.tableData = this.bookmarklist[this.selectedItemId];
+            localStorage.setItem('bookmarkData', JSON.stringify(this.bookmarklist));
+            this.initPostCategory();
+            this.initPostTags();
+            this.$message.success('从 WebDAV 导入成功');
+          } else {
+            throw new Error('导入的数据格式不正确');
+          }
+        } catch (e) {
+          throw new Error('解析导入的数据失败：' + e.message);
+        }
+      } catch (error) {
+        console.error('导入错误：', error);
+        this.$message.error('导入失败：' + error.message);
+      } finally {
+        this.importing = false;
+      }
+    },
+
+    async checkAndRequestPermission(url) {
+      var browserAPI = (typeof browser !== 'undefined' ? browser : chrome);
+      try {
+        if (!url.startsWith('http://') && !url.startsWith('https://')) {
+          throw new Error('URL 必须以 http://或 https://开头');
+        }
+
+        let origin;
+        try {
+          const cleanUrl = url.replace(/\/$/, '');
+          origin = new URL(cleanUrl).origin + "/*";
+        } catch (e) {
+          throw new Error('无效的 URL 格式');
+        }
+
+        try {
+          const existingPermissions = await browserAPI.permissions.contains({
+            origins: [origin]
+          });
+
+          if (!existingPermissions) {
+            const granted = await browserAPI.permissions.request({
+              origins: [origin]
+            });
+
+            if (!granted) {
+              throw new Error('用户拒绝了权限请求');
+            }
+          }
+        } catch (e) {
+          console.error('权限请求错误：', e);
+          throw new Error('权限请求失败，请确保 URL 正确且已授予权限');
+        }
+        
+        return true;
+      } catch (error) {
+        throw error;
+      }
+    },
+
+    // 保存配置
+    async saveWebDAVConfig() {
+      try {
+        // 先验证所有必填字段是否存在且不为空
+        const config = {
+          serverUrl: (this.webdavConfig?.serverUrl || '').trim(),
+          username: (this.webdavConfig?.username || '').trim(),
+          password: this.webdavConfig?.password || '',
+          folder: 'linuxdo-scripts-backup/',
+          filename: JSON.stringify(localStorage.getItem("bookmarkData")),
+        };
+
+        // 验证必填字段
+        const requiredFields = {
+          '服务器地址': config.serverUrl,
+          '用户名': config.username,
+          '密码': config.password,
+          '文件名': config.filename
+        };
+
+        for (const [field, value] of Object.entries(requiredFields)) {
+          if (!value) {
+            throw new Error(`${field}不能为空`);
+          }
+        }
+
+        // 验证 URL 格式
+        if (!config.serverUrl.startsWith('http://') && !config.serverUrl.startsWith('https://')) {
+          throw new Error('服务器地址必须以 http:// 或 https:// 开头');
+        }
+
+        try {
+          // 测试 URL 是否有效
+          new URL(config.serverUrl);
+        } catch (e) {
+          throw new Error('无效的服务器地址格式');
+        }
+
+        // 规范化 URL 和文件夹路径
+        config.serverUrl = config.serverUrl.endsWith('/') ? config.serverUrl : config.serverUrl + '/';
+        config.folder = config.folder.endsWith('/') ? config.folder : config.folder + '/';
+        config.folder = config.folder.startsWith('/') ? config.folder.substring(1) : config.folder;
+
+        // 请求权限
+        await this.checkAndRequestPermission(config.serverUrl);
+
+        // 创建客户端并测试连接
+        const client = new WebDAVClient(
+          config.serverUrl,
+          config.username,
+          config.password
+        );
+
+        try {
+          await client.exists('/');
+        } catch (e) {
+          console.error('连接测试失败：', e);
+          throw new Error('无法连接到 WebDAV 服务器，请检查配置是否正确');
+        }
+
+        // 存储配置
+        localStorage.setItem('webdavConfig', JSON.stringify({
+          ...config,
+          password: btoa(config.password)
+        }));
+
+        this.$message.success('WebDAV 配置保存成功');
+      } catch (error) {
+        console.error('保存配置错误：', error);
+        this.$message.error(error.message || '保存配置失败');
+      }
+    }
   },
   created() {
     const bookmarkData = localStorage.getItem('bookmarkData')
@@ -477,6 +828,13 @@ export default {
         this.initPostTags();
       }
     })
+
+    // 加载 WebDAV 配置
+    const webdavConfig = localStorage.getItem('webdavConfig');
+    if (webdavConfig) {
+      this.webdavConfig = JSON.parse(webdavConfig)
+      this.webdavConfig.password = atob(this.webdavConfig.password)
+    }
   },
 }
 </script>

@@ -64,6 +64,7 @@ export default {
             }
 
             console.log(data)
+            
             const browserAPI = (typeof browser !== 'undefined' ? browser : chrome);
             browserAPI.storage.local.set({ bookmarkData: data }, () => {
               vm.messageToast('收藏成功，请前往收藏夹查看。')

@@ -22,3 +22,31 @@ browserAPI.runtime.onMessage.addListener((request, sender, sendResponse) => {
     browserAPI.tabs.create({ url: extensionURL });
   }
 });
+
+
+browserAPI.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.type === 'webdav') {
+    const { method, url, headers, data } = request;
+    
+    fetch(url, {
+      method: method,
+      headers: headers,
+      body: data || undefined
+    })
+    .then(async response => {
+      const text = await response.text();
+      sendResponse({
+        status: response.status,
+        statusText: response.statusText,
+        data: text
+      });
+    })
+    .catch(error => {
+      sendResponse({
+        error: error.message
+      });
+    });
+    
+    return true; // 保持消息通道打开
+  }
+});

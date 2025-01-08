@@ -11,18 +11,59 @@ body {
   padding: 10px;
 }
 
+.fixed {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 50px;
+  background-color: #2C3E50;
+  height: 100vh;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 30px 10px;
+
+  .item {
+    margin-bottom: 1em;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+
+    &.active {
+      background: #ededed;
+
+      svg {
+        color: #2C3E50;
+      }
+    }
+  }
+}
+
+.page-title {
+  padding: 20px 20px 0;
+  font-size: 20px;
+  font-weight: 500;
+  color: #2C3E50;
+}
+
 .flex {
   position: relative;
-  padding-left: 320px;
+  padding-left: 370px;
 
   .aside {
     width: 300px;
     background: #eee;
     height: 100vh;
+    padding-bottom: 66px;
     overflow-y: auto;
-
     position: fixed;
-    left: 0;
+    left: 50px;
     top: 0;
 
     ul {
@@ -35,10 +76,20 @@ body {
         border-radius: 5px;
         cursor: pointer;
         margin-bottom: 6px;
-        transition: all 0.1s linear;
+        transition: all 0.2s linear;
+        position: relative;
+        color: #2C3E50;
+        font-size: 15px;
+
+        em {
+          font-style: inherit;
+          position: absolute;
+          right: 10px;
+          color: #666;
+        }
 
         &:hover {
-          background: #fff;
+          background: #e5e4e4;
         }
 
         &.selected {
@@ -48,7 +99,7 @@ body {
     }
 
     .btn {
-      position: absolute;
+      position: fixed;
       bottom: 20px;
     }
   }

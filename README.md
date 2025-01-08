@@ -2,13 +2,13 @@
 
 ## LinuxDo Scripts 扩展
 
-> （原名：linuxdo-scripts 增强插件）功能持续更新，欢迎提出新想法！已上架 Chrome Web Store 和 Firefox 商店！
-
+<p>
 <img src="https://img.shields.io/github/v/release/dlzmoe/linuxdo-scripts?style=flat-square&label=LinuxDo Scripts 扩展&labelColor=%235D5D5D&color=%23E97435">
 <img src="https://img.shields.io/github/last-commit/dlzmoe/linuxdo-scripts?style=flat-square&">
 <img src="https://img.shields.io/github/stars/dlzmoe/linuxdo-scripts?style=flat-square&label=Github%20Stars">
 <img src="https://img.shields.io/chrome-web-store/users/fbgblmjbeebanackldpbmpacppflgmlj?style=flat-square&label=Chrome%20Web%20Store">
 <img src="https://img.shields.io/github/license/dlzmoe/linuxdo-scripts?style=flat-square&">
+</p>
 
 ![20250107_143840](https://github.com/user-attachments/assets/8bb2a63d-fac2-4f98-b8bf-5f9735589635)
 

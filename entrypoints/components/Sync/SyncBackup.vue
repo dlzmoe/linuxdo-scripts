@@ -4,7 +4,6 @@
 </template>
 
 <script>
-import $ from "jquery";
 import ManualBackup from "./ManualBackup.vue";
 
 export default {

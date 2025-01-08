@@ -153,7 +153,7 @@
             <Themes v-model="settingData.themes" />
           </div>
           <div class="menu-body-item" v-show="activeIndex == 5">
-            <SyncBackup v-model:value="settingData.syncbackup" />
+            <SyncBackup />
           </div>
         </div>
       </div>
@@ -432,11 +432,6 @@ export default {
             "根据以下帖子内容，帮我给作者写一条回复，简短，表明我的观点，用口语回复，不需要很正式。您可以通过讨论的方式进行回复，这将有助于引导其他用户或作者进行互动。",
           prompt2:
             "根据以下帖子内容，生成一个合适的标题用于社交论坛发布使用，格式要求：不要书名号或其他符号，只需要一句纯文本。尽量精简到 15 字以内，如果字数不够表达主题，可以适当多生成几个字。",
-        },
-        syncbackup: {
-          webdavUrl: "",
-          webdavUsername: "",
-          webdavPassword: "",
         },
         themes: 0,
       },

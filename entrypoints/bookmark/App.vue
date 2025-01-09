@@ -956,6 +956,8 @@ export default {
           localStorage.setItem('bookmarkData', JSON.stringify(vm.bookmarklist))
         }
 
+        // 处理完后立即清除 storage 中的数据
+        browserAPI.storage.local.remove('bookmarkData');
       }
     })
 
@@ -969,7 +971,6 @@ export default {
       this.webdavConfig.password = atob(this.webdavConfig.password)
     }
 
-    console.log(this.categoryMap);
   },
 }
 </script>

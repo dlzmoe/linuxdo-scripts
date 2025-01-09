@@ -2,6 +2,7 @@ export default defineBackground(() => {
   console.log('Hello background!', { id: browser.runtime.id });
 });
 const browserAPI = (typeof browser !== 'undefined' ? browser : chrome);
+
 browserAPI.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'sendData') {
     // 查询所有打开的标签页

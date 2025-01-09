@@ -30,7 +30,7 @@
         </ul>
       </div>
       <div v-show="menutype == 'cate'">
-        <div class="page-title">话题分类</div>
+        <div class="page-title">类别</div>
         <ul>
           <li
             v-for="item in catelist"
@@ -38,7 +38,17 @@
             @click="selectItemCate(item.id)"
             :class="{ selected: item.id === selectItemCateId }"
           >
-            {{ item.name }} <em>{{ item.list.length }}</em>
+            <img 
+              v-if="item.logo"
+              :src="`https://linux.do${item.logo}`"
+              class="category-icon"
+              width="16" 
+              height="16"
+            />
+            <span :style="{ color: '#' + item.color }">
+              {{ item.name }}
+            </span>
+            <em>{{ item.list.length }}</em>
           </li>
         </ul>
       </div>
@@ -63,7 +73,22 @@
             <a :href="scope.row.url" target="_blank">{{ scope.row.title }}</a>
           </template>
         </el-table-column>
-        <el-table-column prop="cate" label="话题分类" width="160" />
+        <el-table-column prop="cate" label="类别" width="160">
+          <template v-slot="scope">
+            <div class="category-cell">
+              <img 
+                v-if="getCategoryInfo(scope.row.cate)?.uploaded_logo"
+                :src="`https://linux.do${getCategoryInfo(scope.row.cate).uploaded_logo.url}`"
+                class="category-icon"
+              />
+              <span 
+                :style="{ color: '#' + getCategoryInfo(scope.row.cate)?.color }"
+              >
+                {{ scope.row.cate }}
+              </span>
+            </div>
+          </template>
+        </el-table-column>
         <el-table-column prop="tags" label="标签" width="200">
           <template v-slot="scope">
             {{ scope.row.tags.join('，') }}
@@ -276,9 +301,12 @@ class WebDAVClient {
   }
 }
 
+import categoryMap from "./data/categoryMap.js";
 export default {
   data() {
     return {
+      categoryMap: categoryMap.categoryMap,
+
       // 切换页面类型
       menutype: "folder",
 
@@ -562,6 +590,7 @@ export default {
       this.catelist = this.bookmarklist.reduce((acc, folder) => {
         folder.list.forEach(item => {
           const existingCategory = acc.find(cat => cat.name === item.cate);
+          const categoryInfo = this.categoryMap.find(c => c.name === item.cate);
           
           if (existingCategory) {
             existingCategory.list.push(item);
@@ -569,14 +598,16 @@ export default {
             acc.push({
               id: acc.length,
               name: item.cate,
-              list: [item]
+              list: [item],
+              color: categoryInfo?.color || '',
+              logo: categoryInfo?.uploaded_logo?.url || ''
             });
           }
         });
         
         return acc;
-        }, []);
-    },
+      }, []);
+      },
     selectItemCate(id) {
       this.selectItemCateId = id
       this.tableData = this.catelist[this.selectItemCateId]
@@ -625,6 +656,7 @@ export default {
       return folder + this.webdavConfig.filename.trim()
     },
 
+    // 导出方法
     async exportToWebDAV() {
       try {
         this.exporting = true;
@@ -893,7 +925,11 @@ export default {
         console.error('保存配置错误：', error);
         this.$message.error(error.message || '保存配置失败');
       }
-    }
+    },
+    // 给帖子类别增加颜色
+    getCategoryInfo(cateName) {
+      return this.categoryMap.find(cat => cat.name === cateName)
+    },
   },
   created() {
     const bookmarkData = localStorage.getItem('bookmarkData')
@@ -902,7 +938,7 @@ export default {
     } else {
       localStorage.setItem('bookmarkData', JSON.stringify(this.bookmarklist))
     }
-    this.init()
+    this.init();
     const vm = this
     const browserAPI = (typeof browser !== 'undefined' ? browser : chrome);
     browserAPI.storage.local.get('bookmarkData', (result) => {
@@ -932,6 +968,8 @@ export default {
       this.webdavConfig = JSON.parse(webdavConfig)
       this.webdavConfig.password = atob(this.webdavConfig.password)
     }
+
+    console.log(this.categoryMap);
   },
 }
 </script>

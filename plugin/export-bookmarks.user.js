@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name        导出所有书签
+// @name        导出所有书签，搭配 1.0.19 版本及以后使用
 // @namespace   https://github.com/dlzmoe/linuxdo-scripts
 // @match       https://linux.do/*
 // @grant       none
@@ -9,10 +9,11 @@
 
 (function () {
   'use strict';
-  // var myusername = "anghunk";
-
   const myusernameStr = $('.d-header-icons .icon img.avatar').attr('src');
   const myusername = myusernameStr.replace(/^\/user_avatar\/linux\.do\//, '').split('/')[0];
+
+  // 如果导出失败，把下面的注释展开，并修改为你的用户名。
+  // var myusername = "anghunk";
 
   // 分类映射
   const categoryMap = {

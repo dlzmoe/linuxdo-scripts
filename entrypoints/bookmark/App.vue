@@ -67,7 +67,7 @@
       </div>
     </div>
     <div class="container">
-      <el-table :data="tableData.list">
+      <el-table :data="tableData.list" v-loading="loading">
         <el-table-column prop="title" label="标题" min-width="300">
           <template v-slot="scope">
             <a :href="scope.row.url" target="_blank">{{ scope.row.title }}</a>
@@ -95,7 +95,7 @@
           </template>
         </el-table-column>
         <el-table-column label="操作" width="180" fixed="right">
-          <template v-slot="scope" v-if="menutype == 'folder'">
+          <template v-slot="scope">
             <el-button type="primary" @click="openMoveDialog(scope.row)">修改</el-button>
             <el-button type="danger" @click="openDelDialog(scope.row)">删除</el-button>
           </template>
@@ -305,6 +305,7 @@ import categoryMap from "./data/categoryMap.js";
 export default {
   data() {
     return {
+      loading: false,
       categoryMap: categoryMap.categoryMap,
 
       // 切换页面类型
@@ -368,6 +369,13 @@ export default {
     },
   },
   methods: {
+    // 模拟加载刷新
+    Loading() {
+      this.loading = true;
+      setTimeout(() => {
+        this.loading = false;
+      }, 100);
+    },
     // 切换左侧页面类型
     toggleMenu(val) {
       this.menutype = val;
@@ -376,8 +384,9 @@ export default {
       this.selectItemTagsId = -1;
     },
     selectItem(id) {
-      this.selectedItemId = id
-      this.tableData = this.bookmarklist[this.selectedItemId]
+      this.selectedItemId = id;
+      this.tableData = this.bookmarklist[this.selectedItemId];
+      this.Loading();
     },
     init() {
       this.tableData = this.bookmarklist[this.selectedItemId]
@@ -422,7 +431,9 @@ export default {
       )
       this.multipleSelection = []
       this.$message.success('删除成功！')
-      this.AdmindialogVisible = false
+      this.AdmindialogVisible = false;
+      this.initPostCategory();
+      this.initPostTags();
       localStorage.setItem('bookmarkData', JSON.stringify(this.bookmarklist))
     },
     // 打开修改弹窗
@@ -456,39 +467,95 @@ export default {
         return
       }
 
-      // 查找当前文件夹和目标文件夹
-      const currentCategory = this.bookmarklist[this.selectedItemId]
+      // 查找目标文件夹
       const targetCategory = this.bookmarklist.find(
         (item) => item.id === this.targetCategoryId
       )
 
-      // 从当前文件夹中移除项目并添加到目标文件夹中
-      const index = currentCategory.list.indexOf(this.currentMoveItem)
-      if (index > -1) {
-        currentCategory.list.splice(index, 1)
-        targetCategory.list.push(this.currentMoveItem)
+      // 在所有文件夹中查找并移除项目
+      let itemMoved = false;
+      this.bookmarklist.forEach(folder => {
+        const index = folder.list.findIndex(item => item === this.currentMoveItem);
+        if (index > -1) {
+          folder.list.splice(index, 1);
+          itemMoved = true;
+        }
+      });
 
-        this.$message.success('收藏夹转移成功！')
-        this.moveDialogVisible = false
-        localStorage.setItem('bookmarkData', JSON.stringify(this.bookmarklist))
+      // 添加到目标文件夹
+      if (itemMoved) {
+        targetCategory.list.push(this.currentMoveItem);
+        
+        // 根据当前视图更新显示
+        if (this.menutype === 'tags') {
+          this.initPostTags();
+          // 检查索引是否仍然有效
+          if (this.selectItemTagsId >= this.tagslist.length) {
+            this.selectItemTagsId = Math.max(0, this.tagslist.length - 1);
+          }
+          this.tableData = this.tagslist.length > 0 ? this.tagslist[this.selectItemTagsId] : { list: [] };
+        } 
+        else if (this.menutype === 'cate') {
+          this.initPostCategory();
+          // 检查索引是否仍然有效
+          if (this.selectItemCateId >= this.catelist.length) {
+            this.selectItemCateId = Math.max(0, this.catelist.length - 1);
+          }
+          this.tableData = this.catelist.length > 0 ? this.catelist[this.selectItemCateId] : { list: [] };
+        }
+        else {
+          this.tableData = this.bookmarklist[this.selectedItemId];
+        }
+
+        this.$message.success('收藏夹转移成功！');
+        this.moveDialogVisible = false;
+        localStorage.setItem('bookmarkData', JSON.stringify(this.bookmarklist));
+        this.Loading();
       }
     },
+
     openDelDialog(row) {
       this.deleteRow = row // 保存要删除的行数据
       this.delDialogVisible = true // 显示删除对话框
     },
     // 删除指定帖子
     confirmDelete() {
-      const index = this.bookmarklist[this.selectedItemId].list.indexOf(
-        this.deleteRow
-      )
-      if (index > -1) {
-        this.bookmarklist[this.selectedItemId].list.splice(index, 1)
-        this.delDialogVisible = false // 关闭对话框
-        this.deleteRow = null // 清除删除行的数据
-        localStorage.setItem('bookmarkData', JSON.stringify(this.bookmarklist))
-        this.$message.success('删除成功！')
+      // 从所有文件夹中查找并删除该项目
+      this.bookmarklist.forEach(folder => {
+        const index = folder.list.findIndex(item => item === this.deleteRow);
+        if (index > -1) {
+          folder.list.splice(index, 1);
+        }
+      });
+
+      // 如果在标签视图下，也需要更新 tagslist
+      if (this.menutype === 'tags') {
+        this.initPostTags(); // 重新初始化标签列表
+        // 检查索引是否仍然有效
+        if (this.selectItemTagsId >= this.tagslist.length) {
+          this.selectItemTagsId = Math.max(0, this.tagslist.length - 1);
+        }
+        this.tableData = this.tagslist.length > 0 ? this.tagslist[this.selectItemTagsId] : { list: [] };
+      } 
+      // 如果在分类视图下，更新 catelist
+      else if (this.menutype === 'cate') {
+        this.initPostCategory(); // 重新初始化分类列表
+        // 检查索引是否仍然有效
+        if (this.selectItemCateId >= this.catelist.length) {
+          this.selectItemCateId = Math.max(0, this.catelist.length - 1);
+        }
+        this.tableData = this.catelist.length > 0 ? this.catelist[this.selectItemCateId] : { list: [] };
       }
+      // 如果在文件夹视图下，更新当前文件夹数据
+      else {
+        this.tableData = this.bookmarklist[this.selectedItemId];
+      }
+
+      this.delDialogVisible = false;
+      this.deleteRow = null;
+      localStorage.setItem('bookmarkData', JSON.stringify(this.bookmarklist));
+      this.$message.success('删除成功！');
+      this.Loading();
     },
 
     // 导出书签数据
@@ -571,7 +638,8 @@ export default {
                 'bookmarkData',
                 JSON.stringify(this.bookmarklist)
               )
-              this.$message.success('导入成功')
+              this.$message.success('导入成功');
+              this.Loading();
             } else {
               this.$message.error('导入数据格式有问题')
             }
@@ -609,8 +677,9 @@ export default {
       }, []);
       },
     selectItemCate(id) {
-      this.selectItemCateId = id
-      this.tableData = this.catelist[this.selectItemCateId]
+      this.selectItemCateId = id;
+      this.tableData = this.catelist[this.selectItemCateId];
+      this.Loading();
     },
 
     /*
@@ -637,8 +706,9 @@ export default {
         }, []);
     },
     selectItemTags(id) {
-      this.selectItemTagsId = id
-      this.tableData = this.tagslist[this.selectItemTagsId]
+      this.selectItemTagsId = id;
+      this.tableData = this.tagslist[this.selectItemTagsId];
+      this.Loading();
     },
 
     /*
@@ -800,6 +870,7 @@ export default {
             this.initPostCategory();
             this.initPostTags();
             this.$message.success('从 WebDAV 导入成功');
+            this.Loading();
           } else {
             throw new Error('导入的数据格式不正确');
           }
@@ -928,7 +999,7 @@ export default {
     },
     // 给帖子类别增加颜色
     getCategoryInfo(cateName) {
-      return this.categoryMap.find(cat => cat.name === cateName)
+      return this.categoryMap.find(cat => cat.name === cateName);
     },
   },
   created() {
@@ -951,9 +1022,11 @@ export default {
         )
 
         if (!isUrlExist) {
-          vm.bookmarklist[0].list.unshift(result.bookmarkData)
-          vm.tableData = vm.bookmarklist[vm.selectedItemId]
-          localStorage.setItem('bookmarkData', JSON.stringify(vm.bookmarklist))
+          vm.bookmarklist[0].list.unshift(result.bookmarkData);
+          vm.tableData = vm.bookmarklist[vm.selectedItemId];
+          this.initPostCategory();
+          this.initPostTags();
+          localStorage.setItem('bookmarkData', JSON.stringify(vm.bookmarklist));
         }
 
         // 处理完后立即清除 storage 中的数据
@@ -963,6 +1036,7 @@ export default {
 
     this.initPostCategory();
     this.initPostTags();
+    this.Loading();
 
     // 加载 WebDAV 配置
     const webdavConfig = localStorage.getItem('webdavConfig');

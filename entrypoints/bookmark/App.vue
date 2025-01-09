@@ -42,12 +42,8 @@
               v-if="item.logo"
               :src="`https://linux.do${item.logo}`"
               class="category-icon"
-              width="16" 
-              height="16"
             />
-            <span :style="{ color: '#' + item.color }">
-              {{ item.name }}
-            </span>
+            <span :style="{ color: '#' + item.color }">{{ item.name }}</span>
             <em>{{ item.list.length }}</em>
           </li>
         </ul>
@@ -81,9 +77,7 @@
                 :src="`https://linux.do${getCategoryInfo(scope.row.cate).uploaded_logo.url}`"
                 class="category-icon"
               />
-              <span 
-                :style="{ color: '#' + getCategoryInfo(scope.row.cate)?.color }"
-              >
+              <span :style="{ color: '#' + getCategoryInfo(scope.row.cate)?.color }">
                 {{ scope.row.cate }}
               </span>
             </div>
@@ -94,7 +88,7 @@
             {{ scope.row.tags.join('，') }}
           </template>
         </el-table-column>
-        <el-table-column label="操作" width="180" fixed="right">
+        <el-table-column label="操作" width="180" fixed="right" v-if="this.menutype == 'folder'">
           <template v-slot="scope">
             <el-button type="primary" @click="openMoveDialog(scope.row)">修改</el-button>
             <el-button type="danger" @click="openDelDialog(scope.row)">删除</el-button>
@@ -103,6 +97,10 @@
       </el-table>
     </div>
   </div>
+  
+  <transition name="fade">
+    <div class="gotop" v-show="showGoTop" @click="gotop"><svg  xmlns="http://www.w3.org/2000/svg"  width="50"  height="50"  viewBox="0 0 24 24"  fill="currentColor"  class="icon icon-tabler icons-tabler-filled icon-tabler-square-chevron-up"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19 2a3 3 0 0 1 3 3v14a3 3 0 0 1 -3 3h-14a3 3 0 0 1 -3 -3v-14a3 3 0 0 1 3 -3zm-6.387 7.21a1 1 0 0 0 -1.32 .083l-3 3l-.083 .094a1 1 0 0 0 .083 1.32l.094 .083a1 1 0 0 0 1.32 -.083l2.293 -2.292l2.293 2.292l.094 .083a1 1 0 0 0 1.32 -1.497l-3 -3z" /></svg></div>
+  </transition>
 
   <!-- 新增文件夹 -->
   <el-dialog v-model="dialogVisible" title="新建文件夹" width="500">
@@ -214,6 +212,7 @@
     <label for="file-upload" class="el-button el-button--primary">导入 json 文件</label>
     <input id="file-upload" type="file" @change="importData" style="display: none" />
   </el-dialog>
+
 </template>
 
 <script>
@@ -360,7 +359,10 @@ export default {
         filename: JSON.stringify(localStorage.getItem("bookmarkData")),
       },
       importing: false,
-      exporting: false
+      exporting: false,
+
+
+      showGoTop: false, // 控制返回顶部按钮的显示
     }
   },
   computed: {
@@ -555,6 +557,8 @@ export default {
       this.deleteRow = null;
       localStorage.setItem('bookmarkData', JSON.stringify(this.bookmarklist));
       this.$message.success('删除成功！');
+      this.initPostCategory();
+      this.initPostTags();
       this.Loading();
     },
 
@@ -675,7 +679,7 @@ export default {
         
         return acc;
       }, []);
-      },
+    },
     selectItemCate(id) {
       this.selectItemCateId = id;
       this.tableData = this.catelist[this.selectItemCateId];
@@ -997,10 +1001,32 @@ export default {
         this.$message.error(error.message || '保存配置失败');
       }
     },
+
     // 给帖子类别增加颜色
     getCategoryInfo(cateName) {
       return this.categoryMap.find(cat => cat.name === cateName);
     },
+
+    // gotop 点击返回顶部
+    handleScroll() {
+      // 当滚动超过 200px 时显示按钮
+      this.showGoTop = window.scrollY > 200
+    },
+    gotop() {
+      const currentPosition = window.pageYOffset || document.documentElement.scrollTop
+      if (currentPosition > 0) {
+        window.requestAnimationFrame(this.gotop)
+        window.scrollTo(0, currentPosition - currentPosition / 8)
+      }
+    },
+  },
+  mounted() {
+    // 添加滚动监听
+    window.addEventListener('scroll', this.handleScroll)
+  },
+  beforeDestroy() {
+    // 组件销毁前移除监听
+    window.removeEventListener('scroll', this.handleScroll)
   },
   created() {
     const bookmarkData = localStorage.getItem('bookmarkData')
@@ -1026,6 +1052,7 @@ export default {
           vm.tableData = vm.bookmarklist[vm.selectedItemId];
           this.initPostCategory();
           this.initPostTags();
+          this.Loading();
           localStorage.setItem('bookmarkData', JSON.stringify(vm.bookmarklist));
         }
 

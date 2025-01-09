@@ -7,6 +7,7 @@
 body {
   width: 100%;
   overflow-x: hidden;
+  overflow-y: scroll;
   font-size: 16px;
   padding: 10px;
 }
@@ -85,7 +86,9 @@ body {
         align-items: center;
 
         img {
-          margin-right: 4px;
+          width: 20px;
+          height: auto;
+          margin-right: 5px;
         }
 
         em {
@@ -142,4 +145,28 @@ body {
     // color: #646464;
     // mix-blend-mode: difference;
   }
+}
+
+.gotop {
+  position: fixed;
+  right: 0;
+  bottom: 20px;
+  z-index: 9999;
+  cursor: pointer;
+}
+
+/* 定义过渡效果 */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 1;
 }

@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 /* .vitepress/theme/custom.css */
 /* Medium Zoom */
 .medium-zoom-overlay {
@@ -42,16 +43,18 @@
     --vp-home-hero-image-filter: blur(56px);
   }
 }
+
 @media (min-width: 960px) {
   :root {
     --vp-home-hero-image-filter: blur(72px);
   }
 }
+
 /* Dark Mode
  * lighter color for links
 */
 .dark .vp-doc a,
-.dark .vp-doc a > code,
+.dark .vp-doc a>code,
 .dark .VPNavBarMenuLink.VPNavBarMenuLink:hover,
 .dark .VPNavBarMenuLink.VPNavBarMenuLink.active,
 .dark .link.link:hover,
@@ -62,7 +65,7 @@
 }
 
 .dark .vp-doc a:hover,
-.dark .vp-doc a > code:hover {
+.dark .vp-doc a>code:hover {
   color: var(--vp-c-brand-lightest);
   opacity: 1;
 }
@@ -120,17 +123,23 @@ html {
 .VPSidebarItem.collapsible {
   margin-top: 10px;
   padding: 12px 0 12px;
+}
+
+.VPSidebarItem.collapsible:nth-child(n+2) {
   border-top: 1px solid var(--vp-c-divider);
 }
-.VPSidebarItem.collapsible > .item .text {
+
+.VPSidebarItem.collapsible>.item .text {
   font-weight: 700;
   color: var(--vp-c-text-1);
 }
-.VPSidebarItem > .items {
+
+.VPSidebarItem>.items {
   border-left: none !important;
   padding-left: 0 !important;
 }
-.VPSidebarItem > .items .indicator {
+
+.VPSidebarItem>.items .indicator {
   display: none;
 }
 

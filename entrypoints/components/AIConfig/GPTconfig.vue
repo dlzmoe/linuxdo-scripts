@@ -3,7 +3,7 @@
     <p>
       <a
         style="color: #e00"
-        href="https://linuxdo-scripts-docs.zishu.me/guide/use/ai-summary.html"
+        href="https://linuxdo-scripts-docs.zishu.me/guide/5-ai/ai-summary.html"
         target="_blank"
       >
         查看 AI 使用文档！

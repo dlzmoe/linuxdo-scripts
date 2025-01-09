@@ -4,7 +4,7 @@ import AutoSidebar from 'vite-plugin-vitepress-auto-sidebar';
 const taskLists = require('markdown-it-task-checkbox')
 
 export default {
-  title: 'LinuxDo Scripts 扩展',
+  title: 'LinuxDo Scripts 文档',
   dist: '/dist',
   head: [
     ['link', {

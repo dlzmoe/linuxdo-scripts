@@ -11,7 +11,7 @@
 
 ![image](https://github.com/user-attachments/assets/8824696c-f2d4-4cfd-8273-901a3d007a39)
 
-LinuxDo Scripts 扩展，内置完善的收藏夹功能，话题列表显示创建时间，显示楼层数，新标签页打开话题，强制 block（拉黑屏蔽）某人的话题，话题快捷回复（支持自定义），优化签名图显示防止图裂，在话题列表可直接预览详情及评论，功能设置面板导入导出，楼层抽奖，用户自定义标签，只看楼主，支持自定义 css 样式，中英文混排优化，等级信息查询，AI 总结话题功能、智能生成回复，切换论坛主题皮肤等，更多功能请查看设置列表，功能持续更新，欢迎提出新想法！
+LinuxDo Scripts 扩展，内置完善的收藏夹功能，话题列表显示创建时间，显示楼层数，新标签页打开话题，强制 block（拉黑屏蔽）某人的话题，话题快捷回复（支持自定义），优化签名图显示防止图裂，在话题列表可直接预览详情及评论，设置面板数据同步，楼层抽奖，用户自定义标签，只看楼主，支持自定义 css 样式，中英文混排优化，等级信息查询，AI 总结话题功能、智能生成回复，切换论坛主题皮肤等，更多功能请查看设置列表，功能持续更新，欢迎提出新想法！
 
 [Chrome 商店](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj) |
 [Firefox 商店](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/) |
@@ -39,10 +39,10 @@ LinuxDo Scripts 扩展，内置完善的收藏夹功能，话题列表显示创�
 - [x] 强制 block（拉黑屏蔽）某人的话题
 - [x] 话题快捷回复（支持自定义）
 - [x] 优化签名图显示防止图裂
-- [x] 功能设置面板导入导出
+- [x] 设置面板数据同步
 - [x] 楼层抽奖
 - [x] 只看楼主切换功能
-- [x] 黑夜模式
+- [x] 自动切换黑夜模式
 - [x] 用户标签功能
 - [x] 在话题列表可直接预览详情及评论
 - [x] 评论框表情优化
@@ -78,8 +78,8 @@ node: v22.12.0
 
 ```shell
 git clone https://github.com/dlzmoe/linuxdo-scripts
-yarn # 安装依赖
-yarn dev # 本地运行
+npm install # 安装依赖
+npm run dev # 本地运行
 ```
 
 启动后，打开本地 `.output` 文件夹，把 `chrome-mv3` 拖拽到 `chrome://extensions/` 中即可开发。

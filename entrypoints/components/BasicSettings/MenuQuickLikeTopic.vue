@@ -71,7 +71,7 @@ export default {
         )
         if (button) {
           button.click()
-          this.messageToast('已点赞！')
+          this.messageToast('点赞成功！')
         } else {
           console.log('按钮未找到')
         }

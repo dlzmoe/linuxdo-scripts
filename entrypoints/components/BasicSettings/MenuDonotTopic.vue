@@ -39,7 +39,7 @@ export default {
       function getCSRFToken() {
         return document.querySelector('meta[name="csrf-token"]').getAttribute("content");
       }
-
+      let vm = this;
       $(document)
         .off("click", ".donottopic-btn")
         .on("click", ".donottopic-btn", function () {
@@ -66,8 +66,7 @@ export default {
               })
               .then(() => {
                 $(this).parents(".topic-list-item").remove();
-                $("#messageToast").append(messageElement);
-                this.messageToast("帖子已设为免打扰！");
+                vm.messageToast("帖子已设为免打扰！");
                 resolve();
               })
               .catch((error) => {

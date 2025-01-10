@@ -11,12 +11,12 @@
 </template>
 
 <script>
-import $ from "jquery";
+import $ from 'jquery'
 export default {
   props: {
     value: {
       type: String,
-      default: "",
+      default: '',
     },
     sort: {
       type: Number,
@@ -26,27 +26,27 @@ export default {
   data() {
     return {
       textarea: this.value,
-    };
+    }
   },
   watch: {
     value(newValue) {
-      this.textarea = newValue;
+      this.textarea = newValue
     },
   },
   methods: {
     handleChange() {
-      this.$emit("update:value", this.textarea);
+      this.$emit('update:value', this.textarea)
     },
     init() {
-      $(".d-header .title a").html(`<img src="${this.textarea}">`);
+      $('.d-header .title a').html(`<img src="${this.textarea}">`)
     },
   },
   created() {
-    if (this.textarea && this.textarea != "") {
-      this.init();
+    if (this.textarea && this.textarea != '') {
+      this.init()
     }
   },
-};
+}
 </script>
 
 <style lang="less" scoped>

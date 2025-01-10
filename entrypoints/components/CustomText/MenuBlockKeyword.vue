@@ -53,7 +53,7 @@ export default {
             return keywords.some((keyword) => text.includes(keyword));
           })
           .parents("tr.topic-list-item")
-          .hide();
+          .remove();
 
         // 检查话题标签
         $(".topic-list-item .discourse-tags a")
@@ -62,7 +62,7 @@ export default {
             return keywords.some((keyword) => text.includes(keyword));
           })
           .parents("tr.topic-list-item")
-          .hide();
+          .remove();
 
         // 检查评论回复
         $(".topic-body .cooked")
@@ -71,7 +71,7 @@ export default {
             return keywords.some((keyword) => text.includes(keyword));
           })
           .parents(".topic-post")
-          .hide();
+          .remove();
       } catch (error) {
         console.error("init 方法出错：", error);
       }

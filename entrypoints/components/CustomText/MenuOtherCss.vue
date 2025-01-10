@@ -1,8 +1,6 @@
 <template>
   <div class="item">
-    <div class="tit">
-      {{ sort }}. 自定义 CSS（支持 import 引入第三方样式文件）
-    </div>
+    <div class="tit">{{ sort }}. 自定义 CSS（支持 import 引入第三方样式文件）</div>
   </div>
   <textarea v-model="textarea" @input="handleChange" placeholder="body{font-size:16px;}">
   </textarea>

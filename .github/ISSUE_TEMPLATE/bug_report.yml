@@ -8,7 +8,7 @@ body:
       value: |
         **开始之前...**
 
-        此表格仅用于提交错误报告。如果您有使用问题
+        此表单仅用于提交错误报告。如果您有使用问题
         或者不确定这是否真的是一个错误，请确保：
 
         - 已更新到最新版本
@@ -19,14 +19,14 @@ body:
   - type: input
     id: version
     attributes:
-      label: 你使用的浏览器版本 + 扩展插件版本号
+      label: 你使用的浏览器版本 + 扩展版本号
       placeholder: 如：Chrome 131 / 1.0.1 
     validations:
       required: true
   - type: textarea
     id: steps-to-reproduce
     attributes:
-      label: 描述错误
+      label: 问题描述
       description: |
         对错误内容的清晰简洁的描述，如果可以的话，尽量提供一些错误截图，比如控制台报错或者页面。
     validations:

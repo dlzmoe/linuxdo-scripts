@@ -427,8 +427,10 @@ export default {
   methods: {
     // 搜索帖子标题关键词
     searchPosts() {
-      if (!this.search) {
-        this.tableData = this.bookmarklist[this.selectedItemId];
+      if (this.search == "") {
+        // this.tableData = this.bookmarklist[this.selectedItemId];
+        this.tableData = this.bookmarklist.find(item => item.id === this.selectedItemId);
+        return false;
       }
       
       const keyword = this.search.toLowerCase();
@@ -469,11 +471,14 @@ export default {
     },
     selectItem(id) {
       this.selectedItemId = id;
-      this.tableData = this.bookmarklist[this.selectedItemId];
+      this.tableData = this.bookmarklist.find(item => item.id === id);
+      console.log(this.tableData);
+      
       this.Loading();
     },
     init() {
-      this.tableData = this.bookmarklist[this.selectedItemId]
+      this.selectedItemId = this.bookmarklist[0].id;
+      this.tableData = this.bookmarklist[0]
     },
     // 打开新建文件夹弹窗
     openCate() {
@@ -588,7 +593,8 @@ export default {
           this.tableData = this.catelist.length > 0 ? this.catelist[this.selectItemCateId] : { list: [] };
         }
         else {
-          this.tableData = this.bookmarklist[this.selectedItemId];
+          // this.tableData = this.bookmarklist[this.selectedItemId];
+          this.tableData = this.bookmarklist.find(item => item.id === this.selectedItemId);
         }
 
         this.$message.success('收藏夹转移成功！');
@@ -632,7 +638,8 @@ export default {
       }
       // 如果在文件夹视图下，更新当前文件夹数据
       else {
-        this.tableData = this.bookmarklist[this.selectedItemId];
+        // this.tableData = this.bookmarklist[this.selectedItemId];
+        this.tableData = this.bookmarklist.find(item => item.id === this.selectedItemId);
       }
 
       this.delDialogVisible = false;
@@ -719,7 +726,8 @@ export default {
               // 转换回数组形式
               this.bookmarklist = Array.from(mergedMap.values());
 
-              this.tableData = this.bookmarklist[this.selectedItemId]
+              // this.tableData = this.bookmarklist[this.selectedItemId]
+              this.tableData = this.bookmarklist.find(item => item.id === this.selectedItemId);
               localStorage.setItem(
                 'bookmarkData',
                 JSON.stringify(this.bookmarklist)
@@ -951,7 +959,8 @@ export default {
             // 转换回数组形式
             this.bookmarklist = Array.from(mergedMap.values());
 
-            this.tableData = this.bookmarklist[this.selectedItemId];
+            // this.tableData = this.bookmarklist[this.selectedItemId];
+            this.tableData = this.bookmarklist.find(item => item.id === this.selectedItemId);
             localStorage.setItem('bookmarkData', JSON.stringify(this.bookmarklist));
             this.initPostCategory();
             this.initPostTags();
@@ -1222,12 +1231,28 @@ export default {
         )
 
         if (!isUrlExist) {
-          vm.bookmarklist[0].list.unshift(result.bookmarkData);
-          vm.tableData = vm.bookmarklist[vm.selectedItemId];
-          this.initPostCategory();
-          this.initPostTags();
-          this.Loading();
-          localStorage.setItem('bookmarkData', JSON.stringify(vm.bookmarklist));
+        // 先检查是否存在 id 为 0 的列表
+        let defaultList = vm.bookmarklist.find(item => item.id === 0);
+        
+        // 如果不存在，创建默认列表并添加到 bookmarklist
+        if (!defaultList) {
+          defaultList = {
+            id: 0,
+            name: "默认", 
+            list: []
+          };
+          vm.bookmarklist.unshift(defaultList);
+        }
+
+        // 添加书签数据
+        vm.bookmarklist.find(item => item.id === 0).list.unshift(result.bookmarkData);
+        vm.tableData = vm.bookmarklist[0];
+        this.selectedItemId = 0;
+        
+        this.initPostCategory();
+        this.initPostTags();
+        this.Loading();
+        localStorage.setItem('bookmarkData', JSON.stringify(vm.bookmarklist));
         }
 
         // 处理完后立即清除 storage 中的数据

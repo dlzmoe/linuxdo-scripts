@@ -7,7 +7,8 @@
     </a>
   </h3>
   <div class="flex">
-    <button @click="openSetting">收藏夹</button>
+    <button @click="openBookmark">收藏夹</button>
+    <!-- <button @click="openShare">分享话题</button> -->
     <button @click="goGithub">Github</button>
   </div>
 </template>
@@ -15,10 +16,18 @@
 <script>
 export default {
   methods: {
-    openSetting() {
+    // 收藏夹
+    openBookmark() {
       const browserAPI = typeof browser !== 'undefined' ? browser : chrome
       browserAPI.tabs.create({
         url: browserAPI.runtime.getURL('bookmark.html'),
+      })
+    },
+    // 分享话题
+    openShare() {
+      const browserAPI = typeof browser !== 'undefined' ? browser : chrome
+      browserAPI.tabs.create({
+        url: browserAPI.runtime.getURL('share.html'),
       })
     },
     goGithub() {

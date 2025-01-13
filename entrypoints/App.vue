@@ -128,6 +128,10 @@
             <MenuHideHomeBanner :sort="34" v-model="settingData.checked39" />
             <!-- 是否开启收藏功能 -->
             <MenuBookmark :sort="35" v-model="settingData.checked40" />
+            <!-- 是否自动隐藏“福利羊毛”中已领完的帖子 -->
+            <MenuHideWelfareDone :sort="36" v-model="settingData.checked42" />
+            <!-- 是否开启话题转为图片进行分享 -->
+            <!-- <MenuTopicToImages :sort="37" v-model="settingData.checked43" /> -->
           </div>
           <div class="menu-body-item" v-show="activeIndex == 1">
             <!-- 自定义论坛 logo -->
@@ -240,6 +244,8 @@ import MenuHideNewBluedot from "./components/BasicSettings/MenuHideNewBluedot.vu
 import MenuGifToPng from "./components/BasicSettings/MenuGifToPng.vue";
 import MenuHideHomeBanner from "./components/BasicSettings/MenuHideHomeBanner.vue";
 import MenuBookmark from "./components/BasicSettings/MenuBookmark.vue";
+import MenuHideWelfareDone from "./components/BasicSettings/MenuHideWelfareDone.vue";
+import MenuTopicToImages from "./components/BasicSettings/MenuTopicToImages.vue";
 
 // 自定义文字
 import MenuOtherCss from "./components/CustomText/MenuOtherCss.vue";
@@ -345,6 +351,8 @@ export default {
     MenuGifToPng,
     MenuHideHomeBanner,
     MenuBookmark,
+    MenuHideWelfareDone,
+    MenuTopicToImages,
   },
   data() {
     return {
@@ -412,6 +420,8 @@ export default {
         checked38: false,
         checked39: false,
         checked40: false,
+        checked42: false,
+        checked43: false,
         removePostavatarData: {
           enable: false,
           showAuthor: false,
@@ -539,17 +549,10 @@ export default {
   created() {
     $("body").append('<div id="messageToast"></div>');
     console.log(
-      `%c linuxdo 增强插件 v${packageJson.version} %c 已开启 `,
+      `%c LinuxDo Scripts 扩展 v${packageJson.version} %c 已开启 `,
       "padding: 2px 1px; color: #fff; background: #606060;",
       "padding: 2px 1px; color: #fff; background: #42c02e;"
     );
-    // setInterval(() => {
-    //   if ($(".linuxdoscripts-setting").length < 1) {
-    //     $(".sidebar-footer-actions").prepend(`
-    //       <button class="btn no-text btn-icon color-scheme-toggler btn-flat linuxdoscripts-setting" title="设置" type="button">
-    //       <svg class="fa d-icon d-icon-gear svg-icon svg-string" xmlns="http://www.w3.org/2000/svg"><use href="#gear"></use></svg></button>`);
-    //   }
-    // }, 1000);
 
     const linxudoscriptssettingDMI = localStorage.getItem("linxudoscriptssettingDMI");
     if (linxudoscriptssettingDMI) {

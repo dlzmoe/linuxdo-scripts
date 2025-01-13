@@ -2,13 +2,6 @@ import './app.less';
 import { createApp } from 'vue';
 import App from './App.vue';
 
-// chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-//   if (request.action === 'setData') {
-//     localStorage.setItem('myKey', request.data);
-//   }
-// });
-
-
 export default defineContentScript({
   matches: ['https://linux.do/*'],
   cssInjectionMode: 'ui',

@@ -62,8 +62,6 @@ export default {
               cate: bookmarkDatacate,
               tags: bookmarkDatatags,
             }
-
-            console.log(data)
             
             const browserAPI = (typeof browser !== 'undefined' ? browser : chrome);
             browserAPI.storage.local.set({ bookmarkData: data }, () => {

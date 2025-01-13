@@ -17,6 +17,7 @@ browserAPI.runtime.onMessage.addListener((request, sender, sendResponse) => {
   }
 });
 
+// 进入 bookmark 收藏夹
 browserAPI.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'open_bookmark_page') {
     const extensionURL = browserAPI.runtime.getURL('bookmark.html');
@@ -24,6 +25,13 @@ browserAPI.runtime.onMessage.addListener((request, sender, sendResponse) => {
   }
 });
 
+// 进入 share 分享页面
+browserAPI.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.action === 'open_share_page') {
+    const extensionURL = browserAPI.runtime.getURL('share.html');
+    browserAPI.tabs.create({ url: extensionURL });
+  }
+});
 
 browserAPI.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.type === 'webdav') {

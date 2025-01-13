@@ -9,6 +9,12 @@
       <div class="item" @click="toggleMenu('tags')" :class="{active:menutype == 'tags'}" title="标签"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="currentColor"  class="icon icon-tabler icons-tabler-filled icon-tabler-tags"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9.172 5a3 3 0 0 1 2.121 .879l5.71 5.71a3.41 3.41 0 0 1 0 4.822l-3.592 3.592a3.41 3.41 0 0 1 -4.822 0l-5.71 -5.71a3 3 0 0 1 -.879 -2.121v-4.172a3 3 0 0 1 3 -3zm-2.172 4h-.01a1 1 0 1 0 .01 2a1 1 0 0 0 0 -2" /><path d="M14.293 5.293a1 1 0 0 1 1.414 0l4.593 4.592a5.82 5.82 0 0 1 0 8.23l-1.592 1.592a1 1 0 0 1 -1.414 -1.414l1.592 -1.592a3.82 3.82 0 0 0 0 -5.402l-4.592 -4.592a1 1 0 0 1 0 -1.414" /></svg></div>
       <!-- Webdav 同步 -->
       <div class="item" @click="openWebdavDialog" title="WebDAV 同步"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z"/></svg></div>
+      <!-- 手动新增 -->
+      <div class="item" @click="openAddPostDialog" title="手动新增收藏链接"><svg xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-file-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 3v4a1 1 0 0 0 1 1h4" /><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" /><path d="M12 11l0 6" /><path d="M9 14l6 0" /></svg></div>
+    </div>
+
+    <div class="head-search">
+      <el-input v-model="search" style="width:300px" @input="searchPosts" placeholder="全局搜索标题..." />
     </div>
 
     <div class="aside">
@@ -62,6 +68,7 @@
         </ul>
       </div>
     </div>
+
     <div class="container">
       <el-table :data="tableData.list" v-loading="loading">
         <el-table-column prop="title" label="标题" min-width="300">
@@ -213,6 +220,40 @@
     <input id="file-upload" type="file" @change="importData" style="display: none" />
   </el-dialog>
 
+  <!-- 手动新增收藏链接 -->
+  <el-dialog v-model="addPostDialogVisible" title="添加书签" width="550" class="addPost">
+    <el-input
+      v-model="autoaccessstr"
+      :rows="2"
+      type="textarea"
+      placeholder="https://linux.do/t/topic/309543/372"
+    />
+    <el-button type="primary" @click="autoAccess" :loading="autoAccessLoading">自动解析</el-button>
+    <hr>
+    <div class="item">
+      <label>URL：<span>*</span></label>
+      <el-input v-model="addPost.url" />
+    </div>
+    <div class="item">
+      <label>标题：<span>*</span></label>
+      <el-input v-model="addPost.title" />
+    </div>
+    <div class="item">
+      <label>分类：</label>
+      <el-input v-model="addPost.cate" />
+    </div>
+    <div class="item">
+      <label>标签：</label>
+      <el-input v-model="addPost.tags" placeholder="使用英文逗号,相连" />
+    </div>
+    <template #footer>
+      <div class="dialog-footer">
+        <el-button @click="addPostDialogVisible = false">取消</el-button>
+        <el-button type="primary" @click="setAddAccess">添加</el-button>
+      </div>
+    </template>
+  </el-dialog>
+
 </template>
 
 <script>
@@ -361,8 +402,21 @@ export default {
       importing: false,
       exporting: false,
 
-
       showGoTop: false, // 控制返回顶部按钮的显示
+
+      // 搜索功能
+      search: "",
+
+      // 手动新增收藏链接
+      addPostDialogVisible: false,
+      autoaccessstr: "", // 自动填充
+      autoAccessLoading: false,
+      addPost: {
+        url: "",
+        title: "",
+        cate: "",
+        tags: "",
+      }
     }
   },
   computed: {
@@ -371,8 +425,36 @@ export default {
     },
   },
   methods: {
+    // 搜索帖子标题关键词
+    searchPosts() {
+      if (!this.search) {
+        this.tableData = this.bookmarklist[this.selectedItemId];
+      }
+      
+      const keyword = this.search.toLowerCase();
+      const results = [];
+      
+      this.bookmarklist.forEach(folder => {
+        const matches = folder.list.filter(post => 
+          post.title.toLowerCase().includes(keyword)
+        );
+        results.push(...matches);
+      });
+
+      // 将结果转换为所需格式
+      const searchResults = {
+        id: -1,
+        name: "搜索",
+        list: results
+      };
+      
+      this.tableData = searchResults;
+      
+      return searchResults;
+      },
     // 模拟加载刷新
     Loading() {
+      this.search = "";
       this.loading = true;
       setTimeout(() => {
         this.loading = false;
@@ -562,7 +644,7 @@ export default {
       this.Loading();
     },
 
-    // 导出书签数据
+    // 手动导出书签数据
     exportData() {
       const blob = new Blob([JSON.stringify(this.bookmarklist)], {
         type: 'application/json',
@@ -578,7 +660,7 @@ export default {
 
       this.$message('导出成功，请妥善保存 json 文件！')
     },
-    // 导入书签数据
+    // 手动导入书签数据
     importData(event) {
       const file = event.target.files[0]
       if (file) {
@@ -931,6 +1013,10 @@ export default {
 
     // 保存配置
     async saveWebDAVConfig() {
+      // const hasPermission = await this.requestWebDAVPermission(this.webdavConfig.serverUrl);
+      // if(!hasPermission) {
+      //   return false;
+      // }
       try {
         // 先验证所有必填字段是否存在且不为空
         const config = {
@@ -1002,6 +1088,21 @@ export default {
       }
     },
 
+    async requestWebDAVPermission(webdavUrl) {
+      const url = new URL(webdavUrl);
+      const pattern = `${url.protocol}//${url.hostname}/*`;
+      
+      try {
+        const granted = await chrome.permissions.request({
+          origins: [pattern]
+        });
+        return granted;
+      } catch (err) {
+        console.error('Permission request failed:', err);
+        return false;
+      }
+    },
+
     // 给帖子类别增加颜色
     getCategoryInfo(cateName) {
       return this.categoryMap.find(cat => cat.name === cateName);
@@ -1019,6 +1120,79 @@ export default {
         window.scrollTo(0, currentPosition - currentPosition / 8)
       }
     },
+
+    /*
+    * 手动新增收藏链接
+    */
+    openAddPostDialog() {
+      this.addPostDialogVisible = true;
+    },
+    // 匹配类别 ID
+    getCategoryNameById(categoryId) {
+      const category = this.categoryMap.find((item) => item.id === categoryId);
+      return category ? category.name : '';
+    },
+    clearAccess() {
+      this.autoaccessstr = "";
+      this.addPost = {
+        url: "",
+        title: "",
+        cate: "",
+        tags: "",
+      }
+    },
+    // 自动填充
+    async autoAccess() {
+      this.autoAccessLoading = true;
+      try {
+        // 使用 URL 对象方便地解析 URL
+        const url = new URL(this.autoaccessstr);
+        const pathname = url.pathname; // e.g., "/t/topic/309543/372"
+        const [section, topic, id, page] = pathname.split('/').filter(Boolean); // 拆分路径部分
+
+        fetch(`https://linux.do/t/${id}.json`)
+          .then((response) => response.json())
+          .then((data) => {
+            this.addPost = {
+              url: `https://linux.do/t/topic/${id}`,
+              title: data.title,
+              cate: this.getCategoryNameById(data.category_id),
+              tags: Array.isArray(data.tags) ? data.tags.join(',') : data.tags,
+            }
+            this.autoAccessLoading = false;
+            this.$message.success("解析成功，正在填充数据...");
+          });
+
+      } catch (error) {
+        console.error("Invalid URL format:", error.message);
+        this.$message.error("解析失败！");
+        this.autoAccessLoading = false;
+      }
+      
+    },
+
+    // 确认填充
+    setAddAccess() {
+      if(this.addPost.title == '' || this.addPost.url == '') {
+        this.$message('请勿留空必填项！')
+        return false;
+      }
+      this.addPostDialogVisible = false;
+      // 确保 tags 是数组结构，将字符串以逗号分隔成数组，并去除多余空格
+      const tagsArr = this.addPost.tags.split(',').map(tag => tag.trim());
+      this.bookmarklist[0].list.unshift({
+        url: this.addPost.url,
+        title: this.addPost.title,
+        cate: this.addPost.cate,
+        tags: tagsArr,
+      });
+      this.initPostCategory();
+      this.initPostTags();
+      this.Loading();
+      localStorage.setItem('bookmarkData', JSON.stringify(this.bookmarklist));
+      this.$message.success("新增成功！");
+      this.clearAccess();
+    }
   },
   mounted() {
     // 添加滚动监听

@@ -32,8 +32,6 @@
       <!-- 只看楼主 -->
       <LevelDiglog v-show="showlevelsearch" />
       <!-- 查询等级功能 -->
-      <HotRankingList v-show="showhotranking" />
-      <!-- 最热排行榜 -->
     </div>
 
     <dialog open id="menu_suspendedball" v-show="showdialog">
@@ -114,8 +112,6 @@
             <MenuDisableReplaceState :sort="26" v-model="settingData.checked29" />
             <!-- 是否移除话题上的头像 (减少网络请求) -->
             <MenuRemovePostAvatar :sort="27" v-model="settingData.removePostavatarData" />
-            <!-- 是否显示最热帖子排行榜 -->
-            <MenuHotRankingList :sort="28" v-model="settingData.checked33" />
             <!-- 是否显示返回顶部按钮 -->
             <MenuBackToTop :sort="29" v-model="settingData.checked34" />
             <!-- 是否显示快捷点赞主题按钮 -->
@@ -237,7 +233,6 @@ import MenuAutoDark from "./components/BasicSettings/MenuAutoDark.vue";
 import MenuHiddenPlaceholder from "./components/BasicSettings/MenuHiddenPlaceholder.vue";
 import MenuDisableReplaceState from "./components/BasicSettings/MenuDisableReplaceState.vue";
 import MenuRemovePostAvatar from "./components/BasicSettings/MenuRemovePostAvatar.vue";
-import MenuHotRankingList from "./components/BasicSettings/MenuHotRankingList.vue";
 import MenuBackToTop from "./components/BasicSettings/MenuBackToTop.vue";
 import MenuQuickLikeTopic from "./components/BasicSettings/MenuQuickLikeTopic.vue";
 import MenuHideNewBluedot from "./components/BasicSettings/MenuHideNewBluedot.vue";
@@ -271,7 +266,6 @@ import SyncBackup from "./components/Sync/SyncBackup.vue";
 import LookOP from "./components/Button/LookOP.vue";
 import LevelDiglog from "./components/Button/LevelDiglog.vue";
 import ReplyBtn from "./components/Button/ReplyBtn.vue";
-import HotRankingList from "./components/Button/HotRankingList.vue";
 import BackToTop from "./components/Button/BackToTop.vue";
 
 // 其他组件
@@ -342,8 +336,6 @@ export default {
     MenuHiddenPlaceholder,
     MenuDisableReplaceState,
     MenuRemovePostAvatar,
-    MenuHotRankingList,
-    HotRankingList,
     MenuBackToTop,
     BackToTop,
     MenuQuickLikeTopic,
@@ -413,7 +405,6 @@ export default {
         checked27: false,
         checked28: false,
         checked29: false,
-        checked33: false,
         checked34: true,
         checked35: false,
         checked37: false,
@@ -449,7 +440,6 @@ export default {
       showlookop: false,
       showlevelsearch: false,
       showreplybtn: false,
-      showhotranking: false,
       showbacktotop: false,
     };
   },
@@ -573,7 +563,6 @@ export default {
       this.showlookop = this.settingData.checked9;
       this.showlevelsearch = this.settingData.checked12;
       this.showreplybtn = this.settingData.checked25;
-      this.showhotranking = this.settingData.checked33;
       this.showbacktotop = this.settingData.checked34;
       if (this.showreplybtn) {
         setInterval(() => {

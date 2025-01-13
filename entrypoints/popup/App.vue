@@ -1,38 +1,42 @@
 <template>
-  <h2>欢迎使用 Linxudo Scripts 扩展！</h2>
-  <h3>
-    鼠标移动到浏览器最左侧后点击设置按钮，
-    <a href="https://linuxdo-scripts-docs.zishu.me/" target="_blank">
-      使用教程！
-    </a>
-  </h3>
-  <div class="flex">
-    <button @click="openBookmark">收藏夹</button>
-    <!-- <button @click="openShare">分享话题</button> -->
-    <button @click="goGithub">Github</button>
+  <ul class="nav">
+    <li :class="{ act: activeTab === 'hot' }" @click="changeTab('hot')">最热</li>
+    <li :class="{ act: activeTab === 'news' }" @click="changeTab('news')">最新</li>
+    <li :class="{ act: activeTab === 'menu' }" @click="changeTab('menu')">菜单</li>
+  </ul>
+  <div class="container">
+    <div class="content" :class="{ act: activeTab === 'hot' }">
+      <HotPosts />
+    </div>
+    <div class="content" :class="{ act: activeTab === 'news' }">
+      <NewsPosts />
+    </div>
+    <div class="content" :class="{ act: activeTab === 'menu' }">
+      <SettingMenu />
+    </div>
   </div>
 </template>
 
 <script>
+import HotPosts from "./components/HotPosts.vue";
+import NewsPosts from "./components/NewsPosts.vue";
+import SettingMenu from "./components/SettingMenu.vue";
+
 export default {
+  data() {
+    return {
+      activeTab: "hot", // 默认显示最热内容
+    };
+  },
+  components: {
+    HotPosts,
+    NewsPosts,
+    SettingMenu,
+  },
   methods: {
-    // 收藏夹
-    openBookmark() {
-      const browserAPI = typeof browser !== 'undefined' ? browser : chrome
-      browserAPI.tabs.create({
-        url: browserAPI.runtime.getURL('bookmark.html'),
-      })
-    },
-    // 分享话题
-    openShare() {
-      const browserAPI = typeof browser !== 'undefined' ? browser : chrome
-      browserAPI.tabs.create({
-        url: browserAPI.runtime.getURL('share.html'),
-      })
-    },
-    goGithub() {
-      window.open('https://github.com/dlzmoe/linuxdo-scripts', '_blank')
+    changeTab(tab) {
+      this.activeTab = tab;
     },
   },
-}
+};
 </script>

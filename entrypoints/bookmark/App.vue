@@ -608,6 +608,7 @@ export default {
       this.deleteRow = row // 保存要删除的行数据
       this.delDialogVisible = true // 显示删除对话框
     },
+
     // 删除指定帖子
     confirmDelete() {
       // 从所有文件夹中查找并删除该项目
@@ -1202,6 +1203,7 @@ export default {
       this.$message.success("新增成功！");
       this.clearAccess();
     }
+    
   },
   mounted() {
     // 添加滚动监听

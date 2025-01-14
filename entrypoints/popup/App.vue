@@ -70,6 +70,11 @@ export default {
       this.getHotPosts();
       this.getNewsPosts();
       localStorage.setItem('Timestamp', Date.now());
+      this.$message({
+        message: "已刷新~",
+        type: "success",
+        duration: 1000,
+      });
     }
   },
   created() {

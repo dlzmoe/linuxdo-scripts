@@ -3,6 +3,7 @@
     <li v-for="item in list" :key="item.id">
       <a :href="'https://linux.do/t/topic/' + item.id" target="_blank">
         {{ item.title }}
+        <em>{{ item.highest_post_number }}</em>
       </a>
     </li>
   </ul>

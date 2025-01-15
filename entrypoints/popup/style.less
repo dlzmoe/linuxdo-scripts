@@ -103,9 +103,26 @@ a {
       display: inline-flex;
       width: 100%;
       border-radius: 3px;
+      position: relative;
+      padding-right: 30px;
 
       &:hover {
         text-decoration: underline;
+      }
+
+      em {
+        font-style: normal;
+        position: absolute;
+        right: 0;
+        border-radius: 30px;
+        height: 20px;
+        background-color: #ccc;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 30px;
+        padding: 0 5px;
+        font-size: 13px;
       }
     }
   }

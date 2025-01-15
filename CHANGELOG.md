@@ -1,1 +1,3 @@
-- fix: 优化 pupup 菜单逻辑
+- fix: 修复 webdav 同步时不兼容问题
+- feat: popup 帖子列表显示话题数
+- refactor: 其他代码优化

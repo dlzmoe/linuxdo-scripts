@@ -41,7 +41,7 @@ class WebDAVClient {
     let browserAPI = (typeof browser !== 'undefined' ? browser : chrome);
     // 移除路径开头的斜杠，并编码路径中的特殊字符
     path = path.replace(/^\/+/, '')
-    const url = this.serverUrl + encodeURIComponent(path)
+    const url = this.serverUrl + path;
 
     // 合并 headers
     const requestHeaders = {

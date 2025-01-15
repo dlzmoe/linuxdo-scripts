@@ -10,33 +10,26 @@
   justify-content: flex-end;
   padding: 10px;
   box-sizing: border-box;
-
-  &>button {
-    opacity: 0;
-    margin-left: -50px;
-    transition: all 0.2s linear;
-  }
-
-  &:hover {
-    &>button {
-      opacity: 1;
-      margin-left: 0;
-    }
-  }
 }
-
-@media(max-width:768px) {
+.linuxdoscripts-setting-wrap > button {
+  opacity: 0;
+  margin-left: -50px;
+  transition: all 0.2s linear;
+}
+.linuxdoscripts-setting-wrap:hover > button {
+  opacity: 1;
+  margin-left: 0;
+}
+@media (max-width: 768px) {
   .linuxdoscripts-setting-wrap {
     height: auto;
     position: fixed;
-
-    &>button {
-      opacity: 1;
-      margin-left: 0;
-    }
+  }
+  .linuxdoscripts-setting-wrap > button {
+    opacity: 1;
+    margin-left: 0;
   }
 }
-
 .linuxdoscripts-setting {
   display: flex;
   align-items: center;
@@ -49,37 +42,34 @@
   width: 40px;
   height: 40px;
   border-radius: 5px;
-  box-shadow: 1px 2px 5px rgba(0, 0, 0, .6);
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.6);
 }
-
 .timeline-container .topic-timeline .timeline-scrollarea {
   max-width: 100px !important;
 }
-
 #linuxdoscripts {
   font-size: 14px;
 }
-
 #linuxdoscripts input[type=text] {
   width: 100%;
   background: var(--d-input-bg-color);
 }
-
+#linuxdoscripts input[disabled] {
+  background: #fafafa;
+  color: #666;
+}
 #linuxdoscripts input[type=checkbox] {
   width: auto;
   transform: scale(1.2);
 }
-
 #linuxdoscripts input[type=radio] {
   width: auto;
 }
-
 #linuxdoscripts img {
   vertical-align: bottom;
   max-width: 100%;
   height: auto;
 }
-
 #linuxdoscripts .close {
   position: absolute;
   right: 10px;
@@ -89,14 +79,12 @@
   color: #999;
   transform: translateY(-50%) rotate(45deg);
 }
-
 #linuxdoscripts .setting-btn {
   z-index: 199;
   position: fixed;
   bottom: 20px;
   right: 20px;
 }
-
 #linuxdoscripts .setting-btn .el-button {
   margin: 0;
   margin-top: 15px;
@@ -111,21 +99,17 @@
   cursor: pointer;
   border: none;
 }
-
 #linuxdoscripts .setting-btn .el-button svg {
   margin: 0;
 }
-
 #linuxdoscripts .setting-btn .el-button:hover {
   opacity: 0.9;
 }
-
 #linuxdoscripts .hint {
   margin-top: 5px;
   color: #d94f4f;
   font-size: 14px;
 }
-
 #linuxdoscripts dialog {
   position: fixed;
   left: 50%;
@@ -145,45 +129,37 @@
   border: none;
   outline: none;
 }
-
 #linuxdoscripts dialog .menu-about {
   padding: 5px 0;
   line-height: 2;
 }
-
 #linuxdoscripts dialog .menu-about .initialization {
   color: #999;
   border-bottom: 1px dashed #999;
   cursor: pointer;
 }
-
 #linuxdoscripts dialog .menu-about .initialization:hover {
   color: #333;
   border-color: #333;
 }
-
 #linuxdoscripts dialog p {
   margin: 0;
   font-size: 14px;
 }
-
 #linuxdoscripts .menu-header {
   padding: 0.5rem 0.5rem 1rem;
   border-bottom: 1px solid #eee;
   position: relative;
 }
-
 #linuxdoscripts .title {
   font-size: 18px;
   font-weight: 600;
   display: flex;
   align-items: center;
 }
-
 #linuxdoscripts .title img {
   margin-left: 10px;
 }
-
 #linuxdoscripts button {
   padding: 10px 16px;
   border-radius: 8px;
@@ -197,26 +173,21 @@
   justify-content: center;
   background-color: var(--primary-low);
 }
-
-#linuxdoscripts button+button {
+#linuxdoscripts button + button {
   margin-left: 8px;
 }
-
 #linuxdoscripts button.saveload {
   background: #000;
   color: #fff;
 }
-
 #linuxdoscripts button:hover {
   opacity: 0.9;
 }
-
 #linuxdoscripts .menu-flex {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
-
 #linuxdoscripts .menu-nav {
   width: 140px;
   display: flex;
@@ -226,7 +197,6 @@
   padding-top: 15px;
   margin-right: 20px;
 }
-
 #linuxdoscripts .menu-nav li {
   border-radius: 4px;
   height: 32px;
@@ -241,62 +211,50 @@
   cursor: pointer;
   line-height: 1;
 }
-
 #linuxdoscripts .menu-nav li svg {
   width: 16px;
   margin-right: 5px;
 }
-
 #linuxdoscripts .menu-nav li.act {
   background: var(--d-selected);
 }
-
 #linuxdoscripts .menu-body {
   flex: 1;
   height: 480px;
   overflow-y: auto;
   box-sizing: border-box;
 }
-
 #linuxdoscripts .menu-body::-webkit-scrollbar {
   height: 8px;
   width: 8px;
 }
-
 #linuxdoscripts .menu-body::-webkit-scrollbar-corner {
   background: none;
 }
-
 #linuxdoscripts .menu-body::-webkit-scrollbar-thumb {
   background: #DEE0E1;
   border-radius: 8px;
 }
-
 #linuxdoscripts .menu-footer {
   display: flex;
   margin-top: 10px;
   padding-top: 6px;
 }
-
 #linuxdoscripts .import {
   margin-left: auto !important;
 }
-
 #linuxdoscripts .import,
 #linuxdoscripts .export {
   background: #D1F0FF;
   color: #559095;
 }
-
 #linuxdoscripts .floorlottery {
   background: #FFB003;
   color: #fff;
 }
-
 #linuxdoscripts .menu-body-item {
   padding-bottom: 30px;
 }
-
 #linuxdoscripts .menu-body-item .item {
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   padding: 15px 0;
@@ -304,23 +262,19 @@
   align-items: center;
   justify-content: space-between;
 }
-
 #linuxdoscripts .menu-body-item .item .tit {
   height: 100%;
   display: flex;
   align-items: center;
 }
-
 #linuxdoscripts .menu-body-item .item input {
   margin-top: 0;
   margin-bottom: 0;
 }
-
 #linuxdoscripts .menu-body-item .item select {
   margin-top: 0;
   margin-bottom: 0;
 }
-
 #linuxdoscripts .menu-body-item .item input[type=checkbox] {
   width: 30px;
   height: 16px;
@@ -337,7 +291,6 @@
   outline: none;
   padding: 0;
 }
-
 #linuxdoscripts .menu-body-item .item input[type=checkbox]::before {
   content: "";
   position: absolute;
@@ -351,17 +304,14 @@
   margin: auto;
   transition: 0.3s;
 }
-
 #linuxdoscripts .menu-body-item .item input[type=checkbox]:checked {
   background-color: var(--tertiary);
   transition: 0.6s;
 }
-
 #linuxdoscripts .menu-body-item .item input[type=checkbox]:checked::before {
   left: 14px;
   transition: 0.3s;
 }
-
 #linuxdoscripts input {
   font-family: inherit;
   width: 100%;
@@ -375,13 +325,11 @@
   color: var(--d-input-text-color);
   background: var(--d-input-bg-color);
 }
-
 #linuxdoscripts input:focus {
   border-color: var(--tertiary);
   outline: 2px solid var(--tertiary);
   outline-offset: -2px;
 }
-
 #linuxdoscripts textarea {
   font-family: inherit;
   width: 100%;
@@ -396,18 +344,15 @@
   color: var(--d-input-text-color);
   background: var(--d-input-bg-color);
 }
-
 #linuxdoscripts textarea:focus {
   border-color: var(--tertiary);
   outline: 2px solid var(--tertiary);
   outline-offset: -2px;
 }
-
 #linuxdoscripts #floorlotterloading img {
   width: 50px;
   height: 50px;
 }
-
 #linuxdoscripts .floorlotterywrap {
   display: none;
   width: 400px;
@@ -419,20 +364,16 @@
   margin: 0;
   z-index: 999;
 }
-
 #linuxdoscripts .floorlotterywrap {
   width: 400px;
   height: 300px;
 }
-
 #linuxdoscripts .el-checkbox__inner {
   border: 1px solid #979797;
 }
-
 #linuxdoscripts label {
   margin: 0;
 }
-
 .linuxdoscripts-opacity {
   position: fixed;
   left: 0;
@@ -442,17 +383,14 @@
   background: rgba(0, 0, 0, 0.5);
   z-index: 9999;
 }
-
 .linuxlevel.four {
   background: linear-gradient(to right, red, blue);
   -webkit-background-clip: text;
   color: transparent;
 }
-
 .topic-post {
   position: relative;
 }
-
 .linuxfloor {
   display: flex;
   color: var(--tertiary);
@@ -464,30 +402,25 @@
   font-size: 16px;
   margin-left: 10px;
 }
-
 .signature-p {
   color: #279a36;
   font-size: 14px;
   word-break: break-word;
 }
-
 .topic-list .views {
   font-weight: 400 !important;
   white-space: nowrap !important;
 }
-
 .createreply {
   display: flex;
   flex-direction: column;
   max-width: 300px;
 }
-
 .createreply button {
   margin-bottom: 10px;
   justify-content: flex-start;
   text-align: left;
 }
-
 .topicpreview-btn,
 .donottopic-btn {
   padding: 4px 12px !important;
@@ -495,12 +428,10 @@
   opacity: 0 !important;
   margin-right: 5px !important;
 }
-
 .topic-list-item:hover .topicpreview-btn,
 .topic-list-item:hover .donottopic-btn {
   opacity: 1 !important;
 }
-
 .topicpreview {
   position: fixed;
   top: 0;
@@ -513,7 +444,6 @@
   align-items: center;
   display: none;
 }
-
 .topicpreview .topicpreview-container {
   padding: 30px 0;
   border-radius: 5px;
@@ -528,33 +458,28 @@
   top: 50%;
   transform: translate(-50%, -50%);
 }
-
 .topicpreview .topicpreview-container .topicpreview-title {
   font-size: 22px;
   font-weight: 600;
   padding: 0 30px;
 }
-
 .topicpreview .topicpreview-container .topicpreview-date {
   padding: 0 30px;
   color: #666;
 }
-
-.topicpreview .topicpreview-container .topicpreview-content>.item {
+.topicpreview .topicpreview-container .topicpreview-content > .item {
   display: flex;
   align-items: flex-start;
   padding: 20px 30px;
 }
-
-.topicpreview .topicpreview-container .topicpreview-content>.item .itemfloor {
+.topicpreview .topicpreview-container .topicpreview-content > .item .itemfloor {
   width: 50px;
   text-align: left;
   font-size: 16px;
   padding-top: 15px;
   color: #25b4cf;
 }
-
-.topicpreview .topicpreview-container .topicpreview-content>.item .itempost {
+.topicpreview .topicpreview-container .topicpreview-content > .item .itempost {
   flex: 1;
   background: var(--tertiary-low);
   padding: 15px 15px;
@@ -562,36 +487,30 @@
   font-size: 15px;
   word-break: break-all;
 }
-
-.topicpreview .topicpreview-container .topicpreview-content>.item .itempost pre code {
+.topicpreview .topicpreview-container .topicpreview-content > .item .itempost pre code {
   max-width: 620px;
 }
-
-.topicpreview .topicpreview-container .topicpreview-content>.item .itempost img {
+.topicpreview .topicpreview-container .topicpreview-content > .item .itempost img {
   max-width: 100%;
   max-height: 100%;
   height: auto;
 }
-
-.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemname {
+.topicpreview .topicpreview-container .topicpreview-content > .item .itempost .itemname {
   font-size: 16px;
   color: #8f3a3a;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
-.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemname span {
+.topicpreview .topicpreview-container .topicpreview-content > .item .itempost .itemname span {
   color: #9e9e9e;
   margin-left: 20px;
 }
-
-.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemdate {
+.topicpreview .topicpreview-container .topicpreview-content > .item .itempost .itemdate {
   color: #b9b9b9;
   font-size: 16px;
   margin-left: auto;
 }
-
 .topicpreview-opacity {
   position: absolute;
   top: 0;
@@ -602,38 +521,31 @@
   background: rgba(0, 0, 0, 0.6);
   z-index: 9;
 }
-
 .body-preview .sidebar-wrapper {
   display: none !important;
 }
-
 body.body-preview #main-outlet-wrapper {
   display: block !important;
   padding-left: 50px !important;
 }
-
 .body-preview .d-header-wrap {
   display: none !important;
 }
-
 .body-preview .menu_suspendedball {
   display: none !important;
 }
-
 .post-activity {
   white-space: nowrap;
   display: inline-block;
   width: 100%;
   text-align: left;
 }
-
 .d-header img {
   height: var(--d-logo-height);
   width: auto;
   max-width: 100%;
   object-fit: contain;
 }
-
 .aicreated-btn,
 .aireplay-btn {
   outline: none;
@@ -649,11 +561,9 @@ body.body-preview #main-outlet-wrapper {
   margin-bottom: 10px;
   margin-right: 10px;
 }
-
 .aicreated-btn {
   display: none;
 }
-
 .gpt-summary-wrap {
   background: var(--tertiary-low);
   border-radius: 5px;
@@ -662,7 +572,6 @@ body.body-preview #main-outlet-wrapper {
   margin: 0 0 10px 0;
   line-height: 1.6;
 }
-
 .gpt-summary-wrap .airegenerate {
   display: none;
   margin-top: 6px;
@@ -674,16 +583,13 @@ body.body-preview #main-outlet-wrapper {
   cursor: pointer;
   border-radius: 3px;
 }
-
 .aicreatenewtopictitle {
   margin-left: 20px;
 }
-
 .aicreatenewtopictitle:hover {
   text-decoration: underline;
   cursor: pointer;
 }
-
 .aireply-popup {
   z-index: 999999;
   position: fixed;
@@ -698,12 +604,10 @@ body.body-preview #main-outlet-wrapper {
   border-radius: 10px;
   display: none;
 }
-
 .aireply-popup .aireply-popup-text {
   width: 100%;
   height: 120px;
 }
-
 .aireply-popup .aireply-popup-close {
   outline: 0;
   min-width: 80px;
@@ -717,7 +621,6 @@ body.body-preview #main-outlet-wrapper {
   box-sizing: border-box;
   transition: all 0.1s linear;
 }
-
 #messageToast {
   z-index: 9999999;
   position: fixed;
@@ -729,7 +632,6 @@ body.body-preview #main-outlet-wrapper {
   flex-direction: column;
   align-items: center;
 }
-
 #messageToast .messageToast-text {
   background: #4caf50;
   color: #fff;
@@ -756,28 +658,23 @@ body.body-preview #main-outlet-wrapper {
   z-index: 9999;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-
 @keyframes messageToast {
   0% {
     transform: translateY(10px);
     opacity: 0;
   }
-
   100% {
     transform: translateY(0);
     opacity: 1;
   }
 }
-
 .pangutext {
   cursor: pointer;
   margin-left: 20px;
 }
-
 .pangutext:hover {
   color: #279a36;
 }
-
 .navigation-container.is-active {
   position: fixed;
   top: 65px;
@@ -792,11 +689,9 @@ body.body-preview #main-outlet-wrapper {
   min-width: 1000px;
   width: auto;
 }
-
 .topic-body.clearfix.highlighted {
   background-color: var(--tertiary-low) !important;
 }
-
 .hotranking-container {
   position: fixed;
   right: 100px;
@@ -810,45 +705,37 @@ body.body-preview #main-outlet-wrapper {
   box-sizing: border-box;
   z-index: 999;
 }
-
 .hotranking-container .flex {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 1rem;
 }
-
 .hotranking-container ul li,
 .hotranking-container ol li {
   padding: 2px 0;
 }
-
 .hotranking-container ul li a:hover,
 .hotranking-container ol li a:hover {
   text-decoration: underline;
 }
-
 .menu-body {
   padding: 0 15px;
 }
-
 .inner {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
-
-  label {
-    width: 70px;
-    font-weight: 400;
-  }
-
-  input {
-    flex: 1;
-    margin: 0;
-    max-width: 300px;
-  }
 }
-
+.inner label {
+  width: 70px;
+  font-weight: 400;
+}
+.inner input {
+  flex: 1;
+  margin: 0;
+  max-width: 300px;
+}
 .linxudoscripts-tag {
   background: #29a6a9;
   color: #fff;
@@ -861,25 +748,20 @@ body.body-preview #main-outlet-wrapper {
   justify-content: center;
   border-radius: 5px;
 }
-
 .menu-table {
   width: 100%;
-
-  td,
-  th {
-    padding: 10px;
-    font-size: 14px;
-  }
-
-  .span {
-    cursor: pointer;
-
-    &+.span {
-      margin-left: 10px;
-    }
-  }
 }
-
+.menu-table td,
+.menu-table th {
+  padding: 10px;
+  font-size: 14px;
+}
+.menu-table .span {
+  cursor: pointer;
+}
+.menu-table .span + .span {
+  margin-left: 10px;
+}
 .emojiPicker {
   top: 0;
   left: 100%;
@@ -893,14 +775,12 @@ body.body-preview #main-outlet-wrapper {
   padding: 10px;
   border-radius: 5px;
   z-index: 9;
-
-  img {
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
-  }
 }
-
+.emojiPicker img {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+}
 .UsageTip {
   position: static;
   margin: 0;
@@ -908,26 +788,20 @@ body.body-preview #main-outlet-wrapper {
   line-height: 1.6;
   background: var(--d-sidebar-background);
   color: var(--primary-medium);
-
-  &>div {
-    margin: 10px 0;
-  }
-
-  button {
-    padding: 8px 10px;
-    margin-bottom: 10px;
-    border: none;
-    outline: none;
-    border-radius: 4px;
-  }
 }
-
-.linuxtime {
-  img {
-    margin-right: 5px;
-  }
+.UsageTip > div {
+  margin: 10px 0;
 }
-
+.UsageTip button {
+  padding: 8px 10px;
+  margin-bottom: 10px;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+}
+.linuxtime img {
+  margin-right: 5px;
+}
 .topic-list .topic-list-data.posters {
   width: 146px !important;
 }

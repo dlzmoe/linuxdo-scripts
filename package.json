@@ -2,7 +2,7 @@
   "name": "linuxdo-scripts",
   "description": "manifest.json description",
   "private": true,
-  "version": "1.0.24",
+  "version": "1.0.23",
   "type": "module",
   "scripts": {
     "dev": "wxt",
@@ -28,6 +28,7 @@
     "webext-permission-toggle": "^5.0.1"
   },
   "devDependencies": {
+    "@arco-design/web-vue": "^2.56.3",
     "@types/chrome": "^0.0.280",
     "@wxt-dev/module-vue": "^1.0.1",
     "adm-zip": "^0.5.16",

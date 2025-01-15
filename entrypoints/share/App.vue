@@ -1,23 +1,27 @@
 <template>
   <div class="body">
-    <div class="images" v-if="isShow" v-loading="loading" ref="imagesContainer" v-show="isShow">
-      <div class="title">{{ imagesData.title }}</div>
-      <div class="author">
-        <span>{{ imagesData.details.created_by.name || imagesData.details.created_by.username }}</span>
-        <span>{{ formatDate(imagesData.created_at) }}</span>
+    <a-spin :loading="loading">
+      <div class="images" v-if="isShow" ref="imagesContainer">
+        <div class="title">{{ imagesData.title }}</div>
+        <div class="author">
+          <span>{{ imagesData.details.created_by.name || imagesData.details.created_by.username }}</span>
+          <span>{{ formatDate(imagesData.created_at) }}</span>
+        </div>
+        <div class="markdown-body text" v-html="imagesData.post_stream.posts[0].cooked"></div>
       </div>
-      <div class="markdown-body text" v-html="imagesData.post_stream.posts[0].cooked"></div>
-    </div>
-    <div class="images" v-else v-loading="loading">
-      <el-empty description="暂无数据" />
-    </div>
+      <div class="images" v-else>
+        <a-empty />
+      </div>
+    </a-spin>
     <div class="container">
-      <el-input v-model="postslink" placeholder="https://linux.do/t/topic/309543" />
-      <el-button style="margin-top:10px" type="primary" @click="parseLink" :loading="loading">解析链接</el-button>
+      <a-input v-model="postslink" placeholder="https://linux.do/t/topic/309543" />
+      <a-button type="primary" style="margin-top:10px" @click="parseLink" :loading="loading">解析链接</a-button>
       <div v-if="isShow">
-        <hr>
-        <el-button type="primary" @click="copyToImage" :loading="loading1">复制图片</el-button>
-        <el-button type="primary" @click="downloadAsImage" :loading="loading2">下载图片</el-button>
+        <a-divider />
+        <a-space>
+          <a-button @click="copyToImage" :loading="loading1">复制图片</a-button>
+          <a-button @click="downloadAsImage" :loading="loading2">下载图片</a-button>
+        </a-space>
       </div>
     </div>
   </div>
@@ -72,6 +76,7 @@ export default {
         // 等待 DOM 更新
         await this.$nextTick();
         this.loading = false;
+        this.$message.success("解析成功！");
       } catch (error) {
         console.error("Invalid URL format:", error.message);
         this.$message.error("解析失败！");

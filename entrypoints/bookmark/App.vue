@@ -14,15 +14,17 @@
     </div>
 
     <div class="head-search">
-      <el-input v-model="search" style="width:300px" @input="searchPosts" placeholder="全局搜索标题..." />
+      <a-input v-model="search" style="width:300px" @input="searchPosts" placeholder="全局搜索标题..." />
     </div>
 
     <div class="aside">
       <div v-show="menutype == 'folder'">
         <div class="page-title">文件夹</div>
         <ul>
-          <el-button type="primary" @click="openCate">新建文件夹</el-button>
-          <el-button type="primary" @click="openAdminCate">管理文件夹</el-button>
+          <a-space>
+            <a-button type="primary" @click="openCate">新建文件夹</a-button>
+            <a-button @click="openAdminCate">管理文件夹</a-button>
+          </a-space>
         </ul>
         <ul>
           <li
@@ -97,8 +99,8 @@
         </el-table-column>
         <el-table-column label="操作" width="180" fixed="right" v-if="this.menutype == 'folder'">
           <template v-slot="scope">
-            <el-button type="primary" @click="openMoveDialog(scope.row)">修改</el-button>
-            <el-button type="danger" @click="openDelDialog(scope.row)">删除</el-button>
+              <a-button type="text" @click="openMoveDialog(scope.row)">修改</a-button>
+              <a-button type="text" status="danger" @click="openDelDialog(scope.row)">删除</a-button>
           </template>
         </el-table-column>
       </el-table>
@@ -110,19 +112,21 @@
   </transition>
 
   <!-- 新增文件夹 -->
-  <el-dialog v-model="dialogVisible" title="新建文件夹" width="500">
+  <a-modal v-model:visible="dialogVisible" title="新建文件夹" width="500">
     <p style="margin-bottom: 5px">请输入文件夹名称</p>
-    <el-input v-model="newcatename" style="width: 240px" />
+    <a-input v-model="newcatename" style="width: 240px" />
     <template #footer>
       <div class="dialog-footer">
-        <el-button @click="dialogVisible = false">取消</el-button>
-        <el-button type="primary" @click="addCate">确认</el-button>
+        <a-space>
+          <a-button @click="dialogVisible = false">取消</a-button>
+          <a-button type="primary" @click="addCate">确认</a-button>
+        </a-space>
       </div>
     </template>
-  </el-dialog>
+  </a-modal>
 
   <!-- 管理文件夹 -->
-  <el-dialog v-model="AdmindialogVisible" title="管理文件夹" width="500">
+  <a-modal v-model:visible="AdmindialogVisible" title="管理文件夹" width="500">
     <p style="color: #e00">无法恢复请谨慎操作！</p>
     <el-table
       :data="bookmarklist"
@@ -133,34 +137,29 @@
       <el-table-column prop="name" label="文件夹名称" />
       <el-table-column label="操作">
         <template v-slot="scope">
-          <el-button @click="openEditDialog(scope.row)" type="primary"
-            >修改</el-button
-          >
+          <a-button @click="openEditDialog(scope.row)">修改</a-button>
         </template>
       </el-table-column>
     </el-table>
     <template #footer>
       <div class="dialog-footer">
-        <el-button type="primary" @click="deleteSelected">删除</el-button>
+        <a-button status="danger" @click="deleteSelected">删除</a-button>
       </div>
     </template>
 
     <!-- 修改文件夹名称对话框 -->
-    <el-dialog v-model="editDialogVisible" title="修改文件夹名称" width="300">
-      <el-input
-        v-model="editCateName"
-        placeholder="请输入新的文件夹名称"
-      ></el-input>
+    <a-modal v-model:visible="editDialogVisible" title="修改文件夹名称" width="400px">
+      <a-input v-model="editCateName" placeholder="请输入新的文件夹名称" ></a-input>
       <template #footer>
         <div class="dialog-footer">
-          <el-button type="primary" @click="updateCateName">修改</el-button>
+          <a-button  type="primary" @click="updateCateName">修改</a-button>
         </div>
       </template>
-    </el-dialog>
-  </el-dialog>
+    </a-modal>
+  </a-modal>
 
   <!-- 转移操作对话框 -->
-  <el-dialog v-model="moveDialogVisible" title="转移到其他文件夹" width="500">
+  <a-modal v-model:visible="moveDialogVisible" title="转移到其他文件夹" width="500">
     <el-select
       v-model="targetCategoryId"
       placeholder="选择目标文件夹"
@@ -175,84 +174,89 @@
     </el-select>
     <template #footer>
       <div class="dialog-footer">
-        <el-button type="primary" @click="moveItem">确认</el-button>
-        <el-button @click="moveDialogVisible = false">取消</el-button>
+        <a-space>
+          <a-button @click="moveDialogVisible = false">取消</a-button>
+          <a-button type="primary" @click="moveItem">确认</a-button>
+        </a-space>
       </div>
     </template>
-  </el-dialog>
+  </a-modal>
 
   <!-- 删除指定帖子的对话框 -->
-  <el-dialog v-model="delDialogVisible" title="删除收藏贴子" width="300">
+  <a-modal v-model:visible="delDialogVisible" title="删除收藏贴子" width="300">
     <p>是否真的删除？</p>
     <template #footer>
       <div class="dialog-footer">
-        <el-button @click="delDialogVisible = false">取消</el-button>
-        <el-button type="primary" @click="confirmDelete">删除</el-button>
+        <a-space>
+          <a-button @click="delDialogVisible = false">取消</a-button>
+          <a-button status="danger" @click="confirmDelete">删除</a-button>
+        </a-space>
       </div>
     </template>
-  </el-dialog>
+  </a-modal>
 
   <!-- Webdav 同步 -->
-  <el-dialog v-model="WebdavDialog" title="收藏夹 WebDAV 同步设置" width="550">
-    <el-form :model="webdavConfig" label-width="100px">
-      <el-form-item label="服务器地址">
-        <el-input v-model="webdavConfig.serverUrl" placeholder="https://example.com/dav/"/>
-      </el-form-item>
-      <el-form-item label="用户名">
-        <el-input v-model="webdavConfig.username" placeholder="用户名"/>
-      </el-form-item>
-      <el-form-item label="密码">
-        <el-input v-model="webdavConfig.password" placeholder="密码"/>
-      </el-form-item>
-    </el-form>
+  <a-modal v-model:visible="WebdavDialog" title="收藏夹 WebDAV 同步设置" :footer="false" width="550">
+    <a-form :model="webdavConfig" label-width="100px">
+      <a-form-item label="服务器地址：">
+        <a-input v-model="webdavConfig.serverUrl" placeholder="https://example.com/dav/"/>
+      </a-form-item>
+      <a-form-item label="用户名：">
+        <a-input v-model="webdavConfig.username" placeholder="用户名"/>
+      </a-form-item>
+      <a-form-item label="密码：">
+        <a-input v-model="webdavConfig.password" placeholder="密码"/>
+      </a-form-item>
+    </a-form>
     <div class="webdav-actions">
-      <el-button type="primary" @click="saveWebDAVConfig">保存配置</el-button>
+      <a-button @click="saveWebDAVConfig">保存配置</a-button>
     </div>
 
     <el-divider>云端同步操作</el-divider>
     <div class="webdav-sync-actions">
-      <el-button type="primary" @click="exportToWebDAV" :loading="exporting">导出到 WebDAV</el-button>
-      <el-button type="primary" @click="importFromWebDAV" :loading="importing">从 WebDAV 导入</el-button>
+      <a-space>
+        <a-button @click="exportToWebDAV" :loading="exporting">导出到 WebDAV</a-button>
+        <a-button @click="importFromWebDAV" :loading="importing">从 WebDAV 导入</a-button>
+      </a-space>
     </div>
     <el-divider>手动同步操作</el-divider>
-    <el-button type="primary" @click="exportData">导出 json 文件</el-button>
-    <label for="file-upload" class="el-button el-button--primary">导入 json 文件</label>
-    <input id="file-upload" type="file" @change="importData" style="display: none" />
-  </el-dialog>
+    <a-space>
+      <a-button @click="exportData">导出 json 文件</a-button>
+      <label for="file-upload" class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal">导入 json 文件</label>
+      <input id="file-upload" type="file" @change="importData" style="display: none" />
+    </a-space>
+  </a-modal>
 
   <!-- 手动新增收藏链接 -->
-  <el-dialog v-model="addPostDialogVisible" title="添加书签" width="550" class="addPost">
-    <el-input
-      v-model="autoaccessstr"
-      :rows="2"
-      type="textarea"
-      placeholder="https://linux.do/t/topic/309543/372"
-    />
-    <el-button type="primary" @click="autoAccess" :loading="autoAccessLoading">自动解析</el-button>
-    <hr>
+  <a-modal v-model:visible="addPostDialogVisible" title="添加书签" width="550" class="addPost">
+    <a-input v-model="autoaccessstr" placeholder="https://linux.do/t/topic/309543/372" />
+    <a-button a-button @click="autoAccess" :loading="autoAccessLoading">自动解析</a-button>
+    <a-divider />
     <div class="item">
       <label>URL：<span>*</span></label>
-      <el-input v-model="addPost.url" />
+      <a-input v-model="addPost.url" />
     </div>
     <div class="item">
       <label>标题：<span>*</span></label>
-      <el-input v-model="addPost.title" />
+      <a-input v-model="addPost.title" />
     </div>
     <div class="item">
       <label>分类：</label>
-      <el-input v-model="addPost.cate" />
+      <a-input v-model="addPost.cate" />
     </div>
     <div class="item">
       <label>标签：</label>
-      <el-input v-model="addPost.tags" placeholder="使用英文逗号,相连" />
+      <a-input v-model="addPost.tags" placeholder="使用英文逗号,相连" />
     </div>
     <template #footer>
       <div class="dialog-footer">
-        <el-button @click="addPostDialogVisible = false">取消</el-button>
-        <el-button type="primary" @click="setAddAccess">添加</el-button>
+        <a-space>
+          <a-button @click="addPostDialogVisible = false">取消</a-button>
+          <a-button type="primary" @click="setAddAccess">添加</a-button>
+        </a-space>
       </div>
     </template>
-  </el-dialog>
+  </a-modal>
 
 </template>
 
@@ -515,6 +519,10 @@ export default {
     },
     // 删除文件夹
     deleteSelected() {
+      if(this.multipleSelection.length == 0) {
+        this.$message.error('请至少选择一项')
+        return false;
+       }
       this.bookmarklist = this.bookmarklist.filter(
         (item) => !this.multipleSelection.includes(item)
       )

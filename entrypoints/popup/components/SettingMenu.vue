@@ -4,9 +4,14 @@
     鼠标移动到浏览器最左侧后点击设置按钮，
     <a href="https://linuxdo-scripts-docs.zishu.me/" target="_blank"> 使用教程！ </a>
   </p>
-  <el-button type="primary" @click="openBookmark">收藏夹</el-button>
-  <el-button type="primary" @click="openShare">分享话题图片</el-button>
-  <el-button type="primary" @click="goGithub">Github</el-button>
+  <br>
+  <a-space>
+    <a-button @click="openBookmark">收藏夹</a-button>
+    <a-button @click="openShare">分享话题图片</a-button>
+    <a-button @click="goGithub">Github</a-button>
+  </a-space>
+  <br>
+  <br>
   <p>【分享话题图片】是实验性功能，敬请期待！</p>
 </template>
 
@@ -34,7 +39,7 @@ export default {
       window.open("https://github.com/dlzmoe/linuxdo-scripts", "_blank");
     },
   },
-  created() {},
+  created() { },
 };
 </script>
 

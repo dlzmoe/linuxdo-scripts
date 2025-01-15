@@ -205,7 +205,7 @@
         <a-input v-model="webdavConfig.username" placeholder="用户名"/>
       </a-form-item>
       <a-form-item label="密码：">
-        <a-input v-model="webdavConfig.password" placeholder="密码"/>
+        <a-input type="password" v-model="webdavConfig.password" placeholder="密码"/>
       </a-form-item>
     </a-form>
     <div class="webdav-actions">

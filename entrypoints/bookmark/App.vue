@@ -112,7 +112,7 @@
   </transition>
 
   <!-- 新增文件夹 -->
-  <a-modal v-model:visible="dialogVisible" title="新建文件夹" width="500">
+  <a-modal v-model:visible="dialogVisible" title="新建文件夹" width="500px">
     <p style="margin-bottom: 5px">请输入文件夹名称</p>
     <a-input v-model="newcatename" style="width: 240px" />
     <template #footer>
@@ -126,7 +126,7 @@
   </a-modal>
 
   <!-- 管理文件夹 -->
-  <a-modal v-model:visible="AdmindialogVisible" title="管理文件夹" width="500">
+  <a-modal v-model:visible="AdmindialogVisible" title="管理文件夹" width="500px">
     <p style="color: #e00">无法恢复请谨慎操作！</p>
     <el-table
       :data="bookmarklist"
@@ -159,7 +159,7 @@
   </a-modal>
 
   <!-- 转移操作对话框 -->
-  <a-modal v-model:visible="moveDialogVisible" title="转移到其他文件夹" width="500">
+  <a-modal v-model:visible="moveDialogVisible" title="转移到其他文件夹" width="400px">
     <el-select
       v-model="targetCategoryId"
       placeholder="选择目标文件夹"
@@ -183,7 +183,7 @@
   </a-modal>
 
   <!-- 删除指定帖子的对话框 -->
-  <a-modal v-model:visible="delDialogVisible" title="删除收藏贴子" width="300">
+  <a-modal v-model:visible="delDialogVisible" title="删除收藏贴子" width="400px">
     <p>是否真的删除？</p>
     <template #footer>
       <div class="dialog-footer">
@@ -196,7 +196,7 @@
   </a-modal>
 
   <!-- Webdav 同步 -->
-  <a-modal v-model:visible="WebdavDialog" title="收藏夹 WebDAV 同步设置" :footer="false" width="550">
+  <a-modal v-model:visible="WebdavDialog" title="收藏夹 WebDAV 同步设置" :footer="false" width="550px">
     <a-form :model="webdavConfig" label-width="100px">
       <a-form-item label="服务器地址：">
         <a-input v-model="webdavConfig.serverUrl" placeholder="https://example.com/dav/"/>
@@ -212,14 +212,14 @@
       <a-button @click="saveWebDAVConfig">保存配置</a-button>
     </div>
 
-    <el-divider>云端同步操作</el-divider>
+    <a-divider>云端同步操作</a-divider>
     <div class="webdav-sync-actions">
       <a-space>
         <a-button @click="exportToWebDAV" :loading="exporting">导出到 WebDAV</a-button>
         <a-button @click="importFromWebDAV" :loading="importing">从 WebDAV 导入</a-button>
       </a-space>
     </div>
-    <el-divider>手动同步操作</el-divider>
+    <a-divider>手动同步操作</a-divider>
     <a-space>
       <a-button @click="exportData">导出 json 文件</a-button>
       <label for="file-upload" class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal">导入 json 文件</label>
@@ -228,7 +228,7 @@
   </a-modal>
 
   <!-- 手动新增收藏链接 -->
-  <a-modal v-model:visible="addPostDialogVisible" title="添加书签" width="550" class="addPost">
+  <a-modal v-model:visible="addPostDialogVisible" title="添加书签" width="550px" class="addPost">
     <a-input v-model="autoaccessstr" placeholder="https://linux.do/t/topic/309543/372" />
     <a-button a-button @click="autoAccess" :loading="autoAccessLoading">自动解析</a-button>
     <a-divider />

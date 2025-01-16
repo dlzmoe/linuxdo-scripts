@@ -106,6 +106,10 @@ a {
       border-radius: 3px;
       position: relative;
       padding-right: 30px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      overflow: hidden;
 
       &:hover {
         text-decoration: underline;
@@ -114,6 +118,7 @@ a {
       em {
         font-style: normal;
         position: absolute;
+        top: 5px;
         right: 0;
         border-radius: 30px;
         height: 20px;

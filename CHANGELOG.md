@@ -1,4 +1,4 @@
 - fix: 修复 webdav 同步时不兼容问题
-- feat: popup 帖子列表显示话题数
+- feat: popup 帖子列表显示话题数，并对列表进行优化
 - refactor: 其他代码优化
 - refactor: 引入 Arco Design UI，抛弃 Element UI

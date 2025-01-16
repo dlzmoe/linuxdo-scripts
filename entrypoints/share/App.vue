@@ -98,49 +98,47 @@ export default {
       return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     },
 
-    // 将 HTML 转换为 Canvas
     async htmlToCanvas() {
       try {
         if (!this.$refs.imagesContainer) {
           throw new Error('Element not found');
         }
 
-        // 预处理所有图片
-        const images = this.$refs.imagesContainer.getElementsByTagName('img');
-        await Promise.all(Array.from(images).map(img => {
-          return new Promise((resolve, reject) => {
-            const newImg = new Image();
-            // 设置跨域属性
-            newImg.crossOrigin = 'anonymous';
-            newImg.onload = () => {
-              // 替换原始图片
-              img.src = newImg.src;
+        // 先处理所有图片
+        const images = this.$refs.imagesContainer.querySelectorAll('img');
+        const imagePromises = Array.from(images).map(img => {
+          return new Promise((resolve) => {
+            // 创建新的 Image 对象
+            const imgElement = new Image();
+            imgElement.onload = function () {
+              // 创建 canvas 转换图片
+              const canvas = document.createElement('canvas');
+              canvas.width = imgElement.width;
+              canvas.height = imgElement.height;
+              const ctx = canvas.getContext('2d');
+              ctx.drawImage(imgElement, 0, 0);
+              // 替换原始图片的 src 为 canvas 生成的 base64
+              img.src = canvas.toDataURL('image/jpeg');
               resolve();
             };
-            newImg.onerror = reject;
-            // 添加时间戳避免缓存
-            newImg.src = img.src + '?t=' + new Date().getTime();
+            imgElement.onerror = resolve; // 即使加载失败也继续处理
+            imgElement.src = img.src; // 使用原始图片的 src
           });
-        }));
+        });
+
+        // 等待所有图片处理完成
+        await Promise.all(imagePromises);
 
         // 等待一帧确保 DOM 更新
         await new Promise(resolve => requestAnimationFrame(resolve));
 
+        // 生成最终的 canvas
         const canvas = await html2canvas(this.$refs.imagesContainer, {
-          useCORS: true,
           scale: 2,
-          logging: true,
+          logging: false,
           backgroundColor: '#ffffff',
-          allowTaint: false,
-          foreignObjectRendering: false,
-          imageTimeout: 0,
-          onclone: (clonedDoc) => {
-            // 处理克隆的 DOM
-            const clonedImages = clonedDoc.getElementsByTagName('img');
-            Array.from(clonedImages).forEach(img => {
-              img.crossOrigin = 'anonymous';
-            });
-          }
+          useCORS: false, // 因为已经转换成 base64 了，不需要跨域
+          allowTaint: true
         });
 
         return canvas;

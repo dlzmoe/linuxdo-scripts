@@ -127,7 +127,7 @@
             <!-- 是否自动隐藏“福利羊毛”中已领完的帖子 -->
             <MenuHideWelfareDone :sort="36" v-model="settingData.checked42" />
             <!-- 是否开启话题转为图片进行分享 -->
-            <!-- <MenuTopicToImages :sort="37" v-model="settingData.checked43" /> -->
+            <MenuTopicToImages :sort="37" v-model="settingData.checked43" />
           </div>
           <div class="menu-body-item" v-show="activeIndex == 1">
             <!-- 自定义论坛 logo -->

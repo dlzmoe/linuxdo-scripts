@@ -10,9 +10,8 @@ export default defineConfig({
           modifyVars: {
             'arcoblue-6': '#2C3E50',
           },
-          javascriptEnabled: true,
-        }
-      }
+        },
+      },
     },
   }),
   extensionApi: 'chrome',

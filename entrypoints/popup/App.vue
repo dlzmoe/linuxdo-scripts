@@ -47,7 +47,7 @@ export default {
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
-          this.hotlist = data.topic_list.topics.slice(0, 20);
+          this.hotlist = data.topic_list.topics;
           localStorage.setItem('hotlist', JSON.stringify(this.hotlist));
         })
         .catch((error) => { });
@@ -59,7 +59,7 @@ export default {
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
-          this.newslist = data.topic_list.topics.slice(0, 20);
+          this.newslist = data.topic_list.topics;
           localStorage.setItem('newslist', JSON.stringify(this.newslist));
         })
         .catch((error) => {});

@@ -72,38 +72,40 @@
     </div>
 
     <div class="container">
-      <el-table :data="tableData.list" v-loading="loading">
-        <el-table-column prop="title" label="标题" min-width="300">
-          <template v-slot="scope">
-            <a :href="scope.row.url" target="_blank">{{ scope.row.title }}</a>
-          </template>
-        </el-table-column>
-        <el-table-column prop="cate" label="类别" width="160">
-          <template v-slot="scope">
-            <div class="category-cell">
-              <img 
-                v-if="getCategoryInfo(scope.row.cate)?.uploaded_logo"
-                :src="`https://linux.do${getCategoryInfo(scope.row.cate).uploaded_logo.url}`"
-                class="category-icon"
-              />
-              <span :style="{ color: '#' + getCategoryInfo(scope.row.cate)?.color }">
-                {{ scope.row.cate }}
-              </span>
-            </div>
-          </template>
-        </el-table-column>
-        <el-table-column prop="tags" label="标签" width="200">
-          <template v-slot="scope">
-            {{ scope.row.tags.join('，') }}
-          </template>
-        </el-table-column>
-        <el-table-column label="操作" width="180" fixed="right" v-if="this.menutype == 'folder'">
-          <template v-slot="scope">
-              <a-button type="text" @click="openMoveDialog(scope.row)">修改</a-button>
-              <a-button type="text" status="danger" @click="openDelDialog(scope.row)">删除</a-button>
-          </template>
-        </el-table-column>
-      </el-table>
+      <a-table :data="tableData.list" :loading="loading" :pagination="false">
+        <template #columns>
+          <a-table-column title="标题" data-index="title">
+            <template #cell="{ record }">
+              <a :href="record.url" target="_blank">{{ record.title }}</a>
+            </template>
+          </a-table-column>
+
+          <a-table-column title="类别" data-index="cate" :width="200">
+            <template #cell="{ record }">
+              <div class="category-cell">
+                <img v-if="getCategoryInfo(record.cate)?.uploaded_logo"
+                  :src="`https://linux.do${getCategoryInfo(record.cate).uploaded_logo.url}`" class="category-icon" />
+                <span :style="{ color: '#' + getCategoryInfo(record.cate)?.color }">
+                  {{ record.cate }}
+                </span>
+              </div>
+            </template>
+          </a-table-column>
+
+          <a-table-column title="标签" data-index="tags" :width="200">
+            <template #cell="{ record }">
+              {{ record.tags.join('，') }}
+            </template>
+          </a-table-column>
+
+          <a-table-column v-if="menutype === 'folder'" title="操作" :width="180" fixed="right">
+            <template #cell="{ record }">
+              <a-tag @click="openMoveDialog(record)">修改</a-tag>
+              <a-tag style="margin-left:10px" color="red" @click="openDelDialog(record)">删除</a-tag>
+            </template>
+          </a-table-column>
+        </template>
+      </a-table>
     </div>
   </div>
   
@@ -126,26 +128,21 @@
   </a-modal>
 
   <!-- 管理文件夹 -->
-  <a-modal v-model:visible="AdmindialogVisible" title="管理文件夹" width="500px">
-    <p style="color: #e00">无法恢复请谨慎操作！</p>
-    <el-table
-      :data="bookmarklist"
-      ref="multipleTable"
-      @selection-change="handleSelectionChange"
-    >
-      <el-table-column type="selection" :selectable="selectable" width="55" />
-      <el-table-column prop="name" label="文件夹名称" />
-      <el-table-column label="操作">
-        <template v-slot="scope">
-          <a-button @click="openEditDialog(scope.row)">修改</a-button>
-        </template>
-      </el-table-column>
-    </el-table>
-    <template #footer>
-      <div class="dialog-footer">
-        <a-button status="danger" @click="deleteSelected">删除</a-button>
-      </div>
-    </template>
+  <a-modal v-model:visible="AdmindialogVisible" title="管理文件夹" width="500px" :footer="false">
+    <p style="color:#e00;margin-bottom:10px;">删除文件夹时会连同该文件夹下的帖子一起删除，无法恢复请谨慎操作！</p>
+    <a-table :data="bookmarklist" :pagination="false">
+      <template #columns>
+        <a-table-column title="文件夹名称" data-index="name" />
+        <a-table-column title="操作">
+          <template #cell="{ record }">
+            <a-tag @click="openEditDialog(record)">修改</a-tag>
+            <a-popconfirm content="最后确认删除？" @ok="deleteSelected(record)">
+              <a-tag style="margin-left:10px" color="red">删除</a-tag>
+            </a-popconfirm>
+          </template>
+        </a-table-column>
+      </template>
+      </a-table>
 
     <!-- 修改文件夹名称对话框 -->
     <a-modal v-model:visible="editDialogVisible" title="修改文件夹名称" width="400px">
@@ -160,18 +157,18 @@
 
   <!-- 转移操作对话框 -->
   <a-modal v-model:visible="moveDialogVisible" title="转移到其他文件夹" width="400px">
-    <el-select
+    <a-select
       v-model="targetCategoryId"
       placeholder="选择目标文件夹"
       style="width: 100%"
     >
-      <el-option
+      <a-option
         v-for="category in filteredCategories"
         :key="category.id"
         :label="category.name"
         :value="category.id"
       />
-    </el-select>
+    </a-select>
     <template #footer>
       <div class="dialog-footer">
         <a-space>
@@ -209,7 +206,7 @@
       </a-form-item>
     </a-form>
     <div class="webdav-actions">
-      <a-button @click="saveWebDAVConfig">保存配置</a-button>
+      <a-button type="primary" @click="saveWebDAVConfig">保存配置</a-button>
     </div>
 
     <a-divider>云端同步操作</a-divider>
@@ -230,7 +227,7 @@
   <!-- 手动新增收藏链接 -->
   <a-modal v-model:visible="addPostDialogVisible" title="添加书签" width="550px" class="addPost">
     <a-input v-model="autoaccessstr" placeholder="https://linux.do/t/topic/309543/372" />
-    <a-button a-button @click="autoAccess" :loading="autoAccessLoading">自动解析</a-button>
+    <a-button type="primary" @click="autoAccess" :loading="autoAccessLoading">自动解析</a-button>
     <a-divider />
     <div class="item">
       <label>URL：<span>*</span></label>
@@ -433,7 +430,7 @@ export default {
     searchPosts() {
       if (this.search == "") {
         // this.tableData = this.bookmarklist[this.selectedItemId];
-        this.tableData = this.bookmarklist.find(item => item.id === this.selectedItemId);
+        this.tableData = this.bookmarklist[0]
         return false;
       }
       
@@ -518,17 +515,11 @@ export default {
       this.multipleSelection = val
     },
     // 删除文件夹
-    deleteSelected() {
-      if(this.multipleSelection.length == 0) {
-        this.$message.error('请至少选择一项')
-        return false;
-       }
-      this.bookmarklist = this.bookmarklist.filter(
-        (item) => !this.multipleSelection.includes(item)
-      )
+    deleteSelected(delItem) {
+      this.bookmarklist = this.bookmarklist.filter(item => item !== delItem);
       this.multipleSelection = []
       this.$message.success('删除成功！')
-      this.AdmindialogVisible = false;
+      // this.AdmindialogVisible = false;
       this.initPostCategory();
       this.initPostTags();
       localStorage.setItem('bookmarkData', JSON.stringify(this.bookmarklist))
@@ -1159,8 +1150,12 @@ export default {
         tags: "",
       }
     },
-    // 自动填充
+    // 解析链接
     async autoAccess() {
+      if(!this.autoaccessstr) {
+        this.$message.warning("请先输入需要解析的 linux.do  URL！");
+        return false;
+      }
       this.autoAccessLoading = true;
       try {
         // 使用 URL 对象方便地解析 URL

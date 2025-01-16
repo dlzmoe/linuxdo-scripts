@@ -2,7 +2,7 @@
   "name": "linuxdo-scripts",
   "description": "manifest.json description",
   "private": true,
-  "version": "1.0.24",
+  "version": "1.0.25",
   "type": "module",
   "scripts": {
     "dev": "wxt",
@@ -14,9 +14,11 @@
     "zip:firefox": "wxt zip -b firefox",
     "compile": "vue-tsc --noEmit",
     "postinstall": "wxt prepare",
-    "publish": "wxt build && wxt zip && wxt zip -b firefox && py scripts/build.py"
+    "publish": "wxt build && wxt zip && wxt zip -b firefox && py scripts/build.py",
+    "rf": "rimraf node_modules"
   },
   "dependencies": {
+    "@arco-themes/vue-indigo-sky": "^0.0.1",
     "element-plus": "^2.9.1",
     "html2canvas": "^1.4.1",
     "jquery": "^3.7.1",
@@ -30,6 +32,7 @@
   "devDependencies": {
     "@arco-design/web-vue": "^2.56.3",
     "@types/chrome": "^0.0.280",
+    "@vitejs/plugin-vue": "^5.1.2",
     "@wxt-dev/module-vue": "^1.0.1",
     "adm-zip": "^0.5.16",
     "less": "^4.2.1",
@@ -37,6 +40,7 @@
     "sass": "^1.77.8",
     "style-loader": "^2.0.0",
     "typescript": "5.6.3",
+    "unplugin-vue-components": "^0.22.4",
     "vue-tsc": "^2.1.10",
     "wxt": "^0.19.13"
   }

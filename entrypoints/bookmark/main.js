@@ -1,17 +1,11 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 
-import ElementPlus from 'element-plus';
-import 'element-plus/dist/index.css';
-import './element-variables.scss';
-
 import ArcoVue from '@arco-design/web-vue';
-import '@arco-design/web-vue/dist/arco.css';
+import '@arco-themes/vue-indigo-sky/css/arco.css'; // 自定义主题 vue-indigo-sky
 
 import './style.less';
 
-// 创建 Vue 应用实例
 const app = createApp(App);
-app.use(ElementPlus);
 app.use(ArcoVue);
 app.mount('#app');

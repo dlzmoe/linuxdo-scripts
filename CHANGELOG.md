@@ -1,5 +1,1 @@
-- fix: 修复 webdav 同步时不兼容问题
-- feat: 优化帖子分享图片功能
-- feat: popup 帖子列表显示话题数，并对列表进行优化
-- refactor: 其他代码优化
-- refactor: 引入 Arco Design UI，抛弃 Element UI
+- style: 优化组件样式

@@ -1,4 +1,22 @@
+.arco-tag {
+  cursor: pointer;
+}
 
+::-webkit-scrollbar {
+  width: 5px;
+  height: 4px
+}
+
+::-webkit-scrollbar-track {
+  background: #FFFFFF;
+  border-radius: 0px
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CCCCCC;
+  border-radius: 2px;
+  transition: all .1s linear
+}
 
 /* 定义过渡效果 */
 .fade-enter-active,
@@ -22,8 +40,13 @@
   box-sizing: border-box;
 }
 
+#app {
+  height: 100%;
+}
+
 body {
   width: 100%;
+  height: 100vh;
   overflow-x: hidden;
   overflow-y: scroll;
   font-size: 16px;
@@ -76,6 +99,7 @@ body {
 .flex {
   position: relative;
   padding-left: 370px;
+  height: 100%;
 
   .aside {
     width: 300px;
@@ -137,6 +161,7 @@ body {
   }
 
   .container {
+    height: 100%;
     position: relative;
     overflow-y: auto;
     padding-top: 50px;
@@ -179,15 +204,15 @@ body {
 .head-search {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100%;
+  right: 0;
+  width: calc(100% - 350px);
   height: 50px;
   background: #fff;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-left: 390px;
-  z-index: 2;
+  padding: 0 30px;
+  z-index: 999;
 }
 
 .addPost {

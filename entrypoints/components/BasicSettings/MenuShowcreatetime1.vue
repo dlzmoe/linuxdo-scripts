@@ -1,11 +1,7 @@
 <template>
   <div class="item">
     <div class="tit">{{ sort }}. 将浏览量替换为创建时间（与 4 互斥，只可选择一个）</div>
-    <input
-      type="checkbox"
-      :checked="modelValue"
-      @change="$emit('update:modelValue', $event.target.checked)"
-    />
+    <input type="checkbox" :checked="modelValue" @change="$emit('update:modelValue', $event.target.checked)" />
   </div>
 </template>
 
@@ -19,7 +15,7 @@ export default {
       const timestamp = Number(time);
       const date = new Date(timestamp);
       const now = new Date();
-      const isToday = 
+      const isToday =
         now.getFullYear() === date.getFullYear() &&
         now.getMonth() === date.getMonth() &&
         now.getDate() === date.getDate();
@@ -40,7 +36,7 @@ export default {
         return `${year}/${month}/${day} ${hours}:${minutes}`;
       }
     },
-    
+
     convertToTimestamp(dateStr) {
       const cleanedDateStr = dateStr.replace(/\s+/g, ""); // 去掉所有空格
       const datePattern = /(\d{4})年(\d{1,2})月(\d{1,2})日(\d{2}):(\d{2})/;
@@ -121,8 +117,8 @@ export default {
               .html(
                 `<span class="linuxtime" style="color:${color}">
                <img style="width:20px;vertical-align:sub;" src="https://linux.do/uploads/default/original/4X/4/0/8/408c29a1d1dfaada3160fb2ae366cf3a7c7c1696.png">${this.formattedDate(
-                 timestamp
-               )}
+                  timestamp
+                )}
                 </span>`
               );
           }

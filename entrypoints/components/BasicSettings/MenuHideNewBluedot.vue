@@ -1,11 +1,7 @@
 <template>
   <div class="item">
     <div class="tit">{{ sort }}. 是否隐藏新消息小蓝点（除帖子未读小蓝点）</div>
-    <input
-      type="checkbox"
-      :checked="modelValue"
-      @change="$emit('update:modelValue', $event.target.checked)"
-    />
+    <input type="checkbox" :checked="modelValue" @change="$emit('update:modelValue', $event.target.checked)" />
   </div>
 </template>
 

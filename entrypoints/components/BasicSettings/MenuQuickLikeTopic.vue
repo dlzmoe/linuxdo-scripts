@@ -3,11 +3,7 @@
     <div class="tit">
       {{ sort }}. 是否开启快捷给主题点赞 (快捷键：<kbd>Q</kbd>)
     </div>
-    <input
-      type="checkbox"
-      :checked="modelValue"
-      @change="$emit('update:modelValue', $event.target.checked)"
-    />
+    <input type="checkbox" :checked="modelValue" @change="$emit('update:modelValue', $event.target.checked)" />
   </div>
 </template>
 

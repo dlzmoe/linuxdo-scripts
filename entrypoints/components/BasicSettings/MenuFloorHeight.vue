@@ -1,11 +1,7 @@
 <template>
   <div class="item">
     <div class="tit">{{ sort }}. 智能限制楼层高度</div>
-    <input
-      type="checkbox"
-      :checked="modelValue"
-      @change="$emit('update:modelValue', $event.target.checked)"
-    />
+    <input type="checkbox" :checked="modelValue" @change="$emit('update:modelValue', $event.target.checked)" />
   </div>
 </template>
 

@@ -32,11 +32,9 @@ export default {
 <style lang="less" scoped>
 .el-button {
   &.act {
-    background: linear-gradient(
-      to right,
-      var(--tertiary-low),
-      var(--tertiary-high)
-    ) !important;
+    background: linear-gradient(to right,
+        var(--tertiary-low),
+        var(--tertiary-high)) !important;
   }
 }
 </style>

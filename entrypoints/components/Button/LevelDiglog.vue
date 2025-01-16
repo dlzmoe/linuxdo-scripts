@@ -1,22 +1,12 @@
 <template>
   <div>
-    <div
-      class="el-button"
-      @click="togglePopupSize"
-      :class="['linuxDoLevelPopup', isMinimized ? 'minimized' : '']"
-      title="等级查询"
-    >
+    <div class="el-button" @click="togglePopupSize" :class="['linuxDoLevelPopup', isMinimized ? 'minimized' : '']"
+      title="等级查询">
       <span>等级</span>
     </div>
     <div v-if="!isMinimized" id="linuxDoLevelPopupContent">
       <div v-html="content"></div>
-      <input
-        v-model="username"
-        autocomplete="off"
-        type="text"
-        placeholder="请输入用户名..."
-        id="linuxDoUserSearch"
-      />
+      <input v-model="username" autocomplete="off" type="text" placeholder="请输入用户名..." id="linuxDoUserSearch" />
       <button @click="handleSearch" class="btn btn-icon-text" type="button">
         <span class="d-button-label">搜索</span>
       </button>
@@ -117,9 +107,8 @@ export default {
     },
     updatePopupContent(userSummary, user, status) {
       if (userSummary && user) {
-        let content = `<strong>信任等级：</strong>${
-          this.levelDescriptions[user.trust_level]
-        }<br><strong>升级进度：</strong><br>`;
+        let content = `<strong>信任等级：</strong>${this.levelDescriptions[user.trust_level]
+          }<br><strong>升级进度：</strong><br>`;
 
         if (user.trust_level === 3) {
           content += `联系管理员以升级到领导者<br>`;
@@ -189,11 +178,13 @@ export default {
 
 <style scoped lang="less">
 @keyframes breathAnimation {
+
   0%,
   100% {
     transform: scale(1);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   }
+
   50% {
     transform: scale(1.1);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);

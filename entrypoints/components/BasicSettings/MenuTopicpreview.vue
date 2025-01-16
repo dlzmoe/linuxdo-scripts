@@ -1,11 +1,7 @@
 <template>
   <div class="item">
     <div class="tit">{{ sort }}. 是否开启话题预览功能</div>
-    <input
-      type="checkbox"
-      :checked="modelValue"
-      @change="$emit('update:modelValue', $event.target.checked)"
-    />
+    <input type="checkbox" :checked="modelValue" @change="$emit('update:modelValue', $event.target.checked)" />
   </div>
 </template>
 
@@ -63,8 +59,8 @@ export default {
               $(".topicpreview-container").html(`
                 <div class="topicpreview-title">${previewData.title}</div>
                 <p class="topicpreview-date">发帖时间：${formatDate(
-                  previewData.created_at
-                )}</p>
+                previewData.created_at
+              )}</p>
                 <div class="topicpreview-content"></div>
                 <p style="text-align: center;">仅显示前 20 条，<a href="/t/topic/${previewurl}/">查看更多</a></p>
               `);

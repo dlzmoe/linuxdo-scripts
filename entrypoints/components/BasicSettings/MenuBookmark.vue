@@ -1,11 +1,7 @@
 <template>
   <div class="item">
     <div class="tit">{{ sort }}. 是否开启收藏功能</div>
-    <input
-      type="checkbox"
-      :checked="modelValue"
-      @change="$emit('update:modelValue', $event.target.checked)"
-    />
+    <input type="checkbox" :checked="modelValue" @change="$emit('update:modelValue', $event.target.checked)" />
   </div>
 </template>
 
@@ -62,7 +58,7 @@ export default {
               cate: bookmarkDatacate,
               tags: bookmarkDatatags,
             }
-            
+
             const browserAPI = (typeof browser !== 'undefined' ? browser : chrome);
             browserAPI.storage.local.set({ bookmarkData: data }, () => {
               vm.messageToast('收藏成功，请前往收藏夹查看。')

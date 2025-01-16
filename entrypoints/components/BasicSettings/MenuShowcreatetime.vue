@@ -2,11 +2,7 @@
   <div>
     <div class="item">
       <div class="tit">{{ sort }}. 话题列表显示创建时间</div>
-      <input
-        type="checkbox"
-        :checked="modelValue"
-        @change="$emit('update:modelValue', $event.target.checked)"
-      />
+      <input type="checkbox" :checked="modelValue" @change="$emit('update:modelValue', $event.target.checked)" />
     </div>
   </div>
 </template>
@@ -21,7 +17,7 @@ export default {
       const timestamp = Number(time);
       const date = new Date(timestamp);
       const now = new Date();
-      const isToday = 
+      const isToday =
         now.getFullYear() === date.getFullYear() &&
         now.getMonth() === date.getMonth() &&
         now.getDate() === date.getDate();

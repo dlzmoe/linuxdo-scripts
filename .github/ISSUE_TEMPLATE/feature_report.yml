@@ -3,6 +3,16 @@ labels: feature
 name: "💡 功能请求"
 description: 为这个项目提出一个创意需求
 body:
+  - type: markdown
+    attributes:
+      value: |
+        **开始之前...**
+
+        请注意，以下功能不会添加进扩展：
+
+        1. 自动阅读
+        2. ...
+        
   - type: textarea
     id: steps-to-reproduce
     attributes:

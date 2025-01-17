@@ -4,15 +4,11 @@
     鼠标移动到浏览器最左侧后点击设置按钮，
     <a href="https://linuxdo-scripts-docs.zishu.me/" target="_blank"> 使用教程！ </a>
   </p>
-  <br>
-  <a-space>
-    <a-button @click="openBookmark">收藏夹</a-button>
-    <a-button @click="openShare">分享话题图片</a-button>
+  <a-space style="margin-top:15px">
+    <a-button type="primary" @click="openBookmark">收藏夹</a-button>
+    <a-button type="primary" @click="openShare">分享话题图片</a-button>
     <a-button @click="goGithub">Github</a-button>
   </a-space>
-  <br>
-  <br>
-  <p>【分享话题图片】是实验性功能，敬请期待！</p>
 </template>
 
 <script>

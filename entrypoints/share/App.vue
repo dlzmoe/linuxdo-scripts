@@ -2,12 +2,14 @@
   <div class="body">
     <a-spin :loading="loading">
       <div class="images" v-if="isShow" ref="imagesContainer">
-        <div class="title">{{ imagesData.title }}</div>
-        <div class="author">
-          <span>{{ imagesData.details.created_by.name || imagesData.details.created_by.username }}</span>
-          <span>{{ formatDate(imagesData.created_at) }}</span>
+        <div class="images-box">
+          <div class="title">{{ imagesData.title }}</div>
+          <div class="author">
+            <span>{{ imagesData.details.created_by.name || imagesData.details.created_by.username }}</span>
+            <span>{{ formatDate(imagesData.created_at) }}</span>
+          </div>
+          <div class="markdown-body text" v-html="imagesData.post_stream.posts[0].cooked"></div>
         </div>
-        <div class="markdown-body text" v-html="imagesData.post_stream.posts[0].cooked"></div>
       </div>
       <div class="images" v-else>
         <a-empty />
@@ -44,6 +46,10 @@ export default {
   methods: {
     // 解析链接
     async parseLink() {
+      if (this.postslink == '') {
+        this.$message.warning("请输入链接！");
+        return false;
+      }
       this.loading = true;
       try {
         const url = new URL(this.postslink);
@@ -78,7 +84,6 @@ export default {
         this.loading = false;
         this.$message.success("解析成功！");
       } catch (error) {
-        console.error("Invalid URL format:", error.message);
         this.$message.error("解析失败！");
         this.loading = false;
       }

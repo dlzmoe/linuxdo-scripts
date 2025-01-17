@@ -31,66 +31,74 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  line-height: 1.6;
 
   hr {
     margin: 10px 0;
   }
 
   .images {
-    background-color: #fff;
-    width: 450px;
+    background-color: #ffffff;
+    width: 500px;
     min-height: 300px;
-    padding: 30px;
-    // border: 1px solid #eee;
+    padding: 25px;
     position: relative;
     z-index: 1;
 
-    &::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: calc(100% - 20px);
-      height: calc(100% - 20px);
-      border: 1px solid #ccc;
+    .images-box {
+      background-color: #F9F1E4;
+      padding: 20px;
+      z-index: 1;
       border-radius: 10px;
-      z-index: -1;
-    }
+      border: 1px solid #d7d4d4;
+      position: relative;
 
-    &>.title {
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-
-    &>.author {
-      opacity: 0.6;
-      font-size: 15px;
-      margin-bottom: 10px;
-      font-style: italic;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    &>.text {
-      border-top: 1px solid #d4d3d3;
-      margin-top: 10px;
-      padding-top: 10px;
-      padding-bottom: 20px;
-
-      a+a {
-        margin-top: 10px;
-        display: inline-block;
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0);
       }
 
-      .lightbox-wrapper {
-        .meta {
-          display: none;
+      &>.title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+
+      &>.author {
+        opacity: 0.6;
+        font-size: 15px;
+        margin-bottom: 10px;
+        // font-style: italic;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      &>.text {
+        border-top: 1px solid #d4d3d3;
+        margin-top: 10px;
+        padding-top: 10px;
+        padding-bottom: 20px;
+
+        a+a {
+          margin-top: 10px;
+          display: inline-block;
+        }
+
+        .lightbox-wrapper {
+          .meta {
+            display: none;
+          }
         }
       }
     }
+
+
   }
 
   .container {

@@ -4,7 +4,7 @@
     <li :class="{ act: activeTab === 'news' }" @click="changeTab('news')">最新</li>
     <li :class="{ act: activeTab === 'menu' }" @click="changeTab('menu')">菜单</li>
   </ul>
-  <div class="refresh" @click="refresh">
+  <div class="refresh" title="10分钟自动刷新一次" @click="refresh">
     <Refresh />
   </div>
   <div class="container" ref="container">
@@ -87,11 +87,7 @@ export default {
       this.getHotPosts();
       this.getNewsPosts();
       localStorage.setItem('Timestamp', Date.now());
-      this.$message({
-        message: "已刷新~",
-        type: "success",
-        duration: 1000,
-      });
+      this.$message.success('已刷新~');
     },
 
     // 当容器滚动时，记录当前位置
@@ -136,10 +132,11 @@ export default {
     const Timestamp = localStorage.getItem('Timestamp', Date.now());
     if (Timestamp) {
       const timeDiff = new Date() - Timestamp;
-      if (timeDiff > 300000) { // 五分钟
+      if (timeDiff > 600000) { // 超过 10 分钟
         localStorage.removeItem('hotlist');
         localStorage.removeItem('newslist');
         localStorage.removeItem('Timestamp');
+        localStorage.setItem('Timestamp', Date.now());
       }
     } else {
       localStorage.setItem('Timestamp', Date.now());

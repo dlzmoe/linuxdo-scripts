@@ -140,6 +140,7 @@ export default {
         localStorage.removeItem('hotlist');
         localStorage.removeItem('newslist');
         localStorage.removeItem('Timestamp');
+        localStorage.removeItem('activeTab');
         localStorage.setItem('Timestamp', Date.now());
       }
     } else {

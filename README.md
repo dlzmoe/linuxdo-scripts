@@ -1,31 +1,39 @@
 [中文简体](https://github.com/dlzmoe/linuxdo-scripts/blob/main/README.md) | [English](https://github.com/dlzmoe/linuxdo-scripts/blob/main/README_EN.md)
 
-## LinuxDo Scripts 扩展
+<div align="center">
+  <a href="https://github.com/dlzmoe/linuxdo-scripts">
+    <img src="https://github.com/dlzmoe/linuxdo-scripts/blob/main/public/icon/128.png?raw=true" alt="Logo" width="80" height="80">
+  </a>
 
-<p>
-<img src="https://img.shields.io/github/v/release/dlzmoe/linuxdo-scripts?style=flat-square&label=LinuxDo Scripts 扩展&labelColor=%235D5D5D&color=%23E97435">
-<img src="https://img.shields.io/github/stars/dlzmoe/linuxdo-scripts?style=flat-square&label=Github%20Stars">
-<img src="https://img.shields.io/chrome-web-store/users/fbgblmjbeebanackldpbmpacppflgmlj?style=flat-square&label=Chrome%20Web%20Store">
-<img src="https://img.shields.io/github/license/dlzmoe/linuxdo-scripts?style=flat-square&">
-</p>
+  <h2>LinuxDo Scripts</h2>
+  <p>
+    <a href="https://discord.gg/n2pErsD7Kg">Discord</a>
+    ·
+    <a href="https://linuxdo-scripts.zishu.me">Docs</a>
+    ·
+    <a href="https://github.com/dlzmoe/linuxdo-scripts/issues/new/choose">Issues</a>
+    ·
+    <a href="https://github.com/dlzmoe/linuxdo-scripts/releases/latest">Releases</a>
+    <br />
+  </p>
+
+  <p>
+    <img src="https://img.shields.io/github/v/release/dlzmoe/linuxdo-scripts?style=flat-square&label=LinuxDo Scripts 扩展&labelColor=%235D5D5D&color=%23E97435">
+    <img src="https://img.shields.io/github/stars/dlzmoe/linuxdo-scripts?style=flat-square&label=Github%20Stars">
+    <img src="https://img.shields.io/chrome-web-store/users/fbgblmjbeebanackldpbmpacppflgmlj?style=flat-square&label=Chrome%20Web%20Store">
+    <img src="https://img.shields.io/github/license/dlzmoe/linuxdo-scripts?style=flat-square&">
+  </p>
+
+</div>
 
 ![image](https://github.com/user-attachments/assets/8824696c-f2d4-4cfd-8273-901a3d007a39)
 
 LinuxDo Scripts 扩展，内置完善的收藏夹功能，话题列表显示创建时间，显示楼层数，新标签页打开话题，强制 block（拉黑屏蔽）某人的话题，话题快捷回复（支持自定义），优化签名图显示防止图裂，在话题列表可直接预览详情及评论，设置面板数据同步，楼层抽奖，用户自定义标签，只看楼主，支持自定义 css 样式，中英文混排优化，等级信息查询，AI 总结话题功能、智能生成回复，切换论坛主题皮肤等，更多功能请查看设置列表，功能持续更新，欢迎提出新想法！
 
-[Chrome 商店](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj) |
-[Firefox 商店](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/) |
-~~[Greasyfork 安装](https://greasyfork.org/scripts/501827)~~   
-[Bug 反馈及功能请求](https://github.com/dlzmoe/linuxdo-scripts/issues/new/choose) |
-[使用文档](https://linuxdo-scripts.zishu.me/) |
-[Discord 社区](https://discord.gg/n2pErsD7Kg)
-
 ## 安装使用
 
-- Chrome、Edge、Arc 用户请在 [Chrome 商店中安装](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj)
-- Firefox 用户请在 [Firefox 商店中安装](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/)
-
-[Demo 视频演示](https://github.com/dlzmoe/linuxdo-scripts/blob/main/start.md)
+- Chrome、Edge、Arc、Brave 用户请在 [Chrome Web Store](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj) 中安装
+- Firefox 用户请在 [Firefox Asddons](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/) 中安装
 
 ## 功能特性
 

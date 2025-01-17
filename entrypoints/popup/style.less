@@ -21,13 +21,13 @@
 }
 
 body {
-  width: 400px;
+  width: 450px;
   overflow: hidden;
   font-size: 15px;
   line-height: 1.6;
   color: #000000;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", SegoeUI, "Noto Sans", NotoSans, Helvetica, Arial, sans-serif;
-  padding-top: 50px;
+  padding-top: 55px;
 }
 
 #app {
@@ -46,33 +46,40 @@ a {
   text-decoration: underline;
 }
 
-.nav {
-  height: 45px;
-  display: flex;
-  align-items: center;
+.nav-wrap {
+  padding: 5px;
+  background: #fff;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #fff;
-  padding: 10px;
-  border-bottom: 1px solid #eee;
+  padding: 5px;
+  z-index: 999;
+}
+
+.nav {
+  height: 45px;
+  padding: 0 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
   user-select: none;
 
   li {
     height: 28px;
+    font-size: 14px;
     list-style: none;
-    padding: 0 10px;
+    padding: 0 12px;
     border-radius: 5px;
     margin-right: 5px;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    line-height: 1;
 
     &.act {
-      background: #333;
+      background: #2C3E50;
       color: #fff;
     }
   }
@@ -82,7 +89,7 @@ a {
   padding: 5px 15px;
   padding-bottom: 30px;
   overflow-y: scroll;
-  height: 400px;
+  height: 500px;
 
   .content {
     display: none;
@@ -96,11 +103,12 @@ a {
 .list {
   li {
     border-bottom: 1px solid #eee;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
 
     a {
       text-decoration: none;
-      padding: 5px 0;
+      padding: 4px 0;
+      margin: 4px 0;
       display: inline-flex;
       width: 100%;
       border-radius: 3px;
@@ -110,7 +118,7 @@ a {
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 1;
       overflow: hidden;
-      color: #0f0f0f;
+      color: #2e2e2e;
 
       &:hover {
         text-decoration: underline;
@@ -135,9 +143,15 @@ a {
   }
 }
 
-.refresh {
-  cursor: pointer;
+.fixed-icon {
   position: fixed;
   right: 20px;
-  top: 8px;
+  top: 16px;
+  display: flex;
+  z-index: 999999;
+
+  .item {
+    cursor: pointer;
+    margin-left: 10px;
+  }
 }

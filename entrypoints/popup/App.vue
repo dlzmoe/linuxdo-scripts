@@ -1,12 +1,17 @@
 <template>
-  <ul class="nav">
-    <li :class="{ act: activeTab === 'hot' }" @click="changeTab('hot')">最热</li>
-    <li :class="{ act: activeTab === 'news' }" @click="changeTab('news')">最新</li>
-    <li :class="{ act: activeTab === 'menu' }" @click="changeTab('menu')">菜单</li>
-  </ul>
-  <div class="refresh" title="10分钟自动刷新一次" @click="refresh">
-    <Refresh />
+  <div class="nav-wrap">
+    <ul class="nav">
+      <li :class="{ act: activeTab === 'hot' }" @click="changeTab('hot')">最热</li>
+      <li :class="{ act: activeTab === 'news' }" @click="changeTab('news')">最新</li>
+      <li :class="{ act: activeTab === 'menu' }" @click="changeTab('menu')">菜单</li>
+    </ul>
+    <div class="fixed-icon">
+      <div class="item" title="10分钟自动刷新一次" @click="refresh">
+        <Refresh />
+      </div>
+    </div>
   </div>
+
   <div class="container" ref="container">
     <div class="content" :class="{ act: activeTab === 'hot' }">
       <HotPosts :list="hotlist" />
@@ -87,7 +92,6 @@ export default {
       this.getHotPosts();
       this.getNewsPosts();
       localStorage.setItem('Timestamp', Date.now());
-      this.$message.success('已刷新~');
     },
 
     // 当容器滚动时，记录当前位置

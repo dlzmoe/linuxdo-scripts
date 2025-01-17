@@ -11,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: 功能介绍
-      link: /guide/1-home/home.html
+      link: /guide/0-home/home.html
     - theme: alt
       text: Github
       link: https://github.com/dlzmoe/linuxdo-scripts

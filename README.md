@@ -17,7 +17,7 @@ LinuxDo Scripts 扩展，内置完善的收藏夹功能，话题列表显示创�
 [Firefox 商店](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/) |
 ~~[Greasyfork 安装](https://greasyfork.org/scripts/501827)~~   
 [Bug 反馈及功能请求](https://github.com/dlzmoe/linuxdo-scripts/issues/new/choose) |
-[使用和开发文档](https://linuxdo-scripts-docs.zishu.me/) |
+[使用文档](https://linuxdo-scripts.zishu.me/) |
 [Discord 社区](https://discord.gg/n2pErsD7Kg)
 
 ## 安装使用

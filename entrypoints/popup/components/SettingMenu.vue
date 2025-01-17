@@ -4,11 +4,15 @@
     鼠标移动到浏览器最左侧后点击设置按钮，
     <a href="https://linuxdo-scripts-docs.zishu.me/" target="_blank"> 使用教程！ </a>
   </p>
-  <a-space style="margin-top:15px">
+
+  <a-divider />
+
+  <a-space>
     <a-button type="primary" @click="openBookmark">收藏夹</a-button>
     <a-button type="primary" @click="openShare">分享话题图片</a-button>
-    <a-button @click="goGithub">Github</a-button>
+    <a-button type="outline" @click="goGithub">Github</a-button>
   </a-space>
+
 </template>
 
 <script>
@@ -31,6 +35,14 @@ export default {
         url: browserAPI.runtime.getURL("share.html"),
       });
     },
+    // 设置
+    goSetting() {
+      const browserAPI = typeof browser !== "undefined" ? browser : chrome;
+      browserAPI.tabs.create({
+        url: browserAPI.runtime.getURL("options.html"),
+      });
+    },
+
     goGithub() {
       window.open("https://github.com/dlzmoe/linuxdo-scripts", "_blank");
     },

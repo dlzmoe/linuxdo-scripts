@@ -51,10 +51,6 @@
         </ul>
         <div class="menu-body">
           <div class="menu-body-item" v-show="activeIndex == 0">
-            
-            <!-- 新年快乐 -->
-            <HappyNewYear v-model="settingData.HappyNewYear" />
-
             <div class="menu-about">
               <p>请注意，该设置面板数据全部保存在本地浏览器缓存中，注意备份。</p>
               <p class="hint">
@@ -250,7 +246,6 @@ import BackToTop from "./components/Button/BackToTop.vue";
 import Updates from "./components/Other/Updates.vue";
 import UsageTip from "./components/Other/UsageTip.vue";
 import Signature from "./components/Other/Signature.vue";
-import HappyNewYear from "./components/Other/HappyNewYear.vue";
 
 // svg 图标
 import Setting1 from "./components/Svg/Setting1.vue";
@@ -324,7 +319,6 @@ export default {
     MenuBookmark,
     MenuHideWelfareDone,
     MenuTopicToImages,
-    HappyNewYear,
   },
   data() {
     return {
@@ -386,7 +380,6 @@ export default {
         checked40: false,
         checked42: false,
         checked43: false,
-        HappyNewYear: true,
         removePostavatarData: {
           enable: false,
           showAuthor: false,

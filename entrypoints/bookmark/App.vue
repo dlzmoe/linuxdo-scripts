@@ -2,15 +2,15 @@
   <div class="flex">
     <div class="fixed">
       <!-- 文件夹 -->
-      <div class="item" @click="toggleMenu('folder')" :class="{active:menutype == 'folder'}" title="文件夹"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="currentColor"  class="icon icon-tabler icons-tabler-filled icon-tabler-folder"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 3a1 1 0 0 1 .608 .206l.1 .087l2.706 2.707h6.586a3 3 0 0 1 2.995 2.824l.005 .176v8a3 3 0 0 1 -2.824 2.995l-.176 .005h-14a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-11a3 3 0 0 1 2.824 -2.995l.176 -.005h4z" /></svg></div>
+      <div class="item" @click="toggleMenu('folder')" :class="{active:menutype == 'folder'}" title="文件夹"><svg xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="currentColor"  class="icon icon-tabler icons-tabler-filled icon-tabler-folder"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 3a1 1 0 0 1 .608 .206l.1 .087l2.706 2.707h6.586a3 3 0 0 1 2.995 2.824l.005 .176v8a3 3 0 0 1 -2.824 2.995l-.176 .005h-14a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-11a3 3 0 0 1 2.824 -2.995l.176 -.005h4z" /></svg></div>
       <!-- 分类 -->
-      <div class="item" @click="toggleMenu('cate')" :class="{active:menutype == 'cate'}" title="话题分类"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="currentColor"  class="icon icon-tabler icons-tabler-filled icon-tabler-category"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 3h-6a1 1 0 0 0 -1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1 -1v-6a1 1 0 0 0 -1 -1z" /><path d="M20 3h-6a1 1 0 0 0 -1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1 -1v-6a1 1 0 0 0 -1 -1z" /><path d="M10 13h-6a1 1 0 0 0 -1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1 -1v-6a1 1 0 0 0 -1 -1z" /><path d="M17 13a4 4 0 1 1 -3.995 4.2l-.005 -.2l.005 -.2a4 4 0 0 1 3.995 -3.8z" /></svg></div>
+      <div class="item" @click="toggleMenu('cate')" :class="{active:menutype == 'cate'}" title="话题分类"><svg xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="currentColor"  class="icon icon-tabler icons-tabler-filled icon-tabler-category"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 3h-6a1 1 0 0 0 -1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1 -1v-6a1 1 0 0 0 -1 -1z" /><path d="M20 3h-6a1 1 0 0 0 -1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1 -1v-6a1 1 0 0 0 -1 -1z" /><path d="M10 13h-6a1 1 0 0 0 -1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1 -1v-6a1 1 0 0 0 -1 -1z" /><path d="M17 13a4 4 0 1 1 -3.995 4.2l-.005 -.2l.005 -.2a4 4 0 0 1 3.995 -3.8z" /></svg></div>
       <!-- 标签 -->
-      <div class="item" @click="toggleMenu('tags')" :class="{active:menutype == 'tags'}" title="标签"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="currentColor"  class="icon icon-tabler icons-tabler-filled icon-tabler-tags"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9.172 5a3 3 0 0 1 2.121 .879l5.71 5.71a3.41 3.41 0 0 1 0 4.822l-3.592 3.592a3.41 3.41 0 0 1 -4.822 0l-5.71 -5.71a3 3 0 0 1 -.879 -2.121v-4.172a3 3 0 0 1 3 -3zm-2.172 4h-.01a1 1 0 1 0 .01 2a1 1 0 0 0 0 -2" /><path d="M14.293 5.293a1 1 0 0 1 1.414 0l4.593 4.592a5.82 5.82 0 0 1 0 8.23l-1.592 1.592a1 1 0 0 1 -1.414 -1.414l1.592 -1.592a3.82 3.82 0 0 0 0 -5.402l-4.592 -4.592a1 1 0 0 1 0 -1.414" /></svg></div>
+      <div class="item" @click="toggleMenu('tags')" :class="{active:menutype == 'tags'}" title="标签"><svg xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="currentColor"  class="icon icon-tabler icons-tabler-filled icon-tabler-tags"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9.172 5a3 3 0 0 1 2.121 .879l5.71 5.71a3.41 3.41 0 0 1 0 4.822l-3.592 3.592a3.41 3.41 0 0 1 -4.822 0l-5.71 -5.71a3 3 0 0 1 -.879 -2.121v-4.172a3 3 0 0 1 3 -3zm-2.172 4h-.01a1 1 0 1 0 .01 2a1 1 0 0 0 0 -2" /><path d="M14.293 5.293a1 1 0 0 1 1.414 0l4.593 4.592a5.82 5.82 0 0 1 0 8.23l-1.592 1.592a1 1 0 0 1 -1.414 -1.414l1.592 -1.592a3.82 3.82 0 0 0 0 -5.402l-4.592 -4.592a1 1 0 0 1 0 -1.414" /></svg></div>
       <!-- Webdav 同步 -->
       <div class="item" @click="openWebdavDialog" title="WebDAV 同步"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z"/></svg></div>
       <!-- 手动新增 -->
-      <div class="item" @click="openAddPostDialog" title="手动新增收藏链接"><svg xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-file-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 3v4a1 1 0 0 0 1 1h4" /><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" /><path d="M12 11l0 6" /><path d="M9 14l6 0" /></svg></div>
+      <div class="item" @click="openAddPostDialog" title="添加书签"><svg xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-file-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 3v4a1 1 0 0 0 1 1h4" /><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" /><path d="M12 11l0 6" /><path d="M9 14l6 0" /></svg></div>
     </div>
 
     <div class="head-search">
@@ -83,8 +83,11 @@
           <a-table-column title="类别" data-index="cate" :width="200">
             <template #cell="{ record }">
               <div class="category-cell">
-                <img v-if="getCategoryInfo(record.cate)?.uploaded_logo"
-                  :src="`https://linux.do${getCategoryInfo(record.cate).uploaded_logo.url}`" class="category-icon" />
+                <img 
+                  v-if="getCategoryInfo(record.cate)?.uploaded_logo"
+                  :src="`https://linux.do${getCategoryInfo(record.cate).uploaded_logo.url}`"
+                  class="category-icon" 
+                />
                 <span :style="{ color: '#' + getCategoryInfo(record.cate)?.color }">
                   {{ record.cate }}
                 </span>
@@ -155,20 +158,27 @@
     </a-modal>
   </a-modal>
 
-  <!-- 转移操作对话框 -->
-  <a-modal v-model:visible="moveDialogVisible" title="转移到其他文件夹" width="400px">
-    <a-select
-      v-model="targetCategoryId"
-      placeholder="选择目标文件夹"
-      style="width: 100%"
-    >
-      <a-option
-        v-for="category in filteredCategories"
-        :key="category.id"
-        :label="category.name"
-        :value="category.id"
-      />
-    </a-select>
+  <!-- 修改对话框 -->
+  <a-modal v-model:visible="moveDialogVisible" title="修改书签" width="500px" class="modify-box">
+    <div class="item">
+      <label>修改名称</label>
+      <a-input v-model="editname" />
+    </div>
+    <div class="item">
+      <label>迁移至</label>
+      <a-select
+        v-model="targetCategoryId"
+        placeholder="选择目标文件夹"
+        style="width: 100%"
+      >
+        <a-option
+          v-for="category in filteredCategories"
+          :key="category.id"
+          :label="category.name"
+          :value="category.id"
+        />
+      </a-select>
+    </div>
     <template #footer>
       <div class="dialog-footer">
         <a-space>
@@ -383,6 +393,7 @@ export default {
       editCateName: '', // 编辑中的分类名称
       currentEditCate: null, // 当前编辑的分类对象
 
+      editname: "",
       // 转移动作
       moveDialogVisible: false,
       currentMoveItem: null, // 当前要转移的项
@@ -422,7 +433,7 @@ export default {
   },
   computed: {
     filteredCategories() {
-      return this.bookmarklist.filter((item) => item.id !== this.selectedItemId)
+      return this.bookmarklist.filter((item) => item.id)
     },
   },
   methods: {
@@ -542,65 +553,69 @@ export default {
       this.editDialogVisible = false
       localStorage.setItem('bookmarkData', JSON.stringify(this.bookmarklist))
     },
-    // 打开转移对话框
+
+    // 打开修改框
     openMoveDialog(row) {
-      this.currentMoveItem = row
-      this.targetCategoryId = null
-      this.moveDialogVisible = true
+      this.editname = row.title;
+      this.currentMoveItem = row;
+      this.targetCategoryId = this.selectedItemId;
+      this.moveDialogVisible = true;
     },
-    // 执行转移操作
+    // 保存修改操作（修改名称、迁移文件夹）
     moveItem() {
-      if (this.targetCategoryId === null) {
-        this.$message.error('请选择目标文件夹')
-        return
+    if (this.targetCategoryId === null) {
+      this.$message.error('请选择目标文件夹')
+      return
+    }
+
+    // 更新标题名称
+    if(this.editname !== this.currentMoveItem.title) {
+      this.currentMoveItem.title = this.editname;
+    }
+
+    // 查找目标文件夹
+    const targetCategory = this.bookmarklist.find(
+      (item) => item.id === this.targetCategoryId
+    )
+
+    // 在所有文件夹中查找并移除项目
+    let itemMoved = false;
+    this.bookmarklist.forEach(folder => {
+      const index = folder.list.findIndex(item => item === this.currentMoveItem);
+      if (index > -1) {
+        folder.list.splice(index, 1);
+        itemMoved = true;
+      }
+    });
+
+    // 添加到目标文件夹最前面
+    if (itemMoved) {
+      targetCategory.list.unshift(this.currentMoveItem);  // 改用 unshift 添加到数组开头
+      
+      // 根据当前视图更新显示
+      if (this.menutype === 'tags') {
+        this.initPostTags();
+        if (this.selectItemTagsId >= this.tagslist.length) {
+          this.selectItemTagsId = Math.max(0, this.tagslist.length - 1);
+        }
+        this.tableData = this.tagslist.length > 0 ? this.tagslist[this.selectItemTagsId] : { list: [] };
+      } 
+      else if (this.menutype === 'cate') {
+        this.initPostCategory();
+        if (this.selectItemCateId >= this.catelist.length) {
+          this.selectItemCateId = Math.max(0, this.catelist.length - 1);
+        }
+        this.tableData = this.catelist.length > 0 ? this.catelist[this.selectItemCateId] : { list: [] };
+      }
+      else {
+        this.tableData = this.bookmarklist.find(item => item.id === this.selectedItemId);
       }
 
-      // 查找目标文件夹
-      const targetCategory = this.bookmarklist.find(
-        (item) => item.id === this.targetCategoryId
-      )
-
-      // 在所有文件夹中查找并移除项目
-      let itemMoved = false;
-      this.bookmarklist.forEach(folder => {
-        const index = folder.list.findIndex(item => item === this.currentMoveItem);
-        if (index > -1) {
-          folder.list.splice(index, 1);
-          itemMoved = true;
-        }
-      });
-
-      // 添加到目标文件夹
-      if (itemMoved) {
-        targetCategory.list.push(this.currentMoveItem);
-        
-        // 根据当前视图更新显示
-        if (this.menutype === 'tags') {
-          this.initPostTags();
-          // 检查索引是否仍然有效
-          if (this.selectItemTagsId >= this.tagslist.length) {
-            this.selectItemTagsId = Math.max(0, this.tagslist.length - 1);
-          }
-          this.tableData = this.tagslist.length > 0 ? this.tagslist[this.selectItemTagsId] : { list: [] };
-        } 
-        else if (this.menutype === 'cate') {
-          this.initPostCategory();
-          // 检查索引是否仍然有效
-          if (this.selectItemCateId >= this.catelist.length) {
-            this.selectItemCateId = Math.max(0, this.catelist.length - 1);
-          }
-          this.tableData = this.catelist.length > 0 ? this.catelist[this.selectItemCateId] : { list: [] };
-        }
-        else {
-          // this.tableData = this.bookmarklist[this.selectedItemId];
-          this.tableData = this.bookmarklist.find(item => item.id === this.selectedItemId);
-        }
-
-        this.$message.success('收藏夹转移成功！');
-        this.moveDialogVisible = false;
-        localStorage.setItem('bookmarkData', JSON.stringify(this.bookmarklist));
-        this.Loading();
-      }
+      this.$message.success('修改成功！');
+      this.moveDialogVisible = false;
+      localStorage.setItem('bookmarkData', JSON.stringify(this.bookmarklist));
+      this.Loading();
+    }
     },
 
     openDelDialog(row) {
@@ -1022,10 +1037,6 @@ export default {
 
     // 保存配置
     async saveWebDAVConfig() {
-      // const hasPermission = await this.requestWebDAVPermission(this.webdavConfig.serverUrl);
-      // if(!hasPermission) {
-      //   return false;
-      // }
       try {
         // 先验证所有必填字段是否存在且不为空
         const config = {
@@ -1122,6 +1133,8 @@ export default {
       // 当滚动超过 200px 时显示按钮
       this.showGoTop = window.scrollY > 200
     },
+
+    // 返回顶部
     gotop() {
       const currentPosition = window.pageYOffset || document.documentElement.scrollTop
       if (currentPosition > 0) {

@@ -13,12 +13,21 @@
     <a-button type="outline" @click="goGithub">Github</a-button>
   </a-space>
 
+  <a-divider />
+
+  <div class="item">
+    <label>开启该设置时，会关闭论坛中的设置按钮。</label>
+    <a-switch v-model="isShow" @change="ShowSettingConfig" />
+  </div>
+
 </template>
 
 <script>
 export default {
   data() {
-    return {};
+    return {
+      isShow: false,
+    };
   },
   methods: {
     // 收藏夹
@@ -46,8 +55,29 @@ export default {
     goGithub() {
       window.open("https://github.com/dlzmoe/linuxdo-scripts", "_blank");
     },
+
+    // 是否隐藏设置按钮
+    ShowSettingConfig() {
+      localStorage.setItem("isShowSettingConfig", this.isShow);
+      const browserAPI = typeof browser !== "undefined" ? browser : chrome;
+      const data = { isShowSettingConfig: this.isShow };
+      browserAPI.storage.local.set({ transferData: data }, () => {
+        // 获取当前标签页并发送消息
+        browserAPI.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+          browserAPI.tabs.sendMessage(tabs[0].id, { action: "getData" });
+        });
+
+        this.$message.success('切换成功！')
+      });
+    }
   },
-  created() { },
+  created() {
+    const isShowSettingConfig = localStorage.getItem("isShowSettingConfig");
+
+    if (JSON.parse(isShowSettingConfig)) {
+      this.isShow = JSON.parse(isShowSettingConfig);
+    }
+  },
 };
 </script>
 
@@ -55,5 +85,18 @@ export default {
 .el-button {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  label {
+    flex: 1;
+    color: #333;
+    font-size: 14px;
+    margin-right: 10px;
+  }
 }
 </style>

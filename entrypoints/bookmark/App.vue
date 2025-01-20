@@ -563,59 +563,59 @@ export default {
     },
     // 保存修改操作（修改名称、迁移文件夹）
     moveItem() {
-    if (this.targetCategoryId === null) {
-      this.$message.error('请选择目标文件夹')
-      return
-    }
-
-    // 更新标题名称
-    if(this.editname !== this.currentMoveItem.title) {
-      this.currentMoveItem.title = this.editname;
-    }
-
-    // 查找目标文件夹
-    const targetCategory = this.bookmarklist.find(
-      (item) => item.id === this.targetCategoryId
-    )
-
-    // 在所有文件夹中查找并移除项目
-    let itemMoved = false;
-    this.bookmarklist.forEach(folder => {
-      const index = folder.list.findIndex(item => item === this.currentMoveItem);
-      if (index > -1) {
-        folder.list.splice(index, 1);
-        itemMoved = true;
+      if (this.targetCategoryId === null) {
+        this.$message.error('请选择目标文件夹')
+        return
       }
-    });
 
-    // 添加到目标文件夹最前面
-    if (itemMoved) {
-      targetCategory.list.unshift(this.currentMoveItem);  // 改用 unshift 添加到数组开头
-      
-      // 根据当前视图更新显示
-      if (this.menutype === 'tags') {
-        this.initPostTags();
-        if (this.selectItemTagsId >= this.tagslist.length) {
-          this.selectItemTagsId = Math.max(0, this.tagslist.length - 1);
+      // 更新标题名称
+      if(this.editname !== this.currentMoveItem.title) {
+        this.currentMoveItem.title = this.editname;
+      }
+
+      // 查找目标文件夹
+      const targetCategory = this.bookmarklist.find(
+        (item) => item.id === this.targetCategoryId
+      )
+
+      // 在所有文件夹中查找并移除项目
+      let itemMoved = false;
+      this.bookmarklist.forEach(folder => {
+        const index = folder.list.findIndex(item => item === this.currentMoveItem);
+        if (index > -1) {
+          folder.list.splice(index, 1);
+          itemMoved = true;
         }
-        this.tableData = this.tagslist.length > 0 ? this.tagslist[this.selectItemTagsId] : { list: [] };
-      } 
-      else if (this.menutype === 'cate') {
-        this.initPostCategory();
-        if (this.selectItemCateId >= this.catelist.length) {
-          this.selectItemCateId = Math.max(0, this.catelist.length - 1);
-        }
-        this.tableData = this.catelist.length > 0 ? this.catelist[this.selectItemCateId] : { list: [] };
-      }
-      else {
-        this.tableData = this.bookmarklist.find(item => item.id === this.selectedItemId);
-      }
+      });
 
-      this.$message.success('修改成功！');
-      this.moveDialogVisible = false;
-      localStorage.setItem('bookmarkData', JSON.stringify(this.bookmarklist));
-      this.Loading();
-    }
+      // 添加到目标文件夹最前面
+      if (itemMoved) {
+        targetCategory.list.unshift(this.currentMoveItem);  // 改用 unshift 添加到数组开头
+        
+        // 根据当前视图更新显示
+        if (this.menutype === 'tags') {
+          this.initPostTags();
+          if (this.selectItemTagsId >= this.tagslist.length) {
+            this.selectItemTagsId = Math.max(0, this.tagslist.length - 1);
+          }
+          this.tableData = this.tagslist.length > 0 ? this.tagslist[this.selectItemTagsId] : { list: [] };
+        } 
+        else if (this.menutype === 'cate') {
+          this.initPostCategory();
+          if (this.selectItemCateId >= this.catelist.length) {
+            this.selectItemCateId = Math.max(0, this.catelist.length - 1);
+          }
+          this.tableData = this.catelist.length > 0 ? this.catelist[this.selectItemCateId] : { list: [] };
+        }
+        else {
+          this.tableData = this.bookmarklist.find(item => item.id === this.selectedItemId);
+        }
+
+        this.$message.success('修改成功！');
+        this.moveDialogVisible = false;
+        localStorage.setItem('bookmarkData', JSON.stringify(this.bookmarklist));
+        this.Loading();
+      }
     },
 
     openDelDialog(row) {
@@ -962,13 +962,14 @@ export default {
             // 对每个分组的 list 去重
             mergedMap.forEach(bookmark => {
               const uniqueUrls = new Map();
-              bookmark.list = bookmark.list.filter(item => {
+              // 反转数组，这样后面的会先被处理，从而覆盖前面的
+              bookmark.list = bookmark.list.reverse().filter(item => {
                 if (!uniqueUrls.has(item.url)) {
                   uniqueUrls.set(item.url, true);
                   return true;
                 }
                 return false;
-              });
+              }).reverse(); // 再反转回来保持原有顺序
             });
 
             // 转换回数组形式

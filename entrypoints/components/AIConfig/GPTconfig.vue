@@ -28,6 +28,21 @@
       <input style="width:32%;margin-left:1%" disabled type="text" v-model="localChecked.full_url" placeholder="/v1/chat/completions" />
       <input style="width:32%;margin-left:1%" type="text" v-model="localChecked.model" placeholder="模型，如：gpt-4o-mini" />
     </div>
+    <div class="item temperature">
+      <div class="tit">
+        <label>是否开启温度（temperature）{{ localChecked.temperature }}</label>
+        <input
+          type="range"
+          :title="localChecked.temperature"
+          v-model="localChecked.temperature"
+          min="0"
+          max="2"
+          step="0.1" 
+          placeholder="0.7"
+        />
+      </div>
+      <input type="checkbox" v-model="localChecked.isTemPer" @change="handleChange" />
+    </div>
     <div class="item">注意：请按照指定格式填写参数；不支持 http，请使用 https。</div>
     <div class="item">6. AI 总结帖子 prompt:</div>
     <textarea v-model="localChecked.prompt"></textarea>
@@ -54,6 +69,8 @@ export default {
         baseurl: 'https://api.openai.com',
         full_url: '/v1/chat/completions',
         model: 'gpt-4o-mini',
+        isTemPer: true,
+        temperature: 0.7,
         prompt: '根据以下帖子内容进行总结，请使用 markdown 格式返回回答，没有字数限制，但要求文字精炼，简介准确，语言要求返回简体中文，并且进行中英文混排优化。可以通过编号列表（1，2，3）列出核心要点。注意不要输出标题，例如：核心要点总结，帖子总结等，直接输出文本段落。',
         prompt1: '根据以下帖子内容，帮我给作者写一条回复，简短，表明我的观点，用口语回复，不需要很正式。您可以通过讨论的方式进行回复，这将有助于引导其他用户或作者进行互动。',
         prompt2: '根据以下帖子内容，生成一个合适的标题用于社交论坛发布使用，格式要求：不要书名号或其他符号，只需要一句纯文本。尽量精简到 15 字以内，如果字数不够表达主题，可以适当多生成几个字。',
@@ -114,7 +131,7 @@ ${str}`
                 content: prompt,
               },
             ],
-            temperature: 0.7,
+            ...(config.isTemPer ? { temperature: Number(config.temperature) } : {}),
           }),
         })
           .then((response) => {
@@ -155,6 +172,7 @@ ${str}`
           })
       })
     },
+    
     // 生成 AI 回复
     async setAIRelpy() {
       $('.aireply-popup').show()
@@ -181,7 +199,7 @@ ${str}`
                 content: prompt,
               },
             ],
-            temperature: 0.7,
+            ...(config.isTemPer ? { temperature: Number(config.temperature) } : {}),
           }),
         })
           .then((response) => {
@@ -227,7 +245,7 @@ ${topic_contentdata}`
                 content: prompt,
               },
             ],
-            temperature: 0.7,
+            ...(config.isTemPer ? { temperature: Number(config.temperature) } : {}),
           }),
         })
           .then((response) => {
@@ -257,16 +275,9 @@ ${topic_contentdata}`
       `)
 
       setInterval(() => {
-        if (
-          $('.gpt-summary-wrap').length < 1 &&
-          $('.aireplay-btn').length < 1
-        ) {
-          $('#topic-title').after(
-            `<button class="aireplay-btn" type="button">AI 回复</button>`
-          )
-          $('.aireplay-btn').click(() => {
-            this.setAIRelpy()
-          })
+        if ($('.gpt-summary-wrap').length < 1 && $('.aireplay-btn').length < 1) {
+          $('#topic-title').after(`<button class="aireplay-btn" type="button">AI 回复</button>`)
+          $('.aireplay-btn').click(() => {this.setAIRelpy()})
           $('.aireply-popup-close').click(() => {
             $('.aireply-popup').hide()
             $('.aireply-popup-text').html('AI 推荐回复正在生成中，请稍后。。。')
@@ -363,10 +374,22 @@ ${topic_contentdata}`
 
 .flex {
   display: flex;
-  margin-top: 10px;
+  margin-top: 8px;
 
   input {
     flex: 1;
+  }
+}
+
+.item.temperature {
+  
+  label {
+    margin-right: 10px !important;
+  }
+
+  input[type="range"] {
+    flex: 1;
+    width: auto !important;
   }
 }
 </style>

@@ -326,7 +326,7 @@ export default {
   },
   data() {
     return {
-      isShow: true,
+      isShow: false,
 
       opacity: false,
       showdialog: false,

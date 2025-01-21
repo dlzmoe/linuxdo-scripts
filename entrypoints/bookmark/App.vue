@@ -7,10 +7,10 @@
       <div class="item" @click="toggleMenu('cate')" :class="{active:menutype == 'cate'}" title="话题分类"><svg xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="currentColor"  class="icon icon-tabler icons-tabler-filled icon-tabler-category"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 3h-6a1 1 0 0 0 -1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1 -1v-6a1 1 0 0 0 -1 -1z" /><path d="M20 3h-6a1 1 0 0 0 -1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1 -1v-6a1 1 0 0 0 -1 -1z" /><path d="M10 13h-6a1 1 0 0 0 -1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1 -1v-6a1 1 0 0 0 -1 -1z" /><path d="M17 13a4 4 0 1 1 -3.995 4.2l-.005 -.2l.005 -.2a4 4 0 0 1 3.995 -3.8z" /></svg></div>
       <!-- 标签 -->
       <div class="item" @click="toggleMenu('tags')" :class="{active:menutype == 'tags'}" title="标签"><svg xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="currentColor"  class="icon icon-tabler icons-tabler-filled icon-tabler-tags"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9.172 5a3 3 0 0 1 2.121 .879l5.71 5.71a3.41 3.41 0 0 1 0 4.822l-3.592 3.592a3.41 3.41 0 0 1 -4.822 0l-5.71 -5.71a3 3 0 0 1 -.879 -2.121v-4.172a3 3 0 0 1 3 -3zm-2.172 4h-.01a1 1 0 1 0 .01 2a1 1 0 0 0 0 -2" /><path d="M14.293 5.293a1 1 0 0 1 1.414 0l4.593 4.592a5.82 5.82 0 0 1 0 8.23l-1.592 1.592a1 1 0 0 1 -1.414 -1.414l1.592 -1.592a3.82 3.82 0 0 0 0 -5.402l-4.592 -4.592a1 1 0 0 1 0 -1.414" /></svg></div>
-      <!-- Webdav 同步 -->
-      <div class="item" @click="openWebdavDialog" title="WebDAV 同步"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z"/></svg></div>
       <!-- 手动新增 -->
       <div class="item" @click="openAddPostDialog" title="添加书签"><svg xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-file-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 3v4a1 1 0 0 0 1 1h4" /><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" /><path d="M12 11l0 6" /><path d="M9 14l6 0" /></svg></div>
+      <!-- Webdav 同步 -->
+      <div class="item" @click="openWebdavDialog" title="WebDAV 同步"><svg xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-settings"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" /><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /></svg></div>
     </div>
 
     <div class="head-search">
@@ -203,7 +203,8 @@
   </a-modal>
 
   <!-- Webdav 同步 -->
-  <a-modal v-model:visible="WebdavDialog" title="收藏夹 WebDAV 同步设置" :footer="false" width="550px">
+  <a-modal v-model:visible="WebdavDialog" title="收藏夹设置" :footer="false" width="550px">
+    <div class="item-title">Webdav 同步</div>
     <a-form :model="webdavConfig" label-width="100px">
       <a-form-item label="服务器地址：">
         <a-input v-model="webdavConfig.serverUrl" placeholder="https://example.com/dav/"/>
@@ -232,6 +233,15 @@
       <label for="file-upload" class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal">导入 json 文件</label>
       <input id="file-upload" type="file" @change="importData" style="display: none" />
     </a-space>
+    <br><br>
+    <div class="item-title">其他设置</div>
+    <div class="item">
+      <label>主题风格：</label>
+      <a-radio-group type="button" v-model="themes" @change="setThemes">
+        <a-radio value="light">明亮</a-radio>
+        <a-radio value="dark">黑夜</a-radio>
+      </a-radio-group>
+    </div>
   </a-modal>
 
   <!-- 手动新增收藏链接 -->
@@ -428,12 +438,17 @@ export default {
         title: "",
         cate: "",
         tags: "",
-      }
+      },
+
+      // 黑夜模式
+      themes: "light", // light / dark
     }
   },
   computed: {
     filteredCategories() {
-      return this.bookmarklist.filter((item) => item.id)
+      // return this.bookmarklist.filter((item) => item.id);
+      // 迁移文件夹时，要看到全部的文件夹
+      return this.bookmarklist;
     },
   },
   methods: {
@@ -1197,7 +1212,6 @@ export default {
       }
       
     },
-
     // 确认填充
     setAddAccess() {
       if(this.addPost.title == '' || this.addPost.url == '') {
@@ -1219,7 +1233,21 @@ export default {
       localStorage.setItem('bookmarkData', JSON.stringify(this.bookmarklist));
       this.$message.success("新增成功！");
       this.clearAccess();
-    }
+    },
+
+    /*
+    * 切换风格主题
+    */
+    setThemes() {
+      localStorage.setItem('themes', this.themes);
+      if(this.themes == 'dark') {
+        // 设置为暗黑主题
+        document.body.setAttribute('arco-theme', 'dark')
+      } else {
+        // 恢复亮色主题
+        document.body.removeAttribute('arco-theme');
+      }
+    },
     
   },
   mounted() {
@@ -1231,6 +1259,19 @@ export default {
     window.removeEventListener('scroll', this.handleScroll)
   },
   created() {
+    // 获取风格主题
+    const themes = localStorage.getItem('themes');
+    if(themes){
+      this.themes = themes;
+      if(this.themes == 'dark') {
+        // 设置为暗黑主题
+        document.body.setAttribute('arco-theme', 'dark')
+      } else {
+        // 恢复亮色主题
+        document.body.removeAttribute('arco-theme');
+      }
+    }
+
     const bookmarkData = localStorage.getItem('bookmarkData')
     if (bookmarkData && JSON.parse(bookmarkData).length > 0) {
       this.bookmarklist = JSON.parse(bookmarkData)

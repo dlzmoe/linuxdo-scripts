@@ -906,3 +906,9 @@ body.body-preview #main-outlet-wrapper {
 .topic-list .topic-list-data.posters {
   width: 146px !important;
 }
+
+@media(max-width:1000px) {
+  #linuxdoscripts .setting-btn {
+    bottom: 50px;
+  }
+}

@@ -94,7 +94,7 @@ export default {
 
   label {
     flex: 1;
-    color: #333;
+    color: var(--color-neutral-6);
     font-size: 14px;
     margin-right: 10px;
   }

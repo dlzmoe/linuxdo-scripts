@@ -39,6 +39,8 @@ export default {
       newslist: [], // 最新列表
 
       lastScrollPosition: 0, // 存储滚动位置
+
+      themes: 'light', // 主题风格
     };
   },
   components: {
@@ -115,6 +117,19 @@ export default {
     },
   },
   created() {
+
+    // 获取风格主题
+    const themes = localStorage.getItem('themes');
+    if(themes){
+      this.themes = themes;
+      if(this.themes == 'dark') {
+        // 设置为暗黑主题
+        document.body.setAttribute('arco-theme', 'dark')
+      } else {
+        // 恢复亮色主题
+        document.body.removeAttribute('arco-theme');
+      }
+    }
 
     /* 找到上次打开的位置 */
     const activeTab = localStorage.getItem('activeTab');

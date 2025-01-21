@@ -12,13 +12,13 @@
   box-sizing: border-box;
 }
 
-.linuxdoscripts-setting-wrap>button {
+.linuxdoscripts-setting-wrap > button {
   opacity: 0;
   margin-left: -50px;
   transition: all 0.2s linear;
 }
 
-.linuxdoscripts-setting-wrap:hover>button {
+.linuxdoscripts-setting-wrap:hover > button {
   opacity: 1;
   margin-left: 0;
 }
@@ -29,12 +29,11 @@
     position: fixed;
   }
 
-  .linuxdoscripts-setting-wrap>button {
+  .linuxdoscripts-setting-wrap > button {
     opacity: 1;
     margin-left: 0;
   }
 }
-
 .linuxdoscripts-setting {
   display: flex;
   align-items: center;
@@ -201,7 +200,7 @@
   background-color: var(--primary-low);
 }
 
-#linuxdoscripts button+button {
+#linuxdoscripts button + button {
   margin-left: 8px;
 }
 
@@ -517,13 +516,13 @@
   color: #666;
 }
 
-.topicpreview .topicpreview-container .topicpreview-content>.item {
+.topicpreview .topicpreview-container .topicpreview-content > .item {
   display: flex;
   align-items: flex-start;
   padding: 20px 30px;
 }
 
-.topicpreview .topicpreview-container .topicpreview-content>.item .itemfloor {
+.topicpreview .topicpreview-container .topicpreview-content > .item .itemfloor {
   width: 50px;
   text-align: left;
   font-size: 16px;
@@ -531,7 +530,7 @@
   color: #25b4cf;
 }
 
-.topicpreview .topicpreview-container .topicpreview-content>.item .itempost {
+.topicpreview .topicpreview-container .topicpreview-content > .item .itempost {
   flex: 1;
   background: var(--tertiary-low);
   padding: 15px 15px;
@@ -540,17 +539,17 @@
   word-break: break-all;
 }
 
-.topicpreview .topicpreview-container .topicpreview-content>.item .itempost pre code {
+.topicpreview .topicpreview-container .topicpreview-content > .item .itempost pre code {
   max-width: 620px;
 }
 
-.topicpreview .topicpreview-container .topicpreview-content>.item .itempost img {
+.topicpreview .topicpreview-container .topicpreview-content > .item .itempost img {
   max-width: 100%;
   max-height: 100%;
   height: auto;
 }
 
-.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemname {
+.topicpreview .topicpreview-container .topicpreview-content > .item .itempost .itemname {
   font-size: 16px;
   color: #8f3a3a;
   display: flex;
@@ -558,12 +557,12 @@
   align-items: center;
 }
 
-.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemname span {
+.topicpreview .topicpreview-container .topicpreview-content > .item .itempost .itemname span {
   color: #9e9e9e;
   margin-left: 20px;
 }
 
-.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemdate {
+.topicpreview .topicpreview-container .topicpreview-content > .item .itempost .itemdate {
   color: #b9b9b9;
   font-size: 16px;
   margin-left: auto;
@@ -739,13 +738,11 @@ body.body-preview #main-outlet-wrapper {
     transform: translateY(10px);
     opacity: 0;
   }
-
   100% {
     transform: translateY(0);
     opacity: 1;
   }
 }
-
 .pangutext {
   cursor: pointer;
   margin-left: 20px;
@@ -853,7 +850,7 @@ body.body-preview #main-outlet-wrapper {
   cursor: pointer;
 }
 
-.menu-table .span+.span {
+.menu-table .span + .span {
   margin-left: 10px;
 }
 
@@ -887,7 +884,7 @@ body.body-preview #main-outlet-wrapper {
   color: var(--primary-medium);
 }
 
-.UsageTip>div {
+.UsageTip > div {
   margin: 10px 0;
 }
 
@@ -907,7 +904,7 @@ body.body-preview #main-outlet-wrapper {
   width: 146px !important;
 }
 
-@media(max-width:1000px) {
+@media (max-width: 1000px) {
   #linuxdoscripts .setting-btn {
     bottom: 50px;
   }

@@ -499,7 +499,7 @@ export default {
     selectItem(id) {
       this.selectedItemId = id;
       this.tableData = this.bookmarklist.find(item => item.id === id);
-      console.log(this.tableData);
+      // console.log(this.tableData);
       
       this.Loading();
     },

@@ -88,9 +88,8 @@
                   :src="`https://linux.do${getCategoryInfo(record.cate).uploaded_logo.url}`"
                   class="category-icon" 
                 />
-                <span :style="{ color: '#' + getCategoryInfo(record.cate)?.color }">
-                  {{ record.cate }}
-                </span>
+                <!-- <span :style="{ color: '#' + getCategoryInfo(record.cate)?.color }">{{ record.cate }}</span> -->
+                <span>{{ record.cate }}</span>
               </div>
             </template>
           </a-table-column>

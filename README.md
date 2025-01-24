@@ -33,6 +33,7 @@ LinuxDo Scripts 扩展，内置完善的收藏夹功能，话题列表显示创�
 ## 安装使用
 
 - Chrome、Edge、Arc、Brave 用户请在 [Chrome Web Store](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj) 中安装
+- 国内用户（无魔法环境）请选择 [Crx 商店](https://www.crxsoso.com/webstore/detail/fbgblmjbeebanackldpbmpacppflgmlj)
 - Firefox 用户请在 [Firefox Asddons](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/) 中安装
 
 ## 功能特性

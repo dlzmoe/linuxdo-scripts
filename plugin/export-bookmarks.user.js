@@ -3,10 +3,9 @@
 // @namespace   https://github.com/dlzmoe/linuxdo-scripts
 // @match       https://linux.do/*
 // @grant       none
-// @version     1.0
+// @version     1.2
 // @author      dlzmoe
 // ==/UserScript==
-
 (function () {
   'use strict';
   const myusernameStr = $('.d-header-icons .icon img.avatar').attr('src');
@@ -31,39 +30,67 @@
     45: "深海幽域"
   };
 
-  setTimeout(() => {
-    fetch(`https://linux.do/u/${myusername}/bookmarks.json`)
-      .then((response) => response.json())
-      .then((data) => {
-        let formattedData = [{
-          id: 0,
-          name: "默认",
-          list: data.user_bookmark_list.bookmarks.map(item => ({
-            cate: categoryMap[item.category_id] || "未分类",
-            tags: item.tags,
-            title: item.title,
-            url: `https://linux.do/t/topic/${item.topic_id}`
-          }))
-        }];
+  setTimeout(async () => {
+    try {
+      let allBookmarks = [];
+      let page = 0;
+      let hasMore = true;
 
-        alert('书签导出成功，请前往扩展收藏夹手动导入下载的 json 文件！');
-
-        // 创建 Blob 对象
-        const blob = new Blob([JSON.stringify(formattedData, null, 2)], {
-          type: 'application/json'
+      while (hasMore) {
+        const response = await fetch(`https://linux.do/u/${myusername}/bookmarks.json?page=${page}`, {
+          headers: {
+            'Accept': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest',
+            'User-Agent': navigator.userAgent,
+            'Referer': `https://linux.do/u/${myusername}/bookmarks`,
+            'Origin': 'https://linux.do'
+          },
+          credentials: 'include'
         });
 
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = `${myusername}-bookmarks.json`;
-        document.body.appendChild(link);
-        link.click();
-        URL.revokeObjectURL(url);
-        document.body.removeChild(link);
-      })
-      .catch((error) => {
-        console.log(error);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        if (!data.user_bookmark_list?.bookmarks?.length) {
+          hasMore = false;
+        } else {
+          allBookmarks = allBookmarks.concat(data.user_bookmark_list.bookmarks);
+          page++;
+          // 添加延迟避免请求过快
+          await new Promise(resolve => setTimeout(resolve, 500));
+        }
+      }
+
+      let formattedData = [{
+        id: 0,
+        name: "默认",
+        list: allBookmarks.map(item => ({
+          cate: categoryMap[item.category_id] || "未分类",
+          tags: item.tags,
+          title: item.title,
+          url: `https://linux.do/t/topic/${item.topic_id}`
+        }))
+      }];
+
+      alert(`成功导出 ${allBookmarks.length} 个书签，请前往扩展收藏夹手动导入下载的 json 文件！`);
+
+      const blob = new Blob([JSON.stringify(formattedData, null, 2)], {
+        type: 'application/json'
       });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${myusername}-bookmarks.json`;
+      document.body.appendChild(link);
+      link.click();
+      URL.revokeObjectURL(url);
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error('导出书签时发生错误：', error);
+      alert('导出书签失败，请检查控制台查看错误信息。');
+    }
   }, 100);
 })();

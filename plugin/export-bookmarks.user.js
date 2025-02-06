@@ -9,12 +9,11 @@
 (function () {
   'use strict';
   const myusernameStr = $('.d-header-icons .icon img.avatar').attr('src');
-  const myusername = myusernameStr.replace(/^\/user_avatar\/linux\.do\//, '').split('/')[0];
+  // 使用 indexOf 和 substring 方法提取用户名
+  const start = myusernameStr.indexOf('/user_avatar/linux.do/') + '/user_avatar/linux.do/'.length;
+  const end = myusernameStr.indexOf('/', start);
+  const myusername = myusernameStr.substring(start, end);
 
-  // 如果导出失败，把下面的注释展开，并修改为你的用户名。
-  // var myusername = "anghunk";
-
-  // 分类映射
   const categoryMap = {
     4: "开发调优",
     14: "资源荟萃",

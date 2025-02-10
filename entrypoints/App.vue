@@ -130,6 +130,8 @@
             <MenuTopicToImages :sort="37" v-model="settingData.checked43" />
             <!-- 查看话题内自己回复的楼层数（抽奖贴适用） -->
             <MenuViewOwnReply :sort="38" v-model="settingData.checked44" />
+            <!-- 新建话题时自动切换到【搞七捻三】类别（暂不可自定义） -->
+            <MenuAddTopicCate :sort="39" v-model="settingData.checked45" />
           </div>
           <div class="menu-body-item" v-show="activeIndex == 1">
             <!-- 自定义论坛 logo -->
@@ -218,6 +220,7 @@ import MenuBookmark from "./components/BasicSettings/MenuBookmark.vue";
 import MenuHideWelfareDone from "./components/BasicSettings/MenuHideWelfareDone.vue";
 import MenuTopicToImages from "./components/BasicSettings/MenuTopicToImages.vue";
 import MenuViewOwnReply from "./components/BasicSettings/MenuViewOwnReply.vue";
+import MenuAddTopicCate from "./components/BasicSettings/MenuAddTopicCate.vue";
 
 // 自定义文字
 import MenuOtherCss from "./components/CustomText/MenuOtherCss.vue";
@@ -323,6 +326,7 @@ export default {
     MenuHideWelfareDone,
     MenuTopicToImages,
     MenuViewOwnReply,
+    MenuAddTopicCate,
   },
   data() {
     return {
@@ -387,6 +391,7 @@ export default {
         checked42: false,
         checked43: false,
         checked44: false,
+        checked45: false,
         removePostavatarData: {
           enable: false,
           showAuthor: false,

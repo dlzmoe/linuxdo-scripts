@@ -2,7 +2,7 @@
   "name": "linuxdo-scripts",
   "description": "manifest.json description",
   "private": true,
-  "version": "1.0.32",
+  "version": "1.0.33",
   "type": "module",
   "scripts": {
     "dev": "wxt",
@@ -24,6 +24,7 @@
     "jquery": "^3.7.1",
     "marked": "^14.1.1",
     "pangu": "^4.0.7",
+    "publish": "^0.6.0",
     "vue": "^3.5.12",
     "webdav": "^5.7.1",
     "webext-dynamic-content-scripts": "^10.0.3",

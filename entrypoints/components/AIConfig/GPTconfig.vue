@@ -1,7 +1,8 @@
 <template>
   <div>
     <p>
-      <a style="color: #e00" href="https://linuxdo-scripts-docs.zishu.me/guide/5-ai/ai-summary.html" target="_blank">查看 AI 使用文档！</a>
+      <a style="color: #e00" href="https://linuxdo-scripts-docs.zishu.me/guide/5-ai/ai-summary.html" target="_blank">查看
+        AI 使用文档！</a>
     </p>
     <div class="item">
       <div class="tit">1. 是否开启 AI 生成话题总结</div>
@@ -25,21 +26,15 @@
     <input type="text" v-model="localChecked.apikey" placeholder="sk-xxxxxxxx" />
     <div class="flex">
       <input style="width:33%" type="text" v-model="localChecked.baseurl" placeholder="https://api.openai.com" />
-      <input style="width:32%;margin-left:1%" disabled type="text" v-model="localChecked.full_url" placeholder="/v1/chat/completions" />
+      <input style="width:32%;margin-left:1%" disabled type="text" v-model="localChecked.full_url"
+        placeholder="/v1/chat/completions" />
       <input style="width:32%;margin-left:1%" type="text" v-model="localChecked.model" placeholder="模型，如：gpt-4o-mini" />
     </div>
     <div class="item temperature">
       <div class="tit">
         <label>是否开启温度（temperature）{{ localChecked.temperature }}</label>
-        <input
-          type="range"
-          :title="localChecked.temperature"
-          v-model="localChecked.temperature"
-          min="0"
-          max="2"
-          step="0.1" 
-          placeholder="0.7"
-        />
+        <input type="range" :title="localChecked.temperature" v-model="localChecked.temperature" min="0" max="2"
+          step="0.1" placeholder="0.7" />
       </div>
       <input type="checkbox" v-model="localChecked.isTemPer" @change="handleChange" />
     </div>
@@ -111,7 +106,7 @@ export default {
       )
 
       const config = JSON.parse(localStorage.getItem('linxudoscriptssettingDMI')).gptdata;
-         
+
       return new Promise((resolve, reject) => {
         const str = $('#topic-title h1 a').text() + $('#post_1 .cooked').text()
         const prompt = `${config.prompt}
@@ -131,48 +126,77 @@ ${str}`
                 content: prompt,
               },
             ],
+            stream: true, // 开启流式输出
             ...(config.isTemPer ? { temperature: Number(config.temperature) } : {}),
           }),
         })
           .then((response) => {
             if (!response.ok) {
-              reject(`HTTP error! status: ${response.status}`)
+              throw new Error(`HTTP error! status: ${response.status}`);
             }
-            return response.json()
-          })
-          .then((gptData) => {
-            $('.gpt-summary').html(
-              `${marked.parse(gptData.choices[0].message.content)}`
-            )
 
-            let summaryCache =
-              JSON.parse(localStorage.getItem('summaryCacheData')) || []
-            const regex = /^(https:\/\/linux\.do\/t\/topic\/\d+)(\/\d+)?$/
-            const match = window.location.href.match(regex)[1]
-            let existingObject = summaryCache.find((item) => item.name == match)
+            const reader = response.body.getReader();
+            const decoder = new TextDecoder();
+            let fullContent = '';
 
-            let newObject = {
-              name: match,
-              value: gptData.choices[0].message.content,
+            function processStream({ done, value }) {
+              if (done) {
+                // 流结束时保存到 localStorage
+                let summaryCache = JSON.parse(localStorage.getItem('summaryCacheData')) || [];
+                const regex = /^(https:\/\/linux\.do\/t\/topic\/\d+)(\/\d+)?$/;
+                const match = window.location.href.match(regex)[1];
+
+                let existingObject = summaryCache.find((item) => item.name == match);
+                let newObject = {
+                  name: match,
+                  value: fullContent,
+                };
+
+                if (existingObject) {
+                  existingObject.value = newObject.value;
+                } else {
+                  summaryCache.push(newObject);
+                }
+
+                localStorage.setItem('summaryCacheData', JSON.stringify(summaryCache));
+                return resolve();
+              }
+
+              // 解码收到的数据
+              const chunk = decoder.decode(value, { stream: true });
+              const lines = chunk.split('\n');
+
+              // 处理每一行数据
+              lines.forEach(line => {
+                if (line.startsWith('data: ') && line !== 'data: [DONE]') {
+                  try {
+                    const jsonData = JSON.parse(line.slice(6));
+                    if (jsonData.choices[0].delta.content) {
+                      const content = jsonData.choices[0].delta.content;
+                      fullContent += content;
+                      // 使用 marked 实时渲染 markdown
+                      $('.gpt-summary').html(marked.parse(fullContent));
+                    }
+                  } catch (error) {
+                    console.log('Parse chunk error:', error);
+                  }
+                }
+              });
+
+              // 继续读取下一个数据块
+              return reader.read().then(processStream);
             }
-            if (existingObject) {
-              // 旧数据覆盖
-              existingObject.value = newObject.value
-            } else {
-              summaryCache.push(newObject)
-            }
-            // 将帖子总结的数据缓存
-            localStorage.setItem('summaryCacheData',JSON.stringify(summaryCache))
 
-            resolve()
+            return reader.read().then(processStream);
           })
           .catch((error) => {
-            $('.gpt-summary').html(`生成失败，请检查配置是否正确并刷新重试！`)
-            console.log(error)
-          })
+            $('.gpt-summary').html(`生成失败，请检查配置是否正确并刷新重试！`);
+            console.log(error);
+          });
+
       })
     },
-    
+
     // 生成 AI 回复
     async setAIRelpy() {
       $('.aireply-popup').show()
@@ -277,7 +301,7 @@ ${topic_contentdata}`
       setInterval(() => {
         if ($('.gpt-summary-wrap').length < 1 && $('.aireplay-btn').length < 1) {
           $('#topic-title').after(`<button class="aireplay-btn" type="button">AI 回复</button>`)
-          $('.aireplay-btn').click(() => {this.setAIRelpy()})
+          $('.aireplay-btn').click(() => { this.setAIRelpy() })
           $('.aireply-popup-close').click(() => {
             $('.aireply-popup').hide()
             $('.aireply-popup-text').html('AI 推荐回复正在生成中，请稍后。。。')
@@ -382,7 +406,7 @@ ${topic_contentdata}`
 }
 
 .item.temperature {
-  
+
   label {
     margin-right: 10px !important;
   }

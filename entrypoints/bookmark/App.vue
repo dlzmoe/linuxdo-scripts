@@ -1330,6 +1330,14 @@ export default {
       this.webdavConfig.password = atob(this.webdavConfig.password)
     }
 
+    // 判断 close=1，立即删除当前页面
+    // 获取 URLSearchParams 对象
+    const closeParams = new URLSearchParams(window.location.search);
+
+    if(closeParams.get('close') == 1) {
+      window.close();
+    }
+
   },
 }
 </script>

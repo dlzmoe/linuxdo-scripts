@@ -4,7 +4,6 @@
     <input type="checkbox" :checked="modelValue" @change="$emit('update:modelValue', $event.target.checked)" />
   </div>
 </template>
-
 <script>
 import $ from "jquery";
 export default {
@@ -13,6 +12,7 @@ export default {
   data() {
     return {
       eventListeners: [],
+      lastHtml: "", // 用于存储上一次的 HTML
     };
   },
   methods: {
@@ -21,25 +21,23 @@ export default {
       a.setAttribute("href", url);
       a.setAttribute("target", "_blank");
       a.setAttribute("id", id);
-      // 防止反复添加
       if (!document.getElementById(id)) {
         document.body.appendChild(a);
       }
       a.click();
     },
     init() {
-      // 移除之前的事件监听器
       this.removeEventListeners();
-      // 添加新的事件监听器
-      $(".topic-list a.title,.topic .search-link").each((index, element) => {
-        const listener = (event) => {
-          event.preventDefault();
-          var url = $(element).attr("href");
-          // window.open(url, "_blank");
-          this.createSuperLabel(url, url);
-        };
-        $(element).on("click", listener);
-        this.eventListeners.push({ element, listener });
+      $("a").each((index, element) => {
+        const url = $(element).attr("href");
+        if (url && url.includes('/t/topic/')) {
+          const listener = (event) => {
+            event.preventDefault();
+            this.createSuperLabel(url, url);
+          };
+          $(element).on("click", listener);
+          this.eventListeners.push({ element, listener });
+        }
       });
     },
     removeEventListeners() {
@@ -49,31 +47,39 @@ export default {
       this.eventListeners = [];
     },
   },
-  created() {
+  watch: {
+    modelValue(newVal) {
+      if (newVal) {
+        this.init();
+        // 初始存储 HTML
+        this.lastHtml = document.body.innerHTML;
+        setInterval(() => {
+          const currentHtml = document.body.innerHTML;
+          if (currentHtml !== this.lastHtml) {
+            this.lastHtml = currentHtml;
+            this.init();
+          }
+        }, 1000);
+      } else {
+        this.removeEventListeners();
+      }
+    }
+  },
+  mounted() {
     if (this.modelValue) {
-      let pollinglength1 = 0;
-      let pollinglength2 = 0;
-      let pollinglength3 = 0;
+      this.init();
+      // 初始存储 HTML
+      this.lastHtml = document.body.innerHTML;
       setInterval(() => {
-        if (pollinglength1 != $(".topic-list-body tr").length) {
-          pollinglength1 = $(".topic-list-body tr").length;
-          this.init();
-          
-        }
-        if (pollinglength2 != $(".post-stream .topic-post").length) {
-          pollinglength2 = $(".post-stream .topic-post").length;
-          this.init();
-        }
-
-        if (pollinglength3 != $(".top-date-string").html()) {
-          pollinglength3 = $(".top-date-string").html();
+        const currentHtml = document.body.innerHTML;
+        if (currentHtml !== this.lastHtml) {
+          this.lastHtml = currentHtml;
           this.init();
         }
       }, 1000);
     }
   },
   beforeDestroy() {
-    // 组件销毁前移除所有事件监听器
     this.removeEventListeners();
   },
 };

@@ -18,21 +18,22 @@
   </p>
 
   <p>
-    <img src="https://img.shields.io/github/v/release/dlzmoe/linuxdo-scripts?style=flat-square&label=LinuxDo Scripts Extension&labelColor=%235D5D5D&color=%23E97435">
-    <img src="https://img.shields.io/github/stars/dlzmoe/linuxdo-scripts?style=flat-square&label=Github%20Stars">
-    <img src="https://img.shields.io/chrome-web-store/users/fbgblmjbeebanackldpbmpacppflgmlj?style=flat-square&label=Chrome%20Web%20Store">
-    <img src="https://img.shields.io/github/license/dlzmoe/linuxdo-scripts?style=flat-square&">
+    <img src="https://img.shields.io/github/v/release/dlzmoe/linuxdo-scripts?style=flat&label=LinuxDo Scripts&labelColor=%235D5D5D&color=%23E97435">
+    <img src="https://img.shields.io/github/stars/dlzmoe/linuxdo-scripts?style=flat&label=Github%20Stars">
+    <img src="https://img.shields.io/chrome-web-store/users/fbgblmjbeebanackldpbmpacppflgmlj?style=flat&label=Chrome%20Web%20Store">
+    <img src="https://img.shields.io/github/license/dlzmoe/linuxdo-scripts?style=flat&">
   </p>
 
 </div>
 
 ![image](https://github.com/user-attachments/assets/8824696c-f2d4-4cfd-8273-901a3d007a39)
 
-The LinuxDo Scripts extension comes with a comprehensive bookmark feature, displays topic creation times in the topic list, shows the number of floors, opens topics in new tabs, allows forced blocking (blacklisting) of certain users' topics, quick replies to topics (with customization support), optimizes signature image display to prevent broken images, allows previewing details and comments directly from the topic list, syncs settings panel data, includes floor-based giveaways, user-defined tags, a "View Only OP" feature, supports custom CSS styles, optimizes mixed Chinese and English text display, adds level information lookup, AI topic summarization, intelligent reply generation, forum theme skin switching, and more. For more features, please check the settings list. Features are continuously updated, and new ideas are welcome!
+The LinuxDo Scripts extension comes with a comprehensive bookmark feature, displays topic creation times in the topic list, shows the number of floors, opens topics in new tabs, forcibly blocks (blacklists) topics from specific users, allows quick replies to topics (with customization), optimizes signature image display to prevent broken images, enables previewing details and comments directly from the topic list, synchronizes settings panel data, includes floor-based giveaways, user-defined tags, a "View Only OP" feature, supports custom CSS styles, optimizes mixed Chinese-English text display, provides level information lookup, AI-powered topic summarization, intelligent reply generation, forum theme skin switching, and more. For additional features, please check the settings list. Features are continuously updated, and new ideas are welcome!
 
 ## Installation and Usage
 
 - Chrome, Edge, Arc, and Brave users can install it from the [Chrome Web Store](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj).
+- Users in China (without VPN access) can choose to install it from [Crx Store](https://www.crxsoso.com/webstore/detail/fbgblmjbeebanackldpbmpacppflgmlj).
 - Firefox users can install it from [Firefox Add-ons](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/).
 
 ## Features
@@ -44,10 +45,10 @@ The LinuxDo Scripts extension comes with a comprehensive bookmark feature, displ
 - [x] Display topic creation time in the topic list
 - [x] Show the number of floors
 - [x] Open topics in new tabs
-- [x] Force block (blacklist) certain users' topics
-- [x] Quick replies to topics (with customization support)
+- [x] Force block (blacklist) topics from specific users
+- [x] Quick replies to topics (with customization)
 - [x] Optimize signature image display to prevent broken images
-- [x] Sync settings panel data
+- [x] Synchronize settings panel data
 - [x] Floor-based giveaways
 - [x] "View Only OP" toggle feature
 - [x] Automatic dark mode switching
@@ -55,10 +56,10 @@ The LinuxDo Scripts extension comes with a comprehensive bookmark feature, displ
 - [x] Preview details and comments directly from the topic list
 - [x] Optimize comment box emoticons
 - [x] Support custom CSS styles
-- [x] Optimize mixed Chinese and English text display
+- [x] Optimize mixed Chinese-English text display
 - [x] Add level information lookup
 - [x] Switch forum emoticon styles
-- [x] AI topic summarization and intelligent reply generation
+- [x] AI-powered topic summarization and intelligent reply generation
 - [x] Switch forum theme skins
 - [x] More features available in the settings list
 
@@ -74,7 +75,7 @@ The LinuxDo Scripts extension comes with a comprehensive bookmark feature, displ
 
 </details>
 
-## Development Notes
+## Development Instructions
 
 ```
 node: v22.12.0
@@ -90,7 +91,7 @@ npm install # Install dependencies
 npm run dev # Run locally
 ```
 
-After starting, open the local `.output` folder and drag `chrome-mv3` into `chrome://extensions/` to start development.
+After starting, open the local `.output` folder and drag `chrome-mv3` into `chrome://extensions/` to begin development.
 
 No build is required. After submitting a PR, I will review it, and if there are no major issues, it will be merged as soon as possible.
 
@@ -106,7 +107,7 @@ No build is required. After submitting a PR, I will review it, and if there are 
 
 ## Disclaimer
 
-All features provided in this script run only in the browser. The source code is publicly visible and transparent. This script is for learning and research purposes only and does not participate in any profit schemes or organizations. Any disputes arising from or related to the use of this script should be resolved through friendly negotiation. The script is not responsible for any form of loss or damage caused to the user or others while using the software provided by this script. By downloading, installing, and using the software provided in this product, the user agrees to trust the author and the related agreements and disclaimers.
+All features provided in this script run only in the browser. The source code used is transparent and visible. This script is for learning and research purposes only and does not participate in any profit schemes or organizations. Any disputes arising from or related to the use of this script should be resolved amicably through negotiation. This script is not responsible for any form of loss or damage caused to the user or others while using the software provided by this script. By downloading, installing, and using the software provided in this product, the user agrees to trust the author and the related agreements and disclaimers.
 
 ## License
 

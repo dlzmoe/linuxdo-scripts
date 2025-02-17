@@ -18,10 +18,10 @@
   </p>
 
   <p>
-    <img src="https://img.shields.io/github/v/release/dlzmoe/linuxdo-scripts?style=flat-square&label=LinuxDo Scripts 扩展&labelColor=%235D5D5D&color=%23E97435">
-    <img src="https://img.shields.io/github/stars/dlzmoe/linuxdo-scripts?style=flat-square&label=Github%20Stars">
-    <img src="https://img.shields.io/chrome-web-store/users/fbgblmjbeebanackldpbmpacppflgmlj?style=flat-square&label=Chrome%20Web%20Store">
-    <img src="https://img.shields.io/github/license/dlzmoe/linuxdo-scripts?style=flat-square&">
+    <img src="https://img.shields.io/github/v/release/dlzmoe/linuxdo-scripts?style=flat&label=LinuxDo Scripts&labelColor=%235D5D5D&color=%23E97435">
+    <img src="https://img.shields.io/github/stars/dlzmoe/linuxdo-scripts?style=flat&label=Github%20Stars">
+    <img src="https://img.shields.io/chrome-web-store/users/fbgblmjbeebanackldpbmpacppflgmlj?style=flat&label=Chrome%20Web%20Store">
+    <img src="https://img.shields.io/github/license/dlzmoe/linuxdo-scripts?style=flat&">
   </p>
 
 </div>

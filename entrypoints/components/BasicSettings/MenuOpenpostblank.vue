@@ -28,9 +28,17 @@ export default {
     },
     init() {
       this.removeEventListeners();
+      const excludeClasses = [
+        'fancy-title', // 标题
+        'start-date', // 侧边时间轴 - 开始
+        'now-date', // 侧边时间轴 - 结束
+      ];
+
       $("a").each((index, element) => {
         const url = $(element).attr("href");
-        if (url && url.includes('/t/topic/')) {
+        const shouldExclude = excludeClasses.some(className => $(element).hasClass(className));
+
+        if (url && url.includes('/t/topic/') && !shouldExclude) {
           const listener = (event) => {
             event.preventDefault();
             this.createSuperLabel(url, url);

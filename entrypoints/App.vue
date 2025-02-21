@@ -132,6 +132,8 @@
             <MenuViewOwnReply :sort="38" v-model="settingData.checked44" />
             <!-- 是否美化过长的昵称 -->
             <MenuUsernameLength :sort="39" v-model="settingData.checked45" />
+            <!-- 是否开启超长显示器宽度优化 -->
+            <MenuMonitorWidthOptimization :sort="40" v-model="settingData.checked46" />
           </div>
           <div class="menu-body-item" v-show="activeIndex == 1">
             <!-- 自定义论坛 logo -->
@@ -221,6 +223,7 @@ import MenuHideWelfareDone from "./components/BasicSettings/MenuHideWelfareDone.
 import MenuTopicToImages from "./components/BasicSettings/MenuTopicToImages.vue";
 import MenuViewOwnReply from "./components/BasicSettings/MenuViewOwnReply.vue";
 import MenuUsernameLength from "./components/BasicSettings/MenuUsernameLength.vue";
+import MenuMonitorWidthOptimization from "./components/BasicSettings/MenuMonitorWidthOptimization.vue";
 
 // 自定义文字
 import MenuOtherCss from "./components/CustomText/MenuOtherCss.vue";
@@ -327,6 +330,7 @@ export default {
     MenuTopicToImages,
     MenuViewOwnReply,
     MenuUsernameLength,
+    MenuMonitorWidthOptimization,
   },
   data() {
     return {
@@ -392,6 +396,7 @@ export default {
         checked43: false,
         checked44: false,
         checked45: false,
+        checked46: false,
         removePostavatarData: {
           enable: false,
           showAuthor: false,

@@ -2,7 +2,7 @@
   "name": "linuxdo-scripts",
   "description": "manifest.json description",
   "private": true,
-  "version": "1.0.37",
+  "version": "1.0.38",
   "type": "module",
   "scripts": {
     "dev": "wxt",

@@ -10,6 +10,11 @@ import $ from "jquery";
 export default {
   props: ["modelValue", "sort"],
   emits: ["update:modelValue"],
+  data() {
+    return {
+      checked1: false,
+    }
+  },
   methods: {
     init() {
       if ($(".topicpreview").length < 1) {
@@ -62,7 +67,7 @@ export default {
                 previewData.created_at
               )}</p>
                 <div class="topicpreview-content"></div>
-                <p style="text-align: center;">仅显示前 20 条，<a href="/t/topic/${previewurl}/">查看更多</a></p>
+                <p style="text-align: center;">仅显示前 20 条，<a class="preview-link" href="/t/topic/${previewurl}/">查看更多</a></p>
               `);
 
               $.each(previewData.post_stream.posts, function (index, post) {
@@ -105,8 +110,10 @@ export default {
   },
   created() {
     if (this.modelValue) {
+      this.checked1 = JSON.parse(localStorage.getItem('linxudoscriptssettingDMI')).checked1;
       setInterval(() => {
         this.init();
+        $('.preview-link').attr('target', '_blank');
       }, 1000);
 
       let pollinglength1 = 0;

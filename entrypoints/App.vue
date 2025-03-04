@@ -108,32 +108,30 @@
             <MenuAutoDark :sort="24" v-model="settingData.checked27" />
             <!-- 是否隐藏输入框提示文字 -->
             <MenuHiddenPlaceholder :sort="25" v-model="settingData.checked28" />
-            <!-- 是否禁用浏览帖子时 URL 更新楼层数 -->
-            <MenuDisableReplaceState :sort="26" v-model="settingData.checked29" />
             <!-- 是否移除话题上的头像 (减少网络请求) -->
-            <MenuRemovePostAvatar :sort="27" v-model="settingData.removePostavatarData" />
+            <MenuRemovePostAvatar :sort="26" v-model="settingData.removePostavatarData" />
             <!-- 是否显示返回顶部按钮 -->
-            <MenuBackToTop :sort="29" v-model="settingData.checked34" />
+            <MenuBackToTop :sort="27" v-model="settingData.checked34" />
             <!-- 是否显示快捷点赞主题按钮 -->
-            <MenuQuickLikeTopic :sort="30" v-model="settingData.checked35" />
+            <MenuQuickLikeTopic :sort="28" v-model="settingData.checked35" />
             <!-- 隐藏新消息小蓝点（除帖子未读小蓝点） -->
-            <MenuHideNewBluedot :sort="32" v-model="settingData.checked37" />
+            <MenuHideNewBluedot :sort="29" v-model="settingData.checked37" />
             <!-- gif 头像转静态图片 -->
-            <MenuGifToPng :sort="33" v-model="settingData.checked38" />
+            <MenuGifToPng :sort="30" v-model="settingData.checked38" />
             <!-- 新增是否隐藏首页 banner 区域 -->
-            <MenuHideHomeBanner :sort="34" v-model="settingData.checked39" />
+            <MenuHideHomeBanner :sort="31" v-model="settingData.checked39" />
             <!-- 是否开启收藏功能 -->
-            <MenuBookmark :sort="35" v-model="settingData.checked40" />
+            <MenuBookmark :sort="32" v-model="settingData.checked40" />
             <!-- 是否自动隐藏“福利羊毛”中已领完的帖子 -->
-            <MenuHideWelfareDone :sort="36" v-model="settingData.checked42" />
+            <MenuHideWelfareDone :sort="33" v-model="settingData.checked42" />
             <!-- 是否开启话题转为图片进行分享 -->
-            <MenuTopicToImages :sort="37" v-model="settingData.checked43" />
+            <MenuTopicToImages :sort="34" v-model="settingData.checked43" />
             <!-- 查看话题内自己回复的楼层数（抽奖贴适用） -->
-            <MenuViewOwnReply :sort="38" v-model="settingData.checked44" />
+            <MenuViewOwnReply :sort="35" v-model="settingData.checked44" />
             <!-- 是否美化过长的昵称 -->
-            <MenuUsernameLength :sort="39" v-model="settingData.checked45" />
+            <MenuUsernameLength :sort="36" v-model="settingData.checked45" />
             <!-- 是否开启超长显示器宽度优化 -->
-            <MenuMonitorWidthOptimization :sort="40" v-model="settingData.checked46" />
+            <MenuMonitorWidthOptimization :sort="37" v-model="settingData.checked46" />
           </div>
           <div class="menu-body-item" v-show="activeIndex == 1">
             <!-- 自定义论坛 logo -->
@@ -211,7 +209,6 @@ import MenuShowRepltBtn from "./components/BasicSettings/MenuShowRepltBtn.vue";
 import MenuDonotTopic from "./components/BasicSettings/MenuDonotTopic.vue";
 import MenuAutoDark from "./components/BasicSettings/MenuAutoDark.vue";
 import MenuHiddenPlaceholder from "./components/BasicSettings/MenuHiddenPlaceholder.vue";
-import MenuDisableReplaceState from "./components/BasicSettings/MenuDisableReplaceState.vue";
 import MenuRemovePostAvatar from "./components/BasicSettings/MenuRemovePostAvatar.vue";
 import MenuBackToTop from "./components/BasicSettings/MenuBackToTop.vue";
 import MenuQuickLikeTopic from "./components/BasicSettings/MenuQuickLikeTopic.vue";
@@ -317,7 +314,6 @@ export default {
     MenuDonotTopic,
     MenuAutoDark,
     MenuHiddenPlaceholder,
-    MenuDisableReplaceState,
     MenuRemovePostAvatar,
     MenuBackToTop,
     BackToTop,
@@ -385,7 +381,6 @@ export default {
         checked26: true,
         checked27: false,
         checked28: false,
-        checked29: false,
         checked34: true,
         checked35: false,
         checked37: false,
@@ -403,6 +398,7 @@ export default {
         },
         usertags: [],
         gptdata: {
+          aiProvider: "openai",
           value1: false,
           value2: false,
           title: false,

@@ -26,7 +26,7 @@
     <input type="text" v-model="localChecked.apikey" placeholder="sk-xxxxxxxx" />
     <div class="flex">
       <input style="width:33%" type="text" v-model="localChecked.baseurl" placeholder="https://api.openai.com" />
-      <input style="width:32%;margin-left:1%" disabled type="text" v-model="localChecked.full_url"
+      <input style="width:32%;margin-left:1%" type="text" v-model="localChecked.full_url"
         placeholder="/v1/chat/completions" />
       <input style="width:32%;margin-left:1%" type="text" v-model="localChecked.model" placeholder="模型，如：gpt-4o-mini" />
     </div>

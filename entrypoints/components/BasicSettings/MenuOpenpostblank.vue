@@ -6,75 +6,59 @@
 </template>
 
 <script>
-import $ from "jquery";
 export default {
   props: ["modelValue", "sort"],
   emits: ["update:modelValue"],
-  data() {
-    return {
-      eventListeners: [],
-    };
-  },
-  methods: {
-    createSuperLabel(url, id) {
-      let a = document.createElement("a");
-      a.setAttribute("href", url);
-      a.setAttribute("target", "_blank");
-      a.setAttribute("id", id);
-      // 防止反复添加
-      if (!document.getElementById(id)) {
-        document.body.appendChild(a);
-      }
-      a.click();
-    },
-    init() {
-      // 移除之前的事件监听器
-      this.removeEventListeners();
-      // 添加新的事件监听器
-      $(".topic-list a.title,.topic .search-link").each((index, element) => {
-        const listener = (event) => {
-          event.preventDefault();
-          var url = $(element).attr("href");
-          // window.open(url, "_blank");
-          this.createSuperLabel(url, url);
-        };
-        $(element).on("click", listener);
-        this.eventListeners.push({ element, listener });
-      });
-    },
-    removeEventListeners() {
-      this.eventListeners.forEach(({ element, listener }) => {
-        $(element).off("click", listener);
-      });
-      this.eventListeners = [];
-    },
-  },
   created() {
     if (this.modelValue) {
-      let pollinglength1 = 0;
-      let pollinglength2 = 0;
-      let pollinglength3 = 0;
-      setInterval(() => {
-        if (pollinglength1 != $(".topic-list-body tr").length) {
-          pollinglength1 = $(".topic-list-body tr").length;
-          this.init();
 
-        }
-        if (pollinglength2 != $(".post-stream .topic-post").length) {
-          pollinglength2 = $(".post-stream .topic-post").length;
-          this.init();
-        }
+      // 处理链接点击
+      function handleLinkClick(e) {
+        e.preventDefault();
+        e.stopPropagation(); // 阻止事件冒泡
+        window.open(this.href, '_blank', 'noopener,noreferrer');
+      }
 
-        if (pollinglength3 != $(".top-date-string").html()) {
-          pollinglength3 = $(".top-date-string").html();
-          this.init();
+      // 主要功能
+      function processLinks() {
+        // 查找所有帖子标题链接
+        const links = document.querySelectorAll('.link-top-line a.title:not([data-processed])');
+
+        links.forEach(link => {
+          // 标记该链接已处理
+          link.setAttribute('data-processed', 'true');
+          // 添加事件监听器
+          link.addEventListener('click', handleLinkClick);
+        });
+      }
+
+      // 监听 DOM 变化，处理动态加载的内容
+      const observer = new MutationObserver((mutations) => {
+        const hasNewLinks = mutations.some(mutation => {
+          return Array.from(mutation.addedNodes).some(node => {
+            return node.nodeType === 1 && (
+              node.classList.contains('link-top-line') ||
+              node.querySelector('.link-top-line')
+            );
+          });
+        });
+
+        if (hasNewLinks) {
+          processLinks();
         }
-      }, 1000);
+      });
+
+      // 开始观察
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true
+      });
+
+      // 初始处理
+      processLinks();
+
     }
   },
-  beforeDestroy() {
-    // 组件销毁前移除所有事件监听器
-    this.removeEventListeners();
-  },
+
 };
 </script>

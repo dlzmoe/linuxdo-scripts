@@ -1,3 +1,7 @@
+## 1.0.41
+
+- fix: 优化新标签页打开逻辑（参考 [https://greasyfork.org/scripts/515736](https://greasyfork.org/scripts/515736)）
+
 ## 1.0.40
 
 - delete: 移除禁用 url 楼层更新功能，存在性能问题

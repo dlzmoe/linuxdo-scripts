@@ -1,2 +1,1 @@
-- delete: 移除禁用 url 楼层更新功能，存在性能问题
-- fix: 放开对 api url 路径的限制（只支持 openaiAPI 格式调用）
+- fix: 优化新标签页打开逻辑（参考 [https://greasyfork.org/scripts/515736](https://greasyfork.org/scripts/515736)）

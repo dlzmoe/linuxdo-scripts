@@ -200,6 +200,7 @@ ${str}`
     // 生成 AI 回复
     async setAIRelpy() {
       $('.aireply-popup').show()
+      $('#btn-aireply-apply').css('background-color', '#ccc').attr('disabled', true)
       $('.aireply-popup-text').html('AI 推荐回复正在生成中，请稍后。。。')
       const config = JSON.parse(localStorage.getItem('linxudoscriptssettingDMI')).gptdata
 
@@ -245,6 +246,7 @@ ${str}`
     // 推荐回复弹窗
     AIReplyPopup(text) {
       $('.aireply-popup-text').html(text)
+      $('#btn-aireply-apply').css('background-color', '#fff').removeAttr('disabled')
     },
     // AI 根据新建话题内容生成标题
     async getCreateNewTopicTitle() {
@@ -294,18 +296,59 @@ ${topic_contentdata}`
       $('body').append(`
         <div class="aireply-popup">
           <textarea class="aireply-popup-text"></textarea>
-          <button class="aireply-popup-close">关闭</button>
+          <button id="btn-aireply-close" class="aireply-popup-close">关闭</button>
+          <button id="btn-aireply-apply" class="aireply-popup-close">应用</button>
         </div>
       `)
 
       setInterval(() => {
         if ($('.gpt-summary-wrap').length < 1 && $('.aireplay-btn').length < 1) {
-          $('#topic-title').after(`<button class="aireplay-btn" type="button">AI 回复</button>`)
-          $('.aireplay-btn').click(() => { this.setAIRelpy() })
-          $('.aireply-popup-close').click(() => {
-            $('.aireply-popup').hide()
-            $('.aireply-popup-text').html('AI 推荐回复正在生成中，请稍后。。。')
-          })
+          let $topic_title = $('#topic-title')
+          if ($topic_title.length > 0) {
+            $('#topic-title').after(`<button class="aireplay-btn" type="button">AI 回复</button>`)
+            $('.aireplay-btn').off('click').on('click', () => { this.setAIRelpy() })
+            $('#btn-aireply-close').off('click').on('click', () => {
+              $('.aireply-popup').hide()
+              $('.aireply-popup-text').html('AI 推荐回复正在生成中，请稍后。。。')
+            })
+            $('#btn-aireply-apply').off('click').on('click', () => {
+              $('.aireply-popup').hide()
+              if ($('.timeline-footer-controls button.create').length != 0) {
+                $('.timeline-footer-controls button.create')[0].click()
+              }
+              if (
+                $('#topic-footer-buttons .topic-footer-main-buttons button.create')
+                  .length != 0
+              ) {
+                $(
+                  '#topic-footer-buttons .topic-footer-main-buttons button.create'
+                )[0].click()
+              }
+              setTimeout(() => {
+                let $textarea = $('.d-editor-textarea-wrapper textarea')
+                let text = $('.aireply-popup-text').html()
+                $('.aireply-popup-text').html('AI 推荐回复正在生成中，请稍后。。。')
+                $textarea.focus()
+                for (let i = 0; i < text.length; i++) {
+                  let char = text[i]
+                  $textarea.val($textarea.val() + char)
+                  let inputEvent = new Event('input', {
+                    bubbles: true,
+                    cancelable: true,
+                  })
+                  $textarea[0].dispatchEvent(inputEvent)
+                  let keyEvent = new KeyboardEvent('keydown', {
+                    key: char,
+                    char: char,
+                    keyCode: char.charCodeAt(0),
+                    which: char.charCodeAt(0),
+                    bubbles: true,
+                  })
+                  $textarea[0].dispatchEvent(keyEvent)
+                }
+              }, 1000)
+            })  
+          }
         }
       }, 1000)
     }

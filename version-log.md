@@ -1,3 +1,7 @@
+## 1.0.42
+
+feat: 新增“AI 生成所有已加载回帖总结”功能，修改对应样式 #143
+
 ## 1.0.41
 
 - fix: 优化新标签页打开逻辑（参考 [https://greasyfork.org/scripts/515736](https://greasyfork.org/scripts/515736)）

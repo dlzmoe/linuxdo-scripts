@@ -60,7 +60,7 @@ The LinuxDo Scripts extension comes with a comprehensive bookmark feature, displ
 - [x] Optimize the display of mixed Chinese and English text
 - [x] Add level information query
 - [x] Switch forum emoji styles
-- [x] AI topic summarization and intelligent reply generation
+- [x] AI topic summarization, reply analysis and intelligent reply generation
 - [x] Switch forum theme skins
 - [x] More features available in the settings list
 

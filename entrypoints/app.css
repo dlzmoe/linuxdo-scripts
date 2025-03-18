@@ -628,6 +628,22 @@ body.body-preview #main-outlet-wrapper {
   margin-right: 10px;
 }
 
+.aicreated-all-btn
+{
+  outline: none;
+  border: none;
+  background: var(--tertiary-low);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  font-size: 14px;
+  padding: 4px 10px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
 .aicreated-btn {
   display: none;
 }

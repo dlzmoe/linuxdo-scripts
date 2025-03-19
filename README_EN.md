@@ -29,6 +29,10 @@
 
 LinuxDo Scripts is a feature-rich browser extension designed to enhance the user experience of the LinuxDo forum. It integrates multiple practical features, from basic interface optimizations to advanced AI-assisted functions, making your forum browsing and interaction experience smoother and more efficient.
 
+|Settings Panel|Operation Instructions|
+|---|---|
+|![image](https://github.com/user-attachments/assets/8824696c-f2d4-4cfd-8273-901a3d007a39)|![image](https://github.com/user-attachments/assets/a052a816-3209-4e3d-ba5d-252b6518bf55)|
+
 ## ✨ Key Features
 
 ### 🔍 Browsing Experience Optimization

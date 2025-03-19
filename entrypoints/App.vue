@@ -136,16 +136,18 @@
           <div class="menu-body-item" v-show="activeIndex == 1">
             <!-- 自定义论坛 logo -->
             <MenuLogoUrl :sort="1" v-model:value="settingData.logourl" />
+            <!-- 自定义论坛标签页 icon 和 title -->
+            <MenuIconTitle :sort="2" v-model:value="settingData.IconTitle" />
             <!-- 自定义快捷回复 -->
-            <MenuCreatereply :sort="2" v-model:value="settingData.QuickReply" />
+            <MenuCreatereply :sort="3" v-model:value="settingData.QuickReply" />
             <!-- 关键词屏蔽功能 -->
-            <MenuBlockKeyword :sort="3" v-model:value="settingData.blockkeywrod" />
+            <MenuBlockKeyword :sort="4" v-model:value="settingData.blockkeywrod" />
             <!-- 屏蔽指定用户 -->
-            <MenuBlockuserlist :sort="4" v-model:value="settingData.blockList" />
+            <MenuBlockuserlist :sort="5" v-model:value="settingData.blockList" />
             <!-- 屏蔽指定分类的多少天前的帖子 -->
-            <MenuShieldPosts :sort="5" v-model:value="settingData.checked21" />
+            <MenuShieldPosts :sort="6" v-model:value="settingData.checked21" />
             <!-- 自定义 CSS -->
-            <MenuOtherCss :sort="6" v-model:value="settingData.othercss" />
+            <MenuOtherCss :sort="7" v-model:value="settingData.othercss" />
           </div>
           <div class="menu-body-item" v-show="activeIndex == 2">
             <UserTags v-model:value="settingData.usertags" />
@@ -225,6 +227,7 @@ import MenuMonitorWidthOptimization from "./components/BasicSettings/MenuMonitor
 // 自定义文字
 import MenuOtherCss from "./components/CustomText/MenuOtherCss.vue";
 import MenuLogoUrl from "./components/CustomText/MenuLogoUrl.vue";
+import MenuIconTitle from "./components/CustomText/MenuIconTitle.vue";
 import MenuCreatereply from "./components/CustomText/MenuCreatereply.vue";
 import MenuBlockuserlist from "./components/CustomText/MenuBlockuserlist.vue";
 import MenuBlockKeyword from "./components/CustomText/MenuBlockKeyword.vue";
@@ -327,6 +330,7 @@ export default {
     MenuViewOwnReply,
     MenuUsernameLength,
     MenuMonitorWidthOptimization,
+    MenuIconTitle,
   },
   data() {
     return {
@@ -359,6 +363,10 @@ export default {
         checked10: false,
         othercss: "",
         logourl: "",
+        IconTitle: {
+          iconurl: "",
+          title: "",
+        },
         checked11: true,
         checked12: true,
         checked13: false,

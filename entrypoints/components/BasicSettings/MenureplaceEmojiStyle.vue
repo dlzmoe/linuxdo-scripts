@@ -64,7 +64,7 @@ export default {
       imgs.forEach(this.updateImageSrc);
     },
     updateImageSrc(img) {
-      const applePath = "images/emoji/apple";
+      const applePath = "images/emoji/twemoji";
       if (img.src.includes(applePath)) {
         // 可以替换成其他表情风格
         img.src = img.src.replace(applePath, `images/emoji/${this.value2}`);

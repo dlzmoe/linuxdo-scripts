@@ -1,24 +1,14 @@
 <template>
   <div class="linuxdoscripts-setting-wrap" v-show="!isShow">
     <button class="linuxdoscripts-setting" title="设置" type="button" @click="setting">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      class="icon icon-tabler icons-tabler-outline icon-tabler-settings"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path
-        d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"
-      />
-      <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-    </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="icon icon-tabler icons-tabler-outline icon-tabler-settings">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path
+          d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
+        <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+      </svg>
     </button>
   </div>
   <div id="linuxdoscripts">
@@ -41,12 +31,24 @@
       </div>
       <div class="menu-flex">
         <ul class="menu-nav">
-          <li @click="showItem(0)" :class="{ act : activeIndex == 0 }"><Setting1 />通用设置</li>
-          <li @click="showItem(1)" :class="{ act : activeIndex == 1 }"><Setting2 />自定义</li>
-          <li @click="showItem(2)" :class="{ act : activeIndex == 2 }"><Setting3 />用户标签</li>
-          <li @click="showItem(3)" :class="{ act : activeIndex == 3 }"><Setting4 />AI 配置</li>
-          <li @click="showItem(4)" :class="{ act : activeIndex == 4 }"><Setting5 />主题风格</li>
-          <li @click="showItem(5)" :class="{ act : activeIndex == 5 }"><Setting6 />数据同步</li>
+          <li @click="showItem(0)" :class="{ act: activeIndex == 0 }">
+            <Setting1 />通用设置
+          </li>
+          <li @click="showItem(1)" :class="{ act: activeIndex == 1 }">
+            <Setting2 />自定义
+          </li>
+          <li @click="showItem(2)" :class="{ act: activeIndex == 2 }">
+            <Setting3 />用户标签
+          </li>
+          <li @click="showItem(3)" :class="{ act: activeIndex == 3 }">
+            <Setting4 />AI 配置
+          </li>
+          <li @click="showItem(4)" :class="{ act: activeIndex == 4 }">
+            <Setting5 />主题风格
+          </li>
+          <li @click="showItem(5)" :class="{ act: activeIndex == 5 }">
+            <Setting6 />数据同步
+          </li>
           <Updates />
         </ul>
         <div class="menu-body">
@@ -75,7 +77,8 @@
             <!-- 隐藏话题详情顶部大标题 -->
             <MenuHidetopicdetailtitle :sort="6" v-model="settingData.checked6" />
             <!-- 话题预览功能 -->
-            <MenuTopicpreview :sort="7" v-model="settingData.checked7" />
+            <MenuTopicpreview1 :sort="7" v-model="settingData.checked7" />
+            <MenuTopicpreview2 :sort="7.1" v-model="settingData.checked7_1" />
             <!-- 只看楼主按钮 -->
             <MenuLookOP :sort="9" v-model="settingData.checked9" />
             <!-- 智能限制楼层高度 -->
@@ -132,6 +135,8 @@
             <MenuUsernameLength :sort="36" v-model="settingData.checked45" />
             <!-- 是否开启超长显示器宽度优化 -->
             <MenuMonitorWidthOptimization :sort="37" v-model="settingData.checked46" />
+            <!-- 类别页优化 banner 显示 -->
+            <MenuCatePageOptimizeBanner :sort="38" v-model="settingData.checked47" />
           </div>
           <div class="menu-body-item" v-show="activeIndex == 1">
             <!-- 自定义论坛 logo -->
@@ -142,7 +147,6 @@
             <MenuCreatereply :sort="3" v-model:value="settingData.QuickReply" />
             <!-- 关键词屏蔽功能 -->
             <MenuBlockKeyword :sort="4" v-model:value="settingData.blockkeywrod" />
-            <!-- 屏蔽指定用户 -->
             <MenuBlockuserlist :sort="5" v-model:value="settingData.blockList" />
             <!-- 屏蔽指定分类的多少天前的帖子 -->
             <MenuShieldPosts :sort="6" v-model:value="settingData.checked21" />
@@ -192,7 +196,8 @@ import MenuShowcreatetime from "./components/BasicSettings/MenuShowcreatetime.vu
 import MenuShowcreatetime1 from "./components/BasicSettings/MenuShowcreatetime1.vue";
 import MenuShowfloors from "./components/BasicSettings/MenuShowfloors.vue";
 import MenuHidetopicdetailtitle from "./components/BasicSettings/MenuHidetopicdetailtitle.vue";
-import MenuTopicpreview from "./components/BasicSettings/MenuTopicpreview.vue";
+import MenuTopicpreview1 from "./components/BasicSettings/MenuTopicpreview1.vue";
+import MenuTopicpreview2 from "./components/BasicSettings/MenuTopicpreview2.vue";
 import MenuLookOP from "./components/BasicSettings/MenuLookOP.vue";
 import MenuFloorHeight from "./components/BasicSettings/MenuFloorHeight.vue";
 import ReplyTBEnjoy from "./components/BasicSettings/ReplyTBEnjoy.vue";
@@ -223,6 +228,7 @@ import MenuTopicToImages from "./components/BasicSettings/MenuTopicToImages.vue"
 import MenuViewOwnReply from "./components/BasicSettings/MenuViewOwnReply.vue";
 import MenuUsernameLength from "./components/BasicSettings/MenuUsernameLength.vue";
 import MenuMonitorWidthOptimization from "./components/BasicSettings/MenuMonitorWidthOptimization.vue";
+import MenuCatePageOptimizeBanner from "./components/BasicSettings/MenuCatePageOptimizeBanner.vue";
 
 // 自定义文字
 import MenuOtherCss from "./components/CustomText/MenuOtherCss.vue";
@@ -282,7 +288,8 @@ export default {
     MenuShowcreatetime1,
     MenuShowfloors,
     MenuHidetopicdetailtitle,
-    MenuTopicpreview,
+    MenuTopicpreview1,
+    MenuTopicpreview2,
     MenuCreatereply,
     MenuBlockuserlist,
     Updates,
@@ -331,6 +338,7 @@ export default {
     MenuUsernameLength,
     MenuMonitorWidthOptimization,
     MenuIconTitle,
+    MenuCatePageOptimizeBanner,
   },
   data() {
     return {
@@ -356,6 +364,7 @@ export default {
         checked5: true,
         checked6: false,
         checked7: false,
+        checked7_1: false,
         checked9: true,
         QuickReply: "",
         blockList: "",
@@ -400,6 +409,7 @@ export default {
         checked44: false,
         checked45: false,
         checked46: false,
+        checked47: false,
         removePostavatarData: {
           enable: false,
           showAuthor: false,
@@ -522,14 +532,14 @@ export default {
     } else {
       localStorage.setItem("linxudoscriptssettingDMI", JSON.stringify(this.settingData));
     }
-    
+
     browserAPI.runtime.onMessage.addListener((request, sender, sendResponse) => {
       if (request.action === "getData") {
         browserAPI.storage.local.get(["transferData"], (result) => {
           if (result.transferData) {
             // 处理收到的设置数据
             localStorage.setItem("isShowSettingConfig", result.transferData.isShowSettingConfig);
-          
+
             // 处理完成后删除数据
             browserAPI.storage.local.remove("transferData");
           }
@@ -539,7 +549,7 @@ export default {
 
     // 判断是否设置隐藏按钮
     const isShowSettingConfig = localStorage.getItem("isShowSettingConfig");
-    
+
     if (isShowSettingConfig) {
       this.isShow = JSON.parse(isShowSettingConfig);
     }

@@ -47,7 +47,7 @@
             <Setting5 />主题风格
           </li>
           <li @click="showItem(5)" :class="{ act: activeIndex == 5 }">
-            <Setting6 />数据同步
+            <Setting6 />数据备份
           </li>
           <Updates />
         </ul>

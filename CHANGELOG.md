@@ -1,2 +1,2 @@
-- feat: 类别页优化 banner 显示
-- feat: 新增模态预览框
+- fix: 修复部分 cdn 图裂问题
+- style: 优化部分 css 样式

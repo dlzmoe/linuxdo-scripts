@@ -116,7 +116,7 @@ export default {
               .siblings(".views")
               .html(
                 `<span class="linuxtime" style="color:${color}">
-               <img style="width:20px;vertical-align:sub;" src="https://linux.do/uploads/default/original/4X/4/0/8/408c29a1d1dfaada3160fb2ae366cf3a7c7c1696.png">${this.formattedDate(
+               <svg style="vertical-align:bottom;margin-right:5px;" class="icon" width="22" height="22" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path fill="#A51C30" d="M916.992 813.44c11.008-44.032-9.856-53.632-9.856-53.632 7.168-23.552-12.8-46.592-12.8-46.592a72.448 72.448 0 0 0-12.032-34.816h-85.12V179.2a9.856 9.856 0 0 0-9.984-9.6h-54.144a9.856 9.856 0 0 1-9.472-7.168A204.8 204.8 0 0 0 524.8 14.208h-27.904a204.8 204.8 0 0 0-198.016 147.712 9.856 9.856 0 0 1-9.472 7.168h-51.968a10.496 10.496 0 0 0-10.752 10.368v499.2h-84.992v1.28a78.336 78.336 0 0 0-9.088 32.256s-22.656 23.296-15.36 46.72c0 0-20.736 9.856-9.344 53.504 0 0-66.176 11.776-49.408 193.536h83.072v0.768h740.608l86.528-0.896c14.72-181.376-51.712-192.384-51.712-192.384z" /></svg>${this.formattedDate(
                   timestamp
                 )}
                 </span>`

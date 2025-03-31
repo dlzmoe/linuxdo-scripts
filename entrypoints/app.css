@@ -628,8 +628,7 @@ body.body-preview #main-outlet-wrapper {
   margin-right: 10px;
 }
 
-.aicreated-all-btn
-{
+.aicreated-all-btn {
   outline: none;
   border: none;
   background: var(--tertiary-low);
@@ -858,12 +857,15 @@ body.body-preview #main-outlet-wrapper {
 
 .menu-table {
   width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
 }
 
 .menu-table td,
 .menu-table th {
-  padding: 10px;
+  padding: 6px 10px;
   font-size: 14px;
+  border: 1px solid #cfcfcf;
 }
 
 .menu-table .span {

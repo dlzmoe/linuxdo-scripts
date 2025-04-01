@@ -13,13 +13,12 @@ export default {
   methods: {
     init() {
       $('body').append(`<style>
-      .category-heading{display:flex;align-items:center;}
-      .category-logo.aspect-image{width:50px;margin-right:10px;}
-      .category-heading p{font-size:20px;}
-
-      .category-boxes .description{display:none;}
-      .category-boxes h3{font-size:18px;font-weight:400;display:flex;align-items:center;justify-content:center;}
-      .category-boxes h3 .ember-view{margin-right:10px;}
+.category-heading{display:flex;align-items:center;}
+.category-logo.aspect-image{width:50px;margin-right:10px;}
+.category-heading p{font-size:20px;}
+.category-boxes .description{display:none;}
+.category-boxes h3{font-size:18px;font-weight:400;display:flex;align-items:center;justify-content:center;}
+.category-boxes h3 .ember-view{margin-right:10px;}
       </style>`)
     },
   },

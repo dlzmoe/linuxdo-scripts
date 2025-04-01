@@ -43,37 +43,37 @@ export default {
           id: 6,
           name: "ls-themes6",
           imgurl:
-            "https://linux.do/uploads/default/original/3X/d/9/d935995d90221b7acdde23df142ba7bbe3c38bf0.png",
+            "//a4ca2e28b66bda9189cc3d4db0838260aff05201.sgp1.digitaloceanspaces.com/original/3X/d/9/d935995d90221b7acdde23df142ba7bbe3c38bf0.png",
         },
         {
           id: 5,
           name: "ls-themes5",
           imgurl:
-            "https://linux.do/uploads/default/optimized/3X/3/a/3a9cfbddfd2385ec4c638a10b15055220332e65c_2_1035x565.png",
+            "//a4ca2e28b66bda9189cc3d4db0838260aff05201.sgp1.digitaloceanspaces.com/original/3X/3/a/3a9cfbddfd2385ec4c638a10b15055220332e65c_2_1035x565.png",
         },
         {
           id: 4,
           name: "ls-themes4",
           imgurl:
-            "https://linux.do/uploads/default/optimized/3X/8/f/8fb7fe2251b44a6ea1831055bf5ac3ef2c12b4ea_2_1035x544.jpeg",
+            "//a4ca2e28b66bda9189cc3d4db0838260aff05201.sgp1.digitaloceanspaces.com/original/3X/8/f/8fb7fe2251b44a6ea1831055bf5ac3ef2c12b4ea_2_1035x544.jpeg",
         },
         {
           id: 3,
           name: "ls-themes3",
           imgurl:
-            "https://linux.do/uploads/default/optimized/3X/2/5/25f83e28507a9ec9fe8ad41874ed578c2e007ff6_2_1035x544.jpeg",
+            "//a4ca2e28b66bda9189cc3d4db0838260aff05201.sgp1.digitaloceanspaces.com/original/3X/2/5/25f83e28507a9ec9fe8ad41874ed578c2e007ff6_2_1035x544.jpeg",
         },
         {
           id: 2,
           name: "ls-themes2",
           imgurl:
-            "https://linux.do/uploads/default/optimized/3X/b/b/bbaa57335e0eab7e4db7ddb5944b613ce0cb5b89_2_1035x544.jpeg",
+            "//a4ca2e28b66bda9189cc3d4db0838260aff05201.sgp1.digitaloceanspaces.com/original/3X/b/b/bbaa57335e0eab7e4db7ddb5944b613ce0cb5b89_2_1035x544.jpeg",
         },
         {
           id: 1,
           name: "ls-themes1",
           imgurl:
-            "https://linux.do/uploads/default/optimized/3X/2/f/2f1a0d87acb496eb544e17a72022c58ccfd72104_2_1035x544.jpeg",
+            "//a4ca2e28b66bda9189cc3d4db0838260aff05201.sgp1.digitaloceanspaces.com/original/3X/2/f/2f1a0d87acb496eb544e17a72022c58ccfd72104_2_1035x544.jpeg",
         },
       ],
       jsonData: [

@@ -62,6 +62,8 @@
               </p>
             </div>
 
+            <!-- 简洁模式 -->
+            <MenuSimpleMode :sort="0" v-model="settingData.checked0" />
             <!-- 新标签页打开 -->
             <MenuOpenpostblank :sort="1" v-model="settingData.checked1" />
             <!-- 新话题提醒 -->
@@ -188,6 +190,8 @@ import $ from "jquery";
 
 // 基础设置
 import packageJson from "../package.json";
+
+import MenuSimpleMode from "./components/BasicSettings/MenuSimpleMode.vue";
 import MenuOpenpostblank from "./components/BasicSettings/MenuOpenpostblank.vue";
 import MenuNewtopicreminder from "./components/BasicSettings/MenuNewtopicreminder.vue";
 import MenuAutoexpandreply from "./components/BasicSettings/MenuAutoexpandreply.vue";
@@ -280,6 +284,7 @@ export default {
     Setting5,
     Setting6,
     Setting7,
+    MenuSimpleMode,
     MenuOpenpostblank,
     MenuNewtopicreminder,
     MenuAutoexpandreply,
@@ -355,6 +360,7 @@ export default {
 
       // 设置数据
       settingData: {
+        checked0: false,
         checked1: false,
         checked2: false,
         checked3: false,

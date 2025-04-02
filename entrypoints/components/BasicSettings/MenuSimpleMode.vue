@@ -36,6 +36,7 @@ section.post-menu-area{position:absolute!important;bottom:-30px;right:0;transiti
 .category-boxes .description{display:none!important}
 .category-boxes h3{font-size:18px!important;font-weight:400;display:flex;align-items:center;justify-content:center}
 .category-boxes h3 .ember-view{margin-right:10px}
+.post-avatar:has(img.avatar[src^="/user_avatar/linux.do/neo/"]):after, .post-avatar:has(img.avatar[src^="https://cdn.linux.do/user_avatar/linux.do/neo/"]):after{width:30px!important;height:30px!important}
       </style>`)
     }
   },

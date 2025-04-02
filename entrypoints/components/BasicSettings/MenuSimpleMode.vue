@@ -13,7 +13,7 @@ export default {
   created() {
     if (this.modelValue) {
       $('head').append(`<style>
- section.post-menu-area{position:absolute!important;bottom:-30px;right:0;transition:all .1s linear;opacity:0;visibility:hidden;transform:translateY(10px)}
+section.post-menu-area{position:absolute!important;bottom:-30px;right:0;transition:all .1s linear;opacity:0;visibility:hidden;transform:translateY(10px)}
 .topic-post .avatar{width:30px!important;height:30px!important}
 .topic-avatar .avatar-flair.rounded{display:none}
 .topic-post:hover section.post-menu-area{opacity:1;visibility:inherit;transform:translateY(0)}
@@ -23,9 +23,9 @@ export default {
 .topic-meta-data .user-status-message-wrap{display:none}
 #topic-title h1 a{font-weight:500;font-size:22px}
 .more-topics__container,.sidebar-footer-wrapper{display:none}
-#topic-footer-buttons .topic-footer-main-buttons__actions,.global-notice,.loading-container,.search-banner,.topic-list .topic-list-data.posters,.topic-list .views,.topic-notifications-button,body:not(.archetype-private_message) .topic-map{display:none!important}
+#topic-footer-buttons .topic-footer-main-buttons__actions,.global-notice,.search-banner,.topic-list .topic-list-data.posters,.topic-list .views,.topic-notifications-button,body:not(.archetype-private_message) .topic-map{display:none!important}
 .names>span a{font-size:14px;color:silver!important}
-.topic-body .reply-to-tab{display:none}
+.topic-body .reply-to-tab{font-size:14px;}
 .d-header-wrap{opacity:.2;transition:all .15s linear}
 .d-header-wrap:hover{opacity:1}
 .sidebar-wrapper{opacity:.3;transition:all .15s linear}

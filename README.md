@@ -2,7 +2,7 @@
 
 <div align="center">
   <a href="https://github.com/dlzmoe/linuxdo-scripts">
-    <img src="https://github.com/dlzmoe/linuxdo-scripts/blob/main/public/icon.webp?raw=true" alt="Logo" width="120" height="120">
+    <img src="https://github.com/dlzmoe/linuxdo-scripts/blob/main/public/icon/128.png?raw=true" alt="Logo" width="80" height="80">
   </a>
 
   <h1>LinuxDo Scripts</h1>

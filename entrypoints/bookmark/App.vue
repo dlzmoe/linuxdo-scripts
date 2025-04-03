@@ -48,7 +48,7 @@
           >
             <img 
               v-if="item.logo"
-              :src="`https://linux.do${item.logo}`"
+              :src="`${item.logo}`"
               class="category-icon"
             />
             <span :style="{ color: '#' + item.color }">{{ item.name }}</span>
@@ -85,7 +85,7 @@
               <div class="category-cell">
                 <img 
                   v-if="getCategoryInfo(record.cate)?.uploaded_logo"
-                  :src="`https://linux.do${getCategoryInfo(record.cate).uploaded_logo.url}`"
+                  :src="`${getCategoryInfo(record.cate).uploaded_logo.url}`"
                   class="category-icon" 
                 />
                 <!-- <span :style="{ color: '#' + getCategoryInfo(record.cate)?.color }">{{ record.cate }}</span> -->

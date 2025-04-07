@@ -314,10 +314,94 @@ ${topic_contentdata}`
           })
       })
     },
+    refreshAISummary() {
+      setTimeout(() => {
+        $('.gpt-summary-wrap').remove()
+        
+        // 如果开启了主贴总结功能，重新获取缓存
+        if (this.localChecked.value1 && $('.post-stream').length > 0) {
+          let summaryCache = JSON.parse(localStorage.getItem('summaryCacheData')) || []
+          const regex = /^(https:\/\/linux\.do\/t\/topic\/\d+)(\/\d+)?$/
+
+          if (window.location.href.match(regex)) {
+            const match = window.location.href.match(regex)[1]
+            
+            let existingObject = summaryCache.find(
+              (item) => item.name === match
+            )
+            
+            if (existingObject) {
+              $('.post-stream').before(
+                `<div class="gpt-summary-wrap">
+<div class="gpt-summary">${marked.parse(existingObject.value)}</div>
+</div>`
+              )
+            } else if (!this.localChecked.btn) {
+              // 如果没有缓存且设置为自动总结，则生成新的总结
+              this.getPostContent(false);
+            }
+          }
+        }
+      }, 500);
+    },
   },
   async created() {
     // 先调用 setCreatedBtn 确保样式正确应用
     this.setCreatedBtn()
+    
+    this.boundRefreshAISummary = this.refreshAISummary.bind(this);
+    
+    // 监听浏览器前进/后退事件
+    window.addEventListener('popstate', this.boundRefreshAISummary);
+    
+    const originalPushState = history.pushState;
+    history.pushState = function() {
+      const result = originalPushState.apply(this, arguments);
+      window.dispatchEvent(new Event('pushstate'));
+      return result;
+    };
+    
+    const originalReplaceState = history.replaceState;
+    history.replaceState = function() {
+      const result = originalReplaceState.apply(this, arguments);
+      window.dispatchEvent(new Event('replacestate'));
+      return result;
+    };
+    
+    // 监听 pushstate 和 replacestate 事件
+    window.addEventListener('pushstate', this.boundRefreshAISummary);
+    
+    window.addEventListener('replacestate', this.boundRefreshAISummary);
+    
+    // 初始页面
+    if (window.location.href.includes('/topic/')) {
+      this.refreshAISummary();
+    }
+    
+    this.handleLinkClick = () => {
+      $('.gpt-summary-wrap').remove();
+    };
+    $(document).on('click', '.topic-list .main-link a.title, a[href*="/t/topic/"]', this.handleLinkClick);
+    
+    let lastUrl = window.location.href;
+    this.observer = new MutationObserver(() => {
+      if (lastUrl !== window.location.href) {
+        lastUrl = window.location.href;
+        setTimeout(() => {
+          if (window.location.href.includes('/topic/')) {
+            this.refreshAISummary();
+          } else {
+            $('.gpt-summary-wrap').remove();
+          }
+        }, 500);
+      }
+    });
+    
+    // 配置观察器
+    this.observer.observe(document, {
+      subtree: true,
+      childList: true
+    });
     
     if (this.localChecked.value2) {
       $('body').append(`
@@ -365,18 +449,22 @@ ${topic_contentdata}`
             let summaryCache =
               JSON.parse(localStorage.getItem('summaryCacheData')) || []
             const regex = /^(https:\/\/linux\.do\/t\/topic\/\d+)(\/\d+)?$/
-            const match = window.location.href.match(regex)[1]
+            
+            // 确保URL匹配正确的格式
+            if (window.location.href.match(regex)) {
+              const match = window.location.href.match(regex)[1]
 
-            let existingObject = summaryCache.find(
-              (item) => item.name === match
-            )
+              let existingObject = summaryCache.find(
+                (item) => item.name === match
+              )
 
-            if (existingObject) {
-              $('.post-stream').before(
-                `<div class="gpt-summary-wrap">
+              if (existingObject) {
+                $('.post-stream').before(
+                  `<div class="gpt-summary-wrap">
 <div class="gpt-summary">${marked.parse(existingObject.value)}</div>
 </div>`
-              )
+                )
+              }
             }
           }
 
@@ -386,9 +474,6 @@ ${topic_contentdata}`
               this.getPostContent(false);
             }
           }
-          $('.topic-list .main-link a.title').click(() => {
-            $('.gpt-summary-wrap').remove()
-          })
         }
       }, 1000)
     }
@@ -435,6 +520,20 @@ ${topic_contentdata}`
       }
       localStorage.setItem('summaryCacheData', JSON.stringify(summaryCacheData))
     }
+  },
+  beforeUnmount() {
+    // 清理MutationObserver
+    if (this.observer) {
+      this.observer.disconnect();
+    }
+    
+    // 移除事件监听器
+    window.removeEventListener('popstate', this.boundRefreshAISummary);
+    window.removeEventListener('pushstate', this.boundRefreshAISummary);
+    window.removeEventListener('replacestate', this.boundRefreshAISummary);
+    
+    // 移除点击事件监听
+    $(document).off('click', '.topic-list .main-link a.title, a[href*="/t/topic/"]', this.handleLinkClick);
   },
 }
 </script>

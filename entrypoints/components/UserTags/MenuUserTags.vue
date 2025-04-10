@@ -1,6 +1,6 @@
 <template>
   <div class="item">
-    <div class="tit">{{ sort }}. 是否开启用户标签功能（关闭后，不会删除已添加的用户标签数据）</div>
+    <div class="tit">是否开启用户标签功能（关闭后，不会删除已添加的用户标签数据）</div>
     <input type="checkbox" :checked="modelValue" @change="$emit('update:modelValue', $event.target.checked)" />
   </div>
 </template>
@@ -8,7 +8,7 @@
 <script>
 import $ from "jquery";
 export default {
-  props: ["modelValue", "sort"],
+  props: ["modelValue"],
   emits: ["update:modelValue"],
   methods: {
     init() {

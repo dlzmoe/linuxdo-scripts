@@ -139,8 +139,6 @@
             <MenuMonitorWidthOptimization :sort="37" v-model="settingData.checked46" />
             <!-- 类别页优化 banner 显示 -->
             <MenuCatePageOptimizeBanner :sort="38" v-model="settingData.checked47" />
-            <!-- 是否开启用户标签 -->
-            <MenuUserTags :sort="39" v-model="settingData.checked48" />
           </div>
           <div class="menu-body-item" v-show="activeIndex == 1">
             <!-- 自定义论坛 logo -->
@@ -158,6 +156,8 @@
             <MenuOtherCss :sort="7" v-model:value="settingData.othercss" />
           </div>
           <div class="menu-body-item" v-show="activeIndex == 2">
+            <!-- 是否开启用户标签 -->
+            <MenuUserTags v-model="settingData.isUserTags" />
             <UserTags v-model:value="settingData.usertags" />
           </div>
           <div class="menu-body-item" v-show="activeIndex == 3">
@@ -235,7 +235,6 @@ import MenuViewOwnReply from "./components/BasicSettings/MenuViewOwnReply.vue";
 import MenuUsernameLength from "./components/BasicSettings/MenuUsernameLength.vue";
 import MenuMonitorWidthOptimization from "./components/BasicSettings/MenuMonitorWidthOptimization.vue";
 import MenuCatePageOptimizeBanner from "./components/BasicSettings/MenuCatePageOptimizeBanner.vue";
-import MenuUserTags from "./components/BasicSettings/MenuUserTags.vue";
 
 // 自定义文字
 import MenuOtherCss from "./components/CustomText/MenuOtherCss.vue";
@@ -248,6 +247,7 @@ import MenuShieldPosts from "./components/CustomText/MenuShieldPosts.vue";
 
 // 用户标签
 import UserTags from "./components/UserTags/UserTags.vue";
+import MenuUserTags from "./components/UserTags/MenuUserTags.vue";
 
 // AI 配置
 import GPTconfig from "./components/AIConfig/GPTconfig.vue";
@@ -420,11 +420,11 @@ export default {
         checked45: false,
         checked46: false,
         checked47: false,
-        checked48: true,
         removePostavatarData: {
           enable: false,
           showAuthor: false,
         },
+        isUserTags: true,
         usertags: [],
         gptdata: {
           aiProvider: "openai",

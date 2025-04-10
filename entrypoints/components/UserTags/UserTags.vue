@@ -101,7 +101,7 @@ export default {
     fastOpen() {
       let tempSettingData = localStorage.getItem("linxudoscriptssettingDMI");
       tempSettingData = JSON.parse(tempSettingData);
-      tempSettingData.checked48 = true;
+      tempSettingData.isUserTags = true;
       localStorage.setItem("linxudoscriptssettingDMI", JSON.stringify(tempSettingData));
 
       // 创建一个消息提示元素
@@ -125,7 +125,7 @@ export default {
     settingData.usertags = settingData.usertags.filter((user) => user.tags);
     this.tableData = settingData.usertags;
 
-    this.open = settingData.checked48 && settingData.checked48 === true;
+    this.open = settingData.isUserTags && settingData.isUserTags === true;
 
     setInterval(() => {
 

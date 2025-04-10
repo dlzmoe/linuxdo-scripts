@@ -1,5 +1,17 @@
 <template>
   <div>
+    <div class="menu-about" v-show="!open">
+      <p class="hint">
+        请注意，用户标签功能已关闭，请在通用设置中开启！
+      </p>
+      <p class="hint">
+        也可以
+        <span class="initialization" @click="fastOpen()"> 快速开启</span>
+      </p>
+      <p class="hint" v-show="tableData && tableData.length > 0">
+        下列用户标签不会生效！
+      </p>
+    </div>
     <table class="menu-table">
       <thead>
         <tr>
@@ -36,6 +48,7 @@ export default {
   data() {
     return {
       tableData: this.value,
+      open: false,
     };
   },
   watch: {
@@ -84,6 +97,23 @@ export default {
         this.$emit("update:value", this.tableData);
       }
     },
+    // 快速开启
+    fastOpen() {
+      let tempSettingData = localStorage.getItem("linxudoscriptssettingDMI");
+      tempSettingData = JSON.parse(tempSettingData);
+      tempSettingData.checked48 = true;
+      localStorage.setItem("linxudoscriptssettingDMI", JSON.stringify(tempSettingData));
+
+      // 创建一个消息提示元素
+      const messageElement = document.createElement("div");
+      messageElement.className = "messageToast-text";
+      messageElement.innerText = "开启用户标签功能成功，即将自动刷新！";
+      document.getElementById("messageToast").appendChild(messageElement);
+      setTimeout(() => {
+        messageElement.remove();
+        location.reload();
+      }, 1000);
+    }
   },
   created() {
     let settingData = localStorage.getItem("linxudoscriptssettingDMI");
@@ -95,7 +125,14 @@ export default {
     settingData.usertags = settingData.usertags.filter((user) => user.tags);
     this.tableData = settingData.usertags;
 
+    this.open = settingData.checked48 && settingData.checked48 === true;
+
     setInterval(() => {
+
+      if (!this.open) {
+        return;
+      }
+
       if ($(".addusertag").length < 1) {
         $(".usercard-controls").append(
           `<li><button class="btn addusertag" type="button">添加用户标签</button></li>`

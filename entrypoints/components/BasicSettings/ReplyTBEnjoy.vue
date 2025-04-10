@@ -58,7 +58,7 @@ const emojiSet = [
   },
   {
     size: "30x30",
-    name: "tieba_125",
+    name: "lark_085",
     url:
       "//a4ca2e28b66bda9189cc3d4db0838260aff05201.sgp1.digitaloceanspaces.com/original/3X/1/3/133688dda7ae38a3ddbc9eda0ca99fa8ddbb2704.png?v=12",
   },

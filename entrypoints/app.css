@@ -668,6 +668,28 @@ body.body-preview #main-outlet-wrapper {
   border-radius: 3px;
 }
 
+.gpt-summary-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.gpt-summary-wrap table tr,
+.gpt-summary-wrap table thead,
+.gpt-summary-wrap table tbody {
+  border: none;
+}
+
+.gpt-summary-wrap table th {
+  font-weight: bold;
+}
+
+.gpt-summary-wrap table th,
+.gpt-summary-wrap table td {
+  border: 1px solid var(--primary-medium);
+  padding: 4px 10px;
+  color: var(--primary);
+}
+
 .aicreatenewtopictitle {
   margin-left: 20px;
 }

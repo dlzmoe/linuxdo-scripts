@@ -37,6 +37,15 @@ export default {
   created() {
     if (this.textarea) {
       $("body").after(`<style>${this.textarea}</style>`);
+      setTimeout(() => {
+        const hostElement = $('linuxdo-scripts-ui[data-wxt-shadow-root]')[0];
+        if (hostElement && hostElement.shadowRoot) {
+          const styleElement = document.createElement('style');
+          styleElement.textContent = this.textarea;
+          hostElement.shadowRoot.appendChild(styleElement);
+        }
+      }, 1000);
+
     }
   },
 };

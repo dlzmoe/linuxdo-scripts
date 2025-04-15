@@ -27,8 +27,9 @@ export default {
       vm.messageToast('正在查询中，请勿重复点击！');
 
       const id = $('#topic').attr('data-topic-id');
-      const myusernameStr = $('.d-header-icons .icon img.avatar').attr('src');
-      const username_filters = myusernameStr.replace(/^\/user_avatar\/linux\.do\//, '').split('/')[0];
+      const myusernameStr = $('.d-header-icons #toggle-current-user img.avatar').attr('src');
+      const username_filters = myusernameStr.replace(/^.*\/user_avatar\/linux\.do\//, '').split('/')[0];
+
       fetch(`https://linux.do/t/${id}.json?username_filters=${username_filters}`)
         .then((response) => response.json())
         .then((data) => {

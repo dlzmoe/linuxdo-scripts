@@ -16,6 +16,8 @@
     <div class="setting-btn">
       <BackToTop v-show="showbacktotop" />
       <!-- 返回顶部按钮 -->
+      <BackToOneFloor v-show="showbacktoonefloor" />
+      <!-- 直达一楼按钮 -->
       <ReplyBtn v-show="showreplybtn" />
       <!-- 显示回复按钮 -->
       <LookOP v-show="showlookop" />
@@ -117,6 +119,8 @@
             <MenuRemovePostAvatar :sort="26" v-model="settingData.removePostavatarData" />
             <!-- 是否显示返回顶部按钮 -->
             <MenuBackToTop :sort="27" v-model="settingData.checked34" />
+            <!-- 添加直达一楼按钮 -->
+            <MenuBackToOneFloor :sort="`27(1)`" v-model="settingData.checked48" />
             <!-- 是否显示快捷点赞主题按钮 -->
             <MenuQuickLikeTopic :sort="28" v-model="settingData.checked35" />
             <!-- 隐藏新消息小蓝点（除帖子未读小蓝点） -->
@@ -224,6 +228,7 @@ import MenuAutoDark from "./components/BasicSettings/MenuAutoDark.vue";
 import MenuHiddenPlaceholder from "./components/BasicSettings/MenuHiddenPlaceholder.vue";
 import MenuRemovePostAvatar from "./components/BasicSettings/MenuRemovePostAvatar.vue";
 import MenuBackToTop from "./components/BasicSettings/MenuBackToTop.vue";
+import MenuBackToOneFloor from "./components/BasicSettings/MenuBackToOneFloor.vue";
 import MenuQuickLikeTopic from "./components/BasicSettings/MenuQuickLikeTopic.vue";
 import MenuHideNewBluedot from "./components/BasicSettings/MenuHideNewBluedot.vue";
 import MenuGifToPng from "./components/BasicSettings/MenuGifToPng.vue";
@@ -263,6 +268,7 @@ import LookOP from "./components/Button/LookOP.vue";
 import LevelDiglog from "./components/Button/LevelDiglog.vue";
 import ReplyBtn from "./components/Button/ReplyBtn.vue";
 import BackToTop from "./components/Button/BackToTop.vue";
+import BackToOneFloor from "./components/Button/BackToOneFloor.vue";
 
 // 其他组件
 import Updates from "./components/Other/Updates.vue";
@@ -334,7 +340,9 @@ export default {
     MenuHiddenPlaceholder,
     MenuRemovePostAvatar,
     MenuBackToTop,
+    MenuBackToOneFloor,
     BackToTop,
+    BackToOneFloor,
     MenuQuickLikeTopic,
     MenuHideNewBluedot,
     MenuGifToPng,
@@ -420,6 +428,7 @@ export default {
         checked45: false,
         checked46: false,
         checked47: false,
+        checked48: false,
         removePostavatarData: {
           enable: false,
           showAuthor: false,
@@ -450,6 +459,7 @@ export default {
       showlevelsearch: false,
       showreplybtn: false,
       showbacktotop: false,
+      showbacktoonefloor: false,
     };
   },
   methods: {
@@ -529,6 +539,8 @@ export default {
       this.showlevelsearch = this.settingData.checked12;
       this.showreplybtn = this.settingData.checked25;
       this.showbacktotop = this.settingData.checked34;
+      this.showbacktoonefloor = this.settingData.checked48;
+      
       if (this.showreplybtn) {
         setInterval(() => {
           if (window.location.href.includes("/topic/")) {

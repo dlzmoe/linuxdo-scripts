@@ -161,7 +161,7 @@ export default {
         });
       }
 
-      $(".topic-post").each(function () {
+      $(".topic-meta-data").each(function () {
         const username = $(this).find(".first a").attr("data-user-card").toLowerCase();
         // 在 usertags 数组中查找对应的对象
         const userTag = settingData.usertags.find((user) => user.name === username);

@@ -105,7 +105,7 @@ npm run dev
 
 ## 🚀 Contributors  
 
-https://contrib.rocks/image?repo=dlzmoe/linuxdo-scripts  
+![Contributor](https://contrib.rocks/image?repo=dlzmoe/linuxdo-scripts)
 
 ## 🤝 Contribution Guidelines  
 

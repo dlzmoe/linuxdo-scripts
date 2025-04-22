@@ -37,11 +37,11 @@ LinuxDo Scripts is a feature-rich browser extension designed to enhance the user
 ## ✨ Key Features  
 
 ### 🔍 Browsing Experience Optimization  
-- Display topic creation time in lists  
+- Display topic creation time in the list  
 - Show floor numbers  
 - Open topics in new tabs  
 - Preview topic details and comments directly in the list  
-- Improved display for mixed Chinese-English text  
+- Improved display for mixed Chinese and English text  
 - Optimized signature image display to prevent broken images  
 - Automatic dark mode switching  
 
@@ -52,8 +52,8 @@ LinuxDo Scripts is a feature-rich browser extension designed to enhance the user
 - "View OP Only" toggle  
 
 ### 💬 Interaction Enhancements  
-- Quick topic replies (with customization support)  
-- Optimized emoji panel in comment boxes  
+- Quick topic replies (customizable)  
+- Optimized emoji selection in comment boxes  
 - Floor lottery feature  
 - User level information lookup  
 
@@ -68,7 +68,7 @@ LinuxDo Scripts is a feature-rich browser extension designed to enhance the user
 - Support for custom CSS styles  
 - Settings panel data synchronization  
 
-## 📥 Installation & Usage  
+## 📥 Installation  
 
 ### Browser Support  
 - **Chrome / Edge / Arc / Brave**: [Chrome Web Store](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj)  
@@ -77,7 +77,7 @@ LinuxDo Scripts is a feature-rich browser extension designed to enhance the user
 
 ## 🛠️ Development Guide  
 
-### Environment Requirements  
+### Requirements  
 ```  
 node: v22.12.0  
 ```  
@@ -101,14 +101,22 @@ npm run dev
 ### Development Notes  
 - Modular development approach  
 - Each new feature is developed as an independent component to avoid conflicts  
-- PRs will undergo code review and be merged promptly if no major issues exist  
+- PRs will undergo code review and be merged promptly if no major issues are found  
 
-## 🤝 Contribution Guide  
+## 🚀 Contributors  
 
-We welcome new feature ideas and improvement suggestions! You can participate in the project by:  
-- Submitting Issues to report problems or propose ideas  
-- Contributing code via Pull Requests  
-- Joining the Discord community for discussions  
+https://contrib.rocks/image?repo=dlzmoe/linuxdo-scripts  
+
+## 🤝 Contribution Guidelines  
+
+Welcome to propose new feature ideas and improvements! You can contribute in the following ways:  
+- Submit issues to report problems or suggest ideas  
+- Submit pull requests to contribute code  
+- Join the Discord community for discussions  
+
+## ⭐️ Star History  
+
+[![Star History Chart](https://api.star-history.com/svg?repos=dlzmoe/linuxdo-scripts&type=Timeline)](https://www.star-history.com/#dlzmoe/linuxdo-scripts&Timeline)  
 
 ## 📄 License  
 

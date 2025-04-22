@@ -103,12 +103,20 @@ npm run dev
 - 每个新功能以独立组件形式开发，避免冲突
 - 提交 PR 后将进行代码审核，无重大问题将尽快合并
 
+## 🚀 贡献者
+
+https://contrib.rocks/image?repo=dlzmoe/linuxdo-scripts
+
 ## 🤝 贡献指南
 
 欢迎提出新的功能想法和改进建议！您可以通过以下方式参与项目：
 - 提交 Issue 报告问题或提出建议
 - 提交 Pull Request 贡献代码
 - 加入 Discord 社区参与讨论
+
+## ⭐️ Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=dlzmoe/linuxdo-scripts&type=Timeline)](https://www.star-history.com/#dlzmoe/linuxdo-scripts&Timeline)
 
 ## 📄 许可证
 

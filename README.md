@@ -1,5 +1,14 @@
 [简体中文](README.md) | [English](README_EN.md)
 
+```
+  _     _                  ____          ____            _       _       
+ | |   (_)_ __  _   ___  _|  _ \  ___   / ___|  ___ _ __(_)_ __ | |_ ___ 
+ | |   | | '_ \| | | \ \/ / | | |/ _ \  \___ \ / __| '__| | '_ \| __/ __|
+ | |___| | | | | |_| |>  <| |_| | (_) |  ___) | (__| |  | | |_) | |_\__ \
+ |_____|_|_| |_|\__,_/_/\_\____/ \___/  |____/ \___|_|  |_| .__/ \__|___/
+                                                          |_|            
+```
+
 <div align="center">
   <a href="https://github.com/dlzmoe/linuxdo-scripts">
     <img src="https://github.com/dlzmoe/linuxdo-scripts/blob/main/public/icon/128.png?raw=true" alt="Logo" width="80" height="80">

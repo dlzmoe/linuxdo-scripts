@@ -447,6 +447,9 @@
   color: #279a36;
   font-size: 14px;
   word-break: break-word;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .topic-list .views {

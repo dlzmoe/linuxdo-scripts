@@ -215,6 +215,19 @@
   opacity: 0.9;
 }
 
+#linuxdoscripts .test-btn {
+  background: #0084ff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#linuxdoscripts .test-btn:hover {
+  background: #0073e6;
+}
+
 #linuxdoscripts .menu-flex {
   display: flex;
   justify-content: space-between;

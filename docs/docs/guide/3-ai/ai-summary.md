@@ -1,36 +1,42 @@
-# AI 总结
+# AI 总结功能
 
-需要在设置中预先配置好 API key 等信息，不支持 http 网址。
+使用前需在设置中预先配置 API key 等相关信息。请注意：
+- 不支持通过 HTTP 网址直接调用
+- 提供自动和手动两种触发方式
 
-可选择自动或者手动。
+如遇报错情况，请按以下步骤排查：
+1. 确认第三方 API 服务连通性正常
+2. 验证当前配置的模型是否被支持
 
-如果在使用中报错，请先确认第三方 API 连通无误，并且支持你指定的模型。
-
-在以上信息无误的情况下，再提交反馈 Issues.
+确认以上信息无误后，如问题仍未解决，可通过 Issues 提交反馈。
 
 ## 使用说明
 
-要按照指定格式填写，暂不支持官方标准的 Gemini 格式，如果转为 OpenAI 格式的接口也能用。
+请严格按照指定格式进行配置：
+- 目前暂不支持官方 Gemini 标准格式
+- 兼容 OpenAI 格式的 API 接口
 
-### 1. OpenAI
-
-```shell
-sk-xxxxxxxxxxxxxxxxxx # 密钥 api key
-https://api.openai.com # api url （不加 / 后缀）
-/v1/chat/completions # 接口
-gpt-4o-mini # model 模型
-```
-
-### 2. DeepSeek
-
-`deepseek-chat` 模型已全面升级为 `DeepSeek-V3`，接口不变。通过指定 `model='deepseek-chat'` 即可调用 `DeepSeek-V3`。
+### 1. OpenAI 配置
 
 ```shell
-sk-xxxxxxxxxxxxxxxxxx # 密钥 api key
-https://api.deepseek.com # api url （不加 / 后缀）
-/v1/chat/completions # 接口
-deepseek-chat # model 模型
+sk-xxxxxxxxxxxxxxxxxx # API Key (密钥)
+https://api.openai.com/v1/chat/completions # 接口路径
+gpt-4o-mini # 模型名称
 ```
+
+> 注意：如果是火山方舟的 DeepSeek 模型，也请使用 OpenAI 兼容的 API 格式 `https://api.volcengine.com/v1/chat/completions`。
+
+### 2. DeepSeek 配置
+
+```shell
+sk-xxxxxxxxxxxxxxxxxx # API Key (密钥)
+https://api.deepseek.com/v1/chat/completions # 接口路径
+deepseek-chat # 模型名称
+```
+
+重要说明：
+- 必须使用 OpenAI 兼容的 API 接口格式
+- 其他配置参数与标准 DeepSeek 模型保持一致
 
 ## 温度 temperature
 
@@ -49,7 +55,6 @@ deepseek-chat # model 模型
 
 2. AI 总结全部回帖
 > 我会输入一论坛的主贴及所有回复，你需要输出：1.主贴总结：简要概括主贴核心内容(2-3句)，2. 讨论分析：主要观点倾向和共识/分歧点，讨论氛围评估 3.代表性回复：引用几条有代表性的回复(附用户名)，简述每条回复的代表性和价值 4.争议点标记：标记格式: ⚠️ [用户名]: "引用内容"，简析争议原因和各方立场 5.简要评估：评估讨论的整体氛围（如：友善、学术性、对抗性等） 注意：保持客观公正，注重实质内容分析，区分事实与观点'
-
 
 3. AI 生成回复：
 > 根据以下帖子内容，帮我给作者写一条回复，简短，表明我的观点，用口语回复，不需要很正式。您可以通过讨论的方式进行回复，这将有助于引导其他用户或作者进行互动。

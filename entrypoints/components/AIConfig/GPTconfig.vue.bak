@@ -28,105 +28,72 @@
       <div class="tit">5. 新建话题使用 AI 生成标题</div>
       <input type="checkbox" v-model="localChecked.title" @change="handleChange" />
     </div>
-
-    <!-- 配置信息卡片 -->
-    <div class="config-card">
-      <div class="config-title">配置信息</div>
-
-      <div class="item">
-        <div class="label">选择服务商:</div>
-        <div class="info">
-          <select v-model="localChecked.provider" @change="handleProviderChange">
-            <option value="openai">OpenAI</option>
-            <!-- <option value="gemini">Gemini(暂不可用测试中)</option> -->
-            <option value="deepseek">DeepSeek</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="item">
-        <div class="label">API Key:</div>
-        <div class="info">
-          <input
-            type="text"
-            v-model="localChecked.apikey"
-            :placeholder="getApiKeyPlaceholder()"
-          />
-        </div>
-      </div>
-
-      <div class="item">
-        <div class="label">API URL:</div>
-        <div class="info">
-          <input
-            type="text"
-            v-model="localChecked.api_url"
-            :placeholder="getApiUrlPlaceholder()"
-          />
-        </div>
-      </div>
-
-      <div class="item">
-        <div class="label">模型名称:</div>
-        <div class="info">
-          <input
-            type="text"
-            v-model="localChecked.model"
-            :placeholder="getModelPlaceholder()"
-          />
-        </div>
-      </div>
-
-      <div class="item">
-        <div class="temperature">
-          <label>温度（temperature）：{{ localChecked.temperature }}</label>
-          <input
-            type="range"
-            :title="localChecked.temperature"
-            v-model="localChecked.temperature"
-            min="0"
-            max="2"
-            step="0.1"
-            placeholder="0.7"
-          />
-        </div>
-        <input type="checkbox" v-model="localChecked.isTemPer" @change="handleChange" />
-      </div>
-
-      <div class="item" style="font-style: italic; color: #666; font-size: 14px">
-        注意：请按照指定格式填写参数；不支持 http，请使用 https。
-      </div>
-      <button @click="testConnection" class="test-btn">测试连通性</button>
-      <div v-if="connectionStatus" :class="['connection-status', connectionStatus.type]">
-        {{ connectionStatus.message }}
-      </div>
+    <div class="item">
+      <div class="tit">6. 配置信息</div>
     </div>
-
-    <div class="prompt">
-      <div class="item">
-        <div class="tit">6. 提示词配置</div>
-      </div>
-
-      <div class="item">
-        <div class="tit">AI 总结主贴 prompt:</div>
-        <textarea v-model="localChecked.prompt"></textarea>
-      </div>
-
-      <div class="item">
-        <div class="tit">AI 总结全部回帖 prompt:</div>
-        <textarea v-model="localChecked.prompt3"></textarea>
-      </div>
-
-      <div class="item">
-        <div class="tit">AI 生成回复 prompt:</div>
-        <textarea v-model="localChecked.prompt1"></textarea>
-      </div>
-
-      <div class="item">
-        <div class="tit">AI 生成标题 prompt:</div>
-        <textarea v-model="localChecked.prompt2"></textarea>
-      </div>
+    <div class="item">
+      <div class="tit">选择服务商：</div>
+      <select v-model="localChecked.provider" @change="handleProviderChange">
+        <option value="openai">OpenAI</option>
+        <option value="gemini">Google Gemini</option>
+        <option value="deepseek">DeepSeek</option>
+      </select>
     </div>
+    <input
+      type="text"
+      v-model="localChecked.apikey"
+      :placeholder="getApiKeyPlaceholder()"
+    />
+    <div class="flex">
+      <input
+        style="width: 66%"
+        type="text"
+        v-model="localChecked.api_url"
+        :placeholder="getApiUrlPlaceholder()"
+      />
+      <button
+        style="width: 32%; margin-left: 1%"
+        @click="testConnection"
+        class="test-btn"
+      >
+        测试连通性
+      </button>
+    </div>
+    <div class="flex">
+      <input
+        style="width: 100%"
+        type="text"
+        v-model="localChecked.model"
+        :placeholder="getModelPlaceholder()"
+      />
+    </div>
+    <div class="item temperature">
+      <div class="tit">
+        <label>是否开启温度（temperature）{{ localChecked.temperature }}</label>
+        <input
+          type="range"
+          :title="localChecked.temperature"
+          v-model="localChecked.temperature"
+          min="0"
+          max="2"
+          step="0.1"
+          placeholder="0.7"
+        />
+      </div>
+      <input type="checkbox" v-model="localChecked.isTemPer" @change="handleChange" />
+    </div>
+    <div class="item">注意：请按照指定格式填写参数；不支持 http，请使用 https。</div>
+    <div v-if="connectionStatus" :class="['connection-status', connectionStatus.type]">
+      {{ connectionStatus.message }}
+    </div>
+    <div class="item">6. AI 总结主贴 prompt:</div>
+    <textarea v-model="localChecked.prompt"></textarea>
+    <div class="item">6. AI 总结全部回帖 prompt:</div>
+    <textarea v-model="localChecked.prompt3"></textarea>
+    <div class="item">7. AI 生成回复 prompt:</div>
+    <textarea v-model="localChecked.prompt1"></textarea>
+    <div class="item">8. AI 生成标题 prompt:</div>
+    <textarea v-model="localChecked.prompt2"></textarea>
   </div>
 </template>
 
@@ -776,95 +743,30 @@ ${topic_contentdata}`;
 <style lang="less" scoped>
 .item {
   border: none !important;
-  padding-bottom: 0 !important;
+  padding-bottom: 5px !important;
 
   select {
-    height: 30px;
-    border-radius: 4px;
-    border: 1px solid #ddd;
-    padding: 0 8px;
-  }
-
-  .info {
-    flex: 1;
-  }
-
-  .label {
-    width: 80px;
-    text-align: right;
-    white-space: nowrap;
-    margin-right: 10px;
+    height: 25px;
   }
 }
 
 .flex {
   display: flex;
-  gap: 8px;
+  margin-top: 8px;
 
   input {
     flex: 1;
   }
 }
 
-.config-card {
-  background: #f9f9f9;
-  border-radius: 8px;
-  padding: 15px;
-  margin: 15px 0;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.config-title {
-  font-weight: bold;
-  font-size: 16px;
-  margin-bottom: 15px;
-  color: #333;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 8px;
-}
-
-input[type="text"],
-input[type="range"],
-textarea,
-select {
-  border: 1px solid #ddd !important;
-  border-radius: 4px !important;
-  padding: 8px;
-  width: 100%;
-  height: 36px;
-  margin-bottom: 8px;
-  transition: border-color 0.3s;
-  box-sizing: border-box;
-}
-
-input[type="text"]:focus,
-textarea:focus,
-select:focus {
-  border-color: #2684ff;
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(38, 132, 255, 0.2);
-}
-
-.temperature {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  .tit {
-    display: flex;
-    align-items: center;
-    flex: 1;
-  }
-
+.item.temperature {
   label {
     margin-right: 10px !important;
-    min-width: 200px;
   }
 
   input[type="range"] {
     flex: 1;
     width: auto !important;
-    margin: 0 10px;
   }
 }
 
@@ -872,30 +774,13 @@ select:focus {
   margin-top: 8px;
   padding: 8px;
   border-radius: 4px;
-
   &.success {
     background: #e6f4ea;
     color: #1e8e3e;
   }
-
   &.error {
     background: #fce8e6;
     color: #d93025;
   }
-
-  &.info {
-    background: #e8f0fe;
-    color: #1a73e8;
-  }
-}
-
-textarea {
-  min-height: 80px;
-  resize: vertical;
-}
-
-.prompt .item {
-  flex-direction: column;
-  align-items: flex-start !important;
 }
 </style>

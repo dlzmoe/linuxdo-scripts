@@ -142,7 +142,7 @@
         </ul>
         <ul>
           <li
-            v-for="item in bookmarklist"
+            v-for="item in sortedBookmarklist"
             :key="item.id"
             @click="selectItem(item.id)"
             :class="{ selected: item.id === selectedItemId }"
@@ -182,7 +182,7 @@
     </div>
 
     <div class="container">
-      <a-table :data="tableData.list" :loading="loading" :pagination="false">
+      <a-table :data="sortedTableData" :loading="loading" :pagination="false">
         <template #columns>
           <a-table-column title="标题" data-index="title">
             <template #cell="{ record }">
@@ -198,7 +198,6 @@
                   :src="`${getCategoryInfo(record.cate).uploaded_logo.url}`"
                   class="category-icon"
                 />
-                <!-- <span :style="{ color: '#' + getCategoryInfo(record.cate)?.color }">{{ record.cate }}</span> -->
                 <span>{{ record.cate }}</span>
               </div>
             </template>
@@ -207,6 +206,18 @@
           <a-table-column title="标签" data-index="tags" :width="200">
             <template #cell="{ record }">
               {{ record.tags.join("，") }}
+            </template>
+          </a-table-column>
+
+          <a-table-column title="排序" data-index="tags" :width="100">
+            <template #cell="{ record }">
+              <a-input
+                v-model="record.sort"
+                @blur="updateBookmarkList(record)"
+                type="number"
+                :min="1"
+                style="width: 60px"
+              />
             </template>
           </a-table-column>
 
@@ -273,6 +284,16 @@
     <a-table :data="bookmarklist" :pagination="false">
       <template #columns>
         <a-table-column title="文件夹名称" data-index="name" />
+        <a-table-column title="排序">
+          <template #cell="{ record }">
+            <a-input
+              v-model="record.sort"
+              @blur="updateBookmarkData(record)"
+              type="number"
+              :min="1"
+            />
+          </template>
+        </a-table-column>
         <a-table-column title="操作">
           <template #cell="{ record }">
             <a-tag @click="openEditDialog(record)">修改</a-tag>
@@ -605,6 +626,31 @@ export default {
     };
   },
   computed: {
+    // 文件夹根据 sort 排序
+    sortedBookmarklist() {
+      // 返回根据sort字段降序排序的数组（数字大的在前，小的在后）
+      return [...this.bookmarklist].sort((a, b) => {
+        // 确保sort存在，如果不存在则默认为1
+        const sortA = a.sort || 1;
+        const sortB = b.sort || 1;
+        return sortB - sortA; // 降序排列
+      });
+    },
+    // 主体表格排序
+    sortedTableData() {
+      // 如果原始数据不存在，返回空数组
+      if (!this.tableData || !this.tableData.list) {
+        return [];
+      }
+
+      // 返回根据sort字段降序排序的数组（数字大的在前，小的在后）
+      return [...this.tableData.list].sort((a, b) => {
+        // 确保sort存在，如果不存在则默认为1
+        const sortA = a.sort || 1;
+        const sortB = b.sort || 1;
+        return sortB - sortA; // 降序排列
+      });
+    },
     filteredCategories() {
       // return this.bookmarklist.filter((item) => item.id);
       // 迁移文件夹时，要看到全部的文件夹
@@ -612,6 +658,24 @@ export default {
     },
   },
   methods: {
+    // 文件夹修改排序
+    updateBookmarkData(record) {
+      record.sort = Number(record.sort);
+      localStorage.setItem("bookmarkData", JSON.stringify(this.bookmarklist));
+    },
+    updateBookmarkList(record) {
+      // 确保sort是数字类型
+      record.sort = Number(record.sort);
+
+      // 找到当前选中的书签文件夹
+      const currentFolder = this.bookmarklist.find(
+        (item) => item.id === this.selectedItemId
+      );
+      if (currentFolder) {
+        // 更新本地存储
+        localStorage.setItem("bookmarkData", JSON.stringify(this.bookmarklist));
+      }
+    },
     // 搜索帖子标题关键词
     searchPosts() {
       if (this.search == "") {
@@ -666,6 +730,7 @@ export default {
     init() {
       this.selectedItemId = this.bookmarklist[0].id;
       this.tableData = this.bookmarklist[0];
+      this.isSort();
     },
     // 打开新建文件夹弹窗
     openCate() {
@@ -682,11 +747,8 @@ export default {
         id: maxId + 1,
         name: this.newcatename.trim(),
         list: [],
-        sort: Date.now(), // 添加排序字段
       };
       this.bookmarklist.push(newCate);
-      // 按排序字段对文件夹重新排序
-      this.bookmarklist.sort((a, b) => (b.sort || 0) - (a.sort || 0));
       this.$message.success(`新增文件夹【${this.newcatename}】成功!`);
       this.newcatename = "";
       this.dialogVisible = false;
@@ -742,14 +804,17 @@ export default {
         this.$message.error("请选择目标文件夹");
         return;
       }
+
       // 更新标题名称
       if (this.editname !== this.currentMoveItem.title) {
         this.currentMoveItem.title = this.editname;
       }
+
       // 查找目标文件夹
       const targetCategory = this.bookmarklist.find(
         (item) => item.id === this.targetCategoryId
       );
+
       // 在所有文件夹中查找并移除项目
       let itemMoved = false;
       this.bookmarklist.forEach((folder) => {
@@ -759,10 +824,10 @@ export default {
           itemMoved = true;
         }
       });
-      // 更新排序值并添加到目标文件夹的顶部
+
+      // 添加到目标文件夹最前面
       if (itemMoved) {
-        this.currentMoveItem.sort = Date.now();
-        targetCategory.list.unshift(this.currentMoveItem);
+        targetCategory.list.unshift(this.currentMoveItem); // 改用 unshift 添加到数组开头
 
         // 根据当前视图更新显示
         if (this.menutype === "tags") {
@@ -788,6 +853,7 @@ export default {
             (item) => item.id === this.selectedItemId
           );
         }
+
         this.$message.success("修改成功！");
         this.moveDialogVisible = false;
         localStorage.setItem("bookmarkData", JSON.stringify(this.bookmarklist));
@@ -1389,82 +1455,25 @@ export default {
       }
     },
     // 确认填充
-    // ... existing code ...
     setAddAccess() {
       if (this.addPost.title == "" || this.addPost.url == "") {
         this.$message("请勿留空必填项！");
         return false;
       }
       this.addPostDialogVisible = false;
-
       // 确保 tags 是数组结构，将字符串以逗号分隔成数组，并去除多余空格
       const tagsArr = this.addPost.tags.split(",").map((tag) => tag.trim());
-
-      // 创建新书签对象，添加排序字段
-      const newBookmark = {
+      this.bookmarklist[0].list.unshift({
         url: this.addPost.url,
         title: this.addPost.title,
         cate: this.addPost.cate,
         tags: tagsArr,
-        sort: Date.now(), // 使用时间戳作为排序值，越大越靠前
-      };
-
-      // 检查是否存在相同 URL 的书签
-      let existingBookmark = null;
-      let existingFolderId = null;
-
-      // 在所有文件夹中查找是否存在相同 URL 的书签
-      this.bookmarklist.forEach((folder) => {
-        const found = folder.list.find((item) => item.url === newBookmark.url);
-        if (found) {
-          existingBookmark = found;
-          existingFolderId = folder.id;
-        }
       });
-
-      if (existingBookmark) {
-        // 如果书签已存在
-
-        // 如果已存在的书签不在当前文件夹，移动到当前文件夹
-        if (existingFolderId !== this.selectedItemId) {
-          // 从原文件夹移除
-          const sourceFolder = this.bookmarklist.find(
-            (folder) => folder.id === existingFolderId
-          );
-          sourceFolder.list = sourceFolder.list.filter(
-            (item) => item.url !== newBookmark.url
-          );
-
-          // 更新排序值并添加到当前文件夹最顶部
-          existingBookmark.sort = Date.now();
-          this.bookmarklist
-            .find((folder) => folder.id === this.selectedItemId)
-            .list.unshift(existingBookmark);
-          this.$message.success("书签已移动到当前文件夹顶部！");
-        } else {
-          // 如果已存在的书签在当前文件夹，只更新排序值
-          existingBookmark.sort = Date.now();
-
-          // 重新排序当前文件夹的书签列表
-          const currentFolder = this.bookmarklist.find(
-            (folder) => folder.id === this.selectedItemId
-          );
-          currentFolder.list.sort((a, b) => (b.sort || 0) - (a.sort || 0));
-
-          this.$message.success("书签已更新到顶部！");
-        }
-      } else {
-        // 如果是新书签，添加到当前文件夹顶部
-        this.bookmarklist
-          .find((folder) => folder.id === this.selectedItemId)
-          .list.unshift(newBookmark);
-        this.$message.success("新增成功！");
-      }
-
       this.initPostCategory();
       this.initPostTags();
       this.Loading();
       localStorage.setItem("bookmarkData", JSON.stringify(this.bookmarklist));
+      this.$message.success("新增成功！");
       this.clearAccess();
     },
 
@@ -1480,6 +1489,38 @@ export default {
         // 恢复亮色主题
         document.body.removeAttribute("arco-theme");
       }
+    },
+
+    // 判断是否有排序字段
+    isSort() {
+      const bookmarkData = localStorage.getItem("bookmarkData");
+      if (bookmarkData && JSON.parse(bookmarkData).length > 0) {
+        this.bookmarklist = JSON.parse(bookmarkData);
+      } else {
+        localStorage.setItem("bookmarkData", JSON.stringify(this.bookmarklist));
+      }
+
+      // 遍历书签列表中的每个分类
+      this.bookmarklist.forEach((category) => {
+        // 若分类没有sort字段，添加默认值1
+        if (!category.hasOwnProperty("sort")) {
+          category.sort = 1;
+        }
+
+        // 遍历分类中的每个书签
+        if (category.list && Array.isArray(category.list)) {
+          category.list.forEach((bookmark) => {
+            // 若书签没有sort字段，添加默认值1
+            if (!bookmark.hasOwnProperty("sort")) {
+              bookmark.sort = 1;
+            }
+          });
+        }
+      });
+
+      // 更新本地存储中的数据
+      localStorage.setItem("bookmarkData", JSON.stringify(this.bookmarklist));
+      console.log(this.bookmarklist);
     },
   },
   mounted() {
@@ -1507,39 +1548,7 @@ export default {
     const bookmarkData = localStorage.getItem("bookmarkData");
     if (bookmarkData && JSON.parse(bookmarkData).length > 0) {
       this.bookmarklist = JSON.parse(bookmarkData);
-
-      // 为所有现有文件夹和书签添加排序字段（如果没有的话）
-      let needsUpdate = false;
-
-      this.bookmarklist.forEach((folder, folderIndex) => {
-        // 为文件夹添加排序字段
-        if (folder.sort === undefined) {
-          folder.sort = Date.now() - folderIndex * 1000; // 保持现有顺序
-          needsUpdate = true;
-        }
-
-        // 为书签添加排序字段
-        folder.list.forEach((bookmark, bookmarkIndex) => {
-          if (bookmark.sort === undefined) {
-            bookmark.sort = Date.now() - bookmarkIndex * 1000; // 保持现有顺序
-            needsUpdate = true;
-          }
-        });
-
-        // 按排序字段排序书签
-        folder.list.sort((a, b) => (b.sort || 0) - (a.sort || 0));
-      });
-
-      // 按排序字段排序文件夹
-      this.bookmarklist.sort((a, b) => (b.sort || 0) - (a.sort || 0));
-
-      // 如果有更新排序字段，保存到 localStorage
-      if (needsUpdate) {
-        localStorage.setItem("bookmarkData", JSON.stringify(this.bookmarklist));
-      }
     } else {
-      // 初始化默认文件夹时添加排序字段
-      this.bookmarklist[0].sort = Date.now();
       localStorage.setItem("bookmarkData", JSON.stringify(this.bookmarklist));
     }
     this.init();
@@ -1552,30 +1561,39 @@ export default {
           bookmarkGroup.list.some((item) => item.url === result.bookmarkData.url)
         );
 
-        if (!isUrlExist) {
-          // 先检查是否存在 id 为 0 的列表
-          let defaultList = vm.bookmarklist.find((item) => item.id === 0);
+        // if (!isUrlExist) {
+        // 先检查是否存在 id 为 0 的列表
+        let defaultList = vm.bookmarklist.find((item) => item.id === 0);
 
-          // 如果不存在，创建默认列表并添加到 bookmarklist
-          if (!defaultList) {
-            defaultList = {
-              id: 0,
-              name: "默认",
-              list: [],
-            };
-            vm.bookmarklist.unshift(defaultList);
-          }
-
-          // 添加书签数据
-          vm.bookmarklist.find((item) => item.id === 0).list.unshift(result.bookmarkData);
-          vm.tableData = vm.bookmarklist[0];
-          this.selectedItemId = 0;
-
-          this.initPostCategory();
-          this.initPostTags();
-          this.Loading();
-          localStorage.setItem("bookmarkData", JSON.stringify(vm.bookmarklist));
+        // 如果不存在，创建默认列表并添加到 bookmarklist
+        if (!defaultList) {
+          defaultList = {
+            id: 0,
+            name: "默认",
+            list: [],
+          };
+          vm.bookmarklist.unshift(defaultList);
         }
+
+        if (isUrlExist) {
+          // 如果URL已存在，先从所有列表中移除该书签
+          vm.bookmarklist.forEach((bookmarkGroup) => {
+            bookmarkGroup.list = bookmarkGroup.list.filter(
+              (item) => item.url !== result.bookmarkData.url
+            );
+          });
+        }
+
+        // 添加书签数据
+        vm.bookmarklist.find((item) => item.id === 0).list.unshift(result.bookmarkData);
+        vm.tableData = vm.bookmarklist[0];
+        this.selectedItemId = 0;
+
+        this.initPostCategory();
+        this.initPostTags();
+        this.Loading();
+        localStorage.setItem("bookmarkData", JSON.stringify(vm.bookmarklist));
+        // }
 
         // 处理完后立即清除 storage 中的数据
         browserAPI.storage.local.remove("bookmarkData");

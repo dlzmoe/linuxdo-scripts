@@ -143,6 +143,8 @@
             <MenuMonitorWidthOptimization :sort="37" v-model="settingData.checked46" />
             <!-- 类别页优化 banner 显示 -->
             <MenuCatePageOptimizeBanner :sort="38" v-model="settingData.checked47" />
+            <!-- 楼主头衔显示 -->
+            <MenuTopicOwnerBadge :sort="39" v-model="settingData.checked49" />
           </div>
           <div class="menu-body-item" v-show="activeIndex == 1">
             <!-- 自定义论坛 logo -->
@@ -240,6 +242,7 @@ import MenuViewOwnReply from "./components/BasicSettings/MenuViewOwnReply.vue";
 import MenuUsernameLength from "./components/BasicSettings/MenuUsernameLength.vue";
 import MenuMonitorWidthOptimization from "./components/BasicSettings/MenuMonitorWidthOptimization.vue";
 import MenuCatePageOptimizeBanner from "./components/BasicSettings/MenuCatePageOptimizeBanner.vue";
+import MenuTopicOwnerBadge from "./components/BasicSettings/MenuTopicOwnerBadge.vue";
 
 // 自定义文字
 import MenuOtherCss from "./components/CustomText/MenuOtherCss.vue";
@@ -356,6 +359,7 @@ export default {
     MenuIconTitle,
     MenuCatePageOptimizeBanner,
     MenuUserTags,
+    MenuTopicOwnerBadge,
   },
   data() {
     return {
@@ -429,6 +433,7 @@ export default {
         checked46: false,
         checked47: false,
         checked48: false,
+        checked49: false,
         removePostavatarData: {
           enable: false,
           showAuthor: false,

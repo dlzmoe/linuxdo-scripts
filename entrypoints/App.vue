@@ -145,6 +145,8 @@
             <MenuCatePageOptimizeBanner :sort="38" v-model="settingData.checked47" />
             <!-- 楼主头衔显示 -->
             <MenuTopicOwnerBadge :sort="39" v-model="settingData.checked49" />
+            <!-- 始终打开1楼 -->
+            <MenuAlwaysFirstPost :sort="40" v-model="settingData.checked50" />
           </div>
           <div class="menu-body-item" v-show="activeIndex == 1">
             <!-- 自定义论坛 logo -->
@@ -243,6 +245,7 @@ import MenuUsernameLength from "./components/BasicSettings/MenuUsernameLength.vu
 import MenuMonitorWidthOptimization from "./components/BasicSettings/MenuMonitorWidthOptimization.vue";
 import MenuCatePageOptimizeBanner from "./components/BasicSettings/MenuCatePageOptimizeBanner.vue";
 import MenuTopicOwnerBadge from "./components/BasicSettings/MenuTopicOwnerBadge.vue";
+import MenuAlwaysFirstPost from "./components/BasicSettings/MenuAlwaysFirstPost.vue";
 
 // 自定义文字
 import MenuOtherCss from "./components/CustomText/MenuOtherCss.vue";
@@ -360,6 +363,7 @@ export default {
     MenuCatePageOptimizeBanner,
     MenuUserTags,
     MenuTopicOwnerBadge,
+    MenuAlwaysFirstPost,
   },
   data() {
     return {
@@ -434,6 +438,7 @@ export default {
         checked47: false,
         checked48: false,
         checked49: false,
+        checked50: false, 
         removePostavatarData: {
           enable: false,
           showAuthor: false,

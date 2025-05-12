@@ -283,18 +283,29 @@
     </p>
     <a-table :data="sortedBookmarklist" :pagination="false">
       <template #columns>
-        <a-table-column title="文件夹名称" data-index="name" />
-        <a-table-column title="排序">
+        <a-table-column title="文件夹名称" data-index="name" min-width="120" />
+        <a-table-column title="排序" width="140">
           <template #cell="{ record }">
             <a-input
+              v-if="!editingId || editingId !== record.id"
               v-model="record.sort"
-              @blur="updateBookmarkData(record)"
+              @click="startEditing(record)"
               type="number"
               :min="1"
+              readonly
+            />
+            <a-input
+              v-else
+              v-model="temporaryValue"
+              @blur="finishEditing(record)"
+              type="number"
+              :min="1"
+              ref="editInput"
+              @keyup.enter="finishEditing(record)"
             />
           </template>
         </a-table-column>
-        <a-table-column title="操作">
+        <a-table-column title="操作" min-width="140">
           <template #cell="{ record }">
             <a-tag @click="openEditDialog(record)">修改</a-tag>
             <a-popconfirm content="最后确认删除？" @ok="deleteSelected(record)">
@@ -568,6 +579,7 @@ export default {
           id: 0,
           name: "默认",
           list: [],
+          sort: 1,
         },
       ],
       tableData: {}, // 页面渲染的指定数据
@@ -623,6 +635,9 @@ export default {
 
       // 黑夜模式
       themes: "light", // light / dark
+
+      editingId: null, // 当前正在编辑的记录ID
+      temporaryValue: null, // 临时存储的值
     };
   },
   computed: {
@@ -658,6 +673,30 @@ export default {
     },
   },
   methods: {
+    // 开始编辑时触发
+    startEditing(record) {
+      this.editingId = record.id; // 或其他唯一标识
+      this.temporaryValue = record.sort; // 复制当前值到临时变量
+      this.$nextTick(() => {
+        // 聚焦到编辑输入框
+        if (this.$refs.editInput) {
+          this.$refs.editInput.focus();
+        }
+      });
+    },
+
+    // 结束编辑时触发
+    finishEditing(record) {
+      // 更新记录的值
+      record.sort = this.temporaryValue;
+
+      // 调用更新方法
+      this.updateBookmarkData(record);
+
+      // 重置编辑状态
+      this.editingId = null;
+    },
+
     // 文件夹修改排序
     updateBookmarkData(record) {
       record.sort = Number(record.sort);
@@ -954,6 +993,7 @@ export default {
                     id: bookmark.id,
                     name: bookmark.name,
                     list: [...bookmark.list],
+                    sort: bookmark.sort,
                   });
                 }
               });
@@ -969,6 +1009,7 @@ export default {
                     id: bookmark.id,
                     name: bookmark.name,
                     list: [...bookmark.list],
+                    sort: bookmark.sort,
                   });
                 }
               });
@@ -1176,15 +1217,21 @@ export default {
 
             // 先处理现有数据
             this.bookmarklist.forEach((bookmark) => {
-              if (mergedMap.has(bookmark.name)) {
-                // 如果已存在相同 name，合并 list
-                mergedMap.get(bookmark.name).list.push(...bookmark.list);
+              // 通过id查找是否已存在
+              const existingBookmark = Array.from(mergedMap.values()).find(
+                (item) => item.id === bookmark.id
+              );
+
+              if (existingBookmark) {
+                // 存在相同id的对象，只合并list数据，保留existingBookmark的其他数据
+                existingBookmark.list.push(...bookmark.list);
               } else {
-                // 不存在则添加新条目
+                // 不存在相同id，添加新条目
                 mergedMap.set(bookmark.name, {
                   id: bookmark.id,
                   name: bookmark.name,
                   list: [...bookmark.list],
+                  sort: bookmark.sort,
                 });
               }
             });
@@ -1200,6 +1247,7 @@ export default {
                   id: bookmark.id,
                   name: bookmark.name,
                   list: [...bookmark.list],
+                  sort: bookmark.sort,
                 });
               }
             });

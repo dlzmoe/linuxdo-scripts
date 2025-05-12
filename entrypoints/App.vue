@@ -147,7 +147,7 @@
              <MenuExportArticle :sort="39" v-model="settingData.checkedExportArticle" />
             <!-- 楼主头衔显示 -->
             <MenuTopicOwnerBadge :sort="40" v-model="settingData.checked49" />
-            <!-- 始终打开1楼 -->
+            <!-- 话题始终打开1楼 -->
             <MenuAlwaysFirstPost :sort="41" v-model="settingData.checked50" />
           </div>
           <div class="menu-body-item" v-show="activeIndex == 1">
@@ -526,6 +526,19 @@ export default {
     },
   },
   created() {
+    setInterval(() => {
+      if($('.linxudoscripts-btn').length<1) {
+        const $target = $(
+          ".topic-map__actions, .topic-map .buttons, .topic-map__contents .buttons"
+        ).first();
+        if ($target.length > 0) {
+          $target.append(`<div class="linxudoscripts-btn"></div>`);
+        } else {
+          // 兜底只插入到第一个帖子内容后
+          $(".regular.contents").first().after(`<div class="linxudoscripts-btn"></div>`);
+        }
+      }
+    }, 1000);
     const browserAPI = typeof browser !== "undefined" ? browser : chrome;
     $("body").append('<div id="messageToast"></div>');
     console.log(

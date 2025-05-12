@@ -969,3 +969,16 @@ body.body-preview #main-outlet-wrapper {
     bottom: 50px;
   }
 }
+
+.linxudoscripts-btn {
+  display: flex;
+  align-items: center;
+}
+
+.linxudoscripts-btn>* {
+  margin-right: 8px !important;
+}
+
+.linxudoscripts-btn>*:last-child {
+  margin-right: 0 !important;
+}

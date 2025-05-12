@@ -209,7 +209,7 @@
             </template>
           </a-table-column>
 
-          <a-table-column title="排序" data-index="tags" :width="100">
+          <!-- <a-table-column title="排序" data-index="tags" :width="100">
             <template #cell="{ record }">
               <a-input
                 v-model="record.sort"
@@ -219,7 +219,7 @@
                 style="width: 60px"
               />
             </template>
-          </a-table-column>
+          </a-table-column> -->
 
           <a-table-column
             v-if="menutype === 'folder'"
@@ -281,7 +281,7 @@
     <p style="color: #e00; margin-bottom: 10px">
       删除文件夹时会连同该文件夹下的帖子一起删除，无法恢复请谨慎操作！
     </p>
-    <a-table :data="bookmarklist" :pagination="false">
+    <a-table :data="sortedBookmarklist" :pagination="false">
       <template #columns>
         <a-table-column title="文件夹名称" data-index="name" />
         <a-table-column title="排序">
@@ -747,6 +747,7 @@ export default {
         id: maxId + 1,
         name: this.newcatename.trim(),
         list: [],
+        sort: 1,
       };
       this.bookmarklist.push(newCate);
       this.$message.success(`新增文件夹【${this.newcatename}】成功!`);
@@ -1571,6 +1572,7 @@ export default {
             id: 0,
             name: "默认",
             list: [],
+            sort: 1,
           };
           vm.bookmarklist.unshift(defaultList);
         }

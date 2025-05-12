@@ -131,7 +131,7 @@
             <MenuHideHomeBanner :sort="31" v-model="settingData.checked39" />
             <!-- 是否开启收藏功能 -->
             <MenuBookmark :sort="32" v-model="settingData.checked40" />
-            <!-- 是否自动隐藏“福利羊毛”中已领完的帖子 -->
+            <!-- 是否自动隐藏"福利羊毛"中已领完的帖子 -->
             <MenuHideWelfareDone :sort="33" v-model="settingData.checked42" />
             <!-- 是否开启话题转为图片进行分享 -->
             <MenuTopicToImages :sort="34" v-model="settingData.checked43" />
@@ -143,10 +143,12 @@
             <MenuMonitorWidthOptimization :sort="37" v-model="settingData.checked46" />
             <!-- 类别页优化 banner 显示 -->
             <MenuCatePageOptimizeBanner :sort="38" v-model="settingData.checked47" />
+            <!-- 是否开启论坛文章导出功能 -->
+             <MenuExportArticle :sort="39" v-model="settingData.checkedExportArticle" />
             <!-- 楼主头衔显示 -->
-            <MenuTopicOwnerBadge :sort="39" v-model="settingData.checked49" />
+            <MenuTopicOwnerBadge :sort="40" v-model="settingData.checked49" />
             <!-- 始终打开1楼 -->
-            <MenuAlwaysFirstPost :sort="40" v-model="settingData.checked50" />
+            <MenuAlwaysFirstPost :sort="41" v-model="settingData.checked50" />
           </div>
           <div class="menu-body-item" v-show="activeIndex == 1">
             <!-- 自定义论坛 logo -->
@@ -244,6 +246,7 @@ import MenuViewOwnReply from "./components/BasicSettings/MenuViewOwnReply.vue";
 import MenuUsernameLength from "./components/BasicSettings/MenuUsernameLength.vue";
 import MenuMonitorWidthOptimization from "./components/BasicSettings/MenuMonitorWidthOptimization.vue";
 import MenuCatePageOptimizeBanner from "./components/BasicSettings/MenuCatePageOptimizeBanner.vue";
+import MenuExportArticle from "./components/BasicSettings/MenuExportArticle.vue";
 import MenuTopicOwnerBadge from "./components/BasicSettings/MenuTopicOwnerBadge.vue";
 import MenuAlwaysFirstPost from "./components/BasicSettings/MenuAlwaysFirstPost.vue";
 
@@ -362,6 +365,7 @@ export default {
     MenuIconTitle,
     MenuCatePageOptimizeBanner,
     MenuUserTags,
+    MenuExportArticle,
     MenuTopicOwnerBadge,
     MenuAlwaysFirstPost,
   },
@@ -463,6 +467,7 @@ export default {
           prompt3: '我会输入一论坛的主贴及所有回复，你需要输出：1.主贴总结：简要概括主贴核心内容 (2-3 句)，2. 讨论分析：主要观点倾向和共识/分歧点，讨论氛围评估 3.代表性回复：引用几条有代表性的回复 (附用户名)，简述每条回复的代表性和价值 4.争议点标记：标记格式：⚠️ [用户名]: "引用内容"，简析争议原因和各方立场 5.简要评估：评估讨论的整体氛围（如：友善、学术性、对抗性等）注意：保持客观公正，注重实质内容分析，区分事实与观点',
         },
         themes: 0,
+        checkedExportArticle: false,
       },
 
       showlookop: false,

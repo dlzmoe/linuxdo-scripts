@@ -57,6 +57,16 @@
           <div class="menu-body-item" v-show="activeIndex == 0">
             <div class="menu-about">
               <p>请注意，该设置面板数据全部保存在本地浏览器缓存中，注意备份。</p>
+                          
+            <!-- 添加设置搜索框 -->
+            <div class="settings-search" style="margin: 10px 0;">
+              <input 
+                type="text" 
+                v-model="settingsSearchQuery" 
+                placeholder="搜索设置项..." 
+                style="padding: 6px 10px; border-radius: 4px; width: 80%; font-size: 13px;"
+              />
+            </div>
               <p class="hint">
                 如果感觉哪里不太对劲，点我
                 <span class="initialization" @click="initialization">初始化设置</span>
@@ -64,85 +74,86 @@
               </p>
             </div>
 
+
             <!-- 简洁模式 -->
-            <MenuSimpleMode :sort="0" v-model="settingData.checked0" />
+            <MenuSimpleMode :sort="0" v-model="settingData.checked0" v-show="matchesSearch('简洁模式')" />
             <!-- 新标签页打开 -->
-            <MenuOpenpostblank :sort="1" v-model="settingData.checked1" />
+            <MenuOpenpostblank :sort="1" v-model="settingData.checked1" v-show="matchesSearch('新标签页打开')" />
             <!-- 新话题提醒 -->
-            <MenuNewtopicreminder :sort="2" v-model="settingData.checked2" />
+            <MenuNewtopicreminder :sort="2" v-model="settingData.checked2" v-show="matchesSearch('新话题提醒')" />
             <!-- 自动展开回复 -->
-            <MenuAutoexpandreply :sort="3" v-model="settingData.checked3" />
+            <MenuAutoexpandreply :sort="3" v-model="settingData.checked3" v-show="matchesSearch('自动展开回复')" />
             <!-- <MenuAutoexpandreply1 :sort="3.1" v-model="settingData.checked31" /> -->
             <!-- 话题列表显示创建时间 -->
-            <MenuShowcreatetime :sort="4" v-model="settingData.checked4" />
-            <MenuShowcreatetime1 :sort="4.1" v-model="settingData.checked41" />
+            <MenuShowcreatetime :sort="4" v-model="settingData.checked4" v-show="matchesSearch('话题列表显示创建时间')" />
+            <MenuShowcreatetime1 :sort="4.1" v-model="settingData.checked41" v-show="matchesSearch('话题列表显示创建时间')" />
             <!-- 显示楼层数 -->
-            <MenuShowfloors :sort="5" v-model="settingData.checked5" />
+            <MenuShowfloors :sort="5" v-model="settingData.checked5" v-show="matchesSearch('显示楼层数')" />
             <!-- 隐藏话题详情顶部大标题 -->
-            <MenuHidetopicdetailtitle :sort="6" v-model="settingData.checked6" />
+            <MenuHidetopicdetailtitle :sort="6" v-model="settingData.checked6" v-show="matchesSearch('隐藏话题详情顶部大标题')" />
             <!-- 话题预览功能 -->
-            <MenuTopicpreview1 :sort="7" v-model="settingData.checked7" />
-            <MenuTopicpreview2 :sort="7.1" v-model="settingData.checked7_1" />
+            <MenuTopicpreview1 :sort="7" v-model="settingData.checked7" v-show="matchesSearch('话题预览功能')" />
+            <MenuTopicpreview2 :sort="7.1" v-model="settingData.checked7_1" v-show="matchesSearch('话题预览功能')" />
             <!-- 只看楼主按钮 -->
-            <MenuLookOP :sort="9" v-model="settingData.checked9" />
+            <MenuLookOP :sort="9" v-model="settingData.checked9" v-show="matchesSearch('只看楼主按钮')" />
             <!-- 智能限制楼层高度 -->
-            <MenuFloorHeight :sort="10" v-model="settingData.checked10" />
+            <MenuFloorHeight :sort="10" v-model="settingData.checked10" v-show="matchesSearch('智能限制楼层高度')" />
             <!-- 中英文混排优化显示 -->
-            <MenuPangu :sort="11" v-model="settingData.checked11" />
+            <MenuPangu :sort="11" v-model="settingData.checked11" v-show="matchesSearch('中英文混排优化显示')" />
             <!-- 是否显示等级查询按钮 -->
-            <MenuLevelSearch :sort="12" v-model="settingData.checked12" />
+            <MenuLevelSearch :sort="12" v-model="settingData.checked12" v-show="matchesSearch('等级查询按钮')" />
             <!-- 消息通知仅显示未读 -->
-            <MenuShowUnread :sort="13" v-model="settingData.checked13" />
+            <MenuShowUnread :sort="13" v-model="settingData.checked13" v-show="matchesSearch('消息通知仅显示未读')" />
             <!-- 是否屏蔽模糊文字 -->
-            <MenuFilterText :sort="14" v-model="settingData.checked14" />
+            <MenuFilterText :sort="14" v-model="settingData.checked14" v-show="matchesSearch('屏蔽模糊文字')" />
             <!-- 只看自己签名 -->
-            <MenuLookmeSign :sort="15" v-model="settingData.checked15" />
+            <MenuLookmeSign :sort="15" v-model="settingData.checked15" v-show="matchesSearch('只看自己签名')" />
             <!-- 切换论坛表情风格 -->
-            <MenureplaceEmojiStyle :sort="16" v-model="settingData.checked17" />
+            <MenureplaceEmojiStyle :sort="16" v-model="settingData.checked17" v-show="matchesSearch('切换论坛表情风格')" />
             <!-- 编辑器切换 ja 字体 -->
-            <MenuEditorJa :sort="17" v-model="settingData.checked19" />
+            <MenuEditorJa :sort="17" v-model="settingData.checked19" v-show="matchesSearch('编辑器切换 ja 字体')" />
             <!-- 开启列表页导航栏浮动 -->
-            <MenuStickyNav :sort="18" v-model="settingData.checked20" />
+            <MenuStickyNav :sort="18" v-model="settingData.checked20" v-show="matchesSearch('列表页导航栏浮动')" />
             <!-- 禁用选中文字分享功能 -->
-            <MenuSelectedShare :sort="20" v-model="settingData.checked23" />
+            <MenuSelectedShare :sort="20" v-model="settingData.checked23" v-show="matchesSearch('禁用选中文字分享功能')" />
             <!-- 禁用视频自动播放 -->
-            <MenuDisableAutoplay :sort="21" v-model="settingData.checked24" />
+            <MenuDisableAutoplay :sort="21" v-model="settingData.checked24" v-show="matchesSearch('禁用视频自动播放')" />
             <!-- 回复悬浮按钮 -->
-            <MenuShowRepltBtn :sort="22" v-model="settingData.checked25" />
+            <MenuShowRepltBtn :sort="22" v-model="settingData.checked25" v-show="matchesSearch('回复悬浮按钮')" />
             <!-- 列表快速免打扰帖子 -->
-            <MenuDonotTopic :sort="23" v-model="settingData.checked26" />
+            <MenuDonotTopic :sort="23" v-model="settingData.checked26" v-show="matchesSearch('列表快速免打扰帖子')" />
             <!-- 自动切换黑夜模式 -->
-            <MenuAutoDark :sort="24" v-model="settingData.checked27" />
+            <MenuAutoDark :sort="24" v-model="settingData.checked27" v-show="matchesSearch('自动切换黑夜模式')" />
             <!-- 是否隐藏输入框提示文字 -->
-            <MenuHiddenPlaceholder :sort="25" v-model="settingData.checked28" />
+            <MenuHiddenPlaceholder :sort="25" v-model="settingData.checked28" v-show="matchesSearch('隐藏输入框提示文字')" />
             <!-- 是否移除话题上的头像 (减少网络请求) -->
-            <MenuRemovePostAvatar :sort="26" v-model="settingData.removePostavatarData" />
+            <MenuRemovePostAvatar :sort="26" v-model="settingData.removePostavatarData" v-show="matchesSearch('移除话题上的头像')" />
             <!-- 是否显示返回顶部按钮 -->
-            <MenuBackToTop :sort="27" v-model="settingData.checked34" />
+            <MenuBackToTop :sort="27" v-model="settingData.checked34" v-show="matchesSearch('返回顶部按钮')" />
             <!-- 添加直达一楼按钮 -->
-            <MenuBackToOneFloor :sort="`27(1)`" v-model="settingData.checked48" />
+            <MenuBackToOneFloor :sort="`27(1)`" v-model="settingData.checked48" v-show="matchesSearch('直达一楼按钮')" />
             <!-- 是否显示快捷点赞主题按钮 -->
-            <MenuQuickLikeTopic :sort="28" v-model="settingData.checked35" />
+            <MenuQuickLikeTopic :sort="28" v-model="settingData.checked35" v-show="matchesSearch('快捷点赞主题按钮')" />
             <!-- 隐藏新消息小蓝点（除帖子未读小蓝点） -->
-            <MenuHideNewBluedot :sort="29" v-model="settingData.checked37" />
+            <MenuHideNewBluedot :sort="29" v-model="settingData.checked37" v-show="matchesSearch('隐藏新消息小蓝点')" />
             <!-- gif 头像转静态图片 -->
-            <MenuGifToPng :sort="30" v-model="settingData.checked38" />
+            <MenuGifToPng :sort="30" v-model="settingData.checked38" v-show="matchesSearch('gif 头像转静态图片')" />
             <!-- 新增是否隐藏首页 banner 区域 -->
-            <MenuHideHomeBanner :sort="31" v-model="settingData.checked39" />
+            <MenuHideHomeBanner :sort="31" v-model="settingData.checked39" v-show="matchesSearch('隐藏首页 banner 区域')" />
             <!-- 是否开启收藏功能 -->
-            <MenuBookmark :sort="32" v-model="settingData.checked40" />
+            <MenuBookmark :sort="32" v-model="settingData.checked40" v-show="matchesSearch('收藏功能')" />
             <!-- 是否自动隐藏"福利羊毛"中已领完的帖子 -->
-            <MenuHideWelfareDone :sort="33" v-model="settingData.checked42" />
+            <MenuHideWelfareDone :sort="33" v-model="settingData.checked42" v-show="matchesSearch('隐藏福利羊毛中已领完的帖子')" />
             <!-- 是否开启话题转为图片进行分享 -->
-            <MenuTopicToImages :sort="34" v-model="settingData.checked43" />
+            <MenuTopicToImages :sort="34" v-model="settingData.checked43" v-show="matchesSearch('话题转为图片进行分享')" />
             <!-- 查看话题内自己回复的楼层数（抽奖贴适用） -->
-            <MenuViewOwnReply :sort="35" v-model="settingData.checked44" />
+            <MenuViewOwnReply :sort="35" v-model="settingData.checked44" v-show="matchesSearch('查看话题内自己回复的楼层数')" />
             <!-- 是否美化过长的昵称 -->
-            <MenuUsernameLength :sort="36" v-model="settingData.checked45" />
+            <MenuUsernameLength :sort="36" v-model="settingData.checked45" v-show="matchesSearch('美化过长的昵称')" />
             <!-- 是否开启超长显示器宽度优化 -->
-            <MenuMonitorWidthOptimization :sort="37" v-model="settingData.checked46" />
+            <MenuMonitorWidthOptimization :sort="37" v-model="settingData.checked46" v-show="matchesSearch('超长显示器宽度优化')" />
             <!-- 类别页优化 banner 显示 -->
-            <MenuCatePageOptimizeBanner :sort="38" v-model="settingData.checked47" />
+            <MenuCatePageOptimizeBanner :sort="38" v-model="settingData.checked47" v-show="matchesSearch('类别页优化 banner 显示')" />
             <!-- 是否开启论坛文章导出功能 -->
              <MenuExportArticle :sort="39" v-model="settingData.checkedExportArticle" />
             <!-- 楼主头衔显示 -->
@@ -475,6 +486,7 @@ export default {
       showreplybtn: false,
       showbacktotop: false,
       showbacktoonefloor: false,
+      settingsSearchQuery: '', // 添加搜索查询字段
     };
   },
   methods: {
@@ -523,6 +535,13 @@ export default {
       setTimeout(() => {
         location.reload();
       }, 1000);
+    },
+    // 搜索设置项
+    matchesSearch(settingName) {
+      if (!this.settingsSearchQuery) return true;
+      
+      const query = this.settingsSearchQuery.toLowerCase();
+      return settingName.toLowerCase().includes(query);
     },
   },
   created() {

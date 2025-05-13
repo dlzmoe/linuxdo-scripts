@@ -32,7 +32,7 @@ export default {
   
   /* 文字样式 */
   color: rgba(255, 255, 255, 0.95);
-  font-size: 12px;
+  font-size: 14px !important;
   font-weight: 600;
   letter-spacing: 0.3px;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);

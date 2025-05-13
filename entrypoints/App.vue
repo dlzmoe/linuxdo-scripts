@@ -58,15 +58,16 @@
             <div class="menu-about">
               <p>请注意，该设置面板数据全部保存在本地浏览器缓存中，注意备份。</p>
                           
-            <!-- 添加设置搜索框 -->
-            <div class="settings-search" style="margin: 10px 0;">
-              <input 
-                type="text" 
-                v-model="settingsSearchQuery" 
-                placeholder="搜索设置项..." 
-                style="padding: 6px 10px; border-radius: 4px; width: 80%; font-size: 13px;"
-              />
-            </div>
+              <!-- 添加设置搜索框 -->
+              <div class="settings-search" style="margin: 10px 0;">
+                <input 
+                  type="text" 
+                  v-model="settingsSearchQuery" 
+                  placeholder="搜索设置项..." 
+                  style="padding: 6px 10px; border-radius: 4px; width: 80%; font-size: 13px;"
+                />
+              </div>
+              
               <p class="hint">
                 如果感觉哪里不太对劲，点我
                 <span class="initialization" @click="initialization">初始化设置</span>
@@ -155,11 +156,11 @@
             <!-- 类别页优化 banner 显示 -->
             <MenuCatePageOptimizeBanner :sort="38" v-model="settingData.checked47" v-show="matchesSearch('类别页优化 banner 显示')" />
             <!-- 是否开启论坛文章导出功能 -->
-             <MenuExportArticle :sort="39" v-model="settingData.checkedExportArticle" />
+            <MenuExportArticle :sort="39" v-model="settingData.checkedExportArticle" v-show="matchesSearch('论坛文章导出')" />
             <!-- 楼主头衔显示 -->
-            <MenuTopicOwnerBadge :sort="40" v-model="settingData.checked49" />
+            <MenuTopicOwnerBadge :sort="40" v-model="settingData.checked49" v-show="matchesSearch('楼主头衔显示')" />
             <!-- 话题始终打开1楼 -->
-            <MenuAlwaysFirstPost :sort="41" v-model="settingData.checked50" />
+            <MenuAlwaysFirstPost :sort="41" v-model="settingData.checked50" v-show="matchesSearch('话题始终打开1楼')" />
           </div>
           <div class="menu-body-item" v-show="activeIndex == 1">
             <!-- 自定义论坛 logo -->

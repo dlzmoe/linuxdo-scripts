@@ -1603,14 +1603,14 @@ export default {
     this.init();
     const vm = this;
     const browserAPI = typeof browser !== "undefined" ? browser : chrome;
-    browserAPI.storage.local.get("bookmarkData", (result) => {
+    browserAPI.storage.local.get(["bookmarkData", "bookmarks"], (result) => {
+      // 处理单个书签数据（向后兼容）
       if (result.bookmarkData) {
         // 检查是否已有相同的 URL
         const isUrlExist = vm.bookmarklist.some((bookmarkGroup) =>
           bookmarkGroup.list.some((item) => item.url === result.bookmarkData.url)
         );
 
-        // if (!isUrlExist) {
         // 先检查是否存在 id 为 0 的列表
         let defaultList = vm.bookmarklist.find((item) => item.id === 0);
 
@@ -1636,18 +1636,61 @@ export default {
 
         // 添加书签数据
         vm.bookmarklist.find((item) => item.id === 0).list.unshift(result.bookmarkData);
-        vm.tableData = vm.bookmarklist[0];
-        this.selectedItemId = 0;
-
-        this.initPostCategory();
-        this.initPostTags();
-        this.Loading();
-        localStorage.setItem("bookmarkData", JSON.stringify(vm.bookmarklist));
-        // }
-
+        
         // 处理完后立即清除 storage 中的数据
         browserAPI.storage.local.remove("bookmarkData");
       }
+      
+      // 处理批量书签数据（新实现）
+      if (result.bookmarks && Array.isArray(result.bookmarks) && result.bookmarks.length > 0) {
+        // 确保有默认分类
+        let defaultList = vm.bookmarklist.find((item) => item.id === 0);
+        if (!defaultList) {
+          defaultList = {
+            id: 0,
+            name: "默认",
+            list: [],
+            sort: 1,
+          };
+          vm.bookmarklist.unshift(defaultList);
+        }
+        
+        // 获取默认分类的引用
+        const defaultFolder = vm.bookmarklist.find((item) => item.id === 0);
+        
+        // 处理每个书签
+        result.bookmarks.forEach(bookmark => {
+          // 检查是否已有相同的 URL
+          const existingBookmarkGroup = vm.bookmarklist.find((bookmarkGroup) =>
+            bookmarkGroup.list.some((item) => item.url === bookmark.url)
+          );
+          
+          if (existingBookmarkGroup) {
+            // 找到包含此URL的书签组和书签索引
+            vm.bookmarklist.forEach((bookmarkGroup) => {
+              const index = bookmarkGroup.list.findIndex(item => item.url === bookmark.url);
+              if (index !== -1) {
+                // 更新现有书签
+                bookmarkGroup.list[index] = { ...bookmark };
+              }
+            });
+          } else {
+            // 添加新书签到默认分类
+            defaultFolder.list.unshift({ ...bookmark });
+          }
+        });
+        
+        // 已处理bookmarks，从storage中移除
+        browserAPI.storage.local.remove("bookmarks");
+      }
+      
+      vm.tableData = vm.bookmarklist[0];
+      vm.selectedItemId = 0;
+
+      vm.initPostCategory();
+      vm.initPostTags();
+      vm.Loading();
+      localStorage.setItem("bookmarkData", JSON.stringify(vm.bookmarklist));
     });
 
     this.initPostCategory();

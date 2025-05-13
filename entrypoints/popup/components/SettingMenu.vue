@@ -19,7 +19,6 @@
     <label>开启该设置时，会关闭论坛中的设置按钮。</label>
     <a-switch v-model="isShow" @change="ShowSettingConfig" />
   </div>
-
 </template>
 
 <script>

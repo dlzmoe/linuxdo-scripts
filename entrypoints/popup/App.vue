@@ -14,10 +14,12 @@
 
   <div class="container" ref="container">
     <div class="content" :class="{ act: activeTab === 'hot' }">
-      <HotPosts :list="hotlist" />
+      <HotPosts v-if="hotlist.length > 0" :list="hotlist" />
+       <p v-else>{{ nohotlist }}</p>
     </div>
     <div class="content" :class="{ act: activeTab === 'news' }">
-      <NewsPosts :list="newslist" />
+      <NewsPosts v-if="newslist.length > 0" :list="newslist" />
+      <p v-else>{{ nonewlist }}</p>
     </div>
     <div class="content" :class="{ act: activeTab === 'menu' }">
       <SettingMenu />
@@ -38,9 +40,12 @@ export default {
       hotlist: [], // 热门列表
       newslist: [], // 最新列表
 
+      nohotlist: "暂无热帖",
+      nonewlist: "暂无新帖",
+
       lastScrollPosition: 0, // 存储滚动位置
 
-      themes: 'light', // 主题风格
+      themes: "light", // 主题风格
     };
   },
   components: {
@@ -56,7 +61,7 @@ export default {
       if (container) {
         container.scrollTo({
           top: 0,
-          behavior: 'smooth' // 平滑滚动
+          behavior: "smooth", // 平滑滚动
         });
       }
     },
@@ -64,7 +69,7 @@ export default {
     changeTab(tab) {
       this.activeTab = tab;
       this.scrollToTop();
-      localStorage.setItem('activeTab', this.activeTab);
+      localStorage.setItem("activeTab", this.activeTab);
     },
     // 获取热门列表
     async getHotPosts() {
@@ -73,9 +78,11 @@ export default {
         .then((response) => response.json())
         .then((data) => {
           this.hotlist = data.topic_list.topics;
-          localStorage.setItem('hotlist', JSON.stringify(this.hotlist));
+          localStorage.setItem("hotlist", JSON.stringify(this.hotlist));
         })
-        .catch((error) => { });
+        .catch((error) => {
+          this.nohotlist = "网络异常";
+        });
     },
     // 获取最新列表
     async getNewsPosts() {
@@ -84,16 +91,18 @@ export default {
         .then((response) => response.json())
         .then((data) => {
           this.newslist = data.topic_list.topics;
-          localStorage.setItem('newslist', JSON.stringify(this.newslist));
+          localStorage.setItem("newslist", JSON.stringify(this.newslist));
         })
-        .catch((error) => { });
+        .catch((error) => {
+          this.nonewlist = "网络异常";
+        });
     },
 
     // 刷新
     refresh() {
       this.getHotPosts();
       this.getNewsPosts();
-      localStorage.setItem('Timestamp', Date.now());
+      localStorage.setItem("Timestamp", Date.now());
     },
 
     // 当容器滚动时，记录当前位置
@@ -101,7 +110,7 @@ export default {
       const container = this.$refs.container;
       if (container) {
         this.lastScrollPosition = container.scrollTop; // 保存滚动位置
-        localStorage.setItem('lastScrollPosition', this.lastScrollPosition);
+        localStorage.setItem("lastScrollPosition", this.lastScrollPosition);
       }
     },
 
@@ -117,26 +126,25 @@ export default {
     },
   },
   created() {
-
     // 获取风格主题
-    const themes = localStorage.getItem('themes');
-    if(themes){
+    const themes = localStorage.getItem("themes");
+    if (themes) {
       this.themes = themes;
-      if(this.themes == 'dark') {
+      if (this.themes == "dark") {
         // 设置为暗黑主题
-        document.body.setAttribute('arco-theme', 'dark')
+        document.body.setAttribute("arco-theme", "dark");
       } else {
         // 恢复亮色主题
-        document.body.removeAttribute('arco-theme');
+        document.body.removeAttribute("arco-theme");
       }
     }
 
     /* 找到上次打开的位置 */
-    const activeTab = localStorage.getItem('activeTab');
+    const activeTab = localStorage.getItem("activeTab");
     if (activeTab) {
       this.activeTab = activeTab;
     }
-    const lastScrollPosition = localStorage.getItem('lastScrollPosition');
+    const lastScrollPosition = localStorage.getItem("lastScrollPosition");
     if (lastScrollPosition) {
       this.lastScrollPosition = Number(lastScrollPosition); // 转换为数字
 
@@ -148,34 +156,34 @@ export default {
     this.recordScroll();
     /* 找到上次打开的位置 */
 
-    const Timestamp = localStorage.getItem('Timestamp', Date.now());
+    const Timestamp = localStorage.getItem("Timestamp", Date.now());
     if (Timestamp) {
       const timeDiff = new Date() - Timestamp;
-      if (timeDiff > 600000) { // 超过 10 分钟
-        localStorage.removeItem('hotlist');
-        localStorage.removeItem('newslist');
-        localStorage.removeItem('Timestamp');
-        localStorage.removeItem('activeTab');
-        localStorage.setItem('Timestamp', Date.now());
+      if (timeDiff > 600000) {
+        // 超过 10 分钟
+        localStorage.removeItem("hotlist");
+        localStorage.removeItem("newslist");
+        localStorage.removeItem("Timestamp");
+        localStorage.removeItem("activeTab");
+        localStorage.setItem("Timestamp", Date.now());
       }
     } else {
-      localStorage.setItem('Timestamp', Date.now());
+      localStorage.setItem("Timestamp", Date.now());
     }
 
-    const hotlist = localStorage.getItem('hotlist');
+    const hotlist = localStorage.getItem("hotlist");
     if (hotlist) {
       this.hotlist = JSON.parse(hotlist);
     } else {
       this.getHotPosts(); // 获取热门列表
     }
 
-    const newslist = localStorage.getItem('newslist');
+    const newslist = localStorage.getItem("newslist");
     if (newslist) {
       this.newslist = JSON.parse(newslist);
     } else {
       this.getNewsPosts(); // 获取最新列表
     }
-
   },
   // 绑定滚动事件，自动记录滚动位置
   mounted() {

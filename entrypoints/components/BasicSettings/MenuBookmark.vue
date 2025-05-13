@@ -7,6 +7,10 @@
       @change="$emit('update:modelValue', $event.target.checked)"
     />
   </div>
+  <div class="item" v-if="modelValue">
+    <div class="tit">&nbsp;&nbsp;{{ sort }}.1 无感收藏 (不跳转收藏页)</div>
+    <input type="checkbox" :checked="silentBookmark" @change="toggleSilentBookmark" />
+  </div>
 </template>
 
 <script>
@@ -14,6 +18,11 @@ import $ from "jquery";
 export default {
   props: ["modelValue", "sort"],
   emits: ["update:modelValue"],
+  data() {
+    return {
+      silentBookmark: false,
+    }
+  },
   methods: {
     // 提示组件
     messageToast(message) {
@@ -25,8 +34,19 @@ export default {
         messageElement.remove();
       }, 3000);
     },
+    // 切换无感收藏设置
+    toggleSilentBookmark(event) {
+      this.silentBookmark = event.target.checked
+      localStorage.setItem('linuxdoSilentBookmark', this.silentBookmark)
+    }
   },
   created() {
+    // 获取无感收藏设置
+    const silentBookmarkSetting = localStorage.getItem('linuxdoSilentBookmark')
+    if (silentBookmarkSetting !== null) {
+      this.silentBookmark = silentBookmarkSetting === 'true'
+    }
+    
     if (this.modelValue) {
       const vm = this;
       setInterval(() => {
@@ -71,7 +91,7 @@ export default {
             browserAPI.storage.local.get(["bookmarks"], (result) => {
               let bookmarks = result.bookmarks || [];
               
-              // 检查是否已经收藏过相同URL的内容
+              // 检查是否已经收藏过相同 URL 的内容
               const existingIndex = bookmarks.findIndex(item => item.url === newBookmark.url);
               
               if (existingIndex !== -1) {
@@ -89,11 +109,13 @@ export default {
                 bookmarks: bookmarks,
                 bookmarkData: newBookmark // 保持向后兼容
               });
-
             });
 
-            // 发送消息到后台脚本
-            browserAPI.runtime.sendMessage({ action: "open_bookmark_page" });
+            // 只有在非无感收藏模式下才跳转到收藏页面
+            if (!vm.silentBookmark) {
+              // 发送消息到后台脚本
+              browserAPI.runtime.sendMessage({ action: "open_bookmark_page" });
+            }
           });
         }
       }, 1000);

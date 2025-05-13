@@ -76,16 +76,39 @@ export default {
             var bookmarkDataurl =
               "https://linux.do" + $(".header-title .topic-link").attr("href");
 
-            var data = {
+            var newBookmark = {
               url: bookmarkDataurl,
               title: bookmarkDatatitle,
               cate: bookmarkDatacate,
               tags: bookmarkDatatags,
+              timestamp: new Date().getTime(),
+              sort: 999 // 默认排序值
             };
 
             const browserAPI = typeof browser !== "undefined" ? browser : chrome;
-            browserAPI.storage.local.set({ bookmarkData: data }, () => {
-              vm.messageToast("收藏成功" + (vm.silentBookmark ? "" : "，请前往收藏夹查看。"));
+            
+            // 获取当前书签列表
+            browserAPI.storage.local.get(["bookmarks"], (result) => {
+              let bookmarks = result.bookmarks || [];
+              
+              // 检查是否已经收藏过相同URL的内容
+              const existingIndex = bookmarks.findIndex(item => item.url === newBookmark.url);
+              
+              if (existingIndex !== -1) {
+                // 如果已存在，更新收藏
+                bookmarks[existingIndex] = newBookmark;
+                vm.messageToast("已更新收藏" + (vm.silentBookmark ? "" : "，请前往收藏夹查看。"));
+              } else {
+                // 新增收藏
+                bookmarks.push(newBookmark);
+                vm.messageToast("收藏成功" + (vm.silentBookmark ? "" : "，请前往收藏夹查看。"));
+              }
+              
+              // 保存更新后的书签列表
+              browserAPI.storage.local.set({ 
+                bookmarks: bookmarks,
+                bookmarkData: newBookmark // 保持向后兼容
+              });
             });
 
             // 只有在非无感收藏模式下才跳转到收藏页面

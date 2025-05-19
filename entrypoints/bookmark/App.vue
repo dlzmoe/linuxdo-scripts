@@ -134,9 +134,6 @@
     <div class="aside">
       <div v-show="menutype == 'folder'">
         <div class="page-title">文件夹</div>
-        <a-button @click="toggleSortOrder" type="default" style="margin: 10px 0">
-        {{ isSortDesc ? '切换为正序' : '切换为倒序' }}
-        </a-button>
         <ul>
           <a-space>
             <a-button type="primary" @click="openCate">新建文件夹</a-button>
@@ -212,17 +209,17 @@
             </template>
           </a-table-column>
 
-         <a-table-column title="排序" data-index="tags" :width="100">
-        <template #cell="{ record }">
-          <a-input
-            v-model="record.sort"
-            @blur="updateBookmarkList(record)"
-            type="number"
-            :min="1"
-            style="width: 60px"
-          />
-        </template>
-      </a-table-column>
+          <!-- <a-table-column title="排序" data-index="tags" :width="100">
+            <template #cell="{ record }">
+              <a-input
+                v-model="record.sort"
+                @blur="updateBookmarkList(record)"
+                type="number"
+                :min="1"
+                style="width: 60px"
+              />
+            </template>
+          </a-table-column> -->
 
           <a-table-column
             v-if="menutype === 'folder'"
@@ -308,8 +305,7 @@
             />
           </template>
         </a-table-column>
-        <a-table-column title="操作" :min-width="140">
-
+        <a-table-column title="操作" min-width="140">
           <template #cell="{ record }">
             <a-tag @click="openEditDialog(record)">修改</a-tag>
             <a-popconfirm content="最后确认删除？" @ok="deleteSelected(record)">
@@ -562,7 +558,6 @@ import categoryMap from "./data/categoryMap.js";
 export default {
   data() {
     return {
-      isSortDesc: true, // 初始为降序
       loading: false,
       categoryMap: categoryMap.categoryMap,
 
@@ -645,17 +640,15 @@ export default {
       temporaryValue: null, // 临时存储的值
     };
   },
-
   computed: {
     // 文件夹根据 sort 排序
     sortedBookmarklist() {
-      const sortFactor = this.isSortDesc ? -1 : 1;
       // 返回根据sort字段降序排序的数组（数字大的在前，小的在后）
       return [...this.bookmarklist].sort((a, b) => {
         // 确保sort存在，如果不存在则默认为1
         const sortA = a.sort || 1;
         const sortB = b.sort || 1;
-        return sortFactor * (sortA - sortB);
+        return sortB - sortA; // 降序排列
       });
     },
     // 主体表格排序
@@ -664,14 +657,13 @@ export default {
       if (!this.tableData || !this.tableData.list) {
         return [];
       }
-      const sortFactor = this.isSortDesc ? -1 : 1;
 
       // 返回根据sort字段降序排序的数组（数字大的在前，小的在后）
       return [...this.tableData.list].sort((a, b) => {
         // 确保sort存在，如果不存在则默认为1
         const sortA = a.sort || 1;
         const sortB = b.sort || 1;
-        return sortFactor * (sortA - sortB);
+        return sortB - sortA; // 降序排列
       });
     },
     filteredCategories() {
@@ -682,7 +674,6 @@ export default {
   },
   methods: {
     // 开始编辑时触发
-
     startEditing(record) {
       this.editingId = record.id; // 或其他唯一标识
       this.temporaryValue = record.sort; // 复制当前值到临时变量
@@ -705,9 +696,6 @@ export default {
       // 重置编辑状态
       this.editingId = null;
     },
-     toggleSortOrder() {
-    this.isSortDesc = !this.isSortDesc;
-   },
 
     // 文件夹修改排序
     updateBookmarkData(record) {
@@ -794,12 +782,11 @@ export default {
         return;
       }
       const maxId = this.bookmarklist.reduce((max, item) => Math.max(max, item.id), 0);
-       const maxSort = this.bookmarklist.reduce((max, item) => Math.max(max, item.sort || 0), 0);
       const newCate = {
         id: maxId + 1,
         name: this.newcatename.trim(),
         list: [],
-        sort: maxSort + 1
+        sort: 1,
       };
       this.bookmarklist.push(newCate);
       this.$message.success(`新增文件夹【${this.newcatename}】成功!`);

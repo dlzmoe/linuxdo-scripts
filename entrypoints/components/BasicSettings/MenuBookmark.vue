@@ -76,14 +76,15 @@ export default {
             var bookmarkDataurl =
               "https://linux.do" + $(".header-title .topic-link").attr("href");
 
-       var newBookmark = {
-  url: bookmarkDataurl,
-  title: bookmarkDatatitle,
-  cate: bookmarkDatacate,
-  tags: bookmarkDatatags,
-  timestamp: new Date().getTime(),
-  sort: new Date().getTime() // 使用时间戳作为 sort 值
-};
+            var newBookmark = {
+              url: bookmarkDataurl,
+              title: bookmarkDatatitle,
+              cate: bookmarkDatacate,
+              tags: bookmarkDatatags,
+              timestamp: new Date().getTime(),
+              sort: 999 // 默认排序值
+            };
+
             const browserAPI = typeof browser !== "undefined" ? browser : chrome;
             
             // 获取当前书签列表

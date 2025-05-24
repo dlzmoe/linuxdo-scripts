@@ -21,8 +21,8 @@ export default {
 
       // 主要功能
       function processLinks() {
-        // 查找所有帖子标题链接
-        const links = document.querySelectorAll('.link-top-line a.title:not([data-processed])');
+        // 查找所有帖子标题链接，扩展选择器以包含搜索页面的链接
+        const links = document.querySelectorAll('.link-top-line a.title:not([data-processed]), .search-results a.search-link:not([data-processed]), .search-result-topic a:not([data-processed])');
 
         links.forEach(link => {
           // 标记该链接已处理
@@ -38,7 +38,11 @@ export default {
           return Array.from(mutation.addedNodes).some(node => {
             return node.nodeType === 1 && (
               node.classList.contains('link-top-line') ||
-              node.querySelector('.link-top-line')
+              node.querySelector('.link-top-line') ||
+              node.classList.contains('search-results') ||
+              node.querySelector('.search-results') ||
+              node.classList.contains('search-result-topic') ||
+              node.querySelector('.search-result-topic')
             );
           });
         });

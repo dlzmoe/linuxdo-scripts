@@ -17,8 +17,9 @@ export default {
   methods: {
     scrollToOne() {
       if ($("#topic-title h1 a").length < 1) {
-        const regex = /^(https:\/\/linux\.do\/t\/topic\/\d+)(\/\d+)?$/;
+        const regex = /^(https:\/\/linux\.do\/t\/topic\/\d+)(\/\d+)?(\?.*)?$/;
         const match = window.location.href.match(regex)[1];
+        console.log("Redirecting to:", match);
         window.location.href = match;
       } else {
         $("#topic-title h1 a")[0].click();

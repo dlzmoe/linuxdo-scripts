@@ -973,10 +973,18 @@ body.body-preview #main-outlet-wrapper {
 .linxudoscripts-btn {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  width: 100%;
 }
 
 .linxudoscripts-btn>* {
   margin-right: 8px !important;
+  font-size: 15px !important;
+}
+
+.linxudoscripts-btn svg {
+  width: 1.5em !important;
+  height: 1.5em !important;
 }
 
 .linxudoscripts-btn>*:last-child {

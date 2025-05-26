@@ -22,7 +22,7 @@ section.post-menu-area{position:absolute!important;bottom:-30px;right:0;transiti
 .topic-meta-data .user-status-message-wrap{display:none}
 #topic-title h1 a{font-weight:500;font-size:22px}
 .more-topics__container,.sidebar-footer-wrapper{display:none}
-#topic-footer-buttons .topic-footer-main-buttons__actions,.global-notice,.search-banner,.topic-list .topic-list-data.posters,.topic-list .views,.topic-notifications-button,body:not(.archetype-private_message) .topic-map{display:none!important}
+#topic-footer-buttons .topic-footer-main-buttons__actions,.global-notice,.search-banner,.topic-list .topic-list-data.posters,.topic-list .views,.topic-notifications-button,.topic-map__contents,.topic-map__additional-contents{display:none!important}
 .names>span a,.topic-body .reply-to-tab{font-size:14px;color:silver!important;font-weight:400}
 .d-header-wrap{opacity:.2;transition:all .15s linear}
 .d-header-wrap:hover{opacity:1}

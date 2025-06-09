@@ -2,11 +2,10 @@
   <div>
     <p>
       <a
-        style="color: #e00"
+        style="color:#e00"
         href="https://linuxdo-scripts-docs.zishu.me/guide/3-ai/ai-summary.html"
         target="_blank"
-        >查看 AI 使用文档！</a
-      >
+        >查看 AI 使用文档！</a>
     </p>
     <div class="item">
       <div class="tit">1. 是否开启 AI 主贴总结</div>
@@ -50,6 +49,7 @@
           <input
             type="text"
             v-model="localChecked.apikey"
+            @keydown="handleKeyDown"
             :placeholder="getApiKeyPlaceholder()"
           />
         </div>
@@ -61,6 +61,7 @@
           <input
             type="text"
             v-model="localChecked.api_url"
+            @keydown="handleKeyDown"
             :placeholder="getApiUrlPlaceholder()"
           />
         </div>
@@ -72,6 +73,7 @@
           <input
             type="text"
             v-model="localChecked.model"
+            @keydown="handleKeyDown"
             :placeholder="getModelPlaceholder()"
           />
         </div>
@@ -109,22 +111,22 @@
 
       <div class="item">
         <div class="tit">AI 总结主贴 prompt:</div>
-        <textarea v-model="localChecked.prompt"></textarea>
+        <textarea v-model="localChecked.prompt" @keydown="handleKeyDown"></textarea>
       </div>
 
       <div class="item">
         <div class="tit">AI 总结全部回帖 prompt:</div>
-        <textarea v-model="localChecked.prompt3"></textarea>
+        <textarea v-model="localChecked.prompt3" @keydown="handleKeyDown"></textarea>
       </div>
 
       <div class="item">
         <div class="tit">AI 生成回复 prompt:</div>
-        <textarea v-model="localChecked.prompt1"></textarea>
+        <textarea v-model="localChecked.prompt1" @keydown="handleKeyDown"></textarea>
       </div>
 
       <div class="item">
         <div class="tit">AI 生成标题 prompt:</div>
-        <textarea v-model="localChecked.prompt2"></textarea>
+        <textarea v-model="localChecked.prompt2" @keydown="handleKeyDown"></textarea>
       </div>
     </div>
   </div>
@@ -172,6 +174,32 @@ export default {
     },
   },
   methods: {
+    handleKeyDown(e) {
+      if (e.altKey && e.key === '-') {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const el = e.target;
+        const start = el.selectionStart;
+        const end = el.selectionEnd;
+        
+        // 获取当前值
+        const currentValue = el.value;
+        // 创建新值
+        const newValue = currentValue.substring(0, start) + '-' + currentValue.substring(end);
+        
+        // 手动修改输入框的值
+        el.value = newValue;
+        
+        // 触发input事件来更新v-model绑定的数据
+        el.dispatchEvent(new Event('input', { bubbles: true }));
+        
+        // 设置光标位置
+        this.$nextTick(() => {
+          el.selectionStart = el.selectionEnd = start + 1;
+        });
+      }
+    },
     handleChange() {
       this.$emit("update:value", this.localChecked);
     },

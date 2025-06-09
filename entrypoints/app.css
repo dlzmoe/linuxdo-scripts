@@ -990,3 +990,20 @@ body.body-preview #main-outlet-wrapper {
 .linxudoscripts-btn>*:last-child {
   margin-right: 0 !important;
 }
+
+#linuxdoscripts kbd {
+  align-items: center;
+  border: 1px solid var(--primary-low-mid);
+  background: var(--primary-very-low);
+  border-bottom-width: 2px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  display: inline-flex;
+  gap: 0 .5em;
+  font-size: var(--font-down-1);
+  justify-content: center;
+  line-height: var(--line-height-large);
+  margin: 0 .15em;
+  min-width: 24px;
+  padding: .15em .6em;
+}

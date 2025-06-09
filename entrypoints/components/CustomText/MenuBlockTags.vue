@@ -1,7 +1,7 @@
 <template>
   <div class="item">
     <div class="tit">
-      {{ sort }}. 关键词屏蔽功能（使用英文，分隔）屏蔽包含关键字的话题标题、回复
+      {{ sort }}. 标签屏蔽功能（使用英文，分隔）屏蔽指定标签
     </div>
   </div>
   <textarea v-model="textarea" @input="handleChange"> </textarea>
@@ -46,22 +46,13 @@ export default {
 
       // 安全检查 jQuery 的使用，防止元素不可用时出错
       try {
-        // 检查话题标题
-        $(".topic-list .main-link .raw-topic-link>*")
+        // 检查话题标签
+        $(".topic-list-item .discourse-tags a")
           .filter((index, element) => {
             const text = $(element).text();
             return keywords.some((keyword) => text.includes(keyword));
           })
           .parents("tr.topic-list-item")
-          .remove();
-
-        // 检查评论回复
-        $(".topic-body .cooked")
-          .filter((index, element) => {
-            const text = $(element).text();
-            return keywords.some((keyword) => text.includes(keyword));
-          })
-          .parents(".topic-post")
           .remove();
       } catch (error) {
         console.error("init 方法出错：", error);

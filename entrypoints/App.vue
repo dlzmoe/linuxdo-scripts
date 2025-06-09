@@ -171,11 +171,14 @@
             <MenuCreatereply :sort="3" v-model:value="settingData.QuickReply" />
             <!-- 关键词屏蔽功能 -->
             <MenuBlockKeyword :sort="4" v-model:value="settingData.blockkeywrod" />
+            <!-- 标签屏蔽功能 -->
+            <MenuBlockTags :sort="6" v-model:value="settingData.blocktags" />
+            <!-- 屏蔽用户功能 -->
             <MenuBlockuserlist :sort="5" v-model:value="settingData.blockList" />
             <!-- 屏蔽指定分类的多少天前的帖子 -->
-            <MenuShieldPosts :sort="6" v-model:value="settingData.checked21" />
+            <MenuShieldPosts :sort="7" v-model:value="settingData.checked21" />
             <!-- 自定义 CSS -->
-            <MenuOtherCss :sort="7" v-model:value="settingData.othercss" />
+            <MenuOtherCss :sort="8" v-model:value="settingData.othercss" />
           </div>
           <div class="menu-body-item" v-show="activeIndex == 2">
             <!-- 是否开启用户标签 -->
@@ -270,6 +273,7 @@ import MenuCreatereply from "./components/CustomText/MenuCreatereply.vue";
 import MenuBlockuserlist from "./components/CustomText/MenuBlockuserlist.vue";
 import MenuBlockKeyword from "./components/CustomText/MenuBlockKeyword.vue";
 import MenuShieldPosts from "./components/CustomText/MenuShieldPosts.vue";
+import MenuBlockTags from "./components/CustomText/MenuBlockTags.vue";
 
 // 用户标签
 import UserTags from "./components/UserTags/UserTags.vue";
@@ -380,6 +384,7 @@ export default {
     MenuExportArticle,
     MenuTopicOwnerBadge,
     MenuAlwaysFirstPost,
+    MenuBlockTags,
   },
   data() {
     return {
@@ -411,6 +416,7 @@ export default {
         QuickReply: "",
         blockList: "",
         blockkeywrod: "",
+        blocktags: "",
         checked10: false,
         othercss: "",
         logourl: "",

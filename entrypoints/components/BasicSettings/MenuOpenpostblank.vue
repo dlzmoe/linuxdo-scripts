@@ -16,13 +16,14 @@ export default {
       function handleLinkClick(e) {
         e.preventDefault();
         e.stopPropagation(); // 阻止事件冒泡
+        e.stopImmediatePropagation(); // 阻止事件捕获和后续相同事件的处理
         window.open(this.href, '_blank', 'noopener,noreferrer');
       }
 
       // 主要功能
       function processLinks() {
         // 查找所有帖子标题链接，扩展选择器以包含搜索页面的链接
-        const links = document.querySelectorAll('.link-top-line a.title:not([data-processed]), .search-results a.search-link:not([data-processed]), .search-result-topic a:not([data-processed])');
+        const links = document.querySelectorAll('.link-top-line a.title:not([data-processed]), .search-results a.search-link:not([data-processed]), .search-result-topic .search-link:not([data-processed])');
 
         links.forEach(link => {
           // 标记该链接已处理

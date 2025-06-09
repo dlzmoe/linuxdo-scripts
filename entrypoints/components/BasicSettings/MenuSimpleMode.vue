@@ -34,7 +34,9 @@ section.post-menu-area{position:absolute!important;bottom:-30px;right:0;transiti
 .category-boxes .description{display:none!important}
 .category-boxes h3{font-size:18px!important;font-weight:400;display:flex;align-items:center;justify-content:center}
 .category-boxes h3 .ember-view{margin-right:10px}
-.post-avatar:has(img.avatar[src^="/user_avatar/linux.do/neo/"]):after, .post-avatar:has(img.avatar[src^="https://cdn.linux.do/user_avatar/linux.do/neo/"]):after{width:30px!important;height:30px!important}
+.post-avatar:has(img.avatar[src^="/user_avatar/linux.do/neo/"]):after, 
+.post-avatar:has(img.avatar[src^="https://cdn.linux.do/user_avatar/linux.do/neo/"]):after,
+.post-avatar:has(a.trigger-user-card[data-user-card=kevin]):after, .post-avatar:has(a.trigger-user-card[data-user-card=delph1s]):after, .post-avatar:has(a.trigger-user-card[data-user-card=King-Huiwen-of-Qin]):after, .post-avatar:has(a.trigger-user-card[data-user-card=NullUser]):after, .post-avatar:has(a.trigger-user-card[data-user-card="DOS.DO"]):after, .post-avatar:has(a.trigger-user-card[data-user-card=Musifei]):after, .post-avatar:has(a.trigger-user-card[data-user-card=SMNET]):after, .post-avatar:has(a.trigger-user-card[data-user-card=syokatu]):after,
 div.group-g-merchant>article>div.row>div.topic-avatar>.post-avatar:after{width:30px!important;height:30px!important}
       </style>`)
     }

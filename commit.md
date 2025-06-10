@@ -17,3 +17,9 @@ feat: 新增了 xx 功能
 - `refactor:` 代码重构
 - `perf:` 性能优化
 - `test:` 增加测试
+- `revert:` 回退
+- `build:` 打包
+- `ci:` 持续集成
+- `types:` 类型定义文件更改
+- `wip:` 开发中
+- `workflow:` 工作流更改

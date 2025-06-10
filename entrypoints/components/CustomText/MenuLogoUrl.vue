@@ -6,7 +6,7 @@
     type="text"
     v-model="textarea"
     @input="handleChange"
-    placeholder="输入图片链接，如: https://xxx.com/images.png"
+    placeholder="输入logo图链接，如: https://xxx.com/images.png"
   />
 </template>
 

@@ -1,7 +1,6 @@
 <template>
   <div>
-    <div class="el-button" @click="togglePopupSize" :class="['linuxDoLevelPopup', isMinimized ? 'minimized' : '']"
-      title="等级查询">
+    <div class="el-button" @click="togglePopupSize" title="等级查询">
       <span>等级</span>
     </div>
     <div v-if="!isMinimized" id="linuxDoLevelPopupContent">
@@ -177,22 +176,27 @@ export default {
 </script>
 
 <style scoped lang="less">
-@keyframes breathAnimation {
-
-  0%,
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
-
-  50% {
-    transform: scale(1.1);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-.breath-animation {
-  animation: breathAnimation 4s ease-in-out infinite;
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(var(--primary-rgb), 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0);
+  }
 }
 
 .minimized {
@@ -202,6 +206,7 @@ export default {
   padding: 0 !important;
   overflow: hidden;
   cursor: pointer;
+  animation: pulse 2s infinite;
 }
 
 #linuxDoLevelPopupContent {
@@ -209,36 +214,110 @@ export default {
   position: fixed;
   bottom: 20px;
   right: 90px;
-  width: 250px;
+  width: 300px;
   height: auto;
-  background-color: var(--tertiary-low);
-  padding: 15px;
+  background-color: var(--secondary);
+  padding: 20px;
   z-index: 10000;
   font-size: 14px;
-  border-radius: 5px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.3s ease-out;
+  border: 1px solid var(--primary-low);
+  box-sizing: border-box;
+
+  *{
+    box-sizing: border-box;
+  }
+
+  strong {
+    color: var(--primary);
+    font-weight: 600;
+  }
 }
 
 #linuxDoUserSearch {
   width: 100%;
-  margin-top: 10px;
+  margin-top: 15px;
+  padding: 10px 12px;
+  border: 2px solid var(--primary-low);
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  
+  &:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.1);
+  }
 }
 
-.button {
+.btn {
+  width: 100%;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-medium) 100%);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(var(--primary-rgb), 0.2);
+  position: relative;
+  overflow: hidden;
   margin-top: 10px;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(var(--primary-rgb), 0.3);
+    
+    &::before {
+      opacity: 1;
+    }
+  }
+  
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(var(--primary-rgb), 0.2);
+  }
+  
+  .d-button-label {
+    position: relative;
+    z-index: 1;
+  }
 }
 
 .minimize-button {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 8px;
+  right: 8px;
   z-index: 10001;
   background: transparent;
   border: none;
   cursor: pointer;
   border-radius: 50%;
   text-align: center;
-  line-height: 40px;
-  width: 40px;
-  height: 40px;
+  line-height: 32px;
+  width: 32px;
+  height: 32px;
+  color: var(--primary);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: var(--primary-low);
+  }
 }
 </style>

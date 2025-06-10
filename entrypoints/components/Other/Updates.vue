@@ -3,7 +3,7 @@
     <span>
       <a href="https://github.com/dlzmoe/linuxdo-scripts" target="_blank">
         <img alt="GitHub Repo stars"
-          src="https://img.shields.io/github/stars/dlzmoe/linuxdo-scripts?style=flat-square&label=Github%20Stars">
+          src="https://img.shields.io/github/stars/dlzmoe/linuxdo-scripts?style=flat&logoColor=%237F5801&label=Github&labelColor=%230E0E0F">
       </a>
     </span>
     <span>当前版本：{{ version }}</span>

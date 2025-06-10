@@ -8,7 +8,7 @@
     />
   </div>
   <div class="item" v-if="modelValue">
-    <div class="tit">&nbsp;&nbsp;{{ sort }}.1 无感收藏 (不跳转收藏页)</div>
+    <div class="tit">{{ sort }}.1 无感收藏 (不跳转收藏页)</div>
     <input type="checkbox" :checked="silentBookmark" @change="toggleSilentBookmark" />
   </div>
 </template>

@@ -101,27 +101,58 @@
 }
 
 #linuxdoscripts .setting-btn .el-button {
-  margin: 0;
-  margin-top: 15px;
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  display: flex;
+  position: relative;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--tertiary-low);
-  font-size: 14px;
-  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-medium) 100%);
   border: none;
-  box-shadow: 0px 1px 3px rgb(0 0 0 / 25%);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(var(--primary-rgb), 0.2);
+  overflow: hidden;
+}
+
+#linuxdoscripts .setting-btn .el-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#linuxdoscripts .setting-btn .el-button:hover {
+  box-shadow: 0 6px 20px rgba(var(--primary-rgb), 0.3);
+}
+
+#linuxdoscripts .setting-btn .el-button:hover::before {
+  opacity: 1;
+}
+
+#linuxdoscripts .setting-btn .el-button:active {
+  box-shadow: 0 2px 10px rgba(var(--primary-rgb), 0.2);
 }
 
 #linuxdoscripts .setting-btn .el-button svg {
   margin: 0;
 }
 
-#linuxdoscripts .setting-btn .el-button:hover {
-  opacity: 0.9;
+#linuxdoscripts .setting-btn .el-button span {
+  position: relative;
+  z-index: 1;
 }
 
 #linuxdoscripts .hint {

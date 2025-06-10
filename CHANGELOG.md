@@ -1,1 +1,2 @@
-- fix: 修复 `-` 符号与Discourse论坛快捷键冲突的问题
+- fix: 修复 `-` 符号与 Discourse 论坛快捷键冲突的问题
+- style: 优化基础 UI

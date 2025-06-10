@@ -2,10 +2,9 @@
   <div class="item">
     <div class="tit">{{ sort }}. 自定义论坛标签页 icon 和 title</div>
   </div>
-  <input type="text" v-model="localChecked.iconurl" @input="handleChange"
-    placeholder="输入图片链接，如: https://xxx.com/images.png" />
-
-  <input type="text" v-model="localChecked.title" @input="handleChange" placeholder="输入文字，如：谷歌文档" />
+  <input type="text" v-model="localChecked.iconurl" @input="handleChange" style="margin-bottom:5px;"
+    placeholder="输入icon图链接，如: https://xxx.com/images.png" />
+  <input type="text" v-model="localChecked.title" @input="handleChange" placeholder="输入标题，如：谷歌文档" />
 </template>
 
 <script>

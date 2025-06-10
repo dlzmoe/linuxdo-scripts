@@ -33,7 +33,7 @@
       <div class="config-title">配置信息</div>
 
       <div class="item">
-        <div class="label">选择服务商:</div>
+        <div class="label">选择服务商：</div>
         <div class="info">
           <select v-model="localChecked.provider" @change="handleProviderChange">
             <option value="openai">OpenAI</option>
@@ -68,7 +68,7 @@
       </div>
 
       <div class="item">
-        <div class="label">模型名称:</div>
+        <div class="label">模型名称：</div>
         <div class="info">
           <input
             type="text"
@@ -191,7 +191,7 @@ export default {
         // 手动修改输入框的值
         el.value = newValue;
         
-        // 触发input事件来更新v-model绑定的数据
+        // 触发 input 事件来更新 v-model 绑定的数据
         el.dispatchEvent(new Event('input', { bubbles: true }));
         
         // 设置光标位置

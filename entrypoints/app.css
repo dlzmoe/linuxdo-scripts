@@ -912,16 +912,29 @@ body.body-preview #main-outlet-wrapper {
 }
 
 .linxudoscripts-tag {
-  background: #29a6a9;
-  color: #fff;
-  font-size: 14px !important;
-  padding: 0 10px;
-  height: 26px;
-  text-align: center;
-  display: inline-flex !important;
   align-items: center;
   justify-content: center;
-  border-radius: 5px;
+  position: relative;
+  min-width: 36px;
+  height: 22px;
+  line-height: 20px;
+  padding: 0 8px;
+  margin-left: 8px;
+  vertical-align: middle;
+  color: rgba(255, 255, 255, .95);
+  font-size: 14px !important;
+  font-weight: 600;
+  letter-spacing: .3px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, .15);
+  background-color: #29a6a9;
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, .1) 0, rgba(255, 255, 255, .05) 50%, rgba(0, 0, 0, .05) 51%, rgba(0, 0, 0, .1) 100%);
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, .12);
+  box-sizing: border-box;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .08), inset 0 1px 0 rgba(255, 255, 255, .15);
+  transition: all .2s cubic-bezier(.25, .46, .45, .94);
+  overflow: hidden;
+  z-index: 1;
 }
 
 .menu-table {

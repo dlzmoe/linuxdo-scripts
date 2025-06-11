@@ -1,3 +1,1 @@
-- fix: 修复 `-` 符号与 Discourse 论坛快捷键冲突的问题
-- fix: 修复收藏夹中分类图标失效的问题
-- style: 优化基础 UI
+- style: 优化标签 UI

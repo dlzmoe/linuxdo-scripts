@@ -2,33 +2,35 @@
 layout: home
 
 hero:
-  name: LinuxDo Scripts 扩展
-  # text: linuxdo-scripts 增强插件使用文档
-  tagline: 增强扩展使用文档，功能持续更新，欢迎提出新想法！
+  name: LinuxDo 脚本增强插件
+  tagline: 持续更新，提供更强大的论坛体验，欢迎贡献您的创意！
   image:
     src: https://vitepress.dev/vitepress-logo-large.webp
-    alt: Docs
+    alt: 文档封面
   actions:
     - theme: brand
-      text: 功能介绍
+      text: 使用指南
       link: /guide/0-home/home.html
     - theme: alt
-      text: Github
+      text: GitHub 项目
       link: https://github.com/dlzmoe/linuxdo-scripts
     - theme: alt
       text: Chrome 扩展
       link: https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj
     - theme: alt
-      text: 火狐扩展
+      text: Firefox 扩展
       link: https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/
 
 features:
   - icon: 📖
-    title: 使用文档
-    details: 详细归纳了每个增强功能的使用方法介绍。
+    title: 完整文档
+    details: 详细说明每个功能的使用方法与配置技巧
   - icon: ⚡
-    title: 增强特性
-    details: 在论坛基础上引入额=了众多功能。
+    title: 功能增强
+    details: 在论坛基础功能上新增多项实用特性
+  - icon: 🔧
+    title: 持续更新
+    details: 定期添加新功能并优化现有体验
 ---
 
 <style>

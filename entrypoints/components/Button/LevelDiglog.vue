@@ -53,7 +53,8 @@ export default {
   methods: {
     async fetchAboutData() {
       try {
-        const response = await fetch("/about.json", {
+        const baseUrl = window.location.origin;
+        const response = await fetch(`${baseUrl}/about.json`, {
           headers: {
             Accept: "application/json",
             "User-Agent": "Mozilla/5.0",
@@ -71,7 +72,8 @@ export default {
     },
     async fetchUserData(username) {
       try {
-        const response = await fetch(`/u/${username}/summary.json`, {
+        const baseUrl = window.location.origin;
+        const response = await fetch(`${baseUrl}/u/${username}/summary.json`, {
           headers: {
             Accept: "application/json",
             "User-Agent": "Mozilla/5.0",

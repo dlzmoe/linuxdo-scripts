@@ -27,6 +27,7 @@
   </p>
 
   <p>
+    <img src="https://img.shields.io/github/v/release/dlzmoe/linuxdo-scripts?label=Version">
     <img src="https://img.shields.io/github/stars/dlzmoe/linuxdo-scripts?style=flat&label=Github%20Stars">
     <img src="https://img.shields.io/chrome-web-store/users/fbgblmjbeebanackldpbmpacppflgmlj?style=flat&label=Chrome%20Web%20Store">
     <img src="https://img.shields.io/github/license/dlzmoe/linuxdo-scripts?style=flat&">

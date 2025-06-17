@@ -1,5 +1,3 @@
-[简体中文](README.md) | [English](README_EN.md)
-
 ```
   _     _                  ____          ____            _       _       
  | |   (_)_ __  _   ___  _|  _ \  ___   / ___|  ___ _ __(_)_ __ | |_ ___ 
@@ -27,6 +25,7 @@
   </p>
 
   <p>
+    <img src="https://img.shields.io/github/v/release/dlzmoe/linuxdo-scripts?label=Version">
     <img src="https://img.shields.io/github/stars/dlzmoe/linuxdo-scripts?style=flat&label=Github%20Stars">
     <img src="https://img.shields.io/chrome-web-store/users/fbgblmjbeebanackldpbmpacppflgmlj?style=flat&label=Chrome%20Web%20Store">
     <img src="https://img.shields.io/github/license/dlzmoe/linuxdo-scripts?style=flat&">
@@ -130,3 +129,9 @@ npm run dev
 ## 📄 许可证
 
 本项目基于 MIT 许可证开源，详细信息请查看 [LICENSE](LICENSE) 文件。
+
+## 📖 免责声明
+
+本项目是一个免费且开源的项目，但并不保证其完全无BUG，使用前请自行承担风险；使用时请遵守相关法律法规，不得滥用。
+
+如果有任何侵权行为，请联系 [dlzmoe](https://github.com/dlzmoe)，将会及时处理。

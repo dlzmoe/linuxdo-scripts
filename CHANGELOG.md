@@ -1,1 +1,1 @@
-- style: 优化标签 UI
+- fix: 修复 firefox 浏览器中等级查询的 API 请求路径 #202 #112

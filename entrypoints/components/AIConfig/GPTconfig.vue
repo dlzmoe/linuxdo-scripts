@@ -489,12 +489,12 @@ ${str}`;
           case "deepseek":
             requestBody = {
               model: this.localChecked.model,
-              messages: [{ role: "user", content: "test" }],
+              messages: [{ role: "user", content: "你好！" }],
             };
             break;
           case "gemini":
             requestBody = {
-              contents: [{ parts: [{ text: "test" }] }],
+              contents: [{ parts: [{ text: "你好！" }] }],
             };
             break;
         }

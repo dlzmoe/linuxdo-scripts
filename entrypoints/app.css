@@ -337,11 +337,14 @@
 }
 
 #linuxdoscripts .menu-body-item {
+  overflow: hidden;
+  padding-right: 5px;
+  padding-left: 5px;
   padding-bottom: 30px;
 }
 
 #linuxdoscripts .menu-body-item .item {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
   padding: 15px 0;
   display: flex;
   align-items: center;
@@ -891,7 +894,7 @@ body.body-preview #main-outlet-wrapper {
 }
 
 .menu-body {
-  padding: 0 15px;
+  padding: 0 15px 0 0;
 }
 
 .inner {
@@ -1033,4 +1036,37 @@ body.body-preview #main-outlet-wrapper {
 
 .linxudoscripts-btn>*:last-child {
   margin-right: 0 !important;
+}
+
+#linuxdoscripts .group-line {
+  text-align: center;
+  font-weight: 600;
+  font-size: 15px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  margin-top: 20px;
+}
+
+#linuxdoscripts .group-line::before,
+#linuxdoscripts .group-line::after {
+  content: '';
+  display: inline-block;
+  width: 1920px;
+  height: 1px;
+  background: var(--primary-300);
+}
+
+#linuxdoscripts .group-line::before {
+  margin-right: 15px;
+}
+
+#linuxdoscripts .group-line::after {
+  margin-left: 15px;
+}
+
+#linuxdoscripts .group-line+.item {
+  border: none;
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="item">
-    <div class="tit">{{ sort }}. 列表快速免打扰帖子</div>
+    <div class="tit">{{ sort }}. 列表快速免打扰帖子 <a href="https://linux.do/latest?state=muted" style="color:#e00;margin-left:10px;">&lt;免打扰列表&gt;</a></div>
     <input type="checkbox" :checked="modelValue" @change="$emit('update:modelValue', $event.target.checked)" />
   </div>
 </template>

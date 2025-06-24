@@ -10,8 +10,8 @@
 ```
 
 <div align="center">
-  <a href="https://github.com/dlzmoe/linuxdo-scripts">
-    <img src="https://github.com/dlzmoe/linuxdo-scripts/blob/main/public/icon/128.png?raw=true" alt="Logo" width="80" height="80">
+  <a href="https://github.com/ezyshu/linuxdo-scripts">
+    <img src="https://github.com/ezyshu/linuxdo-scripts/blob/main/public/icon/128.png?raw=true" alt="Logo" width="80" height="80">
   </a>
 
   <h1>LinuxDo Scripts</h1>
@@ -21,20 +21,20 @@
     ·
     <a href="https://linuxdo-scripts.zishu.me">Documentation</a>
     ·
-    <a href="https://github.com/dlzmoe/linuxdo-scripts/issues/new/choose">Report Issues</a>
+    <a href="https://github.com/ezyshu/linuxdo-scripts/issues/new/choose">Report Issues</a>
     ·
-    <a href="https://github.com/dlzmoe/linuxdo-scripts/releases/latest">Latest Release</a>
+    <a href="https://github.com/ezyshu/linuxdo-scripts/releases/latest">Latest Release</a>
   </p>
 
   <p>
-    <img src="https://img.shields.io/github/v/release/dlzmoe/linuxdo-scripts?label=Version">
-    <img src="https://img.shields.io/github/stars/dlzmoe/linuxdo-scripts?style=flat&label=Github%20Stars">
+    <img src="https://img.shields.io/github/v/release/ezyshu/linuxdo-scripts?label=Version">
+    <img src="https://img.shields.io/github/stars/ezyshu/linuxdo-scripts?style=flat&label=Github%20Stars">
     <img src="https://img.shields.io/chrome-web-store/users/fbgblmjbeebanackldpbmpacppflgmlj?style=flat&label=Chrome%20Web%20Store">
-    <img src="https://img.shields.io/github/license/dlzmoe/linuxdo-scripts?style=flat&">
+    <img src="https://img.shields.io/github/license/ezyshu/linuxdo-scripts?style=flat&">
   </p>
 </div>
 
-![Visitor Count](https://profile-counter.glitch.me/dlzmoe-linuxdo-scripts/count.svg)
+![Visitor Count](https://profile-counter.glitch.me/ezyshu-linuxdo-scripts/count.svg)
 
 ## 📖 Project Introduction
 
@@ -95,7 +95,7 @@ node: v22.12.0
 ### Local Development
 1. Clone repository and install dependencies:
 ```shell
-git clone https://github.com/dlzmoe/linuxdo-scripts
+git clone https://github.com/ezyshu/linuxdo-scripts
 npm install
 ```
 
@@ -115,7 +115,7 @@ npm run dev
 
 ## 🚀 Contributors
 
-![Contributor](https://contrib.rocks/image?repo=dlzmoe/linuxdo-scripts)
+![Contributor](https://contrib.rocks/image?repo=ezyshu/linuxdo-scripts)
 
 ## 🤝 Contribution Guide
 
@@ -126,7 +126,7 @@ Welcome to propose new feature ideas and improvements! You can participate by:
 
 ## ⭐️ Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=dlzmoe/linuxdo-scripts&type=Timeline)](https://www.star-history.com/#dlzmoe/linuxdo-scripts&Timeline)
+[![Star History Chart](https://api.star-history.com/svg?repos=ezyshu/linuxdo-scripts&type=Timeline)](https://www.star-history.com/#ezyshu/linuxdo-scripts&Timeline)
 
 ## 📄 License
 
@@ -136,4 +136,4 @@ This project is open-source under MIT License. See [LICENSE](LICENSE) for detail
 
 This is a free and open-source project that makes no guarantees of being completely bug-free. Use at your own risk. Users must comply with relevant laws and regulations and refrain from misuse.
 
-For any copyright concerns, please contact [dlzmoe](https://github.com/dlzmoe) for prompt resolution.
+For any copyright concerns, please contact [ezyshu](https://github.com/ezyshu) for prompt resolution.

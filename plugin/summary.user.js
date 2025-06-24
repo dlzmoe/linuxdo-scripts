@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name        L 站 2024 年度总结
-// @namespace   https://github.com/dlzmoe/linuxdo-scripts
+// @namespace   https://github.com/ezyshu/linuxdo-scripts
 // @match       https://linux.do/*
 // @grant       none
 // @version     1.0
-// @author      dlzmoe
+// @author      ezyshu
 // ==/UserScript==
 
 (function () {

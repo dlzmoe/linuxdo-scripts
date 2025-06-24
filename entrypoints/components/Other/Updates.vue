@@ -1,9 +1,9 @@
 <template>
   <div class="item-foot">
     <span>
-      <a href="https://github.com/dlzmoe/linuxdo-scripts" target="_blank">
+      <a href="https://github.com/ezyshu/linuxdo-scripts" target="_blank">
         <img alt="GitHub Repo stars"
-          src="https://img.shields.io/github/stars/dlzmoe/linuxdo-scripts?style=flat&logoColor=%237F5801&label=Github&labelColor=%230E0E0F">
+          src="https://img.shields.io/github/stars/ezyshu/linuxdo-scripts?style=flat&logoColor=%237F5801&label=Github&labelColor=%230E0E0F">
       </a>
     </span>
     <span>当前版本：{{ version }}</span>

@@ -52,7 +52,7 @@ export default {
     },
 
     goGithub() {
-      window.open("https://github.com/dlzmoe/linuxdo-scripts", "_blank");
+      window.open("https://github.com/ezyshu/linuxdo-scripts", "_blank");
     },
 
     // 是否隐藏设置按钮

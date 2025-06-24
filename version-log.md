@@ -256,7 +256,7 @@
 
 使用方法：
 
-[安装油猴脚本](https://raw.githubusercontent.com/dlzmoe/linuxdo-scripts/refs/heads/main/plugin/export-bookmarks.user.js) 后刷新论坛可自动下载，然后在收藏夹手动导入。
+[安装油猴脚本](https://raw.githubusercontent.com/ezyshu/linuxdo-scripts/refs/heads/main/plugin/export-bookmarks.user.js) 后刷新论坛可自动下载，然后在收藏夹手动导入。
 
 
 ## 1.0.18
@@ -393,11 +393,11 @@
 
 ## 0.3.71
 
-- fix: 修复 Cloudflare 质询循环问题（https://github.com/dlzmoe/linuxdo-scripts/pull/77）
+- fix: 修复 Cloudflare 质询循环问题（https://github.com/ezyshu/linuxdo-scripts/pull/77）
 
 ## 0.3.70
 
-- 新增：返回顶部功能（https://github.com/dlzmoe/linuxdo-scripts/pull/76）
+- 新增：返回顶部功能（https://github.com/ezyshu/linuxdo-scripts/pull/76）
 
 ## 0.3.69
 
@@ -417,7 +417,7 @@
 
 ## 0.3.65
 
-- 优化：添加错误处理、优化关键字处理、改进轮询逻辑、增加空值检查以及在销毁前清除轮询等措施，以增强此 MenuBlockKeyword 代码容错性和健壮性（[#71](https://github.com/dlzmoe/linuxdo-scripts/pull/71)）
+- 优化：添加错误处理、优化关键字处理、改进轮询逻辑、增加空值检查以及在销毁前清除轮询等措施，以增强此 MenuBlockKeyword 代码容错性和健壮性（[#71](https://github.com/ezyshu/linuxdo-scripts/pull/71)）
 
 ## 0.3.64
 
@@ -524,7 +524,7 @@
 
 ## 0.3.40
 
-- 优化：调整 UI 样式 [#39](https://github.com/dlzmoe/linuxdo-scripts/pull/39)
+- 优化：调整 UI 样式 [#39](https://github.com/ezyshu/linuxdo-scripts/pull/39)
 
 ## 0.3.39
 
@@ -749,7 +749,7 @@
 ## 0.2.13
 
 将安装文件改为 `user.js` 将会自动触发油猴脚本安装程序。   
-https://github.com/dlzmoe/linuxdo-scripts/issues/9
+https://github.com/ezyshu/linuxdo-scripts/issues/9
 
 ## 0.2.12
 

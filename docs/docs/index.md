@@ -13,7 +13,7 @@ hero:
       link: /guide/0-home/home.html
     - theme: alt
       text: GitHub 项目
-      link: https://github.com/dlzmoe/linuxdo-scripts
+      link: https://github.com/ezyshu/linuxdo-scripts
     - theme: alt
       text: Chrome 扩展
       link: https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj

@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name        导出所有书签，搭配 1.0.19 版本及以后使用
-// @namespace   https://github.com/dlzmoe/linuxdo-scripts
+// @namespace   https://github.com/ezyshu/linuxdo-scripts
 // @match       https://linux.do/*
 // @grant       none
 // @version     1.2
-// @author      dlzmoe
+// @author      ezyshu
 // ==/UserScript==
 (function () {
   'use strict';

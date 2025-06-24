@@ -10,8 +10,8 @@
 ```
 
 <div align="center">
-  <a href="https://github.com/dlzmoe/linuxdo-scripts">
-    <img src="https://github.com/dlzmoe/linuxdo-scripts/blob/main/public/icon/128.png?raw=true" alt="Logo" width="80" height="80">
+  <a href="https://github.com/ezyshu/linuxdo-scripts">
+    <img src="https://github.com/ezyshu/linuxdo-scripts/blob/main/public/icon/128.png?raw=true" alt="Logo" width="80" height="80">
   </a>
 
   <h1>LinuxDo Scripts</h1>
@@ -21,20 +21,20 @@
     ·
     <a href="https://linuxdo-scripts.zishu.me">文档</a>
     ·
-    <a href="https://github.com/dlzmoe/linuxdo-scripts/issues/new/choose">问题反馈</a>
+    <a href="https://github.com/ezyshu/linuxdo-scripts/issues/new/choose">问题反馈</a>
     ·
-    <a href="https://github.com/dlzmoe/linuxdo-scripts/releases/latest">最新版本</a>
+    <a href="https://github.com/ezyshu/linuxdo-scripts/releases/latest">最新版本</a>
   </p>
 
   <p>
-    <img src="https://img.shields.io/github/v/release/dlzmoe/linuxdo-scripts?label=Version">
-    <img src="https://img.shields.io/github/stars/dlzmoe/linuxdo-scripts?style=flat&label=Github%20Stars">
+    <img src="https://img.shields.io/github/v/release/ezyshu/linuxdo-scripts?label=Version">
+    <img src="https://img.shields.io/github/stars/ezyshu/linuxdo-scripts?style=flat&label=Github%20Stars">
     <img src="https://img.shields.io/chrome-web-store/users/fbgblmjbeebanackldpbmpacppflgmlj?style=flat&label=Chrome%20Web%20Store">
-    <img src="https://img.shields.io/github/license/dlzmoe/linuxdo-scripts?style=flat&">
+    <img src="https://img.shields.io/github/license/ezyshu/linuxdo-scripts?style=flat&">
   </p>
 </div>
 
-![Visitor Count](https://profile-counter.glitch.me/dlzmoe-linuxdo-scripts/count.svg)
+![Visitor Count](https://profile-counter.glitch.me/ezyshu-linuxdo-scripts/count.svg)
 
 ## 📖 项目介绍
 
@@ -95,7 +95,7 @@ node: v22.12.0
 ### 本地开发
 1. 克隆仓库并安装依赖：
 ```shell
-git clone https://github.com/dlzmoe/linuxdo-scripts
+git clone https://github.com/ezyshu/linuxdo-scripts
 npm install
 ```
 
@@ -115,7 +115,7 @@ npm run dev
 
 ## 🚀 贡献者
 
-![Contributor](https://contrib.rocks/image?repo=dlzmoe/linuxdo-scripts)
+![Contributor](https://contrib.rocks/image?repo=ezyshu/linuxdo-scripts)
 
 ## 🤝 贡献指南
 
@@ -126,7 +126,7 @@ npm run dev
 
 ## ⭐️ Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=dlzmoe/linuxdo-scripts&type=Timeline)](https://www.star-history.com/#dlzmoe/linuxdo-scripts&Timeline)
+[![Star History Chart](https://api.star-history.com/svg?repos=ezyshu/linuxdo-scripts&type=Timeline)](https://www.star-history.com/#ezyshu/linuxdo-scripts&Timeline)
 
 ## 📄 许可证
 
@@ -136,4 +136,4 @@ npm run dev
 
 本项目是一个免费且开源的项目，但并不保证其完全无BUG，使用前请自行承担风险；使用时请遵守相关法律法规，不得滥用。
 
-如果有任何侵权行为，请联系 [dlzmoe](https://github.com/dlzmoe)，将会及时处理。
+如果有任何侵权行为，请联系 [ezyshu](https://github.com/ezyshu)，将会及时处理。

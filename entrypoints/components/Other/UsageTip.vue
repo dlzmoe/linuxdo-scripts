@@ -22,9 +22,9 @@ export default {
               </div>
               <div>如果可以的话欢迎点个 star 支持一下~</div>
               <div>
-                <a href="https://github.com/dlzmoe/linuxdo-scripts/" target="_blank">
+                <a href="https://github.com/ezyshu/linuxdo-scripts/" target="_blank">
                   <img
-                    src="https://img.shields.io/github/stars/dlzmoe%2Flinuxdo-scripts?style=for-the-badge&labelColor=%235D5D5D&color=%23E97435"
+                    src="https://img.shields.io/github/stars/ezyshu%2Flinuxdo-scripts?style=for-the-badge&labelColor=%235D5D5D&color=%23E97435"
                     alt="icon"
                   />
                 </a>

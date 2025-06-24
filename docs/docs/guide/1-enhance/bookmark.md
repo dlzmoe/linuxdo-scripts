@@ -34,5 +34,5 @@
 使用下面的油猴脚本，开启后刷新论坛会自动下载书签文件，然后再手动导入到收藏夹后台即可。
 
 ```
-https://raw.githubusercontent.com/dlzmoe/linuxdo-scripts/refs/heads/main/plugin/export-bookmarks.user.js
+https://raw.githubusercontent.com/ezyshu/linuxdo-scripts/refs/heads/main/plugin/export-bookmarks.user.js
 ```

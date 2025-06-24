@@ -517,7 +517,8 @@
 }
 
 .topicpreview-btn,
-.donottopic-btn {
+.donottopic-btn,
+.removedonottopic-btn {
   padding: 4px 12px !important;
   font-size: 14px !important;
   opacity: 0 !important;
@@ -525,7 +526,8 @@
 }
 
 .topic-list-item:hover .topicpreview-btn,
-.topic-list-item:hover .donottopic-btn {
+.topic-list-item:hover .donottopic-btn,
+.topic-list-item:hover .removedonottopic-btn {
   opacity: 1 !important;
 }
 

@@ -1,9 +1,7 @@
 <template>
   <div>
     <div class="menu-about" v-show="!open">
-      <p class="hint">
-        请注意，用户标签功能已关闭，请在通用设置中开启！
-      </p>
+      <p class="hint">请注意，用户标签功能已关闭，请在通用设置中开启！</p>
       <p class="hint">
         也可以
         <span class="initialization" @click="fastOpen()"> 快速开启</span>
@@ -21,14 +19,16 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in tableData" :key="item.name">
+        <tr v-for="(item, index) in tableData" :key="item.name">
           <td>{{ item.name }}</td>
           <td>
             {{ item.tags }}
           </td>
           <td>
             <span class="span" @click="editTags(item)">修改</span>
-            <span class="span" @click="delTags(item)" style="color: #e00">删除！</span>
+            <span class="span" @click="delTags(item, index)" style="color: #e00"
+              >删除！</span
+            >
           </td>
         </tr>
       </tbody>
@@ -84,10 +84,10 @@ export default {
         this.$emit("update:value", this.tableData);
       }
     },
-    delTags(item) {
-      var del = confirm("是否确认删除！");
+    delTags(item, index) {
+      var del = confirm(`是否确认删除${item.name}(${item.tags})！`);
       if (del == true) {
-        this.tableData.splice(item, 1);
+        this.tableData.splice(index, 1);
 
         let settingData1 = localStorage.getItem("linxudoscriptssettingDMI");
         settingData1 = JSON.parse(settingData1);
@@ -113,7 +113,7 @@ export default {
         messageElement.remove();
         location.reload();
       }, 1000);
-    }
+    },
   },
   created() {
     let settingData = localStorage.getItem("linxudoscriptssettingDMI");
@@ -128,7 +128,6 @@ export default {
     this.open = settingData.isUserTags && settingData.isUserTags === true;
 
     setInterval(() => {
-
       if (!this.open) {
         return;
       }

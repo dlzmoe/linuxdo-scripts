@@ -337,8 +337,6 @@
 }
 
 #linuxdoscripts .menu-body-item {
-  overflow: hidden;
-  padding-right: 5px;
   padding-left: 5px;
   padding-bottom: 30px;
 }

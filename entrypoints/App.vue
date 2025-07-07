@@ -509,6 +509,7 @@ export default {
       showbacktotop: false,
       showbacktoonefloor: false,
       settingsSearchQuery: '', // 添加搜索查询字段
+      observer: null,
     };
   },
   methods: {
@@ -591,13 +592,40 @@ export default {
       const query = this.settingsSearchQuery.toLowerCase();
       return settingName.toLowerCase().includes(query);
     },
+    initObserver() {
+      const observer = new MutationObserver(() => {
+        // 按钮插入逻辑
+        if ($(".topic-map__contents").length > 0 && $(".linxudoscripts-btn").length < 1) {
+          $(".topic-map__contents").before(`<div class="linxudoscripts-btn"></div>`);
+        }
+
+        // 按钮显隐逻辑
+        if (this.showreplybtn) {
+          if (window.location.href.includes("/topic/")) {
+            $(".replaybtn").show();
+            $(".lookopbtn").show();
+          } else {
+            $(".replaybtn").hide();
+            $(".lookopbtn").hide();
+          }
+        }
+      });
+
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+      });
+
+      this.observer = observer;
+    },
+  },
+  beforeDestroy() {
+    if (this.observer) {
+      this.observer.disconnect();
+    }
   },
   created() {
-    setInterval(() => {
-      if($('.linxudoscripts-btn').length<1) {
-        $(".topic-map__contents").before(`<div class="linxudoscripts-btn"></div>`);
-      }
-    }, 1000);
+    this.initObserver();
     const browserAPI = typeof browser !== "undefined" ? browser : chrome;
     $("body").append('<div id="messageToast"></div>');
     console.log(
@@ -628,17 +656,6 @@ export default {
       this.showbacktotop = this.settingData.checked34;
       this.showbacktoonefloor = this.settingData.checked48;
 
-      if (this.showreplybtn) {
-        setInterval(() => {
-          if (window.location.href.includes("/topic/")) {
-            $(".replaybtn").show();
-            $(".lookopbtn").show();
-          } else {
-            $(".replaybtn").hide();
-            $(".lookopbtn").hide();
-          }
-        }, 1000);
-      }
     } else {
       localStorage.setItem("linxudoscriptssettingDMI", JSON.stringify(this.settingData));
     }

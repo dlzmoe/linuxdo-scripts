@@ -49,8 +49,8 @@ export default {
         // 检查话题标题
         $(".topic-list .main-link .raw-topic-link>*")
           .filter((index, element) => {
-            const text = $(element).text();
-            return keywords.some((keyword) => text.includes(keyword));
+            const text = $(element).text().toLowerCase();
+            return keywords.some((keyword) => text.includes(keyword.toLowerCase()));
           })
           .parents("tr.topic-list-item")
           .remove();
@@ -58,8 +58,8 @@ export default {
         // 检查评论回复
         $(".topic-body .cooked")
           .filter((index, element) => {
-            const text = $(element).text();
-            return keywords.some((keyword) => text.includes(keyword));
+            const text = $(element).text().toLowerCase();
+            return keywords.some((keyword) => text.includes(keyword.toLowerCase()));
           })
           .parents(".topic-post")
           .remove();

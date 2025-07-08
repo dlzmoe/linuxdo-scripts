@@ -17,6 +17,10 @@ export default {
   data() {
     return {
       checked1: false,
+      initTimer: null,
+      observer: null,
+      keydownHandler: null,
+      wheelHandler: null,
     };
   },
   methods: {
@@ -32,6 +36,26 @@ export default {
         }
       });
     },
+    clearAllTimers() {
+      if (this.initTimer) {
+        clearInterval(this.initTimer);
+        this.initTimer = null;
+      }
+      
+      if (this.observer) {
+        this.observer.disconnect();
+        this.observer = null;
+      }
+      
+      // 移除事件监听器
+      if (this.keydownHandler) {
+        $(document).off("keydown", this.keydownHandler);
+      }
+      
+      if (this.wheelHandler) {
+        $(window).off("wheel touchmove", this.wheelHandler);
+      }
+    }
   },
   created() {
     if (this.modelValue) {
@@ -44,7 +68,7 @@ body.modal-open{overflow:hidden!important;padding-right:17px}
 html.modal-open-html{overflow:hidden!important}
       </style>`);
 
-      setInterval(() => {
+      this.initTimer = setInterval(() => {
         if (window.location.href != "https://linux.do/latest?state=muted") {
           this.init();
         }
@@ -106,7 +130,7 @@ html.modal-open-html{overflow:hidden!important}
       handleTopicLinks();
 
       // 监听 DOM 变化，处理动态加载的链接
-      const observer = new MutationObserver(function (mutations) {
+      this.observer = new MutationObserver(function (mutations) {
         mutations.forEach(function (mutation) {
           if (mutation.addedNodes.length) {
             handleTopicLinks();
@@ -114,7 +138,7 @@ html.modal-open-html{overflow:hidden!important}
         });
       });
 
-      observer.observe(document.body, {
+      this.observer.observe(document.body, {
         childList: true,
         subtree: true,
       });
@@ -148,21 +172,28 @@ html.modal-open-html{overflow:hidden!important}
       });
 
       // ESC 键关闭模态窗口
-      $(document).keydown(function (e) {
+      this.keydownHandler = function(e) {
         if (e.keyCode === 27) {
           closeModal();
         }
-      });
+      };
+      $(document).keydown(this.keydownHandler);
 
       // 禁用外部滚动
-      $(window).on("wheel touchmove", function (e) {
+      this.wheelHandler = function(e) {
         if ($("body").hasClass("modal-open")) {
           e.preventDefault();
           e.stopPropagation();
         }
-      });
+      };
+      $(window).on("wheel touchmove", this.wheelHandler);
     }
   },
-  beforeUnmount() {},
+  beforeUnmount() {
+    this.clearAllTimers();
+  },
+  beforeDestroy() {
+    this.clearAllTimers();
+  },
 };
 </script>

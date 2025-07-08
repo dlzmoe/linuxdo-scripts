@@ -3,6 +3,11 @@
 <script>
 import $ from "jquery";
 export default {
+  data() {
+    return {
+      signatureIntervalId: null // 添加变量存储定时器ID
+    };
+  },
   methods: {
     init() {
       $(".signature-img").each(function () {
@@ -35,7 +40,7 @@ export default {
   created() {
     // let pollinglength1 = 0;
     let pollinglength2 = 0;
-    setInterval(() => {
+    this.signatureIntervalId = setInterval(() => {
       // if (pollinglength1 != $(".topic-list-body tr").length) {
       //   pollinglength1 = $(".topic-list-body tr").length;
       //   this.init();
@@ -46,5 +51,18 @@ export default {
       }
     }, 1000);
   },
+  beforeUnmount() {
+    // 清除定时器
+    if (this.signatureIntervalId) {
+      clearInterval(this.signatureIntervalId);
+    }
+  },
+  // Vue 2 兼容性
+  beforeDestroy() {
+    // 清除定时器
+    if (this.signatureIntervalId) {
+      clearInterval(this.signatureIntervalId);
+    }
+  }
 };
 </script>

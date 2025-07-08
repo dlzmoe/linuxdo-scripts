@@ -14,6 +14,11 @@ import $ from "jquery";
 export default {
   props: ["modelValue", "sort"],
   emits: ["update:modelValue"],
+  data() {
+    return {
+      ownerBadgeIntervalId: null // 添加变量存储定时器ID
+    };
+  },
   methods: {
     addTopicOwnerBadge() {
       // 为每个楼主帖子添加楼主标识
@@ -24,9 +29,8 @@ export default {
         }
       });
     },
-  },
-  created() {
-    if (this.modelValue) {
+    // 初始化楼主标识功能
+    initOwnerBadge() {
       // 添加楼主标识样式
       $("head").append(`<style>
 .topic-owner-badge{display:inline-flex;align-items:center;justify-content:center;position:relative;min-width:36px;height:22px;line-height:20px;padding:0 8px;margin-left:8px;vertical-align:middle;color:rgba(255,255,255,.95);font-size:14px!important;font-weight:600;letter-spacing:.3px;text-shadow:0 1px 1px rgba(0,0,0,.15);background-color:var(--tertiary,#08c);background-image:linear-gradient(135deg,rgba(255,255,255,.1) 0,rgba(255,255,255,.05) 50%,rgba(0,0,0,.05) 51%,rgba(0,0,0,.1) 100%);border-radius:3px;border:1px solid rgba(0,0,0,.12);box-sizing:border-box;box-shadow:0 1px 2px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.15);transition:all .2s cubic-bezier(.25,.46,.45,.94);overflow:hidden;z-index:1}
@@ -45,10 +49,41 @@ to{opacity:1;transform:translateY(0)}
 </style>`);
 
       // 监听帖子内容变化并添加楼主标识
-      setInterval(() => {
+      this.ownerBadgeIntervalId = setInterval(() => {
         this.addTopicOwnerBadge();
       }, 1000);
+    },
+    // 清除定时器
+    clearOwnerBadgeInterval() {
+      if (this.ownerBadgeIntervalId) {
+        clearInterval(this.ownerBadgeIntervalId);
+        this.ownerBadgeIntervalId = null;
+      }
     }
   },
+  created() {
+    if (this.modelValue) {
+      this.initOwnerBadge();
+    }
+  },
+  beforeUnmount() {
+    // 清除定时器
+    this.clearOwnerBadgeInterval();
+  },
+  // Vue 2 兼容性
+  beforeDestroy() {
+    // 清除定时器
+    this.clearOwnerBadgeInterval();
+  },
+  watch: {
+    // 监听属性变化，动态处理定时器
+    modelValue(newVal) {
+      if (newVal) {
+        this.initOwnerBadge();
+      } else {
+        this.clearOwnerBadgeInterval();
+      }
+    }
+  }
 };
 </script>

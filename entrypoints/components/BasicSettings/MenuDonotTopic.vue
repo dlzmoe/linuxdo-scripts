@@ -19,6 +19,11 @@ import $ from "jquery";
 export default {
   props: ["modelValue", "sort"],
   emits: ["update:modelValue"],
+  data() {
+    return {
+      donotTopicIntervalId: null // 添加变量存储定时器ID
+    };
+  },
   methods: {
     // 提示组件
     messageToast(message) {
@@ -136,10 +141,23 @@ export default {
   },
   created() {
     if (this.modelValue) {
-      setInterval(() => {
+      this.donotTopicIntervalId = setInterval(() => {
         this.init();
       }, 1000);
     }
   },
+  beforeUnmount() {
+    // 清除定时器
+    if (this.donotTopicIntervalId) {
+      clearInterval(this.donotTopicIntervalId);
+    }
+  },
+  // Vue 2 兼容性
+  beforeDestroy() {
+    // 清除定时器
+    if (this.donotTopicIntervalId) {
+      clearInterval(this.donotTopicIntervalId);
+    }
+  }
 };
 </script>

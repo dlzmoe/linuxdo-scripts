@@ -10,6 +10,11 @@ import $ from "jquery";
 export default {
   props: ["modelValue", "sort"],
   emits: ["update:modelValue"],
+  data() {
+    return {
+      ownReplyTimer: null,
+    };
+  },
   methods: {
     // 提示组件
     messageToast(message) {
@@ -46,13 +51,18 @@ export default {
         .catch((error) => {
           alert('数据拉取失败，请联系插件开发者进行修复！')
         });
-
+    },
+    clearTimer() {
+      if (this.ownReplyTimer) {
+        clearInterval(this.ownReplyTimer);
+        this.ownReplyTimer = null;
+      }
     }
   },
   created() {
     if (this.modelValue) {
       let vm = this;
-      setInterval(() => {
+      this.ownReplyTimer = setInterval(() => {
         if ($('.viewownreply').length < 1) {
           $('.timeline-controls').append(`
         <button class="btn no-text btn-icon icon btn-default viewownreply" type="button">
@@ -64,9 +74,14 @@ export default {
             vm.getOwnFloor();
           })
         }
-
       }, 1000);
     }
+  },
+  beforeUnmount() {
+    this.clearTimer();
+  },
+  beforeDestroy() {
+    this.clearTimer();
   },
 };
 </script>

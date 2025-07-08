@@ -10,9 +10,14 @@ import $ from "jquery";
 export default {
   props: ["modelValue", "sort"],
   emits: ["update:modelValue"],
+  data() {
+    return {
+      gifToPngIntervalId: null // 添加变量存储定时器ID
+    };
+  },
   created() {
     if (this.modelValue) {
-      setInterval(() => {
+      this.gifToPngIntervalId = setInterval(() => {
         $(".post-avatar .avatar").each(function () {
           const currentSrc = $(this).attr("src");
           if (currentSrc.endsWith(".gif")) {
@@ -22,5 +27,18 @@ export default {
       }, 1000);
     }
   },
+  beforeUnmount() {
+    // 清除定时器
+    if (this.gifToPngIntervalId) {
+      clearInterval(this.gifToPngIntervalId);
+    }
+  },
+  // Vue 2 兼容性
+  beforeDestroy() {
+    // 清除定时器
+    if (this.gifToPngIntervalId) {
+      clearInterval(this.gifToPngIntervalId);
+    }
+  }
 };
 </script>

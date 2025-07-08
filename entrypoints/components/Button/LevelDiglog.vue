@@ -48,6 +48,7 @@ export default {
           posts_read_count: 0,
         },
       },
+      usernameTimer: null,
     };
   },
   methods: {
@@ -159,9 +160,15 @@ export default {
 
       return translations[stat] || stat;
     },
+    clearTimer() {
+      if (this.usernameTimer) {
+        clearInterval(this.usernameTimer);
+        this.usernameTimer = null;
+      }
+    }
   },
   created() {
-    setInterval(() => {
+    this.usernameTimer = setInterval(() => {
       if (!this.username) {
         const avatarImg = $("#toggle-current-user img.avatar");
         const src = avatarImg.length ? avatarImg.attr("src") : null;
@@ -173,6 +180,12 @@ export default {
         }
       }
     }, 1000);
+  },
+  beforeUnmount() {
+    this.clearTimer();
+  },
+  beforeDestroy() {
+    this.clearTimer();
   },
 };
 </script>

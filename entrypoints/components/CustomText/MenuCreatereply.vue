@@ -28,6 +28,8 @@ export default {
   data() {
     return {
       textarea: this.value,
+      initTimer: null,
+      list: [],
     }
   },
   watch: {
@@ -42,7 +44,6 @@ export default {
     init() {
       this.list = this.textarea.split(/\r?\n/) || []
 
-      // setInterval(() => {
       if ($('.createreply').length < 1) {
         $('.timeline-container .topic-timeline').append(
           `<div class="createreply" style="margin-top:6.4rem;"></div>`
@@ -92,16 +93,26 @@ export default {
           }, 1000)
         })
       }
-
-      // }, 1000);
     },
+    clearTimer() {
+      if (this.initTimer) {
+        clearInterval(this.initTimer)
+        this.initTimer = null
+      }
+    }
   },
   created() {
     if (this.textarea) {
-      setInterval(() => {
+      this.initTimer = setInterval(() => {
         this.init()
       }, 1000)
     }
+  },
+  beforeUnmount() {
+    this.clearTimer()
+  },
+  beforeDestroy() {
+    this.clearTimer()
   },
 }
 </script>

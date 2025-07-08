@@ -17,6 +17,9 @@ export default {
   data() {
     return {
       checked1: false,
+      lightboxTimer: null,
+      mainTimer: null,
+      pollingTimer: null,
     };
   },
   methods: {
@@ -42,6 +45,7 @@ export default {
       });
     },
     setClick() {
+      const self = this;
       $(".topicpreview-btn").each(function () {
         $(this).click(function () {
           $(".topicpreview").show();
@@ -90,7 +94,13 @@ export default {
                 `);
               });
 
-              setInterval(() => {
+              // 清除之前的定时器
+              if (self.lightboxTimer) {
+                clearInterval(self.lightboxTimer);
+              }
+              
+              // 创建新定时器并保存引用
+              self.lightboxTimer = setInterval(() => {
                 $(".lightbox").attr("href", "javascript:void(0)");
               }, 1000);
             });
@@ -111,13 +121,28 @@ export default {
         this.closePreview();
       }
     },
+    clearAllTimers() {
+      if (this.lightboxTimer) {
+        clearInterval(this.lightboxTimer);
+        this.lightboxTimer = null;
+      }
+      if (this.mainTimer) {
+        clearInterval(this.mainTimer);
+        this.mainTimer = null;
+      }
+      if (this.pollingTimer) {
+        clearInterval(this.pollingTimer);
+        this.pollingTimer = null;
+      }
+    }
   },
   created() {
     if (this.modelValue) {
       this.checked1 = JSON.parse(
         localStorage.getItem("linxudoscriptssettingDMI")
       ).checked1;
-      setInterval(() => {
+      
+      this.mainTimer = setInterval(() => {
         if (window.location.href != "https://linux.do/latest?state=muted") {
           this.init();
         }
@@ -127,7 +152,7 @@ export default {
 
       let pollinglength1 = 0;
       let pollinglength2 = 0;
-      setInterval(() => {
+      this.pollingTimer = setInterval(() => {
         if (pollinglength1 != $(".topic-list-body tr").length) {
           pollinglength1 = $(".topic-list-body tr").length;
           this.setClick();
@@ -142,6 +167,10 @@ export default {
   },
   beforeUnmount() {
     document.removeEventListener("keydown", this.handleKeyDown);
+    this.clearAllTimers();
+  },
+  beforeDestroy() {
+    this.clearAllTimers();
   },
 };
 </script>

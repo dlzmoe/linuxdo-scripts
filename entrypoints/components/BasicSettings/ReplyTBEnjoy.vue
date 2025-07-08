@@ -688,68 +688,124 @@ const emojiSet = [
   },
 ];
 
-setInterval(() => {
-  var editor = document.querySelector(".d-editor-button-bar");
-  if (!document.querySelector(".emoji-picker-button") && editor) {
-    var emojiButton = document.createElement("button");
-    emojiButton.classList.add(
-      "btn",
-      "no-text",
-      "btn-icon",
-      "emoji",
-      "emoji-picker-button"
-    );
-    emojiButton.title = "插入贴吧表情包";
-    emojiButton.innerHTML =
-      "<svg class='fa d-icon d-icon-far-face-smile svg-icon svg-string' xmlns='http://www.w3.org/2000/svg'><use href='#far-face-smile'></use></svg>";
-    editor.appendChild(emojiButton);
-    emojiButton.addEventListener("click", function () {
-      var emojiPicker = document.createElement("div");
-      emojiPicker.className = "emojiPicker";
-      var emojiSetHtml = emojiSet
-        .map(
-          (emo) =>
-            `<img src="${emo.url}" name="${emo.name}" url="${emo.url}" alt="${emo.size}" onclick="insertEmoji(event)"/>`
-        )
-        .join("");
-      emojiPicker.innerHTML = emojiSetHtml;
-      emojiPicker.style.position = "absolute";
-      emojiPicker.style.background = "#FFF";
-      emojiPicker.style.border = "1px solid #ddd";
-      emojiPicker.style.padding = "10px";
-      if (document.body.contains(document.querySelector(".emojiPicker"))) {
-        document.querySelector(".emojiPicker").remove();
-      } else {
-        emojiButton.after(emojiPicker);
-      }
-      emojiPicker.addEventListener("click", function (e) {
-        if (e.target.tagName === "IMG") {
-          var textArea = document.querySelector(".d-editor-input");
-          if (!textArea) {
-            alert("找不到输入框");
-            return;
-          }
-          // var emojiMarkdown = `![${e.target.name}|${e.target.alt}](${e.target.src})`;
-          var emojiMarkdown = `:${e.target.name}: `;
+export default {
+  data() {
+    return {
+      emojiTimer: null
+    };
+  },
+  mounted() {
+    this.setupEmojiButton();
+  },
+  methods: {
+    setupEmojiButton() {
+      this.emojiTimer = setInterval(() => {
+        var editor = document.querySelector(".d-editor-button-bar");
+        if (!document.querySelector(".emoji-picker-button") && editor) {
+          var emojiButton = document.createElement("button");
+          emojiButton.classList.add(
+            "btn",
+            "no-text",
+            "btn-icon",
+            "emoji",
+            "emoji-picker-button"
+          );
+          emojiButton.title = "插入贴吧表情包";
+          emojiButton.innerHTML =
+            "<svg class='fa d-icon d-icon-far-face-smile svg-icon svg-string' xmlns='http://www.w3.org/2000/svg'><use href='#far-face-smile'></use></svg>";
+          editor.appendChild(emojiButton);
+          emojiButton.addEventListener("click", function () {
+            var emojiPicker = document.createElement("div");
+            emojiPicker.className = "emojiPicker";
+            var emojiSetHtml = emojiSet
+              .map(
+                (emo) =>
+                  `<img src="${emo.url}" name="${emo.name}" url="${emo.url}" alt="${emo.size}" onclick="insertEmoji(event)"/>`
+              )
+              .join("");
+            emojiPicker.innerHTML = emojiSetHtml;
+            emojiPicker.style.position = "absolute";
+            emojiPicker.style.background = "#FFF";
+            emojiPicker.style.border = "1px solid #ddd";
+            emojiPicker.style.padding = "10px";
+            if (document.body.contains(document.querySelector(".emojiPicker"))) {
+              document.querySelector(".emojiPicker").remove();
+            } else {
+              emojiButton.after(emojiPicker);
+            }
+            emojiPicker.addEventListener("click", function (e) {
+              if (e.target.tagName === "IMG") {
+                var textArea = document.querySelector(".d-editor-input");
+                if (!textArea) {
+                  alert("找不到输入框");
+                  return;
+                }
+                // var emojiMarkdown = `![${e.target.name}|${e.target.alt}](${e.target.src})`;
+                var emojiMarkdown = `:${e.target.name}: `;
 
-          // 在光标位置插入表情包
-          var startPos = textArea.selectionStart;
-          var endPos = textArea.selectionEnd;
-          textArea.value =
-            textArea.value.substring(0, startPos) +
-            emojiMarkdown +
-            textArea.value.substring(endPos, textArea.value.length);
-          // 触发输入事件
-          var event = new Event("input", {
-            bubbles: true,
-            cancelable: true,
+                // 在光标位置插入表情包
+                var startPos = textArea.selectionStart;
+                var endPos = textArea.selectionEnd;
+                textArea.value =
+                  textArea.value.substring(0, startPos) +
+                  emojiMarkdown +
+                  textArea.value.substring(endPos, textArea.value.length);
+                // 触发输入事件
+                var event = new Event("input", {
+                  bubbles: true,
+                  cancelable: true,
+                });
+                textArea.dispatchEvent(event);
+                // 隐藏选择器
+                emojiPicker.remove();
+              }
+            });
           });
-          textArea.dispatchEvent(event);
-          // 隐藏选择器
-          emojiPicker.remove();
         }
-      });
-    });
+      }, 100);
+    }
+  },
+  beforeUnmount() {
+    if (this.emojiTimer) {
+      clearInterval(this.emojiTimer);
+      this.emojiTimer = null;
+    }
+  },
+  beforeDestroy() {
+    if (this.emojiTimer) {
+      clearInterval(this.emojiTimer);
+      this.emojiTimer = null;
+    }
   }
-}, 100);
+};
+
+// 为了保持原有功能，保留全局的表情插入函数
+window.insertEmoji = function(event) {
+  var textArea = document.querySelector(".d-editor-input");
+  if (!textArea) {
+    alert("找不到输入框");
+    return;
+  }
+  var emojiMarkdown = `:${event.target.getAttribute("name")}: `;
+  
+  // 在光标位置插入表情包
+  var startPos = textArea.selectionStart;
+  var endPos = textArea.selectionEnd;
+  textArea.value =
+    textArea.value.substring(0, startPos) +
+    emojiMarkdown +
+    textArea.value.substring(endPos, textArea.value.length);
+  
+  // 触发输入事件
+  var inputEvent = new Event("input", {
+    bubbles: true,
+    cancelable: true,
+  });
+  textArea.dispatchEvent(inputEvent);
+  
+  // 隐藏选择器
+  if (document.querySelector(".emojiPicker")) {
+    document.querySelector(".emojiPicker").remove();
+  }
+};
 </script>

@@ -22,6 +22,8 @@ export default {
   data() {
     return {
       textarea: this.value,
+      blockTimer: null,
+      list: [],
     };
   },
   watch: {
@@ -52,12 +54,18 @@ export default {
         .parents(".topic-post")
         .remove();
     },
+    clearTimer() {
+      if (this.blockTimer) {
+        clearInterval(this.blockTimer);
+        this.blockTimer = null;
+      }
+    }
   },
   created() {
     if (this.textarea) {
       let pollinglength1 = 0;
       let pollinglength2 = 0;
-      setInterval(() => {
+      this.blockTimer = setInterval(() => {
         if (pollinglength1 != $(".topic-list-body tr").length) {
           pollinglength1 = $(".topic-list-body tr").length;
           this.init();
@@ -68,6 +76,12 @@ export default {
         }
       }, 1000);
     }
+  },
+  beforeUnmount() {
+    this.clearTimer();
+  },
+  beforeDestroy() {
+    this.clearTimer();
   },
 };
 </script>

@@ -166,6 +166,12 @@ export default {
     return {
       localChecked: this.value,
       connectionStatus: null,
+      checkIntervalId: null, // 添加变量存储定时器ID
+      mainPostSummaryIntervalId: null, // 主贴总结按钮定时器
+      summaryIntervalId: null, // 检查缓存和自动总结定时器
+      allPostsSummaryIntervalId: null, // 回帖总结按钮定时器
+      titleGenerationIntervalId: null, // 标题生成定时器
+      observer: null,
     };
   },
   watch: {
@@ -671,7 +677,8 @@ ${topic_contentdata}`;
         </div>
       `);
 
-      setInterval(() => {
+      // 将setInterval的返回值保存到data中
+      this.checkIntervalId = setInterval(() => {
         if ($(".aireplay-btn").length < 1) {
           $("#topic-title").after(
             `<button class="aireplay-btn" type="button">AI 回复</button>`
@@ -689,7 +696,7 @@ ${topic_contentdata}`;
 
     // 主贴总结功能
     if (this.localChecked.value1) {
-      setInterval(() => {
+      this.mainPostSummaryIntervalId = setInterval(() => {
         if (
           $(".aicreated-btn").length < 1 &&
           this.localChecked.btn // 只有当开启手动按钮时才显示
@@ -705,7 +712,7 @@ ${topic_contentdata}`;
         }
       }, 1000);
 
-      setInterval(() => {
+      this.summaryIntervalId = setInterval(() => {
         if ($(".post-stream").length > 0) {
           // 从 localStorage 获取缓存数据
           if ($(".gpt-summary-wrap").length < 1) {
@@ -740,7 +747,7 @@ ${topic_contentdata}`;
 
     // 回帖总结功能
     if (this.localChecked.summaryAll) {
-      setInterval(() => {
+      this.allPostsSummaryIntervalId = setInterval(() => {
         if ($(".aicreated-all-btn").length < 1) {
           $("#topic-title").after(
             `<button class="aicreated-all-btn" type="button">AI 总结全部回帖</button>`
@@ -755,7 +762,7 @@ ${topic_contentdata}`;
     }
 
     if (this.localChecked.title) {
-      setInterval(() => {
+      this.titleGenerationIntervalId = setInterval(() => {
         if ($(".action-title").length > 0) {
           if ($(".action-title").html().includes("创建新话题")) {
             if ($(".aicreatenewtopictitle").length < 1) {
@@ -797,6 +804,42 @@ ${topic_contentdata}`;
       '.topic-list .main-link a.title, a[href*="/t/topic/"]',
       this.handleLinkClick
     );
+
+    // 清除所有定时器
+    if (this.checkIntervalId) {
+      clearInterval(this.checkIntervalId);
+    }
+    if (this.mainPostSummaryIntervalId) {
+      clearInterval(this.mainPostSummaryIntervalId);
+    }
+    if (this.summaryIntervalId) {
+      clearInterval(this.summaryIntervalId);
+    }
+    if (this.allPostsSummaryIntervalId) {
+      clearInterval(this.allPostsSummaryIntervalId);
+    }
+    if (this.titleGenerationIntervalId) {
+      clearInterval(this.titleGenerationIntervalId);
+    }
+  },
+  // Vue 2 兼容性
+  beforeDestroy() {
+    // 清除所有定时器
+    if (this.checkIntervalId) {
+      clearInterval(this.checkIntervalId);
+    }
+    if (this.mainPostSummaryIntervalId) {
+      clearInterval(this.mainPostSummaryIntervalId);
+    }
+    if (this.summaryIntervalId) {
+      clearInterval(this.summaryIntervalId);
+    }
+    if (this.allPostsSummaryIntervalId) {
+      clearInterval(this.allPostsSummaryIntervalId);
+    }
+    if (this.titleGenerationIntervalId) {
+      clearInterval(this.titleGenerationIntervalId);
+    }
   },
 };
 </script>

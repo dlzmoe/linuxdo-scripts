@@ -49,6 +49,7 @@ export default {
     return {
       tableData: this.value,
       open: false,
+      userTagsIntervalId: null, // 添加变量存储定时器ID
     };
   },
   watch: {
@@ -127,7 +128,7 @@ export default {
 
     this.open = settingData.isUserTags && settingData.isUserTags === true;
 
-    setInterval(() => {
+    this.userTagsIntervalId = setInterval(() => {
       if (!this.open) {
         return;
       }
@@ -173,6 +174,19 @@ export default {
         }
       });
     }, 1000);
+  },
+  beforeUnmount() {
+    // 清除定时器
+    if (this.userTagsIntervalId) {
+      clearInterval(this.userTagsIntervalId);
+    }
+  },
+  // Vue 2 兼容性
+  beforeDestroy() {
+    // 清除定时器
+    if (this.userTagsIntervalId) {
+      clearInterval(this.userTagsIntervalId);
+    }
   },
 };
 </script>

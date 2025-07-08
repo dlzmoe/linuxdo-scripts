@@ -11,9 +11,14 @@ import pangu from "pangu";
 export default {
   props: ["modelValue", "sort"],
   emits: ["update:modelValue"],
+  data() {
+    return {
+      panguIntervalId: null // 添加变量存储定时器ID
+    };
+  },
   created() {
     if (this.modelValue) {
-      setInterval(() => {
+      this.panguIntervalId = setInterval(() => {
         pangu.spacingElementByClassName("cooked");
         pangu.spacingElementByTagName("h1");
         document.addEventListener("DOMContentLoaded", () => {
@@ -49,5 +54,18 @@ export default {
       }, 1000);
     }
   },
+  beforeUnmount() {
+    // 清除定时器
+    if (this.panguIntervalId) {
+      clearInterval(this.panguIntervalId);
+    }
+  },
+  // Vue 2 兼容性
+  beforeDestroy() {
+    // 清除定时器
+    if (this.panguIntervalId) {
+      clearInterval(this.panguIntervalId);
+    }
+  }
 };
 </script>

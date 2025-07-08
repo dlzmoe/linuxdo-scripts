@@ -10,9 +10,14 @@ import $ from "jquery";
 export default {
   props: ["modelValue", "sort"],
   emits: ["update:modelValue"],
+  data() {
+    return {
+      editorJaIntervalId: null // 添加变量存储定时器ID
+    };
+  },
   created() {
     if (this.modelValue) {
-      setInterval(() => {
+      this.editorJaIntervalId = setInterval(() => {
         if ($(".replyja").length < 1) {
           $("#reply-control .save-or-cancel .create").after(
             `<button class="btn btn-default replyja" style="margin-left:15px;" type="button">ja 字体</button>`
@@ -20,9 +25,7 @@ export default {
           $(".replyja").click(function () {
             let $textarea = $(".d-editor-textarea-wrapper textarea");
             let text = `<span lang="ja">
-
 ${$(".d-editor-input").val()}
-
 </span>`;
 
             $(".d-editor-textarea-wrapper textarea").val("");
@@ -56,5 +59,18 @@ ${$(".d-editor-input").val()}
       }, 1000);
     }
   },
+  beforeUnmount() {
+    // 清除定时器
+    if (this.editorJaIntervalId) {
+      clearInterval(this.editorJaIntervalId);
+    }
+  },
+  // Vue 2 兼容性
+  beforeDestroy() {
+    // 清除定时器
+    if (this.editorJaIntervalId) {
+      clearInterval(this.editorJaIntervalId);
+    }
+  }
 };
 </script>

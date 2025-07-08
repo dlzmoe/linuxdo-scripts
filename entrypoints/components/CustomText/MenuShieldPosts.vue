@@ -32,6 +32,7 @@ export default {
   data() {
     return {
       localChecked: this.value,
+      shieldPostsIntervalId: null, // 添加变量存储定时器ID
     };
   },
   watch: {
@@ -110,12 +111,25 @@ export default {
   created() {
     if (this.localChecked.value1) {
       let pollinglength1 = 0;
-      setInterval(() => {
+      this.shieldPostsIntervalId = setInterval(() => {
         if (pollinglength1 != $(".topic-list-body tr").length) {
           pollinglength1 = $(".topic-list-body tr").length;
           this.GetTimestamp();
         }
       }, 1000);
+    }
+  },
+  beforeUnmount() {
+    // 清除定时器
+    if (this.shieldPostsIntervalId) {
+      clearInterval(this.shieldPostsIntervalId);
+    }
+  },
+  // Vue 2 兼容性
+  beforeDestroy() {
+    // 清除定时器
+    if (this.shieldPostsIntervalId) {
+      clearInterval(this.shieldPostsIntervalId);
     }
   },
 };

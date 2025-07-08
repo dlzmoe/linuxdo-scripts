@@ -12,6 +12,12 @@ import $ from "jquery";
 export default {
   props: ["modelValue", "sort"],
   emits: ["update:modelValue"],
+  data() {
+    return {
+      updateIntervalId: null, // 添加变量存储更新定时器ID
+      pollingIntervalId: null // 添加变量存储轮询定时器ID
+    };
+  },
   methods: {
     formattedDate(time) {
       const timestamp = Number(time);
@@ -129,23 +135,59 @@ export default {
         }
       });
     },
-    initDateAndStartPolling() {
-      setInterval(() => {
+    // 初始化定时器，避免嵌套创建多个定时器
+    initTimers() {
+      // 清除可能已存在的定时器
+      this.clearTimers();
+      
+      // 立即执行一次初始化
+      this.setInitDate();
+      
+      // 设置短间隔更新定时器 (1秒)
+      this.updateIntervalId = setInterval(() => {
         this.setInitDate();
-        this.startPolling();
       }, 1000);
+      
+      // 设置长间隔轮询定时器 (10秒)，避免资源浪费
+      this.pollingIntervalId = setInterval(() => {
+        this.setInitDate();
+      }, 10000);
     },
-    startPolling() {
-      setInterval(() => {
-        this.setInitDate(); // 定时更新日期
-      }, 10000); // 每 10 秒更新一次
-    },
+    // 清除所有定时器
+    clearTimers() {
+      if (this.updateIntervalId) {
+        clearInterval(this.updateIntervalId);
+        this.updateIntervalId = null;
+      }
+      if (this.pollingIntervalId) {
+        clearInterval(this.pollingIntervalId);
+        this.pollingIntervalId = null;
+      }
+    }
   },
   mounted() {
     if (this.modelValue) {
-      this.startPolling();
-      this.initDateAndStartPolling();
+      this.initTimers();
     }
   },
+  beforeUnmount() {
+    // 清除定时器
+    this.clearTimers();
+  },
+  // Vue 2 兼容性
+  beforeDestroy() {
+    // 清除定时器
+    this.clearTimers();
+  },
+  watch: {
+    // 监听属性变化，动态处理定时器
+    modelValue(newVal) {
+      if (newVal) {
+        this.initTimers();
+      } else {
+        this.clearTimers();
+      }
+    }
+  }
 };
 </script>

@@ -10,9 +10,14 @@ import $ from "jquery";
 export default {
   props: ["modelValue", "sort"],
   emits: ["update:modelValue"],
+  data() {
+    return {
+      disableAutoplayIntervalId: null // 添加变量存储定时器ID
+    };
+  },
   created() {
     if (this.modelValue) {
-      setInterval(() => {
+      this.disableAutoplayIntervalId = setInterval(() => {
         $(".cooked iframe, .cooked video").each(function () {
           const $element = $(this);
           let src = $element.attr("src");
@@ -39,5 +44,18 @@ export default {
       }, 1000);
     }
   },
+  beforeUnmount() {
+    // 清除定时器
+    if (this.disableAutoplayIntervalId) {
+      clearInterval(this.disableAutoplayIntervalId);
+    }
+  },
+  // Vue 2 兼容性
+  beforeDestroy() {
+    // 清除定时器
+    if (this.disableAutoplayIntervalId) {
+      clearInterval(this.disableAutoplayIntervalId);
+    }
+  }
 };
 </script>

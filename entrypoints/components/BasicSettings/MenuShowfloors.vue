@@ -23,7 +23,14 @@ export default {
           .attr("id")
           .replace(/^post_/, "");
         if ($(this).find(".linuxfloor").length < 1) {
-          $(this).find(".post-infos").append(`<span class="linuxfloor">#${num}</span>`);
+          const $floor = $(`<button class="linuxfloor">#${num}</button>`);
+          $floor.on("click", function () {
+            // 修改URL格式为 /xxx/数字 结尾
+            const url = window.location.pathname;
+            const newUrl = url.replace(/\/(\d+)([\/?#]*)$/, `/${num}$2`);
+            window.history.pushState({}, '', newUrl + window.location.search + window.location.hash);
+          });
+          $(this).find(".post-infos").append($floor);
         }
       });
     },

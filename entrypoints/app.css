@@ -486,7 +486,10 @@
   border-radius: 6px;
   font-size: 16px;
   border: 0;
-  margin-left: 10px;
+  background: none;
+  outline: none;
+  padding: 0;
+  margin-left: 6px;
 }
 
 .signature-p {

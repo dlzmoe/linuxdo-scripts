@@ -1,0 +1,145 @@
+::-webkit-scrollbar {
+  width: 5px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #FFFFFF;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: #CCCCCC;
+  border-radius: 2px;
+  transition: all 0.1s linear;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 450px;
+  overflow: hidden;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-neutral-9);
+  background-color: var(--color-bg-1);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", SegoeUI, "Noto Sans", NotoSans, Helvetica, Arial, sans-serif;
+  padding-top: 55px;
+}
+#app {
+  height: 100%;
+}
+li,
+ul,
+ol {
+  list-style: none;
+}
+a {
+  color: inherit;
+  text-decoration: underline;
+}
+.nav-wrap {
+  background: var(--color-bg-1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 5px;
+  z-index: 999;
+}
+.nav {
+  height: 45px;
+  padding: 0 10px;
+  background-color: var(--color-neutral-2);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+.nav li {
+  height: 28px;
+  font-size: 14px;
+  list-style: none;
+  padding: 0 12px;
+  border-radius: 5px;
+  margin-right: 5px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav li.act {
+  background: #4E5969;
+  color: #fff;
+}
+.container {
+  padding: 5px 15px;
+  padding-bottom: 30px;
+  overflow-y: scroll;
+  height: 500px;
+}
+.container .content {
+  display: none;
+}
+.container .content.act {
+  display: block;
+}
+.list li {
+  padding: 2px 0;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-right: 40px;
+}
+.list li a {
+  text-decoration: none;
+  padding: 5px 0;
+  border-radius: 3px;
+  position: relative;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+.list li a:hover {
+  text-decoration: underline;
+}
+.list li em {
+  font-style: normal;
+  position: absolute;
+  top: 5px;
+  right: 0;
+  border-radius: 30px;
+  height: 20px;
+  background-color: var(--color-neutral-3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  padding: 0 5px;
+  font-size: 13px;
+}
+.fixed-icon {
+  position: fixed;
+  right: 20px;
+  top: 16px;
+  display: flex;
+  z-index: 999999;
+}
+.fixed-icon .item {
+  cursor: pointer;
+  margin-left: 10px;
+}
+.fixed-icon .loading svg {
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

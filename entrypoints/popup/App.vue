@@ -6,7 +6,12 @@
       <li :class="{ act: activeTab === 'menu' }" @click="changeTab('menu')">菜单</li>
     </ul>
     <div class="fixed-icon">
-      <div class="item" title="10分钟自动刷新一次" @click="refresh">
+      <div
+        class="item"
+        title="10分钟自动刷新一次"
+        :class="{ loading: isRefresh }"
+        @click="refresh"
+      >
         <Refresh />
       </div>
     </div>
@@ -15,7 +20,7 @@
   <div class="container" ref="container">
     <div class="content" :class="{ act: activeTab === 'hot' }">
       <HotPosts v-if="hotlist.length > 0" :list="hotlist" />
-       <p v-else>{{ nohotlist }}</p>
+      <p v-else>{{ nohotlist }}</p>
     </div>
     <div class="content" :class="{ act: activeTab === 'news' }">
       <NewsPosts v-if="newslist.length > 0" :list="newslist" />
@@ -36,6 +41,7 @@ import Refresh from "./components/SVG/Refresh.vue";
 export default {
   data() {
     return {
+      isRefresh: false,
       activeTab: "news",
       hotlist: [], // 热门列表
       newslist: [], // 最新列表
@@ -73,33 +79,38 @@ export default {
     },
     // 获取热门列表
     async getHotPosts() {
-      this.hotlist = [];
+      // this.hotlist = [];
       fetch("https://linux.do/top.json")
         .then((response) => response.json())
         .then((data) => {
           this.hotlist = data.topic_list.topics;
           localStorage.setItem("hotlist", JSON.stringify(this.hotlist));
+          this.isRefresh = false;
         })
         .catch((error) => {
           this.nohotlist = "网络异常";
+          this.isRefresh = false;
         });
     },
     // 获取最新列表
     async getNewsPosts() {
-      this.newslist = [];
+      // this.newslist = [];
       fetch("https://linux.do/new.json")
         .then((response) => response.json())
         .then((data) => {
           this.newslist = data.topic_list.topics;
           localStorage.setItem("newslist", JSON.stringify(this.newslist));
+          this.isRefresh = false;
         })
         .catch((error) => {
           this.nonewlist = "网络异常";
+          this.isRefresh = false;
         });
     },
 
     // 刷新
     refresh() {
+      this.isRefresh = true;
       this.getHotPosts();
       this.getNewsPosts();
       localStorage.setItem("Timestamp", Date.now());

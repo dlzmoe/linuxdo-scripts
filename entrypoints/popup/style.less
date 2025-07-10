@@ -103,18 +103,19 @@ a {
 
 .list {
   li {
+    padding: 2px 0;
     border-bottom: 1px solid #eee;
     margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-right: 40px;
 
     a {
       text-decoration: none;
-      padding: 4px 0;
-      margin: 4px 0;
-      display: inline-flex;
-      width: 100%;
+      padding: 5px 0;
       border-radius: 3px;
       position: relative;
-      padding-right: 30px;
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 1;
@@ -124,21 +125,23 @@ a {
         text-decoration: underline;
       }
 
-      em {
-        font-style: normal;
-        position: absolute;
-        top: 5px;
-        right: 0;
-        border-radius: 30px;
-        height: 20px;
-        background-color: var(--color-neutral-3);
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 30px;
-        padding: 0 5px;
-        font-size: 13px;
-      }
+
+    }
+
+    em {
+      font-style: normal;
+      position: absolute;
+      top: 5px;
+      right: 0;
+      border-radius: 30px;
+      height: 20px;
+      background-color: var(--color-neutral-3);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 30px;
+      padding: 0 5px;
+      font-size: 13px;
     }
   }
 }
@@ -153,5 +156,19 @@ a {
   .item {
     cursor: pointer;
     margin-left: 10px;
+  }
+
+  .loading svg {
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
   }
 }
